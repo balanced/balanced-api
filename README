@@ -17,10 +17,9 @@ sellers the next business day without the pain of building a payments system.
 The primary goal of this repo is to create more openness behind the decisions
 driving the designs and functionality of the Balanced API. We reached out to
 existing and potential customers when designing the API, but that was a limited
-set of people we already knew. In retrospect, that was a short sighted
-decision. We've received tremendous growth in the last few months, and our new
-customers have great feedback or at least want to understand the reasoning
-behind the original decisions.
+set of people we already knew. We've received tremendous growth in the last few
+months, and our new customers have great feedback or at least want to
+understand the reasoning behind the original decisions.
 
 We're going to automate validation of our API code against the specifications
 in the repo. Any changes to the API can't be deployed unless they've been
