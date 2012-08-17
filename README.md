@@ -6,8 +6,9 @@ existed before. The success of online marketplaces has the potential to
 materially effect the global economy by creating new jobs and economic activity
 that previously did not exist. Airbnb, Kickstarter, Etsy, and other
 marketplaces have created new forms of income for businesses and individuals.
-That's what gets the Balanced team excited and what the Balanced API hopes to
-support.
+That's what gets the [Balanced](https://www.balancedpayments.com/) team excited
+and what the [Balanced API](https://www.balancedpayments.com/docs/integration)
+hopes to support.
 
 Payments for marketplaces is unfortunately painful because of unique
 requirements including paying sellers, payments aggregation policies, tax
