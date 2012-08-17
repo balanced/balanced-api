@@ -1,3 +1,10 @@
-Balanced - online marketplace payments
+Balanced API Spec
+=================
 
-Lear more at https://balancedpayments.com
+Online marketplaces enable a new form of commerce at a scale that has never existed before. The success of online marketplaces has the potential materially effect the global economy by creating new jobs and economic activity that previously did not exist. Airbnb, Kickstarter, Etsy, and other marketplaces have created new forms of income for businesses and individuals. That's what gets the Balanced team existed and what the Balanced API hopes to support.
+
+Payments for marketplaces is unfortunately painful because of unique requirements including paying sellers, payments aggregation policies, tax ramifications, and fraud. Balanced lets you charge cards, escrow funds, and pay seller the next business day without the pain of building a payments system.
+
+The primary goal of this repo is to create more openness behind the decisions driving the designs and functionanily of the Balanced API. We reached out to existing and potential customers when designing the API, but that was a limited set of people we already knew. In retrospect, that was a short sighted decision. We've received tremendous growth in the last few months, and our new customers have great feedback or at least want to understand the reasnoning behind the original decisions.
+
+We'll do our best to have even internal discussions online. All changes (even by the Balanced team) to the specs must be submitted via pull request and can only be merged in by @matin after giving the community a chance to comment on the changes.
