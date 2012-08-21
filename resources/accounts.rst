@@ -11,7 +11,7 @@ you simply provide a funding source that may be debited.
 .. _account-view:
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -66,7 +66,7 @@ you simply provide a funding source that may be debited.
 
    * - ``id``
      - string
-     - 
+     -
    * - ``credits_uri``
      - string
      - URI for all credits associated with the account
@@ -122,7 +122,7 @@ the full credit card via the ``card`` param.
 .. _buyer-account-create-form:
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -187,7 +187,7 @@ Payload to create a person
 
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -252,7 +252,7 @@ based merchant but also includes the registered business information.
 .. _business-merchant-account-create-form:
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -312,7 +312,7 @@ Merchant Create Form
 --------------------
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -400,7 +400,7 @@ Merchant Create Form
        Each key maps to:
 
        .. list-table::
-          :widths: 20 80 
+          :widths: 20 80
           :header-rows: 1
 
           * - Type
@@ -427,7 +427,7 @@ Person Create Form
 ------------------
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -487,7 +487,7 @@ Errors
 ------
 
 .. list-table::
-   :widths: 10 20 20 80 
+   :widths: 10 20 20 80
    :header-rows: 1
 
    * - Status Code
@@ -539,7 +539,7 @@ Allows partial updates to accounts within your marketplace.
 .. _account-update-form:
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -550,7 +550,7 @@ Allows partial updates to accounts within your marketplace.
      - #. If `account` is a merchant.
 
           .. list-table::
-             :widths: 20 80 
+             :widths: 20 80
              :header-rows: 1
 
              * - Type
@@ -570,7 +570,7 @@ Allows partial updates to accounts within your marketplace.
        #. If `account` is not a merchant.
 
           .. list-table::
-             :widths: 20 80 
+             :widths: 20 80
              :header-rows: 1
 
              * - Type
@@ -619,7 +619,7 @@ Allows partial updates to accounts within your marketplace.
        Each key maps to:
 
        .. list-table::
-          :widths: 20 80 
+          :widths: 20 80
           :header-rows: 1
 
           * - Type
@@ -659,7 +659,7 @@ Merchant Update Form
 --------------------
 
 .. list-table::
-   :widths: 20 20 80 
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Name
@@ -680,7 +680,7 @@ Merchant Update Form
        Each key maps to:
 
        .. list-table::
-          :widths: 20 80 
+          :widths: 20 80
           :header-rows: 1
 
           * - Type
@@ -712,7 +712,3 @@ Merchant Update Form
        <./bank_accounts.rst#bank-account-create-form>`_.
 
        This field is **optional**, it defaults to ``null``.
-
-
-
-
