@@ -71,7 +71,7 @@
 
 ### rejected
 
-`GET ach_debits/<ach_debit_id>`
+`GET /ach_debits/<ach_debit_id>`
 
 	{
 		"id": <ach_debit_id>,
