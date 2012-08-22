@@ -15,73 +15,77 @@ made with it.
    * - Name
      - Type
      - Description
-   * - ``expiration_month``
+   * - ``id``
      - string
-     - Card's expiration month
+     - 
+   * - ``uri``
+     - object
+     - The URI of the card
+
 
    * - ``account``
-     - ``account``
+     - object
      - The account this card is associated with
 
        See `account view
        <./accounts.rst#account-view>`_.
 
 
-   * - ``last_four``
-     - string
-     - Last four digits of the card
-
-   * - ``expiration_year``
-     - string
-     - Card's expiration year
-
    * - ``created_at``
      - datetime
      - When this card was created
-
-   * - ``uri``
-     - string
-     - The URI of the card
-
 
    * - ``street_address``
      - string
      - Street address
 
-   * - ``id``
+   * - ``postal_code``
      - string
-     - 
+     - Postal code (zip code in the USA)
+
+   * - ``country_code``
+     - string
+     - ISO-3166-3 three-character country code
+
+   * - ``name``
+     - string
+     - The name on the card
+
+   * - ``expiration_month``
+     - string
+     - Card's expiration month
+
+   * - ``expiration_year``
+     - string
+     - Card's expiration year
+
    * - ``card_type``
      - string
      - **Deprecated**
        The type of the card. This field has been deprecated in favor of
        ``brand``
 
-   * - ``is_valid``
-     - boolean
-     - A boolean value indicating whether or not the card is valid. Once
-       invalidated, ``is_valid`` can not be set to True again.
-
    * - ``meta``
      - object
      - A single-level dictionary of string-type key/value pairs
 
-   * - ``country_code``
+   * - ``last_four``
      - string
-     - ISO-3166-3 three-character country code
-
-   * - ``postal_code``
-     - string
-     - Postal code (zip code in the USA)
+     - Last four digits of the card
 
    * - ``brand``
-     - string
-     - The brand (Visa, Mastercard, etc.) of the card
+     - object
+     - The brand of the card. One of:
+         - Visa
+         - MasterCard
+         - American Express
+         - Discover
 
 
-   * - ``name``
-     - string
-     - The name on the card
+   * - ``is_valid``
+     - boolean
+     - A boolean value indicating whether or not the card is valid. Once
+       invalidated, ``is_valid`` can not be set to True again.
 
 
 .. list-table::
@@ -91,104 +95,27 @@ made with it.
    * - URI
      - Methods
      - Description
+   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+     - HEAD,GET
+     - `Show <./cards.rst#show>`_
+   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+     - PUT
+     - `Update <./cards.rst#update>`_
+   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
+     - POST
+     - `Create <./cards.rst#create>`_
+   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+     - HEAD,GET
+     - `Show <./cards.rst#show>`_
+   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+     - POST
+     - `Create <./cards.rst#create>`_
    * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
      - HEAD,GET
      - `Index <./cards.rst#index>`_
    * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
      - PUT
      - `Update <./cards.rst#update>`_
-   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-     - HEAD,GET
-     - `Show <./cards.rst#show>`_
-   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-     - PUT
-     - `Update <./cards.rst#update>`_
-   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-     - HEAD,GET
-     - `Show <./cards.rst#show>`_
-   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
-     - POST
-     - `Create <./cards.rst#create>`_
-   * - /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-     - POST
-     - `Create <./cards.rst#create>`_
-
-=====
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: HEAD,GET
-
-.. _card-index:
-
-
-.. _cards-view:
-
-
-======
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: PUT
-
-.. _card-update-form:
-
-.. list-table::
-   :widths: 20 20 80 
-   :header-rows: 1
-
-   * - Name
-     - Type
-     - Description
-   * - ``account_uri``
-     - string
-     - URI.
-
-       This field is **optional**, it defaults to ``null``.
-
-       **or**
-   * - ``account``
-     - map
-     - .. list-table::
-          :widths: 20 20 80 
-          :header-rows: 1
-
-          * - Name
-            - Type
-            - Description
-          * - ``uri``
-            - string
-            - URI.
-
-              This field is **optional**, it defaults to ``null``.
-
-   * - ``meta``
-     - map
-     - Mapping from string keys to string values.
-
-       Each key maps to:
-
-       .. list-table::
-          :widths: 20 80 
-          :header-rows: 1
-
-          * - Type
-            - Description
-          * - string
-            - Sequence of characters.
-
-              Length must be **<=** ``1024``.
-
-       This field is **optional**, it defaults to ``null``.
-
-   * - ``is_valid``
-     - boolean
-     - Indicates whether the card is active (``true``) or has been deactivated
-       (``false``). Setting this to false will deactivate the card.
-
-
 
 ====
 Show
@@ -220,6 +147,11 @@ must create a new card.
    * - Name
      - Type
      - Description
+   * - ``is_valid``
+     - boolean
+     - Indicates whether the card is active (``true``) or has been deactivated
+       (``false``). Setting this to false will deactivate the card.
+
    * - ``account_uri``
      - string
      - URI.
@@ -261,21 +193,6 @@ must create a new card.
 
        This field is **optional**, it defaults to ``null``.
 
-   * - ``is_valid``
-     - boolean
-     - Indicates whether the card is active (``true``) or has been deactivated
-       (``false``). Setting this to false will deactivate the card.
-
-
-
-====
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-:methods: HEAD,GET
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
 
 
 ======
@@ -405,6 +322,16 @@ Create
 
 
 
+====
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+:methods: HEAD,GET
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
 ======
 Create
 ======
@@ -424,13 +351,9 @@ with it.
    * - Name
      - Type
      - Description
-   * - ``phone_number``
+   * - ``card_number``
      - string
-     - E.164 formatted phone number.
-
-       Length must be **<=** ``15``.
-
-       This field is **optional**, it defaults to ``null``.
+     - The digits of the credit card number.
 
    * - ``security_code``
      - string
@@ -446,15 +369,19 @@ with it.
 
        This field is **optional**, it defaults to ``null``.
 
+   * - ``phone_number``
+     - string
+     - E.164 formatted phone number.
+
+       Length must be **<=** ``15``.
+
+       This field is **optional**, it defaults to ``null``.
+
    * - ``expiration_year``
      - integer
      - Expiration year.
 
        The current year or later. Value must be **<=** ``9999``.
-
-   * - ``card_number``
-     - string
-     - The digits of the credit card number.
 
    * - ``expiration_month``
      - integer
@@ -462,13 +389,6 @@ with it.
 
        If ``expiration_year`` is the current year then current month or later,
        otherwise 1. Value must be **<=** ``12``.
-
-   * - ``is_valid``
-     - boolean
-     - Indicates whether the card is active (``true``) or has been deactivated
-       (``false``).
-
-       This field is **optional**, it defaults to ``true``.
 
    * - ``city``
      - string
@@ -522,6 +442,129 @@ with it.
               Length must be **<=** ``1024``.
 
        This field is **optional**, it defaults to ``{   }``.
+
+   * - ``is_valid``
+     - boolean
+     - Indicates whether the card is active (``true``) or has been deactivated
+       (``false``).
+
+       This field is **optional**, it defaults to ``true``.
+
+Errors
+------
+
+.. list-table::
+   :widths: 10 20 20 80 
+   :header-rows: 1
+
+   * - Status Code
+     - Category Type
+     - Category Code
+     - Description
+   * - **409**
+     - logical
+     - card-not-valid
+     - This card has already been marked as invalid/deactivated. It cannot be used
+       again.
+   * - **409**
+     - logical
+     - card-not-validated
+     - The card could not be validated -- either the card number or security code
+       may be wrong.
+   * - **409**
+     - logical
+     - card-not-associated
+     - The card is not associated with the given account.
+   * - **409**
+     - logical
+     - card-already-funding-src
+     - The card is already associated with an account -- it cannot be associated
+       again.
+   * - **409**
+     - logical
+     - cannot-associate-card
+     - The card was tokenized on a different marketplace than the one used for
+       this request.
+   * - **402**
+     - banking
+     - card-declined
+     - This card was declined by the processor.
+
+
+=====
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: HEAD,GET
+
+.. _card-index:
+
+
+.. _cards-view:
+
+
+======
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: PUT
+
+.. _card-update-form:
+
+.. list-table::
+   :widths: 20 20 80 
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Description
+   * - ``is_valid``
+     - boolean
+     - Indicates whether the card is active (``true``) or has been deactivated
+       (``false``). Setting this to false will deactivate the card.
+
+   * - ``account_uri``
+     - string
+     - URI.
+
+       This field is **optional**, it defaults to ``null``.
+
+       **or**
+   * - ``account``
+     - map
+     - .. list-table::
+          :widths: 20 20 80 
+          :header-rows: 1
+
+          * - Name
+            - Type
+            - Description
+          * - ``uri``
+            - string
+            - URI.
+
+              This field is **optional**, it defaults to ``null``.
+
+   * - ``meta``
+     - map
+     - Mapping from string keys to string values.
+
+       Each key maps to:
+
+       .. list-table::
+          :widths: 20 80 
+          :header-rows: 1
+
+          * - Type
+            - Description
+          * - string
+            - Sequence of characters.
+
+              Length must be **<=** ``1024``.
+
+       This field is **optional**, it defaults to ``null``.
 
 
 
