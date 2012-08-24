@@ -92,8 +92,8 @@ Operate on card's using the following endpoints:
 Create a Card
 =============
 
-uri: /v1/`marketplaces <./marketplaces.rst>`_/:*marketplace*/`cards <./cards.rst>`_
-method: ``POST``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/:*marketplace*/`cards <./cards.rst>`_
+:method: ``POST``
 
 Creates a card. The resulting card should then be associated with an account.
 This process of creating and then associated a card is commonly called
