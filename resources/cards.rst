@@ -92,9 +92,7 @@ Operate on card's using the following endpoints:
 Create a Card
 =============
 
-.. code::
-
-    POST /v1/`marketplaces <./marketplaces.rst>`_/:*marketplace*/`cards <./cards.rst>`_
+``POST`` /v1/`marketplaces <./marketplaces.rst>`_/:*marketplace*/`cards <./cards.rst>`_
 
 Creates a card. The resulting card should then be associated with an account.
 This process of creating and then associated a card is commonly called
@@ -199,7 +197,7 @@ On success the body includes the card fields described `previously <card-view>`_
 
 
 
-On failure the body includes the standard error fields. Card creation can failure
+On failure the body includes the standard error fields. Card creation can fail
 with one of the following errors:
 
     ``card-not-validated``
