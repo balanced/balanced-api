@@ -4,7 +4,19 @@ Cards
 
 A card represents a source of funds, such as a debit or credit card. It must be
 associated with an account via a PUT on the account before transactions can be
-made with it. Card's are composed of the following fields:
+made with it.
+
+Operate on card's using the following endpoints:
+
+    - `Create a Card <./cards.rst#create-a-card>`_
+    - `Index Cards <./cards.rst#index-cards>`_
+    - `Update a Card <./cards.rst#update-a-card>`_
+    - `Show a Card <./cards.rst#show-a-card>`_
+    - `Create and Associate a Card <./cards.rst#create-and-associate-a-card>`_
+    - `Show an Account Card <./cards.rst#show-an-account-card>`_
+    - `Update an Account Card <./cards.rst#update-an-account-card>`_
+
+Card's are composed of the following fields:
 
 .. _card-view:
 
@@ -76,17 +88,6 @@ A card in a response will have all of these fields. For example:
             "last_four": "1111", 
             "id": "CC4Fs2DoDjEOfgYNgxoDBlPd"
         }
-
-
-Operate on card's using the following endpoints:
-
-    - `Create a Card <./cards.rst#create-a-card>`_
-    - `Index Cards <./cards.rst#index-cards>`_
-    - `Update a Card <./cards.rst#update-a-card>`_
-    - `Show a Card <./cards.rst#show-a-card>`_
-    - `Create and Associate a Card <./cards.rst#create-and-associate-a-card>`_
-    - `Show an Account Card <./cards.rst#show-an-account-card>`_
-    - `Update an Account Card <./cards.rst#update-an-account-card>`_
 
 
 Create a Card
