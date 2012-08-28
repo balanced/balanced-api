@@ -48,8 +48,7 @@
             "type": "checking"
         }
         "amount": 1716,
-        "available": null,
-        "rejected": null
+        "status": "pending"
     }
 
 ### completed
@@ -65,8 +64,7 @@
             "type": "checking"
         }
         "amount": 1716,
-        "available": 1345567104,
-        "rejected": null
+        "status": "completed"
     }
 
 ### rejected
@@ -82,6 +80,5 @@
             "type": "checking"
         }
         "amount": 1716,
-        "available": null,
-        "rejected": 1345567104
+        "status": "rejected"
     }
