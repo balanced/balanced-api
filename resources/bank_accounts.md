@@ -2,27 +2,27 @@
 
 ## Get a bank account
 
-	GET /:version/bank_accounts/:bank_account_id
+    GET /:version/bank_accounts/:bank_account_id
 
 ### Response
 
 #### Header
 
-	Status: 200 OK
+    Status: 200 OK
 
 #### Body
 
-	{
-		"id": "BANm9b8BcoOjcF5i1p4eV9I",
-		"account_number": "xxxxxx2930",
-		"routing_number": "121042882",
-		"type": "checking"
-	}
+    {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
 
 
 ## Create a bank account
 
-	POST /:version/bank_accounts
+    POST /:version/bank_accounts
 
 ### Request
 
@@ -33,37 +33,37 @@
 : _required_ **string**
 
 `type`
-: _required_ **string**. Possible values: "checking", "savings"
+: _required_ **string**. `checking` or `savings`
 
-	{
-		"name": "Gottfried Leibniz",
-		"account_number": "3819372930",
-		"routing_number": "121042882",
-		"type": "checking"
-	}
+    {
+        "name": "Gottfried Leibniz",
+        "account_number": "3819372930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
 
 ### Response
 
 #### Header
 
-	Status: 201 Created
+    Status: 201 Created
 
 #### Body
 
-	{
-		"id": "BANm9b8BcoOjcF5i1p4eV9I",
-		"account_number": "xxxxxx2930",
-		"routing_number": "121042882",
-		"type": "checking"
-	}
+    {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
 
 
 ## Delete a bank account
 
-	DELETE /:version/bank_accounts/:bank_account_id
+    DELETE /:version/bank_accounts/:bank_account_id
 
 ### Response
 
 #### Header
 
-	Status: 204 No Content
+    Status: 204 No Content
