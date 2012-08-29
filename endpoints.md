@@ -79,15 +79,15 @@ Operations to create an ACH Debit or ACH Credit are the same
 
 `GET /a0/marketplaces/<marketplace_id>`
 
-	{
-		"id": <marketplace_id>,
-		"reserve": 1984,
-		"balance": -50,
-		"bank_account": {
-			"name": "Rent my bike",
-			"account_number": "xxxxxx1129",
-			"routing_number": "121042882",
-			"type": "checking"
-		},
-		"api_keys": [<api_key_id>]
-	}
+    {
+        "id": <marketplace_id>,
+        "reserve": 1984,
+        "balance": -50,
+        "bank_account": {
+            "name": "Rent my bike",
+            "account_number": "xxxxxx1129",
+            "routing_number": "121042882",
+            "type": "checking"
+        },
+        "api_keys": [<api_key_id>]
+    }
