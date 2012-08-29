@@ -6,8 +6,7 @@
     - id
     - bank_account
     - amount
-    - available
-    - rejected
+    - status: pending, cleared, rejected
 
 
 ### Bank Account
@@ -17,7 +16,7 @@
     - name
     - account_number
     - routing_number
-    - type
+    - type: savings, checking
     
 
 ## Examples
@@ -51,7 +50,7 @@
         "status": "pending"
     }
 
-### completed
+### cleared
 
 `GET /ach_debits/<ach_debits_id>`
 
@@ -64,7 +63,7 @@
             "type": "checking"
         }
         "amount": 1716,
-        "status": "completed"
+        "status": "cleared"
     }
 
 ### rejected
