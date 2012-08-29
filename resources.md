@@ -6,6 +6,7 @@
 
     {
         "id": "MP3fcTyo4hrVp44bCjRmxtpQ",
+        "status": "live",
         "reserve": 1716,
         "balance": -100,
         "api_key": "0f8df97cf21c11e1887e026ba7e239a9",
@@ -22,6 +23,10 @@
 
 `id`
 : **string**
+
+`status`
+: **string**
+: `live` or `test`
 
 `reserve`
 : **integer**
