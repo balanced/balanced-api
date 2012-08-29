@@ -56,10 +56,12 @@
 ### Request
 
 `amount`
-: _required_ **integer**. Greater than zero
+: _required_ **integer**
+: greater than zero
 
 `bank_account`
-: _required_ **object**. [Bank Account](./bank_accounts.md)
+: _required_ **object**
+: [Bank Account](./bank_accounts.md)
 
 
 ### Response
@@ -90,7 +92,8 @@
 ### Request
 
 `amount`
-: _required_ **integer**. Greater than zero
+: _required_ **integer**
+: greater than zero
 
 ### Response
 
