@@ -64,7 +64,7 @@ Operations to create an ACH Debit or ACH Credit are the same
 `GET /a0/ach_debits/<ach_debits_id>`
 
     {
-        "id": <ach_debit_id>,
+        "id": "<ach_debit_id>",
         "bank_account": {
             "id": <bank_account_id>,
             "account_number": "xxxxxx2930",
@@ -80,10 +80,11 @@ Operations to create an ACH Debit or ACH Credit are the same
 `GET /a0/marketplaces/<marketplace_id>`
 
     {
-        "id": <marketplace_id>,
+        "id": "<marketplace_id>",
         "reserve": 1984,
         "balance": -50,
         "bank_account": {
+            "id": "<bank_account_id",
             "name": "Rent my bike",
             "account_number": "xxxxxx1129",
             "routing_number": "121042882",
