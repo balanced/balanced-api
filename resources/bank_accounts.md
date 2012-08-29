@@ -33,7 +33,8 @@
 : _required_ **string**
 
 `type`
-: _required_ **string**. `checking` or `savings`
+: _required_ **string**
+: `checking` or `savings`
 
     {
         "name": "Gottfried Leibniz",
