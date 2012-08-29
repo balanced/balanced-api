@@ -1,8 +1,31 @@
 ## Endpoints
 
-###ACH Debit
+### Marketplace
 
-    ach_debits
+    /a0/marketplaces
+    - id
+    - reserve: must be positive to perform credits. Same as in_escrow
+    - balance: settled once per business day
+    - bank_account
+    - api_keys
+
+### API Key
+
+    /a0/api_keys
+    - id
+    - secret
+
+### ACH Debit
+
+    /a0/ach_debits
+    - id
+    - bank_account
+    - amount
+    - status: pending, cleared, rejected
+
+### ACH Credit
+
+    /a0/ach_credits
     - id
     - bank_account
     - amount
@@ -11,7 +34,7 @@
 
 ### Bank Account
 
-    bank_accounts
+    /a0/bank_accounts
     - id
     - name
     - account_number
@@ -21,8 +44,10 @@
 
 ## Examples
 
+### Create an ACH Debit
+Operations to create an ACH Debit or ACH Credit are the same
 
-`POST /ach_debits`
+`POST /a0/ach_debits`
 
     {
         "bank_account": {
@@ -34,12 +59,12 @@
         "amount": 1716,
     }
 
-### pending
+### Check the status on an ACH Debit
 
-`GET /ach_debits/<ach_debits_id>`
+`GET /a0/ach_debits/<ach_debits_id>`
 
     {
-        "id": <ach_debit_id>,
+        "id": "<ach_debit_id>",
         "bank_account": {
             "id": <bank_account_id>,
             "account_number": "xxxxxx2930",
@@ -50,34 +75,20 @@
         "status": "pending"
     }
 
-### cleared
+### Check the balance and amount in reserve for a marketplace
 
-`GET /ach_debits/<ach_debits_id>`
-
-    {
-        "id": <ach_debit_id>,
-        "bank_account": {
-            "id": <bank_account_id>,
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
-        "amount": 1716,
-        "status": "cleared"
-    }
-
-### rejected
-
-`GET /ach_debits/<ach_debit_id>`
+`GET /a0/marketplaces/<marketplace_id>`
 
     {
-        "id": <ach_debit_id>,
+        "id": "<marketplace_id>",
+        "reserve": 1984,
+        "balance": -50,
         "bank_account": {
-            "id": <bank_account_id>,
-            "account_number": "xxxxxx2930",
+            "id": "<bank_account_id",
+            "name": "Rent my bike",
+            "account_number": "xxxxxx1129",
             "routing_number": "121042882",
             "type": "checking"
-        }
-        "amount": 1716,
-        "status": "rejected"
+        },
+        "api_keys": [<api_key_id>]
     }
