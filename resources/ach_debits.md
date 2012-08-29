@@ -59,7 +59,7 @@
 : _required_ **integer**. Greater than zero
 
 `bank_account`
-: _required_ **object**. [Bank Account](/resources/bank_accounts.md)
+: _required_ **object**. [Bank Account](./bank_accounts.md)
 
 
 ### Response
