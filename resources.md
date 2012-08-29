@@ -1,88 +1,126 @@
-## Endpoints
+# Resources
 
-### Marketplace
+## Marketplace
 
-    /:version/marketplaces
-    - id
-    - reserve: must be positive to perform credits. Same as in_escrow
-    - balance: settled once per business day
-    - bank_account
-    - api_keys
-
-### ACH Debit
-
-    /:version/ach_debits
-    - id
-    - bank_account
-    - amount
-    - status: pending, cleared, rejected
-
-### ACH Credit
-
-    /:version/ach_credits
-    - id
-    - bank_account
-    - amount
-    - status: pending, cleared, rejected
-
-
-### Bank Account
-
-    /:version/bank_accounts
-    - id
-    - name
-    - account_number
-    - routing_number
-    - type: savings, checking
-    
-
-## Examples
-
-### Create an ACH Debit
-Operations to create an ACH Debit or ACH Credit are the same
-
-`POST /:version/ach_debits`
+### Example
 
     {
+        "id": "MP3fcTyo4hrVp44bCjRmxtpQ",
+        "reserve": 1716,
+        "balance": -100,
+        "api_key": "0f8df97cf21c11e1887e026ba7e239a9",
         "bank_account": {
-            "name": "Gottfried Leibniz",
-            "account_number": "3819372930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
-        "amount": 1716,
-    }
-
-### Check the status on an ACH Debit
-
-`GET /:version/ach_debits/<ach_debits_id>`
-
-    {
-        "id": "<ach_debit_id>",
-        "bank_account": {
-            "id": <bank_account_id>,
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
-        "amount": 1716,
-        "status": "pending"
-    }
-
-### Check the balance and amount in reserve for a marketplace
-
-`GET /:version/marketplaces/<marketplace_id>`
-
-    {
-        "id": "<marketplace_id>",
-        "reserve": 1984,
-        "balance": -50,
-        "bank_account": {
-            "id": "<bank_account_id",
+            "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "name": "Rent my bike",
             "account_number": "xxxxxx1129",
             "routing_number": "121042882",
             "type": "checking"
-        },
-        "api_keys": [<api_key_id>]
+        }
     }
+
+### Fields
+
+`id`
+: **string**
+
+`reserve`
+: **integer**
+: greater than or equal to zero
+
+`balance`
+: **ineger**
+
+`api_key`
+: **string**
+: keep this secret!!!
+
+`bank_account`
+: **object**
+: [Bank Account](./resources.md#bank-account)
+
+
+## Bank Account
+
+### Example
+
+    {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
+
+### Fields
+
+`id`
+: **string**
+
+`account_number`
+: **string**
+
+`routing_number`
+: **string**
+
+`type`
+: **string**
+: `checking` or `savings`
+
+
+## ACH Debit
+
+### Example
+
+    {
+        "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "pending",
+        "bank_account": {
+            "id": "BANm9b8BcoOjcF5i1p4eV9I",
+            "account_number": "xxxxxx2930",
+            "routing_number": "121042882",
+            "type": "checking"
+        }
+    }
+
+### Fields
+
+`id`
+: **string**
+
+`amount`
+: **integer**
+: greater than zero
+
+`status`
+: **string**
+: `pending`, `cleared` or `rejected`
+
+
+## ACH Credit
+
+### Example
+
+    {
+        "id": "ACtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "pending",
+        "bank_account": {
+            "id": "BANm9b8BcoOjcF5i1p4eV9I",
+            "account_number": "xxxxxx2930",
+            "routing_number": "121042882",
+            "type": "checking"
+        }
+    }
+
+### Fields
+
+`id`
+: **string**
+
+`amount`
+: **integer**
+: greater than zero
+
+`status`
+: **string**
+: `pending`, `cleared` or `rejected`
