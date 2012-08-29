@@ -14,14 +14,15 @@
 
     {
         "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "pending",
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
-        "amount": 1716,
-        "status": "pending"
+
     }
 
 
@@ -39,13 +40,13 @@
 
     {
         "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "cleared",
         "bank_account": {
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
-        "amount": 1716,
-        "status": "cleared"
     }
 
 
@@ -72,14 +73,14 @@
 
     {
         "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "pending"
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
-        "amount": 1716,
-        "status": "pending"
     }
 
 
@@ -102,12 +103,12 @@
 
     {
         "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "amount": 1716,
+        "status": "pending"
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
-        "amount": 1716,
-        "status": "pending"
     }
