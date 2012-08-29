@@ -1,8 +1,8 @@
-# ACH Debit
+# Bank Account Credit
 
-## Get an ACH debit
+## Get a bank account credit
 
-    GET /:version/ach_debits/:ach_debit_id
+    GET /:version/bank_account_credits/:bank_account_credit_id
 
 ### Response
 
@@ -13,22 +13,21 @@
 #### Body
 
     {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending",
+        "id": "ACtjdsSJg0fFN26PACLLVHz",
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
-
+        "amount": 1716,
+        "status": "pending"
     }
 
 
-## Get an ACH debit (deleted bank account)
+## Get a bank account credit (deleted bank account)
 
-    GET /:version/ach_debits/:ach_debit_id
+    GET /:version/bank_account_credits/:bank_account_credit_id
 
 ### Response
 
@@ -39,20 +38,20 @@
 #### Body
 
     {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "cleared",
+        "id": "ACtjdsSJg0fFN26PACLLVHz",
         "bank_account": {
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
+        "amount": 1716,
+        "status": "cleared"
     }
 
 
-## Create an ACH debit (new bank account)
+## Create a bank account credit (new bank account)
 
-    POST /:version/ach_debits
+    POST /:version/bank_account_credits
 
 ### Request
 
@@ -72,21 +71,21 @@
 #### Body
 
     {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending"
+        "id": "ACtjdsSJg0fFN26PACLLVHz",
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
+        "amount": 1716,
+        "status": "pending"
     }
 
 
-## Create an ACH debit (existing bank account)
+## Create a bank account credit (existing bank account)
 
-    POST /:version/bank_accounts/:bank_account_id/ach_debits
+    POST /:version/bank_accounts/:bank_account_id/bank_account_credits
 
 ### Request
 
@@ -102,13 +101,13 @@
 #### Body
 
     {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending"
+        "id": "ACtjdsSJg0fFN26PACLLVHz",
         "bank_account": {
             "id": "BANm9b8BcoOjcF5i1p4eV9I",
             "account_number": "xxxxxx2930",
             "routing_number": "121042882",
             "type": "checking"
         }
+        "amount": 1716,
+        "status": "pending"
     }

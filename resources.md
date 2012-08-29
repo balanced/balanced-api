@@ -66,12 +66,12 @@
 : `checking` or `savings`
 
 
-## ACH Debit
+## Bank Account Debit
 
 ### Example
 
     {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
+        "id": "BDtjdsSJg0fFN26PACLLVHz",
         "amount": 1716,
         "status": "pending",
         "bank_account": {
@@ -100,12 +100,12 @@
 : [Bank Account](./resources.md#bank-account)
 
 
-## ACH Credit
+## Bank Account Credit
 
 ### Example
 
     {
-        "id": "ACtjdsSJg0fFN26PACLLVHz",
+        "id": "BCtjdsSJg0fFN26PACLLVHz",
         "amount": 1716,
         "status": "pending",
         "bank_account": {
