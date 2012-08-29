@@ -2,22 +2,16 @@
 
 ### Marketplace
 
-    /a0/marketplaces
+    /:version/marketplaces
     - id
     - reserve: must be positive to perform credits. Same as in_escrow
     - balance: settled once per business day
     - bank_account
     - api_keys
 
-### API Key
-
-    /a0/api_keys
-    - id
-    - secret
-
 ### ACH Debit
 
-    /a0/ach_debits
+    /:version/ach_debits
     - id
     - bank_account
     - amount
@@ -25,7 +19,7 @@
 
 ### ACH Credit
 
-    /a0/ach_credits
+    /:version/ach_credits
     - id
     - bank_account
     - amount
@@ -34,7 +28,7 @@
 
 ### Bank Account
 
-    /a0/bank_accounts
+    /:version/bank_accounts
     - id
     - name
     - account_number
@@ -47,7 +41,7 @@
 ### Create an ACH Debit
 Operations to create an ACH Debit or ACH Credit are the same
 
-`POST /a0/ach_debits`
+`POST /:version/ach_debits`
 
     {
         "bank_account": {
@@ -61,7 +55,7 @@ Operations to create an ACH Debit or ACH Credit are the same
 
 ### Check the status on an ACH Debit
 
-`GET /a0/ach_debits/<ach_debits_id>`
+`GET /:version/ach_debits/<ach_debits_id>`
 
     {
         "id": "<ach_debit_id>",
@@ -77,7 +71,7 @@ Operations to create an ACH Debit or ACH Credit are the same
 
 ### Check the balance and amount in reserve for a marketplace
 
-`GET /a0/marketplaces/<marketplace_id>`
+`GET /:version/marketplaces/<marketplace_id>`
 
     {
         "id": "<marketplace_id>",
