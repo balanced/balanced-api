@@ -95,6 +95,10 @@
 : **string**
 : `pending`, `cleared` or `rejected`
 
+`bank_account`
+: **object**
+: [Bank Account](./resources.md#bank-account)
+
 
 ## ACH Credit
 
@@ -124,3 +128,7 @@
 `status`
 : **string**
 : `pending`, `cleared` or `rejected`
+
+`bank_account`
+: **object**
+: [Bank Account](./resources.md#bank-account)
