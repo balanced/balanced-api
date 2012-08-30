@@ -69,6 +69,17 @@
 : _required_ **object**
 : [Bank Account](./bank_accounts.md)
 
+```javascript
+{
+    "amount": 1716,
+    {
+        "name": "Gottfried Leibniz",
+        "account_number": "3819372930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
+```
+
 
 ### Response
 
@@ -96,13 +107,19 @@
 
 ## Create a bank account debit (existing bank account)
 
-    POST /:version/bank_accounts/:bank_account_id/bank_account_debits
+    POST /:version/bank_accounts/:bank_account_id/debit
 
 ### Request
 
 `amount`
 : _required_ **integer**
 : greater than zero
+
+```javascript
+{
+    "amount": 1716
+}
+```
 
 ### Response
 
