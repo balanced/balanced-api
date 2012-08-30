@@ -14,6 +14,7 @@
 
     {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
         "type": "checking"
@@ -25,6 +26,9 @@
     POST /:version/bank_accounts
 
 ### Request
+
+`name`
+: _required_ **string**
 
 `account_number`
 : _required_ **string**
@@ -53,6 +57,7 @@
 
     {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
         "type": "checking"
