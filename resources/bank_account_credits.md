@@ -63,7 +63,7 @@
 
 `amount`
 : _required_ **integer**
-: greater than zero
+: `> 0`
 
 `bank_account`
 : _required_ **object**
@@ -113,7 +113,7 @@
 
 `amount`
 : _required_ **integer**
-: greater than zero
+: `> 0`
 
 ```javascript
 {

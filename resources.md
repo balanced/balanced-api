@@ -32,7 +32,7 @@
 
 `reserve`
 : **integer**
-: greater than or equal to zero
+: `>= 0`
 
 `balance`
 : **ineger**
@@ -105,7 +105,7 @@
 
 `amount`
 : **integer**
-: greater than zero
+: `> 0`
 
 `status`
 : **string**
@@ -142,7 +142,7 @@
 
 `amount`
 : **integer**
-: greater than zero
+: `> 0`
 
 `status`
 : **string**
