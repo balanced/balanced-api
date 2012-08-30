@@ -12,13 +12,15 @@
 
 #### Body
 
-    {
-        "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "name": "Gottfried Leibniz",
-        "account_number": "xxxxxx2930",
-        "routing_number": "121042882",
-        "type": "checking"
-    }
+```javascript
+{
+    "id": "BANm9b8BcoOjcF5i1p4eV9I",
+    "name": "Gottfried Leibniz",
+    "account_number": "xxxxxx2930",
+    "routing_number": "121042882",
+    "type": "checking"
+}
+```
 
 
 ## Create a bank account
@@ -41,12 +43,14 @@
 : _required_ **string**
 : `checking` or `savings`
 
-    {
-        "name": "Gottfried Leibniz",
-        "account_number": "3819372930",
-        "routing_number": "121042882",
-        "type": "checking"
-    }
+```javascript
+{
+    "name": "Gottfried Leibniz",
+    "account_number": "3819372930",
+    "routing_number": "121042882",
+    "type": "checking"
+}
+```
 
 ### Response
 
@@ -56,13 +60,15 @@
 
 #### Body
 
-    {
-        "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "name": "Gottfried Leibniz",
-        "account_number": "xxxxxx2930",
-        "routing_number": "121042882",
-        "type": "checking"
-    }
+```javascript
+{
+    "id": "BANm9b8BcoOjcF5i1p4eV9I",
+    "name": "Gottfried Leibniz",
+    "account_number": "xxxxxx2930",
+    "routing_number": "121042882",
+    "type": "checking"
+}
+```
 
 
 ## Delete a bank account

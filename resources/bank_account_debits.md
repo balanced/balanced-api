@@ -12,19 +12,20 @@
 
 #### Body
 
-    {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending",
-        "bank_account": {
-            "id": "BANm9b8BcoOjcF5i1p4eV9I",
-            "name": "Gottfried Leibniz",
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
-
+```javascript
+{
+    "id": "ADtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending",
+    "bank_account": {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "name": "Gottfried Leibniz",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
     }
+}
+```
 
 
 ## Get a bank account debit (deleted bank account)
@@ -39,17 +40,19 @@
 
 #### Body
 
-    {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "cleared",
-        "bank_account": {
-            "name": "Gottfried Leibniz",
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
+```javascript
+{
+    "id": "ADtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "cleared",
+    "bank_account": {
+        "name": "Gottfried Leibniz",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
     }
+}
+```
 
 
 ## Create a bank account debit (new bank account)
@@ -75,18 +78,20 @@
 
 #### Body
 
-    {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending"
-        "bank_account": {
-            "id": "BANm9b8BcoOjcF5i1p4eV9I",
-            "name": "Gottfried Leibniz",
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
+```javascript
+{
+    "id": "ADtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending"
+    "bank_account": {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "name": "Gottfried Leibniz",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
     }
+}
+```
 
 
 ## Create a bank account debit (existing bank account)
@@ -107,15 +112,17 @@
 
 #### Body
 
-    {
-        "id": "ADtjdsSJg0fFN26PACLLVHz",
-        "amount": 1716,
-        "status": "pending"
-        "bank_account": {
-            "id": "BANm9b8BcoOjcF5i1p4eV9I",
-            "name": "Gottfried Leibniz",
-            "account_number": "xxxxxx2930",
-            "routing_number": "121042882",
-            "type": "checking"
-        }
+```javascript
+{
+    "id": "ADtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending"
+    "bank_account": {
+        "id": "BANm9b8BcoOjcF5i1p4eV9I",
+        "name": "Gottfried Leibniz",
+        "account_number": "xxxxxx2930",
+        "routing_number": "121042882",
+        "type": "checking"
     }
+}
+```
