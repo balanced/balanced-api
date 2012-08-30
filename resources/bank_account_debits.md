@@ -55,7 +55,7 @@
 ```
 
 
-## Create a bank account debit (new bank account)
+## Debit a new bank account
 
     POST /:version/bank_account_debits
 
@@ -105,7 +105,7 @@
 ```
 
 
-## Create a bank account debit (existing bank account)
+## Debit an existing bank account
 
     POST /:version/bank_accounts/:bank_account_id/debits
 

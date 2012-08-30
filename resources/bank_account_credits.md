@@ -55,7 +55,7 @@
 ```
 
 
-## Create a bank account credit (new bank account)
+## Credit a new bank account
 
     POST /:version/bank_account_credits
 
@@ -105,7 +105,7 @@
 ```
 
 
-## Create a bank account credit (existing bank account)
+## Credit an existing bank account
 
     POST /:version/bank_accounts/:bank_account_id/credits
 
