@@ -62,7 +62,7 @@
 : **string**
 
 `name`
-: **string**
+: **string** or _null_
 
 `account_number`
 : **string**
