@@ -15,6 +15,8 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "name": "Gottfried Leibniz",
@@ -22,8 +24,6 @@
         "routing_number": "121042882",
         "type": "checking"
     }
-    "amount": 1716,
-    "status": "pending"
 }
 ```
 
@@ -92,6 +92,8 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "name": "Gottfried Leibniz",
@@ -99,8 +101,6 @@
         "routing_number": "121042882",
         "type": "checking"
     }
-    "amount": 1716,
-    "status": "pending"
 }
 ```
 
@@ -132,6 +132,8 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "amount": 1716,
+    "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "name": "Gottfried Leibniz",
@@ -139,7 +141,5 @@
         "routing_number": "121042882",
         "type": "checking"
     }
-    "amount": 1716,
-    "status": "pending"
 }
 ```
