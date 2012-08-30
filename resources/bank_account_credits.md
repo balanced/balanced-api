@@ -107,7 +107,7 @@
 
 ## Create a bank account credit (existing bank account)
 
-    POST /:version/bank_accounts/:bank_account_id/credit
+    POST /:version/bank_accounts/:bank_account_id/credits
 
 ### Request
 

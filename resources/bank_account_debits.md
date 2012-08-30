@@ -107,7 +107,7 @@
 
 ## Create a bank account debit (existing bank account)
 
-    POST /:version/bank_accounts/:bank_account_id/debit
+    POST /:version/bank_accounts/:bank_account_id/debits
 
 ### Request
 
