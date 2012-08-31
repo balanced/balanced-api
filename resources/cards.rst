@@ -78,16 +78,26 @@ The card resource is composed of the following fields:
 
 
 
-=================
-Invalidate a card
-=================
+List all card tokens
+====================
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _card-index:
+
+
+
+
+Update an account's card
+========================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
 :methods: ``PUT``
 
-.. _card-update:
+.. _account-card-update:
 
-.. _card-update-form:
+.. _account-card-update-form:
 
     ``is_valid``
         *boolean*. Indicates whether the card is active (``true``) or has been deactivated
@@ -112,76 +122,7 @@ Invalidate a card
 Response
 --------
 
-`card-already-funding-src <../errors.rst#card-already-funding-src>`_
-    :status code: 409
-    :category type: logical
 
-`cannot-associate-card <../errors.rst#cannot-associate-card>`_
-    :status code: 409
-    :category type: logical
-
-
-
-======================
-Show an account's card
-======================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _account-card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-==========
-Get a card
-==========
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-=========================================
-Create and associate a card to an account
-=========================================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
-:methods: ``POST``
-
-.. _account-card-card:
-
-.. _account-card-create-form:
-
-    Exactly one of
-
-        ``uri``
-            *string*. Tokenized card URI.
-
-        ``card_uri``
-            *string*. Tokenized card URI.
-
-        ``*object*``
-            See `card create form <./cards.rst#a>`_.
-
-Response
---------
-
-`card-not-validated <../errors.rst#card-not-validated>`_
-    :status code: 409
-    :category type: logical
-
-`card-declined <../errors.rst#card-declined>`_
-    :status code: 402
-    :category type: banking
-
-
-
-=============
 Create a card
 =============
 
@@ -281,28 +222,60 @@ Response
 
 
 
-====================
-List all card tokens
-====================
+Get a card
+==========
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
 :methods: ``HEAD``, ``GET``
 
-.. _card-index:
+.. _card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
+Create and associate a card to an account
+=========================================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
+:methods: ``POST``
+
+.. _account-card-card:
+
+.. _account-card-create-form:
+
+    Exactly one of
+
+        ``uri``
+            *string*. Tokenized card URI.
+
+        ``card_uri``
+            *string*. Tokenized card URI.
+
+        ``*object*``
+            See `card create form <./cards.rst#a>`_.
+
+Response
+--------
+
+`card-not-validated <../errors.rst#card-not-validated>`_
+    :status code: 409
+    :category type: logical
+
+`card-declined <../errors.rst#card-declined>`_
+    :status code: 402
+    :category type: banking
 
 
 
+Invalidate a card
+=================
 
-========================
-Update an account's card
-========================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
 :methods: ``PUT``
 
-.. _account-card-update:
+.. _card-update:
 
-.. _account-card-update-form:
+.. _card-update-form:
 
     ``is_valid``
         *boolean*. Indicates whether the card is active (``true``) or has been deactivated
@@ -326,6 +299,26 @@ Update an account's card
 
 Response
 --------
+
+`card-already-funding-src <../errors.rst#card-already-funding-src>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-card <../errors.rst#cannot-associate-card>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Show an account's card
+======================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _account-card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
 
 
 
