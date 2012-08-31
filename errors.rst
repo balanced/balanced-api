@@ -28,7 +28,10 @@ Errors
     ``request_id``
         *string*. An ID that can be used to identify and debug the exception.
 
+
 .. _address-verification-failed:
+address-verification-failed
+---------------------------
 
 address-verification-failed
     :category code: address-verification-failed
@@ -38,6 +41,8 @@ address-verification-failed
     TODO
 
 .. _bank-account-not-valid:
+bank-account-not-valid
+----------------------
 
 bank-account-not-valid
     :category code: bank-account-not-valid
@@ -47,6 +52,8 @@ bank-account-not-valid
     TODO
 
 .. _bank-account-already-valid:
+bank-account-already-valid
+--------------------------
 
 bank-account-already-valid
     :category code: bank-account-already-valid
@@ -56,6 +63,8 @@ bank-account-already-valid
     TODO
 
 .. _bank-account-already-associated:
+bank-account-already-associated
+-------------------------------
 
 bank-account-already-associated
     :category code: bank-account-already-associated
@@ -65,6 +74,8 @@ bank-account-already-associated
     TODO
 
 .. _cannot-associate-bank-account:
+cannot-associate-bank-account
+-----------------------------
 
 cannot-associate-bank-account
     :category code: cannot-associate-bank-account
@@ -74,6 +85,8 @@ cannot-associate-bank-account
     TODO
 
 .. _invalid-routing-number:
+invalid-routing-number
+----------------------
 
 invalid-routing-number
     :category code: invalid-routing-number
@@ -83,6 +96,8 @@ invalid-routing-number
     TODO
 
 .. _bank-account-not-associated:
+bank-account-not-associated
+---------------------------
 
 bank-account-not-associated
     :category code: bank-account-not-associated
@@ -92,6 +107,8 @@ bank-account-not-associated
     TODO
 
 .. _bank-account-already-invalidated:
+bank-account-already-invalidated
+--------------------------------
 
 bank-account-already-invalidated
     :category code: bank-account-already-invalidated
@@ -101,6 +118,8 @@ bank-account-already-invalidated
     TODO
 
 .. _multiple-debits:
+multiple-debits
+---------------
 
 multiple-debits
     :category code: multiple-debits
@@ -110,6 +129,8 @@ multiple-debits
     TODO
 
 .. _debit-not-found:
+debit-not-found
+---------------
 
 debit-not-found
     :category code: debit-not-found
@@ -119,6 +140,8 @@ debit-not-found
     TODO
 
 .. _unexpected-payload:
+unexpected-payload
+------------------
 
 unexpected-payload
     :category code: unexpected-payload
@@ -128,6 +151,8 @@ unexpected-payload
     TODO
 
 .. _card-not-valid:
+card-not-valid
+--------------
 
 card-not-valid
     :category code: card-not-valid
@@ -138,6 +163,8 @@ card-not-valid
     again.
 
 .. _card-not-validated:
+card-not-validated
+------------------
 
 card-not-validated
     :category code: card-not-validated
@@ -148,6 +175,8 @@ card-not-validated
     may be wrong.
 
 .. _card-not-associated:
+card-not-associated
+-------------------
 
 card-not-associated
     :category code: card-not-associated
@@ -157,6 +186,8 @@ card-not-associated
     The card is not associated with the given account.
 
 .. _card-already-funding-src:
+card-already-funding-src
+------------------------
 
 card-already-funding-src
     :category code: card-already-funding-src
@@ -167,6 +198,8 @@ card-already-funding-src
     again.
 
 .. _cannot-associate-card:
+cannot-associate-card
+---------------------
 
 cannot-associate-card
     :category code: cannot-associate-card
@@ -177,6 +210,8 @@ cannot-associate-card
     this request.
 
 .. _card-declined:
+card-declined
+-------------
 
 card-declined
     :category code: card-declined
@@ -186,6 +221,8 @@ card-declined
     This card was declined by the processor.
 
 .. _funding-source-not-hold:
+funding-source-not-hold
+-----------------------
 
 funding-source-not-hold
     :category code: funding-source-not-hold
@@ -195,6 +232,8 @@ funding-source-not-hold
     TODO
 
 .. _funding-source-not-debitable:
+funding-source-not-debitable
+----------------------------
 
 funding-source-not-debitable
     :category code: funding-source-not-debitable
@@ -204,6 +243,8 @@ funding-source-not-debitable
     TODO
 
 .. _funding-source-not-refundable:
+funding-source-not-refundable
+-----------------------------
 
 funding-source-not-refundable
     :category code: funding-source-not-refundable
@@ -213,6 +254,8 @@ funding-source-not-refundable
     TODO
 
 .. _funding-source-not-authorizable:
+funding-source-not-authorizable
+-------------------------------
 
 funding-source-not-authorizable
     :category code: funding-source-not-authorizable
@@ -222,6 +265,8 @@ funding-source-not-authorizable
     TODO
 
 .. _funding-source-not-associated:
+funding-source-not-associated
+-----------------------------
 
 funding-source-not-associated
     :category code: funding-source-not-associated
@@ -231,6 +276,8 @@ funding-source-not-associated
     TODO
 
 .. _funding-source-already-associated:
+funding-source-already-associated
+---------------------------------
 
 funding-source-already-associated
     :category code: funding-source-already-associated
@@ -240,6 +287,8 @@ funding-source-already-associated
     TODO
 
 .. _funding-destination-not-creditable:
+funding-destination-not-creditable
+----------------------------------
 
 funding-destination-not-creditable
     :category code: funding-destination-not-creditable
@@ -249,6 +298,8 @@ funding-destination-not-creditable
     TODO
 
 .. _funding-destination-not-associated:
+funding-destination-not-associated
+----------------------------------
 
 funding-destination-not-associated
     :category code: funding-destination-not-associated
@@ -258,6 +309,8 @@ funding-destination-not-associated
     TODO
 
 .. _funding-destination-already-associated:
+funding-destination-already-associated
+--------------------------------------
 
 funding-destination-already-associated
     :category code: funding-destination-already-associated
@@ -267,6 +320,8 @@ funding-destination-already-associated
     TODO
 
 .. _funding-destination-declined:
+funding-destination-declined
+----------------------------
 
 funding-destination-declined
     :category code: funding-destination-declined
@@ -276,6 +331,8 @@ funding-destination-declined
     TODO
 
 .. _incomplete-account-info:
+incomplete-account-info
+-----------------------
 
 incomplete-account-info
     :category code: incomplete-account-info
@@ -285,6 +342,8 @@ incomplete-account-info
     TODO
 
 .. _cannot-associate-merchant-with-account:
+cannot-associate-merchant-with-account
+--------------------------------------
 
 cannot-associate-merchant-with-account
     :category code: cannot-associate-merchant-with-account
@@ -294,6 +353,8 @@ cannot-associate-merchant-with-account
     TODO
 
 .. _account-already-merchant:
+account-already-merchant
+------------------------
 
 account-already-merchant
     :category code: account-already-merchant
@@ -303,6 +364,8 @@ account-already-merchant
     TODO
 
 .. _illegal-credit:
+illegal-credit
+--------------
 
 illegal-credit
     :category code: illegal-credit
@@ -312,6 +375,8 @@ illegal-credit
     TODO
 
 .. _duplicate-email-address:
+duplicate-email-address
+-----------------------
 
 duplicate-email-address
     :category code: duplicate-email-address
@@ -321,6 +386,8 @@ duplicate-email-address
     TODO
 
 .. _invalid-account-info:
+invalid-account-info
+--------------------
 
 invalid-account-info
     :category code: invalid-account-info
@@ -330,6 +397,8 @@ invalid-account-info
     TODO
 
 .. _invalid-account-info:
+invalid-account-info
+--------------------
 
 invalid-account-info
     :category code: invalid-account-info
@@ -339,6 +408,8 @@ invalid-account-info
     TODO
 
 .. _no-funding-destination:
+no-funding-destination
+----------------------
 
 no-funding-destination
     :category code: no-funding-destination
@@ -348,6 +419,8 @@ no-funding-destination
     TODO
 
 .. _marketplace-already-created:
+marketplace-already-created
+---------------------------
 
 marketplace-already-created
     :category code: marketplace-already-created
@@ -357,6 +430,8 @@ marketplace-already-created
     TODO
 
 .. _authorization-failed:
+authorization-failed
+--------------------
 
 authorization-failed
     :category code: authorization-failed
@@ -366,6 +441,8 @@ authorization-failed
     TODO
 
 .. _reverse-void-attempt:
+reverse-void-attempt
+--------------------
 
 reverse-void-attempt
     :category code: reverse-void-attempt
@@ -375,6 +452,8 @@ reverse-void-attempt
     TODO
 
 .. _capture-void-attempt:
+capture-void-attempt
+--------------------
 
 capture-void-attempt
     :category code: capture-void-attempt
@@ -384,6 +463,8 @@ capture-void-attempt
     TODO
 
 .. _authorization-expired:
+authorization-expired
+---------------------
 
 authorization-expired
     :category code: authorization-expired
@@ -393,6 +474,8 @@ authorization-expired
     TODO
 
 .. _cannot-capture-authorization:
+cannot-capture-authorization
+----------------------------
 
 cannot-capture-authorization
     :category code: cannot-capture-authorization
@@ -402,6 +485,8 @@ cannot-capture-authorization
     TODO
 
 .. _cannot-void-authorization:
+cannot-void-authorization
+-------------------------
 
 cannot-void-authorization
     :category code: cannot-void-authorization
@@ -411,6 +496,8 @@ cannot-void-authorization
     TODO
 
 .. _hold-not-associated:
+hold-not-associated
+-------------------
 
 hold-not-associated
     :category code: hold-not-associated
@@ -420,6 +507,8 @@ hold-not-associated
     TODO
 
 .. _hold-not-associated:
+hold-not-associated
+-------------------
 
 hold-not-associated
     :category code: hold-not-associated
@@ -429,6 +518,8 @@ hold-not-associated
     TODO
 
 .. _insufficient-funds:
+insufficient-funds
+------------------
 
 insufficient-funds
     :category code: insufficient-funds
@@ -438,6 +529,8 @@ insufficient-funds
     TODO
 
 .. _insufficient-funds:
+insufficient-funds
+------------------
 
 insufficient-funds
     :category code: insufficient-funds
@@ -447,6 +540,8 @@ insufficient-funds
     TODO
 
 .. _invalid-amount:
+invalid-amount
+--------------
 
 invalid-amount
     :category code: invalid-amount
