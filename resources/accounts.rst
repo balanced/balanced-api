@@ -55,20 +55,6 @@ you simply provide a funding source that may be debited.
 
 
 
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-Returns a paginated representation of account resources.
-
-.. _accounts-index-query:
-
-
-.. _accounts-index-view:
-
-
 Update
 ======
 
@@ -546,6 +532,20 @@ Response
     :status code: 409
     :category type: logical
 
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_
+:methods: ``HEAD``, ``GET``
+
+Returns a paginated representation of account resources.
+
+.. _accounts-index-query:
+
+
+.. _accounts-index-view:
 
 
 
