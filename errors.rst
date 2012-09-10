@@ -52,7 +52,7 @@ address-verification-failed
     :status code: 409
     :category type: logical
 
-    TODO
+    This address could not be verified.
 
 .. _bank-account-not-valid:
 
@@ -116,42 +116,6 @@ bank-account-not-associated
     :category type: logical
 
     The bank account is not associated with the given account.
-
-.. _multiple-debits:
-
-multiple-debits
----------------
-
-multiple-debits
-    :category code: multiple-debits
-    :status code: 409
-    :category type: logical
-
-    TODO
-
-.. _debit-not-found:
-
-debit-not-found
----------------
-
-debit-not-found
-    :category code: debit-not-found
-    :status code: 409
-    :category type: logical
-
-    TODO
-
-.. _unexpected-payload:
-
-unexpected-payload
-------------------
-
-unexpected-payload
-    :category code: unexpected-payload
-    :status code: 409
-    :category type: logical
-
-    TODO
 
 .. _card-not-valid:
 
@@ -312,7 +276,7 @@ funding-destination-not-creditable
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding destination cannot have a credit created against it.
 
 .. _funding-destination-not-associated:
 
@@ -324,7 +288,7 @@ funding-destination-not-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding destination is not associated with the account.
 
 .. _funding-destination-already-associated:
 
@@ -336,7 +300,7 @@ funding-destination-already-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding destination is already associated with an account.
 
 .. _funding-destination-declined:
 
@@ -348,7 +312,7 @@ funding-destination-declined
     :status code: 402
     :category type: banking
 
-    TODO
+    The processor did not accept the transaction.
 
 .. _incomplete-account-info:
 
@@ -360,7 +324,8 @@ incomplete-account-info
     :status code: 400
     :category type: request
 
-    TODO
+    No buyer or merchant info was provided. Either "merchant/merchant_uri" or
+    "card/card_uri" fields must be present.
 
 .. _cannot-associate-merchant-with-account:
 
@@ -384,19 +349,7 @@ account-already-merchant
     :status code: 409
     :category type: logical
 
-    TODO
-
-.. _illegal-credit:
-
-illegal-credit
---------------
-
-illegal-credit
-    :category code: illegal-credit
-    :status code: 409
-    :category type: logical
-
-    TODO
+    The account is already a merchant.
 
 .. _duplicate-email-address:
 
@@ -408,27 +361,15 @@ duplicate-email-address
     :status code: 409
     :category type: logical
 
-    TODO
+    An account with the given email address already exists.
 
-.. _invalid-account-info:
+.. _no-funding-source:
 
-invalid-account-info
---------------------
+no-funding-source
+-----------------
 
-invalid-account-info
-    :category code: invalid-account-info
-    :status code: 400
-    :category type: request
-
-    TODO
-
-.. _invalid-account-info:
-
-invalid-account-info
---------------------
-
-invalid-account-info
-    :category code: invalid-account-info
+no-funding-source
+    :category code: no-funding-source
     :status code: 409
     :category type: logical
 

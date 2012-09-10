@@ -89,9 +89,7 @@ Request
 .. _credit-update-form:
 
 ``description``
-    *string*. Sequence of characters.
-
-    Defaults to ``null``.
+    *string*. Sequence of characters.Defaults to ``null``.
 
 
 ``meta``
@@ -135,9 +133,7 @@ Request
 
 
 ``description``
-    *string*. Sequence of characters.
-
-    Defaults to ``null``.
+    *string*. Sequence of characters.Defaults to ``null``.
 
 
 ``meta``
@@ -154,17 +150,11 @@ Request
     - Digits (0-9)
     - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
 
-    Any other characters will be rejected.
-
-    Length must be **<=** ``22``.
-
-    Defaults to ``null``.
+    Any other characters will be rejected.Length must be **<=** ``22``.Defaults to ``null``.
 
 
 ``account_uri``
-    *string*. URI.
-
-    If the resolving URI contain an account then that is used as the
+    *string*. URI.If the resolving URI contain an account then that is used as the
     default otherwise no default is provided and this field is
     **required**.
 
@@ -172,25 +162,17 @@ Request
 Exactly one of
 
     ``destination_uri``
-        *string*. URI.
-
-        Defaults to ``null``.
+        *string*. URI.Defaults to ``null``.
 
 
     ``bank_account_uri``
-        *string*. URI.
-
-        Defaults to ``null``.
+        *string*. URI.Defaults to ``null``.
 
 
 Response
 --------
 
 `no-funding-destination <../errors.rst#no-funding-destination>`_
-    :status code: 409
-    :category type: logical
-
-`illegal-credit <../errors.rst#illegal-credit>`_
     :status code: 409
     :category type: logical
 

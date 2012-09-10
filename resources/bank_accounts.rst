@@ -82,45 +82,8 @@ Exactly one of
         *string*. Tokenized bank account URI.
 
 
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-
-        Defaults to ``{   }``.
-
-
-    ``bank_code``
-        #. If a *production* bank account then `bank_code` is a:
-
-               *string*. Bank account code. This is commonly referred to as the routing number in
-               the ``USA``.
-
-               Length must be **=** ``9``.
-
-
-        #. If not a *production* bank account then `bank_code` is a:
-
-               *string*. Sequence of characters.
-
-               Length must be **>=** ``1``.
-
-
-
-    ``account_type``
-        *string*. Bank account type. It should be one of: ``checking``, ``savings``
-
-        Defaults to ``checking``.
-
-
-    ``name``
-        *string*. Name on the bank account.
-
-        Length must be **>=** ``2``.
-
-
-    ``account_number``
-        *string*. Bank account number.
-
-        Length must be **>=** ``1``.
+    ``*object*``
+        See `bank account create form <./bank_accounts.rst#create>`_.
 
 
 Response
@@ -185,9 +148,7 @@ Request
 Exactly one of
 
     ``account_uri``
-        *string*. URI of an account with which to associate the bank account.
-
-        Defaults to ``null``.
+        *string*. URI of an account with which to associate the bank account.Defaults to ``null``.
 
 
     ``account``
@@ -195,9 +156,7 @@ Exactly one of
         `uri` will be associated with the bank account:
 
         ``uri``
-            *string*. URI.
-
-            Defaults to ``null``.
+            *string*. URI.Defaults to ``null``.
 
 
 
@@ -262,9 +221,7 @@ Request
 Exactly one of
 
     ``account_uri``
-        *string*. URI of an account with which to associate the bank account.
-
-        Defaults to ``null``.
+        *string*. URI of an account with which to associate the bank account.Defaults to ``null``.
 
 
     ``account``
@@ -272,9 +229,7 @@ Exactly one of
         `uri` will be associated with the bank account:
 
         ``uri``
-            *string*. URI.
-
-            Defaults to ``null``.
+            *string*. URI.Defaults to ``null``.
 
 
 
@@ -298,38 +253,28 @@ Create
 .. _bank-account-create-form:
 
 ``name``
-    *string*. Name on the bank account.
-
-    Length must be **>=** ``2``.
+    *string*. Name on the bank account.Length must be **>=** ``2``.
 
 
 ``account_number``
-    *string*. Bank account number.
-
-    Length must be **>=** ``1``.
+    *string*. Bank account number.Length must be **>=** ``1``.
 
 
 ``bank_code``
     #. If a *production* bank account then `bank_code` is a:
 
            *string*. Bank account code. This is commonly referred to as the routing number in
-           the ``USA``.
-
-           Length must be **=** ``9``.
+           the ``USA``.Length must be **=** ``9``.
 
 
     #. If not a *production* bank account then `bank_code` is a:
 
-           *string*. Sequence of characters.
-
-           Length must be **>=** ``1``.
+           *string*. Sequence of characters.Length must be **>=** ``1``.
 
 
 
 ``account_type``
-    *string*. Bank account type. It should be one of: ``checking``, ``savings``
-
-    Defaults to ``checking``.
+    *string*. Bank account type. It should be one of: ``checking``, ``savings``Defaults to ``checking``.
 
 
 ``meta``

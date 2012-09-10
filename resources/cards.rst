@@ -146,46 +146,30 @@ Required fields:
 Optional fields:
 
 ``security_code``
-    *string*. The 3-4 digit security code for the card.
-
-    Defaults to ``null``.
+    *string*. The 3-4 digit security code for the card.Defaults to ``null``.
 
 
 ``name``
-    *string*. Sequence of characters.
-
-    Length must be **<=** ``128``.
-
-    Defaults to ``null``.
+    *string*. Sequence of characters.Length must be **<=** ``128``.Defaults to ``null``.
 
 
 ``phone_number``
-    *string*. E.164 formatted phone number.
-
-    Length must be **<=** ``15``.
-
-    Defaults to ``null``.
+    *string*. E.164 formatted phone number.Length must be **<=** ``15``.Defaults to ``null``.
 
 
 ``city``
-    *string*. City.
-
-    Defaults to ``null``.
+    *string*. City.Defaults to ``null``.
 
 
 Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**.
-
-        Defaults to ``null``.
+        **deprecated**.Defaults to ``null``.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**.
-
-        Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**.Defaults to ``null``.
 
 
 ``postal_code``
@@ -201,9 +185,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code.
-
-    Defaults to ``USA``.
+    three character country code.Defaults to ``USA``.
 
 
 ``meta``
@@ -297,16 +279,12 @@ Invalidate a card
 Exactly one of
 
     ``account_uri``
-        *string*. URI.
-
-        Defaults to ``null``.
+        *string*. URI.Defaults to ``null``.
 
 
     ``account``
         *object*. ``uri``
-            *string*. URI.
-
-            Defaults to ``null``.
+            *string*. URI.Defaults to ``null``.
 
 
 
@@ -369,16 +347,12 @@ Update an account's card
 Exactly one of
 
     ``account_uri``
-        *string*. URI.
-
-        Defaults to ``null``.
+        *string*. URI.Defaults to ``null``.
 
 
     ``account``
         *object*. ``uri``
-            *string*. URI.
-
-            Defaults to ``null``.
+            *string*. URI.Defaults to ``null``.
 
 
 
