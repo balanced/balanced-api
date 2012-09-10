@@ -88,6 +88,62 @@ marked as expired and you cannot capture any remaining value.
 
 
 
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``PUT``
+
+.. _hold-update-form:
+
+``description``
+    *string*. Sequence of characters.
+
+    Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``null``.
+
+
+``is_void``
+    *boolean*. Flag value, should be ``true`` or ``false``.
+
+
+``appears_on_statement_as``
+    *string*. Text that will appear on the buyer's statement. The characters what can be
+    used in this text are limited to:
+
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+
+    Any other characters will be rejected.
+
+    Length must be **<=** ``22``.
+
+    Defaults to ``null``.
+
+
+.. _hold-update-errors:
+
+Errors
+------
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+
+
 Show
 ====
 
@@ -114,43 +170,59 @@ Create
     marketplace. Value must be <= to the maximum debit amount allowed for *your*
     marketplace.
 
+
 ``account_uri``
     *string*. URI.
+
     If the resolving URI references an ``account`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
+
 ``appears_on_statement_as``
     *string*. Text that will appear on the buyer's statement. The characters what can be
     used in this text are limited to:
+
     - ASCII letters (a-z and A-Z)
     - Digits (0-9)
     - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+
     Any other characters will be rejected.
+
     Length must be **<=** ``22``.
+
     Defaults to ``null``.
+
 
 ``description``
     *string*. Sequence of characters.
+
     Defaults to ``null``.
+
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``{   }``.
+
 
 Exactly one of
 
     ``source_uri``
         *string*. URI.
+
         If the resolving URI references an ``account`` then account's primary
         funding source  is used. Otherwise no default is provided and this
         field is required.
 
+
     ``card_uri``
         *string*. URI.
+
         If the resolving URI references an ``account`` then account's primary
         funding source  is used. Otherwise no default is provided and this
         field is required.
+
 
 .. _hold-create-errors:
 
@@ -174,52 +246,6 @@ Index
 :methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
 :methods: ``HEAD``, ``GET``
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
-
-.. _hold-update-form:
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
-
-``is_void``
-    *boolean*. Flag value, should be ``true`` or ``false``.
-
-``appears_on_statement_as``
-    *string*. Text that will appear on the buyer's statement. The characters what can be
-    used in this text are limited to:
-    - ASCII letters (a-z and A-Z)
-    - Digits (0-9)
-    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
-    Any other characters will be rejected.
-    Length must be **<=** ``22``.
-    Defaults to ``null``.
-
-.. _hold-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
 
 
 

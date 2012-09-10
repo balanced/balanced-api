@@ -73,6 +73,92 @@ to the amount refunded.
 
 
 
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _refund-index-query:
+
+
+.. _refunds-view:
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+
+.. _debit-refund-update-form:
+
+``description``
+    *string*. Sequence of characters.
+
+    Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``null``.
+
+
+
+
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
+:methods: ``POST``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
+:methods: ``POST``
+
+.. _refund-create-form:
+
+``amount``
+    *integer*. Value must be **>=** ``1``. Value must be <= the remaining un-refunded amount on the original
+    ``debit``.
+
+
+``description``
+    *string*. Sequence of characters.
+
+    Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``{   }``.
+
+
+``debit_uri``
+    *string*. URI.
+
+    If the resolving URI references a ``debit`` then that is used as the
+    default. Otherwise no default is provided and this field is
+    **required**.
+
+
+.. _refund-create-errors:
+
+Errors
+------
+
+`invalid-amount <'../errors.rst'#invalid-amount>`_
+    :status code: 400
+    :category type: request
+
+`insufficient-funds <'../errors.rst'#insufficient-funds>`_
+    :status code: 409
+    :category type: logical
+
+
+
 Show
 ====
 
@@ -117,11 +203,15 @@ Update
 
 ``description``
     *string*. Sequence of characters.
+
     Defaults to ``null``.
+
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``null``.
+
 
 
 
@@ -132,81 +222,6 @@ Show
 :methods: ``HEAD``, ``GET``
 
 Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
-Create
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
-:methods: ``POST``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
-:methods: ``POST``
-
-.. _refund-create-form:
-
-``amount``
-    *integer*. Value must be **>=** ``1``. Value must be <= the remaining un-refunded amount on the original
-    ``debit``.
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``{   }``.
-
-``debit_uri``
-    *string*. URI.
-    If the resolving URI references a ``debit`` then that is used as the
-    default. Otherwise no default is provided and this field is
-    **required**.
-
-.. _refund-create-errors:
-
-Errors
-------
-
-`invalid-amount <'../errors.rst'#invalid-amount>`_
-    :status code: 400
-    :category type: request
-
-`insufficient-funds <'../errors.rst'#insufficient-funds>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-
-.. _debit-refund-update-form:
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
-
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _refund-index-query:
-
-
-.. _refunds-view:
 
 
 

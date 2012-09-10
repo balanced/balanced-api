@@ -97,6 +97,58 @@ credits to merchants are credited from this same account.
 
 
 
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./marketplaces.rst#marketplace-view>`_
+for the ``marketplace`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``PUT``
+
+.. _marketplace-update-form:
+
+``name``
+    *string*. Sequence of characters.
+
+    Length must be **<=** ``128``.
+
+    Defaults to ``null``.
+
+
+``support_email_address``
+    *string*. RFC-2822 formatted email address.
+
+    Defaults to ``null``.
+
+
+``support_phone_number``
+    *string*. E.164 formatted phone number.
+
+    Length must be **<=** ``15``.
+
+    Defaults to ``null``.
+
+
+``domain_url``
+    *string*. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``null``.
+
+
+
+
 Create
 ======
 
@@ -107,36 +159,53 @@ Create
 
 ``support_email_address``
     *string*. RFC-2822 formatted email address.
+
     Defaults to ``support@example.com``.
+
 
 ``name``
     *string*. Sequence of characters.
+
     Length must be **<=** ``128``.
+
     Defaults to ``Test Marketplace``.
+
 
 ``domain_url``
     *string*. Defaults to ``example.com``.
 
+
 ``support_phone_number``
     *string*. E.164 formatted phone number.
+
     Length must be **<=** ``15``.
+
     Defaults to ``+16505551234``.
+
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``{   }``.
+
 
 ``owner_account``
     *object*. ``name``
         *string*. Sequence of characters.
+
         Length must be **<=** ``128``.
+
         Defaults to ``null``.
+
 
     ``email_address``
         *string*. RFC-2822 formatted email address.
+
         Defaults to ``null``.
 
+
     Defaults to ``{   'email_address': None, 'name': None}``.
+
 
 .. _marketplace-create-errors:
 
@@ -162,47 +231,6 @@ Errors
 `invalid-account-info <'../errors.rst'#invalid-account-info>`_
     :status code: 400
     :category type: request
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./marketplaces.rst#marketplace-view>`_
-for the ``marketplace`` schema.
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``PUT``
-
-.. _marketplace-update-form:
-
-``name``
-    *string*. Sequence of characters.
-    Length must be **<=** ``128``.
-    Defaults to ``null``.
-
-``support_email_address``
-    *string*. RFC-2822 formatted email address.
-    Defaults to ``null``.
-
-``support_phone_number``
-    *string*. E.164 formatted phone number.
-    Length must be **<=** ``15``.
-    Defaults to ``null``.
-
-``domain_url``
-    *string*. Defaults to ``null``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
 
 
 

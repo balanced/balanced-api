@@ -108,6 +108,184 @@ The card resource is composed of the following fields:
 
 
 
+List all card tokens
+====================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _card-index:
+
+
+
+
+Update an account's card
+========================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``PUT``
+
+.. _account-card-update:
+
+.. _account-card-update-form:
+
+``is_valid``
+    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
+    (``false``). Setting this to ``false`` will deactivate the card.
+
+
+Exactly one of
+
+    ``account_uri``
+        *string*. URI.
+
+        Defaults to ``null``.
+
+
+    ``account``
+        *object*. ``uri``
+            *string*. URI.
+
+            Defaults to ``null``.
+
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``null``.
+
+
+Response
+--------
+
+
+Create a card
+=============
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``POST``
+
+.. _card-create:
+
+Creates a card. The resulting card should then be associated with an
+account. This process of creating and then associating a card is
+called *tokenization*.
+
+Request
+-------
+
+.. _card-create-form-required:
+
+Required fields:
+
+``card_number``
+    *string*. The digits of the credit card number.
+
+
+``expiration_year``
+    *integer*. Expiration year.
+
+    The current year or later. Value must be **<=** ``9999``.
+
+
+``expiration_month``
+    *integer*. Expiration month (e.g. 1 for January).
+
+    If ``expiration_year`` is the current year then current month or later,
+    otherwise 1. Value must be **<=** ``12``.
+
+
+.. _card-create-form-optional:
+
+Optional fields:
+
+``security_code``
+    *string*. The 3-4 digit security code for the card.
+
+    Defaults to ``null``.
+
+
+``name``
+    *string*. Sequence of characters.
+
+    Length must be **<=** ``128``.
+
+    Defaults to ``null``.
+
+
+``phone_number``
+    *string*. E.164 formatted phone number.
+
+    Length must be **<=** ``15``.
+
+    Defaults to ``null``.
+
+
+``city``
+    *string*. City.
+
+    Defaults to ``null``.
+
+
+Exactly one of
+
+    ``region``
+        *string*. Region (e.g. state, province, etc). This field has been
+        **deprecated**.
+
+        Defaults to ``null``.
+
+
+    ``state``
+        *string*. US state. This field has been **deprecated**.
+
+        Defaults to ``null``.
+
+
+``postal_code``
+    *string*. Postal code. This is known as a zip code in the USA.
+    *requires* country_code
+
+
+``street_address``
+    *string*. Street address.
+    *requires* postal_code
+
+
+``country_code``
+    *string*. `ISO-3166-3
+    <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+    three character country code.
+
+    Defaults to ``USA``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``{   }``.
+
+
+``is_valid``
+    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
+    (``false``).
+
+    Defaults to ``true``.
+
+
+A card create request must provide all the required fields alongside
+any desired optional ones.
+
+Response
+--------
+
+`card-not-validated <../errors.rst#card-not-validated>`_
+    :status code: 409
+    :category type: logical
+
+
+
 Get a card
 ==========
 
@@ -134,11 +312,14 @@ Exactly one of
     ``uri``
         *string*. Tokenized card URI.
 
+
     ``card_uri``
         *string*. Tokenized card URI.
 
+
     ``*object*``
         See `card create form <./cards.rst#a>`_.
+
 
 Response
 --------
@@ -167,21 +348,28 @@ Invalidate a card
     *boolean*. Indicates whether the card is active (``true``) or has been deactivated
     (``false``). Setting this to ``false`` will deactivate the card.
 
+
 Exactly one of
 
     ``account_uri``
         *string*. URI.
+
         Defaults to ``null``.
+
 
     ``account``
         *object*. ``uri``
             *string*. URI.
+
             Defaults to ``null``.
+
 
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``null``.
+
 
 Response
 --------
@@ -205,150 +393,6 @@ Show an account's card
 .. _account-card-show:
 
 Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-Create a card
-=============
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: ``POST``
-
-.. _card-create:
-
-Creates a card. The resulting card should then be associated with an
-account. This process of creating and then associating a card is
-called *tokenization*.
-
-Request
--------
-
-.. _card-create-form-required:
-
-Required fields:
-
-``card_number``
-    *string*. The digits of the credit card number.
-
-``expiration_year``
-    *integer*. Expiration year.
-    The current year or later. Value must be **<=** ``9999``.
-
-``expiration_month``
-    *integer*. Expiration month (e.g. 1 for January).
-    If ``expiration_year`` is the current year then current month or later,
-    otherwise 1. Value must be **<=** ``12``.
-
-.. _card-create-form-optional:
-
-Optional fields:
-
-``security_code``
-    *string*. The 3-4 digit security code for the card.
-    Defaults to ``null``.
-
-``name``
-    *string*. Sequence of characters.
-    Length must be **<=** ``128``.
-    Defaults to ``null``.
-
-``phone_number``
-    *string*. E.164 formatted phone number.
-    Length must be **<=** ``15``.
-    Defaults to ``null``.
-
-``city``
-    *string*. City.
-    Defaults to ``null``.
-
-Exactly one of
-
-    ``region``
-        *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**.
-        Defaults to ``null``.
-
-    ``state``
-        *string*. US state. This field has been **deprecated**.
-        Defaults to ``null``.
-
-``postal_code``
-    *string*. Postal code. This is known as a zip code in the USA.
-    *requires* country_code
-
-``street_address``
-    *string*. Street address.
-    *requires* postal_code
-
-``country_code``
-    *string*. `ISO-3166-3
-    <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code.
-    Defaults to ``USA``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``{   }``.
-
-``is_valid``
-    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``).
-    Defaults to ``true``.
-
-A card create request must provide all the required fields alongside
-any desired optional ones.
-
-Response
---------
-
-`card-not-validated <../errors.rst#card-not-validated>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Update an account's card
-========================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``PUT``
-
-.. _account-card-update:
-
-.. _account-card-update-form:
-
-``is_valid``
-    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``). Setting this to ``false`` will deactivate the card.
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI.
-        Defaults to ``null``.
-
-    ``account``
-        *object*. ``uri``
-            *string*. URI.
-            Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
-
-Response
---------
-
-
-List all card tokens
-====================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _card-index:
-
-
 
 
 

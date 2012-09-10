@@ -92,11 +92,11 @@ will be able to have credits created against it.
 
 
 
-Update
-======
+Index
+=====
 
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``PUT``
+:uri: /v1/`merchants <./merchants.rst>`_
+:methods: ``HEAD``, ``GET``
 
 
 
@@ -110,11 +110,11 @@ Click `here <./merchants.rst#merchant-view>`_
 for the ``merchant`` schema.
 
 
-Index
-=====
+Update
+======
 
-:uri: /v1/`merchants <./merchants.rst>`_
-:methods: ``HEAD``, ``GET``
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
+:methods: ``PUT``
 
 
 

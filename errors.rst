@@ -42,18 +42,6 @@ Errors
 
     An ID that can be used to identify and debug the exception.
 
-.. _precog-bad-request:
-
-precog-bad-request
-------------------
-
-precog-bad-request
-    :category code: precog-bad-request
-    :status code: 400
-    :category type: request
-
-    TODO
-
 .. _address-verification-failed:
 
 address-verification-failed
@@ -619,54 +607,6 @@ invalid-amount
     :category code: invalid-amount
     :status code: 400
     :category type: request
-
-    TODO
-
-.. _identity-verification-error:
-
-identity-verification-error
----------------------------
-
-identity-verification-error
-    :category code: identity-verification-error
-    :status code: 409
-    :category type: logical
-
-    TODO
-
-.. _Business principal failed KYC:
-
-Business principal failed KYC
------------------------------
-
-Business principal failed KYC
-    :category code: Business principal failed KYC
-    :status code: 409
-    :category type: logical
-
-    TODO
-
-.. _Business KYC failed:
-
-Business KYC failed
--------------------
-
-Business KYC failed
-    :category code: Business KYC failed
-    :status code: 409
-    :category type: logical
-
-    TODO
-
-.. _Person KYC failed:
-
-Person KYC failed
------------------
-
-Person KYC failed
-    :category code: Person KYC failed
-    :status code: 409
-    :category type: logical
 
     TODO
 

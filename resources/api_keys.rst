@@ -42,17 +42,6 @@ requests in order to authenticate the request.
 
 
 
-Delete
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
-
-Deactivates an API key. Once deactivated this key cannot be used again.
-
-
 Show
 ====
 
@@ -80,32 +69,31 @@ marketplace associated with, the original API key.
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``{   }``.
+
 
 ``secret``
     *string*. Sequence of characters.
+
     Defaults to ``null``.
 
-`identity-verification-error <../errors.rst#identity-verification-error>`_
-    :status code: 409
-    :category type: logical
-
-`Business principal failed KYC <../errors.rst#Business principal failed KYC>`_
-    :status code: 409
-    :category type: logical
-
-`Business KYC failed <../errors.rst#Business KYC failed>`_
-    :status code: 409
-    :category type: logical
-
-`Person KYC failed <../errors.rst#Person KYC failed>`_
-    :status code: 409
-    :category type: logical
 
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_
     :status code: 400
     :category type: request
 
+
+
+Delete
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``DELETE``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``DELETE``
+
+Deactivates an API key. Once deactivated this key cannot be used again.
 
 
 Update
@@ -120,7 +108,9 @@ Update
 
 ``meta``
     *object*. Single level mapping from string keys to string values.
+
     Defaults to ``null``.
+
 
 
 
