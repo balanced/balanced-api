@@ -1,5 +1,5 @@
 =========
-Merchants
+MERCHANTS
 =========
 
 In order to create a merchant (a provider of goods or services in a
@@ -100,14 +100,6 @@ Update
 
 
 
-Index
-=====
-
-:uri: /v1/`merchants <./merchants.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
 Show
 ====
 
@@ -116,6 +108,14 @@ Show
 
 Click `here <./merchants.rst#merchant-view>`_
 for the ``merchant`` schema.
+
+
+Index
+=====
+
+:uri: /v1/`merchants <./merchants.rst>`_
+:methods: ``HEAD``, ``GET``
+
 
 
 

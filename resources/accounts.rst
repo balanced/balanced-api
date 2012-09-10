@@ -1,5 +1,5 @@
 ========
-Accounts
+ACCOUNTS
 ========
 
 Accounts have roles, the ``buyer`` role is assigned to an account that may have

@@ -1,5 +1,5 @@
 ======
-Debits
+DEBITS
 ======
 
 A debit represents a transfer of funds from a buyer's account to your
@@ -92,6 +92,41 @@ refunded proportionally to the amount refunded.
             **or**
         See `bank account view
         <./bank_accounts.rst#bank-account-view>`_.
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``{   }``.
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
 
 
 
@@ -218,41 +253,6 @@ Show
 :methods: ``HEAD``, ``GET``
 
 Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``{   }``.
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
 
 
 

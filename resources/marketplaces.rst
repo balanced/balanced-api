@@ -1,5 +1,5 @@
 ============
-Marketplaces
+MARKETPLACES
 ============
 
 A marketplace is where buyers and merchants transact with each other.

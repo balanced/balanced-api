@@ -1,5 +1,5 @@
 ========
-Versions
+VERSIONS
 ========
 
 A top-level view of the Balanced API. It shows the top-level endpoints.

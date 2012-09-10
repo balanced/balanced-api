@@ -1,5 +1,5 @@
 =====
-Holds
+HOLDS
 =====
 
 A hold represents a reservation of money from a buyer's account to your
@@ -88,60 +88,15 @@ marked as expired and you cannot capture any remaining value.
 
 
 
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
-Update
-======
+Show
+====
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
-.. _hold-update-form:
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
-
-``is_void``
-    *boolean*. Flag value, should be ``true`` or ``false``.
-
-``appears_on_statement_as``
-    *string*. Text that will appear on the buyer's statement. The characters what can be
-    used in this text are limited to:
-    - ASCII letters (a-z and A-Z)
-    - Digits (0-9)
-    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
-    Any other characters will be rejected.
-    Length must be **<=** ``22``.
-    Defaults to ``null``.
-
-.. _hold-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
+Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
 Create
@@ -212,15 +167,60 @@ Errors
 
 
 
-Show
-====
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+
+
+
+Update
+======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
+.. _hold-update-form:
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
+``is_void``
+    *boolean*. Flag value, should be ``true`` or ``false``.
+
+``appears_on_statement_as``
+    *string*. Text that will appear on the buyer's statement. The characters what can be
+    used in this text are limited to:
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+    Any other characters will be rejected.
+    Length must be **<=** ``22``.
+    Defaults to ``null``.
+
+.. _hold-update-errors:
+
+Errors
+------
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
 
 
 

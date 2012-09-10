@@ -1,5 +1,5 @@
 ============
-Transactions
+TRANSACTIONS
 ============
 
 A unified transactions view including `credits <./credits.rst#credit-view>`_,
