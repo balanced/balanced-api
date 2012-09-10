@@ -115,7 +115,9 @@ Allows partial updates to accounts within your marketplace.
                *string*. URI. Defaults to ``null``.
 
 
-               *object*. See `merchant create form
+               *object*. 
+
+               See `merchant create form
                <./accounts.rst#merchant-account-create-form>`_.
 
                Defaults to ``null``.
@@ -128,7 +130,9 @@ Allows partial updates to accounts within your marketplace.
                *string*. URI. Defaults to ``null``.
 
 
-               *object*. See `merchant update form
+               *object*. 
+
+               See `merchant update form
                <./accounts.rst#merchant-update-form>`_.
 
 
@@ -155,7 +159,9 @@ Exactly one of
 
 
     ``card``
-        *object*. Card information mapping:
+        *object*. 
+
+        Card information mapping:
 
         See `card create form
         <./cards.rst#card-create-form>`_.
@@ -170,7 +176,9 @@ Exactly one of
 
 
     ``bank_account``
-        *object*. Bank account information:
+        *object*. 
+
+        Bank account information:
 
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
@@ -200,7 +208,9 @@ Merchant Update Form
 
 
 ``bank_account``
-    *object*. See `bank account create form
+    *object*. 
+
+    See `bank account create form
     <./bank_accounts.rst#bank-account-create-form>`_.
 
     Defaults to ``null``.
@@ -290,7 +300,9 @@ Exactly one of
 
 
     ``card``
-        *object*. If you are not tokenizing the card you may pass the data straight
+        *object*. 
+
+        If you are not tokenizing the card you may pass the data straight
         through as a map.
 
         See `card create form <./cards.rst#card-create-form>`_.
@@ -339,7 +351,9 @@ Exactly one of
 
 
     ``bank_account``
-        *object*. Bank account information:
+        *object*. 
+
+        Bank account information:
 
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
@@ -355,7 +369,9 @@ Exactly one of
 
 
     ``merchant``
-        *object*. Merchant account information.
+        *object*. 
+
+        Merchant account information.
 
         See `merchant create form <./accounts.rst#merchant-account-create-form>`_.
 
@@ -390,7 +406,9 @@ Exactly one of
 
 
     ``bank_account``
-        *object*. Bank account information:
+        *object*. 
+
+        Bank account information:
 
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
@@ -406,7 +424,9 @@ Exactly one of
 
 
     ``merchant``
-        *object*. Merchant account information.
+        *object*. 
+
+        Merchant account information.
 
         See `merchant create form <./accounts.rst#merchant-account-create-form>`_.
 
@@ -431,7 +451,7 @@ Merchant Create Form
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 ``tax_id``
@@ -444,7 +464,9 @@ Merchant Create Form
 
 
 ``person``
-    *object*. See `person create form <./accounts.rst#person-create-form>`_.
+    *object*. 
+
+    See `person create form <./accounts.rst#person-create-form>`_.
 
 
 
@@ -487,7 +509,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to ``USA``.
+    three character country code. Defaults to USA
 
 
 Person Create Form
@@ -529,7 +551,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to ``USA``.
+    three character country code. Defaults to USA
 
 
 ``tax_id``

@@ -87,11 +87,44 @@ refunded proportionally to the amount refunded.
     *object*.
 
     The funding source (card or bank account) for this debit.
-        See `card view
-        <./cards.rst#card-view>`_.
+        See `card view <./cards.rst#card-view>`_.
             **or**
-        See `bank account view
-        <./bank_accounts.rst#bank-account-view>`_.
+        See `bank account view <./bank_accounts.rst#bank-account-view>`_.
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+    :status code: 409
+    :category type: logical
 
 
 
@@ -132,15 +165,15 @@ Create
     *string*. Text that will appear on the buyer's statement. Characters that can be
     used are limited to:
 
-    - ASCII letters (a-z and A-Z)
-    - Digits (0-9)
-    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+    - ASCII letters (``a-z`` and ``A-Z``)
+    - Digits (``0-9``)
+    - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
 
     Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 ``description``
@@ -157,10 +190,11 @@ Create
 ``merchant_uri``
     *string*. URI. URI referencing the merchant account on behalf of whom the
     debit is being done. This is different from marketplace.
-    In a peer-to-peer transaction, there are three parties::
-        1. Marketplace
-        2. Seller/Service provider
-        3. Buyer
+    In a peer-to-peer transaction, there are three parties:
+
+    1. Marketplace
+    2. Seller/Service provider
+    3. Buyer
 
     This merchant account represents 2. Defaults to ``null``.
 
@@ -168,9 +202,8 @@ Create
 ``hold_uri``
     *string*. URI.
 
-    .. note:
-       If no ``hold`` is provided one my be generated and captured if the
-       source is a card. If the resolved URI references a ``hold`` it will be used. Otherwise
+    If no ``hold`` is provided one my be generated and captured if the
+    source is a card. If the resolved URI references a ``hold`` it will be used. Otherwise
     defaults to ``null``.
 
 
@@ -214,41 +247,6 @@ Errors
     :category type: logical
 
 `no-funding-source <'../errors.rst'#no-funding-source>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
-
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 

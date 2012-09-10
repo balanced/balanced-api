@@ -131,9 +131,9 @@ Create
     *string*. Text that will appear on the buyer's statement. Characters that can be
     used are limited to:
 
-    - ASCII letters (a-z and A-Z)
-    - Digits (0-9)
-    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+    - ASCII letters (``a-z`` and ``A-Z``)
+    - Digits (``0-9``)
+    - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
 
     Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
@@ -143,7 +143,7 @@ Create
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 Exactly one of
@@ -201,9 +201,9 @@ Update
     *string*. Text that will appear on the buyer's statement. Characters that can be
     used are limited to:
 
-    - ASCII letters (a-z and A-Z)
-    - Digits (0-9)
-    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+    - ASCII letters (``a-z`` and ``A-Z``)
+    - Digits (``0-9``)
+    - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
 
     Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 

@@ -2,9 +2,9 @@
 MERCHANTS
 =========
 
-In order to create a merchant (a provider of goods or services in a
-marketplace), you must pass identitfying information when creating an
-account. Upon verification, the account will acquire the ``merchant`` role, and
+In order to create a seller (a provider of goods or services in a
+marketplace), you must pass identifying information when creating an account.
+Upon verification, the seller account will acquire the ``merchant`` role, and
 will be able to have credits created against it.
 
 .. _merchant-view:
@@ -92,14 +92,6 @@ will be able to have credits created against it.
 
 
 
-Index
-=====
-
-:uri: /v1/`merchants <./merchants.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
 Show
 ====
 
@@ -108,6 +100,14 @@ Show
 
 Click `here <./merchants.rst#merchant-view>`_
 for the ``merchant`` schema.
+
+
+Index
+=====
+
+:uri: /v1/`merchants <./merchants.rst>`_
+:methods: ``HEAD``, ``GET``
+
 
 
 Update

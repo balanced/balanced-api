@@ -105,6 +105,65 @@ The card resource is composed of the following fields:
 
 
 
+Show an account's card
+======================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _account-card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
+Get a card
+==========
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
+Create and associate a card to an account
+=========================================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
+:methods: ``POST``
+
+.. _account-card-card:
+
+.. _account-card-create-form:
+
+Exactly one of
+
+    ``uri``
+        *string*. Tokenized card URI.
+
+
+    ``card_uri``
+        *string*. Tokenized card URI.
+
+
+    ``*object*``
+        See `card create form <./cards.rst#a>`_.
+
+
+Response
+--------
+
+`card-not-validated <../errors.rst#card-not-validated>`_
+    :status code: 409
+    :category type: logical
+
+`card-declined <../errors.rst#card-declined>`_
+    :status code: 402
+    :category type: banking
+
+
+
 Update an account's card
 ========================
 
@@ -182,17 +241,6 @@ Response
     :status code: 409
     :category type: logical
 
-
-
-Show an account's card
-======================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _account-card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
 
 
 List all card tokens
@@ -281,16 +329,16 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to ``USA``.
+    three character country code. Defaults to USA
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 ``is_valid``
     *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``). Defaults to ``true``.
+    (``false``). Defaults to true
 
 
 A card create request must provide all the required fields alongside
@@ -302,54 +350,6 @@ Response
 `card-not-validated <../errors.rst#card-not-validated>`_
     :status code: 409
     :category type: logical
-
-
-
-Get a card
-==========
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-Create and associate a card to an account
-=========================================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
-:methods: ``POST``
-
-.. _account-card-card:
-
-.. _account-card-create-form:
-
-Exactly one of
-
-    ``uri``
-        *string*. Tokenized card URI.
-
-
-    ``card_uri``
-        *string*. Tokenized card URI.
-
-
-    ``*object*``
-        See `card create form <./cards.rst#a>`_.
-
-
-Response
---------
-
-`card-not-validated <../errors.rst#card-not-validated>`_
-    :status code: 409
-    :category type: logical
-
-`card-declined <../errors.rst#card-declined>`_
-    :status code: 402
-    :category type: banking
 
 
 

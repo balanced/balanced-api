@@ -7,6 +7,7 @@ must be associated with an account via a PUT on the account before you
 can begin transferring with it.
 
 .. _bank-account-view:
+
 ``id``
     *string*.
 
@@ -46,8 +47,7 @@ can begin transferring with it.
     *object*.
 
     The account to which this bank account is associated.
-    See `account view
-    <./accounts.rst#account-view>`_.
+    See `account view <./accounts.rst#account-view>`_.
 
 ``is_valid``
     *boolean*.
@@ -61,13 +61,23 @@ can begin transferring with it.
 
 
 
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the
+``bank_account`` schema.
+
+
 Update
 ======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``PUT``
 
-.. _bank-account-update-form:
+.. _account-bank-account-update-form:
 
 Request
 -------
@@ -101,50 +111,13 @@ Response
 
 
 
-Create
-======
+Index
+=====
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``POST``
+:methods: ``HEAD``, ``GET``
 
-.. _bank-account-create-form:
-
-``name``
-    *string*. Name on the bank account. Length must be **>=** ``2``.
-
-
-``account_number``
-    *string*. Bank account number. Length must be **>=** ``1``.
-
-
-``bank_code``
-    #. If a *production* bank account then `bank_code` is a:
-
-           *string*. Bank account code. This is commonly referred to as the routing number in
-           the ``USA``. Length must be **=** ``9``.
-
-
-    #. If not a *production* bank account then `bank_code` is a:
-
-           *string*. Sequence of characters. Length must be **>=** ``1``.
-
-
-
-``account_type``
-    *string*. Bank account type. It should be one of: ``checking``, ``savings`` Defaults to ``checking``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
-
-
-Response
---------
-
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
-
+.. _bank-accounts-view:
 
 
 Index
@@ -153,6 +126,16 @@ Index
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
 :methods: ``HEAD``, ``GET``
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the ``bank_account``
+schema.
 
 
 Create
@@ -201,33 +184,50 @@ Response
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the ``bank_account``
-schema.
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the
-``bank_account`` schema.
-
-
-Index
-=====
+Create
+======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``HEAD``, ``GET``
+:methods: ``POST``
 
-.. _bank-accounts-view:
+.. _bank-account-create-form:
+
+``name``
+    *string*. Name on the bank account. Length must be **>=** ``2``.
+
+
+``account_number``
+    *string*. Bank account number. Length must be **>=** ``1``.
+
+
+``bank_code``
+    #. If a *production* bank account then `bank_code` is a:
+
+           *string*. Bank account code. This is commonly referred to as the routing number in
+           the ``USA``. Length must be **=** ``9``.
+
+
+    #. If not a *production* bank account then `bank_code` is a:
+
+           *string*. Sequence of characters. Length must be **>=** ``1``.
+
+
+
+``account_type``
+    *string*. Bank account type. It should be one of: ``checking``, ``savings`` Defaults to checking
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+Response
+--------
+
+`invalid-routing-number <../errors.rst#invalid-routing-number>`_
+    :status code: 400
+    :category type: request
+
 
 
 Update

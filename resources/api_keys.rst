@@ -57,7 +57,7 @@ marketplace associated with, the original API key.
 .. _api-key-create-form:
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 ``secret``
