@@ -42,20 +42,26 @@ requests in order to authenticate the request.
 
 
 
-Update
+Delete
 ======
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
+:methods: ``DELETE``
 :uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
+:methods: ``DELETE``
 
-.. _api-key-update-form:
+Deactivates an API key. Once deactivated this key cannot be used again.
 
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
 
+Show
+====
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
 
 
 Create
@@ -102,26 +108,20 @@ marketplace associated with, the original API key.
 
 
 
-Delete
+Update
 ======
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
+:methods: ``PUT``
 :uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
+:methods: ``PUT``
 
-Deactivates an API key. Once deactivated this key cannot be used again.
+.. _api-key-update-form:
 
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
 
-Show
-====
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
 
 
 

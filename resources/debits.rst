@@ -81,6 +81,7 @@ refunded proportionally to the amount refunded.
 ``transaction_number``
     *string*.
 
+    An identifier for this transaction.
 
 ``source``
     *object*.

@@ -61,6 +61,7 @@ marked as expired and you cannot capture any remaining value.
 ``transaction_number``
     *string*.
 
+    An identifier for this transaction.
 
 ``account``
     *object*.
@@ -86,6 +87,17 @@ marked as expired and you cannot capture any remaining value.
     See `card view
     <./cards.rst#card-view>`_.
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
 Create
@@ -158,17 +170,6 @@ Index
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
 :methods: ``HEAD``, ``GET``
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
 Update
