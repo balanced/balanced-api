@@ -104,18 +104,15 @@ Response
 --------
 
 
-Index
-=====
+Show
+====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``HEAD``, ``GET``
 
-.. _credit-index:
-
-
-.. _credits-view:
+Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
 
 
 Create
@@ -150,8 +147,8 @@ Request
 
 
 ``appears_on_statement_as``
-    *string*. Text that will appear on the buyer's statement. The characters what can be
-    used in this text are limited to:
+    *string*. Text that will appear on the buyer's statement. Characters that can be
+    used are limited to:
 
     - ASCII letters (a-z and A-Z)
     - Digits (0-9)
@@ -203,15 +200,18 @@ Response
 
 
 
-Show
-====
+Index
+=====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
 :methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
 :methods: ``HEAD``, ``GET``
 
-Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
+.. _credit-index:
+
+
+.. _credits-view:
 
 
 

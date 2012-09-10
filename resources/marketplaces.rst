@@ -139,16 +139,6 @@ Update
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./marketplaces.rst#marketplace-view>`_
-for the ``marketplace`` schema.
-
-
 Create
 ======
 
@@ -232,6 +222,16 @@ Errors
     :status code: 400
     :category type: request
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./marketplaces.rst#marketplace-view>`_
+for the ``marketplace`` schema.
 
 
 

@@ -108,7 +108,7 @@ Allows partial updates to accounts within your marketplace.
 .. _account-update-form:
 
 ``dependent``
-    **dependent**. #. If `account` is a merchant.
+    #. If `account` is a merchant then:
 
        Exactly one of
 
@@ -123,7 +123,7 @@ Allows partial updates to accounts within your marketplace.
                Defaults to ``null``.
 
 
-    #. If `account` is not a merchant.
+    #. If `account` is not a merchant then:
 
        Exactly one of
 
@@ -279,15 +279,6 @@ Response
     :status code: 409
     :category type: logical
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 Create
@@ -643,6 +634,15 @@ Response
     :status code: 400
     :category type: request
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 

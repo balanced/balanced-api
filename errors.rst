@@ -239,7 +239,7 @@ funding-source-not-hold
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source cannot have a hold created against it.
 
 .. _funding-source-not-debitable:
 
@@ -251,7 +251,7 @@ funding-source-not-debitable
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source cannot have a debit created against it.
 
 .. _funding-source-not-refundable:
 
@@ -263,7 +263,7 @@ funding-source-not-refundable
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source cannot be refunded.
 
 .. _funding-source-not-authorizable:
 
@@ -275,7 +275,8 @@ funding-source-not-authorizable
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source cannot have an authorization created against
+    it. Authorizations are only valid for card-type funding sources.
 
 .. _funding-source-not-associated:
 
@@ -287,7 +288,7 @@ funding-source-not-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source is not associated with an account.
 
 .. _funding-source-already-associated:
 
@@ -299,7 +300,7 @@ funding-source-already-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    The given funding source is already associated with an account.
 
 .. _funding-destination-not-creditable:
 
@@ -467,7 +468,7 @@ authorization-failed
     :status code: 402
     :category type: banking
 
-    TODO
+    The processor did not accept this hold.
 
 .. _reverse-void-attempt:
 
@@ -479,7 +480,7 @@ reverse-void-attempt
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold has already been voided, which cannot be reversed.
 
 .. _capture-void-attempt:
 
@@ -491,7 +492,7 @@ capture-void-attempt
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold has already been captured, which cannot be reversed.
 
 .. _authorization-expired:
 
@@ -503,7 +504,7 @@ authorization-expired
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold has already expired.
 
 .. _cannot-capture-authorization:
 
@@ -515,7 +516,7 @@ cannot-capture-authorization
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold has already been captured or voided, and cannot be captured.
 
 .. _cannot-void-authorization:
 
@@ -527,7 +528,7 @@ cannot-void-authorization
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold has already been captured or voided, and cannot be voided.
 
 .. _hold-not-associated:
 
@@ -539,7 +540,7 @@ hold-not-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold is not associated with this marketplace.
 
 .. _hold-not-associated:
 
@@ -551,7 +552,7 @@ hold-not-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    This hold is not associated with this account.
 
 .. _insufficient-funds:
 

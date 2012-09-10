@@ -42,6 +42,35 @@ requests in order to authenticate the request.
 
 
 
+Update
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+
+.. _api-key-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+
+    Defaults to ``null``.
+
+
+
+
+Show
+====
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
+
+
 Create
 ======
 
@@ -83,35 +112,6 @@ Delete
 :methods: ``DELETE``
 
 Deactivates an API key. Once deactivated this key cannot be used again.
-
-
-Show
-====
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
-
-
-Update
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-
-.. _api-key-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
-
-
 
 
 
