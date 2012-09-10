@@ -97,6 +97,36 @@ credits to merchants are credited from this same account.
 
 
 
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``PUT``
+
+.. _marketplace-update-form:
+
+``name``
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+
+
+``support_email_address``
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+
+
+``support_phone_number``
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+
+
+``domain_url``
+    *string*. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+
+
 Show
 ====
 
@@ -177,36 +207,6 @@ Errors
 `duplicate-email-address <'../errors.rst'#duplicate-email-address>`_
     :status code: 409
     :category type: logical
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``PUT``
-
-.. _marketplace-update-form:
-
-``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
-
-
-``support_email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
-
-
-``support_phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
-
-
-``domain_url``
-    *string*. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
 
 
 

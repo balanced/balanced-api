@@ -58,15 +58,15 @@ Update
 
 
 
-Show
-====
+Delete
+======
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
+:methods: ``DELETE``
 :uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``HEAD``, ``GET``
+:methods: ``DELETE``
 
-Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
+Deactivates an API key. Once deactivated this key cannot be used again.
 
 
 Create
@@ -97,15 +97,15 @@ marketplace associated with, the original API key.
 
 
 
-Delete
-======
+Show
+====
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
+:methods: ``HEAD``, ``GET``
 :uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
+:methods: ``HEAD``, ``GET``
 
-Deactivates an API key. Once deactivated this key cannot be used again.
+Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
 
 
 

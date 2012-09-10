@@ -93,19 +93,6 @@ refunded proportionally to the amount refunded.
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
-
-
 Update
 ======
 
@@ -139,6 +126,19 @@ Errors
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
 
 
 Create
