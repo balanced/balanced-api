@@ -117,7 +117,7 @@ Exactly one of
         *string*. Bank account type. It should be one of:
             - ``checking``
             - ``savings``
-        Defaults to ``CHECKING``.
+        Defaults to ``checking``.
 
     ``name``
         *string*. Name on the bank account.
@@ -310,7 +310,7 @@ Create
     *string*. Bank account type. It should be one of:
         - ``checking``
         - ``savings``
-    Defaults to ``CHECKING``.
+    Defaults to ``checking``.
 
 ``meta``
     *object*. Single level mapping from string keys to string values.

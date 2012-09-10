@@ -5,10 +5,9 @@ Holds
 A hold represents a reservation of money from a buyer's account to your
 marketplace.
 
-A hold is guaranteed valid for seven days from the date of creation as
-represented by the ``expires_at`` field. To capture the funds and
-transfer them to your marketplace you must create a debit from the
-hold.
+A hold is guaranteed capture-able until it has expired, which is represented
+by the ``expires_at`` field. To capture the funds and transfer them to your
+marketplace you must create a debit from the hold.
 
 When you capture a hold, you may capture any fraction of the original
 amount up to the full amount. Once a hold has been captured it is

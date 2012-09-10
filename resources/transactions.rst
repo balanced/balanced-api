@@ -2,8 +2,9 @@
 Transactions
 ============
 
-A unified transactions view including ``credits``, ``debits``, ``refunds``,
-and ``holds``.
+A unified transactions view including `credits <./credits.rst#credit-view>`_,
+`debits <./debits.rst#debit-view>`_, `refunds <./refunds.rst#refund-view>`_,
+and `holds <./holds.rst#hold-view>`_.
 
 .. _transaction-view:
 
