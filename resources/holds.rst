@@ -16,123 +16,70 @@ marked as expired and you cannot capture any remaining value.
 .. _hold-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``created_at``
-    *string*.
-
-    Time of creation.
+    *string*.Time of creation.
 
 ``amount``
-    *integer*.
-
-    Amount of the hold.
+    *integer*.Amount of the hold.
 
 ``fee``
-    *integer*.
-
-    Fee charged by Balanced for this hold.
+    *integer*.Fee charged by Balanced for this hold.
 
 ``expires_at``
-    *string*.
-
-    Date at which this hold expires and can no longer be captured.
+    *string*.Date at which this hold expires and can no longer be captured.
 
 ``description``
-    *string*.
-
-    A description of the hold, used for display purposes.
+    *string*.A description of the hold, used for display purposes.
 
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 ``debit``
-    *object*.
-
-    The captured debit associated with this hold.
+    *object*.The captured debit associated with this hold.
     See `debit view
     <./debits.rst#debit-view>`_.
 
 ``transaction_number``
-    *string*.
-
-    An identifier for this transaction.
+    *string*.An identifier for this transaction.
 
 ``account``
-    *object*.
-
-    The account against which this hold was created.
+    *object*.The account against which this hold was created.
     See `account view
     <./accounts.rst#account-view>`_.
 
 ``uri``
-    *string*.
-
-    A URI for a Balanced entity
+    *string*.A URI for a Balanced entity
 
 ``is_void``
-    *boolean*.
-
-    A boolean flag indicating if the hold has been voided or not.
+    *boolean*.A boolean flag indicating if the hold has been voided or not.
 
 ``source``
-    *object*.
-
-    The funding source for this hold.
+    *object*.The funding source for this hold.
     See `card view
     <./cards.rst#card-view>`_.
 
 
 
-Update
-======
+Show
+====
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
-.. _hold-update-form:
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+Index
+=====
 
-
-``is_void``
-    *boolean*. Flag value, should be ``true`` or ``false``.
-
-
-``appears_on_statement_as``
-    *string*. Text that will appear on the buyer's statement. Characters that can be
-    used are limited to:
-
-    - ASCII letters (``a-z`` and ``A-Z``)
-    - Digits (``0-9``)
-    - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
-
-    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
-
-
-.. _hold-update-errors:
-
-Errors
-------
-
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
-    :status code: 409
-    :category type: logical
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
 
 
 
@@ -202,25 +149,52 @@ Errors
 
 
 
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
-Show
-====
+Update
+======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
+.. _hold-update-form:
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+``is_void``
+    *boolean*. Flag value, should be ``true`` or ``false``.
+
+
+``appears_on_statement_as``
+    *string*. Text that will appear on the buyer's statement. Characters that can be
+    used are limited to:
+
+    - ASCII letters (``a-z`` and ``A-Z``)
+    - Digits (``0-9``)
+    - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
+
+    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
+
+
+.. _hold-update-errors:
+
+Errors
+------
+
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+    :status code: 409
+    :category type: logical
+
 
 
 

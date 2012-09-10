@@ -24,143 +24,54 @@ The card resource is composed of the following fields:
 .. _card-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    The URI of the card
+    *string*.The URI of the card
 
 ``account``
-    *object*.
-
-    The account this card is associated with.
+    *object*.The account this card is associated with.
     See `account view <./accounts.rst#account-view>`_.
 
 ``created_at``
-    *string*.
-
-    When this card was tokenized.
+    *string*.When this card was tokenized.
 
 ``street_address``
-    *string*.
-
-    Street address.
+    *string*.Street address.
 
 ``postal_code``
-    *string*.
-
-    Postal code (zip code in the USA).
+    *string*.Postal code (zip code in the USA).
 
 ``country_code``
-    *string*.
-
-    `ISO-3166-3`_ three character country code.
+    *string*.`ISO-3166-3`_ three character country code.
 
 ``name``
-    *string*.
-
-    The name on the card.
+    *string*.The name on the card.
 
 ``expiration_month``
-    *string*.
-
-    Card's expiration month.
+    *string*.Card's expiration month.
 
 ``expiration_year``
-    *string*.
-
-    Card's expiration year.
+    *string*.Card's expiration year.
 
 ``card_type``
-    *string*.
-
-    **Deprecated**
+    *string*.**Deprecated**
     The type of the card. This field has been deprecated in favor of
     ``brand``.
 
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 ``last_four``
-    *string*.
-
-    Last four digits of the card.
+    *string*.Last four digits of the card.
 
 ``brand``
-    *string*.
-
-    The brand of the card. One of: ``Visa``, ``MasterCard``,
+    *string*.The brand of the card. One of: ``Visa``, ``MasterCard``,
     ``American Express``, or ``Discover``.
 
 ``is_valid``
-    *boolean*.
-
-    A boolean value indicating whether or not the card is valid. Once
+    *boolean*.A boolean value indicating whether or not the card is valid. Once
     invalidated, ``is_valid`` can not be set to ``true`` again.
-
-
-
-Show an account's card
-======================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _account-card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-Get a card
-==========
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-Create and associate a card to an account
-=========================================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
-:methods: ``POST``
-
-.. _account-card-card:
-
-.. _account-card-create-form:
-
-Exactly one of
-
-    ``uri``
-        *string*. Tokenized card URI.
-
-
-    ``card_uri``
-        *string*. Tokenized card URI.
-
-
-    ``*object*``
-        See `card create form <./cards.rst#a>`_.
-
-
-Response
---------
-
-`card-not-validated <../errors.rst#card-not-validated>`_
-    :status code: 409
-    :category type: logical
-
-`card-declined <../errors.rst#card-declined>`_
-    :status code: 402
-    :category type: banking
 
 
 
@@ -241,6 +152,17 @@ Response
     :status code: 409
     :category type: logical
 
+
+
+Show an account's card
+======================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _account-card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
 
 
 List all card tokens
@@ -350,6 +272,54 @@ Response
 `card-not-validated <../errors.rst#card-not-validated>`_
     :status code: 409
     :category type: logical
+
+
+
+Get a card
+==========
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
+Create and associate a card to an account
+=========================================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_
+:methods: ``POST``
+
+.. _account-card-card:
+
+.. _account-card-create-form:
+
+Exactly one of
+
+    ``uri``
+        *string*. Tokenized card URI.
+
+
+    ``card_uri``
+        *string*. Tokenized card URI.
+
+
+    ``*object*``
+        See `card create form <./cards.rst#a>`_.
+
+
+Response
+--------
+
+`card-not-validated <../errors.rst#card-not-validated>`_
+    :status code: 409
+    :category type: logical
+
+`card-declined <../errors.rst#card-declined>`_
+    :status code: 402
+    :category type: banking
 
 
 

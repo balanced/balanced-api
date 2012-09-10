@@ -14,117 +14,54 @@ refunded proportionally to the amount refunded.
 .. _debit-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    The URI of the debit.
+    *string*.The URI of the debit.
 
 ``amount``
-    *integer*.
-
-    The amount of the debit.
+    *integer*.The amount of the debit.
 
 ``description``
-    *string*.
-
-    Free-text description of the debit.
+    *string*.Free-text description of the debit.
 
 ``hold``
-    *object*.
-
-    The original hold for this debit, if this debit was to a card.
+    *object*.The original hold for this debit, if this debit was to a card.
     If the debit was to a bank account, this field will be null.
     See `hold view
     <./holds.rst#hold-view>`_.
 
 ``refunds_uri``
-    *string*.
-
-    URI for any partial or complete refunds of this debit.
+    *string*.URI for any partial or complete refunds of this debit.
 
 ``appears_on_statement_as``
-    *string*.
-
-    The text that will appear on the buyer's statement.
+    *string*.The text that will appear on the buyer's statement.
 
 ``account``
-    *object*.
-
-    The account to which this debit is associated.
+    *object*.The account to which this debit is associated.
     See `account view
     <./accounts.rst#account-view>`_.
 
 ``created_at``
-    *string*.
-
-    When this debit was created.
+    *string*.When this debit was created.
 
 ``fee``
-    *integer*.
-
-    The fee Balanced charged for this debit.
+    *integer*.The fee Balanced charged for this debit.
 
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 ``available_at``
-    *string*.
-
-    The date on which the transaction is guaranteed to be completed.
+    *string*.The date on which the transaction is guaranteed to be completed.
 
 ``transaction_number``
-    *string*.
-
-    An identifier for this transaction.
+    *string*.An identifier for this transaction.
 
 ``source``
-    *object*.
-
-    The funding source (card or bank account) for this debit.
+    *object*.The funding source (card or bank account) for this debit.
         See `card view <./cards.rst#card-view>`_.
             **or**
         See `bank account view <./bank_accounts.rst#bank-account-view>`_.
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
-    :status code: 409
-    :category type: logical
 
 
 
@@ -247,6 +184,41 @@ Errors
     :category type: logical
 
 `no-funding-source <'../errors.rst'#no-funding-source>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 

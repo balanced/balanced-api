@@ -3,44 +3,28 @@ Errors
 ======
 
 ``status_code``
-    *string*.
-
-    HTTP response code of the exception.
+    *string*.HTTP response code of the exception.
 
 ``status``
     *string*.
-
-
 ``additional``
-    *string*.
-
-    Any additional information that may describe how to resolve the issue.
+    *string*.Any additional information that may describe how to resolve the issue.
 
 ``category_type``
-    *string*.
-
-    The type of the exception. Values: ``request``,
+    *string*.The type of the exception. Values: ``request``,
     ``banking``, or ``logical``
 
 ``category_code``
-    *string*.
-
-    The code of the exception.
+    *string*.The code of the exception.
 
 ``extras``
-    *object*.
-
-    Any extra information associated with this exception.
+    *object*.Any extra information associated with this exception.
 
 ``description``
-    *string*.
-
-    Description of the exception
+    *string*.Description of the exception
 
 ``request_id``
-    *string*.
-
-    An ID that can be used to identify and debug the exception.
+    *string*.An ID that can be used to identify and debug the exception.
 
 .. _address-verification-failed:
 

@@ -10,90 +10,56 @@ credits to merchants are credited from this same account.
 .. _marketplace-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    The URI of this marketplace
+    *string*.The URI of this marketplace
 
 ``name``
-    *string*.
-
-    Name of this marketplace.
+    *string*.Name of this marketplace.
 
 ``support_email_address``
-    *string*.
-
-    Email address on file for support for this marketplace.
+    *string*.Email address on file for support for this marketplace.
 
 ``support_phone_number``
-    *string*.
-
-    Phone number on file for support for this marketplace.
+    *string*.Phone number on file for support for this marketplace.
 
 ``domain_url``
     *string*.
-
-
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 ``in_escrow``
-    *integer*.
-
-    Amount (in cents) in the escrow account for this marketplace.
+    *integer*.Amount (in cents) in the escrow account for this marketplace.
 
 ``owner_account``
-    *object*.
-
-    The account owning this marketplace.
+    *object*.The account owning this marketplace.
     See `account view
     <./accounts.rst#account-view>`_.
 
 ``debits_uri``
-    *string*.
-
-    URI for all debits for this marketplace.
+    *string*.URI for all debits for this marketplace.
 
 ``credits_uri``
-    *string*.
-
-    URI for all credits for this marketplace.
+    *string*.URI for all credits for this marketplace.
 
 ``refunds_uri``
-    *string*.
-
-    URI for all refunds for this marketplace.
+    *string*.URI for all refunds for this marketplace.
 
 ``holds_uri``
-    *string*.
-
-    URI for all holds for this marketplace.
+    *string*.URI for all holds for this marketplace.
 
 ``accounts_uri``
-    *string*.
-
-    URI for all accounts on this marketplace.
+    *string*.URI for all accounts on this marketplace.
 
 ``transactions_uri``
-    *string*.
-
-    URI for all transactions for this marketplace.
+    *string*.URI for all transactions for this marketplace.
 
 ``bank_accounts_uri``
-    *string*.
-
-    A URI for a Balanced entity
+    *string*.A URI for a Balanced entity
 
 ``cards_uri``
-    *string*.
-
-    A URI for a Balanced entity
+    *string*.A URI for a Balanced entity
 
 
 

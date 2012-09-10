@@ -13,104 +13,41 @@ to the amount refunded.
 .. _refund-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    A URI for a Balanced entity
+    *string*.A URI for a Balanced entity
 
 ``created_at``
-    *string*.
-
-    When the refund was created.
+    *string*.When the refund was created.
 
 ``amount``
-    *integer*.
-
-    The amount of the refund.
+    *integer*.The amount of the refund.
 
 ``fee``
-    *integer*.
-
-    The fee charged by Balanced for this refund.
+    *integer*.The fee charged by Balanced for this refund.
 
 ``description``
-    *string*.
-
-    Free-text description of the refund.
+    *string*.Free-text description of the refund.
 
 ``account``
-    *object*.
-
-    Account receiving the refund.
+    *object*.Account receiving the refund.
     See `account view
     <./accounts.rst#account-view>`_.
 
 ``appears_on_statement_as``
-    *string*.
-
-    Text that will appear on the statement describing this refund.
+    *string*.Text that will appear on the statement describing this refund.
 
 ``transaction_number``
-    *string*.
-
-    An identifier for this transaction.
+    *string*.An identifier for this transaction.
 
 ``debit``
-    *object*.
-
-    The original debit associated with the refund.
+    *object*.The original debit associated with the refund.
     See `debit view
     <./debits.rst#debit-view>`_.
 
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
-Create
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_
-:methods: ``POST``
-
-.. _debit-refund-create-errors:
-
-Errors
-------
-
-`invalid-amount <'../errors.rst'#invalid-amount>`_
-    :status code: 400
-    :category type: request
-
-`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
-    :status code: 409
-    :category type: logical
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 
 
@@ -150,6 +87,15 @@ Update
     *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
 
 
 Index
@@ -193,6 +139,38 @@ Create
 
 
 .. _refund-create-errors:
+
+Errors
+------
+
+`invalid-amount <'../errors.rst'#invalid-amount>`_
+    :status code: 400
+    :category type: request
+
+`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+
+
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_
+:methods: ``POST``
+
+.. _debit-refund-create-errors:
 
 Errors
 ------

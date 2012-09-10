@@ -8,65 +8,26 @@ requests in order to authenticate the request.
 .. _api-key-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    A URI for a Balanced entity
+    *string*.A URI for a Balanced entity
 
 ``created_at``
-    *string*.
-
-    Time of creation.
+    *string*.Time of creation.
 
 ``merchant``
-    *object*.
-
-    The merchant owning this API key.
+    *object*.The merchant owning this API key.
     See `merchant view
     <./merchants.rst#merchant-view>`_.
 
 ``secret``
-    *string*.
-
-    The secret associated with this API key. Will only be shown if passed
+    *string*.The secret associated with this API key. Will only be shown if passed
     in the original request.
 
 ``meta``
-    *object*.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
-    A single-level dictionary of string-type key/value pairs.
-
-
-
-Update
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-
-.. _api-key-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-
-
-Delete
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``DELETE``
-
-Deactivates an API key. Once deactivated this key cannot be used again.
 
 
 Create
@@ -97,6 +58,17 @@ marketplace associated with, the original API key.
 
 
 
+Delete
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``DELETE``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``DELETE``
+
+Deactivates an API key. Once deactivated this key cannot be used again.
+
+
 Show
 ====
 
@@ -106,6 +78,22 @@ Show
 :methods: ``HEAD``, ``GET``
 
 Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
+
+
+Update
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+
+.. _api-key-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
 
 
 

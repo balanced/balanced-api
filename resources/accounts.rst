@@ -11,76 +11,62 @@ you simply provide a funding source that may be debited.
 .. _account-view:
 
 ``id``
-    *string*.
-
-    The resource identifier.
+    *string*.The resource identifier.
 
 ``uri``
-    *string*.
-
-    The URI of the account.
+    *string*.The URI of the account.
 
 ``created_at``
-    *string*.
-
-    When the account was created.
+    *string*.When the account was created.
 
 ``name``
-    *string*.
-
-    The name of the account.
+    *string*.The name of the account.
 
 ``email_address``
-    *string*.
-
-    The email address of the account.
+    *string*.The email address of the account.
 
 ``roles``
-    *list*.
-
-    A list of roles the account has. Can be zero, one, or both of
+    *list*.A list of roles the account has. Can be zero, one, or both of
     ``buyer``, ``merchant``
 
 ``debits_uri``
-    *string*.
-
-    URI for all debits associated with the account.
+    *string*.URI for all debits associated with the account.
 
 ``credits_uri``
-    *string*.
-
-    URI for all credits associated with the account.
+    *string*.URI for all credits associated with the account.
 
 ``refunds_uri``
-    *string*.
-
-    URI for all refunds associated with the account.
+    *string*.URI for all refunds associated with the account.
 
 ``holds_uri``
-    *string*.
-
-    URI for all holds associated with the account.
+    *string*.URI for all holds associated with the account.
 
 ``meta``
-    *object*.
-
-    A single-level dictionary of string-type key/value pairs.
+    *object*.A single-level dictionary of string-type key/value pairs.
 
 ``transactions_uri``
-    *string*.
-
-    URI for all transactions associated with the account.
+    *string*.URI for all transactions associated with the account.
 
 ``bank_accounts_uri``
-    *string*.
-
-    URI for all bank accounts associated with the account.
+    *string*.URI for all bank accounts associated with the account.
 
 ``cards_uri``
-    *string*.
+    *string*.URI for all cards associated with the account.
 
-    URI for all cards associated with the account.
 
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_
+:methods: ``HEAD``, ``GET``
+
+Returns a paginated representation of account resources.
+
+.. _accounts-index-query:
+
+
+.. _accounts-index-view:
 
 
 Update
@@ -560,20 +546,6 @@ Response
     :status code: 409
     :category type: logical
 
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-Returns a paginated representation of account resources.
-
-.. _accounts-index-query:
-
-
-.. _accounts-index-view:
 
 
 
