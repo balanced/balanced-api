@@ -89,7 +89,7 @@ Create
 
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``meta``
@@ -99,7 +99,7 @@ Create
 
 
 ``debit_uri``
-    *string*. URI.If the resolving URI references a ``debit`` then that is used as the
+    *string*. URI. If the resolving URI references a ``debit`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
@@ -113,7 +113,7 @@ Errors
     :status code: 400
     :category type: request
 
-`insufficient-funds <'../errors.rst'#insufficient-funds>`_
+`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
     :status code: 409
     :category type: logical
 
@@ -145,7 +145,7 @@ Errors
     :status code: 400
     :category type: request
 
-`insufficient-funds <'../errors.rst'#insufficient-funds>`_
+`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
     :status code: 409
     :category type: logical
 
@@ -162,7 +162,7 @@ Update
 .. _refund-update-form:
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``meta``
@@ -205,7 +205,7 @@ Update
 .. _debit-refund-update-form:
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``meta``

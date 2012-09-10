@@ -106,15 +106,15 @@ Update
 .. _marketplace-update-form:
 
 ``name``
-    *string*. Sequence of characters.Length must be **<=** ``128``.Defaults to ``null``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
 
 
 ``support_email_address``
-    *string*. RFC-2822 formatted email address.Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
 
 
 ``support_phone_number``
-    *string*. E.164 formatted phone number.Length must be **<=** ``15``.Defaults to ``null``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
 
 
 ``domain_url``
@@ -138,11 +138,11 @@ Create
 .. _marketplace-create-form:
 
 ``support_email_address``
-    *string*. RFC-2822 formatted email address.Defaults to ``support@example.com``.
+    *string*. RFC-2822 formatted email address. Defaults to ``support@example.com``.
 
 
 ``name``
-    *string*. Sequence of characters.Length must be **<=** ``128``.Defaults to ``Test Marketplace``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``Test Marketplace``.
 
 
 ``domain_url``
@@ -150,7 +150,7 @@ Create
 
 
 ``support_phone_number``
-    *string*. E.164 formatted phone number.Length must be **<=** ``15``.Defaults to ``+16505551234``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``+16505551234``.
 
 
 ``meta``
@@ -161,11 +161,11 @@ Create
 
 ``owner_account``
     *object*. ``name``
-        *string*. Sequence of characters.Length must be **<=** ``128``.Defaults to ``null``.
+        *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
 
 
     ``email_address``
-        *string*. RFC-2822 formatted email address.Defaults to ``null``.
+        *string*. RFC-2822 formatted email address. Defaults to ``null``.
 
 
     Defaults to ``{   'email_address': None, 'name': None}``.

@@ -112,7 +112,7 @@ Allows partial updates to accounts within your marketplace.
 
        Exactly one of
 
-               *string*. URI.Defaults to ``null``.
+               *string*. URI. Defaults to ``null``.
 
 
                *object*. See `merchant create form
@@ -125,7 +125,7 @@ Allows partial updates to accounts within your marketplace.
 
        Exactly one of
 
-               *string*. URI.Defaults to ``null``.
+               *string*. URI. Defaults to ``null``.
 
 
                *object*. See `merchant update form
@@ -137,11 +137,11 @@ Allows partial updates to accounts within your marketplace.
 
 
 ``name``
-    *string*. The display ``name`` of the account.Length must be **<=** ``128``.Defaults to ``null``.
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. Defaults to ``null``.
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address.Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
 
 
 ``meta``
@@ -153,7 +153,7 @@ Allows partial updates to accounts within your marketplace.
 Exactly one of
 
     ``card_uri``
-        *string*. Tokenized card URI.Defaults to ``null``.
+        *string*. Tokenized card URI. Defaults to ``null``.
 
 
     ``card``
@@ -168,7 +168,7 @@ Exactly one of
 Exactly one of
 
     ``bank_account_uri``
-        *string*. Tokenized bank account URI.Defaults to ``null``.
+        *string*. Tokenized bank account URI. Defaults to ``null``.
 
 
     ``bank_account``
@@ -186,15 +186,15 @@ Merchant Update Form
 --------------------
 
 ``name``
-    *string*. Sequence of characters.Length must be **<=** ``128``.Defaults to ``null``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address.Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
 
 
 ``phone_number``
-    *string*. E.164 formatted phone number.Length must be **<=** ``15``.Defaults to ``null``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
 
 
 ``meta``
@@ -273,7 +273,7 @@ the full credit card via the ``card`` param.
 
 
 ``name``
-    *string*. The display ``name`` of the account.Length must be **<=** ``128``.If a ``card`` is provided with a ``name`` then that is used as the
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. If a ``card`` is provided with a ``name`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
@@ -281,7 +281,7 @@ the full credit card via the ``card`` param.
 Exactly one of
 
     ``card_uri``
-        *string*. The URI of the tokenized card.Defaults to ``null``.
+        *string*. The URI of the tokenized card. Defaults to ``null``.
 
 
     ``card``
@@ -322,7 +322,7 @@ Payload to create a person
 
 
 ``name``
-    *string*. The display ``name`` of the account.Length must be **<=** ``128``.If a ``card`` is provided with a ``name`` then that is used as the
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. If a ``card`` is provided with a ``name`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
@@ -330,7 +330,7 @@ Payload to create a person
 Exactly one of
 
     ``bank_account_uri``
-        *string*. The URI of the bank account created via *balanced.js*.Defaults to ``null``.
+        *string*. The URI of the bank account created via *balanced.js*. Defaults to ``null``.
 
 
     ``bank_account``
@@ -346,7 +346,7 @@ Exactly one of
 
     ``merchant_uri``
         *string*. The URI of the merchant account created during a request for more
-        information.Defaults to ``null``.
+        information. Defaults to ``null``.
 
 
     ``merchant``
@@ -373,7 +373,7 @@ based merchant but also includes the registered business information.
 
 
 ``name``
-    *string*. The display ``name`` of the account.Length must be **<=** ``128``.If a ``card`` is provided with a ``name`` then that is used as the
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. If a ``card`` is provided with a ``name`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
@@ -381,7 +381,7 @@ based merchant but also includes the registered business information.
 Exactly one of
 
     ``bank_account_uri``
-        *string*. The URI of the bank account created via *balanced.js*.Defaults to ``null``.
+        *string*. The URI of the bank account created via *balanced.js*. Defaults to ``null``.
 
 
     ``bank_account``
@@ -397,7 +397,7 @@ Exactly one of
 
     ``merchant_uri``
         *string*. The URI of the merchant account created during a request for more
-        information.Defaults to ``null``.
+        information. Defaults to ``null``.
 
 
     ``merchant``
@@ -422,7 +422,7 @@ Merchant Create Form
 
 
 ``phone_number``
-    *string*. E.164 formatted phone number.Length must be **<=** ``15``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``.
 
 
 ``meta``
@@ -432,12 +432,12 @@ Merchant Create Form
 
 
 ``tax_id``
-    *string*. Length must be **=** ``9``.For *person* merchants `tax_id` is optional, defaulting to null. For
+    *string*. Length must be **=** ``9``. For *person* merchants `tax_id` is optional, defaulting to null. For
     *business* merchants `tax_id` is required.
 
 
 ``dob``
-    *string*. Date-of-birth formatted as YYYY-MM-DD.null
+    *string*. Date-of-birth formatted as YYYY-MM-DD. null
 
 
 ``person``
@@ -446,29 +446,29 @@ Merchant Create Form
 
 
 ``name``
-    *string*. Sequence of characters.Length must be **<=** ``128``.If an account is referenced in the resolving URI then the default is
+    *string*. Sequence of characters. Length must be **<=** ``128``. If an account is referenced in the resolving URI then the default is
     null. If this is nested in an account creation then the account
     ``name`` is used. Otherwise no default is provided and this field is
     required.
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address.Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
 
 
 ``city``
-    *string*. City.Defaults to ``null``.
+    *string*. City. Defaults to ``null``.
 
 
 Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**.Defaults to ``null``.
+        **deprecated**. Defaults to ``null``.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**.Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**. Defaults to ``null``.
 
 
 ``postal_code``
@@ -484,7 +484,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code.Defaults to ``USA``.
+    three character country code. Defaults to ``USA``.
 
 
 Person Create Form
@@ -499,18 +499,18 @@ Person Create Form
 
 
 ``city``
-    *string*. City.Defaults to ``null``.
+    *string*. City. Defaults to ``null``.
 
 
 Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**.Defaults to ``null``.
+        **deprecated**. Defaults to ``null``.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**.Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**. Defaults to ``null``.
 
 
 ``postal_code``
@@ -526,11 +526,11 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code.Defaults to ``USA``.
+    three character country code. Defaults to ``USA``.
 
 
 ``tax_id``
-    *string*. Length must be **=** ``9``.Defaults to ``null``.
+    *string*. Length must be **=** ``9``. Defaults to ``null``.
 
 
 Response

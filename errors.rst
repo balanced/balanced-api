@@ -337,7 +337,8 @@ cannot-associate-merchant-with-account
     :status code: 409
     :category type: logical
 
-    TODO
+    The merchant information was created on a different marketplace than the
+    one used for this request.
 
 .. _account-already-merchant:
 
@@ -373,7 +374,7 @@ no-funding-source
     :status code: 409
     :category type: logical
 
-    TODO
+    The account has no valid funding sources.
 
 .. _no-funding-destination:
 
@@ -385,7 +386,7 @@ no-funding-destination
     :status code: 409
     :category type: logical
 
-    TODO
+    The account has no valid funding destinations.
 
 .. _marketplace-already-created:
 
@@ -397,7 +398,7 @@ marketplace-already-created
     :status code: 409
     :category type: logical
 
-    TODO
+    Marketplace has already been created.
 
 .. _authorization-failed:
 
@@ -505,19 +506,19 @@ insufficient-funds
     :status code: 409
     :category type: logical
 
-    TODO
+    Marketplace escrow balance is insufficient to issue this credit.
 
-.. _insufficient-funds:
+.. _refund-insufficient-funds:
 
-insufficient-funds
-------------------
+refund-insufficient-funds
+-------------------------
 
-insufficient-funds
-    :category code: insufficient-funds
+refund-insufficient-funds
+    :category code: refund-insufficient-funds
     :status code: 409
     :category type: logical
 
-    TODO
+    Marketplace escrow balance is insufficient to issue this refund.
 
 .. _invalid-amount:
 
@@ -529,5 +530,5 @@ invalid-amount
     :status code: 400
     :category type: request
 
-    TODO
+    Refund amount cannot be greater than the amount of the original debit.
 

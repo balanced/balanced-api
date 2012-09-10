@@ -114,7 +114,7 @@ Update
 
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 .. _debit-update-errors:
@@ -166,7 +166,7 @@ Create
     - Digits (0-9)
     - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
 
-    Any other characters will be rejected.Length must be **<=** ``22``.Defaults to ``null``.
+    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
 
 ``meta``
@@ -176,25 +176,25 @@ Create
 
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``account_uri``
-    *string*. URI.If the resolved URI references an ``account`` then it is used as
+    *string*. URI. If the resolved URI references an ``account`` then it is used as
     the default. If a ``hold`` or ``hold_uri`` field is present then the
     ``account`` associated with that hold is the default. Otherwise no
     default is provided and this field is **required**.
 
 
 ``merchant_uri``
-    *string*. URI.URI referencing the merchant account on behalf of whom the
+    *string*. URI. URI referencing the merchant account on behalf of whom the
     debit is being done. This is different from marketplace.
     In a peer-to-peer transaction, there are three parties::
         1. Marketplace
         2. Seller/Service provider
         3. Buyer
 
-    This merchant account represents 2.Defaults to ``null``.
+    This merchant account represents 2. Defaults to ``null``.
 
 
 ``hold_uri``
@@ -202,22 +202,22 @@ Create
 
     .. note:
        If no ``hold`` is provided one my be generated and captured if the
-       source is a card.If the resolved URI references a ``hold`` it will be used. Otherwise
+       source is a card. If the resolved URI references a ``hold`` it will be used. Otherwise
     defaults to ``null``.
 
 
 Exactly one of
 
     ``source_uri``
-        *string*. URI.Defaults to ``null``.
+        *string*. URI. Defaults to ``null``.
 
 
     ``bank_account_uri``
-        *string*. URI.Defaults to ``null``.
+        *string*. URI. Defaults to ``null``.
 
 
     ``card_uri``
-        *string*. URI.Defaults to ``null``.
+        *string*. URI. Defaults to ``null``.
 
 
 .. _debit-create-errors:

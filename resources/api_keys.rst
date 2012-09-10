@@ -92,7 +92,7 @@ marketplace associated with, the original API key.
 
 
 ``secret``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_

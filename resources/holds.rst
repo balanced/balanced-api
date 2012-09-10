@@ -109,7 +109,7 @@ Update
 .. _hold-update-form:
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``meta``
@@ -130,7 +130,7 @@ Update
     - Digits (0-9)
     - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
 
-    Any other characters will be rejected.Length must be **<=** ``22``.Defaults to ``null``.
+    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
 
 .. _hold-update-errors:
@@ -176,7 +176,7 @@ Create
 
 
 ``account_uri``
-    *string*. URI.If the resolving URI references an ``account`` then that is used as the
+    *string*. URI. If the resolving URI references an ``account`` then that is used as the
     default. Otherwise no default is provided and this field is
     **required**.
 
@@ -189,11 +189,11 @@ Create
     - Digits (0-9)
     - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
 
-    Any other characters will be rejected.Length must be **<=** ``22``.Defaults to ``null``.
+    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
 
 ``description``
-    *string*. Sequence of characters.Defaults to ``null``.
+    *string*. Sequence of characters. Defaults to ``null``.
 
 
 ``meta``
@@ -205,13 +205,13 @@ Create
 Exactly one of
 
     ``source_uri``
-        *string*. URI.If the resolving URI references an ``account`` then account's primary
+        *string*. URI. If the resolving URI references an ``account`` then account's primary
         funding source  is used. Otherwise no default is provided and this
         field is required.
 
 
     ``card_uri``
-        *string*. URI.If the resolving URI references an ``account`` then account's primary
+        *string*. URI. If the resolving URI references an ``account`` then account's primary
         funding source  is used. Otherwise no default is provided and this
         field is required.
 
