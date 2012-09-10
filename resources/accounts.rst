@@ -38,9 +38,8 @@ you simply provide a funding source that may be debited.
 ``roles``
     *list*.
 
-    A list of roles the account has. Can be zero, one, or both of:
-        - ``buyer``
-        - ``merchant``
+    A list of roles the account has. Can be zero, one, or both of
+    ``buyer``, ``merchant``
 
 ``debits_uri``
     *string*.
