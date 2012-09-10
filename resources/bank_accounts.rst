@@ -61,24 +61,6 @@ can begin transferring with it.
 
 
 
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the ``bank_account``
-schema.
-
-
 Create
 ======
 
@@ -114,9 +96,7 @@ Exactly one of
 
 
     ``account_type``
-        *string*. Bank account type. It should be one of:
-            - ``checking``
-            - ``savings``
+        *string*. Bank account type. It should be one of: ``checking``, ``savings``
         Defaults to ``checking``.
 
     ``name``
@@ -307,9 +287,7 @@ Create
 
 
 ``account_type``
-    *string*. Bank account type. It should be one of:
-        - ``checking``
-        - ``savings``
+    *string*. Bank account type. It should be one of: ``checking``, ``savings``
     Defaults to ``checking``.
 
 ``meta``
@@ -322,6 +300,24 @@ Response
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_
     :status code: 400
     :category type: request
+
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the ``bank_account``
+schema.
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
+:methods: ``HEAD``, ``GET``
 
 
 

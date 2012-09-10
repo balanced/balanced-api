@@ -53,6 +53,22 @@ Delete
 Deactivates an API key. Once deactivated this key cannot be used again.
 
 
+Update
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
+:methods: ``PUT``
+
+.. _api-key-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
+
+
 Show
 ====
 
@@ -105,22 +121,6 @@ marketplace associated with, the original API key.
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_
     :status code: 400
     :category type: request
-
-
-
-Update
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-:uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
-:methods: ``PUT``
-
-.. _api-key-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``null``.
 
 
 

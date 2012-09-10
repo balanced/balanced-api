@@ -95,41 +95,6 @@ refunded proportionally to the amount refunded.
 
 
 
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-    Defaults to ``{   }``.
-
-``description``
-    *string*. Sequence of characters.
-    Defaults to ``null``.
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-
-
 Create
 ======
 
@@ -154,7 +119,13 @@ Create
     is provided and this field is **required**.
 
 ``appears_on_statement_as``
-    *string*. Length must be **<=** ``22``.
+    *string*. Text that will appear on the buyer's statement. The characters what can be
+    used in this text are limited to:
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+    Any other characters will be rejected.
+    Length must be **<=** ``22``.
     Defaults to ``null``.
 
 ``meta``
@@ -247,6 +218,41 @@ Show
 :methods: ``HEAD``, ``GET``
 
 Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``{   }``.
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
 
 
 
