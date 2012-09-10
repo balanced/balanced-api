@@ -83,6 +83,15 @@ you simply provide a funding source that may be debited.
 
 
 
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
+
+
 Index
 =====
 
@@ -95,177 +104,6 @@ Returns a paginated representation of account resources.
 
 
 .. _accounts-index-view:
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
-:methods: ``PUT``
-
-Allows partial updates to accounts within your marketplace.
-
-.. _account-update-form:
-
-``dependent``
-    #. If `account` is a merchant then:
-
-       Exactly one of
-
-               *string*. URI. Defaults to ``null``.
-
-
-               *object*. 
-
-               See `merchant create form
-               <./accounts.rst#merchant-account-create-form>`_.
-
-               Defaults to ``null``.
-
-
-    #. If `account` is not a merchant then:
-
-       Exactly one of
-
-               *string*. URI. Defaults to ``null``.
-
-
-               *object*. 
-
-               See `merchant update form
-               <./accounts.rst#merchant-update-form>`_.
-
-
-               Defaults to ``null``.
-
-
-
-``name``
-    *string*. The display ``name`` of the account. Length must be **<=** ``128``. Defaults to ``null``.
-
-
-``email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
-
-
-Exactly one of
-
-    ``card_uri``
-        *string*. Tokenized card URI. Defaults to ``null``.
-
-
-    ``card``
-        *object*. 
-
-        Card information mapping:
-
-        See `card create form
-        <./cards.rst#card-create-form>`_.
-
-        Defaults to ``null``.
-
-
-Exactly one of
-
-    ``bank_account_uri``
-        *string*. Tokenized bank account URI. Defaults to ``null``.
-
-
-    ``bank_account``
-        *object*. 
-
-        Bank account information:
-
-        See `bank account create form
-        <./bank_accounts.rst#bank-account-create-form>`_.
-
-        Defaults to ``null``.
-
-
-.. _merchant-update-form:
-
-Merchant Update Form
---------------------
-
-``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
-
-
-``email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
-
-
-``phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
-
-
-``bank_account``
-    *object*. 
-
-    See `bank account create form
-    <./bank_accounts.rst#bank-account-create-form>`_.
-
-    Defaults to ``null``.
-
-
-Response
---------
-
-.. _account-update-errors:
-
-`cannot-associate-merchant-with-account <../errors.rst#cannot-associate-merchant-with-account>`_
-    :status code: 409
-    :category type: logical
-
-`account-already-merchant <../errors.rst#account-already-merchant>`_
-    :status code: 409
-    :category type: logical
-
-`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
-    :status code: 409
-    :category type: logical
-
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
-
-`card-not-validated <../errors.rst#card-not-validated>`_
-    :status code: 409
-    :category type: logical
-
-`card-not-associated <../errors.rst#card-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`card-already-funding-src <../errors.rst#card-already-funding-src>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-card <../errors.rst#cannot-associate-card>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 Create
@@ -572,6 +410,167 @@ Response
     :category type: logical
 
 `duplicate-email-address <../errors.rst#duplicate-email-address>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
+:methods: ``PUT``
+
+Allows partial updates to accounts within your marketplace.
+
+.. _account-update-form:
+
+#. If `account` is a merchant then:
+
+   Exactly one of
+
+           *string*. URI. Defaults to ``null``.
+
+
+           *object*. 
+
+           See `merchant create form
+           <./accounts.rst#merchant-account-create-form>`_.
+
+           Defaults to ``null``.
+
+
+#. If `account` is not a merchant then:
+
+   Exactly one of
+
+           *string*. URI. Defaults to ``null``.
+
+
+           *object*. 
+
+           See `merchant update form
+           <./accounts.rst#merchant-update-form>`_.
+
+
+           Defaults to ``null``.
+
+
+
+``name``
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. Defaults to ``null``.
+
+
+``email_address``
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+Exactly one of
+
+    ``card_uri``
+        *string*. Tokenized card URI. Defaults to ``null``.
+
+
+    ``card``
+        *object*. 
+
+        Card information mapping:
+
+        See `card create form
+        <./cards.rst#card-create-form>`_.
+
+        Defaults to ``null``.
+
+
+Exactly one of
+
+    ``bank_account_uri``
+        *string*. Tokenized bank account URI. Defaults to ``null``.
+
+
+    ``bank_account``
+        *object*. 
+
+        Bank account information:
+
+        See `bank account create form
+        <./bank_accounts.rst#bank-account-create-form>`_.
+
+        Defaults to ``null``.
+
+
+.. _merchant-update-form:
+
+Merchant Update Form
+--------------------
+
+``name``
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+
+
+``email_address``
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+
+
+``phone_number``
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+
+
+``bank_account``
+    *object*. 
+
+    See `bank account create form
+    <./bank_accounts.rst#bank-account-create-form>`_.
+
+    Defaults to ``null``.
+
+
+Response
+--------
+
+.. _account-update-errors:
+
+`cannot-associate-merchant-with-account <../errors.rst#cannot-associate-merchant-with-account>`_
+    :status code: 409
+    :category type: logical
+
+`account-already-merchant <../errors.rst#account-already-merchant>`_
+    :status code: 409
+    :category type: logical
+
+`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
+    :status code: 409
+    :category type: logical
+
+`invalid-routing-number <../errors.rst#invalid-routing-number>`_
+    :status code: 400
+    :category type: request
+
+`card-not-validated <../errors.rst#card-not-validated>`_
+    :status code: 409
+    :category type: logical
+
+`card-not-associated <../errors.rst#card-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`card-already-funding-src <../errors.rst#card-already-funding-src>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-card <../errors.rst#cannot-associate-card>`_
     :status code: 409
     :category type: logical
 

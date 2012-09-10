@@ -73,26 +73,6 @@ to the amount refunded.
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
 Create
 ======
 
@@ -112,58 +92,6 @@ Errors
     :status code: 409
     :category type: logical
 
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-
-.. _debit-refund-update-form:
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
-
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-
-.. _refund-update-form:
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
-
-
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _refund-index-query:
-
-
-.. _refunds-view:
 
 
 Create
@@ -205,6 +133,78 @@ Errors
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+
+.. _debit-refund-update-form:
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+
+.. _refund-update-form:
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _refund-index-query:
+
+
+.. _refunds-view:
 
 
 

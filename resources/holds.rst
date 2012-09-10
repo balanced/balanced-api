@@ -99,16 +99,6 @@ Show
 Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
 Create
 ======
 
@@ -190,7 +180,7 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 ``is_void``
@@ -220,6 +210,16 @@ Errors
 `hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
+
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
 
 
 

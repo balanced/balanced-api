@@ -75,6 +75,20 @@ you must create a debit.
 
 
 
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _credit-index:
+
+
+.. _credits-view:
+
+
 Update
 ======
 
@@ -93,25 +107,22 @@ Request
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+    *object*. Single level mapping from string keys to string values. Defaults to {}
 
 
 Response
 --------
 
 
-Index
-=====
+Show
+====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``HEAD``, ``GET``
 
-.. _credit-index:
-
-
-.. _credits-view:
+Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
 
 
 Create
@@ -175,17 +186,6 @@ Response
     :status code: 409
     :category type: logical
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
 
 
 
