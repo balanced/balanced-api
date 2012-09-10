@@ -16,89 +16,75 @@ marked as expired and you cannot capture any remaining value.
 
 .. _hold-view:
 
-    ``id``
-        *string*. The resource identifier
+``id``
+    *string*.
 
-    ``created_at``
-        *string*. Time of creation
+    The resource identifier.
 
-    ``amount``
-        *integer*. Amount of the hold
+``created_at``
+    *string*.
 
-    ``fee``
-        *integer*. Fee charged by Balanced for this hold
+    Time of creation.
 
-    ``expires_at``
-        *string*. Date at which this hold expires and can no longer be captured
+``amount``
+    *integer*.
 
-    ``description``
-        *string*. A description of the hold, used for display purposes
+    Amount of the hold.
 
-    ``meta``
-        *object*. A single-level dictionary of string-type key/value pairs
+``fee``
+    *integer*.
 
-    ``debit``
-        *object*. The captured debit associated with this hold
-        See `debit view
-        <./debits.rst#debit-view>`_.
+    Fee charged by Balanced for this hold.
 
-    ``transaction_number``
-        *string*. 
-    ``account``
-        *``account``*. The account against which this hold was created
-        See `account view
-        <./accounts.rst#account-view>`_.
+``expires_at``
+    *string*.
 
-    ``uri``
-        *string*. A URI for a Balanced entity
+    Date at which this hold expires and can no longer be captured.
 
-    ``is_void``
-        *boolean*. A boolean flag indicating if the hold has been voided or not
+``description``
+    *string*.
 
-    ``source``
-        *``funding_source``*. The funding source for this hold
-        See `card view
-        <./cards.rst#card-view>`_.
+    A description of the hold, used for display purposes.
+
+``meta``
+    *object*.
+
+    A single-level dictionary of string-type key/value pairs.
+
+``debit``
+    *object*.
+
+    The captured debit associated with this hold.
+    See `debit view
+    <./debits.rst#debit-view>`_.
+
+``transaction_number``
+    *string*.
 
 
+``account``
+    *object*.
 
-Update
-======
+    The account against which this hold was created.
+    See `account view
+    <./accounts.rst#account-view>`_.
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
-:methods: ``PUT``
+``uri``
+    *string*.
 
-.. _hold-update-form:
+    A URI for a Balanced entity
 
-    ``description``
-        *string*. Sequence of characters.
-        Defaults to ``null``.
+``is_void``
+    *boolean*.
 
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``null``.
+    A boolean flag indicating if the hold has been voided or not.
 
-    ``is_void``
-        *boolean*. Flag value, should be ``true`` or ``false``.
+``source``
+    *object*.
 
-    ``appears_on_statement_as``
-        *string*. Length must be **<=** ``22``.
-        Defaults to ``null``.
-
-.. _hold-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
+    The funding source for this hold.
+    See `card view
+    <./cards.rst#card-view>`_.
 
 
 
@@ -112,42 +98,42 @@ Create
 
 .. _hold-create-form:
 
-    ``amount``
-        *integer*. Value must be >= to the minimum debit amount allowed for *your*
-        marketplace. Value must be <= to the maximum debit amount allowed for *your*
-        marketplace.
+``amount``
+    *integer*. Value must be >= to the minimum debit amount allowed for *your*
+    marketplace. Value must be <= to the maximum debit amount allowed for *your*
+    marketplace.
 
-    ``account_uri``
+``account_uri``
+    *string*. URI.
+    If the resolving URI references an ``account`` then that is used as the
+    default. Otherwise no default is provided and this field is
+    **required**.
+
+``appears_on_statement_as``
+    *string*. Length must be **<=** ``22``.
+    Defaults to ``null``.
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``{   }``.
+
+Exactly one of
+
+    ``source_uri``
         *string*. URI.
-        If the resolving URI references an ``account`` then that is used as the
-        default. Otherwise no default is provided and this field is
-        **required**.
+        If the resolving URI references an ``account`` then account's primary
+        funding source  is used. Otherwise no default is provided and this
+        field is required.
 
-    ``appears_on_statement_as``
-        *string*. Length must be **<=** ``22``.
-        Defaults to ``null``.
-
-    ``description``
-        *string*. Sequence of characters.
-        Defaults to ``null``.
-
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``{   }``.
-
-    Exactly one of
-
-        ``source_uri``
-            *string*. URI.
-            If the resolving URI references an ``account`` then account's primary
-            funding source  is used. Otherwise no default is provided and this
-            field is required.
-
-        ``card_uri``
-            *string*. URI.
-            If the resolving URI references an ``account`` then account's primary
-            funding source  is used. Otherwise no default is provided and this
-            field is required.
+    ``card_uri``
+        *string*. URI.
+        If the resolving URI references an ``account`` then account's primary
+        funding source  is used. Otherwise no default is provided and this
+        field is required.
 
 .. _hold-create-errors:
 
@@ -164,6 +150,16 @@ Errors
 
 
 
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
+:methods: ``HEAD``, ``GET``
+
+
+
 Show
 ====
 
@@ -175,13 +171,43 @@ Show
 Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
 
 
-Index
-=====
+Update
+======
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
-:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
+:methods: ``PUT``
+
+.. _hold-update-form:
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
+``is_void``
+    *boolean*. Flag value, should be ``true`` or ``false``.
+
+``appears_on_statement_as``
+    *string*. Length must be **<=** ``22``.
+    Defaults to ``null``.
+
+.. _hold-update-errors:
+
+Errors
+------
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+    :status code: 409
+    :category type: logical
 
 
 

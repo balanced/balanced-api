@@ -12,100 +12,78 @@ to the amount refunded.
 
 .. _refund-view:
 
-    ``id``
-        *string*. The resource identifier
+``id``
+    *string*.
 
-    ``uri``
-        *string*. A URI for a Balanced entity
+    The resource identifier.
 
-    ``created_at``
-        *string*. When the refund was created
+``uri``
+    *string*.
 
-    ``amount``
-        *integer*. The amount of the refund
+    A URI for a Balanced entity
 
-    ``fee``
-        *integer*. The fee charged by Balanced for this refund
+``created_at``
+    *string*.
 
-    ``description``
-        *string*. Free-text description of the refund
+    When the refund was created.
 
-    ``account``
-        *object*. Account receiving the refund
-        See `account view
-        <./accounts.rst#account-view>`_.
+``amount``
+    *integer*.
 
-    ``appears_on_statement_as``
-        *string*. Text that will appear on the statement describing this refund
+    The amount of the refund.
 
-    ``transaction_number``
-        *string*. 
-    ``debit``
-        *object*. The original debit associated with the refund.
-        See `debit view
-        <./debits.rst#debit-view>`_.
+``fee``
+    *integer*.
 
-    ``meta``
-        *object*. A single-level dictionary of string-type key/value pairs
+    The fee charged by Balanced for this refund.
 
+``description``
+    *string*.
 
+    Free-text description of the refund.
 
-Update
-======
+``account``
+    *object*.
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
+    Account receiving the refund.
+    See `account view
+    <./accounts.rst#account-view>`_.
 
-.. _debit-refund-update-form:
+``appears_on_statement_as``
+    *string*.
 
-    ``description``
-        *string*. Sequence of characters.
-        Defaults to ``null``.
+    Text that will appear on the statement describing this refund.
 
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``null``.
+``transaction_number``
+    *string*.
 
 
+``debit``
+    *object*.
 
-Show
-====
+    The original debit associated with the refund.
+    See `debit view
+    <./debits.rst#debit-view>`_.
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+``meta``
+    *object*.
+
+    A single-level dictionary of string-type key/value pairs.
+
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
 :methods: ``HEAD``, ``GET``
 
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+.. _refund-index-query:
 
 
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``PUT``
-
-.. _refund-update-form:
-
-    ``description``
-        *string*. Sequence of characters.
-        Defaults to ``null``.
-
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``null``.
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+.. _refunds-view:
 
 
 Create
@@ -139,23 +117,23 @@ Create
 
 .. _refund-create-form:
 
-    ``amount``
-        *integer*. Value must be **>=** ``1``. Value must be <= the remaining un-refunded amount on the original
-        ``debit``.
+``amount``
+    *integer*. Value must be **>=** ``1``. Value must be <= the remaining un-refunded amount on the original
+    ``debit``.
 
-    ``description``
-        *string*. Sequence of characters.
-        Defaults to ``null``.
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
 
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``{   }``.
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``{   }``.
 
-    ``debit_uri``
-        *string*. URI.
-        If the resolving URI references a ``debit`` then that is used as the
-        default. Otherwise no default is provided and this field is
-        **required**.
+``debit_uri``
+    *string*. URI.
+    If the resolving URI references a ``debit`` then that is used as the
+    default. Otherwise no default is provided and this field is
+    **required**.
 
 .. _refund-create-errors:
 
@@ -172,18 +150,62 @@ Errors
 
 
 
-Index
-=====
+Show
+====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
 :methods: ``HEAD``, ``GET``
 
-.. _refund-index-query:
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
 
 
-.. _refunds-view:
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+
+.. _debit-refund-update-form:
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``PUT``
+
+.. _refund-update-form:
+
+``description``
+    *string*. Sequence of characters.
+    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
 
 
 

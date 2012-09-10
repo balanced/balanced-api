@@ -7,85 +7,149 @@ must be associated with an account via a PUT on the account before you
 can begin transferring with it.
 
 .. _bank-account-view:
-    ``id``
-        *string*. The resource identifier
+``id``
+    *string*.
 
-    ``uri``
-        *string*. The URI of the bank account object
+    The resource identifier.
 
-    ``name``
-        *string*. The name on the bank account
+``uri``
+    *string*.
 
-    ``last_four``
-        *string*. The last four digits of the bank account number
+    The URI of the bank account object
 
-    ``bank_code``
-        *string*. The bank code (routing number in the USA) of the bank account
+``name``
+    *string*.
 
-    ``bank_name``
-        *string*. The name of the bank
+    The name on the bank account.
 
-    ``created_at``
-        *string*. Time of creation
+``last_four``
+    *string*.
 
-    ``account``
-        *object*. The account to which this bank account is associated
-        See `account view
-        <./accounts.rst#account-view>`_.
+    The last four digits of the bank account number.
 
-    ``is_valid``
-        *boolean*. Boolean flag indicating whether the bank account is currently valid
+``bank_code``
+    *string*.
 
-    ``meta``
-        *object*. A single-level dictionary of string-type key/value pairs
+    The bank code (routing number in the USA) of the bank account.
 
+``bank_name``
+    *string*.
 
+    The name of the bank.
 
-Show
-====
+``created_at``
+    *string*.
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
+    Time of creation.
 
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the
-``bank_account`` schema.
+``account``
+    *object*.
+
+    The account to which this bank account is associated.
+    See `account view
+    <./accounts.rst#account-view>`_.
+
+``is_valid``
+    *boolean*.
+
+    Boolean flag indicating whether the bank account is currently valid.
+
+``meta``
+    *object*.
+
+    A single-level dictionary of string-type key/value pairs.
+
 
 
 Update
 ======
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``PUT``
-
-You may invalidate a bank account by passing ``is_valid`` with a False
-value. Once a bank account has been invalidated it cannot be
-re-activated, you must create a new bank account.
 
 .. _bank-account-update-form:
 
 Request
 -------
 
-    ``is_valid``
-        *boolean*. Flag indicating whether the bank account is active (``true``) or not
-        (``false``). Setting this to ``false`` will deactivate the bank account.
+``is_valid``
+    *boolean*. Flag indicating whether the bank account is active (``true``) or not
+    (``false``). Setting this to ``false`` will deactivate the bank account.
 
-    Exactly one of
+Exactly one of
 
-        ``account_uri``
-            *string*. URI of an account with which to associate the bank account.
+    ``account_uri``
+        *string*. URI of an account with which to associate the bank account.
+        Defaults to ``null``.
+
+    ``account``
+        *object*. URI of an account with which to associate the bank account.
+        ``uri``
+            *string*. URI.
             Defaults to ``null``.
 
-        ``account``
-            *map*. URI of an account with which to associate the bank account.
-                ``uri``
-                    *string*. URI.
-                    Defaults to ``null``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
+
+Response
+--------
+
+`bank-account-already-valid <../errors.rst#bank-account-already-valid>`_
+    :status code: 409
+    :category type: logical
+
+`bank-account-already-invalidated <../errors.rst#bank-account-already-invalidated>`_
+    :status code: 409
+    :category type: logical
 
 
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``null``.
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
+:methods: ``HEAD``, ``GET``
+
+
+
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
+:methods: ``POST``
+
+.. _bank-account-create-form:
+
+``name``
+    *string*. Name on the bank account.
+    Length must be **>=** ``2``.
+
+``account_number``
+    *string*. Bank account number.
+    Length must be **>=** ``1``.
+
+``bank_code``
+    **dependent**. #. For production bank accounts.
+           *string*. Bank account code. This is commonly referred to as the routing number in
+           the ``USA``.
+           Length must be **=** ``9``.
+
+    #. For non-production bank accounts.
+           *string*. Sequence of characters.
+           Length must be **>=** ``1``.
+
+
+``account_type``
+    *string*. Bank account type. It should be one of:
+        - ``checking``
+        - ``savings``
+    Defaults to ``CHECKING``.
+
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``{   }``.
 
 Response
 --------
@@ -93,22 +157,6 @@ Response
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_
     :status code: 400
     :category type: request
-
-`bank-account-already-valid <../errors.rst#bank-account-already-valid>`_
-    :status code: 409
-    :category type: logical
-
-`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
-    :status code: 409
-    :category type: logical
-
-`bank-account-already-invalidated <../errors.rst#bank-account-already-invalidated>`_
-    :status code: 409
-    :category type: logical
 
 
 
@@ -133,42 +181,42 @@ Create
 Request
 -------
 
-    Exactly one of
+Exactly one of
 
-        ``uri``
-            *string*. Tokenized bank account URI.
+    ``uri``
+        *string*. Tokenized bank account URI.
 
-        ``bank_account_uri``
-            *string*. Tokenized bank account URI.
+    ``bank_account_uri``
+        *string*. Tokenized bank account URI.
 
-        ``meta``
-            *object*. Single level mapping from string keys to string values.
-            Defaults to ``{   }``.
+    ``meta``
+        *object*. Single level mapping from string keys to string values.
+        Defaults to ``{   }``.
 
-        ``bank_code``
-            **dependent**. #. For production bank accounts.
-                       *string*. Bank account code. This is commonly referred to as the routing number in
-                       the ``USA``.
-                       Length must be **=** ``9``.
+    ``bank_code``
+        **dependent**. #. For production bank accounts.
+               *string*. Bank account code. This is commonly referred to as the routing number in
+               the ``USA``.
+               Length must be **=** ``9``.
 
-            #. For non-production bank accounts.
-                       *string*. Sequence of characters.
-                       Length must be **>=** ``1``.
+        #. For non-production bank accounts.
+               *string*. Sequence of characters.
+               Length must be **>=** ``1``.
 
 
-        ``account_type``
-            *string*. Bank account type. It should be one of:
-                - ``checking``
-                - ``savings``
-            Defaults to ``CHECKING``.
+    ``account_type``
+        *string*. Bank account type. It should be one of:
+            - ``checking``
+            - ``savings``
+        Defaults to ``CHECKING``.
 
-        ``name``
-            *string*. Name on the bank account.
-            Length must be **>=** ``2``.
+    ``name``
+        *string*. Name on the bank account.
+        Length must be **>=** ``2``.
 
-        ``account_number``
-            *string*. Bank account number.
-            Length must be **>=** ``1``.
+    ``account_number``
+        *string*. Bank account number.
+        Length must be **>=** ``1``.
 
 Response
 --------
@@ -195,58 +243,14 @@ Response
 
 
 
-Create
-======
+Show
+====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``POST``
-
-.. _bank-account-create-form:
-
-    ``name``
-        *string*. Name on the bank account.
-        Length must be **>=** ``2``.
-
-    ``account_number``
-        *string*. Bank account number.
-        Length must be **>=** ``1``.
-
-    ``bank_code``
-        **dependent**. #. For production bank accounts.
-                   *string*. Bank account code. This is commonly referred to as the routing number in
-                   the ``USA``.
-                   Length must be **=** ``9``.
-
-        #. For non-production bank accounts.
-                   *string*. Sequence of characters.
-                   Length must be **>=** ``1``.
-
-
-    ``account_type``
-        *string*. Bank account type. It should be one of:
-            - ``checking``
-            - ``savings``
-        Defaults to ``CHECKING``.
-
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``{   }``.
-
-Response
---------
-
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
-
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``HEAD``, ``GET``
 
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the
+``bank_account`` schema.
 
 
 Index
@@ -261,39 +265,55 @@ Index
 Update
 ======
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``PUT``
+
+You may invalidate a bank account by passing ``is_valid`` with a False
+value. Once a bank account has been invalidated it cannot be
+re-activated, you must create a new bank account.
 
 .. _bank-account-update-form:
 
 Request
 -------
 
-    ``is_valid``
-        *boolean*. Flag indicating whether the bank account is active (``true``) or not
-        (``false``). Setting this to ``false`` will deactivate the bank account.
+``is_valid``
+    *boolean*. Flag indicating whether the bank account is active (``true``) or not
+    (``false``). Setting this to ``false`` will deactivate the bank account.
 
-    Exactly one of
+Exactly one of
 
-        ``account_uri``
-            *string*. URI of an account with which to associate the bank account.
+    ``account_uri``
+        *string*. URI of an account with which to associate the bank account.
+        Defaults to ``null``.
+
+    ``account``
+        *object*. URI of an account with which to associate the bank account.
+        ``uri``
+            *string*. URI.
             Defaults to ``null``.
 
-        ``account``
-            *map*. URI of an account with which to associate the bank account.
-                ``uri``
-                    *string*. URI.
-                    Defaults to ``null``.
 
-
-    ``meta``
-        *object*. Single level mapping from string keys to string values.
-        Defaults to ``null``.
+``meta``
+    *object*. Single level mapping from string keys to string values.
+    Defaults to ``null``.
 
 Response
 --------
 
+`invalid-routing-number <../errors.rst#invalid-routing-number>`_
+    :status code: 400
+    :category type: request
+
 `bank-account-already-valid <../errors.rst#bank-account-already-valid>`_
+    :status code: 409
+    :category type: logical
+
+`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
     :status code: 409
     :category type: logical
 

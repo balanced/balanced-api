@@ -9,55 +9,87 @@ will be able to have credits created against it.
 
 .. _merchant-view:
 
-    ``id``
-        *string*. The resource identifier
+``id``
+    *string*.
 
-    ``uri``
-        *string*. The URI of this merchant
+    The resource identifier.
 
-    ``created_at``
-        *string*. When this merchant was created
+``uri``
+    *string*.
 
-    ``type``
-        *string*. Merchant type. It will be one of:
-            - ``person``
-            - ``business``
+    The URI of this merchant.
 
-    ``name``
-        *string*. The name of the business, for a business-type merchant.
-        The name of the person, for a person-type merchant.
+``created_at``
+    *string*.
 
-    ``email_address``
-        *string*. Email address of the business, for a business-type merchant.
-        Email address of the person, for a person-type merchant.
+    When this merchant was created.
 
-    ``phone_number``
-        *string*. The merchant's phone number
+``type``
+    *string*.
 
-    ``balance``
-        *integer*. Merchant's account balance
+    Merchant type. It will be one of:
+        - ``person``
+        - ``business``
 
-    ``marketplace``
-        *object*. See `marketplace view
-        <./marketplaces.rst#marketplace-view>`_.
+``name``
+    *string*.
 
-    ``accounts_uri``
-        *string*. Accounts belonging to this merchant
+    The name of the business, for a business-type merchant.
+    The name of the person, for a person-type merchant.
 
-    ``api_keys_uri``
-        *string*. URI for this merchant's API keys
+``email_address``
+    *string*.
 
-    ``meta``
-        *object*. A single-level dictionary of string-type key/value pairs
+    Email address of the business, for a business-type merchant.
+    Email address of the person, for a person-type merchant.
 
-    ``street_address``
-        *string*. 
-    ``city``
-        *string*. 
-    ``postal_code``
-        *string*. 
-    ``country_code``
-        *string*. 
+``phone_number``
+    *string*.
+
+    The merchant's phone number.
+
+``balance``
+    *integer*.
+
+    Merchant's account balance.
+
+``marketplace``
+    *object*.
+
+    See `marketplace view
+    <./marketplaces.rst#marketplace-view>`_.
+
+``accounts_uri``
+    *string*.
+
+    Accounts belonging to this merchant.
+
+``api_keys_uri``
+    *string*.
+
+    URI for this merchant's API keys.
+
+``meta``
+    *object*.
+
+    A single-level dictionary of string-type key/value pairs.
+
+``street_address``
+    *string*.
+
+
+``city``
+    *string*.
+
+
+``postal_code``
+    *string*.
+
+
+``country_code``
+    *string*.
+
+
 
 
 Index
@@ -65,14 +97,6 @@ Index
 
 :uri: /v1/`merchants <./merchants.rst>`_
 :methods: ``HEAD``, ``GET``
-
-
-
-Update
-======
-
-:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``PUT``
 
 
 
@@ -84,6 +108,14 @@ Show
 
 Click `here <./merchants.rst#merchant-view>`_
 for the ``merchant`` schema.
+
+
+Update
+======
+
+:uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
+:methods: ``PUT``
+
 
 
 

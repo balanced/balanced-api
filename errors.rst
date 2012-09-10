@@ -2,34 +2,60 @@
 Errors
 ======
 
-    ``status_code``
-        *string*. HTTP response code of the exception.
+``status_code``
+    *string*.
 
-    ``status``
-        *string*.
-    ``additional``
-        *string*. Any additional information that may describe how to resolve the issue.
+    HTTP response code of the exception.
 
-    ``category_type``
-        *string*. The type of the exception -- one of:
-          - request
-          - banking
-          - logical
+``status``
+    *string*.
 
-    ``category_code``
-        *string*. The code of the exception.
 
-    ``extras``
-        *object*. Any extra information associated with this exception.
+``additional``
+    *string*.
 
-    ``description``
-        *string*. Description of the exception
+    Any additional information that may describe how to resolve the issue.
 
-    ``request_id``
-        *string*. An ID that can be used to identify and debug the exception.
+``category_type``
+    *string*.
 
+    The type of the exception. Values: ``request``,
+    ``banking``, or ``logical``
+
+``category_code``
+    *string*.
+
+    The code of the exception.
+
+``extras``
+    *object*.
+
+    Any extra information associated with this exception.
+
+``description``
+    *string*.
+
+    Description of the exception
+
+``request_id``
+    *string*.
+
+    An ID that can be used to identify and debug the exception.
+
+.. _precog-bad-request:
+
+precog-bad-request
+------------------
+
+precog-bad-request
+    :category code: precog-bad-request
+    :status code: 400
+    :category type: request
+
+    TODO
 
 .. _address-verification-failed:
+
 address-verification-failed
 ---------------------------
 
@@ -41,6 +67,7 @@ address-verification-failed
     TODO
 
 .. _bank-account-not-valid:
+
 bank-account-not-valid
 ----------------------
 
@@ -52,6 +79,7 @@ bank-account-not-valid
     TODO
 
 .. _bank-account-already-valid:
+
 bank-account-already-valid
 --------------------------
 
@@ -63,6 +91,7 @@ bank-account-already-valid
     TODO
 
 .. _bank-account-already-associated:
+
 bank-account-already-associated
 -------------------------------
 
@@ -74,6 +103,7 @@ bank-account-already-associated
     TODO
 
 .. _cannot-associate-bank-account:
+
 cannot-associate-bank-account
 -----------------------------
 
@@ -85,6 +115,7 @@ cannot-associate-bank-account
     TODO
 
 .. _invalid-routing-number:
+
 invalid-routing-number
 ----------------------
 
@@ -96,6 +127,7 @@ invalid-routing-number
     TODO
 
 .. _bank-account-not-associated:
+
 bank-account-not-associated
 ---------------------------
 
@@ -107,6 +139,7 @@ bank-account-not-associated
     TODO
 
 .. _bank-account-already-invalidated:
+
 bank-account-already-invalidated
 --------------------------------
 
@@ -118,6 +151,7 @@ bank-account-already-invalidated
     TODO
 
 .. _multiple-debits:
+
 multiple-debits
 ---------------
 
@@ -129,6 +163,7 @@ multiple-debits
     TODO
 
 .. _debit-not-found:
+
 debit-not-found
 ---------------
 
@@ -140,6 +175,7 @@ debit-not-found
     TODO
 
 .. _unexpected-payload:
+
 unexpected-payload
 ------------------
 
@@ -151,6 +187,7 @@ unexpected-payload
     TODO
 
 .. _card-not-valid:
+
 card-not-valid
 --------------
 
@@ -163,6 +200,7 @@ card-not-valid
     again.
 
 .. _card-not-validated:
+
 card-not-validated
 ------------------
 
@@ -175,6 +213,7 @@ card-not-validated
     may be wrong.
 
 .. _card-not-associated:
+
 card-not-associated
 -------------------
 
@@ -186,6 +225,7 @@ card-not-associated
     The card is not associated with the given account.
 
 .. _card-already-funding-src:
+
 card-already-funding-src
 ------------------------
 
@@ -198,6 +238,7 @@ card-already-funding-src
     again.
 
 .. _cannot-associate-card:
+
 cannot-associate-card
 ---------------------
 
@@ -210,6 +251,7 @@ cannot-associate-card
     this request.
 
 .. _card-declined:
+
 card-declined
 -------------
 
@@ -221,6 +263,7 @@ card-declined
     This card was declined by the processor.
 
 .. _funding-source-not-hold:
+
 funding-source-not-hold
 -----------------------
 
@@ -232,6 +275,7 @@ funding-source-not-hold
     TODO
 
 .. _funding-source-not-debitable:
+
 funding-source-not-debitable
 ----------------------------
 
@@ -243,6 +287,7 @@ funding-source-not-debitable
     TODO
 
 .. _funding-source-not-refundable:
+
 funding-source-not-refundable
 -----------------------------
 
@@ -254,6 +299,7 @@ funding-source-not-refundable
     TODO
 
 .. _funding-source-not-authorizable:
+
 funding-source-not-authorizable
 -------------------------------
 
@@ -265,6 +311,7 @@ funding-source-not-authorizable
     TODO
 
 .. _funding-source-not-associated:
+
 funding-source-not-associated
 -----------------------------
 
@@ -276,6 +323,7 @@ funding-source-not-associated
     TODO
 
 .. _funding-source-already-associated:
+
 funding-source-already-associated
 ---------------------------------
 
@@ -287,6 +335,7 @@ funding-source-already-associated
     TODO
 
 .. _funding-destination-not-creditable:
+
 funding-destination-not-creditable
 ----------------------------------
 
@@ -298,6 +347,7 @@ funding-destination-not-creditable
     TODO
 
 .. _funding-destination-not-associated:
+
 funding-destination-not-associated
 ----------------------------------
 
@@ -309,6 +359,7 @@ funding-destination-not-associated
     TODO
 
 .. _funding-destination-already-associated:
+
 funding-destination-already-associated
 --------------------------------------
 
@@ -320,6 +371,7 @@ funding-destination-already-associated
     TODO
 
 .. _funding-destination-declined:
+
 funding-destination-declined
 ----------------------------
 
@@ -331,6 +383,7 @@ funding-destination-declined
     TODO
 
 .. _incomplete-account-info:
+
 incomplete-account-info
 -----------------------
 
@@ -342,6 +395,7 @@ incomplete-account-info
     TODO
 
 .. _cannot-associate-merchant-with-account:
+
 cannot-associate-merchant-with-account
 --------------------------------------
 
@@ -353,6 +407,7 @@ cannot-associate-merchant-with-account
     TODO
 
 .. _account-already-merchant:
+
 account-already-merchant
 ------------------------
 
@@ -364,6 +419,7 @@ account-already-merchant
     TODO
 
 .. _illegal-credit:
+
 illegal-credit
 --------------
 
@@ -375,6 +431,7 @@ illegal-credit
     TODO
 
 .. _duplicate-email-address:
+
 duplicate-email-address
 -----------------------
 
@@ -386,6 +443,7 @@ duplicate-email-address
     TODO
 
 .. _invalid-account-info:
+
 invalid-account-info
 --------------------
 
@@ -397,6 +455,7 @@ invalid-account-info
     TODO
 
 .. _invalid-account-info:
+
 invalid-account-info
 --------------------
 
@@ -408,6 +467,7 @@ invalid-account-info
     TODO
 
 .. _no-funding-destination:
+
 no-funding-destination
 ----------------------
 
@@ -419,6 +479,7 @@ no-funding-destination
     TODO
 
 .. _marketplace-already-created:
+
 marketplace-already-created
 ---------------------------
 
@@ -430,6 +491,7 @@ marketplace-already-created
     TODO
 
 .. _authorization-failed:
+
 authorization-failed
 --------------------
 
@@ -441,6 +503,7 @@ authorization-failed
     TODO
 
 .. _reverse-void-attempt:
+
 reverse-void-attempt
 --------------------
 
@@ -452,6 +515,7 @@ reverse-void-attempt
     TODO
 
 .. _capture-void-attempt:
+
 capture-void-attempt
 --------------------
 
@@ -463,6 +527,7 @@ capture-void-attempt
     TODO
 
 .. _authorization-expired:
+
 authorization-expired
 ---------------------
 
@@ -474,6 +539,7 @@ authorization-expired
     TODO
 
 .. _cannot-capture-authorization:
+
 cannot-capture-authorization
 ----------------------------
 
@@ -485,6 +551,7 @@ cannot-capture-authorization
     TODO
 
 .. _cannot-void-authorization:
+
 cannot-void-authorization
 -------------------------
 
@@ -496,6 +563,7 @@ cannot-void-authorization
     TODO
 
 .. _hold-not-associated:
+
 hold-not-associated
 -------------------
 
@@ -507,6 +575,7 @@ hold-not-associated
     TODO
 
 .. _hold-not-associated:
+
 hold-not-associated
 -------------------
 
@@ -518,6 +587,7 @@ hold-not-associated
     TODO
 
 .. _insufficient-funds:
+
 insufficient-funds
 ------------------
 
@@ -529,6 +599,7 @@ insufficient-funds
     TODO
 
 .. _insufficient-funds:
+
 insufficient-funds
 ------------------
 
@@ -540,6 +611,7 @@ insufficient-funds
     TODO
 
 .. _invalid-amount:
+
 invalid-amount
 --------------
 
@@ -549,3 +621,52 @@ invalid-amount
     :category type: request
 
     TODO
+
+.. _identity-verification-error:
+
+identity-verification-error
+---------------------------
+
+identity-verification-error
+    :category code: identity-verification-error
+    :status code: 409
+    :category type: logical
+
+    TODO
+
+.. _Business principal failed KYC:
+
+Business principal failed KYC
+-----------------------------
+
+Business principal failed KYC
+    :category code: Business principal failed KYC
+    :status code: 409
+    :category type: logical
+
+    TODO
+
+.. _Business KYC failed:
+
+Business KYC failed
+-------------------
+
+Business KYC failed
+    :category code: Business KYC failed
+    :status code: 409
+    :category type: logical
+
+    TODO
+
+.. _Person KYC failed:
+
+Person KYC failed
+-----------------
+
+Person KYC failed
+    :category code: Person KYC failed
+    :status code: 409
+    :category type: logical
+
+    TODO
+
