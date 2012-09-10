@@ -122,11 +122,19 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
 
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./marketplaces.rst#marketplace-view>`_
+for the ``marketplace`` schema.
 
 
 Create
@@ -154,9 +162,7 @@ Create
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
 
 
 ``owner_account``
@@ -192,16 +198,6 @@ Errors
     :status code: 409
     :category type: logical
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./marketplaces.rst#marketplace-view>`_
-for the ``marketplace`` schema.
 
 
 

@@ -145,9 +145,7 @@ Allows partial updates to accounts within your marketplace.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
 
 
 Exactly one of
@@ -198,9 +196,7 @@ Merchant Update Form
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
 
 
 ``bank_account``
@@ -251,6 +247,15 @@ Response
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 Create
@@ -426,9 +431,7 @@ Merchant Create Form
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
 
 
 ``tax_id``
@@ -550,15 +553,6 @@ Response
     :status code: 409
     :category type: logical
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 

@@ -105,6 +105,107 @@ The card resource is composed of the following fields:
 
 
 
+Update an account's card
+========================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``PUT``
+
+.. _account-card-update:
+
+.. _account-card-update-form:
+
+``is_valid``
+    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
+    (``false``). Setting this to ``false`` will deactivate the card.
+
+
+Exactly one of
+
+    ``account_uri``
+        *string*. URI. Defaults to ``null``.
+
+
+    ``account``
+        *object*. ``uri``
+            *string*. URI. Defaults to ``null``.
+
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+
+
+Response
+--------
+
+
+Invalidate a card
+=================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``PUT``
+
+.. _card-update:
+
+.. _card-update-form:
+
+``is_valid``
+    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
+    (``false``). Setting this to ``false`` will deactivate the card.
+
+
+Exactly one of
+
+    ``account_uri``
+        *string*. URI. Defaults to ``null``.
+
+
+    ``account``
+        *object*. ``uri``
+            *string*. URI. Defaults to ``null``.
+
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+
+
+Response
+--------
+
+`card-already-funding-src <../errors.rst#card-already-funding-src>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-card <../errors.rst#cannot-associate-card>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Show an account's card
+======================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
+:methods: ``HEAD``, ``GET``
+
+.. _account-card-show:
+
+Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+
+
+List all card tokens
+====================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _card-index:
+
+
+
+
 Create a card
 =============
 
@@ -131,14 +232,9 @@ Required fields:
 ``expiration_year``
     *integer*. Expiration year.
 
-    The current year or later. Value must be **<=** ``9999``.
-
 
 ``expiration_month``
     *integer*. Expiration month (e.g. 1 for January).
-
-    If ``expiration_year`` is the current year then current month or later,
-    otherwise 1. Value must be **<=** ``12``.
 
 
 .. _card-create-form-optional:
@@ -189,16 +285,12 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
 
 
 ``is_valid``
     *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``).
-
-    Defaults to ``true``.
+    (``false``). Defaults to ``true``.
 
 
 A card create request must provide all the required fields alongside
@@ -259,111 +351,6 @@ Response
     :status code: 402
     :category type: banking
 
-
-
-Invalidate a card
-=================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``PUT``
-
-.. _card-update:
-
-.. _card-update-form:
-
-``is_valid``
-    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``). Setting this to ``false`` will deactivate the card.
-
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI. Defaults to ``null``.
-
-
-    ``account``
-        *object*. ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
-
-
-Response
---------
-
-`card-already-funding-src <../errors.rst#card-already-funding-src>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-card <../errors.rst#cannot-associate-card>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Show an account's card
-======================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``HEAD``, ``GET``
-
-.. _account-card-show:
-
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
-
-
-List all card tokens
-====================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _card-index:
-
-
-
-
-Update an account's card
-========================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`cards <./cards.rst>`_/<*card*>
-:methods: ``PUT``
-
-.. _account-card-update:
-
-.. _account-card-update-form:
-
-``is_valid``
-    *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``). Setting this to ``false`` will deactivate the card.
-
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI. Defaults to ``null``.
-
-
-    ``account``
-        *object*. ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``null``.
-
-
-Response
---------
 
 
 

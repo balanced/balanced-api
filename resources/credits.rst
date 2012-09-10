@@ -83,3 +83,109 @@ Update
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``PUT``
 
+Request
+-------
+
+.. _credit-update-form:
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``null``.
+
+
+Response
+--------
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _credit-index:
+
+
+.. _credits-view:
+
+
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:methods: ``POST``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:methods: ``POST``
+
+Request
+-------
+
+.. _credit-create-form:
+
+``amount``
+    *integer*. 
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+
+
+``appears_on_statement_as``
+    *string*. Text that will appear on the buyer's statement. Characters that can be
+    used are limited to:
+
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (.<>(){}[]+&!$*;-%_?:#@~='" ^\`|)
+
+    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
+
+
+``account_uri``
+    *string*. URI. If the resolving URI contain an account then that is used as the
+    default otherwise no default is provided and this field is
+    **required**.
+
+
+Exactly one of
+
+    ``destination_uri``
+        *string*. URI. Defaults to ``null``.
+
+
+    ``bank_account_uri``
+        *string*. URI. Defaults to ``null``.
+
+
+Response
+--------
+
+`no-funding-destination <../errors.rst#no-funding-destination>`_
+    :status code: 409
+    :category type: logical
+
+`insufficient-funds <../errors.rst#insufficient-funds>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
+
+
+

@@ -472,25 +472,25 @@ cannot-void-authorization
 
     This hold has already been captured or voided, and cannot be voided.
 
-.. _hold-not-associated:
+.. _hold-not-associated-marketplace:
 
-hold-not-associated
--------------------
+hold-not-associated-marketplace
+-------------------------------
 
-hold-not-associated
-    :category code: hold-not-associated
+hold-not-associated-marketplace
+    :category code: hold-not-associated-marketplace
     :status code: 409
     :category type: logical
 
     This hold is not associated with this marketplace.
 
-.. _hold-not-associated:
+.. _hold-not-associated-account:
 
-hold-not-associated
--------------------
+hold-not-associated-account
+---------------------------
 
-hold-not-associated
-    :category code: hold-not-associated
+hold-not-associated-account
+    :category code: hold-not-associated-account
     :status code: 409
     :category type: logical
 

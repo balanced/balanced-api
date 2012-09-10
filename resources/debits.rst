@@ -95,41 +95,17 @@ refunded proportionally to the amount refunded.
 
 
 
-Update
-======
+Show
+====
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``{   }``.
-
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
-    :status code: 409
-    :category type: logical
-
+Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
 
 
 Create
@@ -147,13 +123,7 @@ Create
 ``amount``
     *integer*. If the resolving URI references a hold then this is hold amount. You can
     always capture less than the hold amount (e.g. a partial capture).
-    Otherwise its the maximum per debit amount for your marketplace.
-
-    Value must be >= the minimum per debit ``amount`` for *your*
-    marketplace. Value must be <= the maximum per debit ``amount`` for *your*
-    marketplace.
-
-    If the resolving URI references a hold then the default ``amount``
+    Otherwise its the maximum per debit amount for your marketplace. If the resolving URI references a hold then the default ``amount``
     is the ``amount`` associated with that hold. Otherwise no default
     is provided and this field is **required**.
 
@@ -170,9 +140,7 @@ Create
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values.
-
-    Defaults to ``{   }``.
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
 
 
 ``description``
@@ -237,11 +205,11 @@ Errors
     :status code: 409
     :category type: logical
 
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
     :status code: 409
     :category type: logical
 
-`hold-not-associated <'../errors.rst'#hold-not-associated>`_
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 
@@ -251,17 +219,39 @@ Errors
 
 
 
-Show
-====
+Update
+======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``{   }``.
+
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+    :status code: 409
+    :category type: logical
+
 
 
 
