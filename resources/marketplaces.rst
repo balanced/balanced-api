@@ -97,16 +97,6 @@ credits to merchants are credited from this same account.
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./marketplaces.rst#marketplace-view>`_
-for the ``marketplace`` schema.
-
-
 Update
 ======
 
@@ -147,6 +137,16 @@ Update
     Defaults to ``null``.
 
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./marketplaces.rst#marketplace-view>`_
+for the ``marketplace`` schema.
 
 
 Create

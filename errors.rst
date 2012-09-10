@@ -64,19 +64,8 @@ bank-account-not-valid
     :status code: 409
     :category type: logical
 
-    TODO
-
-.. _bank-account-already-valid:
-
-bank-account-already-valid
---------------------------
-
-bank-account-already-valid
-    :category code: bank-account-already-valid
-    :status code: 409
-    :category type: logical
-
-    TODO
+    This bank account has already been marked as invalid/deactivated. It cannot
+    be used again.
 
 .. _bank-account-already-associated:
 
@@ -88,7 +77,8 @@ bank-account-already-associated
     :status code: 409
     :category type: logical
 
-    TODO
+    The bank account is already associated with an account -- it cannot be
+    associated again.
 
 .. _cannot-associate-bank-account:
 
@@ -100,7 +90,8 @@ cannot-associate-bank-account
     :status code: 409
     :category type: logical
 
-    TODO
+    The bank account was tokenized on a different marketplace than the one used
+    for this request.
 
 .. _invalid-routing-number:
 
@@ -112,7 +103,7 @@ invalid-routing-number
     :status code: 400
     :category type: request
 
-    TODO
+    The routing number provided for the bank account was invalid.
 
 .. _bank-account-not-associated:
 
@@ -124,19 +115,7 @@ bank-account-not-associated
     :status code: 409
     :category type: logical
 
-    TODO
-
-.. _bank-account-already-invalidated:
-
-bank-account-already-invalidated
---------------------------------
-
-bank-account-already-invalidated
-    :category code: bank-account-already-invalidated
-    :status code: 409
-    :category type: logical
-
-    TODO
+    The bank account is not associated with the given account.
 
 .. _multiple-debits:
 

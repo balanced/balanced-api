@@ -104,6 +104,20 @@ Response
 --------
 
 
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _credit-index:
+
+
+.. _credits-view:
+
+
 Create
 ======
 
@@ -198,20 +212,6 @@ Show
 :methods: ``HEAD``, ``GET``
 
 Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _credit-index:
-
-
-.. _credits-view:
 
 
 

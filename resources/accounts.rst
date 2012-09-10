@@ -83,15 +83,6 @@ you simply provide a funding source that may be debited.
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
-
-
 Index
 =====
 
@@ -288,6 +279,15 @@ Response
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
 
 
 Create
