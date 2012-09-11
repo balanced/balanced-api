@@ -144,9 +144,7 @@ represents multiple choices, you may re-submit the original
 request along with more identifying information (e.g.
 ``tax_id``) **or** you may redirect the user to the location
 specified in the redirect where Balanced will identify the
-user. See `requests for more information`__
-
-__ #requests-for-more-information
+user.
 
 ``email_address``
     *string*. Email address of the account. It must be **unique** among all accounts
@@ -247,12 +245,8 @@ Exactly one of
         See `merchant create form
         <./accounts.rst#merchant-account-create-form>`_.
 
-
         Defaults to ``null``.
 
-
-Merchant Account Create Form
-----------------------------
 
 merchant-account-create-form
 ----------------------------
@@ -332,9 +326,6 @@ Exactly one of
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
     three character country code. Defaults to ``USA``
 
-
-Person Create Form
-------------------
 
 person-create-form
 ------------------
