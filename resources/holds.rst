@@ -13,6 +13,10 @@ When you capture a hold, you may capture any fraction of the original
 amount up to the full amount. Once a hold has been captured it is
 marked as expired and you cannot capture any remaining value.
 
+
+hold-view
+---------
+
 .. _hold-view:
 
 ``id``
@@ -179,6 +183,9 @@ hold-update-form
 
     Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
 
+
+hold-update-errors
+------------------
 
 .. _hold-update-errors:
 

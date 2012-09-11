@@ -8,6 +8,9 @@ may have credits created against it. For an account to have the ``merchant``
 role assigned you must pass identifying information, to create a ``buyer`` role
 you simply provide a funding source that may be debited.
 
+account-view
+------------
+
 .. _account-view:
 
 ``id``
@@ -88,8 +91,12 @@ Create
 Creating a buyer
 ----------------
 
-To become a buyer, you must pass a tokenized card via the ``card_uri`` param or
-the full credit card via the ``card`` param.
+To become a buyer, you must pass a tokenized card via the
+``card_uri`` param or the full credit card via the ``card``
+param.
+
+buyer-account-create-form
+-------------------------
 
 .. _buyer-account-create-form:
 
@@ -125,24 +132,21 @@ Exactly one of
 Creating a merchant
 -------------------
 
-To create a merchant, you must pass a tokenized merchant identity via the
-``merchant_uri`` param or full merchant information via the ``merchant`` param.
-A merchant can be represented as a business or a person depending on the entity
+To create a merchant, you must pass a tokenized merchant
+identity via the ``merchant_uri`` param or full merchant
+information via the ``merchant`` param. A merchant can be
+represented as a business or a person depending on the entity
 being represented by the account.
 
-*Note* If Balanced cannot identify the merchant being created the API will
-respond with a **300** status code. A 300 represents multiple choices, you may
-re-submit the original request along with more identifying information (e.g.
-``tax_id``) **or** you may redirect the user to the location specified in the
-redirect where Balanced will identify the user. See
-`requests for more information`__
+*Note* If Balanced cannot identify the merchant being created
+the API will respond with a **300** status code. A 300
+represents multiple choices, you may re-submit the original
+request along with more identifying information (e.g.
+``tax_id``) **or** you may redirect the user to the location
+specified in the redirect where Balanced will identify the
+user. See `requests for more information`__
 
 __ #requests-for-more-information
-
-Payload to create a person
-
-.. _person-merchant-account-create-form:
-
 
 ``email_address``
     *string*. Email address of the account. It must be **unique** among all accounts
@@ -184,7 +188,8 @@ Exactly one of
 
         Merchant account information.
 
-        See `merchant create form <./accounts.rst#merchant-account-create-form>`_.
+        See `merchant create form
+        <./accounts.rst#merchant-account-create-form>`_.
 
         Defaults to ``null``.
 
@@ -192,10 +197,10 @@ Exactly one of
 Creating a business
 -------------------
 
-When creating a business merchant, you must also specify the principal
-representing the business, this payload is the same as for creating a person
-based merchant but also includes the registered business information.
-
+When creating a business merchant, you must also specify the
+principal representing the business, this payload is the same
+as for creating a person based merchant but also includes the
+registered business information.
 
 .. _business-merchant-account-create-form:
 
@@ -239,18 +244,20 @@ Exactly one of
 
         Merchant account information.
 
-        See `merchant create form <./accounts.rst#merchant-account-create-form>`_.
+        See `merchant create form
+        <./accounts.rst#merchant-account-create-form>`_.
 
 
         Defaults to ``null``.
 
 
-.. _merchant-account-create-form:
+Merchant Account Create Form
+----------------------------
 
 merchant-account-create-form
 ----------------------------
 
-Merchant Account Create Form
+.. _merchant-account-create-form:
 
 ``type``
     *string*. Merchant type. It should be one of:
@@ -328,6 +335,11 @@ Exactly one of
 
 Person Create Form
 ------------------
+
+person-create-form
+------------------
+
+.. _person-create-form:
 
 ``name``
     *string*. Sequence of characters.
@@ -492,7 +504,7 @@ merchant-update-form
 .. _merchant-update-form:
 
 Merchant Update Form
-````````````````````
+--------------------
 
 ``name``
     *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.

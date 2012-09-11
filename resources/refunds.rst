@@ -10,6 +10,9 @@ escrow account.
 Any fees associated with the original debit are refunded proportionally
 to the amount refunded.
 
+refund-view
+-----------
+
 .. _refund-view:
 
 ``id``
@@ -57,6 +60,9 @@ Create
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_
 :methods: ``POST``
 
+debit-refund-create-errors
+--------------------------
+
 .. _debit-refund-create-errors:
 
 Errors
@@ -101,6 +107,9 @@ refund-create-form
     **required**.
 
 
+refund-create-errors
+--------------------
+
 .. _refund-create-errors:
 
 Errors
@@ -141,6 +150,9 @@ Update
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
 :methods: ``PUT``
+
+debit-refund-update-form
+------------------------
 
 .. _debit-refund-update-form:
 
@@ -190,6 +202,9 @@ refund-index-query
 
 .. _refund-index-query:
 
+
+refunds-view
+------------
 
 .. _refunds-view:
 

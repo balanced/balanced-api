@@ -11,6 +11,9 @@ created, you may refund the debit or any fractional amount up to the
 entire amount of the original debit. Fees associated with the debit are
 refunded proportionally to the amount refunded.
 
+debit-view
+----------
+
 .. _debit-view:
 
 ``id``

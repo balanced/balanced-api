@@ -12,6 +12,9 @@ funding destination when creating a credit.
 A credit is not refundable, to transfer money back to your marketplace
 you must create a debit.
 
+credit-view
+-----------
+
 .. _credit-view:
 
 ``id``
@@ -80,7 +83,7 @@ Request
 -------
 
 credit-update-form
-``````````````````
+------------------
 
 .. _credit-update-form:
 
@@ -119,7 +122,7 @@ Request
 -------
 
 credit-create-form
-``````````````````
+------------------
 
 .. _credit-create-form:
 
