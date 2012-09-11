@@ -254,10 +254,7 @@ merchant-account-create-form
 .. _merchant-account-create-form:
 
 ``type``
-    *string*. Merchant type. It should be one of:
-
-        - ``person``
-        - ``business``
+    *string*. Merchant type. It should be one of: ``person`` or ``business``.
 
 
 ``phone_number``

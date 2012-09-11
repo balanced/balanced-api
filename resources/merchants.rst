@@ -7,6 +7,9 @@ marketplace), you must pass identifying information when creating an account.
 Upon verification, the seller account will acquire the ``merchant`` role, and
 will be able to have credits created against it.
 
+merchant-view
+-------------
+
 .. _merchant-view:
 
 ``id``
