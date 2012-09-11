@@ -66,19 +66,6 @@ debit-view
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-
-Refer to the `debit schema <./debits.rst#debit-view>`_.
-
-
 Update
 ======
 
@@ -107,11 +94,11 @@ debit-update-form
 Errors
 ------
 
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+`hold-not-associated-marketplace <../errors.rst#hold-not-associated-marketplace>`_
     :status code: 409
     :category type: logical
 
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+`hold-not-associated-account <../errors.rst#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 
@@ -205,30 +192,43 @@ Exactly one of
 Errors
 ------
 
-`authorization-failed <'../errors.rst'#authorization-failed>`_
+`authorization-failed <../errors.rst#authorization-failed>`_
     :status code: 402
     :category type: banking
 
-`authorization-expired <'../errors.rst'#authorization-expired>`_
+`authorization-expired <../errors.rst#authorization-expired>`_
     :status code: 409
     :category type: logical
 
-`cannot-capture-authorization <'../errors.rst'#cannot-capture-authorization>`_
+`cannot-capture-authorization <../errors.rst#cannot-capture-authorization>`_
     :status code: 409
     :category type: logical
 
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+`hold-not-associated-marketplace <../errors.rst#hold-not-associated-marketplace>`_
     :status code: 409
     :category type: logical
 
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+`hold-not-associated-account <../errors.rst#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 
-`no-funding-source <'../errors.rst'#no-funding-source>`_
+`no-funding-source <../errors.rst#no-funding-source>`_
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+
+Refer to the `debit schema <./debits.rst#debit-view>`_.
 
 
 

@@ -62,14 +62,37 @@ credits to merchants are credited from this same account.
 
 
 
-Show
-====
+Update
+======
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Refer to the
-`marketplace schema <./marketplaces.rst#marketplace-view>`_.
+marketplace-update-form
+-----------------------
+
+.. _marketplace-update-form:
+
+``name``
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+
+
+``support_email_address``
+    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+
+
+``support_phone_number``
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+
+
+``domain_url``
+    *string*. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+
+
 
 
 Create
@@ -130,55 +153,32 @@ marketplace-create-form
 Errors
 ------
 
-`marketplace-already-created <'../errors.rst'#marketplace-already-created>`_
+`marketplace-already-created <../errors.rst#marketplace-already-created>`_
     :status code: 409
     :category type: logical
 
-`incomplete-account-info <'../errors.rst'#incomplete-account-info>`_
+`incomplete-account-info <../errors.rst#incomplete-account-info>`_
     :status code: 400
     :category type: request
 
-`cannot-associate-merchant-with-account <'../errors.rst'#cannot-associate-merchant-with-account>`_
+`cannot-associate-merchant-with-account <../errors.rst#cannot-associate-merchant-with-account>`_
     :status code: 409
     :category type: logical
 
-`duplicate-email-address <'../errors.rst'#duplicate-email-address>`_
+`duplicate-email-address <../errors.rst#duplicate-email-address>`_
     :status code: 409
     :category type: logical
 
 
 
-Update
-======
+Show
+====
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
-marketplace-update-form
------------------------
-
-.. _marketplace-update-form:
-
-``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
-
-
-``support_email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
-
-
-``support_phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
-
-
-``domain_url``
-    *string*. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
-
-
+Refer to the
+`marketplace schema <./marketplaces.rst#marketplace-view>`_.
 
 
 
