@@ -50,26 +50,6 @@ to the amount refunded.
 
 
 
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
-
-
 Create
 ======
 
@@ -89,6 +69,67 @@ Errors
     :status code: 409
     :category type: logical
 
+
+
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
+:methods: ``POST``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
+:methods: ``POST``
+
+.. _refund-create-form:
+
+``amount``
+    *integer*. 
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+``debit_uri``
+    *string*. URI. If the resolving URI references a ``debit`` then that is used as the
+    default. Otherwise no default is provided and this field is
+    **required**.
+
+
+.. _refund-create-errors:
+
+Errors
+------
+
+`invalid-amount <'../errors.rst'#invalid-amount>`_
+    :status code: 400
+    :category type: request
+
+`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
 
 
 Update
@@ -141,47 +182,6 @@ Index
 
 
 .. _refunds-view:
-
-
-Create
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`refunds <./refunds.rst>`_
-:methods: ``POST``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
-:methods: ``POST``
-
-.. _refund-create-form:
-
-``amount``
-    *integer*. 
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-``debit_uri``
-    *string*. URI. If the resolving URI references a ``debit`` then that is used as the
-    default. Otherwise no default is provided and this field is
-    **required**.
-
-
-.. _refund-create-errors:
-
-Errors
-------
-
-`invalid-amount <'../errors.rst'#invalid-amount>`_
-    :status code: 400
-    :category type: request
-
-`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
-    :status code: 409
-    :category type: logical
-
 
 
 

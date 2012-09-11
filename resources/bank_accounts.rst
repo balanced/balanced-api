@@ -41,6 +41,52 @@ can begin transferring with it.
 
 
 
+Create
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
+:methods: ``POST``
+
+.. _account-bank-account-create-form:
+
+Request
+-------
+
+Exactly one of
+
+    ``uri``
+        *string*. Tokenized bank account URI.
+
+
+    ``bank_account_uri``
+        *string*. Tokenized bank account URI.
+
+
+    ``*object*``
+        See `bank account create form <./bank_accounts.rst#create>`_.
+
+
+Response
+--------
+
+`bank-account-not-valid <../errors.rst#bank-account-not-valid>`_
+    :status code: 409
+    :category type: logical
+
+`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
+    :status code: 409
+    :category type: logical
+
+`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
+    :status code: 409
+    :category type: logical
+
+`invalid-routing-number <../errors.rst#invalid-routing-number>`_
+    :status code: 400
+    :category type: request
+
+
+
 Show
 ====
 
@@ -49,6 +95,46 @@ Show
 
 Click `here <./bank_accounts.rst#bank-account-view>`_ for the
 ``bank_account`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``PUT``
+
+.. _account-bank-account-update-form:
+
+Request
+-------
+
+``is_valid``
+    *boolean*. Flag indicating whether the bank account is active (``true``) or not
+    (``false``). Setting this to ``false`` will deactivate the bank account.
+
+
+Exactly one of
+
+    ``account_uri``
+        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
+
+
+    ``account``
+        *object*. An *object*  containing a `uri` field. The account referenced by
+        `uri` will be associated with the bank account:
+
+        ``uri``
+            *string*. URI. Defaults to ``null``.
+
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+Response
+--------
+
 
 
 Update
@@ -107,46 +193,6 @@ Response
 
 
 
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``PUT``
-
-.. _account-bank-account-update-form:
-
-Request
--------
-
-``is_valid``
-    *boolean*. Flag indicating whether the bank account is active (``true``) or not
-    (``false``). Setting this to ``false`` will deactivate the bank account.
-
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
-
-
-    ``account``
-        *object*. An *object*  containing a `uri` field. The account referenced by
-        `uri` will be associated with the bank account:
-
-        ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-Response
---------
-
-
-
 Index
 =====
 
@@ -161,62 +207,6 @@ Index
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
 :methods: ``HEAD``, ``GET``
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the
-``bank_account`` schema.
-
-
-Create
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``POST``
-
-.. _account-bank-account-create-form:
-
-Request
--------
-
-Exactly one of
-
-    ``uri``
-        *string*. Tokenized bank account URI.
-
-
-    ``bank_account_uri``
-        *string*. Tokenized bank account URI.
-
-
-    ``*object*``
-        See `bank account create form <./bank_accounts.rst#create>`_.
-
-
-Response
---------
-
-`bank-account-not-valid <../errors.rst#bank-account-not-valid>`_
-    :status code: 409
-    :category type: logical
-
-`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
-    :status code: 409
-    :category type: logical
-
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
 
 
 
@@ -266,6 +256,16 @@ Response
     :status code: 400
     :category type: request
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the
+``bank_account`` schema.
 
 
 
