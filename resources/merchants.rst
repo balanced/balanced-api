@@ -61,14 +61,12 @@ will be able to have credits created against it.
     *string*. 
 
 
-Show
-====
+Update
+======
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Click `here <./merchants.rst#merchant-view>`_
-for the ``merchant`` schema.
 
 
 Index
@@ -79,12 +77,14 @@ Index
 
 
 
-Update
-======
+Show
+====
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
+Click `here <./merchants.rst#merchant-view>`_
+for the ``merchant`` schema.
 
 
 
