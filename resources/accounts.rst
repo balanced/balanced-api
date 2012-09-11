@@ -69,9 +69,11 @@ Allows partial updates to accounts within your marketplace.
 
    Exactly one of
 
+       ``merchant_uri``
            *string*. URI. Defaults to ``null``.
 
 
+       ``merchant``
            *object*. 
 
            See `merchant create form
@@ -84,9 +86,11 @@ Allows partial updates to accounts within your marketplace.
 
    Exactly one of
 
+       ``merchant_uri``
            *string*. URI. Defaults to ``null``.
 
 
+       ``merchant``
            *object*. 
 
            See `merchant update form

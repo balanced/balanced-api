@@ -12,7 +12,7 @@ can begin transferring with it.
     *string*. The resource identifier.
 
 ``uri``
-    *string*. The URI of the bank account object
+    *string*. The URI of the bank account object 
 
 ``name``
     *string*. The name on the bank account.
@@ -49,6 +49,55 @@ Show
 
 Click `here <./bank_accounts.rst#bank-account-view>`_ for the
 ``bank_account`` schema.
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
+:methods: ``PUT``
+
+.. _account-bank-account-update-form:
+
+Request
+-------
+
+``is_valid``
+    *boolean*. Flag indicating whether the bank account is active (``true``) or not
+    (``false``). Setting this to ``false`` will deactivate the bank account.
+
+
+Exactly one of
+
+    ``account_uri``
+        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
+
+
+    ``account``
+        *object*. An *object*  containing a `uri` field. The account referenced by
+        `uri` will be associated with the bank account:
+
+        ``uri``
+            *string*. URI. Defaults to ``null``.
+
+
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+Response
+--------
+
+
+
+Index
+=====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _bank-accounts-view:
 
 
 Update
@@ -107,55 +156,6 @@ Response
 
 
 
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``PUT``
-
-.. _account-bank-account-update-form:
-
-Request
--------
-
-``is_valid``
-    *boolean*. Flag indicating whether the bank account is active (``true``) or not
-    (``false``). Setting this to ``false`` will deactivate the bank account.
-
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
-
-
-    ``account``
-        *object*. An *object*  containing a `uri` field. The account referenced by
-        `uri` will be associated with the bank account:
-
-        ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-Response
---------
-
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _bank-accounts-view:
-
-
 Index
 =====
 
@@ -170,8 +170,8 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the ``bank_account``
-schema.
+Click `here <./bank_accounts.rst#bank-account-view>`_ for the
+``bank_account`` schema.
 
 
 Create
@@ -239,12 +239,14 @@ Create
 ``bank_code``
     #. If a *production* bank account then `bank_code` is a:
 
+       ``bank_code``
            *string*. Bank account code. This is commonly referred to as the routing number in
            the ``USA``. Length must be **=** ``9``.
 
 
     #. If not a *production* bank account then `bank_code` is a:
 
+       ``bank_code``
            *string*. Sequence of characters. Length must be **>=** ``1``.
 
 

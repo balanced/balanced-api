@@ -21,10 +21,10 @@ Errors
     *object*. Any extra information associated with this exception.
 
 ``description``
-    *string*. Description of the exception
+    *string*. Description of the exception 
 
 ``request_id``
-    *string*. An ID that can be used to identify and debug the exception.
+    *string*. An ID that can be used to identify and debug the exception. 
 
 .. _address-verification-failed:
 

@@ -10,10 +10,10 @@ will be able to have credits created against it.
 .. _merchant-view:
 
 ``id``
-    *string*. The resource identifier.
+    *string*. The resource identifier. 
 
 ``uri``
-    *string*. The URI of this merchant.
+    *string*. The URI of this merchant. 
 
 ``created_at``
     *string*. When this merchant was created.

@@ -47,8 +47,7 @@ you must create a debit.
     *integer*. The fee charged by Balanced for this credit.
 
 ``destination``
-    *object*. The funding destination for this credit (i.e., a bank account).
-    See `bank account view
+    *object*. The funding destination for this credit (i.e., a bank account). See `bank account view
     <./bank_accounts.rst#bank-account-view>`_.
 
 

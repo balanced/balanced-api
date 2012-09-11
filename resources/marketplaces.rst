@@ -10,10 +10,10 @@ credits to merchants are credited from this same account.
 .. _marketplace-view:
 
 ``id``
-    *string*. The resource identifier.
+    *string*. The resource identifier. 
 
 ``uri``
-    *string*. The URI of this marketplace
+    *string*. The URI of this marketplace 
 
 ``name``
     *string*. Name of this marketplace.
@@ -33,8 +33,7 @@ credits to merchants are credited from this same account.
     *integer*. Amount (in cents) in the escrow account for this marketplace.
 
 ``owner_account``
-    *object*. The account owning this marketplace.
-    See `account view
+    *object*. The account owning this marketplace. See `account view
     <./accounts.rst#account-view>`_.
 
 ``debits_uri``

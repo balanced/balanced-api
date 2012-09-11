@@ -27,7 +27,7 @@ The card resource is composed of the following fields:
     *string*. The resource identifier.
 
 ``uri``
-    *string*. The URI of the card
+    *string*. The URI of the card 
 
 ``account``
     *object*. The account this card is associated with.
@@ -67,7 +67,7 @@ The card resource is composed of the following fields:
 
 ``brand``
     *string*. The brand of the card. One of: ``Visa``, ``MasterCard``,
-    ``American Express``, or ``Discover``.
+    ``American Express``, or ``Discover``. 
 
 ``is_valid``
     *boolean*. A boolean value indicating whether or not the card is valid. Once

@@ -53,7 +53,7 @@ marked as expired and you cannot capture any remaining value.
     *string*. A URI for a Balanced entity
 
 ``is_void``
-    *boolean*. A boolean flag indicating if the hold has been voided or not.
+    *boolean*. A boolean flag indicating if the hold has been voided or not. 
 
 ``source``
     *object*. The funding source for this hold.

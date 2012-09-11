@@ -27,8 +27,7 @@ refunded proportionally to the amount refunded.
 
 ``hold``
     *object*. The original hold for this debit, if this debit was to a card.
-    If the debit was to a bank account, this field will be null.
-    See `hold view
+    If the debit was to a bank account, this field will be null. See `hold view
     <./holds.rst#hold-view>`_.
 
 ``refunds_uri``
@@ -58,10 +57,8 @@ refunded proportionally to the amount refunded.
     *string*. An identifier for this transaction.
 
 ``source``
-    *object*. The funding source (card or bank account) for this debit.
-        See `card view <./cards.rst#card-view>`_.
-            **or**
-        See `bank account view <./bank_accounts.rst#bank-account-view>`_.
+    *object*. The funding source (card or bank account) for this debit. See `card view <./cards.rst#card-view>`_.
+     **or** See `bank account view <./bank_accounts.rst#bank-account-view>`_.
 
 
 

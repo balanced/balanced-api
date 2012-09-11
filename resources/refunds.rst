@@ -42,8 +42,7 @@ to the amount refunded.
     *string*. An identifier for this transaction.
 
 ``debit``
-    *object*. The original debit associated with the refund.
-    See `debit view
+    *object*. The original debit associated with the refund. See `debit view
     <./debits.rst#debit-view>`_.
 
 ``meta``

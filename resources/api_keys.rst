@@ -23,7 +23,7 @@ requests in order to authenticate the request.
 
 ``secret``
     *string*. The secret associated with this API key. Will only be shown if passed
-    in the original request.
+    in the original request. 
 
 ``meta``
     *object*. A single-level dictionary of string-type key/value pairs.
