@@ -94,7 +94,7 @@ refund-create-form
 ``amount``
     *integer*. 
 ``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 ``meta``
@@ -157,11 +157,11 @@ debit-refund-update-form
 .. _debit-refund-update-form:
 
 ``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 
@@ -180,11 +180,11 @@ refund-update-form
 .. _refund-update-form:
 
 ``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 

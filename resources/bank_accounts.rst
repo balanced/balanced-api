@@ -126,7 +126,7 @@ Request
 Exactly one of
 
     ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
+        *string*. URI of an account with which to associate the bank account. Ignored if not updated.
 
 
     ``account``
@@ -139,7 +139,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Response
@@ -173,7 +173,7 @@ Request
 Exactly one of
 
     ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Defaults to ``null``.
+        *string*. URI of an account with which to associate the bank account. Ignored if not updated.
 
 
     ``account``
@@ -186,7 +186,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Response

@@ -155,15 +155,15 @@ Required fields:
 Optional fields:
 
 ``security_code``
-    *string*. The 3-4 digit security code for the card. Defaults to ``null``.
+    *string*. The 3-4 digit security code for the card. Ignored if not updated.
 
 
 ``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Ignored if not updated.
 
 
 ``phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Ignored if not updated.
 
 
 ``city``
@@ -174,11 +174,11 @@ Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**. Defaults to ``null``.
+        **deprecated**. Ignored if not updated.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**. Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**. Ignored if not updated.
 
 
 ``postal_code``
@@ -261,7 +261,7 @@ account-card-update-form
 Exactly one of
 
     ``account_uri``
-        *string*. URI. Defaults to ``null``.
+        *string*. URI. Ignored if not updated.
 
 
     ``account``
@@ -271,7 +271,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Response
@@ -299,7 +299,7 @@ card-update-form
 Exactly one of
 
     ``account_uri``
-        *string*. URI. Defaults to ``null``.
+        *string*. URI. Ignored if not updated.
 
 
     ``account``
@@ -309,7 +309,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Response

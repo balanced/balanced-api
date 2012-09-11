@@ -114,7 +114,7 @@ buyer-account-create-form
 Exactly one of
 
     ``card_uri``
-        *string*. The URI of the tokenized card. Defaults to ``null``.
+        *string*. The URI of the tokenized card. Ignored if not updated.
 
 
     ``card``
@@ -126,7 +126,7 @@ Exactly one of
         See `card create form <./cards.rst#card-create-form>`_.
 
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 Creating a merchant
@@ -160,7 +160,7 @@ user.
 Exactly one of
 
     ``bank_account_uri``
-        *string*. The URI of the bank account created via *balanced.js*. Defaults to ``null``.
+        *string*. The URI of the bank account created via *balanced.js*. Ignored if not updated.
 
 
     ``bank_account``
@@ -171,14 +171,14 @@ Exactly one of
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 Exactly one of
 
     ``merchant_uri``
         *string*. The URI of the merchant account created during a request for more
-        information. Defaults to ``null``.
+        information. Ignored if not updated.
 
 
     ``merchant``
@@ -189,7 +189,7 @@ Exactly one of
         See `merchant create form
         <./accounts.rst#merchant-account-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 Creating a business
@@ -216,7 +216,7 @@ registered business information.
 Exactly one of
 
     ``bank_account_uri``
-        *string*. The URI of the bank account created via *balanced.js*. Defaults to ``null``.
+        *string*. The URI of the bank account created via *balanced.js*. Ignored if not updated.
 
 
     ``bank_account``
@@ -227,14 +227,14 @@ Exactly one of
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 Exactly one of
 
     ``merchant_uri``
         *string*. The URI of the merchant account created during a request for more
-        information. Defaults to ``null``.
+        information. Ignored if not updated.
 
 
     ``merchant``
@@ -245,7 +245,7 @@ Exactly one of
         See `merchant create form
         <./accounts.rst#merchant-account-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 merchant-account-create-form
@@ -290,7 +290,7 @@ merchant-account-create-form
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Ignored if not updated.
 
 
 ``city``
@@ -301,11 +301,11 @@ Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**. Defaults to ``null``.
+        **deprecated**. Ignored if not updated.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**. Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**. Ignored if not updated.
 
 
 ``postal_code``
@@ -345,11 +345,11 @@ Exactly one of
 
     ``region``
         *string*. Region (e.g. state, province, etc). This field has been
-        **deprecated**. Defaults to ``null``.
+        **deprecated**. Ignored if not updated.
 
 
     ``state``
-        *string*. US state. This field has been **deprecated**. Defaults to ``null``.
+        *string*. US state. This field has been **deprecated**. Ignored if not updated.
 
 
 ``postal_code``
@@ -369,7 +369,7 @@ Exactly one of
 
 
 ``tax_id``
-    *string*. Length must be **=** ``9``. Defaults to ``null``.
+    *string*. Length must be **=** ``9``. Ignored if not updated.
 
 
 Response
@@ -409,7 +409,7 @@ account-update-form
    Exactly one of
 
        ``merchant_uri``
-           *string*. URI. Defaults to ``null``.
+           *string*. URI. Ignored if not updated.
 
 
        ``merchant``
@@ -418,7 +418,7 @@ account-update-form
            See `merchant create form
            <./accounts.rst#merchant-account-create-form>`_.
 
-           Defaults to ``null``.
+           Ignored if not updated.
 
 
 #. If `account` is not a merchant then:
@@ -426,7 +426,7 @@ account-update-form
    Exactly one of
 
        ``merchant_uri``
-           *string*. URI. Defaults to ``null``.
+           *string*. URI. Ignored if not updated.
 
 
        ``merchant``
@@ -436,26 +436,26 @@ account-update-form
            <./accounts.rst#merchant-update-form>`_.
 
 
-           Defaults to ``null``.
+           Ignored if not updated.
 
 
 
 ``name``
-    *string*. The display ``name`` of the account. Length must be **<=** ``128``. Defaults to ``null``.
+    *string*. The display ``name`` of the account. Length must be **<=** ``128``. Ignored if not updated.
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Ignored if not updated.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Exactly one of
 
     ``card_uri``
-        *string*. Tokenized card URI. Defaults to ``null``.
+        *string*. Tokenized card URI. Ignored if not updated.
 
 
     ``card``
@@ -466,13 +466,13 @@ Exactly one of
         See `card create form
         <./cards.rst#card-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 Exactly one of
 
     ``bank_account_uri``
-        *string*. Tokenized bank account URI. Defaults to ``null``.
+        *string*. Tokenized bank account URI. Ignored if not updated.
 
 
     ``bank_account``
@@ -483,7 +483,7 @@ Exactly one of
         See `bank account create form
         <./bank_accounts.rst#bank-account-create-form>`_.
 
-        Defaults to ``null``.
+        Ignored if not updated.
 
 
 merchant-update-form
@@ -495,19 +495,19 @@ Merchant Update Form
 --------------------
 
 ``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Ignored if not updated.
 
 
 ``email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Ignored if not updated.
 
 
 ``phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Ignored if not updated.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 ``bank_account``
@@ -516,7 +516,7 @@ Merchant Update Form
     See `bank account create form
     <./bank_accounts.rst#bank-account-create-form>`_.
 
-    Defaults to ``null``.
+    Ignored if not updated.
 
 
 Response

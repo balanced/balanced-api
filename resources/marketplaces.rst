@@ -163,19 +163,19 @@ marketplace-update-form
 .. _marketplace-update-form:
 
 ``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.
+    *string*. Sequence of characters. Length must be **<=** ``128``. Ignored if not updated.
 
 
 ``support_email_address``
-    *string*. RFC-2822 formatted email address. Defaults to ``null``.
+    *string*. RFC-2822 formatted email address. Ignored if not updated.
 
 
 ``support_phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``null``.
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Ignored if not updated.
 
 
 ``domain_url``
-    *string*. Defaults to ``null``.
+    *string*. Ignored if not updated.
 
 
 ``meta``

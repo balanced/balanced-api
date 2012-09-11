@@ -45,7 +45,7 @@ Update
 .. _api-key-update-form:
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 
@@ -83,7 +83,7 @@ api-key-create-form
 
 
 ``secret``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 `invalid-routing-number <../errors.rst#invalid-routing-number>`_

@@ -88,11 +88,11 @@ credit-update-form
 .. _credit-update-form:
 
 ``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
+    *object*. Single level mapping from string keys to string values. Ignored if not updated.
 
 
 Response
@@ -129,7 +129,7 @@ credit-create-form
 ``amount``
     *integer*. 
 ``description``
-    *string*. Sequence of characters. Defaults to ``null``.
+    *string*. Sequence of characters. Ignored if not updated.
 
 
 ``meta``
@@ -144,7 +144,7 @@ credit-create-form
     - Digits (``0-9``)
     - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``)
 
-    Any other characters will be rejected. Length must be **<=** ``22``. Defaults to ``null``.
+    Any other characters will be rejected. Length must be **<=** ``22``. Ignored if not updated.
 
 
 ``account_uri``
@@ -156,11 +156,11 @@ credit-create-form
 Exactly one of
 
     ``destination_uri``
-        *string*. URI. Defaults to ``null``.
+        *string*. URI. Ignored if not updated.
 
 
     ``bank_account_uri``
-        *string*. URI. Defaults to ``null``.
+        *string*. URI. Ignored if not updated.
 
 
 Response
