@@ -42,7 +42,8 @@ refunded proportionally to the amount refunded.
     <./accounts.rst#account-view>`_.
 
 ``created_at``
-    *string*. When this debit was created.
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    debit was created.
 
 ``fee``
     *integer*. The fee Balanced charged for this debit.
@@ -51,7 +52,8 @@ refunded proportionally to the amount refunded.
     *object*. A single-level dictionary of string-type key/value pairs.
 
 ``available_at``
-    *string*. The date on which the transaction is guaranteed to be completed.
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    transaction is guaranteed to clear.
 
 ``transaction_number``
     *string*. An identifier for this transaction.
@@ -59,19 +61,6 @@ refunded proportionally to the amount refunded.
 ``source``
     *object*. The funding source (card or bank account) for this debit. See `card view <./cards.rst#card-view>`_  **or** see `bank account view <./bank_accounts.rst#bank-account-view>`_  
 
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``HEAD``, ``GET``
-
-Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
 
 
 Update
@@ -107,6 +96,19 @@ Errors
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
 
 
 Create

@@ -16,7 +16,8 @@ will be able to have credits created against it.
     *string*. The URI of this merchant. 
 
 ``created_at``
-    *string*. When this merchant was created.
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    merchant was underwritten.
 
 ``type``
     *string*. Merchant type. It will be one of:
@@ -60,12 +61,14 @@ will be able to have credits created against it.
     *string*. 
 
 
-Update
-======
+Show
+====
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``PUT``
+:methods: ``HEAD``, ``GET``
 
+Click `here <./merchants.rst#merchant-view>`_
+for the ``merchant`` schema.
 
 
 Index
@@ -76,14 +79,12 @@ Index
 
 
 
-Show
-====
+Update
+======
 
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
-:methods: ``HEAD``, ``GET``
+:methods: ``PUT``
 
-Click `here <./merchants.rst#merchant-view>`_
-for the ``merchant`` schema.
 
 
 

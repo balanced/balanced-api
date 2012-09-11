@@ -24,7 +24,8 @@ you must create a debit.
     *integer*. Amount of the credit.
 
 ``created_at``
-    *string*. Time of creation.
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    credit was created.
 
 ``description``
     *string*. A description of the credit, used for display purposes.
@@ -41,7 +42,8 @@ you must create a debit.
     *string*. An identifier for this transaction.
 
 ``available_at``
-    *string*. The date on which the credit will be available to the merchant.
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    credit will be available to the merchant.
 
 ``fee``
     *integer*. The fee charged by Balanced for this credit.
@@ -50,20 +52,6 @@ you must create a debit.
     *object*. The funding destination for this credit (i.e., a bank account). See `bank account view
     <./bank_accounts.rst#bank-account-view>`_.
 
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
-:methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _credit-index:
-
-
-.. _credits-view:
 
 
 Update
@@ -91,15 +79,18 @@ Response
 --------
 
 
-Show
-====
+Index
+=====
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_
 :methods: ``HEAD``, ``GET``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
 :methods: ``HEAD``, ``GET``
 
-Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
+.. _credit-index:
+
+
+.. _credits-view:
 
 
 Create
@@ -163,6 +154,17 @@ Response
     :status code: 409
     :category type: logical
 
+
+
+Show
+====
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`credits <./credits.rst>`_/<*credit*>
+:methods: ``HEAD``, ``GET``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
+:methods: ``HEAD``, ``GET``
+
+Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
 
 
 
