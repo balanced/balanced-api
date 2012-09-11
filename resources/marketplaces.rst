@@ -7,6 +7,9 @@ A marketplace is where buyers and merchants transact with each other.
 Debits from buyers are credited to the marketplace's escrow account, and
 credits to merchants are credited from this same account.
 
+marketplace-view
+----------------
+
 .. _marketplace-view:
 
 ``id``

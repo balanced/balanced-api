@@ -21,6 +21,9 @@ Operate on a card in an account context using the following endpoints:
 
 The card resource is composed of the following fields:
 
+card-view
+---------
+
 .. _card-view:
 
 ``id``

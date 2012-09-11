@@ -6,6 +6,9 @@ A bank account represents both a source, and a destination of funds. It
 must be associated with an account via a PUT on the account before you
 can begin transferring with it.
 
+bank-account-view
+-----------------
+
 .. _bank-account-view:
 
 ``id``
