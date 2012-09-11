@@ -220,7 +220,7 @@ Show an account's card
 
 .. _account-card-show:
 
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+Refer to the `card schema <./cards.rst#card-view>`_.
 
 
 Get a card
@@ -231,7 +231,7 @@ Get a card
 
 .. _card-show:
 
-Click `here <./cards.rst#card-view>`_ for the ``card`` schema.
+Refer to the `card schema <./cards.rst#card-view>`_.
 
 
 Update an account's card
@@ -241,6 +241,9 @@ Update an account's card
 :methods: ``PUT``
 
 .. _account-card-update:
+
+account-card-update-form
+------------------------
 
 .. _account-card-update-form:
 
@@ -276,6 +279,9 @@ Invalidate a card
 :methods: ``PUT``
 
 .. _card-update:
+
+card-update-form
+----------------
 
 .. _card-update-form:
 

@@ -73,7 +73,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./debits.rst#debit-view>`_ for the ``debit`` schema.
+Refer to the `debit schema <./debits.rst#debit-view>`_.
 
 
 Update
@@ -85,6 +85,9 @@ Update
 :methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
 :methods: ``PUT``
+
+debit-update-form
+-----------------
 
 .. _debit-update-form:
 
@@ -120,6 +123,9 @@ Create
 :methods: ``POST``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_
 :methods: ``POST``
+
+debit-create-form
+-----------------
 
 .. _debit-create-form:
 

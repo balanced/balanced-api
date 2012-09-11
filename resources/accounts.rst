@@ -62,7 +62,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./accounts.rst#account-view>`_ for the ``account`` schema.
+Refer to the `account schema <./accounts.rst#account-view>`_.
 
 
 Index
@@ -399,6 +399,9 @@ Update
 
 Allows partial updates to accounts within your marketplace.
 
+account-update-form
+-------------------
+
 .. _account-update-form:
 
 #. If `account` is a merchant then:
@@ -483,10 +486,13 @@ Exactly one of
         Defaults to ``null``.
 
 
+merchant-update-form
+--------------------
+
 .. _merchant-update-form:
 
 Merchant Update Form
---------------------
+````````````````````
 
 ``name``
     *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``null``.

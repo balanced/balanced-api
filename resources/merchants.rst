@@ -83,8 +83,7 @@ Show
 :uri: /v1/`merchants <./merchants.rst>`_/<*merchant*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./merchants.rst#merchant-view>`_
-for the ``merchant`` schema.
+Refer to the `merchant schema <./merchants.rst#merchant-view>`_.
 
 
 

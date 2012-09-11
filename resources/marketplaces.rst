@@ -68,8 +68,8 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./marketplaces.rst#marketplace-view>`_
-for the ``marketplace`` schema.
+Refer to the
+`marketplace schema <./marketplaces.rst#marketplace-view>`_.
 
 
 Create
@@ -77,6 +77,9 @@ Create
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_
 :methods: ``POST``
+
+marketplace-create-form
+------------------------
 
 .. _marketplace-create-form:
 
@@ -150,6 +153,9 @@ Update
 
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>
 :methods: ``PUT``
+
+marketplace-update-form
+-----------------------
 
 .. _marketplace-update-form:
 

@@ -80,6 +80,9 @@ Create
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
 :methods: ``POST``
 
+refund-create-form
+------------------
+
 .. _refund-create-form:
 
 ``amount``
@@ -119,7 +122,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>/`refunds <./refunds.rst>`_/<*refund*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+Refer to the `refund schema <./refunds.rst#refund-view>`_.
 
 
 Show
@@ -130,7 +133,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./refunds.rst#refund-view>`_ for the ``refund`` schema.
+Refer to the `refund schema <./refunds.rst#refund-view>`_.
 
 
 Update
@@ -159,6 +162,9 @@ Update
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_/<*refund*>
 :methods: ``PUT``
 
+refund-update-form
+------------------
+
 .. _refund-update-form:
 
 ``description``
@@ -178,6 +184,9 @@ Index
 :methods: ``HEAD``, ``GET``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`refunds <./refunds.rst>`_
 :methods: ``HEAD``, ``GET``
+
+refund-index-query
+------------------
 
 .. _refund-index-query:
 

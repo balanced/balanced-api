@@ -97,8 +97,8 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the
-``bank_account`` schema.
+Refer to the
+`bank_account schema <./bank_accounts.rst#bank-account-view>`_.
 
 
 Update
@@ -150,8 +150,8 @@ Update
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``PUT``
 
-You may invalidate a bank account by passing ``is_valid`` with a False
-value. Once a bank account has been invalidated it cannot be
+You may invalidate a bank account by passing ``is_valid`` with a
+``false`` value. Once a bank account has been invalidated it cannot be
 re-activated, you must create a new bank account.
 
 bank-account-update-form
@@ -280,8 +280,8 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./bank_accounts.rst#bank-account-view>`_ for the
-``bank_account`` schema.
+Refer to the
+`bank_account schema <./bank_accounts.rst#bank-account-view>`_.
 
 
 

@@ -72,7 +72,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./holds.rst#hold-view>`_ for the ``hold`` schema.
+Refer to the `hold schema <./holds.rst#hold-view>`_.
 
 
 Create
@@ -82,6 +82,9 @@ Create
 :methods: ``POST``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_
 :methods: ``POST``
+
+hold-create-form
+----------------
 
 .. _hold-create-form:
 
@@ -148,6 +151,9 @@ Update
 :methods: ``PUT``
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>
 :methods: ``PUT``
+
+hold-update-form
+----------------
 
 .. _hold-update-form:
 

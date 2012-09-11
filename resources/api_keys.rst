@@ -55,7 +55,7 @@ Show
 :uri: /v1/`api_keys <./api_keys.rst>`_/<*api_key*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./api_keys.rst#api-key-view>`_ for the ``api_key`` schema.
+Refer to the `api_key schema <./api_keys.rst#api-key-view>`_.
 
 
 Create

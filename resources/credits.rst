@@ -79,6 +79,9 @@ Update
 Request
 -------
 
+credit-update-form
+``````````````````
+
 .. _credit-update-form:
 
 ``description``
@@ -101,7 +104,7 @@ Show
 :uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_/<*credit*>
 :methods: ``HEAD``, ``GET``
 
-Click `here <./credits.rst#credit-view>`_ for the ``credit`` schema.
+Refer to the `credit schema <./credits.rst#credit-view>`_.
 
 
 Create
@@ -114,6 +117,9 @@ Create
 
 Request
 -------
+
+credit-create-form
+``````````````````
 
 .. _credit-create-form:
 
