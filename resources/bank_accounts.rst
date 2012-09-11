@@ -129,7 +129,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Response
@@ -173,7 +173,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Response
@@ -242,11 +242,11 @@ Create
 
 
 ``account_type``
-    *string*. Bank account type. It should be one of: ``checking``, ``savings`` Defaults to checking
+    *string*. Bank account type. It should be one of: ``checking``, ``savings`` Defaults to ``checking``
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Response

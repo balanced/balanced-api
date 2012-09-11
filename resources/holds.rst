@@ -107,7 +107,7 @@ Create
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Exactly one of
@@ -154,7 +154,7 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``is_void``

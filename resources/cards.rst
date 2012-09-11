@@ -187,16 +187,16 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to USA
+    three character country code. Defaults to ``USA``
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``is_valid``
     *boolean*. Indicates whether the card is active (``true``) or has been deactivated
-    (``false``). Defaults to true
+    (``false``). Defaults to ``true``
 
 
 A card create request must provide all the required fields alongside
@@ -261,7 +261,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Response
@@ -296,7 +296,7 @@ Exactly one of
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Response

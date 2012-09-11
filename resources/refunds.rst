@@ -88,7 +88,7 @@ Create
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``debit_uri``
@@ -145,7 +145,7 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 
@@ -165,7 +165,7 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 

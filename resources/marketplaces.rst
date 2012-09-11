@@ -81,23 +81,23 @@ Create
 .. _marketplace-create-form:
 
 ``support_email_address``
-    *string*. RFC-2822 formatted email address. Defaults to support@example.com
+    *string*. RFC-2822 formatted email address. Defaults to ``support@example.com``
 
 
 ``name``
-    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to Test Marketplace
+    *string*. Sequence of characters. Length must be **<=** ``128``. Defaults to ``Test Marketplace``
 
 
 ``domain_url``
-    *string*. Defaults to example.com
+    *string*. Defaults to ``example.com``
 
 
 ``support_phone_number``
-    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to +16505551234
+    *string*. E.164 formatted phone number. Length must be **<=** ``15``. Defaults to ``+16505551234``
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``owner_account``
@@ -170,7 +170,7 @@ Update
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 

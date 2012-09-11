@@ -261,16 +261,17 @@ Merchant Create Form
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``tax_id``
-    *string*. Length must be **=** ``9``. For *person* merchants `tax_id` is optional, defaulting to null. For
-    *business* merchants `tax_id` is required.
+    *string*. Length must be **=** ``9``. For *person* merchants `tax_id` is optional, defaulting to ``null``.
+    For *business* merchants `tax_id` is required.
 
 
 ``dob``
-    *string*. Date-of-birth formatted as YYYY-MM-DD. null
+    *string*. Date-of-birth formatted as YYYY-MM-DD. For *person* merchants `dob` is required. For *business* merchants
+    `dob` is optional, defaulting to ``null``.
 
 
 ``person``
@@ -319,7 +320,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to USA
+    three character country code. Defaults to ``USA``
 
 
 Person Create Form
@@ -361,7 +362,7 @@ Exactly one of
 ``country_code``
     *string*. `ISO-3166-3
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
-    three character country code. Defaults to USA
+    three character country code. Defaults to ``USA``
 
 
 ``tax_id``
@@ -442,7 +443,7 @@ Allows partial updates to accounts within your marketplace.
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 Exactly one of
@@ -497,7 +498,7 @@ Merchant Update Form
 
 
 ``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
+    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
 
 
 ``bank_account``
