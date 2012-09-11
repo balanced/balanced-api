@@ -67,7 +67,7 @@
 
 `bank_account`
 : **object**
-: [Bank Account](./resources.md#bank-account)
+: [Bank Account](./resources/bank_accounts.md)
 
 
 ## Bank Account Credit
@@ -104,4 +104,4 @@
 
 `bank_account`
 : **object**
-: [Bank Account](./resources.md#bank-account)
+: [Bank Account](./resources/bank_accounts.md)
