@@ -23,9 +23,7 @@ merchant-view
     merchant was underwritten.
 
 ``type``
-    *string*. Merchant type. It will be one of:
-        - ``person``
-        - ``business``
+    *string*. Merchant type. It will be one of: ``person`` or ``business``
 
 ``name``
     *string*. The name of the business, for a business-type merchant.
