@@ -60,6 +60,14 @@ will be able to have credits created against it.
     *string*. 
 
 
+Index
+=====
+
+:uri: /v1/`merchants <./merchants.rst>`_
+:methods: ``HEAD``, ``GET``
+
+
+
 Show
 ====
 
@@ -68,14 +76,6 @@ Show
 
 Click `here <./merchants.rst#merchant-view>`_
 for the ``merchant`` schema.
-
-
-Index
-=====
-
-:uri: /v1/`merchants <./merchants.rst>`_
-:methods: ``HEAD``, ``GET``
-
 
 
 Update

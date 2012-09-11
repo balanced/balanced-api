@@ -57,43 +57,7 @@ refunded proportionally to the amount refunded.
     *string*. An identifier for this transaction.
 
 ``source``
-    *object*. The funding source (card or bank account) for this debit. See `card view <./cards.rst#card-view>`_.
-     **or** See `bank account view <./bank_accounts.rst#bank-account-view>`_.
-
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
-:methods: ``PUT``
-
-.. _debit-update-form:
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to {}
-
-
-``description``
-    *string*. Sequence of characters. Defaults to ``null``.
-
-
-.. _debit-update-errors:
-
-Errors
-------
-
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
-    :status code: 409
-    :category type: logical
-
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
-    :status code: 409
-    :category type: logical
+    *object*. The funding source (card or bank account) for this debit. See `Card View <./Cards.Rst#Card-View>`_.  **Or** See `Bank Account View <./Bank_Accounts.Rst#Bank-Account-View>`_. 
 
 
 
@@ -216,6 +180,41 @@ Errors
     :category type: logical
 
 `no-funding-source <'../errors.rst'#no-funding-source>`_
+    :status code: 409
+    :category type: logical
+
+
+
+Update
+======
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`holds <./holds.rst>`_/<*hold*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`debits <./debits.rst>`_/<*debit*>
+:methods: ``PUT``
+
+.. _debit-update-form:
+
+``meta``
+    *object*. Single level mapping from string keys to string values. Defaults to {}
+
+
+``description``
+    *string*. Sequence of characters. Defaults to ``null``.
+
+
+.. _debit-update-errors:
+
+Errors
+------
+
+`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+    :status code: 409
+    :category type: logical
+
+`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 
