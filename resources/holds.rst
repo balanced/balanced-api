@@ -138,11 +138,11 @@ Exactly one of
 Errors
 ------
 
-`authorization-failed <'../errors.rst'#authorization-failed>`_
+`authorization-failed <../errors.rst#authorization-failed>`_
     :status code: 402
     :category type: banking
 
-`no-funding-source <'../errors.rst'#no-funding-source>`_
+`no-funding-source <../errors.rst#no-funding-source>`_
     :status code: 409
     :category type: logical
 
@@ -192,11 +192,11 @@ hold-update-errors
 Errors
 ------
 
-`hold-not-associated-marketplace <'../errors.rst'#hold-not-associated-marketplace>`_
+`hold-not-associated-marketplace <../errors.rst#hold-not-associated-marketplace>`_
     :status code: 409
     :category type: logical
 
-`hold-not-associated-account <'../errors.rst'#hold-not-associated-account>`_
+`hold-not-associated-account <../errors.rst#hold-not-associated-account>`_
     :status code: 409
     :category type: logical
 

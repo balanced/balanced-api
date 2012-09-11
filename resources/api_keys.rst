@@ -5,6 +5,9 @@ API KEYS
 API keys identify users of the API. A valid API key must be passed with most
 requests in order to authenticate the request.
 
+api-keys-view
+-------------
+
 .. _api-key-view:
 
 ``id``
@@ -69,6 +72,9 @@ Create
 Creates a new API key. If created with an authenticated request, the
 API key will be associated with, and will be able to access the same
 marketplace associated with, the original API key.
+
+api-key-create-form
+-------------------
 
 .. _api-key-create-form:
 

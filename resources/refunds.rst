@@ -68,11 +68,11 @@ debit-refund-create-errors
 Errors
 ------
 
-`invalid-amount <'../errors.rst'#invalid-amount>`_
+`invalid-amount <../errors.rst#invalid-amount>`_
     :status code: 400
     :category type: request
 
-`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
+`refund-insufficient-funds <../errors.rst#refund-insufficient-funds>`_
     :status code: 409
     :category type: logical
 
@@ -115,11 +115,11 @@ refund-create-errors
 Errors
 ------
 
-`invalid-amount <'../errors.rst'#invalid-amount>`_
+`invalid-amount <../errors.rst#invalid-amount>`_
     :status code: 400
     :category type: request
 
-`refund-insufficient-funds <'../errors.rst'#refund-insufficient-funds>`_
+`refund-insufficient-funds <../errors.rst#refund-insufficient-funds>`_
     :status code: 409
     :category type: logical
 

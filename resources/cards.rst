@@ -76,17 +76,6 @@ The card resource is composed of the following fields:
 
 
 
-List all card tokens
-====================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _card-index:
-
-
-
-
 Create and associate a card to an account
 =========================================
 
@@ -330,6 +319,17 @@ Response
 `cannot-associate-card <../errors.rst#cannot-associate-card>`_
     :status code: 409
     :category type: logical
+
+
+
+List all card tokens
+====================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _card-index:
+
 
 
 
