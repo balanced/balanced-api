@@ -77,6 +77,10 @@ card-view
     *boolean*. A boolean value indicating whether or not the card is valid. Once
     invalidated, ``is_valid`` can not be set to ``true`` again.
 
+``hash``
+    *string*. Unique value based on combination of card_number,
+    expiration_month, and expiration_year.
+
 
 
 Create and associate a card to an account
