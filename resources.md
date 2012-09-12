@@ -96,7 +96,7 @@
 
 `amount`
 : **integer**
-: `> 0`
+: `>= 0`
 
 `status`
 : **string**
