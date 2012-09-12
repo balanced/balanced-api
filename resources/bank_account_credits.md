@@ -15,6 +15,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
@@ -46,6 +47,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "cleared",
     "bank_account": {
@@ -95,6 +97,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
@@ -138,6 +141,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "pending",
     "bank_account": {

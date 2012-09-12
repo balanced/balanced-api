@@ -43,6 +43,7 @@
 ```javascript
 {
     "id": "BDtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
@@ -80,6 +81,7 @@
 ```javascript
 {
     "id": "BCtjdsSJg0fFN26PACLLVHz",
+    "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
