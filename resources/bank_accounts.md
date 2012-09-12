@@ -30,8 +30,7 @@
 ### Request
 
 `name`
-: **string** or _null_
-: **default** _null_
+: **string**
 
 `account_number`
 : _required_ **string**
