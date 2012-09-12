@@ -22,6 +22,15 @@
 `id`
 : **string**
 
+`uri`
+: **string**
+
+`debits_uri`
+: **string**
+
+`credits_uri`
+: **string**
+
 `name`
 : **string**
 
@@ -64,6 +73,9 @@
 `id`
 : **string**
 
+`uri`
+: **string**
+
 `amount`
 : **integer**
 : `> 0`
@@ -103,6 +115,9 @@
 ### Fields
 
 `id`
+: **string**
+
+`uri`
 : **string**
 
 `amount`
