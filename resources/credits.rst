@@ -44,11 +44,15 @@ credit-view
 ``transaction_number``
     *string*. An identifier for this transaction.
 
+``available_at``
+    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+    credit will be available to the merchant. This field has been **deprecated** in favor of ``updated_at``. Ignored if not updated.
+
 ``updated_at``
     *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when the state of this credit changed.
 
 ``state``
-    *string*. One of `PROCESSING`, `SUCCEEDED`, `FAILED`
+    *string*. One of ``PROCESSING``, ``SUCCEEDED``, ``FAILED``
 
 ``fee``
     *integer*. The fee charged by Balanced for this credit.
