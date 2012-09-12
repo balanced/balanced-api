@@ -20,7 +20,7 @@
 : **string**
 
 `name`
-: **string** or _null_
+: **string**
 
 `account_number`
 : **string**
