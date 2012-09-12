@@ -78,6 +78,7 @@
         "routing_number": "121042882",
         "type": "checking"
     }
+}
 ```
 
 
