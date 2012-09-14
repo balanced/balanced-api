@@ -8,6 +8,7 @@
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
     "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+    "created": 1347571524,
     "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
     "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
@@ -24,6 +25,9 @@
 
 `uri`
 : **string**
+
+`created`
+: **timestamp**
 
 `debits_uri`
 : **string**
@@ -53,11 +57,13 @@
 {
     "id": "BDtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "created": 1347571524,
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+        "created": 1347571524,
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -75,6 +81,9 @@
 
 `uri`
 : **string**
+
+`created`
+: **timestamp**
 
 `amount`
 : **integer**
@@ -97,11 +106,13 @@
 {
     "id": "BCtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
+    "created": 1347571524,
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+        "created": 1347571524,
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -119,6 +130,9 @@
 
 `uri`
 : **string**
+
+`created`
+: **timestamp**
 
 `amount`
 : **integer**
