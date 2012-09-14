@@ -60,7 +60,7 @@
     "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
-    "status": "pending",
+    "state": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
@@ -91,7 +91,7 @@
 : **integer**
 : `> 0`
 
-`status`
+`state`
 : **string**
 : `pending`, `cleared` or `rejected`
 
@@ -110,7 +110,7 @@
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
-    "status": "pending",
+    "state": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
@@ -141,7 +141,7 @@
 : **integer**
 : `>= 0`
 
-`status`
+`state`
 : **string**
 : `pending`, `cleared` or `rejected`
 
