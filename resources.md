@@ -61,6 +61,7 @@
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
+    "fee": 100,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
@@ -95,6 +96,10 @@
 : **string**
 : `pending`, `cleared` or `rejected`
 
+`fee`
+: **integer**
+: amount charged by Balanced
+
 `bank_account`
 : **object**
 : [Bank Account](./resources/bank_accounts.md)
@@ -111,6 +116,7 @@
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
+    "fee": 25,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
@@ -144,6 +150,10 @@
 `state`
 : **string**
 : `pending`, `cleared` or `rejected`
+
+`fee`
+: **integer**
+: amount charged by Balanced
 
 `bank_account`
 : **object**
