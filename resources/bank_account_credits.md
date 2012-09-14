@@ -16,13 +16,13 @@
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -50,11 +50,11 @@
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "cleared",
     "bank_account": {
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
@@ -103,13 +103,13 @@
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -149,13 +149,13 @@
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",

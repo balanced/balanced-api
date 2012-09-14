@@ -8,7 +8,7 @@
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
     "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
     "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
@@ -26,8 +26,9 @@
 `uri`
 : **string**
 
-`created`
-: **timestamp**
+`created_at`
+: **string**
+: [iso8601](http://en.wikipedia.org/wiki/Iso8601)
 
 `debits_uri`
 : **string**
@@ -57,13 +58,13 @@
 {
     "id": "BDtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -82,8 +83,9 @@
 `uri`
 : **string**
 
-`created`
-: **timestamp**
+`created_at`
+: **string**
+: [iso8601](http://en.wikipedia.org/wiki/Iso8601)
 
 `amount`
 : **integer**
@@ -106,13 +108,13 @@
 {
     "id": "BCtjdsSJg0fFN26PACLLVHz",
     "uri": "/:version/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "status": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created": 1347571524,
+        "created_at": "2012-09-13T21:25:24Z",
         "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
         "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
@@ -131,8 +133,9 @@
 `uri`
 : **string**
 
-`created`
-: **timestamp**
+`created_at`
+: **string**
+: [iso8601](http://en.wikipedia.org/wiki/Iso8601)
 
 `amount`
 : **integer**

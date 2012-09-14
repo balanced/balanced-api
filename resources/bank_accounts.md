@@ -16,7 +16,7 @@
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
     "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
     "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
@@ -67,7 +67,7 @@
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
     "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-    "created": 1347571524,
+    "created_at": "2012-09-13T21:25:24Z",
     "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
     "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
