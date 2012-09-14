@@ -2,7 +2,7 @@
 
 ## Get a bank account
 
-    GET /:version/bank_accounts/:bank_account_id
+    GET /a0/bank_accounts/:bank_account_id
 
 ### Response
 
@@ -15,10 +15,10 @@
 ```javascript
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
-    "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+    "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
     "created_at": "2012-09-13T21:25:24Z",
-    "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-    "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+    "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+    "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
     "account_number": "xxxxxx2930",
     "routing_number": "121042882",
@@ -29,7 +29,7 @@
 
 ## Create a bank account
 
-    POST /:version/bank_accounts
+    POST /a0/bank_accounts
 
 ### Request
 
@@ -66,10 +66,10 @@
 ```javascript
 {
     "id": "BANm9b8BcoOjcF5i1p4eV9I",
-    "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+    "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
     "created_at": "2012-09-13T21:25:24Z",
-    "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-    "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+    "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+    "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
     "name": "Gottfried Leibniz",
     "account_number": "xxxxxx2930",
     "routing_number": "121042882",
@@ -80,7 +80,7 @@
 
 ## Delete a bank account
 
-    DELETE /:version/bank_accounts/:bank_account_id
+    DELETE /a0/bank_accounts/:bank_account_id
 
 ### Response
 

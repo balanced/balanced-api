@@ -2,7 +2,7 @@
 
 ## Get a bank account debit
 
-    GET /:version/bank_account_debits/:bank_account_debit_id
+    GET /a0/bank_account_debits/:bank_account_debit_id
 
 ### Response
 
@@ -15,16 +15,16 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+        "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
         "created_at": "2012-09-13T21:25:24Z",
-        "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-        "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+        "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+        "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
@@ -36,7 +36,7 @@
 
 ## Get a bank account debit (deleted bank account)
 
-    GET /:version/bank_account_debits/:bank_account_debit_id
+    GET /a0/bank_account_debits/:bank_account_debit_id
 
 ### Response
 
@@ -49,7 +49,7 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "cleared",
@@ -66,7 +66,7 @@
 
 ## Debit a new bank account
 
-    POST /:version/bank_account_debits
+    POST /a0/bank_account_debits
 
 ### Request
 
@@ -102,16 +102,16 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+        "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
         "created_at": "2012-09-13T21:25:24Z",
-        "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-        "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+        "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+        "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
@@ -123,7 +123,7 @@
 
 ## Debit an existing bank account
 
-    POST /:version/bank_accounts/:bank_account_id/debits
+    POST /a0/bank_accounts/:bank_account_id/debits
 
 ### Request
 
@@ -148,16 +148,16 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/:version/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+        "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
         "created_at": "2012-09-13T21:25:24Z",
-        "debits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-        "credits_uri": "/:version/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+        "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+        "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
