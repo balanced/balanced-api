@@ -81,7 +81,7 @@
 ```javascript
 {
     "amount": 1716,
-    {
+    "bank_account": {
         "name": "Gottfried Leibniz",
         "account_number": "3819372930",
         "routing_number": "121042882",
