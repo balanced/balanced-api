@@ -29,13 +29,14 @@
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
-        "type": "checking"
+        "type": "checking",
+        "disabled": false
     }
 }
 ```
 
 
-## Get a bank account debit (deleted bank account)
+## Get a bank account debit (disabled bank account)
 
     GET /a0/bank_account_debits/:bank_account_debit_id
 
@@ -60,7 +61,8 @@
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
-        "type": "checking"
+        "type": "checking",
+        "disabled": true
     }
 }
 ```
@@ -118,7 +120,8 @@
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
-        "type": "checking"
+        "type": "checking",
+        "disabled": false
     }
 }
 ```
@@ -165,7 +168,9 @@
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
-        "type": "checking"
+        "type": "checking",
+        "disabled": false
+
     }
 }
 ```
