@@ -27,7 +27,7 @@
 ```
 
 
-## Create a bank account
+## Store a bank account
 
     POST /a0/bank_accounts
 
@@ -78,7 +78,7 @@
 ```
 
 
-## Delete a bank account
+## Unstore a bank account
 
     DELETE /a0/bank_accounts/:bank_account_id
 
