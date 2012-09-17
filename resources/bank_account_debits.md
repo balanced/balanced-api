@@ -110,11 +110,6 @@
     "state": "pending",
     "fee": 100,
     "bank_account": {
-        "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created_at": "2012-09-13T21:25:24Z",
-        "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-        "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
