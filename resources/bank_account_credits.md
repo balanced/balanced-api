@@ -35,7 +35,7 @@
 ```
 
 
-## Get a bank account credit (deleted bank account)
+## Get a bank account credit (unstored bank account)
 
     GET /a0/bank_account_credits/:bank_account_credit_id
 
@@ -56,7 +56,6 @@
     "state": "cleared",
     "fee": 25,
     "bank_account": {
-        "created_at": "2012-09-13T21:25:24Z",
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
