@@ -14,8 +14,8 @@
 
 ```javascript
 {
-    "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
+    "id": "WDtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -49,8 +49,8 @@
 
 ```javascript
 {
-    "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
+    "id": "WDtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "cleared",
@@ -102,8 +102,8 @@
 
 ```javascript
 {
-    "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
+    "id": "WDtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -144,8 +144,8 @@
 
 ```javascript
 {
-    "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
+    "id": "WDtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
