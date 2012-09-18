@@ -1,8 +1,8 @@
-# Bank Account Debit
+# Debit
 
-## Get a bank account debit
+## Get a debit
 
-    GET /a0/bank_account_debits/:bank_account_debit_id
+    GET /a0/debits/:debit_id
 
 ### Response
 
@@ -15,7 +15,7 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -35,9 +35,9 @@
 ```
 
 
-## Get a bank account debit (unstored bank account)
+## Get a debit (unstored bank account)
 
-    GET /a0/bank_account_debits/:bank_account_debit_id
+    GET /a0/debits/:debit_id
 
 ### Response
 
@@ -50,7 +50,7 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "cleared",
@@ -67,7 +67,7 @@
 
 ## Debit a new bank account
 
-    POST /a0/bank_account_debits
+    POST /a0/debits
 
 ### Request
 
@@ -103,7 +103,7 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -145,7 +145,7 @@
 ```javascript
 {
     "id": "ADtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_debits/ADtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/debits/ADtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",

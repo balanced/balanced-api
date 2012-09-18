@@ -1,8 +1,8 @@
-# Bank Account Credit
+# Credit
 
-## Get a bank account credit
+## Get a credit
 
-    GET /a0/bank_account_credits/:bank_account_credit_id
+    GET /a0/credits/:credit_id
 
 ### Response
 
@@ -15,7 +15,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/credits/ACtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -35,9 +35,9 @@
 ```
 
 
-## Get a bank account credit (unstored bank account)
+## Get a credit (unstored bank account)
 
-    GET /a0/bank_account_credits/:bank_account_credit_id
+    GET /a0/credits/:credit_id
 
 ### Response
 
@@ -50,7 +50,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/credits/ACtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "cleared",
@@ -67,7 +67,7 @@
 
 ## Credit a new bank account
 
-    POST /a0/bank_account_credits
+    POST /a0/credits
 
 ### Request
 
@@ -103,7 +103,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/credits/ACtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
@@ -145,7 +145,7 @@
 ```javascript
 {
     "id": "ACtjdsSJg0fFN26PACLLVHz",
-    "uri": "/a0/bank_account_credits/ACtjdsSJg0fFN26PACLLVHz",
+    "uri": "/a0/credits/ACtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
