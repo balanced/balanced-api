@@ -77,6 +77,11 @@ card-view
     *boolean*. A boolean value indicating whether or not the card is valid. Once
     invalidated, ``is_valid`` can not be set to ``true`` again.
 
+``signature``
+    *string*. A signature derived from ``card_number``, ``expiration_month`` and
+   ``expiration_year``. Cards with the same ``card_number``,
+   ``expiration_month`` and ``expiration_year`` will have the same
+   ``signature``.
 
 
 Create and associate a card to an account
