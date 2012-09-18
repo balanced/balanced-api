@@ -79,9 +79,9 @@ card-view
 
 ``signature``
     *string*. A signature derived from ``card_number``, ``expiration_month`` and
-   ``expiration_year``. Cards with the same ``card_number``,
-   ``expiration_month`` and ``expiration_year`` will have the same
-   ``signature``.
+    ``expiration_year``. Cards with the same ``card_number``,
+    ``expiration_month`` and ``expiration_year`` will have the same
+    ``signature``.
 
 
 Create and associate a card to an account
