@@ -8,7 +8,7 @@ made with it.
 
 Operate on a card using the following endpoints:
 
-   - `Create a card <./cards.rst#card-create>`_
+   - `Create a card <./cards.rst#create-and-associate-a-card-to-an-account>`_
    - `Index Cards <./cards.rst#card-index>`_
    - `Update a Card <./cards.rst#card-update>`_
    - `Show a Card <./cards.rst#card-show>`_
@@ -78,9 +78,9 @@ card-view
     invalidated, ``is_valid`` can not be set to ``true`` again.
 
 ``hash``
-    *string*. Unique value based on combination of card_number,
-    expiration_month, and expiration_year.
-
+    *string*. A hash derived from ``card_number``, ``expiration_month`` and
+    ``expiration_year``. Cards with the same ``card_number``,
+    ``expiration_month`` and ``expiration_year`` will have the same ``hash``.
 
 
 Create and associate a card to an account
