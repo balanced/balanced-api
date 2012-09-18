@@ -9,9 +9,9 @@ made with it.
 Operate on a card using the following endpoints:
 
    - `Create a card <./cards.rst#create-a-card>`_
-   - `Index Cards <./cards.rst#index-cards>`_
-   - `Update a Card <./cards.rst#update-a-card>`_
-   - `Show a Card <./cards.rst#show-a-card>`_
+   - `List all card tokens <./cards.rst#list-all-card-tokens>`_
+   - `Invalidate a card <./cards.rst#invalidate-a-card>`_
+   - `Get a card <./cards.rst#get-a-card>`_
 
 Operate on a card in an account context using the following endpoints:
 
