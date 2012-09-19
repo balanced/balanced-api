@@ -60,7 +60,7 @@
     "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
-    "state": "pending",
+    "state": "cleared",
     "fee": 100,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
@@ -115,7 +115,7 @@
     "uri": "/a0/credits/CRtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
-    "state": "pending",
+    "state": "cleared",
     "fee": 25,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",

@@ -18,7 +18,7 @@
     "uri": "/a0/credits/CRtjdsSJg0fFN26PACLLVHz",
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
-    "state": "pending",
+    "state": "cleared",
     "fee": 25,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
@@ -107,7 +107,7 @@
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
-    "fee": 25,
+    "fee": 0,
     "bank_account": {
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
@@ -149,7 +149,7 @@
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "pending",
-    "fee": 25,
+    "fee": 0,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
         "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
