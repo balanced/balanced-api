@@ -102,7 +102,7 @@ buyer-account-create-form
 
 ``email_address``
     *string*. Email address of the account. It must be **unique** among all accounts
-    on your marketplace.
+    on your marketplace. Defaults to ``null``.
 
 
 ``name``
@@ -148,7 +148,7 @@ user.
 
 ``email_address``
     *string*. Email address of the account. It must be **unique** among all accounts
-    on your marketplace.
+    on your marketplace. Defaults to ``null``.
 
 
 ``name``
@@ -204,7 +204,7 @@ registered business information.
 
 ``email_address``
     *string*. Email address of the account. It must be **unique** among all accounts
-    on your marketplace.
+    on your marketplace. Defaults to ``null``.
 
 
 ``name``
