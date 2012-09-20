@@ -1,6 +1,6 @@
 # Balanced ACH API [Beta]
 
-The goal of this API is to let you debit (withdrawl) from and credit (deposit)
+The goal of this API is to let you debit (withdrawal) from and credit (deposit)
 to bank accounts in the US using next business day
 [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House) transfers.
 Balanced already provides an API to charge cards, holds funds in escrow,
