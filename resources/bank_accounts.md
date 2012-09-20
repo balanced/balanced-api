@@ -40,41 +40,43 @@
 #### Body
 
 ```javascript
-[
-    {
-        "id": "BA6c4Me9Qe0LvK5523VHFulW",
-        "uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW",
-        "created_at": "2012-09-19T19:50:23Z",
-        "debits_uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW/debits",
-        "credits_uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW/credits",
-        "name": "Bertrand Russell",
-        "account_number": "xxxxxx3952",
-        "routing_number": "322271627",
-        "type": "checking"
-    },
-    {
-        "id": "BAN6c0BIsrfqc3fCEx1izFMDS",
-        "uri": "/a0/bank_accounts/BA6c0BIsrfqc3fCEx1izFMDS",
-        "created_at": "2012-09-19T19:25:39Z",
-        "debits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/debits",
-        "credits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/credits",
-        "name": "Kurt Gödel",
-        "account_number": "xxxxxx8361",
-        "routing_number": "121042882",
-        "type": "savings"
-    },
-    {
-        "id": "BANm9b8BcoOjcF5i1p4eV9I",
-        "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
-        "created_at": "2012-09-13T21:25:24Z",
-        "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
-        "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
-        "name": "Gottfried Leibniz",
-        "account_number": "xxxxxx2930",
-        "routing_number": "121042882",
-        "type": "checking"
-    }
-]
+{
+    "items": [
+        {
+            "id": "BA6c4Me9Qe0LvK5523VHFulW",
+            "uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW",
+            "created_at": "2012-09-19T19:50:23Z",
+            "debits_uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW/debits",
+            "credits_uri": "/a0/bank_accounts/BA6c4Me9Qe0LvK5523VHFulW/credits",
+            "name": "Bertrand Russell",
+            "account_number": "xxxxxx3952",
+            "routing_number": "322271627",
+            "type": "checking"
+        },
+        {
+            "id": "BAN6c0BIsrfqc3fCEx1izFMDS",
+            "uri": "/a0/bank_accounts/BA6c0BIsrfqc3fCEx1izFMDS",
+            "created_at": "2012-09-19T19:25:39Z",
+            "debits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/debits",
+            "credits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/credits",
+            "name": "Kurt Gödel",
+            "account_number": "xxxxxx8361",
+            "routing_number": "121042882",
+            "type": "savings"
+        },
+        {
+            "id": "BANm9b8BcoOjcF5i1p4eV9I",
+            "uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I",
+            "created_at": "2012-09-13T21:25:24Z",
+            "debits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/debits",
+            "credits_uri": "/a0/bank_accounts/BANm9b8BcoOjcF5i1p4eV9I/credits",
+            "name": "Gottfried Leibniz",
+            "account_number": "xxxxxx2930",
+            "routing_number": "121042882",
+            "type": "checking"
+        }
+    ]
+}
 ```
 
 
