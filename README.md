@@ -1,16 +1,29 @@
-# ACH API (Experimental)
+# Balanced ACH API [Beta]
 
-Balanced is considering providing a experimental API to get ACH debits out as
-soon as possible until we determine how to incorporate ACH debits into the
-production/stable (v1) API. The experimental API would also permit ACH credits
-without requiring the recipient be underwritten as a merchant.
+The goal of this API is to let you debit (withdrawl) from and credit (deposit)
+to bank accounts in the US using next business day
+[ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House) transfers.
+Balanced already provides an API to charge cards, holds funds in escrow,
+and deposit to bank accounts. This API has been broken off, for now, to let the
+Balanced team build add ACH debits without altering the existing stable API
+(`v1`). Aspects of this API have already been and will continue to be merged
+into `v1`.
 
-This is not intended as a new version, and marketplaces should be able to use
-both APIs in conjunction until the functionality is merged into v1. The same
-API keys and marketplace escrow will be used.
+
+## Milestones
+
+~~**1. Wednesday, September 19, 2012:** Finalize initial version of API
+specifications~~
+**2. Wednesday, September 26, 2012:** Release a test API that follows the
+specifications but does not process live transactions
+**3. Wednesday, October 3, 2012:** Release thin client libraries for the API in
+Ruby, Python, and PHP
+**4. Wednesday, October 10, 2012:** Enable live transactions
+
 
 ## Versioning
 
-Any breaking would require a new version. New versions will be released on
-Wednesday mornings. Previous versions will be active for two weeks (14 days)
-from when the new version is released to provide a transition time.
+Note that this is API is in beta. The current version is `a0`. New versions
+with breaking changes will be released. However, there will *not* be breaking
+changes within a specific version and deprecated versions will be supported for
+14 days.
