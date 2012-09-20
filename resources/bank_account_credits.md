@@ -1,6 +1,6 @@
 # Credit
 
-## Get a credit
+## Retrieve a Credit
 
     GET /a0/credits/:credit_id
 
@@ -35,7 +35,7 @@
 ```
 
 
-## Get a credit (unstored bank account)
+## Retrive a Credit (Unstored Bank Account)
 
     GET /a0/credits/:credit_id
 
@@ -65,7 +65,7 @@
 ```
 
 
-## List all credits
+## List All Credits
 
     GET /a0/credits
 
@@ -138,7 +138,7 @@
 ```
 
 
-## Credit a new bank account
+## Credit a New Bank Account
 
     POST /a0/credits
 
@@ -191,7 +191,7 @@
 ```
 
 
-## Credit an existing bank account
+## Credit an Existing Bank Account
 
     POST /a0/bank_accounts/:bank_account_id/credits
 

@@ -1,6 +1,6 @@
 # Bank Account
 
-## Get a bank account
+## Retrieve a Bank Account
 
     GET /a0/bank_accounts/:bank_account_id
 
@@ -27,7 +27,7 @@
 ```
 
 
-# List all bank accounts
+# List All Bank Accounts
 
     GET /a0/bank_accounts
 
@@ -80,7 +80,7 @@
 ```
 
 
-## Store a bank account
+## Store a Bank Account
 
     POST /a0/bank_accounts
 
@@ -131,7 +131,7 @@
 ```
 
 
-## Unstore a bank account
+## Unstore a Bank Account
 
     DELETE /a0/bank_accounts/:bank_account_id
 

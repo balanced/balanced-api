@@ -1,6 +1,6 @@
 # Debit
 
-## Get a debit
+## Retrieve a Debit
 
     GET /a0/debits/:debit_id
 
@@ -35,7 +35,7 @@
 ```
 
 
-## Get a debit (unstored bank account)
+## Retrieve a Debit (Unstored Bank Account)
 
     GET /a0/debits/:debit_id
 
@@ -65,7 +65,7 @@
 ```
 
 
-## List all debits
+## List All Debits
 
     GET /a0/debits
 
@@ -138,7 +138,7 @@
 ```
 
 
-## Debit a new bank account
+## Debit a New Bank Account
 
     POST /a0/debits
 
@@ -191,7 +191,7 @@
 ```
 
 
-## Debit an existing bank account
+## Debit an Existing Bank Account
 
     POST /a0/bank_accounts/:bank_account_id/debits
 
