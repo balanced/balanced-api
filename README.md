@@ -30,3 +30,19 @@ Note that this is API is in beta. The current version is `a0`. New versions
 with breaking changes will be released. However, there will *not* be breaking
 changes within a specific version and deprecated versions will be supported for
 14 days.
+
+
+## Pricing
+
+We do not charge for:
+* batch file costs. Well ... unlike others, we don't use batch files.
+* monthly fees
+* compliance
+* vaulting
+* data portability
+* variable fee (only one fixed fee)
+
+**ACH Credit:** 25¢
+**ACH Debit:** $1
+**Rejected transactions:** $3.50
+**Disputes of Debits:** $15
