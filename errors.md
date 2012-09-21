@@ -9,7 +9,8 @@
 
 **204** No Content - Item deleted.
 
-**400** Bad Request - Request does not meet the API specifications.
+**400** Bad Request - Request does not meet the
+[API specifications](./resources.md).
 
 **401** Unauthorized - Invalid API key.
 
