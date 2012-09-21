@@ -1,6 +1,10 @@
 # Resources
 
+All URIs should be prefixed with `https://api.balancedpayments.com`.
+
 ## Bank Account
+
+    `/a0/bank_accounts`
 
 ### Example
 
@@ -51,6 +55,8 @@
 
 
 ## Debit
+
+    `/a0/debits`
 
 ### Example
 
@@ -106,6 +112,8 @@
 
 
 ## Credit
+
+    `/a0/credits`
 
 ### Example
 
