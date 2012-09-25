@@ -35,7 +35,7 @@
 ```
 
 
-## Retrive a Credit (Unstored Bank Account)
+## Retrieve a Credit (Unstored Bank Account)
 
     GET /a0/credits/:credit_id
 
