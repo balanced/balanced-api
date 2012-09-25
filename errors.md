@@ -12,8 +12,6 @@
 **400** Bad Request - Request does not meet the
 [API specifications](./resources.md).
 
-**402** Request Failed - Not enough money to issue a credit.
-
 **404** Not Found - Requested URI doesn't exist.
 
 **500, 502, 503, 504** Internal Server Error - Something went wrong on Balanced's side.
