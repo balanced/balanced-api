@@ -1,5 +1,12 @@
 # Debit
 
+* [Create a New Bank Account](#create-a-new-bank-account)
+* [Debit an Existing Bank Account](#debit-an-existing-bank-account)
+* [Retrieve a Debit](#retrieve-a-debit)
+* [Retrieve a Debit (Unstored Bank Account)](#retrieve-a-debit-unstored-bank-account)
+* [List All Debits](#list-all-debits)
+
+
 ## Debit a New Bank Account
 
     POST /a0/debits
