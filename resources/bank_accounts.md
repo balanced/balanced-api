@@ -1,4 +1,4 @@
-# Bank Account
+# Bank Accounts
 
 * [Store a Bank Account](#store-a-bank-account)
 * [Retrieve a Bank Account](#retrieve-a-bank-account)

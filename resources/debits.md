@@ -1,4 +1,4 @@
-# Debit
+# Debits
 
 * [Create a New Bank Account](#create-a-new-bank-account)
 * [Debit an Existing Bank Account](#debit-an-existing-bank-account)

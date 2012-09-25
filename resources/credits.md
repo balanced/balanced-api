@@ -1,4 +1,4 @@
-# Credit
+# Credits
 
 * [Create a New Bank Account](#create-a-new-bank-account)
 * [Credit an Existing Bank Account](#credit-an-existing-bank-account)
