@@ -5,6 +5,7 @@
 * [Retrieve a Credit](#retrieve-a-credit)
 * [Retrieve a Credit (Unstored Bank Account)](#retrieve-a-credit-unstored-bank-account)
 * [List All Credits](#list-all-credits)
+* [List All Credits for a Bank Account](#list-all-credits-for-a-bank-account)
 
 
 ## Credit a New Bank Account
@@ -189,7 +190,7 @@
     "items": [
         {
             "id": "CRDXQO7z00n19KXU5IE2oX0",
-            "uri": "/a0/debits/WDDXQO7z00n19KXU5IE2oX0",
+            "uri": "/a0/credits/CRDXQO7z00n19KXU5IE2oX0",
             "created_at": "2012-09-19T19:50:23Z",
             "amount": 221970,
             "state": "pending",
@@ -208,7 +209,7 @@
         },
         {
             "id": "CRDS8umCBvijMRKxENF1Ygy",
-            "uri": "/a0/debits/WDDS8umCBvijMRKxENF1Ygy"
+            "uri": "/a0/credits/CRDS8umCBvijMRKxENF1Ygy"
             "created_at": "2012-09-19T19:25:39Z",
             "amount": 4281906
             "state": "rejected",
@@ -227,7 +228,7 @@
         },
         {
             "id": "CRtjdsSJg0fFN26PACLLVHz",
-            "uri": "/a0/debits/WDtjdsSJg0fFN26PACLLVHz",
+            "uri": "/a0/credits/CRtjdsSJg0fFN26PACLLVHz",
             "created_at": "2012-09-13T21:25:24Z",
             "amount": 1716,
             "state": "cleared",
@@ -243,3 +244,60 @@
     ]
 }
 ```
+
+
+## List All Credits for a Bank Account
+
+    GET /a0/bank_accounts/:bank_account_id/credits
+
+### Response
+
+#### Header
+
+    Status: 200 OK
+
+#### Body
+
+```javascript
+{
+    "items": [
+        {
+            "id": "CRDXQO7z00n19KXU5IE2oX0",
+            "uri": "/a0/credits/CRDXQO7z00n19KXU5IE2oX0",
+            "created_at": "2012-09-19T19:50:23Z",
+            "amount": 221970,
+            "state": "pending",
+            "fee": 0,
+            "bank_account": {
+                "id": "BAN6c0BIsrfqc3fCEx1izFMDS",
+                "uri": "/a0/bank_accounts/BA6c0BIsrfqc3fCEx1izFMDS",
+                "created_at": "2012-09-19T19:25:39Z",
+                "debits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/debits",
+                "credits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/credits",
+                "name": "Kurt Gödel",
+                "account_number": "xxxxxx8361",
+                "routing_number": "121042882",
+                "type": "savings"
+            },
+        },
+        {
+            "id": "CRDS8umCBvijMRKxENF1Ygy",
+            "uri": "/a0/credits/CRDS8umCBvijMRKxENF1Ygy"
+            "created_at": "2012-09-19T19:25:39Z",
+            "amount": 4281906
+            "state": "rejected",
+            "fee": 350,
+            "bank_account": {
+                "id": "BAN6c0BIsrfqc3fCEx1izFMDS",
+                "uri": "/a0/bank_accounts/BA6c0BIsrfqc3fCEx1izFMDS",
+                "created_at": "2012-09-19T19:25:39Z",
+                "debits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/debits",
+                "credits_uri": "/a0/bank_accounts/BAN6c0BIsrfqc3fCEx1izFMDS/credits",
+                "name": "Kurt Gödel",
+                "account_number": "xxxxxx8361",
+                "routing_number": "121042882",
+                "type": "savings"
+            },
+        }
+    ]
+}```
