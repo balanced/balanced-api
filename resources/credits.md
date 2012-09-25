@@ -1,6 +1,6 @@
 # Credits
 
-* [Create a New Bank Account](#create-a-new-bank-account)
+* [Credit a New Bank Account](#credit-a-new-bank-account)
 * [Credit an Existing Bank Account](#credit-an-existing-bank-account)
 * [Retrieve a Credit](#retrieve-a-credit)
 * [Retrieve a Credit (Unstored Bank Account)](#retrieve-a-credit-unstored-bank-account)
