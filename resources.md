@@ -108,7 +108,7 @@ All URIs should be prefixed with `https://api.balancedpayments.com`.
 
 `bank_account`
 : **object**
-: [Bank Account](./resources/bank_accounts.md)
+: [Bank Account](./resources/bank_accounts.rst)
 
 
 ## Credit
@@ -165,4 +165,4 @@ All URIs should be prefixed with `https://api.balancedpayments.com`.
 
 `bank_account`
 : **object**
-: [Bank Account](./resources/bank_accounts.md)
+: [Bank Account](./resources/bank_accounts.rst)
