@@ -39,58 +39,58 @@ Body
                 "amount": 1716,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:25.979996Z",
-                    "credits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/debits/",
-                    "id": "BA4nvXw7kDBLDbUyJ4dWa9Vo",
+                    "created_at": "2012-09-25T23:18:38.012160Z",
+                    "credits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/debits/",
+                    "id": "BA4qSnbTtjbtBXERDs0KTRU",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo"
+                    "uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU"
                 },
-                "created_at": "2012-09-25T23:15:25.996696Z",
+                "created_at": "2012-09-25T23:18:38.028108Z",
                 "fee": 0,
-                "id": "CR4nxv8AUWnMKTysxAwtFXu2",
+                "id": "CR4smvWgVuOSu6f1UQ0lo26",
                 "state": "pending",
-                "uri": "/a0/credits/CR4nxv8AUWnMKTysxAwtFXu2"
+                "uri": "/a0/credits/CR4smvWgVuOSu6f1UQ0lo26"
             },
             {
                 "amount": 1400,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:25.979996Z",
-                    "credits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/debits/",
-                    "id": "BA4nvXw7kDBLDbUyJ4dWa9Vo",
+                    "created_at": "2012-09-25T23:18:38.012160Z",
+                    "credits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/debits/",
+                    "id": "BA4qSnbTtjbtBXERDs0KTRU",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo"
+                    "uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU"
                 },
-                "created_at": "2012-09-25T23:15:26.007797Z",
+                "created_at": "2012-09-25T23:18:38.038900Z",
                 "fee": 0,
-                "id": "CR4nykJObo0oVxm4QqG4vgD0",
+                "id": "CR4tb2Ei4X1laQJmUjMQHiO",
                 "state": "pending",
-                "uri": "/a0/credits/CR4nykJObo0oVxm4QqG4vgD0"
+                "uri": "/a0/credits/CR4tb2Ei4X1laQJmUjMQHiO"
             },
             {
                 "amount": 1300,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:25.979996Z",
-                    "credits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo/debits/",
-                    "id": "BA4nvXw7kDBLDbUyJ4dWa9Vo",
+                    "created_at": "2012-09-25T23:18:38.012160Z",
+                    "credits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU/debits/",
+                    "id": "BA4qSnbTtjbtBXERDs0KTRU",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4nvXw7kDBLDbUyJ4dWa9Vo"
+                    "uri": "/a0/bank_accounts/BA4qSnbTtjbtBXERDs0KTRU"
                 },
-                "created_at": "2012-09-25T23:15:26.017567Z",
+                "created_at": "2012-09-25T23:18:38.048286Z",
                 "fee": 0,
-                "id": "CR4nz0XDRyaFF3TOPeTFRD2q",
+                "id": "CR4tPD8drIfp5BlXH2IJ9UK",
                 "state": "pending",
-                "uri": "/a0/credits/CR4nz0XDRyaFF3TOPeTFRD2q"
+                "uri": "/a0/credits/CR4tPD8drIfp5BlXH2IJ9UK"
             }
         ]
     }
@@ -127,58 +127,58 @@ Body
                 "amount": 1716,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:26.427084Z",
-                    "credits_uri": "/a0/bank_accounts/BA4o1ydG9AsYHMLS7C1C2vmW/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4o1ydG9AsYHMLS7C1C2vmW/debits/",
-                    "id": "BA4o1ydG9AsYHMLS7C1C2vmW",
+                    "created_at": "2012-09-25T23:18:38.453755Z",
+                    "credits_uri": "/a0/bank_accounts/BA4W5pa5jO5dN2qnDtqidXc/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4W5pa5jO5dN2qnDtqidXc/debits/",
+                    "id": "BA4W5pa5jO5dN2qnDtqidXc",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4o1ydG9AsYHMLS7C1C2vmW"
+                    "uri": "/a0/bank_accounts/BA4W5pa5jO5dN2qnDtqidXc"
                 },
-                "created_at": "2012-09-25T23:15:26.428542Z",
+                "created_at": "2012-09-25T23:18:38.455163Z",
                 "fee": 0,
-                "id": "CR4o100wmvJPMu0PFserlGs2",
+                "id": "CR4VzgbDHh4atLQeQYx7ISu",
                 "state": "pending",
-                "uri": "/a0/credits/CR4o100wmvJPMu0PFserlGs2"
+                "uri": "/a0/credits/CR4VzgbDHh4atLQeQYx7ISu"
             },
             {
                 "amount": 1716,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:26.438250Z",
-                    "credits_uri": "/a0/bank_accounts/BA4o2ol3JzGWxbStGNjpVjdw/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4o2ol3JzGWxbStGNjpVjdw/debits/",
-                    "id": "BA4o2ol3JzGWxbStGNjpVjdw",
+                    "created_at": "2012-09-25T23:18:38.465153Z",
+                    "credits_uri": "/a0/bank_accounts/BA4WW9Eq6PeluEgpuo76wqK/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4WW9Eq6PeluEgpuo76wqK/debits/",
+                    "id": "BA4WW9Eq6PeluEgpuo76wqK",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4o2ol3JzGWxbStGNjpVjdw"
+                    "uri": "/a0/bank_accounts/BA4WW9Eq6PeluEgpuo76wqK"
                 },
-                "created_at": "2012-09-25T23:15:26.438688Z",
+                "created_at": "2012-09-25T23:18:38.465711Z",
                 "fee": 0,
-                "id": "CR4o2lrYnSUO1GU5QBw0YOxk",
+                "id": "CR4WTbOUphgKtL0YMEroOHo",
                 "state": "pending",
-                "uri": "/a0/credits/CR4o2lrYnSUO1GU5QBw0YOxk"
+                "uri": "/a0/credits/CR4WTbOUphgKtL0YMEroOHo"
             },
             {
                 "amount": 1716,
                 "bank_account": {
                     "account_number": "xxxxxx2930",
-                    "created_at": "2012-09-25T23:15:26.445389Z",
-                    "credits_uri": "/a0/bank_accounts/BA4o2SZywvRPzDbP23y0FxLs/credits/",
-                    "debits_uri": "/a0/bank_accounts/BA4o2SZywvRPzDbP23y0FxLs/debits/",
-                    "id": "BA4o2SZywvRPzDbP23y0FxLs",
+                    "created_at": "2012-09-25T23:18:38.472438Z",
+                    "credits_uri": "/a0/bank_accounts/BA4XrTZyjZaKv8j0e7lQPFM/credits/",
+                    "debits_uri": "/a0/bank_accounts/BA4XrTZyjZaKv8j0e7lQPFM/debits/",
+                    "id": "BA4XrTZyjZaKv8j0e7lQPFM",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
                     "type": "checking",
-                    "uri": "/a0/bank_accounts/BA4o2SZywvRPzDbP23y0FxLs"
+                    "uri": "/a0/bank_accounts/BA4XrTZyjZaKv8j0e7lQPFM"
                 },
-                "created_at": "2012-09-25T23:15:26.445866Z",
+                "created_at": "2012-09-25T23:18:38.472992Z",
                 "fee": 0,
-                "id": "CR4o2QpwNZxRSNWup7V41Pxo",
+                "id": "CR4XpbWUXdFiqp8coZq8mJY",
                 "state": "pending",
-                "uri": "/a0/credits/CR4o2QpwNZxRSNWup7V41Pxo"
+                "uri": "/a0/credits/CR4XpbWUXdFiqp8coZq8mJY"
             }
         ]
     }
@@ -213,20 +213,20 @@ Body
         "amount": 1716,
         "bank_account": {
             "account_number": "xxxxxx2930",
-            "created_at": "2012-09-25T23:15:26.844067Z",
-            "credits_uri": "/a0/bank_accounts/BA4ouDbqNecZ9fNmCUc4g6Vk/credits/",
-            "debits_uri": "/a0/bank_accounts/BA4ouDbqNecZ9fNmCUc4g6Vk/debits/",
-            "id": "BA4ouDbqNecZ9fNmCUc4g6Vk",
+            "created_at": "2012-09-25T23:18:38.876342Z",
+            "credits_uri": "/a0/bank_accounts/BA5pynVeIwlhi3Cf3UTptVg/credits/",
+            "debits_uri": "/a0/bank_accounts/BA5pynVeIwlhi3Cf3UTptVg/debits/",
+            "id": "BA5pynVeIwlhi3Cf3UTptVg",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
             "type": "checking",
-            "uri": "/a0/bank_accounts/BA4ouDbqNecZ9fNmCUc4g6Vk"
+            "uri": "/a0/bank_accounts/BA5pynVeIwlhi3Cf3UTptVg"
         },
-        "created_at": "2012-09-25T23:15:26.845593Z",
+        "created_at": "2012-09-25T23:18:38.877799Z",
         "fee": 0,
-        "id": "CR4ou4xN10Cz0SQlar9FLQQq",
+        "id": "CR5p3CNWZD8r4gjWpl9OnSG",
         "state": "pending",
-        "uri": "/a0/credits/CR4ou4xN10Cz0SQlar9FLQQq"
+        "uri": "/a0/credits/CR5p3CNWZD8r4gjWpl9OnSG"
     }
 
 Retrieve a Credit (Unstored Bank Account)
@@ -234,7 +234,7 @@ Retrieve a Credit (Unstored Bank Account)
 
 .. code::
 
-    GET /a0/credits
+    GET /a0/credits/:credit_id
 
 Response
 ~~~~~~~~
@@ -260,11 +260,11 @@ Body
             "routing_number": "121042882",
             "type": "checking"
         },
-        "created_at": "2012-09-25T23:15:27.254916Z",
+        "created_at": "2012-09-25T23:18:39.287511Z",
         "fee": 0,
-        "id": "CR4oWFR2UlGUpIdBZzX2Eh50",
+        "id": "CR5RDpCRL1YEnyXQ98QlfOa",
         "state": "pending",
-        "uri": "/a0/credits/CR4oWFR2UlGUpIdBZzX2Eh50"
+        "uri": "/a0/credits/CR5RDpCRL1YEnyXQ98QlfOa"
     }
 
 
@@ -309,20 +309,20 @@ Body
         "amount": 1716,
         "bank_account": {
             "account_number": "xxxxxx2930",
-            "created_at": "2012-09-25T23:15:27.703264Z",
-            "credits_uri": "/a0/bank_accounts/BA4ps6QNKPmFqwon0teMtfGW/credits/",
-            "debits_uri": "/a0/bank_accounts/BA4ps6QNKPmFqwon0teMtfGW/debits/",
-            "id": "BA4ps6QNKPmFqwon0teMtfGW",
+            "created_at": "2012-09-25T23:18:39.750121Z",
+            "credits_uri": "/a0/bank_accounts/BA6o5c4KEb9jOltfXjNT2B4/credits/",
+            "debits_uri": "/a0/bank_accounts/BA6o5c4KEb9jOltfXjNT2B4/debits/",
+            "id": "BA6o5c4KEb9jOltfXjNT2B4",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
             "type": "checking",
-            "uri": "/a0/bank_accounts/BA4ps6QNKPmFqwon0teMtfGW"
+            "uri": "/a0/bank_accounts/BA6o5c4KEb9jOltfXjNT2B4"
         },
-        "created_at": "2012-09-25T23:15:27.719128Z",
+        "created_at": "2012-09-25T23:18:39.766350Z",
         "fee": 0,
-        "id": "CR4ptBWzHwp1PWDSIYsQ4l5g",
+        "id": "CR6pAm6WDM43UJemDLzsuzo",
         "state": "pending",
-        "uri": "/a0/credits/CR4ptBWzHwp1PWDSIYsQ4l5g"
+        "uri": "/a0/credits/CR6pAm6WDM43UJemDLzsuzo"
     }
 
 
@@ -391,20 +391,20 @@ Body
         "amount": 1716,
         "bank_account": {
             "account_number": "xxxxxx2930",
-            "created_at": "2012-09-25T23:15:28.111089Z",
-            "credits_uri": "/a0/bank_accounts/BA4pUZ5Y5Wb3nqPA4MNEAoUa/credits/",
-            "debits_uri": "/a0/bank_accounts/BA4pUZ5Y5Wb3nqPA4MNEAoUa/debits/",
-            "id": "BA4pUZ5Y5Wb3nqPA4MNEAoUa",
+            "created_at": "2012-09-25T23:18:40.161839Z",
+            "credits_uri": "/a0/bank_accounts/BA6RbWjRAW2CzwdrBWuLvjY/credits/",
+            "debits_uri": "/a0/bank_accounts/BA6RbWjRAW2CzwdrBWuLvjY/debits/",
+            "id": "BA6RbWjRAW2CzwdrBWuLvjY",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
             "type": "checking",
-            "uri": "/a0/bank_accounts/BA4pUZ5Y5Wb3nqPA4MNEAoUa"
+            "uri": "/a0/bank_accounts/BA6RbWjRAW2CzwdrBWuLvjY"
         },
-        "created_at": "2012-09-25T23:15:28.112541Z",
+        "created_at": "2012-09-25T23:18:40.163187Z",
         "fee": 0,
-        "id": "CR4pUukP9aPynCtBEz1dvAhk",
+        "id": "CR6QEPMBWqruW56C8IgdvaW",
         "state": "pending",
-        "uri": "/a0/credits/CR4pUukP9aPynCtBEz1dvAhk"
+        "uri": "/a0/credits/CR6QEPMBWqruW56C8IgdvaW"
     }
 
 
