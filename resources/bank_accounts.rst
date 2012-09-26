@@ -7,6 +7,64 @@ Bank Accounts
 -  `Unstore a Bank Account`_
 
 
+Unstore a bank account
+----------------------
+
+.. code::
+
+    DELETE /a0/bank_accounts/:bank_account_id
+
+
+Response
+~~~~~~~~
+
+Header
+^^^^^^
+
+.. code::
+
+    Status: 204 No Content
+
+
+
+Retrieve a bank account
+-----------------------
+
+.. code::
+
+    GET /a0/bank_accounts/:bank_account_id
+
+
+Response
+~~~~~~~~
+
+Header
+^^^^^^
+
+.. code::
+
+    Status: 200 Ok
+
+Body
+^^^^
+
+.. code:: javascript
+
+
+    {
+        "account_number": "xxxxxx2930",
+        "created_at": "2012-09-25T22:43:04.281214Z",
+        "credits_uri": "/a0/bank_accounts/BAjTQ4LDFhN6rLq9fczZhkm/credits/",
+        "debits_uri": "/a0/bank_accounts/BAjTQ4LDFhN6rLq9fczZhkm/debits/",
+        "id": "BAjTQ4LDFhN6rLq9fczZhkm",
+        "name": "Gottfried Leibniz",
+        "routing_number": "121042882",
+        "type": "checking",
+        "uri": "/a0/bank_accounts/BAjTQ4LDFhN6rLq9fczZhkm"
+    }
+
+
+
 Store a bank account
 --------------------
 
@@ -58,14 +116,14 @@ Body
 
     {
         "account_number": "xxxxxx2930",
-        "created_at": "2012-09-25T21:25:31.803647Z",
-        "credits_uri": "/a0/bank_accounts/BA1CRHMGKwPAYnLaij05r1VM/credits",
-        "debits_uri": "/a0/bank_accounts/BA1CRHMGKwPAYnLaij05r1VM/debits",
-        "id": "BA1CRHMGKwPAYnLaij05r1VM",
+        "created_at": "2012-09-25T22:43:05.251604Z",
+        "credits_uri": "/a0/bank_accounts/BAkZx5Z7lMd5L92vMTge2Js/credits/",
+        "debits_uri": "/a0/bank_accounts/BAkZx5Z7lMd5L92vMTge2Js/debits/",
+        "id": "BAkZx5Z7lMd5L92vMTge2Js",
         "name": "Gottfried Leibniz",
         "routing_number": "121042882",
         "type": "checking",
-        "uri": "/a0/bank_accounts/BA1CRHMGKwPAYnLaij05r1VM"
+        "uri": "/a0/bank_accounts/BAkZx5Z7lMd5L92vMTge2Js"
     }
 
 
@@ -98,96 +156,38 @@ Body
         "items": [
             {
                 "account_number": "xxxxxx2930",
-                "created_at": "2012-09-25T21:25:32.205962Z",
-                "credits_uri": "/a0/bank_accounts/BA1DjDf8yJJb6JjaL08cIH2O/credits",
-                "debits_uri": "/a0/bank_accounts/BA1DjDf8yJJb6JjaL08cIH2O/debits",
-                "id": "BA1DjDf8yJJb6JjaL08cIH2O",
+                "created_at": "2012-09-25T22:43:05.654589Z",
+                "credits_uri": "/a0/bank_accounts/BAlrEVzGoxbhxRcKOeMxOMq/credits/",
+                "debits_uri": "/a0/bank_accounts/BAlrEVzGoxbhxRcKOeMxOMq/debits/",
+                "id": "BAlrEVzGoxbhxRcKOeMxOMq",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
                 "type": "checking",
-                "uri": "/a0/bank_accounts/BA1DjDf8yJJb6JjaL08cIH2O"
+                "uri": "/a0/bank_accounts/BAlrEVzGoxbhxRcKOeMxOMq"
             },
             {
                 "account_number": "xxxxxx2930",
-                "created_at": "2012-09-25T21:25:32.214489Z",
-                "credits_uri": "/a0/bank_accounts/BA1DkPcZqDzSpiu2ruSyaYdk/credits",
-                "debits_uri": "/a0/bank_accounts/BA1DkPcZqDzSpiu2ruSyaYdk/debits",
-                "id": "BA1DkPcZqDzSpiu2ruSyaYdk",
+                "created_at": "2012-09-25T22:43:05.662835Z",
+                "credits_uri": "/a0/bank_accounts/BAlsHULgxFufI3ctc23wnXA/credits/",
+                "debits_uri": "/a0/bank_accounts/BAlsHULgxFufI3ctc23wnXA/debits/",
+                "id": "BAlsHULgxFufI3ctc23wnXA",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
                 "type": "checking",
-                "uri": "/a0/bank_accounts/BA1DkPcZqDzSpiu2ruSyaYdk"
+                "uri": "/a0/bank_accounts/BAlsHULgxFufI3ctc23wnXA"
             },
             {
                 "account_number": "xxxxxx2930",
-                "created_at": "2012-09-25T21:25:32.219899Z",
-                "credits_uri": "/a0/bank_accounts/BA1DldigbH6Gm8Vu0juskI9Y/credits",
-                "debits_uri": "/a0/bank_accounts/BA1DldigbH6Gm8Vu0juskI9Y/debits",
-                "id": "BA1DldigbH6Gm8Vu0juskI9Y",
+                "created_at": "2012-09-25T22:43:05.669355Z",
+                "credits_uri": "/a0/bank_accounts/BAlt9WN6lZLFQkdiZ39Rips/credits/",
+                "debits_uri": "/a0/bank_accounts/BAlt9WN6lZLFQkdiZ39Rips/debits/",
+                "id": "BAlt9WN6lZLFQkdiZ39Rips",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
                 "type": "checking",
-                "uri": "/a0/bank_accounts/BA1DldigbH6Gm8Vu0juskI9Y"
+                "uri": "/a0/bank_accounts/BAlt9WN6lZLFQkdiZ39Rips"
             }
         ]
-    }
-
-
-
-Unstore a bank account
-----------------------
-
-.. code::
-
-    DELETE /a0/bank_accounts/:bank_account_id
-
-
-Response
-~~~~~~~~
-
-Header
-^^^^^^
-
-.. code::
-
-    Status: 204 No Content
-
-
-
-Retrieve a bank account
------------------------
-
-.. code::
-
-    GET /a0/bank_accounts/:bank_account_id
-
-
-Response
-~~~~~~~~
-
-Header
-^^^^^^
-
-.. code::
-
-    Status: 200 Ok
-
-Body
-^^^^
-
-.. code:: javascript
-
-
-    {
-        "account_number": "xxxxxx2930",
-        "created_at": "2012-09-25T21:25:33.034398Z",
-        "credits_uri": "/a0/bank_accounts/BA1Efw8iwJWSIfvEJVD2cllM/credits",
-        "debits_uri": "/a0/bank_accounts/BA1Efw8iwJWSIfvEJVD2cllM/debits",
-        "id": "BA1Efw8iwJWSIfvEJVD2cllM",
-        "name": "Gottfried Leibniz",
-        "routing_number": "121042882",
-        "type": "checking",
-        "uri": "/a0/bank_accounts/BA1Efw8iwJWSIfvEJVD2cllM"
     }
 
 
