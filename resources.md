@@ -1,6 +1,6 @@
 # Resources
 
-All URIs should be prefixed with `https://api.balancedpayments.com`.
+All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 ## Bank Account
 
