@@ -38,7 +38,7 @@ All errors return a JSON response with the following format:
 **type:** `invalid-request-error`
 : Used as a general error when no other error type applies
 
-#### API Errors
+### API Errors
 
 **type:** `api-error`
 
