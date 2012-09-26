@@ -43,7 +43,7 @@ Balanced does not charge for:
 * data portability
 * variable fee (only one fixed fee)
 
-**ACH Credit:** 25¢
-**ACH Debit:** $1
-**Rejected transactions:** $3.50
-**Disputes of Debits:** $15
+**ACH Credit:** 25¢<br>
+**ACH Debit:** $1<br>
+**Rejected transactions:** $3.50<br>
+**Disputes of Debits:** $15<br>
