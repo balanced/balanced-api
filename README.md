@@ -31,6 +31,11 @@ changes within a specific version and deprecated versions will be supported for
 
 ## Pricing
 
+**ACH Credit:** 25¢<br>
+**ACH Debit:** $1<br>
+**Rejected transactions:** $3.50<br>
+**Disputes of Debits:** $15<br>
+
 Balanced does not charge for:
 * setup fees
 * batch file costs. Well ... unlike others, we don't use batch files.
@@ -39,8 +44,3 @@ Balanced does not charge for:
 * vaulting
 * data portability
 * variable fee (only one fixed fee)
-
-**ACH Credit:** 25¢<br>
-**ACH Debit:** $1<br>
-**Rejected transactions:** $3.50<br>
-**Disputes of Debits:** $15<br>
