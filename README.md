@@ -12,16 +12,13 @@ into `v1`.
 
 ## Milestones
 
-~~**1. Wednesday, September 19, 2012:** Finalize initial version of API
+1. ~~**Wednesday, September 19, 2012:** Finalize initial version of API
 specifications~~
-
-~~**2. Wednesday, September 26, 2012:** Release a test API that follows the
+2. ~~**Wednesday, September 26, 2012:** Release a test API that follows the
 specifications but does not process live transactions~~
-
-**3. Wednesday, October 3, 2012:** Release thin client libraries for the API in
+3. **Wednesday, October 3, 2012:** Release thin client libraries for the API in
 Ruby, Python, and PHP
-
-**4. Wednesday, October 10, 2012:** Enable live transactions
+4. **Wednesday, October 10, 2012:** Enable live transactions
 
 
 ## Versioning
