@@ -15,8 +15,8 @@ into `v1`.
 ~~**1. Wednesday, September 19, 2012:** Finalize initial version of API
 specifications~~
 
-**2. Wednesday, September 26, 2012:** Release a test API that follows the
-specifications but does not process live transactions
+~~**2. Wednesday, September 26, 2012:** Release a test API that follows the
+specifications but does not process live transactions~~
 
 **3. Wednesday, October 3, 2012:** Release thin client libraries for the API in
 Ruby, Python, and PHP
@@ -34,7 +34,8 @@ changes within a specific version and deprecated versions will be supported for
 
 ## Pricing
 
-We do not charge for:
+Balanced does not charge for:
+* setup fees
 * batch file costs. Well ... unlike others, we don't use batch files.
 * monthly fees
 * compliance
