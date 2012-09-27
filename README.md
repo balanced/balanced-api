@@ -44,3 +44,24 @@ Balanced does not charge for:
 * vaulting
 * data portability
 * variable fee (only one fixed fee)
+
+
+## Quick Start Examples
+
+### Debit a Bank Account
+
+    curl https://x.balancedpayments.com/a0/debits \
+        -d amount=100000 \
+        -d bank_account[name]="Jacob Bernoulli" \
+        -d bank_account[account_number]=9900000000 \
+        -d bank_account[routing_number]=121042882 \
+        -d bank_account[type]=checking
+
+### Credit a Bank Account
+
+    curl https://x.balancedpayments.com/a0/credits \
+        -d amount=100000 \
+        -d bank_account[name]="Johann Bernoulli" \
+        -d bank_account[account_number]=9900000001 \
+        -d bank_account[routing_number]=121000358 \
+        -d bank_account[type]=checking
