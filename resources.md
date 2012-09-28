@@ -48,6 +48,10 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 `routing_number`
 : **string**
+: 9 digits
+: Meets [MICR routing number format](http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format)
+: Specified in FedACH database defined by the
+[US Federal Reserve](http://www.fedwiredirectory.frb.org/)
 
 `type`
 : **string**
