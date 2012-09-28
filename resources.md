@@ -42,6 +42,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 `name`
 : **string**
+: Name of account holder
 
 `account_number`
 : **string**
@@ -101,6 +102,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 `amount`
 : **integer**
 : `> 0`
+: USD cents
 
 `state`
 : **string**
@@ -108,7 +110,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 `fee`
 : **integer**
-: amount charged by Balanced
+: amount charged by Balanced in USD cents
 
 `bank_account`
 : **object**
@@ -158,6 +160,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 `amount`
 : **integer**
 : `>= 0`
+: USD cents
 
 `state`
 : **string**
@@ -165,7 +168,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 `fee`
 : **integer**
-: amount charged by Balanced
+: amount charged by Balanced in USD cents
 
 `bank_account`
 : **object**
