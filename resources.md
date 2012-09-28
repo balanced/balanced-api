@@ -4,7 +4,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 ## Bank Account
 
-    `/a0/bank_accounts`
+    /a0/bank_accounts
 
 ### Example
 
@@ -56,7 +56,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 ## Debit
 
-    `/a0/debits`
+    /a0/debits
 
 ### Example
 
@@ -113,7 +113,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 ## Credit
 
-    `/a0/credits`
+    /a0/credits
 
 ### Example
 
