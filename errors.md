@@ -14,6 +14,8 @@
 
 **404** Not Found - Requested URI doesn't exist.
 
+**405** Method Not Allowed - The HTTP method used is not allowed for the Requested URI.
+
 **500, 502, 503, 504** Internal Server Error - Something went wrong on Balanced's side.
 
 
