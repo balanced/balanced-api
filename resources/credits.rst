@@ -52,7 +52,7 @@ credit-view
     *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when the state of this credit changed.
 
 ``state``
-    *string*. One of ``pending``, ``cleared``, ``rejected``.
+    *string*. One of ``created``, ``submitted``, ``cleared``, ``rejected``.
 
 ``fee``
     *integer*. The fee charged by Balanced for this credit.
