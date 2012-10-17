@@ -180,6 +180,23 @@ Response
     :status code: 409
     :category type: logical
 
+Request
+-------
+
+credit-cancel-form
+------------------
+
+A credit can only be canceled when the state is `created`.
+
+.. _credit-cancel-form:
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`credits <./credits.rst>`_
+:methods: ``DELETE``
 
 
+Response
+--------
 
+`invalid-request <../errors.rst#invalid-request>`_
+    :status code: 400
+    :category type: request
