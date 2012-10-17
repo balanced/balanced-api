@@ -61,6 +61,9 @@ credit-view
     *object*. The funding destination for this credit (i.e., a bank account). See `bank account view
     <./bank_accounts.rst#bank-account-view>`_.
 
+``trace_number``
+    *string* or *null*. Trace number provided by the ACH network after the
+    credit is submitted.
 
 
 Index
