@@ -516,12 +516,3 @@ invalid-amount
 
     Refund amount cannot be greater than the amount of the original debit.
 
-.. _invalid-request:
-
-invalid-request
----------------
-
-invalid-request
-    :category code: invalid-request
-    :status code: 400
-    :category type: request
