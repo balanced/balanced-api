@@ -30,6 +30,10 @@ All errors return a JSON response with the following format:
 `code`
 : **string** or `null`
 
+`request_id`
+: **string**
+: Unique to the request
+
 `message`
 : **string**
 : Explanation of the error
