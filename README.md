@@ -30,8 +30,8 @@ changes within a specific version and deprecated versions will be supported for
 
 ## Pricing
 
-**ACH Credit:** 25¢<br>
-**Rejected transactions:** $3.50<br>
+**Per credit:** 25¢<br>
+**Credit failure:** $3.50<br>
 
 Balanced does not charge for:
 * setup fees
