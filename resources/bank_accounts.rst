@@ -1,13 +1,13 @@
 Bank Accounts
 =============
 
--  `Store a Bank Account`_
+-  `Create a Bank Account`_
 -  `Retrieve a Bank Account`_
 -  `List All Bank Accounts`_
--  `Unstore a Bank Account`_
+-  `Delete a Bank Account`_
 
 
-Store a bank account
+Create a bank account
 --------------------
 
 .. code::
@@ -63,6 +63,7 @@ Body
         "id": "BA7kiJsfPlIPmrQVEVywWnrA",
         "name": "Gottfried Leibniz",
         "routing_number": "121042882",
+        "fingerprint": "xyz",
         "type": "checking",
         "uri": "/a1/bank_accounts/BA7kiJsfPlIPmrQVEVywWnrA"
     }
@@ -100,6 +101,7 @@ Body
         "id": "BA7kKcHTHOQqy16jsk9OWI1s",
         "name": "Gottfried Leibniz",
         "routing_number": "121042882",
+        "fingerprint": "xyz",
         "type": "checking",
         "uri": "/a1/bank_accounts/BA7kKcHTHOQqy16jsk9OWI1s"
     }
@@ -139,6 +141,7 @@ Body
                 "id": "BA7ldjj06fZtF59Pp87JaBv4",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
+                "fingerprint": "xyz",
                 "type": "checking",
                 "uri": "/a1/bank_accounts/BA7ldjj06fZtF59Pp87JaBv4"
             },
@@ -149,6 +152,7 @@ Body
                 "id": "BA7lekSH95E75pJRGnQG54H8",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
+                "fingerprint": "xyz",
                 "type": "checking",
                 "uri": "/a1/bank_accounts/BA7lekSH95E75pJRGnQG54H8"
             },
@@ -159,6 +163,7 @@ Body
                 "id": "BA7leLc7ul7XQ9xFLsSWu4jw",
                 "name": "Gottfried Leibniz",
                 "routing_number": "121042882",
+                "fingerprint": "xyz",
                 "type": "checking",
                 "uri": "/a1/bank_accounts/BA7leLc7ul7XQ9xFLsSWu4jw"
             }
@@ -167,7 +172,7 @@ Body
 
 
 
-Unstore a bank account
+Delete a bank account
 ----------------------
 
 .. code::

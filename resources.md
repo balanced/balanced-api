@@ -17,6 +17,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
     "name": "Gottfried Leibniz",
     "account_number": "xxxxxx2930",
     "routing_number": "121042882",
+    "fingerprint": "xyz",
     "type": "checking"
 }
 ```
@@ -50,6 +51,10 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 : Specified in FedACH database defined by the
 [US Federal Reserve](http://www.fedwiredirectory.frb.org/)
 
+`fingerprint`
+: **string**
+: Uniquely identifies a bank account (account number and routing number)
+
 `type`
 : **string**
 : `checking` or `savings`
@@ -77,6 +82,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
         "name": "Gottfried Leibniz",
         "account_number": "xxxxxx2930",
         "routing_number": "121042882",
+        "fingerprint": "xyz",
         "type": "checking"
     }
 }

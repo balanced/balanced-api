@@ -61,6 +61,7 @@ Body
             "account_number": "xxxxxx2930",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
+            "fingerprint": "xyz",
             "type": "checking",
         },
         "created_at": "2012-09-26T01:05:39.048250Z",
@@ -117,6 +118,7 @@ Body
             "id": "BA7tRY8SQDOO0tCutsZ8C442",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
+            "fingerprint": "xyz",
             "type": "checking",
             "uri": "/a1/bank_accounts/BA7tRY8SQDOO0tCutsZ8C442"
         },
@@ -162,6 +164,7 @@ Body
             "id": "BA7ulC6zZsOPV51ezmsgHGCS",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
+            "fingerprint": "xyz",
             "type": "checking",
             "uri": "/a1/bank_accounts/BA7ulC6zZsOPV51ezmsgHGCS"
         },
@@ -201,6 +204,7 @@ Body
             "account_number": "xxxxxx2930",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
+            "fingerprint": "xyz",
             "type": "checking"
         },
         "created_at": "2012-09-26T01:05:40.282299Z",
@@ -247,6 +251,7 @@ Body
                     "id": "BA7vgPFGKKvzhxFx8xcFiwJk",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vgPFGKKvzhxFx8xcFiwJk"
                 },
@@ -265,6 +270,7 @@ Body
                     "id": "BA7vhIcSRabWuw67ZQt34n7Y",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vhIcSRabWuw67ZQt34n7Y"
                 },
@@ -283,6 +289,7 @@ Body
                     "id": "BA7vid5DNb8AX9rD2Jehni0q",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vid5DNb8AX9rD2Jehni0q"
                 },
@@ -332,6 +339,7 @@ Body
                     "id": "BA7vJLojGjlpqpAtrTsZPeVY",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
@@ -350,6 +358,7 @@ Body
                     "id": "BA7vJLojGjlpqpAtrTsZPeVY",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
@@ -368,6 +377,7 @@ Body
                     "id": "BA7vJLojGjlpqpAtrTsZPeVY",
                     "name": "Gottfried Leibniz",
                     "routing_number": "121042882",
+                    "fingerprint": "xyz",
                     "type": "checking",
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
