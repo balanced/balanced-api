@@ -56,5 +56,8 @@ All errors return a JSON response with the following format:
 : The routing number is not valid according to the
 [US Federal Reserve](http://www.fedwiredirectory.frb.org/)
 
+**code:** `invalid-account-number`
+: The account number is known to be invalid based on the bank
+
 **code:** `invalid-type`
 : The bank account type is not valid.

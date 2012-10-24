@@ -1,11 +1,11 @@
 # Testing
 
 
-## Credit and Debit States
+## Credit Status
 
 Use the following bank account numbers to create a credit with a
-specific status. Any account number not listed below will create a credit
-with a status of `pending` in the test environment.
+specific status. Only the following account and routing numbers may be unsed
+in the test environment.
 
 ### `pending`
 `9900000000`<br>
