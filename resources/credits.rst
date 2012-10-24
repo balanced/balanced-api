@@ -59,13 +59,9 @@ Body
         "amount": 1716,
         "bank_account": {
             "account_number": "xxxxxx2930",
-            "created_at": "2012-09-26T01:05:39.046733Z",
-            "credits_uri": "/a1/bank_accounts/BA7tpU90gVQj2sYxcaWCEafg/credits/",
-            "id": "BA7tpU90gVQj2sYxcaWCEafg",
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
             "type": "checking",
-            "uri": "/a1/bank_accounts/BA7tpU90gVQj2sYxcaWCEafg"
         },
         "created_at": "2012-09-26T01:05:39.048250Z",
         "id": "CR7tpfpJezp2McGX43WFqoaK",
