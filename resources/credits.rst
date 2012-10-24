@@ -68,7 +68,6 @@ Body
             "uri": "/a1/bank_accounts/BA7tpU90gVQj2sYxcaWCEafg"
         },
         "created_at": "2012-09-26T01:05:39.048250Z",
-        "fee": 0,
         "id": "CR7tpfpJezp2McGX43WFqoaK",
         "status": "pending",
         "trace_number": null,
@@ -126,7 +125,6 @@ Body
             "uri": "/a1/bank_accounts/BA7tRY8SQDOO0tCutsZ8C442"
         },
         "created_at": "2012-09-26T01:05:39.471760Z",
-        "fee": 0,
         "id": "CR7tTvC259MVS1cOHn28cy2m",
         "status": "pending",
         "trace_number": null,
@@ -172,7 +170,6 @@ Body
             "uri": "/a1/bank_accounts/BA7ulC6zZsOPV51ezmsgHGCS"
         },
         "created_at": "2012-09-26T01:05:39.875901Z",
-        "fee": 0,
         "id": "CR7ul6RkHd0x3gHxKfSn3ivo",
         "status": "pending",
         "trace_number": null,
@@ -211,7 +208,6 @@ Body
             "type": "checking"
         },
         "created_at": "2012-09-26T01:05:40.282299Z",
-        "fee": 0,
         "id": "CR7uNm13FsZYahRCMcCUDWQO",
         "status": "pending",
         "trace_number": null,
@@ -259,7 +255,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vgPFGKKvzhxFx8xcFiwJk"
                 },
                 "created_at": "2012-09-26T01:05:40.696339Z",
-                "fee": 0,
                 "id": "CR7vglingcQmlsru3ydzKcAO",
                 "status": "pending",
                 "trace_number": null,
@@ -278,7 +273,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vhIcSRabWuw67ZQt34n7Y"
                 },
                 "created_at": "2012-09-26T01:05:40.707124Z",
-                "fee": 0,
                 "id": "CR7vhF70LzK8YRfGXraqXuoG",
                 "status": "pending",
                 "trace_number": null,
@@ -297,7 +291,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vid5DNb8AX9rD2Jehni0q"
                 },
                 "created_at": "2012-09-26T01:05:40.714570Z",
-                "fee": 0,
                 "id": "CR7viaeJ3HkaQg9cUNjiLW7o",
                 "status": "pending",
                 "trace_number": null,
@@ -347,7 +340,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
                 "created_at": "2012-09-26T01:05:41.132034Z",
-                "fee": 0,
                 "id": "CR7vLhh8XvtzUuMJBW53DXce",
                 "status": "pending",
                 "trace_number": null,
@@ -366,7 +358,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
                 "created_at": "2012-09-26T01:05:41.142644Z",
-                "fee": 0,
                 "id": "CR7vM5mxthVqq1HKl3hFT90u",
                 "status": "pending",
                 "trace_number": null,
@@ -385,7 +376,6 @@ Body
                     "uri": "/a1/bank_accounts/BA7vJLojGjlpqpAtrTsZPeVY"
                 },
                 "created_at": "2012-09-26T01:05:41.151774Z",
-                "fee": 0,
                 "id": "CR7vMIyVhoWcTwAsQRKZdwjU",
                 "status": "pending",
                 "trace_number": null,
