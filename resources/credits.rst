@@ -70,7 +70,7 @@ Body
         "created_at": "2012-09-26T01:05:39.048250Z",
         "fee": 0,
         "id": "CR7tpfpJezp2McGX43WFqoaK",
-        "state": "pending",
+        "status": "pending",
         "trace_number": null,
         "uri": "/a1/credits/CR7tpfpJezp2McGX43WFqoaK"
     }
@@ -128,7 +128,7 @@ Body
         "created_at": "2012-09-26T01:05:39.471760Z",
         "fee": 0,
         "id": "CR7tTvC259MVS1cOHn28cy2m",
-        "state": "pending",
+        "status": "pending",
         "trace_number": null,
         "uri": "/a1/credits/CR7tTvC259MVS1cOHn28cy2m"
     }
@@ -174,7 +174,7 @@ Body
         "created_at": "2012-09-26T01:05:39.875901Z",
         "fee": 0,
         "id": "CR7ul6RkHd0x3gHxKfSn3ivo",
-        "state": "pending",
+        "status": "pending",
         "trace_number": null,
         "uri": "/a1/credits/CR7ul6RkHd0x3gHxKfSn3ivo"
     }
@@ -213,7 +213,7 @@ Body
         "created_at": "2012-09-26T01:05:40.282299Z",
         "fee": 0,
         "id": "CR7uNm13FsZYahRCMcCUDWQO",
-        "state": "pending",
+        "status": "pending",
         "trace_number": null,
         "uri": "/a1/credits/CR7uNm13FsZYahRCMcCUDWQO"
     }
@@ -261,7 +261,7 @@ Body
                 "created_at": "2012-09-26T01:05:40.696339Z",
                 "fee": 0,
                 "id": "CR7vglingcQmlsru3ydzKcAO",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7vglingcQmlsru3ydzKcAO"
             },
@@ -280,7 +280,7 @@ Body
                 "created_at": "2012-09-26T01:05:40.707124Z",
                 "fee": 0,
                 "id": "CR7vhF70LzK8YRfGXraqXuoG",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7vhF70LzK8YRfGXraqXuoG"
             },
@@ -299,7 +299,7 @@ Body
                 "created_at": "2012-09-26T01:05:40.714570Z",
                 "fee": 0,
                 "id": "CR7viaeJ3HkaQg9cUNjiLW7o",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7viaeJ3HkaQg9cUNjiLW7o"
             }
@@ -349,7 +349,7 @@ Body
                 "created_at": "2012-09-26T01:05:41.132034Z",
                 "fee": 0,
                 "id": "CR7vLhh8XvtzUuMJBW53DXce",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7vLhh8XvtzUuMJBW53DXce"
             },
@@ -368,7 +368,7 @@ Body
                 "created_at": "2012-09-26T01:05:41.142644Z",
                 "fee": 0,
                 "id": "CR7vM5mxthVqq1HKl3hFT90u",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7vM5mxthVqq1HKl3hFT90u"
             },
@@ -387,7 +387,7 @@ Body
                 "created_at": "2012-09-26T01:05:41.151774Z",
                 "fee": 0,
                 "id": "CR7vMIyVhoWcTwAsQRKZdwjU",
-                "state": "pending",
+                "status": "pending",
                 "trace_number": null,
                 "uri": "/a1/credits/CR7vMIyVhoWcTwAsQRKZdwjU"
             }
