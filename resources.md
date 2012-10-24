@@ -68,6 +68,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
     "created_at": "2012-09-13T21:25:24Z",
     "amount": 1716,
     "state": "cleared",
+    "trace_number": "111036188001706",
     "fee": 25,
     "bank_account": {
         "id": "BANm9b8BcoOjcF5i1p4eV9I",
@@ -102,6 +103,9 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 `state`
 : **string**
 : `pending`, `cleared` or `rejected`
+
+`trace_number`
+: **string** or `null`
 
 `fee`
 : **integer**

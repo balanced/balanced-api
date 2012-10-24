@@ -71,6 +71,7 @@ Body
         "fee": 0,
         "id": "CR7tpfpJezp2McGX43WFqoaK",
         "state": "pending",
+        "trace_number": null,
         "uri": "/a1/credits/CR7tpfpJezp2McGX43WFqoaK"
     }
 
@@ -128,6 +129,7 @@ Body
         "fee": 0,
         "id": "CR7tTvC259MVS1cOHn28cy2m",
         "state": "pending",
+        "trace_number": null,
         "uri": "/a1/credits/CR7tTvC259MVS1cOHn28cy2m"
     }
 
@@ -173,6 +175,7 @@ Body
         "fee": 0,
         "id": "CR7ul6RkHd0x3gHxKfSn3ivo",
         "state": "pending",
+        "trace_number": null,
         "uri": "/a1/credits/CR7ul6RkHd0x3gHxKfSn3ivo"
     }
 
@@ -211,6 +214,7 @@ Body
         "fee": 0,
         "id": "CR7uNm13FsZYahRCMcCUDWQO",
         "state": "pending",
+        "trace_number": null,
         "uri": "/a1/credits/CR7uNm13FsZYahRCMcCUDWQO"
     }
 
@@ -258,6 +262,7 @@ Body
                 "fee": 0,
                 "id": "CR7vglingcQmlsru3ydzKcAO",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7vglingcQmlsru3ydzKcAO"
             },
             {
@@ -276,6 +281,7 @@ Body
                 "fee": 0,
                 "id": "CR7vhF70LzK8YRfGXraqXuoG",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7vhF70LzK8YRfGXraqXuoG"
             },
             {
@@ -294,6 +300,7 @@ Body
                 "fee": 0,
                 "id": "CR7viaeJ3HkaQg9cUNjiLW7o",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7viaeJ3HkaQg9cUNjiLW7o"
             }
         ]
@@ -343,6 +350,7 @@ Body
                 "fee": 0,
                 "id": "CR7vLhh8XvtzUuMJBW53DXce",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7vLhh8XvtzUuMJBW53DXce"
             },
             {
@@ -361,6 +369,7 @@ Body
                 "fee": 0,
                 "id": "CR7vM5mxthVqq1HKl3hFT90u",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7vM5mxthVqq1HKl3hFT90u"
             },
             {
@@ -379,6 +388,7 @@ Body
                 "fee": 0,
                 "id": "CR7vMIyVhoWcTwAsQRKZdwjU",
                 "state": "pending",
+                "trace_number": null,
                 "uri": "/a1/credits/CR7vMIyVhoWcTwAsQRKZdwjU"
             }
         ]
