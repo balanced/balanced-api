@@ -1,13 +1,10 @@
 # Balanced ACH API [Beta]
 
-The goal of this API is to let you debit (withdrawal) from and credit (deposit)
+The goal of this API is to let you credit (deposit)
 to bank accounts in the US using next business day
 [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House) transfers.
 Balanced already provides an API to charge cards, holds funds in escrow,
-and deposit to bank accounts. This API has been broken off, for now, to let the
-Balanced team build add ACH debits without altering the existing stable API
-(`v1`). Aspects of this API have already been and will continue to be merged
-into `v1`.
+and deposit to bank accounts.
 
 
 ## Milestones
@@ -25,7 +22,7 @@ Ruby, Python, and PHP
 
 ## Versioning
 
-Note that this is API is in beta. The current version is `a0`. New versions
+Note that this is API is in beta. The current version is `a1`. New versions
 with breaking changes will be released. However, there will *not* be breaking
 changes within a specific version and deprecated versions will be supported for
 14 days.
@@ -34,9 +31,7 @@ changes within a specific version and deprecated versions will be supported for
 ## Pricing
 
 **ACH Credit:** 25¢<br>
-**ACH Debit:** $1<br>
 **Rejected transactions:** $3.50<br>
-**Disputes of Debits:** $15<br>
 
 Balanced does not charge for:
 * setup fees
@@ -50,18 +45,10 @@ Balanced does not charge for:
 
 ## Quick Start Examples
 
-### Debit a Bank Account
-
-    curl https://x.balancedpayments.com/a0/debits \
-        -d amount=100000 \
-        -d bank_account[name]="Jacob Bernoulli" \
-        -d bank_account[account_number]=9900000000 \
-        -d bank_account[routing_number]=121042882 \
-        -d bank_account[type]=checking
 
 ### Credit a Bank Account
 
-    curl https://x.balancedpayments.com/a0/credits \
+    curl https://x.balancedpayments.com/a1/credits \
         -d amount=100000 \
         -d bank_account[name]="Johann Bernoulli" \
         -d bank_account[account_number]=9900000001 \
