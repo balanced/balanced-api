@@ -6,6 +6,11 @@ to bank accounts in the US using next business day
 Balanced already provides an API to charge cards, holds funds in escrow,
 and deposit to bank accounts.
 
+# Scope of Functionality
+This API does NOT currently provide the ability to 
+debit (pull money from) bank accounts. We have postponsed
+adding that functionality until further notice.
+
 
 ## Milestones
 
