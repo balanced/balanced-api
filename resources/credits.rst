@@ -63,7 +63,7 @@ Body
             "name": "Gottfried Leibniz",
             "routing_number": "121042882",
             "fingerprint": "xyz",
-            "type": "checking",
+            "type": "checking"
         },
         "created_at": "2012-09-26T01:05:39.048250Z",
         "description": "Math lesson",
