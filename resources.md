@@ -105,6 +105,7 @@ All URIs should be prefixed with `https://x.balancedpayments.com`.
 
 `trace_number`
 : **string** or `null`
+: Used by the ACH network to track transactions
 
 `bank_account`
 : **object**
