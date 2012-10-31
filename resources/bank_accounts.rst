@@ -1,290 +1,287 @@
+Bank Accounts
 =============
-BANK ACCOUNTS
-=============
 
-A bank account represents both a source, and a destination of funds. It
-must be associated with an account via a PUT on the account before you
-can begin transferring with it.
-
-bank-account-view
------------------
-
-.. _bank-account-view:
-
-``id``
-    *string*. The resource identifier.
-
-``uri``
-    *string*. The URI of the bank account object 
-
-``name``
-    *string*. The name on the bank account.
-
-``last_four``
-    *string*. The last four digits of the bank account number.
-
-``bank_code``
-    *string*. The bank code (routing number in the USA) of the bank account.
-
-``bank_name``
-    *string*. The name of the bank.
-
-``created_at``
-    *string*. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
-    bank account was tokenized.
-
-``account``
-    *object*. The account to which this bank account is associated.
-    See `account view <./accounts.rst#account-view>`_.
-
-``is_valid``
-    *boolean*. Boolean flag indicating whether the bank account is currently valid.
-
-``meta``
-    *object*. A single-level dictionary of string-type key/value pairs.
+- `Tokenize a Bank Account`_
+- `Retrieve a Bank Account`_
+- `Update a Bank Account`_
+- `Associate a Bank Account with an Account`_
 
 
+Fields
+------
 
-Create
-======
+``id`` 
+    **string**. The resource identifier. 
+ 
+``uri`` 
+    **string**. The URI of the bank account object  
+ 
+``name`` 
+    **string**. The name on the bank account. 
+ 
+``last_four`` 
+    **string**. The last four digits of the bank account number. 
+ 
+``bank_code`` 
+    **string**. The bank code (routing number in the USA) of the bank account. 
+ 
+``bank_name`` 
+    **string**. The name of the bank. 
+ 
+``created_at`` 
+    **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
+    bank account was tokenized. 
+ 
+``account`` 
+    **object**. The account to which this bank account is associated. See `Accounts <./accounts.rst>`_. 
+ 
+``is_valid`` 
+    **boolean**. Boolean flag indicating whether the bank account is currently valid. 
+ 
+``meta`` 
+    **object**. A single-level dictionary of string-type key/value pairs. 
+ 
 
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``POST``
+Tokenize a Bank Account
+-----------------------
 
-account-bank-account-create-form
---------------------------------
-
-.. _account-bank-account-create-form:
+.. code:: 
+ 
+    POST /v1/marketplaces/:marketplace_id/bank_accounts 
+ 
 
 Request
--------
+~~~~~~~
 
-Exactly one of
+``name`` 
+    *required* **string** or **null**. Name on the bank account. Length must be **>=** ``2``. 
+ 
+``account_number`` 
+    *required* **string** or **null**. Bank account number. Length must be **>=** ``1``. 
+ 
+``bank_code`` 
+    #. If not a *production* bank account then `bank_code` is a: 
+ 
+       ``bank_code`` 
+           *required* **string** or **null**. Length must be **>=** ``1``. 
+ 
+ 
+``account_type`` 
+    *optional* **string** or **null**. Bank account type. It should be one of: ``checking``, ``savings`` 
+ 
+``meta`` 
+    *optional* **object** or **null**. Single level mapping from string keys to string values. 
+ 
 
-    ``uri``
-        *string*. Tokenized bank account URI.
-
-
-    ``bank_account_uri``
-        *string*. Tokenized bank account URI.
-
-
-    ``*object*``
-        See `bank account create form <./bank_accounts.rst#create>`_.
-
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "account_type": "checking",  
+        "account_number": "12341234",  
+        "name": "Fit Finlay",  
+        "bank_code": "325182797" 
+    } 
+ 
 
 Response
---------
+~~~~~~~~
 
-`bank-account-not-valid <../errors.rst#bank-account-not-valid>`_
-    :status code: 409
-    :category type: logical
+Headers 
+^^^^^^^ 
+ 
+.. code::  
+ 
+    Status: 201 CREATED 
+ 
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "bank_name": "Banko De Ismus",  
+        "account": null,  
+        "name": "Fit Finlay",  
+        "bank_code": "325182797",  
+        "created_at": "2012-10-30T18:25:48.881529Z",  
+        "uri": "/v1/marketplaces/TEST-MP71hr4joOFdxgDU4XVac21u/bank_accounts/BA71v3N49RMi2L1UK7HOVvRW",  
+        "is_valid": true,  
+        "meta": {},  
+        "last_four": "1234",  
+        "id": "BA71v3N49RMi2L1UK7HOVvRW" 
+    } 
+ 
 
-`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
-    :status code: 409
-    :category type: logical
+Retrieve a Bank Account
+-----------------------
 
-`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
-    :status code: 409
-    :category type: logical
+.. code:: 
+ 
+    GET /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
+ 
 
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
+Response 
+~~~~~~~~ 
+ 
+Headers 
+^^^^^^^ 
+ 
+.. code::  
+ 
+    Status: 200 OK 
+ 
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "bank_name": null,  
+        "account": null,  
+        "name": "Fit Finlay",  
+        "bank_code": "325182797",  
+        "created_at": "2012-10-30T18:25:50.407526Z",  
+        "uri": "/v1/marketplaces/TEST-MP731TYkZ2oTqxGQXtWmpAvq/bank_accounts/BA73dtkMBkfzjHMv1Qjhmezi",  
+        "is_valid": true,  
+        "meta": {},  
+        "last_four": "1234",  
+        "id": "BA73dtkMBkfzjHMv1Qjhmezi" 
+    } 
+ 
 
+Update a Bank Account
+---------------------
 
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Refer to the
-`bank_account schema <./bank_accounts.rst#bank-account-view>`_.
-
-
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``PUT``
-
-account-bank-account-update-form
---------------------------------
-
-.. _account-bank-account-update-form:
+.. code:: 
+ 
+    PUT /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
+ 
 
 Request
--------
+~~~~~~~
 
-``is_valid``
-    *boolean*. Flag indicating whether the bank account is active (``true``) or not
-    (``false``). Setting this to ``false`` will deactivate the bank account.
+``is_valid`` 
+    *optional* **boolean** or **null**. Flag indicating whether the bank account is active (``true``) or not 
+    (``false``). Setting this to ``false`` will deactivate the bank account. 
+ 
+``meta`` 
+    *optional* **object** or **null**. Single level mapping from string keys to string values. 
+ 
 
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Ignored if not updated.
-
-
-    ``account``
-        *object*. An *object*  containing a `uri` field. The account referenced by
-        `uri` will be associated with the bank account:
-
-        ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Ignored if not updated.
-
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "is_valid": "False",  
+        "metadata": { 
+            "my-own-field": "Customer request" 
+        } 
+    } 
+ 
 
 Response
---------
+~~~~~~~~
 
+Headers 
+^^^^^^^ 
+ 
+.. code::  
+ 
+    Status: 200 OK 
+ 
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "bank_name": null,  
+        "account": null,  
+        "name": "Fit Finlay",  
+        "bank_code": "325182797",  
+        "created_at": "2012-10-30T18:25:53.735019Z",  
+        "uri": "/v1/marketplaces/TEST-MP76M1IQXv7fqgaI8TOSWxMg/bank_accounts/BA76XvZx35kQpVYnHtTbqRI8",  
+        "is_valid": false,  
+        "meta": {},  
+        "last_four": "1234",  
+        "id": "BA76XvZx35kQpVYnHtTbqRI8" 
+    } 
+ 
 
+Associate a Bank Account with an Account
+----------------------------------------
 
-Update
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``PUT``
-
-You may invalidate a bank account by passing ``is_valid`` with a
-``false`` value. Once a bank account has been invalidated it cannot be
-re-activated, you must create a new bank account.
-
-bank-account-update-form
-------------------------
-
-.. _bank-account-update-form:
+.. code:: 
+ 
+    PUT /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
+ 
 
 Request
--------
+~~~~~~~
 
-``is_valid``
-    *boolean*. Flag indicating whether the bank account is active (``true``) or not
-    (``false``). Setting this to ``false`` will deactivate the bank account.
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "account_uri": "/v1/marketplaces/TEST-MP78t7JCLJRZ4taD7vMbRxek/accounts/AC78z5REsYyqHG2B7YalCJSs" 
+    } 
+ 
 
-
-Exactly one of
-
-    ``account_uri``
-        *string*. URI of an account with which to associate the bank account. Ignored if not updated.
-
-
-    ``account``
-        *object*. An *object*  containing a `uri` field. The account referenced by
-        `uri` will be associated with the bank account:
-
-        ``uri``
-            *string*. URI. Defaults to ``null``.
-
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Ignored if not updated.
-
+``account_uri`` 
+    *optional* **string** or **null**. URI of an account with which to associate the bank account. 
+ 
 
 Response
---------
+~~~~~~~~
 
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
-
-`bank-account-already-associated <../errors.rst#bank-account-already-associated>`_
-    :status code: 409
-    :category type: logical
-
-`cannot-associate-bank-account <../errors.rst#cannot-associate-bank-account>`_
-    :status code: 409
-    :category type: logical
-
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-bank-accounts-view
-------------------
-
-.. _bank-accounts-view:
-
-
-Index
-=====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`accounts <./accounts.rst>`_/<*account*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``HEAD``, ``GET``
-
-
-
-Create
-======
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_
-:methods: ``POST``
-
-bank-account-create-form
-------------------------
-
-.. _bank-account-create-form:
-
-``name``
-    *string*. Name on the bank account. Length must be **>=** ``2``.
-
-
-``account_number``
-    *string*. Bank account number. Length must be **>=** ``1``.
-
-
-``bank_code``
-    #. If a *production* bank account then `bank_code` is a:
-
-       ``bank_code``
-           *string*. Bank account code. This is commonly referred to as the routing number in
-           the ``USA``. Length must be **=** ``9``.
-
-
-    #. If not a *production* bank account then `bank_code` is a:
-
-       ``bank_code``
-           *string*. Sequence of characters. Length must be **>=** ``1``.
-
-
-
-``account_type``
-    *string*. Bank account type. It should be one of: ``checking``, ``savings`` Defaults to ``checking``
-
-
-``meta``
-    *object*. Single level mapping from string keys to string values. Defaults to ``{}``
-
-
-Response
---------
-
-`invalid-routing-number <../errors.rst#invalid-routing-number>`_
-    :status code: 400
-    :category type: request
-
-
-
-Show
-====
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`bank_accounts <./bank_accounts.rst>`_/<*bank_account*>
-:methods: ``HEAD``, ``GET``
-
-Refer to the
-`bank_account schema <./bank_accounts.rst#bank-account-view>`_.
-
-
+Headers 
+^^^^^^^ 
+ 
+.. code::  
+ 
+    Status: 200 OK 
+ 
+Body 
+^^^^ 
+ 
+.. code:: javascript 
+ 
+    { 
+        "bank_name": null,  
+        "account": { 
+            "holds_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/holds",  
+            "name": null,  
+            "roles": [ 
+                "merchant",  
+                "buyer" 
+            ],  
+            "created_at": "2012-10-30T18:25:56.795677Z",  
+            "uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/bank_accounts",  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/refunds",  
+            "meta": {},  
+            "debits_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/debits",  
+            "transactions_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/transactions",  
+            "email_address": "email.7@y.com",  
+            "id": "AC7aoWjHUkruUz2JOddCLrCs",  
+            "credits_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/credits",  
+            "cards_uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/cards" 
+        },  
+        "name": "Fit Finlay",  
+        "bank_code": "325182797",  
+        "created_at": "2012-10-30T18:25:56.867243Z",  
+        "uri": "/v1/marketplaces/TEST-MP7aiMYlLoq3eKq8l8ZPGI7y/accounts/AC7aoWjHUkruUz2JOddCLrCs/bank_accounts/BA7atVLlcJTMQPx2UkQeCJGQ",  
+        "is_valid": true,  
+        "meta": {},  
+        "last_four": "1234",  
+        "id": "BA7atVLlcJTMQPx2UkQeCJGQ" 
+    } 
+ 
 
