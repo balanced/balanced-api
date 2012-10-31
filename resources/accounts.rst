@@ -723,10 +723,10 @@ Request
 ~~~~~~~
 
 ``merchant_uri`` 
-    *optional* **string** or **null**. See `Merchant <./merchants.rst>`_. 
+    *optional* **string** or **null**. See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_.
  
 ``merchant`` 
-    *optional* **object** or **null**. See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_. 
+    *optional* **object** or **null**. See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_.
  
  
 
