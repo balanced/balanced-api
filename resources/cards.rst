@@ -8,16 +8,17 @@ made with it.
 
 Operate on a card using the following endpoints:
 
-   - `Create a card <./cards.rst#create-and-associate-a-card-to-an-account>`_
-   - `Index Cards <./cards.rst#card-index>`_
-   - `Update a Card <./cards.rst#card-update>`_
-   - `Show a Card <./cards.rst#card-show>`_
+   - `Create a card <./cards.rst#create-a-card>`_
+   - `List all card tokens <./cards.rst#list-all-card-tokens>`_
+   - `Invalidate a card <./cards.rst#invalidate-a-card>`_
+   - `Get a card <./cards.rst#get-a-card>`_
 
 Operate on a card in an account context using the following endpoints:
 
-   - `Create and Associate a Card <./cards.rst#account-card-create>`_
-   - `Show an Account Card <./cards.rst#account-card-show>`_
-   - `Update an Account Card <./cards.rst#account-update-card>`_
+   - `Create and Associate a Card
+     <./cards.rst#create-and-associate-a-card-to-an-account>`_
+   - `Show an Account Card <./cards.rst#show-an-accounts-card>`_
+   - `Update an Account Card <./cards.rst#update-an-accounts-card>`_
 
 The card resource is composed of the following fields:
 
@@ -80,7 +81,19 @@ card-view
 ``hash``
     *string*. A hash derived from ``card_number``, ``expiration_month`` and
     ``expiration_year``. Cards with the same ``card_number``,
-    ``expiration_month`` and ``expiration_year`` will have the same ``hash``.
+    ``expiration_month`` and ``expiration_year`` will have the same `hash``.
+
+
+
+List all card tokens
+====================
+
+:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
+:methods: ``HEAD``, ``GET``
+
+.. _card-index:
+
+
 
 
 Create and associate a card to an account
@@ -326,17 +339,6 @@ Response
 `cannot-associate-card <../errors.rst#cannot-associate-card>`_
     :status code: 409
     :category type: logical
-
-
-
-List all card tokens
-====================
-
-:uri: /v1/`marketplaces <./marketplaces.rst>`_/<*marketplace*>/`cards <./cards.rst>`_
-:methods: ``HEAD``, ``GET``
-
-.. _card-index:
-
 
 
 
