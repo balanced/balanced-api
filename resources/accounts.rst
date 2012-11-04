@@ -172,7 +172,7 @@ Request
             *optional* **object** or **null**. Single level mapping from string keys to string values. 
  
         ``tax_id`` 
-            *optional* **string** or **null**. Length must be **=** ``9``. 
+            *optional* **string** or **null**. Length must be **=** ``4`` or ``9``.
  
         ``person`` 
             *optional* **object** or **null**.  
@@ -199,7 +199,7 @@ Request
                     three character country code. 
  
                 ``tax_id`` 
-                    *optional* **string** or **null**. Length must be **=** ``9``. 
+                    *optional* **string** or **null**. Length must be **=** ``4`` or ``9``.
  
  
         ``name`` 
@@ -332,7 +332,7 @@ Request
             *optional* **object** or **null**. Single level mapping from string keys to string values. 
  
         ``tax_id`` 
-            *optional* **string** or **null**. Length must be **=** ``9``. 
+            *optional* **string** or **null**. Length must be **=** ``4`` or ``9``.
  
         ``dob`` 
             *optional* **string** or **null**. Date-of-birth formatted as ``YYYY-MM-DD``. 
