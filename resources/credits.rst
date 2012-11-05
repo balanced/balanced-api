@@ -5,7 +5,6 @@ Credits
 -  `Credit an Existing Bank Account`_
 -  `Credit a Merchant`_
 -  `Retrieve a Credit`_
--  `Retrieve a Credit (Deleted Bank Account)`_
 -  `List All Credits`_
 -  `List All Credits for a Bank Account`_
 -  `List All Credits for a Merchant`_
@@ -356,46 +355,6 @@ Body
         "status": "pending",
         "trace_number": null,
         "uri": "/v1/credits/CR7ul6RkHd0x3gHxKfSn3ivo"
-    }
-
-Retrieve a Credit (Deleted Bank Account)
------------------------------------------
-
-.. code::
-
-    GET /v1/credits/:credit_id
-
-Response
-~~~~~~~~
-
-Header
-^^^^^^
-
-.. code::
-
-    Status: 200 Ok
-
-Body
-^^^^
-
-.. code:: javascript
-
-
-    {
-        "amount": 1716,
-        "bank_account": {
-            "account_number": "xxxxxx2930",
-            "name": "Gottfried Leibniz",
-            "routing_number": "121042882",
-            "fingerprint": "xyz",
-            "type": "checking"
-        },
-        "created_at": "2012-09-26T01:05:40.282299Z",
-        "description": null,
-        "id": "CR7uNm13FsZYahRCMcCUDWQO",
-        "status": "pending",
-        "trace_number": null,
-        "uri": "/v1/credits/CR7uNm13FsZYahRCMcCUDWQO"
     }
 
 
