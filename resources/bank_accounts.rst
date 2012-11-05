@@ -1,224 +1,353 @@
 Bank Accounts
 =============
 
-- `Tokenize a Bank Account`_
-- `Retrieve a Bank Account`_
-- `Update a Bank Account`_
-- `Associate a Bank Account with an Account`_
+-  `Create a Bank Account`_
+-  `Retrieve a Bank Account`_
+-  `List All Bank Accounts`_
+-  `List All Bank Accounts for an Account`_
+-  `Associate a Bank Account with an Account`_
+-  `Delete a Bank Account`_
 
 
 Fields
 ------
 
-``id`` 
-    **string**. The resource identifier. 
- 
-``uri`` 
-    **string**. The URI of the bank account object  
- 
-``name`` 
-    **string**. The name on the bank account. 
- 
-``last_four`` 
-    **string**. The last four digits of the bank account number. 
- 
-``bank_code`` 
-    **string**. The bank code (routing number in the USA) of the bank account. 
- 
+``id``
+: **string**
+
+``uri``
+: **string**
+
+``created_at``
+: **string**
+: `iso8601 <http://en.wikipedia.org/wiki/Iso8601>`_
+
+``credits_uri``
+: **string**
+
+``name``
+: **string**
+: Name of account holder
+
+``account_number``
+: **string**
+
+``routing_number``
+: **string**
+: 9 digits
+: Meets `MICR routing number format <http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format>`_
+: Specified in FedACH database defined by the
+`US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_
+
 ``bank_name`` 
-    **string**. The name of the bank. 
- 
-``created_at`` 
-    **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
-    bank account was tokenized. 
- 
-``account`` 
-    **object**. The account to which this bank account is associated. See `Accounts <./accounts.rst>`_. 
- 
+: **string**
+: The name of the bank
+
+
+``fingerprint``
+: **string**
+: Uniquely identifies a bank account (account number and routing number)
+
+``type``
+: **string**
+: ``checking`` or ``savings``
+
+``meta``
+: **object**
+: A single-level dictionary of string-type key/value pairs
+
+
+Deprecated
+~~~~~~~~~~
+
+``bank_code``
+: **string**
+: Use ``routing_number`` instead
+
 ``is_valid`` 
-    **boolean**. Boolean flag indicating whether the bank account is currently valid. 
- 
-``meta`` 
-    **object**. A single-level dictionary of string-type key/value pairs. 
- 
+: **boolean**
+: Use `Delete a Bank Account`_ instead
 
-Tokenize a Bank Account
------------------------
+``last_four``
+: **string**
+: Last four digits are now returned in the ``acount_number``
 
-.. code:: 
- 
-    POST /v1/marketplaces/:marketplace_id/bank_accounts 
- 
+
+
+Create a Bank Account
+---------------------
+
+.. code::
+
+    POST /v1/bank_accounts
+
 
 Request
 ~~~~~~~
 
-``name`` 
-    *required* **string** or **null**. Name on the bank account. Length must be **>=** ``2``. 
- 
-``account_number`` 
-    *required* **string** or **null**. Bank account number. Length must be **>=** ``1``. 
- 
-``bank_code`` 
-    #. If not a *production* bank account then `bank_code` is a: 
- 
-       ``bank_code`` 
-           *required* **string** or **null**. Length must be **>=** ``1``. 
- 
- 
-``account_type`` 
-    *optional* **string** or **null**. Bank account type. It should be one of: ``checking``, ``savings`` 
- 
-``meta`` 
-    *optional* **object** or **null**. Single level mapping from string keys to string values. 
- 
+``name``
+: *required* **string**
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "account_type": "checking",  
-        "account_number": "12341234",  
-        "name": "Fit Finlay",  
-        "bank_code": "325182797" 
-    } 
- 
+``account_number``
+: *required* **string**
+
+``routing_number``
+: *required* **string**
+
+``type``
+: *required* **string**
+: ``checking`` or ``savings``
+
+.. code:: javascript
+
+    {
+        "name": "Gottfried Leibniz",
+        "account_number": "3819372930",
+        "routing_number": "121042882",
+        "type": "checking"
+    }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 201 CREATED 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_name": "Banko De Ismus",  
-        "account": null,  
-        "name": "Fit Finlay",  
-        "bank_code": "325182797",  
-        "created_at": "2012-10-31T09:54:36.417234Z",  
-        "uri": "/v1/marketplaces/TEST-MP54UZAkFtiyRYfG2SLS1qIY/bank_accounts/BA556UUdFYq61qzsxQ4Em5Te",  
-        "is_valid": true,  
-        "meta": {},  
-        "last_four": "1234",  
-        "id": "BA556UUdFYq61qzsxQ4Em5Te" 
-    } 
- 
+Header
+^^^^^^
+
+.. code::
+
+    Status: 201 Created
+
+Body
+^^^^
+
+.. code:: javascript
+
+
+    {
+        "account_number": "xxxxxx2930",
+        "bank_name": "Bank of America",
+        "created_at": "2012-09-26T01:05:30.947813Z",
+        "credits_uri": "/v1/bank_accounts/BA7kiJsfPlIPmrQVEVywWnrA/credits",
+        "id": "BA7kiJsfPlIPmrQVEVywWnrA",
+        "name": "Gottfried Leibniz",
+        "routing_number": "121042882",
+        "fingerprint": "xyz",
+        "type": "checking",
+        "uri": "/v1/bank_accounts/BA7kiJsfPlIPmrQVEVywWnrA"
+    }
+
 
 Retrieve a Bank Account
 -----------------------
 
-.. code:: 
- 
-    GET /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
- 
+.. code::
 
-Response 
-~~~~~~~~ 
- 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_name": null,  
-        "account": null,  
-        "name": "Fit Finlay",  
-        "bank_code": "325182797",  
-        "created_at": "2012-10-31T09:54:37.735401Z",  
-        "uri": "/v1/marketplaces/TEST-MP56qXPUqEEp9JhFbh51LhpW/bank_accounts/BA56AQjnZxxXOFTqiXAgvy60",  
-        "is_valid": true,  
-        "meta": {},  
-        "last_four": "1234",  
-        "id": "BA56AQjnZxxXOFTqiXAgvy60" 
-    } 
- 
+    GET /v1/bank_accounts/:bank_account_id
 
-Update a Bank Account
----------------------
-
-.. code:: 
- 
-    PUT /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
- 
-
-Request
-~~~~~~~
-
-``is_valid`` 
-    *optional* **boolean** or **null**. Flag indicating whether the bank account is active (``true``) or not 
-    (``false``). Setting this to ``false`` will deactivate the bank account. 
- 
-``meta`` 
-    *optional* **object** or **null**. Single level mapping from string keys to string values. 
- 
-
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "is_valid": "False",  
-        "metadata": { 
-            "my-own-field": "Customer request" 
-        } 
-    } 
- 
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_name": null,  
-        "account": null,  
-        "name": "Fit Finlay",  
-        "bank_code": "325182797",  
-        "created_at": "2012-10-31T09:54:40.334339Z",  
-        "uri": "/v1/marketplaces/TEST-MP59kVo4DA5VRIEdy6GC6f2s/bank_accounts/BA59w4x2RpLKYIv0R5zTi8kc",  
-        "is_valid": false,  
-        "meta": {},  
-        "last_four": "1234",  
-        "id": "BA59w4x2RpLKYIv0R5zTi8kc" 
-    } 
- 
+Header
+^^^^^^
+
+.. code::
+
+    Status: 200 Ok
+
+Body
+^^^^
+
+.. code:: javascript
+
+
+    {
+        "account_number": "xxxxxx2930",
+        "bank_name": "Bank of America",
+        "created_at": "2012-09-26T01:05:31.341699Z",
+        "credits_uri": "/v1/bank_accounts/BA7kKcHTHOQqy16jsk9OWI1s/credits",
+        "id": "BA7kKcHTHOQqy16jsk9OWI1s",
+        "name": "Gottfried Leibniz",
+        "routing_number": "121042882",
+        "fingerprint": "xyz",
+        "type": "checking",
+        "uri": "/v1/bank_accounts/BA7kKcHTHOQqy16jsk9OWI1s"
+    }
+
+
+        "routing_number": "121042882",
+        "fingerprint": "xyz",
+        "type": "checking",
+        "uri": "/v1/bank_accounts/BA7kKcHTHOQqy16jsk9OWI1s"
+    }
+
+
+
+List all Bank Accounts
+----------------------
+
+``limit``
+: *optional* **integer**, *default is 10*
+
+``offset``
+: *optional* **integer**, *default is 0*
+
+.. code::
+
+    GET /v1/bank_accounts
+
+
+Response
+~~~~~~~~
+
+Header
+^^^^^^
+
+.. code::
+
+    Status: 200 Ok
+
+Body
+^^^^
+
+.. code:: javascript
+
+
+    {
+        "items": [
+            {
+                "account_number": "xxxxxx2930",
+                "created_at": "2012-09-26T01:05:31.758885Z",
+                "credits_uri": "/v1/bank_accounts/BA7ldjj06fZtF59Pp87JaBv4/credits",
+                "id": "BA7ldjj06fZtF59Pp87JaBv4",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7ldjj06fZtF59Pp87JaBv4"
+            },
+            {
+                "account_number": "xxxxxx2930",
+                "created_at": "2012-09-26T01:05:31.767321Z",
+                "credits_uri": "/v1/bank_accounts/BA7lekSH95E75pJRGnQG54H8/credits",
+                "id": "BA7lekSH95E75pJRGnQG54H8",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7lekSH95E75pJRGnQG54H8"
+            },
+            {
+                "account_number": "xxxxxx2930",
+                "created_at": "2012-09-26T01:05:31.773202Z",
+                "credits_uri": "/v1/bank_accounts/BA7leLc7ul7XQ9xFLsSWu4jw/credits",
+                "id": "BA7leLc7ul7XQ9xFLsSWu4jw",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7leLc7ul7XQ9xFLsSWu4jw"
+            }
+        ],
+        "limit": 10,
+        "offset": 0,
+        "total": 3
+    }
+
+
+List all Bank Accounts
+----------------------
+
+``limit``
+: *optional* **integer**, *default is 10*
+
+``offset``
+: *optional* **integer**, *default is 0*
+
+.. code::
+
+    GET /v1/marketplaces/:marketplace_id/accounts/:account_id/bank_accounts
+
+
+Response
+~~~~~~~~
+
+Header
+^^^^^^
+
+.. code::
+
+    Status: 200 Ok
+
+Body
+^^^^
+
+.. code:: javascript
+
+
+    {
+        "first_uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits?limit=10&offset=0",
+        "items": [
+            {
+                "account_number": "xxxxxx2930",
+                "bank_code": "121042882",
+                "created_at": "2012-09-26T01:05:31.758885Z",
+                "credits_uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits",
+                "id": "BA7ldjj06fZtF59Pp87JaBv4",
+                "is_valid": true,
+                "last_four": "2930",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7ldjj06fZtF59Pp87JaBv4"
+            },
+            {
+                "account_number": "xxxxxx2930",
+                "bank_code": "121042882",
+                "created_at": "2012-09-26T01:05:31.767321Z",
+                "credits_uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits",
+                "id": "BA7lekSH95E75pJRGnQG54H8",
+                "is_valid": true,
+                "last_four": "2930",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7lekSH95E75pJRGnQG54H8"
+            },
+            {
+                "account_number": "xxxxxx2930",
+                "bank_code": "121042882",
+                "created_at": "2012-09-26T01:05:31.773202Z",
+                "credits_uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits",
+                "id": "BA7leLc7ul7XQ9xFLsSWu4jw",
+                "is_valid": true,
+                "last_four": "2930",
+                "name": "Gottfried Leibniz",
+                "routing_number": "121042882",
+                "fingerprint": "xyz",
+                "type": "checking",
+                "uri": "/v1/bank_accounts/BA7leLc7ul7XQ9xFLsSWu4jw"
+            }
+        ],
+        "previous_uri": null,  
+        "uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits?limit=10&offset=0",  
+        "limit": 10,  
+        "offset": 0,  
+        "total": 3,  
+        "next_uri": null,  
+        "last_uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC4Lx9LIQR834Hg4zZnXyMoQ/credits?limit=10&offset=0" 
+    }
+
+
 
 Associate a Bank Account with an Account
 ----------------------------------------
 
 .. code:: 
  
-    PUT /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id 
+    PUT /v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id
  
 
 Request
@@ -227,15 +356,16 @@ Request
 Body 
 ^^^^ 
  
-.. code:: javascript 
+.. code:: javascript
  
     { 
-        "account_uri": "/v1/marketplaces/TEST-MP5aOTfLkzLMuVEggkpXm4dK/accounts/AC5aU9gzL9ZPcE2pGftyJBsg" 
+        "account_uri": "/v1/marketplaces/TEST-MP5aOTfLkzLMuVEggkpXm4dK/accounts/AC5aU9gzL9ZPcE2pGftyJBsg"
     } 
  
 
 ``account_uri`` 
-    *optional* **string** or **null**. URI of an account with which to associate the bank account. 
+: *required* **string**
+: URI of an account with which to associate the bank account
  
 
 Response
@@ -276,12 +406,31 @@ Body
         },  
         "name": "Fit Finlay",  
         "bank_code": "325182797",  
+        "routing_number": "325182797",  
         "created_at": "2012-10-31T09:54:43.018154Z",  
         "uri": "/v1/marketplaces/TEST-MP5ckR3JiX6395sM8fEUM1XS/accounts/AC5csgKKhwd619DuP986peUA/bank_accounts/BA5cxd8RJPnlUKwAV8Yu8gGU",  
         "is_valid": true,  
         "meta": {},  
         "last_four": "1234",  
+        "account_number": "xxxxxx1234",  
         "id": "BA5cxd8RJPnlUKwAV8Yu8gGU" 
     } 
  
 
+Delete a Bank Account
+---------------------
+
+.. code::
+
+    DELETE /v1/bank_accounts/:bank_account_id
+
+
+Response
+~~~~~~~~
+
+Header
+^^^^^^
+
+.. code::
+
+    Status: 204 No Content
