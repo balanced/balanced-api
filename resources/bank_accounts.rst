@@ -183,7 +183,7 @@ Body
 
 
 
-List all Bank Accounts
+List All Bank Accounts
 ----------------------
 
 ``limit``
@@ -255,7 +255,7 @@ Body
     }
 
 
-List all Bank Accounts
+List All Bank Accounts
 ----------------------
 
 ``limit``
