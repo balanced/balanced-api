@@ -175,13 +175,6 @@ Body
     }
 
 
-        "routing_number": "121042882",
-        "fingerprint": "xyz",
-        "type": "checking",
-        "uri": "/v1/bank_accounts/BA7kKcHTHOQqy16jsk9OWI1s"
-    }
-
-
 
 List All Bank Accounts
 ----------------------
@@ -255,8 +248,8 @@ Body
     }
 
 
-List All Bank Accounts
-----------------------
+List All Bank Accounts for an Account
+-------------------------------------
 
 ``limit``
 : *optional* **integer**, *default is 10*
