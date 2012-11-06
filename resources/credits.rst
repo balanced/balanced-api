@@ -218,8 +218,9 @@ Request
 ~~~~~~~
 
 ``amount`` 
-: *required* **integer** or **null**
-: USD cents. Must be **>=** your minimum credit amount but **<=** your maximum credit amount
+: *required* **integer**
+: ``>= 0``
+: USD cents
  
 ``description`` 
 : *optional* **string** or **null**
