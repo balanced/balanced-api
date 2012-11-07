@@ -9,6 +9,7 @@ Fields
  
 ``status`` 
     **string**.  
+ 
 ``additional`` 
     **string**. Any additional information that may describe how to resolve the issue. 
  
