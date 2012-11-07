@@ -23,10 +23,10 @@ Fields
     **object**. Any extra information associated with this exception. 
  
 ``description`` 
-    **string**. Description of the exception  
+    **string**. Description of the exception 
  
 ``request_id`` 
-    **string**. An ID that can be used to identify and debug the exception.  
+    **string**. An ID that can be used to identify and debug the exception. 
  
 
 Status Codes
@@ -118,7 +118,7 @@ bank-account-already-associated
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  
 The bank account is already associated with an account -- it cannot be 
-associated again. 
+associated. 
  
 :status_code: 409 
 :category_type: logical 
@@ -160,8 +160,8 @@ business-principal-kyc
 cannot-associate-bank-account 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  
-The bank account was tokenized on a different marketplace than the one used 
-for this request. 
+The bank account was tokenized on a different marketplace than the one 
+used for this request. 
  
 :status_code: 409 
 :category_type: logical 

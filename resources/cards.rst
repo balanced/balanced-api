@@ -13,10 +13,13 @@ Fields
     **string**. The resource identifier. 
  
 ``uri`` 
-    **string**. The URI of the card  
+    **string**. The URI of the card 
  
 ``account`` 
-    **object**. The account this card is associated with. See `Accounts <./accounts.rst>`_. 
+    **object**. See `Accounts <./accounts.rst>`_. 
+ 
+ 
+ 
  
 ``created_at`` 
     **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this card 
@@ -53,7 +56,7 @@ Fields
  
 ``brand`` 
     **string**. The brand of the card. One of: ``Visa``, ``MasterCard``, 
-    ``American Express``, or ``Discover``.  
+    ``American Express``, or ``Discover``. 
  
 ``is_valid`` 
     **boolean**. A boolean value indicating whether or not the card is valid. Once 
@@ -78,45 +81,45 @@ Request
 ~~~~~~~
 
 ``card_number`` 
-    *required* **string** or **null**. The digits of the credit card number. 
+    *required* **string**. The digits of the credit card number. 
  
 ``expiration_year`` 
-    *required* **integer** or **null**. Expiration year. The current year or later. Value must be **<=** ``9999``. 
+    *required* **integer**. Expiration year. The current year or later. Value must be **<=** ``9999``. 
  
 ``expiration_month`` 
-    *required* **integer** or **null**. Expiration month (e.g. 1 for January). If ``expiration_year`` is the current year then current month or later, 
+    *required* **integer**. Expiration month (e.g. 1 for January). If ``expiration_year`` is the current year then current month or later, 
     otherwise 1. Value must be **<=** ``12``. 
  
 ``security_code`` 
-    *optional* **string** or **null**. The 3-4 digit security code for the card. 
+    *optional* **string**. The 3-4 digit security code for the card. 
  
 ``name`` 
-    *optional* **string** or **null**. Length must be **<=** ``128``. 
+    *optional* **string**. Length must be **<=** ``128``. 
  
 ``phone_number`` 
-    *optional* **string** or **null**. E.164 formatted phone number. Length must be **<=** ``15``. 
+    *optional* **string**. E.164 formatted phone number. Length must be **<=** ``15``. 
  
 ``city`` 
-    *optional* **string** or **null**. City. 
+    *optional* **string**. City. 
  
 ``postal_code`` 
-    *required* **string** or **null**. Postal code. This is known as a zip code in the USA. 
+    *required* **string**. Postal code. This is known as a zip code in the USA. 
     *requires* ``country_code``. 
  
 ``street_address`` 
-    *required* **string** or **null**. Street address. 
+    *required* **string**. Street address. 
     *requires* ``postal_code``. 
  
 ``country_code`` 
-    *optional* **string** or **null**. `ISO-3166-3 
+    *optional* **string**. `ISO-3166-3 
     <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_ 
     three character country code. 
  
 ``meta`` 
-    *optional* **object** or **null**. Single level mapping from string keys to string values. 
+    *optional* **object**. Single level mapping from string keys to string values. 
  
 ``is_valid`` 
-    *optional* **boolean** or **null**. Indicates whether the card is active (``true``) or has been deactivated 
+    *optional* **boolean**. Indicates whether the card is active (``true``) or has been deactivated 
     (``false``). 
  
 
@@ -133,7 +136,7 @@ Body
         "expiration_year": 2014,  
         "country_code": "USA",  
         "security_code": 323,  
-        "card_number": 4111111111111111,  
+        "card_number": 6011111111111117,  
         "street_address": "167 West 74th Street" 
     } 
  
@@ -154,20 +157,20 @@ Body
 .. code:: javascript 
  
     { 
-        "created_at": "2012-10-31T09:54:47.623259Z",  
+        "created_at": "2012-11-07T00:43:03.169463Z",  
         "account": null,  
         "hash": "handcock",  
         "country_code": "USA",  
         "expiration_year": 2014,  
         "brand": "American Express",  
-        "uri": "/v1/marketplaces/TEST-MP5hw3zPKwzy0xlaWUal0vvS/cards/CC5hIkwwsJAuzONOv7iuX1pG",  
+        "uri": "/v1/marketplaces/TEST-MP16J1YEcNvUmpRFhQdhLGBJ/cards/CC16WLHUQ3P7Ljz2Kj9902t5",  
         "expiration_month": 4,  
         "is_valid": true,  
         "meta": {},  
         "postal_code": "10023",  
-        "last_four": "5100",  
+        "last_four": "1111",  
         "card_type": "amex",  
-        "id": "CC5hIkwwsJAuzONOv7iuX1pG",  
+        "id": "CC16WLHUQ3P7Ljz2Kj9902t5",  
         "street_address": "167 West 74th Street",  
         "name": "Benny Riemann" 
     } 
@@ -197,20 +200,20 @@ Body
 .. code:: javascript 
  
     { 
-        "created_at": "2012-10-31T09:54:48.881708Z",  
+        "created_at": "2012-11-07T00:43:04.409694Z",  
         "account": null,  
         "hash": "handcock",  
         "country_code": "USA",  
         "expiration_year": 2014,  
         "brand": "American Express",  
-        "uri": "/v1/marketplaces/TEST-MP5iVfanvSLww2Jd114fAzaY/cards/CC5j85hGb2F1t2GiItAMTDeY",  
+        "uri": "/v1/marketplaces/TEST-MP18cIXAyHigviEArKQazMD9/cards/CC18lh4EAij7GOanWmT8gda3",  
         "expiration_month": 4,  
         "is_valid": true,  
         "meta": {},  
         "postal_code": "10023",  
         "last_four": "1111",  
         "card_type": "amex",  
-        "id": "CC5j85hGb2F1t2GiItAMTDeY",  
+        "id": "CC18lh4EAij7GOanWmT8gda3",  
         "street_address": "167 West 74th Street",  
         "name": "Benny Riemann" 
     } 
@@ -228,11 +231,11 @@ Request
 ~~~~~~~
 
 ``is_valid`` 
-    *optional* **boolean** or **null**. Indicates whether the card is active (``true``) or has been deactivated 
+    *optional* **boolean**. Indicates whether the card is active (``true``) or has been deactivated 
     (``false``). Setting this to ``false`` will deactivate the card. 
  
 ``meta`` 
-    *optional* **object** or **null**. Single level mapping from string keys to string values. 
+    *optional* **object**. Single level mapping from string keys to string values. 
  
 
 Body 
@@ -269,14 +272,14 @@ Body
         "hash": "handcock",  
         "name": "Benny Riemann",  
         "expiration_year": 2014,  
-        "created_at": "2012-10-31T09:54:51.410712Z",  
+        "created_at": "2012-11-07T00:43:06.878191Z",  
         "brand": "American Express",  
-        "uri": "/v1/marketplaces/TEST-MP5lMQYJXS86zEREyyuKjUyw/cards/CC5lYrQJIqACB9FmvaO1v9WY",  
+        "uri": "/v1/marketplaces/TEST-MP1aZoxtQDLZLjuZqfkKZB63/cards/CC1b7pOGle7n1hfpShHZ2Z6X",  
         "expiration_month": 4,  
         "is_valid": false,  
         "meta": {},  
-        "last_four": "5100",  
-        "id": "CC5lYrQJIqACB9FmvaO1v9WY" 
+        "last_four": "1111",  
+        "id": "CC1b7pOGle7n1hfpShHZ2Z6X" 
     } 
  
 
@@ -292,7 +295,7 @@ Request
 ~~~~~~~
 
 ``account_uri`` 
-    *optional* **string** or **null**.  
+    *optional* **string**.  
  
 
 Body 
@@ -301,7 +304,7 @@ Body
 .. code:: javascript 
  
     { 
-        "account_uri": "/v1/marketplaces/TEST-MP5ndRd8NnVRYziyx7Qm8YLi/accounts/AC5nlePuvMDwdOBqsKTDN4fa" 
+        "account_uri": "/v1/marketplaces/TEST-MP1cjguQPOdgyNFFVOfzuDOH/accounts/AC1cpe6YPTRi4bXiIK1x3par" 
     } 
  
 
@@ -323,35 +326,35 @@ Body
     { 
         "card_type": "amex",  
         "account": { 
-            "holds_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/holds",  
+            "holds_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/holds",  
             "name": null,  
             "roles": [ 
                 "merchant",  
                 "buyer" 
             ],  
-            "created_at": "2012-10-31T09:54:53.895853Z",  
-            "uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew",  
-            "bank_accounts_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/bank_accounts",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/refunds",  
+            "created_at": "2012-11-07T00:43:09.377481Z",  
+            "uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/bank_accounts",  
+            "refunds_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/refunds",  
             "meta": {},  
-            "debits_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/debits",  
-            "transactions_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/transactions",  
-            "email_address": "email.7@y.com",  
-            "id": "AC5oLKVifviOI3O0iMhRniew",  
-            "credits_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/credits",  
-            "cards_uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/cards" 
+            "debits_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/debits",  
+            "transactions_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/transactions",  
+            "email_address": "email.3@y.com",  
+            "id": "AC1dVIdzy9ZYRJEZIUUZvNQf",  
+            "credits_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/credits",  
+            "cards_uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/cards" 
         },  
         "hash": "handcock",  
         "name": "Benny Riemann",  
         "expiration_year": 2014,  
-        "created_at": "2012-10-31T09:54:53.947523Z",  
+        "created_at": "2012-11-07T00:43:09.435431Z",  
         "brand": "American Express",  
-        "uri": "/v1/marketplaces/TEST-MP5oE6aEh21RcSrvalk2srsg/accounts/AC5oLKVifviOI3O0iMhRniew/cards/CC5oPm1DDK1NBVzlFCagJKWE",  
+        "uri": "/v1/marketplaces/TEST-MP1dRc68V3LI6YAc3MpB5BFV/accounts/AC1dVIdzy9ZYRJEZIUUZvNQf/cards/CC1dZKey2DBcWVKAUQoXfJyr",  
         "expiration_month": 4,  
         "is_valid": true,  
         "meta": {},  
-        "last_four": "1111",  
-        "id": "CC5oPm1DDK1NBVzlFCagJKWE" 
+        "last_four": "1117",  
+        "id": "CC1dZKey2DBcWVKAUQoXfJyr" 
     } 
  
 
