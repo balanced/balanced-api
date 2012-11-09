@@ -135,7 +135,7 @@ Body
         "destination": { 
             "bank_name": null,  
             "name": "Fit Finlay",  
-            "bank_code": "325182797",  
+            "routing_number": "325182797",  
             "created_at": "2012-10-31T16:40:12.274947Z",  
             "uri": "/v1/marketplaces/TEST-MP2roQeM4oBkR8Kw4GVeNT2Q/accounts/AC2rwa8Bc4OYTFpJINYC3Izi/bank_accounts/BA2rvRdkxZ1w1B8cVSSAkgpm",  
             "is_valid": true,  
@@ -203,7 +203,7 @@ Body
         "destination": { 
             "bank_name": null,  
             "name": "Fit Finlay",  
-            "bank_code": "325182797",  
+            "routing_number": "325182797",  
             "created_at": "2012-10-31T16:40:13.585029Z",  
             "uri": "/v1/marketplaces/TEST-MP2sU58K40Wk1WXFbErM1LqA/accounts/AC2sZthuLqgQ1nAoL1DPwbJy/bank_accounts/BA2sZdHqPzWEcFy29nyrrqsY",  
             "is_valid": true,  
@@ -274,7 +274,7 @@ Body
                 "destination": { 
                     "bank_name": null,  
                     "name": "Fit Finlay",  
-                    "bank_code": "325182797",  
+                    "routing_number": "325182797",  
                     "created_at": "2012-10-31T16:40:14.864863Z",  
                     "uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC2uqMvILLrQjzscPjczfSJe/bank_accounts/BA2uqsqC9uFHhc4nqDdMflSQ",  
                     "is_valid": true,  
@@ -316,7 +316,7 @@ Body
                 "destination": { 
                     "bank_name": null,  
                     "name": "Fit Finlay",  
-                    "bank_code": "325182797",  
+                    "routing_number": "325182797",  
                     "created_at": "2012-10-31T16:40:14.864863Z",  
                     "uri": "/v1/marketplaces/TEST-MP2ujo21OwDxvn5lSWsLKana/accounts/AC2uqMvILLrQjzscPjczfSJe/bank_accounts/BA2uqsqC9uFHhc4nqDdMflSQ",  
                     "is_valid": true,  
@@ -416,7 +416,7 @@ Body
         "destination": { 
             "bank_name": null,  
             "name": "Fit Finlay",  
-            "bank_code": "325182797",  
+            "routing_number": "325182797",  
             "created_at": "2012-10-31T16:40:17.531909Z",  
             "uri": "/v1/marketplaces/TEST-MP2xjr6RkyFatXRnqBG5lUYQ/accounts/AC2xqKqeemgCnyIcPgjwnx1q/bank_accounts/BA2xqrl2FBCOSAAdyBEaHvhy",  
             "is_valid": true,  
