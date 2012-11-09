@@ -98,7 +98,7 @@ Body
     { 
         "account_number": "12341234",  
         "name": "Fit Finlay",  
-        "bank_code": "325182797",  
+        "routing_number": "325182797",  
         "type": "checking" 
     } 
  
