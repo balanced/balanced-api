@@ -55,7 +55,7 @@ Deprecated
 ``last_four`` 
     **string**. Last four digits are now returned in the ``account_number``. 
  
-``bank_code`` 
+``routing_number`` 
     **string**. Use ``routing_number`` instead. 
  
 ``is_valid`` 
@@ -98,7 +98,7 @@ Body
     { 
         "account_number": "12341234",  
         "name": "Fit Finlay",  
-        "bank_code": "325182797",  
+        "routing_number": "325182797",  
         "type": "checking" 
     } 
  
@@ -320,7 +320,7 @@ Body
                     "uri": "/v1/marketplaces/TEST-MPkElvnNvH29nGnEVymeJHS/accounts/ACkJUNb2hlHHbXP8gLAjfKs" 
                 },  
                 "account_number": "xxxxx1234",  
-                "bank_code": "325182797",  
+                "routing_number": "325182797",  
                 "bank_name": "Banko De Ismus",  
                 "created_at": "2012-11-07T15:22:48.408716Z",  
                 "credits_uri": "/v1/bank_accounts/BAkK56KFzvHoQtokx1c6668/credits",  
@@ -355,7 +355,7 @@ Body
                     "uri": "/v1/marketplaces/TEST-MPkElvnNvH29nGnEVymeJHS/accounts/ACkJUNb2hlHHbXP8gLAjfKs" 
                 },  
                 "account_number": "xxxxx1234",  
-                "bank_code": "325182797",  
+                "routing_number": "325182797",  
                 "bank_name": "Banko De Ismus",  
                 "created_at": "2012-11-07T15:22:48.458163Z",  
                 "credits_uri": "/v1/bank_accounts/BAkNtrNUhdulLAX6Te6fn00/credits",  
@@ -390,7 +390,7 @@ Body
                     "uri": "/v1/marketplaces/TEST-MPkElvnNvH29nGnEVymeJHS/accounts/ACkJUNb2hlHHbXP8gLAjfKs" 
                 },  
                 "account_number": "xxxxx1234",  
-                "bank_code": "325182797",  
+                "routing_number": "325182797",  
                 "bank_name": "Banko De Ismus",  
                 "created_at": "2012-11-07T15:22:48.458764Z",  
                 "credits_uri": "/v1/bank_accounts/BAkNu1sgY8TU20YWtGcAzgU/credits",  
@@ -476,7 +476,7 @@ Body
             "uri": "/v1/marketplaces/TEST-MPnB2KTT1jZnJibQfolEipu/accounts/ACnFQe1K0hXUSYEkHee8fmk" 
         },  
         "account_number": "xxxxx1234",  
-        "bank_code": "325182797",  
+        "routing_number": "325182797",  
         "bank_name": "Banko De Ismus",  
         "created_at": "2012-11-07T15:22:51.065856Z",  
         "credits_uri": "/v1/bank_accounts/BAnJoaH31LzzD80PJAZyDaY/credits",  
