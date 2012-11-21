@@ -174,9 +174,6 @@ Request
         ``tax_id`` 
             *optional* **string**. Length must be **between** ``4`` and ``9``. 
  
-        ``ssn_last_4`` 
-            *optional* **string**. Length must be **=** ``4``. 
- 
         ``person`` 
             *optional* **object**.  
                 ``name`` 
@@ -203,9 +200,6 @@ Request
  
                 ``tax_id`` 
                     *optional* **string**. Length must be **between** ``4`` and ``9``. 
- 
-                ``ssn_last_4`` 
-                    *optional* **string**. Length must be **=** ``4``. 
  
  
         ``name`` 
@@ -339,9 +333,6 @@ Request
  
         ``tax_id`` 
             *optional* **string**. Length must be **between** ``4`` and ``9``. 
- 
-        ``ssn_last_4`` 
-            *optional* **string**. Length must be **=** ``4``. 
  
         ``dob`` 
             *optional* **string**. Date-of-birth formatted as ``YYYY-MM-DD``. 
