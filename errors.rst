@@ -125,6 +125,24 @@ associated.
 :category_type: logical 
 :category_code: bank-account-already-associated 
  
+bank-account-authentication-failed 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+Bank account authentication amounts do not match. 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: bank-account-authentication-failed 
+ 
+bank-account-authentication-not-pending 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+Bank account authentication is not in state ``pending``. 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: bank-account-authentication-not-pending 
+ 
 bank-account-not-associated 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  
@@ -254,6 +272,15 @@ may be wrong.
 :category_type: logical 
 :category_code: card-not-validated 
  
+debit-already-refunded 
+~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+Debit has already been fully refunded. 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: debit-already-refunded 
+ 
 debit-not-found 
 ~~~~~~~~~~~~~~~ 
  
@@ -352,6 +379,15 @@ The given funding source cannot be refunded.
 :category_type: logical 
 :category_code: funding-source-not-refundable 
  
+funding-source-not-settle 
+~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+The given funding source cannot settle. 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: funding-source-not-settle 
+ 
 hold-not-associated-account 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  
@@ -385,6 +421,41 @@ Marketplace escrow balance is insufficient to issue this credit.
 :status_code: 409 
 :category_type: logical 
 :category_code: insufficient-funds 
+ 
+invoice-already-settled 
+~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: invoice-already-settled 
+ 
+invoice-busy 
+~~~~~~~~~~~~ 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: invoice-busy 
+ 
+invoice-invalid-total-fee 
+~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: invoice-invalid-total-fee 
+ 
+invoice-no-funding-source 
+~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: invoice-no-funding-source 
+ 
+invoice-unripe 
+~~~~~~~~~~~~~~ 
+ 
+:status_code: 409 
+:category_type: logical 
+:category_code: invoice-unripe 
  
 marketplace-already-created 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
@@ -471,6 +542,15 @@ Refund amount cannot be greater than the amount of the original debit.
 :category_type: request 
 :category_code: invalid-amount 
  
+invalid-bank-account-number 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+This bank account number is not alpha numeric (ascii). It can not be used. 
+ 
+:status_code: 400 
+:category_type: request 
+:category_code: invalid-bank-account-number 
+ 
 invalid-routing-number 
 ~~~~~~~~~~~~~~~~~~~~~~ 
  
@@ -479,6 +559,20 @@ The routing number provided for the bank account was invalid.
 :status_code: 400 
 :category_type: request 
 :category_code: invalid-routing-number 
+ 
+invoice-illegal-funding-source 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+:status_code: 400 
+:category_type: request 
+:category_code: invoice-illegal-funding-source 
+ 
+invoice-invalid-funding-source 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+:status_code: 400 
+:category_type: request 
+:category_code: invoice-invalid-funding-source 
  
 precog-bad-request 
 ~~~~~~~~~~~~~~~~~~ 

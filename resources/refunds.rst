@@ -10,10 +10,10 @@ Fields
 ------
 
 ``id`` 
-    **string**. The resource identifier. 
+    **string**.  
  
 ``uri`` 
-    **string**. A URI for a Balanced entity 
+    **string**.  
  
 ``created_at`` 
     **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
@@ -61,7 +61,7 @@ Request
     ``debit``. 
  
 ``description`` 
-    *optional* **string**.  
+    *optional* **string**. Sequence of characters. 
  
 ``meta`` 
     *optional* **object**. Single level mapping from string keys to string values. 
@@ -76,7 +76,7 @@ Body
 .. code:: javascript 
  
     { 
-        "debit_uri": "/v1/marketplaces/TEST-MP24KIb4D0osXfYdPGSMENDd/debits/WD24VY0bEWrUE5be1VO3RJDl",  
+        "debit_uri": "/v1/marketplaces/TEST-MP7f32CZkcvXTmYS1NuDyORY/debits/WD7f8IkwgPh4lLtWHxBM3sbo",  
         "amount": 1234 
     } 
  
@@ -98,48 +98,49 @@ Body
  
     { 
         "account": { 
-            "holds_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/holds",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/bank_accounts",  
+            "cards_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/cards",  
+            "created_at": "2012-12-15T22:50:52.470299Z",  
+            "credits_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/credits",  
+            "debits_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/debits",  
+            "email_address": "email.3@y.com",  
+            "holds_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/holds",  
+            "id": "AC7gGv4xLg3VOq9xaxN6CN0C",  
+            "meta": {},  
             "name": null,  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/refunds",  
             "roles": [ 
                 "merchant",  
                 "buyer" 
             ],  
-            "created_at": "2012-11-07T00:43:58.076540Z",  
-            "uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth",  
-            "bank_accounts_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/bank_accounts",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/refunds",  
-            "meta": {},  
-            "debits_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/debits",  
-            "transactions_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/transactions",  
-            "email_address": "email.3@y.com",  
-            "id": "AC26HCTWrPYMy83Lx9MdxFth",  
-            "credits_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/credits",  
-            "cards_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/cards" 
+            "transactions_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/transactions",  
+            "uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C" 
         },  
-        "fee": -43,  
-        "description": "abc123",  
-        "created_at": "2012-11-07T00:43:58.261604Z",  
-        "uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/refunds/RF26Uvu26OZbRYFyvZFLsrh9",  
-        "transaction_number": "RF211-525-6531",  
         "amount": 1234,  
-        "meta": {},  
-        "debit": { 
-            "hold_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/holds/HL26Ou2G26LXTDtgDibV6VdV",  
-            "fee": 43,  
-            "description": "abc123",  
-            "transaction_number": "W433-006-9122",  
-            "source_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/accounts/AC26HCTWrPYMy83Lx9MdxFth/cards/CC26HQmVxWPdY13c7VybYfE7",  
-            "created_at": "2012-11-07T00:43:58.172140Z",  
-            "uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/debits/WD26Oa6X5HIiqnFELLNTshOP",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP26Bd66EDgMn5OkyxPplbyj/debits/WD26Oa6X5HIiqnFELLNTshOP/refunds",  
-            "amount": 1254,  
-            "meta": {},  
-            "appears_on_statement_as": "PND*TESTS",  
-            "id": "WD26Oa6X5HIiqnFELLNTshOP",  
-            "available_at": "2012-11-07T08:43:58.159436Z" 
-        },  
         "appears_on_statement_as": "PND*TESTS",  
-        "id": "RF26Uvu26OZbRYFyvZFLsrh9" 
+        "created_at": "2012-12-15T22:50:52.571016Z",  
+        "debit": { 
+            "account_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C",  
+            "amount": 1254,  
+            "appears_on_statement_as": "PND*TESTS",  
+            "available_at": "2012-12-16T06:50:52.518343Z",  
+            "created_at": "2012-12-15T22:50:52.524664Z",  
+            "description": "abc123",  
+            "fee": 43,  
+            "hold_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/holds/HL7gKnlRBwZvh4dtXsY42MlQ",  
+            "id": "WD7gKczDmT0vXMw57ZjaLZrQ",  
+            "meta": {},  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/debits/WD7gKczDmT0vXMw57ZjaLZrQ/refunds",  
+            "source_uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/accounts/AC7gGv4xLg3VOq9xaxN6CN0C/cards/CC7gGzN14x8zHXxVYevX8LLc",  
+            "transaction_number": "W119-778-1635",  
+            "uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/debits/WD7gKczDmT0vXMw57ZjaLZrQ" 
+        },  
+        "description": "abc123",  
+        "fee": 0,  
+        "id": "RF7gNvPZytkW8N35EwcSF4HE",  
+        "meta": {},  
+        "transaction_number": "RF571-650-1218",  
+        "uri": "/v1/marketplaces/TEST-MP7gDZ4nNMA7P0xrOQxu3RUK/refunds/RF7gNvPZytkW8N35EwcSF4HE" 
     } 
  
 
@@ -169,48 +170,49 @@ Body
  
     { 
         "account": { 
-            "holds_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/holds",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/bank_accounts",  
+            "cards_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/cards",  
+            "created_at": "2012-12-15T22:50:53.850026Z",  
+            "credits_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/credits",  
+            "debits_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/debits",  
+            "email_address": "email.3@y.com",  
+            "holds_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/holds",  
+            "id": "AC7ieI0ufQyFaMs2xISA1dJE",  
+            "meta": {},  
             "name": null,  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/refunds",  
             "roles": [ 
                 "merchant",  
                 "buyer" 
             ],  
-            "created_at": "2012-11-07T00:43:59.706711Z",  
-            "uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx",  
-            "bank_accounts_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/bank_accounts",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/refunds",  
-            "meta": {},  
-            "debits_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/debits",  
-            "transactions_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/transactions",  
-            "email_address": "email.3@y.com",  
-            "id": "AC28xiZcP8WIGFYETGXrNzVx",  
-            "credits_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/credits",  
-            "cards_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/cards" 
+            "transactions_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/transactions",  
+            "uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE" 
         },  
-        "fee": -43,  
-        "description": "abc123",  
-        "created_at": "2012-11-07T00:43:59.818438Z",  
-        "uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/refunds/RF28F4yzqoCZK8Te2FAcclEv",  
-        "transaction_number": "RF111-222-3333",  
         "amount": 1254,  
-        "meta": {},  
-        "debit": { 
-            "hold_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/holds/HL28E5WsVUpGxqBuGYD71SbV",  
-            "fee": 43,  
-            "description": "abc123",  
-            "transaction_number": "W705-935-7227",  
-            "source_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/accounts/AC28xiZcP8WIGFYETGXrNzVx/cards/CC28xw7hClQMJcKGDPDF9EFd",  
-            "created_at": "2012-11-07T00:43:59.801326Z",  
-            "uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/debits/WD28DMEWSVRcDyrXGYuVKdfd",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP28reFAUY6qX0GdR3d5K4vN/debits/WD28DMEWSVRcDyrXGYuVKdfd/refunds",  
-            "amount": 1254,  
-            "meta": {},  
-            "appears_on_statement_as": "PND*TESTS",  
-            "id": "WD28DMEWSVRcDyrXGYuVKdfd",  
-            "available_at": "2012-11-07T08:43:59.788100Z" 
-        },  
         "appears_on_statement_as": "PND*TESTS",  
-        "id": "RF28F4yzqoCZK8Te2FAcclEv" 
+        "created_at": "2012-12-15T22:50:53.908389Z",  
+        "debit": { 
+            "account_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE",  
+            "amount": 1254,  
+            "appears_on_statement_as": "PND*TESTS",  
+            "available_at": "2012-12-16T06:50:53.891783Z",  
+            "created_at": "2012-12-15T22:50:53.897538Z",  
+            "description": "abc123",  
+            "fee": 43,  
+            "hold_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/holds/HL7ii6ouiUsEXxc1s4DXVc4a",  
+            "id": "WD7ihY2ld5v0yE27udsdgbx0",  
+            "meta": {},  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/debits/WD7ihY2ld5v0yE27udsdgbx0/refunds",  
+            "source_uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/accounts/AC7ieI0ufQyFaMs2xISA1dJE/cards/CC7ieNcomCGN7etcOTuReKro",  
+            "transaction_number": "W788-282-8695",  
+            "uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/debits/WD7ihY2ld5v0yE27udsdgbx0" 
+        },  
+        "description": "abc123",  
+        "fee": 0,  
+        "id": "RF7iiLYB0ml0SrUVpv1Yq7JE",  
+        "meta": {},  
+        "transaction_number": "RF111-222-3333",  
+        "uri": "/v1/marketplaces/TEST-MP7icanxrpfXJ5BeJWDOrhvc/refunds/RF7iiLYB0ml0SrUVpv1Yq7JE" 
     } 
  
 
@@ -239,106 +241,108 @@ Body
 .. code:: javascript 
  
     { 
-        "first_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/refunds?limit=10&offset=0",  
+        "first_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/refunds?limit=10&offset=0",  
         "items": [ 
             { 
                 "account": { 
-                    "holds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/holds",  
+                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/bank_accounts",  
+                    "cards_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/cards",  
+                    "created_at": "2012-12-15T22:50:55.188229Z",  
+                    "credits_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/credits",  
+                    "debits_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/debits",  
+                    "email_address": "email.3@y.com",  
+                    "holds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/holds",  
+                    "id": "AC7jK1IwU1luer4bJLZEhzp8",  
+                    "meta": {},  
                     "name": null,  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/refunds",  
                     "roles": [ 
                         "merchant",  
                         "buyer" 
                     ],  
-                    "created_at": "2012-11-07T00:44:01.242036Z",  
-                    "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD",  
-                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/bank_accounts",  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/refunds",  
-                    "meta": {},  
-                    "debits_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/debits",  
-                    "transactions_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/transactions",  
-                    "email_address": "email.3@y.com",  
-                    "id": "AC2agn1vzfMOm0sJWMopZDkD",  
-                    "credits_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/credits",  
-                    "cards_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/cards" 
+                    "transactions_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/transactions",  
+                    "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8" 
                 },  
-                "fee": -43,  
-                "description": "abc123",  
-                "created_at": "2012-11-07T00:44:01.355598Z",  
-                "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/refunds/RF2aog4BxU4n7NXOnGTM8jFF",  
-                "transaction_number": "RF111-222-3333",  
                 "amount": 1254,  
-                "meta": {},  
-                "debit": { 
-                    "hold_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/holds/HL2anfQw3DIX3pP7OMhDD5cL",  
-                    "fee": 43,  
-                    "description": "abc123",  
-                    "transaction_number": "W571-779-6988",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/cards/CC2agz0hD4Q3i0oI1KaqFjwv",  
-                    "created_at": "2012-11-07T00:44:01.337741Z",  
-                    "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/debits/WD2amViJaYFwfTqoS3xZYbTR",  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/debits/WD2amViJaYFwfTqoS3xZYbTR/refunds",  
-                    "amount": 1254,  
-                    "meta": {},  
-                    "appears_on_statement_as": "PND*TESTS",  
-                    "id": "WD2amViJaYFwfTqoS3xZYbTR",  
-                    "available_at": "2012-11-07T08:44:01.325473Z" 
-                },  
                 "appears_on_statement_as": "PND*TESTS",  
-                "id": "RF2aog4BxU4n7NXOnGTM8jFF" 
+                "created_at": "2012-12-15T22:50:55.257093Z",  
+                "debit": { 
+                    "account_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8",  
+                    "amount": 1254,  
+                    "appears_on_statement_as": "PND*TESTS",  
+                    "available_at": "2012-12-16T06:50:55.240082Z",  
+                    "created_at": "2012-12-15T22:50:55.246102Z",  
+                    "description": "abc123",  
+                    "fee": 43,  
+                    "hold_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/holds/HL7jO9jeXuL8jLUjvQ7bwWJs",  
+                    "id": "WD7jO0lCuhQ9Xnz33KKONX62",  
+                    "meta": {},  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/debits/WD7jO0lCuhQ9Xnz33KKONX62/refunds",  
+                    "source_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/cards/CC7jK6MGIlAZWEoI09YYuABA",  
+                    "transaction_number": "W697-034-9865",  
+                    "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/debits/WD7jO0lCuhQ9Xnz33KKONX62" 
+                },  
+                "description": "abc123",  
+                "fee": 0,  
+                "id": "RF7jOORzYkwa8r3EZ9bNohKy",  
+                "meta": {},  
+                "transaction_number": "RF111-222-3333",  
+                "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/refunds/RF7jOORzYkwa8r3EZ9bNohKy" 
             },  
             { 
                 "account": { 
-                    "holds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/holds",  
+                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/bank_accounts",  
+                    "cards_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/cards",  
+                    "created_at": "2012-12-15T22:50:55.188229Z",  
+                    "credits_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/credits",  
+                    "debits_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/debits",  
+                    "email_address": "email.3@y.com",  
+                    "holds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/holds",  
+                    "id": "AC7jK1IwU1luer4bJLZEhzp8",  
+                    "meta": {},  
                     "name": null,  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/refunds",  
                     "roles": [ 
                         "merchant",  
                         "buyer" 
                     ],  
-                    "created_at": "2012-11-07T00:44:01.242036Z",  
-                    "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD",  
-                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/bank_accounts",  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/refunds",  
-                    "meta": {},  
-                    "debits_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/debits",  
-                    "transactions_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/transactions",  
-                    "email_address": "email.3@y.com",  
-                    "id": "AC2agn1vzfMOm0sJWMopZDkD",  
-                    "credits_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/credits",  
-                    "cards_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/cards" 
+                    "transactions_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/transactions",  
+                    "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8" 
                 },  
-                "fee": -15,  
-                "description": "abc123",  
-                "created_at": "2012-11-07T00:44:01.407787Z",  
-                "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/refunds/RF2arTvqJGruWXk7nUvxVWXF",  
-                "transaction_number": "RF111-222-3333",  
                 "amount": 431,  
-                "meta": {},  
-                "debit": { 
-                    "hold_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/holds/HL2aqNja0i6DiziZpjX9Vpdh",  
-                    "fee": 15,  
-                    "description": "abc123",  
-                    "transaction_number": "W114-602-1327",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/accounts/AC2agn1vzfMOm0sJWMopZDkD/cards/CC2agz0hD4Q3i0oI1KaqFjwv",  
-                    "created_at": "2012-11-07T00:44:01.388836Z",  
-                    "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/debits/WD2aqzBadZIeaSYOmiPyVN8n",  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/debits/WD2aqzBadZIeaSYOmiPyVN8n/refunds",  
-                    "amount": 431,  
-                    "meta": {},  
-                    "appears_on_statement_as": "PND*TESTS",  
-                    "id": "WD2aqzBadZIeaSYOmiPyVN8n",  
-                    "available_at": "2012-11-07T08:44:01.377933Z" 
-                },  
                 "appears_on_statement_as": "PND*TESTS",  
-                "id": "RF2arTvqJGruWXk7nUvxVWXF" 
+                "created_at": "2012-12-15T22:50:55.286139Z",  
+                "debit": { 
+                    "account_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8",  
+                    "amount": 431,  
+                    "appears_on_statement_as": "PND*TESTS",  
+                    "available_at": "2012-12-16T06:50:55.269869Z",  
+                    "created_at": "2012-12-15T22:50:55.275155Z",  
+                    "description": "abc123",  
+                    "fee": 15,  
+                    "hold_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/holds/HL7jQaI9dPhtMLjUu8XwaByq",  
+                    "id": "WD7jQ4WPHIkzFtBXNfe3yGsG",  
+                    "meta": {},  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/debits/WD7jQ4WPHIkzFtBXNfe3yGsG/refunds",  
+                    "source_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/accounts/AC7jK1IwU1luer4bJLZEhzp8/cards/CC7jK6MGIlAZWEoI09YYuABA",  
+                    "transaction_number": "W182-085-1155",  
+                    "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/debits/WD7jQ4WPHIkzFtBXNfe3yGsG" 
+                },  
+                "description": "abc123",  
+                "fee": 0,  
+                "id": "RF7jQQxPvihWCL0l2fYKftFM",  
+                "meta": {},  
+                "transaction_number": "RF111-222-3333",  
+                "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/refunds/RF7jQQxPvihWCL0l2fYKftFM" 
             } 
         ],  
-        "previous_uri": null,  
-        "uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/refunds?limit=10&offset=0",  
+        "last_uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/refunds?limit=10&offset=0",  
         "limit": 10,  
-        "offset": 0,  
-        "total": 2,  
         "next_uri": null,  
-        "last_uri": "/v1/marketplaces/TEST-MP2aaASNaDhsIzMYXRKPuN11/refunds?limit=10&offset=0" 
+        "offset": 0,  
+        "previous_uri": null,  
+        "total": 2,  
+        "uri": "/v1/marketplaces/TEST-MP7jHoU9Tw7VB6SUaYiAkjay/refunds?limit=10&offset=0" 
     } 
  
 
@@ -355,7 +359,7 @@ Request
 ~~~~~~~
 
 ``description`` 
-    *optional* **string**.  
+    *optional* **string**. Sequence of characters. 
  
 ``meta`` 
     *optional* **object**. Single level mapping from string keys to string values. 
@@ -391,50 +395,51 @@ Body
  
     { 
         "account": { 
-            "holds_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/holds",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/bank_accounts",  
+            "cards_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/cards",  
+            "created_at": "2012-12-15T22:50:58.019339Z",  
+            "credits_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/credits",  
+            "debits_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/debits",  
+            "email_address": "email.3@y.com",  
+            "holds_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/holds",  
+            "id": "AC7mVs29Sp7DvrsAV2LyMfSG",  
+            "meta": {},  
             "name": null,  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/refunds",  
             "roles": [ 
                 "merchant",  
                 "buyer" 
             ],  
-            "created_at": "2012-11-07T00:44:04.544038Z",  
-            "uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h",  
-            "bank_accounts_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/bank_accounts",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/refunds",  
-            "meta": {},  
-            "debits_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/debits",  
-            "transactions_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/transactions",  
-            "email_address": "email.3@y.com",  
-            "id": "AC2dYCWlrb8zXWLHsom2pn1h",  
-            "credits_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/credits",  
-            "cards_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/cards" 
+            "transactions_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/transactions",  
+            "uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG" 
         },  
-        "fee": -43,  
-        "description": "my new description",  
-        "created_at": "2012-11-07T00:44:04.650573Z",  
-        "uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/refunds/RF2e62XsRsvdCHLsA2X9e4cb",  
-        "transaction_number": "RF111-222-3333",  
         "amount": 1254,  
+        "appears_on_statement_as": "PND*TESTS",  
+        "created_at": "2012-12-15T22:50:58.085174Z",  
+        "debit": { 
+            "account_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG",  
+            "amount": 1254,  
+            "appears_on_statement_as": "PND*TESTS",  
+            "available_at": "2012-12-16T06:50:58.066903Z",  
+            "created_at": "2012-12-15T22:50:58.073153Z",  
+            "description": "abc123",  
+            "fee": 43,  
+            "hold_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/holds/HL7mZikcvtmF6xH5jCJq9uBk",  
+            "id": "WD7mZ8RpdbJaKzP51xBDDKps",  
+            "meta": {},  
+            "refunds_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/debits/WD7mZ8RpdbJaKzP51xBDDKps/refunds",  
+            "source_uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/accounts/AC7mVs29Sp7DvrsAV2LyMfSG/cards/CC7mVwEJyXNRJvgTjPhIWOL0",  
+            "transaction_number": "W380-319-4930",  
+            "uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/debits/WD7mZ8RpdbJaKzP51xBDDKps" 
+        },  
+        "description": "my new description",  
+        "fee": 0,  
+        "id": "RF7n01CkdT3sjVZsBJURocbg",  
         "meta": { 
             "my-id": "0987654321" 
         },  
-        "debit": { 
-            "hold_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/holds/HL2e53YzJip2kplu4GZlUHOb",  
-            "fee": 43,  
-            "description": "abc123",  
-            "transaction_number": "W372-400-2898",  
-            "source_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/accounts/AC2dYCWlrb8zXWLHsom2pn1h/cards/CC2dYP5QgQIW7vWuqXFcUE03",  
-            "created_at": "2012-11-07T00:44:04.633952Z",  
-            "uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/debits/WD2e4PdI57G4Pxk8HsGfkQRd",  
-            "refunds_uri": "/v1/marketplaces/TEST-MP2dSsQ4UUwKswe0jyaqzajV/debits/WD2e4PdI57G4Pxk8HsGfkQRd/refunds",  
-            "amount": 1254,  
-            "meta": {},  
-            "appears_on_statement_as": "PND*TESTS",  
-            "id": "WD2e4PdI57G4Pxk8HsGfkQRd",  
-            "available_at": "2012-11-07T08:44:04.625778Z" 
-        },  
-        "appears_on_statement_as": "PND*TESTS",  
-        "id": "RF2e62XsRsvdCHLsA2X9e4cb" 
+        "transaction_number": "RF111-222-3333",  
+        "uri": "/v1/marketplaces/TEST-MP7mT0vbVCBAb3gTG6xj4R3Y/refunds/RF7n01CkdT3sjVZsBJURocbg" 
     } 
  
 
