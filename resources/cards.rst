@@ -242,7 +242,7 @@ Body
  
     { 
         "is_valid": "False",  
-        "metadata": { 
+        "meta": { 
             "my-own-field": "Customer request" 
         } 
     } 
