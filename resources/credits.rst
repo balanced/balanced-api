@@ -226,7 +226,7 @@ Request
     *optional* **object**. Single level mapping from string keys to string values. 
  
 ``appears_on_statement_as`` 
-    *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
+    *optional* **string**. Text that will appear on the merchant's statement. Characters that can be 
     used are limited to: 
  
     - ASCII letters (``a-z`` and ``A-Z``) 
