@@ -83,38 +83,6 @@ refund.updated
     Occurs whenever a refund is updated. 
  
 
-Funding Instrument Events
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-card.created 
-    Occurs whenever a new card is created. 
- 
-card.deleted 
-    Occurs whenever a card is deleted. 
- 
-card.updated 
-    Occurs whenever a card is updated. 
- 
-bank_account.created 
-    Occurs whenever a new bank_account is created. 
- 
-bank_account.deleted 
-    Occurs whenever a bank_account is deleted. 
- 
-bank_account.updated 
-    Occurs whenever a bank_account is updated. 
- 
-
-Account Events
-~~~~~~~~~~~~~~
-
-account.created 
-    Occurs whenever a new account is created. 
- 
-account.updated 
-    Occurs whenever a account is updated. 
- 
-
 Retrieve an Event
 -----------------
 
