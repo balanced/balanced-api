@@ -37,7 +37,7 @@ Fields
     **object**. `Bank Account <./bank_accounts.rst>`_. 
  
 ``status`` 
-    **string**. One of ``pending``, ``paid``, ``failed``. 
+    **string**. One of ``pending``, ``paid``, ``failed``. `See here for more <https://www.balancedpayments.com/docs/overview?language=bash#credit-s-status-field>`_.
  
 
 Deprecated
