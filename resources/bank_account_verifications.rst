@@ -22,7 +22,7 @@ Fields
     **integer**.  
  
 ``state`` 
-    **string**.  
+    **string**. One of ``pending``, ``verified``, ``failed``. 
  
 
 Create a Bank Account Verification
@@ -60,10 +60,10 @@ Body
  
     { 
         "attempts": 0,  
-        "id": "BZ4R9LIsY3Fx42JZRNwtEjYv",  
+        "id": "BZ7GXxMZviS2MFFbmVq4jgun",  
         "remaining_attempts": 3,  
         "state": "pending",  
-        "uri": "/v1/bank_accounts/BA4R4gze3tBakHgshhHc1Lmr/verifications/BZ4R9LIsY3Fx42JZRNwtEjYv" 
+        "uri": "/v1/bank_accounts/BA7FVzoeHMjX23rKPCPuFZNV/verifications/BZ7GXxMZviS2MFFbmVq4jgun" 
     } 
  
 
@@ -72,7 +72,7 @@ Retrieve a Bank Account Verification for a Bank Account
 
 .. code:: 
  
-    GET /v1/bank_accounts/:bank_account_id/verifications/:authentication_id 
+    GET /v1/bank_accounts/:bank_account_id/verifications/:verification_id 
  
 
 Response 
@@ -92,10 +92,10 @@ Body
  
     { 
         "attempts": 0,  
-        "id": "BZ4U3lsdLQCq5I8zyQqeqAZt",  
+        "id": "BZ7Knj5ugxISiR4Y9RZlTAZR",  
         "remaining_attempts": 3,  
         "state": "pending",  
-        "uri": "/v1/bank_accounts/BA4U3cUN0lxvg2mkB42XBb1h/verifications/BZ4U3lsdLQCq5I8zyQqeqAZt" 
+        "uri": "/v1/bank_accounts/BA7Kn8eEb5fwFs5uIfTdtvoL/verifications/BZ7Knj5ugxISiR4Y9RZlTAZR" 
     } 
  
 
@@ -132,23 +132,23 @@ Body
 .. code:: javascript 
  
     { 
-        "first_uri": "/v1/bank_accounts/BA4X0igJjCjR1cUB9RxBjHtV/verifications?limit=10&offset=0",  
+        "first_uri": "/v1/bank_accounts/BA1CLqMSjsJXxYgWc6bH0Mb/verifications?limit=10&offset=0",  
         "items": [ 
             { 
                 "attempts": 0,  
-                "id": "BZ4X0rmJYe4thCJ6LlhJLsZl",  
+                "id": "BZ1D147yZsErREDeCnKpPMv",  
                 "remaining_attempts": 3,  
                 "state": "pending",  
-                "uri": "/v1/bank_accounts/BA4X0igJjCjR1cUB9RxBjHtV/verifications/BZ4X0rmJYe4thCJ6LlhJLsZl" 
+                "uri": "/v1/bank_accounts/BA1CLqMSjsJXxYgWc6bH0Mb/verifications/BZ1D147yZsErREDeCnKpPMv" 
             } 
         ],  
-        "last_uri": "/v1/bank_accounts/BA4X0igJjCjR1cUB9RxBjHtV/verifications?limit=10&offset=0",  
+        "last_uri": "/v1/bank_accounts/BA1CLqMSjsJXxYgWc6bH0Mb/verifications?limit=10&offset=0",  
         "limit": 10,  
         "next_uri": null,  
         "offset": 0,  
         "previous_uri": null,  
         "total": 1,  
-        "uri": "/v1/bank_accounts/BA4X0igJjCjR1cUB9RxBjHtV/verifications?limit=10&offset=0" 
+        "uri": "/v1/bank_accounts/BA1CLqMSjsJXxYgWc6bH0Mb/verifications?limit=10&offset=0" 
     } 
  
 
@@ -160,7 +160,7 @@ always 1 and 1.
 
 .. code:: 
  
-    PUT /v1/bank_accounts/:bank_account_id/verifications/:authentication_id 
+    PUT /v1/bank_accounts/:bank_account_id/verifications/:verification_id 
  
 
 Request
@@ -190,10 +190,10 @@ Body
  
     { 
         "attempts": 1,  
-        "id": "BZ500pJ2QU6S3EjHUysGzlCP",  
+        "id": "BZ5Cxv5444R6GBQtRJRsyBR",  
         "remaining_attempts": 2,  
         "state": "verified",  
-        "uri": "/v1/bank_accounts/BA500gC12N17YIlJxJwJ8zL5/verifications/BZ500pJ2QU6S3EjHUysGzlCP" 
+        "uri": "/v1/bank_accounts/BA5CoXEiyZWh0wokMrdjqcr/verifications/BZ5Cxv5444R6GBQtRJRsyBR" 
     } 
  
 
