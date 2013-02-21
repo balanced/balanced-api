@@ -48,6 +48,16 @@ Fields
     **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
     bank account was tokenized. 
  
+``can_debit`` 
+    **boolean**. Flag indicating whether this funding instrument can be debited (true) 
+    or not (false). 
+ 
+``verifications_uri`` 
+    **string**.  
+ 
+``verification_uri`` 
+    **string**. Most recent verification for this bank account. 
+ 
 
 Deprecated
 ~~~~~~~~~~
@@ -120,15 +130,18 @@ Body
     { 
         "account_number": "xxxx1234",  
         "bank_name": "Banko De Ismus",  
-        "created_at": "2012-12-19T23:37:03.672186Z",  
-        "credits_uri": "/v1/bank_accounts/BAn80Ej9BPQj7qVdwPB9UKe/credits",  
+        "can_debit": false,  
+        "created_at": "2013-02-21T00:51:54.340398Z",  
+        "credits_uri": "/v1/bank_accounts/BA6TWP0XBiqKt1iVKMoI1vJF/credits",  
         "fingerprint": "brown",  
-        "id": "BAn80Ej9BPQj7qVdwPB9UKe",  
+        "id": "BA6TWP0XBiqKt1iVKMoI1vJF",  
         "meta": {},  
         "name": "Fit Finlay",  
         "routing_number": "325182797",  
         "type": "checking",  
-        "uri": "/v1/bank_accounts/BAn80Ej9BPQj7qVdwPB9UKe" 
+        "uri": "/v1/bank_accounts/BA6TWP0XBiqKt1iVKMoI1vJF",  
+        "verification_uri": null,  
+        "verifications_uri": "/v1/bank_accounts/BA6TWP0XBiqKt1iVKMoI1vJF/verifications" 
     } 
  
 
@@ -158,15 +171,18 @@ Body
     { 
         "account_number": "xxxxx1234",  
         "bank_name": "Banko De Ismus",  
-        "created_at": "2012-12-19T23:37:05.048494Z",  
-        "credits_uri": "/v1/bank_accounts/BAoG0GFXqiUqx5S7EGpeeHU/credits",  
+        "can_debit": false,  
+        "created_at": "2013-02-21T00:51:56.892095Z",  
+        "credits_uri": "/v1/bank_accounts/BA6WOMicQkQpjAqisZje7bDt/credits",  
         "fingerprint": "12341234",  
-        "id": "BAoG0GFXqiUqx5S7EGpeeHU",  
+        "id": "BA6WOMicQkQpjAqisZje7bDt",  
         "meta": {},  
         "name": "Fit Finlay",  
         "routing_number": "325182797",  
         "type": "checking",  
-        "uri": "/v1/bank_accounts/BAoG0GFXqiUqx5S7EGpeeHU" 
+        "uri": "/v1/bank_accounts/BA6WOMicQkQpjAqisZje7bDt",  
+        "verification_uri": null,  
+        "verifications_uri": "/v1/bank_accounts/BA6WOMicQkQpjAqisZje7bDt/verifications" 
     } 
  
 
@@ -207,59 +223,87 @@ Body
             { 
                 "account_number": "xxxxx1234",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:06.439653Z",  
-                "credits_uri": "/v1/bank_accounts/BAqeVeETAxwITt5qKlSb21c/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:51:59.444398Z",  
+                "credits_uri": "/v1/bank_accounts/BA6ZGIvZECT4qaRuRBjFN2sb/credits",  
                 "fingerprint": "12341234",  
-                "id": "BAqeVeETAxwITt5qKlSb21c",  
+                "id": "BA6ZGIvZECT4qaRuRBjFN2sb",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/bank_accounts/BAqeVeETAxwITt5qKlSb21c" 
+                "uri": "/v1/bank_accounts/BA6ZGIvZECT4qaRuRBjFN2sb",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA6ZGIvZECT4qaRuRBjFN2sb/verifications" 
             },  
             { 
                 "account_number": "xxxxx1234",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:06.439301Z",  
-                "credits_uri": "/v1/bank_accounts/BAqeUR7INSslyUxogZ2cRhE/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:51:59.443853Z",  
+                "credits_uri": "/v1/bank_accounts/BA6ZGIdhCYmHAUOmNkHwOKsP/credits",  
                 "fingerprint": "12341234",  
-                "id": "BAqeUR7INSslyUxogZ2cRhE",  
+                "id": "BA6ZGIdhCYmHAUOmNkHwOKsP",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/bank_accounts/BAqeUR7INSslyUxogZ2cRhE" 
+                "uri": "/v1/bank_accounts/BA6ZGIdhCYmHAUOmNkHwOKsP",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA6ZGIdhCYmHAUOmNkHwOKsP/verifications" 
             },  
             { 
                 "account_number": "xxxxx1234",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:06.393523Z",  
-                "credits_uri": "/v1/bank_accounts/BAqbNgsiPGO8rMDe9eUKiGS/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:51:59.398175Z",  
+                "credits_uri": "/v1/bank_accounts/BA6ZDvIbG3zPe5WNNunuyKaL/credits",  
                 "fingerprint": "12341234",  
-                "id": "BAqbNgsiPGO8rMDe9eUKiGS",  
+                "id": "BA6ZDvIbG3zPe5WNNunuyKaL",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/bank_accounts/BAqbNgsiPGO8rMDe9eUKiGS" 
+                "uri": "/v1/bank_accounts/BA6ZDvIbG3zPe5WNNunuyKaL",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA6ZDvIbG3zPe5WNNunuyKaL/verifications" 
             },  
             { 
                 "account_number": "xxxxx1234",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:06.375764Z",  
-                "credits_uri": "/v1/bank_accounts/BAqarX6bqkg6UwDFzy0Zec2/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:51:59.380533Z",  
+                "credits_uri": "/v1/bank_accounts/BA6ZCj37Mi79dm6EtER4OJx1/credits",  
                 "fingerprint": "12341234",  
-                "id": "BAqarX6bqkg6UwDFzy0Zec2",  
+                "id": "BA6ZCj37Mi79dm6EtER4OJx1",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/bank_accounts/BAqarX6bqkg6UwDFzy0Zec2" 
+                "uri": "/v1/bank_accounts/BA6ZCj37Mi79dm6EtER4OJx1",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA6ZCj37Mi79dm6EtER4OJx1/verifications" 
+            },  
+            { 
+                "account_number": "xxxxx1234",  
+                "bank_name": "Banko De Ismus",  
+                "can_debit": true,  
+                "created_at": "2013-02-21T00:51:59.356478Z",  
+                "credits_uri": "/v1/bank_accounts/BA6ZAzmZEXeBiIWKMKwHdGfN/credits",  
+                "fingerprint": "12341234",  
+                "id": "BA6ZAzmZEXeBiIWKMKwHdGfN",  
+                "meta": {},  
+                "name": "Fit Finlay",  
+                "routing_number": "325182797",  
+                "type": "checking",  
+                "uri": "/v1/bank_accounts/BA6ZAzmZEXeBiIWKMKwHdGfN",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA6ZAzmZEXeBiIWKMKwHdGfN/verifications" 
             } 
         ],  
         "limit": 10,  
         "offset": 0,  
-        "total": 4 
+        "total": 5 
     } 
  
 
@@ -296,121 +340,130 @@ Body
 .. code:: javascript 
  
     { 
-        "first_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts?limit=10&offset=0",  
+        "first_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts?limit=10&offset=0",  
         "items": [ 
             { 
                 "account": { 
-                    "bank_accounts_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts",  
-                    "cards_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/cards",  
-                    "created_at": "2012-12-19T23:37:07.723616Z",  
-                    "credits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/credits",  
-                    "debits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/debits",  
+                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts",  
+                    "cards_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/cards",  
+                    "created_at": "2013-02-21T00:52:01.972511Z",  
+                    "credits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/credits",  
+                    "debits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/debits",  
                     "email_address": "email.3@y.com",  
-                    "holds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/holds",  
-                    "id": "ACrGAC9cCevLRx8J4cqFqPw",  
+                    "holds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/holds",  
+                    "id": "AC72x3JrDrvsclQWFFwax1N9",  
                     "meta": {},  
                     "name": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/refunds",  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/refunds",  
                     "roles": [ 
                         "merchant",  
                         "buyer" 
                     ],  
-                    "transactions_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/transactions",  
-                    "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw" 
+                    "transactions_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/transactions",  
+                    "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9" 
                 },  
                 "account_number": "xxxxx1234",  
                 "bank_code": "325182797",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:07.725356Z",  
-                "credits_uri": "/v1/bank_accounts/BArGF6WVGzPCae4wXjeQWYG/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:52:01.973554Z",  
+                "credits_uri": "/v1/bank_accounts/BA72x7LRnyAHXOZsanECK1TZ/credits",  
                 "fingerprint": "12341234",  
-                "id": "BArGF6WVGzPCae4wXjeQWYG",  
+                "id": "BA72x7LRnyAHXOZsanECK1TZ",  
                 "is_valid": true,  
                 "last_four": "1234",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts/BArGF6WVGzPCae4wXjeQWYG" 
+                "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts/BA72x7LRnyAHXOZsanECK1TZ",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA72x7LRnyAHXOZsanECK1TZ/verifications" 
             },  
             { 
                 "account": { 
-                    "bank_accounts_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts",  
-                    "cards_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/cards",  
-                    "created_at": "2012-12-19T23:37:07.723616Z",  
-                    "credits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/credits",  
-                    "debits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/debits",  
+                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts",  
+                    "cards_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/cards",  
+                    "created_at": "2013-02-21T00:52:01.972511Z",  
+                    "credits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/credits",  
+                    "debits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/debits",  
                     "email_address": "email.3@y.com",  
-                    "holds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/holds",  
-                    "id": "ACrGAC9cCevLRx8J4cqFqPw",  
+                    "holds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/holds",  
+                    "id": "AC72x3JrDrvsclQWFFwax1N9",  
                     "meta": {},  
                     "name": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/refunds",  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/refunds",  
                     "roles": [ 
                         "merchant",  
                         "buyer" 
                     ],  
-                    "transactions_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/transactions",  
-                    "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw" 
+                    "transactions_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/transactions",  
+                    "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9" 
                 },  
                 "account_number": "xxxxx1234",  
                 "bank_code": "325182797",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:07.760972Z",  
-                "credits_uri": "/v1/bank_accounts/BArJ6WpBNXUxUk7CyJzPqqe/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:52:02.033199Z",  
+                "credits_uri": "/v1/bank_accounts/BA72Bh0p6xCFtvHoLobe9QUH/credits",  
                 "fingerprint": "12341234",  
-                "id": "BArJ6WpBNXUxUk7CyJzPqqe",  
+                "id": "BA72Bh0p6xCFtvHoLobe9QUH",  
                 "is_valid": true,  
                 "last_four": "1234",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts/BArJ6WpBNXUxUk7CyJzPqqe" 
+                "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts/BA72Bh0p6xCFtvHoLobe9QUH",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA72Bh0p6xCFtvHoLobe9QUH/verifications" 
             },  
             { 
                 "account": { 
-                    "bank_accounts_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts",  
-                    "cards_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/cards",  
-                    "created_at": "2012-12-19T23:37:07.723616Z",  
-                    "credits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/credits",  
-                    "debits_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/debits",  
+                    "bank_accounts_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts",  
+                    "cards_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/cards",  
+                    "created_at": "2013-02-21T00:52:01.972511Z",  
+                    "credits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/credits",  
+                    "debits_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/debits",  
                     "email_address": "email.3@y.com",  
-                    "holds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/holds",  
-                    "id": "ACrGAC9cCevLRx8J4cqFqPw",  
+                    "holds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/holds",  
+                    "id": "AC72x3JrDrvsclQWFFwax1N9",  
                     "meta": {},  
                     "name": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/refunds",  
+                    "refunds_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/refunds",  
                     "roles": [ 
                         "merchant",  
                         "buyer" 
                     ],  
-                    "transactions_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/transactions",  
-                    "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw" 
+                    "transactions_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/transactions",  
+                    "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9" 
                 },  
                 "account_number": "xxxxx1234",  
                 "bank_code": "325182797",  
                 "bank_name": "Banko De Ismus",  
-                "created_at": "2012-12-19T23:37:07.761210Z",  
-                "credits_uri": "/v1/bank_accounts/BArJ7bIzqx5W6J6uskwy4Qy/credits",  
+                "can_debit": false,  
+                "created_at": "2013-02-21T00:52:02.033742Z",  
+                "credits_uri": "/v1/bank_accounts/BA72BhiVuUWZeqo1iTPIshQD/credits",  
                 "fingerprint": "12341234",  
-                "id": "BArJ7bIzqx5W6J6uskwy4Qy",  
+                "id": "BA72BhiVuUWZeqo1iTPIshQD",  
                 "is_valid": true,  
                 "last_four": "1234",  
                 "meta": {},  
                 "name": "Fit Finlay",  
                 "routing_number": "325182797",  
                 "type": "checking",  
-                "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts/BArJ7bIzqx5W6J6uskwy4Qy" 
+                "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts/BA72BhiVuUWZeqo1iTPIshQD",  
+                "verification_uri": null,  
+                "verifications_uri": "/v1/bank_accounts/BA72BhiVuUWZeqo1iTPIshQD/verifications" 
             } 
         ],  
-        "last_uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts?limit=10&offset=0",  
+        "last_uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts?limit=10&offset=0",  
         "limit": 10,  
         "next_uri": null,  
         "offset": 0,  
         "previous_uri": null,  
         "total": 3,  
-        "uri": "/v1/marketplaces/TEST-MPrEdFSBCsbXh5RxGPr097k/accounts/ACrGAC9cCevLRx8J4cqFqPw/bank_accounts?limit=10&offset=0" 
+        "uri": "/v1/marketplaces/TEST-MP72tVTORmGqAqtsgLWmKmaf/accounts/AC72x3JrDrvsclQWFFwax1N9/bank_accounts?limit=10&offset=0" 
     } 
  
 
@@ -435,7 +488,7 @@ Body
 .. code:: javascript 
  
     { 
-        "account_uri": "/v1/marketplaces/TEST-MPtanzisGsBEd2P2OasDGwa/accounts/ACtcLF8psEG6hLOXUb3WXMK" 
+        "account_uri": "/v1/marketplaces/TEST-MP75umJ49Dd4rr3ADJDwF5U7/accounts/AC75xIOdMziMDGdB3VBTdqnx" 
     } 
  
 
@@ -456,38 +509,41 @@ Body
  
     { 
         "account": { 
-            "bank_accounts_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/bank_accounts",  
-            "cards_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/cards",  
-            "created_at": "2012-12-19T23:37:10.358128Z",  
-            "credits_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/credits",  
-            "debits_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/debits",  
+            "bank_accounts_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/bank_accounts",  
+            "cards_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/cards",  
+            "created_at": "2013-02-21T00:52:07.331593Z",  
+            "credits_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/credits",  
+            "debits_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/debits",  
             "email_address": "email.3@y.com",  
-            "holds_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/holds",  
-            "id": "ACuEiVuiQVYshgrXqk4ydKO",  
+            "holds_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/holds",  
+            "id": "AC78yLprQhQAdPs2Vc6x3ugP",  
             "meta": {},  
             "name": null,  
-            "refunds_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/refunds",  
+            "refunds_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/refunds",  
             "roles": [ 
                 "merchant",  
                 "buyer" 
             ],  
-            "transactions_uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/transactions",  
-            "uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO" 
+            "transactions_uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/transactions",  
+            "uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP" 
         },  
         "account_number": "xxxxx1234",  
         "bank_code": "325182797",  
         "bank_name": "Banko De Ismus",  
-        "created_at": "2012-12-19T23:37:10.394237Z",  
-        "credits_uri": "/v1/bank_accounts/BAuGNeRMsBgbqKoFB52EDj4/credits",  
+        "can_debit": false,  
+        "created_at": "2013-02-21T00:52:07.386381Z",  
+        "credits_uri": "/v1/bank_accounts/BA78CzIDQMHKpc19gCLDeXjt/credits",  
         "fingerprint": "12341234",  
-        "id": "BAuGNeRMsBgbqKoFB52EDj4",  
+        "id": "BA78CzIDQMHKpc19gCLDeXjt",  
         "is_valid": true,  
         "last_four": "1234",  
         "meta": {},  
         "name": "Fit Finlay",  
         "routing_number": "325182797",  
         "type": "checking",  
-        "uri": "/v1/marketplaces/TEST-MPuBMiffC7hk1yxIBJV7MmK/accounts/ACuEiVuiQVYshgrXqk4ydKO/bank_accounts/BAuGNeRMsBgbqKoFB52EDj4" 
+        "uri": "/v1/marketplaces/TEST-MP78vE29J5n2nH5XCniShStd/accounts/AC78yLprQhQAdPs2Vc6x3ugP/bank_accounts/BA78CzIDQMHKpc19gCLDeXjt",  
+        "verification_uri": null,  
+        "verifications_uri": "/v1/bank_accounts/BA78CzIDQMHKpc19gCLDeXjt/verifications" 
     } 
  
 
