@@ -72,7 +72,7 @@ Request
     *optional* **string**. The display ``name`` of the account. Length must be **<=** ``128``. 
  
 ``email_address`` 
-    *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts 
+    **string** or **null**. Email address of the account. It must be **unique** among all accounts 
     on your marketplace. 
  
 ``card_uri`` 
