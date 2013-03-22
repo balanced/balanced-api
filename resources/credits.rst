@@ -37,7 +37,7 @@ Fields
     **object**. `Bank Account <./bank_accounts.rst>`_. 
  
 ``status`` 
-    **string**. One of ``pending``, ``paid``, ``failed``. 
+    **string**. One of ``pending``, ``paid``, ``failed``. `See here for more <https://www.balancedpayments.com/docs/overview?language=bash#credit-s-status-field>`_.
  
 
 Deprecated
@@ -226,7 +226,7 @@ Request
     *optional* **object**. Single level mapping from string keys to string values. 
  
 ``appears_on_statement_as`` 
-    *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
+    *optional* **string**. Text that will appear on the merchant's statement. Characters that can be 
     used are limited to: 
  
     - ASCII letters (``a-z`` and ``A-Z``) 
