@@ -67,6 +67,13 @@ Deprecated
     **null**. The fee charged by Balanced. 
  
 
+Deprecated
+~~~~~~~~~~
+
+``fee`` 
+    **null**. The fee charged by Balanced. 
+ 
+
 Debit an Account
 ----------------
 
