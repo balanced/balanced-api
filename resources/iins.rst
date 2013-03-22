@@ -16,10 +16,10 @@ Fields
     **string**. One categories defined by IIN (e.g. `GIFT`, etc). 
  
 ``bank`` 
-    **string**. Name of the issuing bank 
+    **string**. Name of the issuing bank. 
  
 ``bank_url`` 
-    **string**. Web site of the issuing bank 
+    **string**. Web site of the issuing bank. 
  
 ``bank_phone_number`` 
     **string**. Phone number of the issuing bank. 
@@ -28,8 +28,8 @@ Fields
     **string**. ISO3166-1 alpha-3 country code. 
  
 
-Retrieve an IIN
----------------
+Retrieve Card IIN
+-----------------
 
 .. code:: 
  
@@ -58,7 +58,7 @@ Body
         "card_category": "BUSINESS CARD",  
         "card_type": "CREDIT",  
         "country_iso3": "USA",  
-        "uri": "/v1/cards/CC3nBVKfJHJTERr9PbRGfnsh/iin" 
+        "uri": "/v1/cards/CC44lWLuheehNSFZzy24Mvcp/iin" 
     } 
  
 
