@@ -1,6 +1,6 @@
-
 Customers
 =========
+
 
 - `Create a Customer`_
 - `Retrieve a Customer`_
