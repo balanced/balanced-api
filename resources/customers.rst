@@ -41,7 +41,7 @@ Fields
     **object**.
 
 ``email_address``
-    **string**. Email address of the person or business
+    **string**. Email address of the person or business.
 
 ``first_name``
     **object**.
@@ -101,10 +101,10 @@ Request
 ~~~~~~~
 
 ``first_name``
-    *optional* **string**. First name of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. First name of the customer or representative of the business. Defaults to ``null``.
 
 ``last_name``
-    *optional* **string**. Last name of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. Last name of the customer or representative of the business. Defaults to ``null``.
 
 ``email_address``
     *optional* **string** or **null**. Email address of the customer. It must be **unique** among all customers
@@ -115,7 +115,7 @@ Request
 
 ``ssn_last_4``
     *optional* **string**. Last four digits of the Social Security Number of the customer or
-    representative of the business Defaults to ``null``.
+    representative of the business. Defaults to ``null``.
 
 ``business_name``
     *optional* **string**. Full business name if the customer is a business. If there is a business
@@ -123,28 +123,25 @@ Request
     of a person. Defaults to ``null``.
 
 ``street_address``
-    *optional* **string**. Street address of the person or business Defaults to ``null``.
+    *optional* **string**. Street address of the person or business. Defaults to ``null``.
 
 ``city``
-    *optional* **string**. City of the person or business Defaults to ``null``.
-
-``region``
-    *optional* **string**.
+    *optional* **string**. City of the person or business. Defaults to ``null``.
 
 ``state``
     *optional* **string**.
 
 ``postal_code``
-    *optional* **string**. Postal code/zip code of the person or business Defaults to ``null``.
+    *optional* **string**. Postal code/zip code of the person or business. Defaults to ``null``.
 
 ``country_code``
-    *optional* **string**. Country of the person or business Defaults to ``USA``.
+    *optional* **string**. Country of the person or business. Defaults to ``USA``.
 
 ``phone_number``
-    *optional* **string**. Phone number of the person or business Defaults to ``null``.
+    *optional* **string**. Phone number of the person or business. Defaults to ``null``.
 
 ``dob``
-    *optional* **string**. Date of birth of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. Date of birth of the customer or representative of the business. Defaults to ``null``.
 
 ``ein``
     *optional* **string**. Employee Identification Number of the business if the customer is a
@@ -183,24 +180,24 @@ Body
       "_type": "customer", 
       "last_name": null, 
       "source_uri": null, 
-      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/bank_accounts", 
-      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/holds", 
+      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/bank_accounts", 
+      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/holds", 
       "meta": {}, 
       "postal_code": null, 
       "destination_uri": null, 
       "business_name": null, 
       "email_address": null, 
-      "id": "AC68F71QIbeqRNGKPkUMUam5", 
-      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/credits", 
-      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/cards", 
+      "id": "AC5PVpbYfqJIj9WdIvQDR7Wh", 
+      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/credits", 
+      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/cards", 
       "city": null, 
       "first_name": null, 
       "ssn_last_4": null, 
       "dob": null, 
-      "created_at": "2013-04-29T22:47:36.617828Z", 
+      "created_at": "2013-04-30T00:20:23.415914Z", 
       "is_identity_verified": false, 
-      "uri": "/v1/customers/AC68F71QIbeqRNGKPkUMUam5", 
-      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/refunds", 
+      "uri": "/v1/customers/AC5PVpbYfqJIj9WdIvQDR7Wh", 
+      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/refunds", 
       "state": null, 
       "_uris": {
         "holds_uri": {
@@ -232,8 +229,8 @@ Body
           "key": "cards"
         }
       }, 
-      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/debits", 
-      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC68F71QIbeqRNGKPkUMUam5/transactions", 
+      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/debits", 
+      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5PVpbYfqJIj9WdIvQDR7Wh/transactions", 
       "street_address": null, 
       "ein": null
     }
@@ -267,24 +264,24 @@ Body
       "_type": "customer", 
       "last_name": null, 
       "source_uri": null, 
-      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/bank_accounts", 
-      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/holds", 
+      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/bank_accounts", 
+      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/holds", 
       "meta": {}, 
       "postal_code": null, 
       "destination_uri": null, 
       "business_name": null, 
       "email_address": null, 
-      "id": "AC6boxlTyQ4cQE0s7UfZcmk1", 
-      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/credits", 
-      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/cards", 
+      "id": "AC5SLAAFOvYOnVoIw7dNdlpn", 
+      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/credits", 
+      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/cards", 
       "city": null, 
       "first_name": null, 
       "ssn_last_4": null, 
       "dob": null, 
-      "created_at": "2013-04-29T22:47:39.047566Z", 
+      "created_at": "2013-04-30T00:20:25.942603Z", 
       "is_identity_verified": false, 
-      "uri": "/v1/customers/AC6boxlTyQ4cQE0s7UfZcmk1", 
-      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/refunds", 
+      "uri": "/v1/customers/AC5SLAAFOvYOnVoIw7dNdlpn", 
+      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/refunds", 
       "state": null, 
       "_uris": {
         "holds_uri": {
@@ -316,8 +313,8 @@ Body
           "key": "cards"
         }
       }, 
-      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/debits", 
-      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6boxlTyQ4cQE0s7UfZcmk1/transactions", 
+      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/debits", 
+      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC5SLAAFOvYOnVoIw7dNdlpn/transactions", 
       "street_address": null, 
       "ein": null
     }
@@ -356,6 +353,303 @@ Body
       "first_uri": "/v1/customers?limit=10&offset=0", 
       "_type": "page", 
       "items": [
+        {
+          "last_name": null, 
+          "meta": {}, 
+          "postal_code": null, 
+          "business_name": null, 
+          "email_address": null, 
+          "id": "ACQc1YTgeCLX2nPG3oK6Q01", 
+          "city": null, 
+          "first_name": null, 
+          "state": null, 
+          "phone_number": null, 
+          "_type": "customer", 
+          "source_uri": null, 
+          "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/bank_accounts", 
+          "_uris": {
+            "transactions_uri": {
+              "_type": "page", 
+              "key": "transactions"
+            }, 
+            "bank_accounts_uri": {
+              "_type": "page", 
+              "key": "bank_accounts"
+            }, 
+            "refunds_uri": {
+              "_type": "page", 
+              "key": "refunds"
+            }, 
+            "debits_uri": {
+              "_type": "page", 
+              "key": "debits"
+            }, 
+            "holds_uri": {
+              "_type": "page", 
+              "key": "holds"
+            }, 
+            "credits_uri": {
+              "_type": "page", 
+              "key": "credits"
+            }, 
+            "cards_uri": {
+              "_type": "page", 
+              "key": "cards"
+            }
+          }, 
+          "destination_uri": null, 
+          "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/holds", 
+          "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/credits", 
+          "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/cards", 
+          "ssn_last_4": null, 
+          "dob": null, 
+          "created_at": "2013-04-29T22:06:57.090072Z", 
+          "is_identity_verified": false, 
+          "uri": "/v1/customers/ACQc1YTgeCLX2nPG3oK6Q01", 
+          "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/refunds", 
+          "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/debits", 
+          "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/ACQc1YTgeCLX2nPG3oK6Q01/transactions", 
+          "street_address": null, 
+          "ein": null
+        }, 
+        {
+          "last_name": null, 
+          "meta": {}, 
+          "postal_code": null, 
+          "business_name": null, 
+          "email_address": null, 
+          "id": "AC3CPbFFGjziqwyOhzKRXOx", 
+          "city": null, 
+          "first_name": null, 
+          "state": null, 
+          "phone_number": null, 
+          "_type": "customer", 
+          "source_uri": null, 
+          "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/bank_accounts", 
+          "_uris": {
+            "transactions_uri": {
+              "_type": "page", 
+              "key": "transactions"
+            }, 
+            "bank_accounts_uri": {
+              "_type": "page", 
+              "key": "bank_accounts"
+            }, 
+            "refunds_uri": {
+              "_type": "page", 
+              "key": "refunds"
+            }, 
+            "debits_uri": {
+              "_type": "page", 
+              "key": "debits"
+            }, 
+            "holds_uri": {
+              "_type": "page", 
+              "key": "holds"
+            }, 
+            "credits_uri": {
+              "_type": "page", 
+              "key": "credits"
+            }, 
+            "cards_uri": {
+              "_type": "page", 
+              "key": "cards"
+            }
+          }, 
+          "destination_uri": null, 
+          "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/holds", 
+          "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/credits", 
+          "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/cards", 
+          "ssn_last_4": null, 
+          "dob": null, 
+          "created_at": "2013-04-29T22:06:13.907869Z", 
+          "is_identity_verified": false, 
+          "uri": "/v1/customers/AC3CPbFFGjziqwyOhzKRXOx", 
+          "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/refunds", 
+          "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/debits", 
+          "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3CPbFFGjziqwyOhzKRXOx/transactions", 
+          "street_address": null, 
+          "ein": null
+        }, 
+        {
+          "last_name": null, 
+          "meta": {}, 
+          "postal_code": null, 
+          "business_name": null, 
+          "email_address": null, 
+          "id": "AC3ihypDQHSIwsHYofsA45X", 
+          "city": null, 
+          "first_name": null, 
+          "state": null, 
+          "phone_number": null, 
+          "_type": "customer", 
+          "source_uri": null, 
+          "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/bank_accounts", 
+          "_uris": {
+            "transactions_uri": {
+              "_type": "page", 
+              "key": "transactions"
+            }, 
+            "bank_accounts_uri": {
+              "_type": "page", 
+              "key": "bank_accounts"
+            }, 
+            "refunds_uri": {
+              "_type": "page", 
+              "key": "refunds"
+            }, 
+            "debits_uri": {
+              "_type": "page", 
+              "key": "debits"
+            }, 
+            "holds_uri": {
+              "_type": "page", 
+              "key": "holds"
+            }, 
+            "credits_uri": {
+              "_type": "page", 
+              "key": "credits"
+            }, 
+            "cards_uri": {
+              "_type": "page", 
+              "key": "cards"
+            }
+          }, 
+          "destination_uri": null, 
+          "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/holds", 
+          "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/credits", 
+          "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/cards", 
+          "ssn_last_4": null, 
+          "dob": null, 
+          "created_at": "2013-04-29T22:06:13.613286Z", 
+          "is_identity_verified": false, 
+          "uri": "/v1/customers/AC3ihypDQHSIwsHYofsA45X", 
+          "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/refunds", 
+          "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/debits", 
+          "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC3ihypDQHSIwsHYofsA45X/transactions", 
+          "street_address": null, 
+          "ein": null
+        }, 
+        {
+          "last_name": null, 
+          "meta": {}, 
+          "postal_code": null, 
+          "business_name": null, 
+          "email_address": null, 
+          "id": "AC2CSNCslIEOdV6ldiIUHFD", 
+          "city": null, 
+          "first_name": "Benny", 
+          "state": null, 
+          "phone_number": null, 
+          "_type": "customer", 
+          "source_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/cards/CC4apLxsdhfQB6cktwjTCpPz", 
+          "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/bank_accounts", 
+          "_uris": {
+            "transactions_uri": {
+              "_type": "page", 
+              "key": "transactions"
+            }, 
+            "source_uri": {
+              "_type": "card", 
+              "key": "source"
+            }, 
+            "bank_accounts_uri": {
+              "_type": "page", 
+              "key": "bank_accounts"
+            }, 
+            "refunds_uri": {
+              "_type": "page", 
+              "key": "refunds"
+            }, 
+            "debits_uri": {
+              "_type": "page", 
+              "key": "debits"
+            }, 
+            "holds_uri": {
+              "_type": "page", 
+              "key": "holds"
+            }, 
+            "credits_uri": {
+              "_type": "page", 
+              "key": "credits"
+            }, 
+            "cards_uri": {
+              "_type": "page", 
+              "key": "cards"
+            }
+          }, 
+          "destination_uri": null, 
+          "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/holds", 
+          "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/credits", 
+          "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/cards", 
+          "ssn_last_4": null, 
+          "dob": null, 
+          "created_at": "2013-04-29T22:06:13.019595Z", 
+          "is_identity_verified": false, 
+          "uri": "/v1/customers/AC2CSNCslIEOdV6ldiIUHFD", 
+          "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/refunds", 
+          "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/debits", 
+          "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2CSNCslIEOdV6ldiIUHFD/transactions", 
+          "street_address": null, 
+          "ein": null
+        }, 
+        {
+          "last_name": null, 
+          "meta": {}, 
+          "postal_code": "90210", 
+          "email_address": "fee@poundpay.com", 
+          "id": "AC2lWjCY4zROvEiBwbarkgF", 
+          "city": "Nowhere", 
+          "first_name": null, 
+          "state": "CA", 
+          "phone_number": "+16505551212", 
+          "_type": "customer", 
+          "source_uri": null, 
+          "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/bank_accounts", 
+          "_uris": {
+            "transactions_uri": {
+              "_type": "page", 
+              "key": "transactions"
+            }, 
+            "bank_accounts_uri": {
+              "_type": "page", 
+              "key": "bank_accounts"
+            }, 
+            "refunds_uri": {
+              "_type": "page", 
+              "key": "refunds"
+            }, 
+            "debits_uri": {
+              "_type": "page", 
+              "key": "debits"
+            }, 
+            "holds_uri": {
+              "_type": "page", 
+              "key": "holds"
+            }, 
+            "credits_uri": {
+              "_type": "page", 
+              "key": "credits"
+            }, 
+            "cards_uri": {
+              "_type": "page", 
+              "key": "cards"
+            }
+          }, 
+          "destination_uri": null, 
+          "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/holds", 
+          "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/credits", 
+          "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/cards", 
+          "ssn_last_4": null, 
+          "dob": null, 
+          "created_at": "2013-04-29T22:06:12.776575Z", 
+          "is_identity_verified": true, 
+          "uri": "/v1/customers/AC2lWjCY4zROvEiBwbarkgF", 
+          "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/refunds", 
+          "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/debits", 
+          "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lWjCY4zROvEiBwbarkgF/transactions", 
+          "street_address": "123 Fake St"
+        }, 
         {
           "_type": "customer", 
           "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC2lR7IRirJS04W8JOrwcut/holds", 
@@ -471,8 +765,8 @@ Body
           "street_address": "123 Fake St"
         }
       ], 
-      "previous_uri": "/v1/customers?limit=10&offset=50", 
-      "uri": "/v1/customers?limit=10&offset=60", 
+      "previous_uri": "/v1/customers?limit=10&offset=70", 
+      "uri": "/v1/customers?limit=10&offset=80", 
       "_uris": {
         "first_uri": {
           "_type": "page", 
@@ -492,10 +786,10 @@ Body
         }
       }, 
       "limit": 10, 
-      "offset": 60, 
-      "total": 62, 
+      "offset": 80, 
+      "total": 87, 
       "next_uri": null, 
-      "last_uri": "/v1/customers?limit=10&offset=60"
+      "last_uri": "/v1/customers?limit=10&offset=80"
     }
 
 Update a Customer
@@ -508,10 +802,10 @@ Request
 ~~~~~~~
 
 ``first_name``
-    *optional* **string**. First name of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. First name of the customer or representative of the business. Defaults to ``null``.
 
 ``last_name``
-    *optional* **string**. Last name of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. Last name of the customer or representative of the business. Defaults to ``null``.
 
 ``email_address``
     *optional* **string** or **null**. Email address of the customer. It must be **unique** among all customers
@@ -522,7 +816,7 @@ Request
 
 ``ssn_last_4``
     *optional* **string**. Last four digits of the Social Security Number of the customer or
-    representative of the business Defaults to ``null``.
+    representative of the business. Defaults to ``null``.
 
 ``business_name``
     *optional* **string**. Full business name if the customer is a business. If there is a business
@@ -530,28 +824,25 @@ Request
     of a person. Defaults to ``null``.
 
 ``street_address``
-    *optional* **string**. Street address of the person or business Defaults to ``null``.
+    *optional* **string**. Street address of the person or business. Defaults to ``null``.
 
 ``city``
-    *optional* **string**. City of the person or business Defaults to ``null``.
-
-``region``
-    *optional* **string**.
+    *optional* **string**. City of the person or business. Defaults to ``null``.
 
 ``state``
     *optional* **string**.
 
 ``postal_code``
-    *optional* **string**. Postal code/zip code of the person or business Defaults to ``null``.
+    *optional* **string**. Postal code/zip code of the person or business. Defaults to ``null``.
 
 ``country_code``
-    *optional* **string**. Country of the person or business Defaults to ``USA``.
+    *optional* **string**. Country of the person or business. Defaults to ``USA``.
 
 ``phone_number``
-    *optional* **string**. Phone number of the person or business Defaults to ``null``.
+    *optional* **string**. Phone number of the person or business. Defaults to ``null``.
 
 ``dob``
-    *optional* **string**. Date of birth of the customer or representative of the business Defaults to ``null``.
+    *optional* **string**. Date of birth of the customer or representative of the business. Defaults to ``null``.
 
 ``ein``
     *optional* **string**. Employee Identification Number of the business if the customer is a
@@ -577,24 +868,24 @@ Body
       "_type": "customer", 
       "last_name": null, 
       "source_uri": null, 
-      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/bank_accounts", 
-      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/holds", 
+      "bank_accounts_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/bank_accounts", 
+      "holds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/holds", 
       "meta": {}, 
       "postal_code": null, 
       "destination_uri": null, 
       "business_name": null, 
       "email_address": null, 
-      "id": "AC6ne1u4h5FZ2BzQKjFJ7dV7", 
-      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/credits", 
-      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/cards", 
+      "id": "AC657FefOc2zTfPDpZiv6oUh", 
+      "credits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/credits", 
+      "cards_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/cards", 
       "city": null, 
       "first_name": null, 
       "ssn_last_4": null, 
       "dob": null, 
-      "created_at": "2013-04-29T22:47:49.565917Z", 
+      "created_at": "2013-04-30T00:20:36.928337Z", 
       "is_identity_verified": false, 
-      "uri": "/v1/customers/AC6ne1u4h5FZ2BzQKjFJ7dV7", 
-      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/refunds", 
+      "uri": "/v1/customers/AC657FefOc2zTfPDpZiv6oUh", 
+      "refunds_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/refunds", 
       "state": null, 
       "_uris": {
         "holds_uri": {
@@ -626,8 +917,8 @@ Body
           "key": "cards"
         }
       }, 
-      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/debits", 
-      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC6ne1u4h5FZ2BzQKjFJ7dV7/transactions", 
+      "debits_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/debits", 
+      "transactions_uri": "/v1/marketplaces/TEST-MP2e8BX5gqnjEVPgguWuE2R/accounts/AC657FefOc2zTfPDpZiv6oUh/transactions", 
       "street_address": null, 
       "ein": null
     }
