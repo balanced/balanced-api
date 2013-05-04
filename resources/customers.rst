@@ -96,7 +96,8 @@ Fields
 Create a Customer
 -----------------
 
-.. code:: javascript 
+.. code::
+
    POST /v1/customers
 
 Request
