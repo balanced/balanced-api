@@ -13,7 +13,7 @@ an order should represent the high level payment or order in your system (e.g. a
     order = Order(description, meta)
     ```
 
-2. debit cutomers (aka payers):
+2. debit customers (aka payers):
 
     ```python
     order.debit(payer1, amount1, fee, recipient1)
@@ -67,7 +67,33 @@ as you can see there are 5 resources:
 and for them most part they just do the tedious accounting work and linking of debits to credits.
 
 order
------
+=====
+
+`GET /v1/orders/:order_id`
+
+```json
+{
+    "id": "OR1234567890",
+    "description": "my order!",
+    "meta": {
+        "tag": "a tag"
+    },
+    "payers_uri": "/v1/orders/OR1234567890/payers",
+    "recipients_uri": "/v1/orders/OR1234567890/recipients",
+    "debits_uri": "/v1/orders/OR1234567890/debits",
+    "transactions_uri": "/v1/orders/OR1234567890/transactions",
+    "debited_amount": 100,
+    "refunded_amount": 0,
+    "crediting_amount": 50,
+    "credited_amount": 25,
+    "in_escrow": 10,
+    "fee_in_escrow": 5,
+    "fee": 10
+}
+```
+
+fields
+------
 
 `description`
 **string**
@@ -108,13 +134,37 @@ order
 `fee`
 **integer**: Amount debited from payers that has been taken as your fee.
 
+
 payer
------
+=====
 
 this is a customer that is being debited as part of the payment. we call them payers.
 
+`GET /v1/orders/:order_id/payers/:customer_id`
+
+```json
+{
+    "uri": "/v1/orders/OR1234567890/payer/CU1234567890",
+    "order_uri": "/v1/orders/OR1234567890",
+    "customer": {
+        "id": "CU1234567890",
+        ...
+    },
+    "sources_uri": "/v1/orders/OR1234567890/payers",
+    "transactions_uri": "/v1/orders/OR1234567890/recipients",
+    "debited_amount": 50,
+    "refunded_amount": 0
+}
+```
+
+fields
+------
+
 `customer`
 **object**: The ``customer`` that is paying.
+
+`order_uri`
+**string**: Link to the associated order.
 
 `sources_uri`
 **string**: Link to funding sources that have been used to debit funds from this payer.
@@ -129,12 +179,30 @@ this is a customer that is being debited as part of the payment. we call them pa
 **integer**: Amount that has been refunded to this payer.
 
 payer source
-------------
+============
 
 this is a source that was used to debit a customer.
 
+`GET /v1/orders/:order_id/payers/:customer_id/sources/:card_id`
+
+```json
+{
+    "uri": "/v1/orders/OR1234567890/payer/CU1234567890/source/CC1234567890",
+    "payer_uri": "/v1/orders/OR1234567890/payer/CU1234567890",
+    "transactions_uri": "/v1/orders/OR1234567890/payer/CU1234567890/source/CC1234567890/transactions",
+    "debited_amount": 45,
+    "refunded_amount": 5
+}
+```
+
+fields
+------
+
 `source`
 **object**: The ``card`` or ``bank_account`` debited.
+
+`payer_uri`
+**string**: Link to the associated payer.
 
 `transactions_uri`
 **string**: Link to all transactions for for this payer source.
@@ -146,12 +214,36 @@ Amount that has been debited from this payer source.
 Amount that has been refunded to this payer source.
 
 recipient
----------
+=========
 
 this is a customer that is being credited funds debited from a payer. we call them recipients.
 
+`GET /v1/orders/:order_id/recipients/:customer_id`
+
+```json
+{
+    "uri": "/v1/orders/OR1234567890/recipients/CU1234567890",
+    "order_uri": "/v1/orders/OR1234567890",
+    "customer": {
+        "id": "CU1234567890",
+        ...
+    },
+    "destinations_uri": "/v1/orders/OR1234567890/recipients/CU1234567890/destinations",
+    "transactions_uri": "/v1/orders/OR1234567890/recipients/CU1234567890/transactions",
+    "crediting_amount": 10,
+    "credited_amount": 5,
+    "owed_amount": 25
+}
+```
+
+fields
+------
+
 `customer`
 **object**: The ``customer`` that is recieving funds.
+
+`order_uri`
+**string**: Link to the associated order.
 
 `destinations`
 **string**: Link to funding destinations that have been used to credit funds from this recipient.
@@ -169,12 +261,35 @@ this is a customer that is being credited funds debited from a payer. we call th
 **integer**: Amount still be to credited to this recipient.
 
 recipient destination
----------------------
+=====================
 
 this is a destination funds have been released to.
 
+`GET /v1/orders/:order_id/recipients/:customer_id/destination/:bank_account_id`
+
+```json
+{
+    "uri": "/v1/orders/OR1234567890/recipients/CU1234567890/destination/BA1234567890",
+    "recipient_uri": "/v1/orders/OR1234567890/recipients/CU1234567890",
+    "customer": {
+        "id": "CU1234567890",
+        ...
+    },
+    "transactions_uri": "/v1/orders/OR1234567890/recipients/CU1234567890/destination/BA1234567890/transactions",
+    "crediting_amount": 10,
+    "credited_amount": 5
+}
+```
+
+
+fields
+------
+
 `destination`
 **object**: The ``bank_account`` credited.
+
+`recipient_uri`
+**string**: Link to the associated recipient.
 
 `transactions_uri`
 **string**: Link to all transactions for this recipient destination.
