@@ -47,9 +47,7 @@ order
     "meta": {
         "tag": "a tag"
     },
-    "customers_uri": "/v1/orders/OR1234567890/customers",
     "debits_uri": "/v1/orders/OR1234567890/debits",
-    "transactions_uri": "/v1/orders/OR1234567890/transactions",
     "amount_escrowed": 500,
     "amount_released": 200,
     "fee_escrowed": 50,
