@@ -64,9 +64,6 @@ fields
 `meta`
 **object**
 
-`transactions_uri`
-**string**: Link to all transactions associated with this order.
-
 `debits_uri`
 **string**: Link to all debits.
 
