@@ -3,159 +3,204 @@ Events
 
 .. _events:
 
-You can configure events to be published via a ``POST`` to the endpoint of your
-choice via callbacks. Once configured, events are accessible via the
+You can configure events to be published via a ``POST`` to the endpoint of
+your choice via callbacks. Once configured, events are accessible via the
 events endpoint.
 
 - `Retrieve an Event`_
 - `List all Events`_
 
-
-Event types
------------
-
-All resources (accounts, holds, credits etc) are evented. The format of the
-type field is ``resource.event_type`` where ``event_type`` is one of
-``created``, ``updated``, ``deleted``, as well as some transaction specific
-event types ``succeeded``, ``failed``, and ``canceled``.
-
-Transactional Events
-~~~~~~~~~~~~~~~~~~~~
-
-credit.canceled 
-    Occurs whenever a credit is canceled. 
- 
-credit.created 
-    Occurs whenever a new credit is created. 
- 
-credit.failed 
-    Occurs whenever a credit is rejected. 
- 
-credit.succeeded 
-    Occurs whenever a credit is successfully captured or deposited. 
- 
-credit.updated 
-    Occurs whenever a credit is updated. 
- 
-debit.canceled 
-    Occurs whenever a debit is canceled. 
- 
-debit.created 
-    Occurs whenever a new debit is created. 
- 
-debit.failed 
-    Occurs whenever a debit is rejected. 
- 
-debit.succeeded 
-    Occurs whenever a debit is successfully captured or deposited. 
- 
-debit.updated 
-    Occurs whenever a debit is updated. 
- 
-hold.canceled 
-    Occurs whenever a hold is canceled. 
- 
-hold.created 
-    Occurs whenever a new hold is created. 
- 
-hold.failed 
-    Occurs whenever a hold is rejected. 
- 
-hold.succeeded 
-    Occurs whenever a hold is successfully captured or deposited. 
- 
-hold.updated 
-    Occurs whenever a hold is updated. 
- 
-refund.canceled 
-    Occurs whenever a refund is canceled. 
- 
-refund.created 
-    Occurs whenever a new refund is created. 
- 
-refund.failed 
-    Occurs whenever a refund is rejected. 
- 
-refund.succeeded 
-    Occurs whenever a refund is successfully captured or deposited. 
- 
-refund.updated 
-    Occurs whenever a refund is updated. 
- 
-
 Fields
 ------
 
-``uri`` 
-    **string**.  
- 
-``id`` 
-    **string**.  
- 
-``occurred_at`` 
-    **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
-    event occurred. 
- 
-``type`` 
-    **string**. Type of event e.g. ``hold.created`` 
- 
-``entity`` 
-    **string**. The JSON representation of the resource for which this event occurred. 
- 
+``entity``
+   **string**. Snapshot of the resource associated with this event at the time it
+   occurred.
+
+``id``
+   **string**.
+
+``occurred_at``
+   **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+   event occurred.
+
+``type``
+   **string**. All resources (accounts, holds, credits, etc) are evented. The format of
+   the type field is ``resource.event_type`` where ``event_type`` is one of
+   ``created``, ``updated``, ``deleted``, as well as some transaction
+   specific event types ``succeeded``, ``failed``, and ``canceled``.
+
+   account.created
+      Occurs whenever a new account is created.
+   
+   account.updated
+      Occurs whenever an account is updated.
+   
+   credit.canceled
+      Occurs whenever a credit is canceled.
+   
+   credit.created
+      Occurs whenever a new credit is created.
+   
+   credit.failed
+      Occurs whenever a credit is rejected.
+   
+   credit.succeeded
+      Occurs whenever a credit is successfully captured or deposited.
+   
+   credit.updated
+      Occurs whenever a credit is updated.
+   
+   debit.canceled
+      Occurs whenever a debit is canceled.
+   
+   debit.created
+      Occurs whenever a new debit is created.
+   
+   debit.failed
+      Occurs whenever a debit is rejected.
+   
+   debit.succeeded
+      Occurs whenever a debit is successfully captured or withdrawn.
+   
+   debit.updated
+      Occurs whenever a debit is updated.
+   
+   hold.captured
+      Occurs whenever a hold is captured.
+   
+   hold.created
+      Occurs whenever a new hold is created.
+   
+   hold.updated
+      Occurs whenever a hold is updated.
+   
+   hold.voided
+      Occurs whenever a hold is voided.
+   
+   refund.canceled
+      Occurs whenever a refund is canceled.
+   
+   refund.created
+      Occurs whenever a new refund is created.
+   
+   refund.failed
+      Occurs whenever a refund is rejected.
+   
+   refund.succeeded
+      Occurs whenever a refund is successfully captured or deposited.
+   
+   refund.updated
+      Occurs whenever a refund is updated.
+   
+``uri``
+   **string**.
 
 Retrieve an Event
 -----------------
 
-.. code:: 
- 
-    GET /v1/events/:event_id 
- 
+.. code::
 
-Response 
-~~~~~~~~ 
- 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "entity": { 
-            "account_uri": "/v1/marketplaces/TEST-MP2sH8UtAgV17hKk7FYg1gUX/accounts/AC2sMvOT6QBFegOZInsZ6M6L",  
-            "amount": 2455,  
-            "created_at": "2013-02-15T00:47:47.235000Z",  
-            "debit_uri": null,  
-            "description": null,  
-            "expires_at": "2013-02-16T00:47:47.214000Z",  
-            "fee": null,  
-            "id": "HL2sTtUhfCSPqOta1ovXoIx5",  
-            "is_void": true,  
-            "meta": {},  
-            "source_uri": "/v1/marketplaces/TEST-MP2sH8UtAgV17hKk7FYg1gUX/accounts/AC2sMvOT6QBFegOZInsZ6M6L/cards/CC50f96923770911e2b5e93c0754086543",  
-            "transaction_number": "HL697-518-2291",  
-            "uri": "/v1/marketplaces/TEST-MP2sH8UtAgV17hKk7FYg1gUX/holds/HL2sTtUhfCSPqOta1ovXoIx5" 
-        },  
-        "id": "EV5106f7a6770911e2949d3c0754086543",  
-        "occurred_at": "2013-02-15T00:47:47.235000Z",  
-        "type": "hold.created",  
-        "uri": "/v1/events/EV5106f7a6770911e2949d3c0754086543" 
-    } 
- 
+
+   GET /v1/events/:event_id
+
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "event", 
+     "occurred_at": "2013-06-05T02:30:08.562000Z", 
+     "uri": "/v1/events/EVd6fc1236cd8711e295b7026ba7d31e6f", 
+     "entity": {
+       "customer_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+       "_type": "account", 
+       "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
+       "name": "William Henry Cavendish III", 
+       "roles": [
+         "merchant", 
+         "buyer"
+       ], 
+       "created_at": "2013-06-05T02:30:08.562678Z", 
+       "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx", 
+       "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
+       "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
+       "_uris": {
+         "transactions_uri": {
+           "_type": "page", 
+           "key": "transactions"
+         }, 
+         "bank_accounts_uri": {
+           "_type": "page", 
+           "key": "bank_accounts"
+         }, 
+         "refunds_uri": {
+           "_type": "page", 
+           "key": "refunds"
+         }, 
+         "customer_uri": {
+           "_type": "customer", 
+           "key": "customer"
+         }, 
+         "debits_uri": {
+           "_type": "page", 
+           "key": "debits"
+         }, 
+         "holds_uri": {
+           "_type": "page", 
+           "key": "holds"
+         }, 
+         "credits_uri": {
+           "_type": "page", 
+           "key": "credits"
+         }, 
+         "cards_uri": {
+           "_type": "page", 
+           "key": "cards"
+         }
+       }, 
+       "meta": {}, 
+       "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/debits", 
+       "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/holds", 
+       "email_address": "whc@example.org", 
+       "id": "AC6xEUte50oDdcfGLsXBLXHx", 
+       "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/credits", 
+       "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/cards"
+     }, 
+     "_uris": {
+       "callbacks_uri": {
+         "_type": "page", 
+         "key": "callbacks"
+       }
+     }, 
+     "callbacks_uri": "/v1/events/EVd6fc1236cd8711e295b7026ba7d31e6f/callbacks", 
+     "callback_statuses": {
+       "failed": 0, 
+       "retrying": 0, 
+       "succeeded": 0, 
+       "pending": 0
+     }, 
+     "type": "account.created", 
+     "id": "EVd6fc1236cd8711e295b7026ba7d31e6f"
+   }
 
 List all Events
 ---------------
 
-.. code:: 
- 
-    GET /v1/events 
- 
+.. code::
+
+
+   GET /v1/events
 
 ``limit``
     *optional* integer. Defaults to ``10``.
@@ -163,252 +208,522 @@ List all Events
 ``offset``
     *optional* integer. Defaults to ``0``.
 
-Response 
-~~~~~~~~ 
- 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "first_uri": "/v1/events?limit=10&offset=0",  
-        "items": [ 
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ",  
-                    "amount": 245,  
-                    "available_at": "2013-02-15T00:47:50.998000Z",  
-                    "bank_account_uri": "/v1/bank_accounts/BA2x43ekRg0aBUFq7PK0GJCH",  
-                    "created_at": "2013-02-15T00:47:51.008000Z",  
-                    "description": "hiya",  
-                    "destination_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ/bank_accounts/BA2x43ekRg0aBUFq7PK0GJCH",  
-                    "fee": null,  
-                    "id": "CR2x8yhhU6wjO7VxcrkLAY5d",  
-                    "meta": {},  
-                    "state": "cleared",  
-                    "status": "paid",  
-                    "transaction_number": "CR332-225-8999",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ/credits/CR2x8yhhU6wjO7VxcrkLAY5d" 
-                },  
-                "id": "EV5346edf0770911e2aa5f3c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.008000Z",  
-                "type": "credit.created",  
-                "uri": "/v1/events/EV5346edf0770911e2aa5f3c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ",  
-                    "amount": 245,  
-                    "available_at": "2013-02-15T00:47:50.998000Z",  
-                    "bank_account_uri": "/v1/bank_accounts/BA2x43ekRg0aBUFq7PK0GJCH",  
-                    "created_at": "2013-02-15T00:47:51.008000Z",  
-                    "description": "hiya",  
-                    "destination_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ/bank_accounts/BA2x43ekRg0aBUFq7PK0GJCH",  
-                    "fee": null,  
-                    "id": "CR2x8yhhU6wjO7VxcrkLAY5d",  
-                    "meta": {},  
-                    "state": "cleared",  
-                    "status": "paid",  
-                    "transaction_number": "CR332-225-8999",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x3ZydQ6Awbbvh1dDmDLTJ/credits/CR2x8yhhU6wjO7VxcrkLAY5d" 
-                },  
-                "id": "EV53a95628770911e290153c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.008000Z",  
-                "type": "credit.succeeded",  
-                "uri": "/v1/events/EV53a95628770911e290153c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 5544,  
-                    "appears_on_statement_as": "PND*TESTS",  
-                    "available_at": "2013-02-15T00:47:51.023000Z",  
-                    "created_at": "2013-02-15T00:47:51.025000Z",  
-                    "description": "abc123",  
-                    "fee": null,  
-                    "hold_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xa0p7GWby0zDk2HNVy0JZ",  
-                    "id": "WD2x9OzYgkXq16IHMRRAemD9",  
-                    "meta": {},  
-                    "on_behalf_of_uri": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2x9OzYgkXq16IHMRRAemD9/refunds",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "W545-181-0628",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2x9OzYgkXq16IHMRRAemD9" 
-                },  
-                "id": "EV534991e8770911e29fe33c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.025000Z",  
-                "type": "debit.created",  
-                "uri": "/v1/events/EV534991e8770911e29fe33c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 5544,  
-                    "appears_on_statement_as": "PND*TESTS",  
-                    "available_at": "2013-02-15T00:47:51.023000Z",  
-                    "created_at": "2013-02-15T00:47:51.025000Z",  
-                    "description": "abc123",  
-                    "fee": null,  
-                    "hold_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xa0p7GWby0zDk2HNVy0JZ",  
-                    "id": "WD2x9OzYgkXq16IHMRRAemD9",  
-                    "meta": {},  
-                    "on_behalf_of_uri": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2x9OzYgkXq16IHMRRAemD9/refunds",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "W545-181-0628",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2x9OzYgkXq16IHMRRAemD9" 
-                },  
-                "id": "EV53b029f0770911e2a6be3c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.025000Z",  
-                "type": "debit.succeeded",  
-                "uri": "/v1/events/EV53b029f0770911e2a6be3c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 5544,  
-                    "created_at": "2013-02-15T00:47:51.028000Z",  
-                    "debit_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2x9OzYgkXq16IHMRRAemD9",  
-                    "description": null,  
-                    "expires_at": "2013-02-16T00:47:51.020000Z",  
-                    "fee": null,  
-                    "id": "HL2xa0p7GWby0zDk2HNVy0JZ",  
-                    "is_void": false,  
-                    "meta": {},  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "HL376-780-5280",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xa0p7GWby0zDk2HNVy0JZ" 
-                },  
-                "id": "EV5349cc45770911e283c83c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.028000Z",  
-                "type": "hold.created",  
-                "uri": "/v1/events/EV5349cc45770911e283c83c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 123,  
-                    "created_at": "2013-02-15T00:47:51.039000Z",  
-                    "debit_uri": null,  
-                    "description": null,  
-                    "expires_at": "2013-02-16T00:47:51.023000Z",  
-                    "fee": null,  
-                    "id": "HL2xaN6tpxNxeCjnZVFrpASn",  
-                    "is_void": false,  
-                    "meta": {},  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "HL062-227-8093",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xaN6tpxNxeCjnZVFrpASn" 
-                },  
-                "id": "EV534b837d770911e2bbba3c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.039000Z",  
-                "type": "hold.created",  
-                "uri": "/v1/events/EV534b837d770911e2bbba3c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 343,  
-                    "appears_on_statement_as": "hiya.bom",  
-                    "available_at": "2013-02-15T00:47:51.044000Z",  
-                    "created_at": "2013-02-15T00:47:51.047000Z",  
-                    "description": null,  
-                    "fee": null,  
-                    "hold_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xbx7pSctSlsp6DXALMo2T",  
-                    "id": "WD2xblKWHZx278SOOORVit7Z",  
-                    "meta": {},  
-                    "on_behalf_of_uri": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z/refunds",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "W531-487-7302",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z" 
-                },  
-                "id": "EV534ce9c5770911e2ad423c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.047000Z",  
-                "type": "debit.created",  
-                "uri": "/v1/events/EV534ce9c5770911e2ad423c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 343,  
-                    "appears_on_statement_as": "hiya.bom",  
-                    "available_at": "2013-02-15T00:47:51.044000Z",  
-                    "created_at": "2013-02-15T00:47:51.047000Z",  
-                    "description": null,  
-                    "fee": null,  
-                    "hold_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xbx7pSctSlsp6DXALMo2T",  
-                    "id": "WD2xblKWHZx278SOOORVit7Z",  
-                    "meta": {},  
-                    "on_behalf_of_uri": null,  
-                    "refunds_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z/refunds",  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "W531-487-7302",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z" 
-                },  
-                "id": "EV53b67666770911e286ed3c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.047000Z",  
-                "type": "debit.succeeded",  
-                "uri": "/v1/events/EV53b67666770911e286ed3c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 343,  
-                    "created_at": "2013-02-15T00:47:51.050000Z",  
-                    "debit_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z",  
-                    "description": null,  
-                    "expires_at": "2013-02-16T00:47:51.038000Z",  
-                    "fee": null,  
-                    "id": "HL2xbx7pSctSlsp6DXALMo2T",  
-                    "is_void": false,  
-                    "meta": {},  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "HL594-112-0626",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xbx7pSctSlsp6DXALMo2T" 
-                },  
-                "id": "EV534d2300770911e29b143c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.050000Z",  
-                "type": "hold.created",  
-                "uri": "/v1/events/EV534d2300770911e29b143c0754086543" 
-            },  
-            { 
-                "entity": { 
-                    "account_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx",  
-                    "amount": 343,  
-                    "created_at": "2013-02-15T00:47:51.050000Z",  
-                    "debit_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/debits/WD2xblKWHZx278SOOORVit7Z",  
-                    "description": null,  
-                    "expires_at": "2013-02-16T00:47:51.038000Z",  
-                    "fee": null,  
-                    "id": "HL2xbx7pSctSlsp6DXALMo2T",  
-                    "is_void": false,  
-                    "meta": {},  
-                    "source_uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/accounts/AC2x6ihKQJARiY4RcEEryrlx/cards/CC534353de770911e2b98e3c0754086543",  
-                    "transaction_number": "HL594-112-0626",  
-                    "uri": "/v1/marketplaces/TEST-MP2x0Sgn5WKppjnAr3dy0BwL/holds/HL2xbx7pSctSlsp6DXALMo2T" 
-                },  
-                "id": "EV53b8a6e8770911e2b4c63c0754086543",  
-                "occurred_at": "2013-02-15T00:47:51.050000Z",  
-                "type": "hold.captured",  
-                "uri": "/v1/events/EV53b8a6e8770911e2b4c63c0754086543" 
-            } 
-        ],  
-        "last_uri": "/v1/events?limit=10&offset=10",  
-        "limit": 10,  
-        "next_uri": "/v1/events?limit=10&offset=10",  
-        "offset": 0,  
-        "previous_uri": null,  
-        "total": 15,  
-        "uri": "/v1/events?limit=10&offset=0" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "first_uri": "/v1/events?limit=7&offset=0", 
+     "_type": "page", 
+     "items": [
+       {
+         "callbacks_uri": "/v1/events/EVd6fc1236cd8711e295b7026ba7d31e6f/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:08.562000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd6fc1236cd8711e295b7026ba7d31e6f", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "_type": "account", 
+           "_uris": {
+             "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+             }, 
+             "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+             }, 
+             "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+             }, 
+             "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+             }, 
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+             }
+           }, 
+           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
+           "name": "William Henry Cavendish III", 
+           "roles": [
+             "merchant", 
+             "buyer"
+           ], 
+           "created_at": "2013-06-05T02:30:08.562678Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx", 
+           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/holds", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
+           "customer_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+           "meta": {}, 
+           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/debits", 
+           "email_address": "whc@example.org", 
+           "id": "AC6xEUte50oDdcfGLsXBLXHx", 
+           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/cards"
+         }, 
+         "type": "account.created", 
+         "id": "EVd6fc1236cd8711e295b7026ba7d31e6f"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd728eec8cd8711e295b7026ba7d31e6f/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:08.850000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd728eec8cd8711e295b7026ba7d31e6f", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "_type": "account", 
+           "_uris": {
+             "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+             }, 
+             "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+             }, 
+             "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+             }, 
+             "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+             }, 
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+             }
+           }, 
+           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/transactions", 
+           "name": null, 
+           "roles": [], 
+           "created_at": "2013-06-05T02:30:08.850803Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD", 
+           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/holds", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/refunds", 
+           "customer_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD", 
+           "meta": {}, 
+           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/debits", 
+           "email_address": "escrow@poundpay.com", 
+           "id": "AC6xYZFJYuW5g8XJPPuKOhCD", 
+           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xYZFJYuW5g8XJPPuKOhCD/cards"
+         }, 
+         "type": "account.created", 
+         "id": "EVd728eec8cd8711e295b7026ba7d31e6f"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd728f3becd8711e295b7026ba7d31e6f/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:08.864000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd728f3becd8711e295b7026ba7d31e6f", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "_type": "account", 
+           "_uris": {
+             "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+             }, 
+             "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+             }, 
+             "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+             }, 
+             "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+             }, 
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+             }
+           }, 
+           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/transactions", 
+           "name": null, 
+           "roles": [
+             "merchant", 
+             "buyer"
+           ], 
+           "created_at": "2013-06-05T02:30:08.864265Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN", 
+           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/holds", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/refunds", 
+           "customer_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN", 
+           "meta": {}, 
+           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/debits", 
+           "email_address": "fee@poundpay.com", 
+           "id": "AC6xZWzXQuCRVCvRzV2E8wxN", 
+           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xZWzXQuCRVCvRzV2E8wxN/cards"
+         }, 
+         "type": "account.created", 
+         "id": "EVd728f3becd8711e295b7026ba7d31e6f"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd72bfddecd8711e295b7026ba7d31e6f/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:08.866000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd72bfddecd8711e295b7026ba7d31e6f", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "routing_number": "121042882", 
+           "bank_name": "WELLS FARGO BANK NA", 
+           "_type": "bank_account", 
+           "name": "TEST-MERCHANT-BANK-ACCOUNT", 
+           "_uris": {
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "account_uri": {
+               "_type": "account", 
+               "key": "account"
+             }, 
+             "verifications_uri": {
+               "_type": "page", 
+               "key": "verifications"
+             }
+           }, 
+           "bank_code": "121042882", 
+           "can_debit": true, 
+           "created_at": "2013-06-05T02:30:08.866655Z", 
+           "verification_uri": null, 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts/BA6y061VCy7hxqPki9CsLoWX", 
+           "is_valid": true, 
+           "customer_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+           "meta": {}, 
+           "account_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx", 
+           "last_four": "5555", 
+           "fingerprint": "6ybvaLUrJy07phK2EQ7pVk", 
+           "credits_uri": "/v1/bank_accounts/BA6y061VCy7hxqPki9CsLoWX/credits", 
+           "type": "CHECKING", 
+           "id": "BA6y061VCy7hxqPki9CsLoWX", 
+           "verifications_uri": "/v1/bank_accounts/BA6y061VCy7hxqPki9CsLoWX/verifications", 
+           "account_number": "xxxxxxxxxxx5555"
+         }, 
+         "type": "bank_account.created", 
+         "id": "EVd72bfddecd8711e295b7026ba7d31e6f"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd79ffd7ecd8711e29ec5026ba7c1aba6/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:09.637000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd79ffd7ecd8711e29ec5026ba7c1aba6", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "security_code_check": "true", 
+           "customer_uri": null, 
+           "_type": "card", 
+           "postal_code_check": "true", 
+           "hash": "bd1c247d10c71b3134056f83165826241115d8e55fc107d303eeab955338eba2", 
+           "country_code": "USA", 
+           "expiration_year": 2014, 
+           "_uris": {}, 
+           "created_at": "2013-06-05T02:30:09.637519Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/cards/CC6yRp58mJCIbulhcxSGauXk", 
+           "id": "CC6yRp58mJCIbulhcxSGauXk", 
+           "expiration_month": 4, 
+           "is_valid": true, 
+           "meta": {}, 
+           "postal_code": "10023", 
+           "account_uri": null, 
+           "last_four": "1111", 
+           "card_type": "VISA", 
+           "brand": "Visa", 
+           "street_address": "167 West 74th Street", 
+           "name": "Benny Riemann"
+         }, 
+         "type": "card.created", 
+         "id": "EVd79ffd7ecd8711e29ec5026ba7c1aba6"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd7ceff98cd8711e2985f026ba7cac9da/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:10.298000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd7ceff98cd8711e2985f026ba7cac9da", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "_type": "account", 
+           "_uris": {
+             "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+             }, 
+             "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+             }, 
+             "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+             }, 
+             "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+             }, 
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+             }
+           }, 
+           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+           "name": "Benny Riemann", 
+           "roles": [
+             "buyer"
+           ], 
+           "created_at": "2013-06-05T02:30:09.949061Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
+           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
+           "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
+           "meta": {}, 
+           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits", 
+           "email_address": null, 
+           "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards"
+         }, 
+         "type": "account.created", 
+         "id": "EVd7ceff98cd8711e2985f026ba7cac9da"
+       }, 
+       {
+         "callbacks_uri": "/v1/events/EVd8043d34cd8711e2985f026ba7cac9da/callbacks", 
+         "callback_statuses": {
+           "failed": 0, 
+           "retrying": 0, 
+           "pending": 0, 
+           "succeeded": 0
+         }, 
+         "occurred_at": "2013-06-05T02:30:10.298000Z", 
+         "_type": "event", 
+         "uri": "/v1/events/EVd8043d34cd8711e2985f026ba7cac9da", 
+         "_uris": {
+           "callbacks_uri": {
+             "_type": "page", 
+             "key": "callbacks"
+           }
+         }, 
+         "entity": {
+           "_type": "account", 
+           "_uris": {
+             "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+             }, 
+             "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+             }, 
+             "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+             }, 
+             "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+             }, 
+             "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+             }, 
+             "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+             }, 
+             "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+             }, 
+             "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+             }
+           }, 
+           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+           "name": "Benny Riemann", 
+           "roles": [
+             "buyer"
+           ], 
+           "created_at": "2013-06-05T02:30:09.949061Z", 
+           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
+           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
+           "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
+           "meta": {}, 
+           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits", 
+           "email_address": null, 
+           "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards"
+         }, 
+         "type": "account.updated", 
+         "id": "EVd8043d34cd8711e2985f026ba7cac9da"
+       }
+     ], 
+     "previous_uri": null, 
+     "uri": "/v1/events?limit=7&offset=0", 
+     "_uris": {
+       "first_uri": {
+         "_type": "page", 
+         "key": "first"
+       }, 
+       "next_uri": {
+         "_type": "page", 
+         "key": "next"
+       }, 
+       "previous_uri": {
+         "_type": "page", 
+         "key": "previous"
+       }, 
+       "last_uri": {
+         "_type": "page", 
+         "key": "last"
+       }
+     }, 
+     "limit": 7, 
+     "offset": 0, 
+     "total": 222, 
+     "next_uri": "/v1/events?limit=7&offset=7", 
+     "last_uri": "/v1/events?limit=7&offset=217"
+   }
 
