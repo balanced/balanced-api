@@ -117,29 +117,36 @@ Request
    *optional* **string**. Last four digits of the Social Security Number of the customer or
    representative of the business. Defaults to ``null``.
 
-``business_name``
-   *optional* **string**. Full business name if the customer is a business. If there is a business
-   name and EIN present, the customer will be treated as a business instead
-   of a person. Defaults to ``null``.
+``meta``
+   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
 
 ``address``
-   ``line1``
-      *optional* **string**. Street address of the person or business.
 
-   ``line2``
-      *optional* **string**. Second line of the address for the person or business.
+   .. cssclass:: nested1
 
-   ``city``
-      *optional* **string**. City of the person or business.
+   *optional* **object**.
 
-   ``state``
-      *optional* **string**. State of the person or business.
+      ``default``
+         *optional* **string**. Defaults to ``null``.
 
-   ``postal_code``
-      *optional* **string**. Postal code/zip code of the person or business.
+      ``line1``
+         *optional* **string**. Street address of the person or business.
 
-   ``country_code``
-      *optional* **string**. Two character country code.
+      ``line2``
+         *optional* **string**. Second line of the address for the person or business.
+
+      ``city``
+         *optional* **string**. City of the person or business.
+
+      ``state``
+         *optional* **string**. State of the person or business.
+
+      ``postal_code``
+         *optional* **string**. Postal code/zip code of the person or business.
+
+      ``country_code``
+         *optional* **string**. Two character country code.
+
 
 
 ``phone``
@@ -210,7 +217,7 @@ Body
    {
      "_type": "customer", 
      "twitter": "@balanced", 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/bank_accounts", 
      "phone": "(904) 555-1796", 
      "meta": {
        "meta can store": "any flat key/value data you like", 
@@ -227,17 +234,17 @@ Body
      }, 
      "source_uri": null, 
      "business_name": "Balanced", 
-     "id": "CU4GB5RgIMnuEaGYNU9ne1k5", 
-     "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/holds", 
+     "id": "CU4UALP4h1o5KTwj28zkIEU", 
+     "credits_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/credits", 
+     "cards_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/cards", 
+     "holds_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/holds", 
      "name": "John Lee Hooker", 
      "dob": null, 
      "ssn_last4": "xxxx", 
-     "created_at": "2013-05-06T18:48:54.544721Z", 
+     "created_at": "2013-06-05T02:31:21.752921Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CU4GB5RgIMnuEaGYNU9ne1k5", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/refunds", 
+     "uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU", 
+     "refunds_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -268,8 +275,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/debits", 
-     "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/transactions", 
+     "debits_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/debits", 
+     "transactions_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/transactions", 
      "destination_uri": null, 
      "email": "user@example.org", 
      "ein": "123456789"
@@ -304,7 +311,7 @@ Body
    {
      "_type": "customer", 
      "twitter": null, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/bank_accounts", 
      "phone": null, 
      "meta": {}, 
      "facebook": null, 
@@ -318,17 +325,17 @@ Body
      }, 
      "source_uri": null, 
      "business_name": null, 
-     "id": "CU4GYQXoNSoYT4kgfAkGQpMZ", 
-     "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/holds", 
+     "id": "CU5SZBVyZXLjVn0rGh9DkWY", 
+     "credits_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/credits", 
+     "cards_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/cards", 
+     "holds_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/holds", 
      "name": null, 
      "dob": null, 
      "ssn_last4": null, 
-     "created_at": "2013-05-06T18:48:54.885559Z", 
+     "created_at": "2013-06-05T02:31:22.618258Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CU4GYQXoNSoYT4kgfAkGQpMZ", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/refunds", 
+     "uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY", 
+     "refunds_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -359,8 +366,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/debits", 
-     "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/transactions", 
+     "debits_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/debits", 
+     "transactions_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/transactions", 
      "destination_uri": null, 
      "email": null, 
      "ein": null
@@ -405,12 +412,12 @@ Body
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "CU4HkUjKPwuyoFOH2ANZWjBv", 
+         "id": "AC6IIXuoA0UWUxduVgD5PmJg", 
          "email": null, 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/bank_accounts", 
-         "phone": null, 
+         "bank_accounts_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/bank_accounts", 
+         "phone": "+16505551234", 
          "_uris": {
            "transactions_uri": {
              "_type": "page", 
@@ -442,39 +449,32 @@ Body
            }
          }, 
          "facebook": null, 
-         "address": {
-           "city": "San Francisco", 
-           "line2": "#425", 
-           "line1": "965 Mission St", 
-           "state": "CA", 
-           "postal_code": "94103", 
-           "country_code": "USA"
-         }, 
+         "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/holds", 
-         "name": null, 
+         "credits_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/credits", 
+         "cards_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/cards", 
+         "holds_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/holds", 
+         "name": "William James", 
          "dob": null, 
-         "created_at": "2013-05-06T18:48:55.201705Z", 
-         "is_identity_verified": false, 
-         "uri": "/v1/customers/CU4HkUjKPwuyoFOH2ANZWjBv", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HkUjKPwuyoFOH2ANZWjBv/transactions", 
+         "created_at": "2013-06-05T02:30:18.407401Z", 
+         "is_identity_verified": true, 
+         "uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg", 
+         "refunds_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/refunds", 
+         "debits_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/debits", 
+         "transactions_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/transactions", 
          "ssn_last4": null, 
-         "ein": null
+         "ein": "393483992"
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "CU4GYQXoNSoYT4kgfAkGQpMZ", 
+         "id": "AC6GYfhsHiUt9sNvAxii2SsG", 
          "email": null, 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/bank_accounts", 
-         "phone": null, 
+         "bank_accounts_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/bank_accounts", 
+         "phone": "+16505551234", 
          "_uris": {
            "transactions_uri": {
              "_type": "page", 
@@ -506,172 +506,88 @@ Body
            }
          }, 
          "facebook": null, 
-         "address": {
-           "city": "San Francisco", 
-           "line2": "#425", 
-           "line1": "965 Mission St", 
-           "state": "CA", 
-           "postal_code": "94103", 
-           "country_code": "USA"
-         }, 
+         "address": {}, 
          "destination_uri": null, 
-         "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/holds", 
-         "name": null, 
-         "dob": null, 
-         "created_at": "2013-05-06T18:48:54.885559Z", 
-         "is_identity_verified": false, 
-         "uri": "/v1/customers/CU4GYQXoNSoYT4kgfAkGQpMZ", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GYQXoNSoYT4kgfAkGQpMZ/transactions", 
-         "ssn_last4": null, 
-         "ein": null
-       }, 
-       {
-         "twitter": "@balanced", 
-         "meta": {
-           "meta can store": "any flat key/value data you like", 
-           "github": "https://github.com/balanced", 
-           "more_additional_data": "54.8"
-         }, 
-         "id": "CU4GB5RgIMnuEaGYNU9ne1k5", 
-         "email": "user@example.org", 
-         "_type": "customer", 
-         "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/bank_accounts", 
-         "phone": "(904) 555-1796", 
-         "_uris": {
-           "transactions_uri": {
-             "_type": "page", 
-             "key": "transactions"
-           }, 
-           "bank_accounts_uri": {
-             "_type": "page", 
-             "key": "bank_accounts"
-           }, 
-           "refunds_uri": {
-             "_type": "page", 
-             "key": "refunds"
-           }, 
-           "debits_uri": {
-             "_type": "page", 
-             "key": "debits"
-           }, 
-           "holds_uri": {
-             "_type": "page", 
-             "key": "holds"
-           }, 
-           "credits_uri": {
-             "_type": "page", 
-             "key": "credits"
-           }, 
-           "cards_uri": {
-             "_type": "page", 
-             "key": "cards"
-           }
-         }, 
-         "facebook": "https://facebook.com/balanced", 
-         "address": {
-           "city": "San Francisco", 
-           "state": "CA", 
-           "postal_code": "94103", 
-           "country_code": "US", 
-           "line1": "965 Mission St"
-         }, 
-         "destination_uri": null, 
-         "business_name": "Balanced", 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/holds", 
-         "name": "John Lee Hooker", 
-         "dob": null, 
-         "created_at": "2013-05-06T18:48:54.544721Z", 
-         "is_identity_verified": false, 
-         "uri": "/v1/customers/CU4GB5RgIMnuEaGYNU9ne1k5", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GB5RgIMnuEaGYNU9ne1k5/transactions", 
+         "business_name": "Levain Bakery", 
+         "credits_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/credits", 
+         "cards_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/cards", 
+         "holds_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/holds", 
+         "name": "William James", 
+         "dob": "1842-01", 
+         "created_at": "2013-06-05T02:30:16.839761Z", 
+         "is_identity_verified": true, 
+         "uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG", 
+         "refunds_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/refunds", 
+         "debits_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/debits", 
+         "transactions_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/transactions", 
          "ssn_last4": "xxxx", 
-         "ein": "123456789"
-       }, 
-       {
-         "twitter": "@balanced", 
-         "meta": {
-           "meta can store": "any flat key/value data you like", 
-           "github": "https://github.com/balanced", 
-           "more_additional_data": "54.8"
-         }, 
-         "id": "CU4GjAHzuevJJqTbUGZKezTj", 
-         "email": "user@example.org", 
-         "_type": "customer", 
-         "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/bank_accounts", 
-         "phone": "(904) 555-1796", 
-         "_uris": {
-           "transactions_uri": {
-             "_type": "page", 
-             "key": "transactions"
-           }, 
-           "bank_accounts_uri": {
-             "_type": "page", 
-             "key": "bank_accounts"
-           }, 
-           "refunds_uri": {
-             "_type": "page", 
-             "key": "refunds"
-           }, 
-           "debits_uri": {
-             "_type": "page", 
-             "key": "debits"
-           }, 
-           "holds_uri": {
-             "_type": "page", 
-             "key": "holds"
-           }, 
-           "credits_uri": {
-             "_type": "page", 
-             "key": "credits"
-           }, 
-           "cards_uri": {
-             "_type": "page", 
-             "key": "cards"
-           }
-         }, 
-         "facebook": "https://facebook.com/balanced", 
-         "address": {
-           "city": "San Francisco", 
-           "state": "CA", 
-           "postal_code": "94103", 
-           "country_code": "US", 
-           "line1": "965 Mission St"
-         }, 
-         "destination_uri": null, 
-         "business_name": "Balanced", 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/holds", 
-         "name": "John Lee Hooker", 
-         "dob": null, 
-         "created_at": "2013-05-06T18:48:54.293961Z", 
-         "is_identity_verified": false, 
-         "uri": "/v1/customers/CU4GjAHzuevJJqTbUGZKezTj", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4GjAHzuevJJqTbUGZKezTj/transactions", 
-         "ssn_last4": "xxxx", 
-         "ein": "123456789"
+         "ein": "253912384"
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC4FyESe8OiVSzVywCJjDP2x", 
+         "id": "AC6FHYIFdjvhki3hF6ZqEkbm", 
          "email": null, 
          "_type": "customer", 
-         "source_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/cards/CC4Fv34Wl6wTNtBSk86WidMt", 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/bank_accounts", 
+         "source_uri": null, 
+         "bank_accounts_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/bank_accounts", 
+         "phone": "+16505551234", 
+         "_uris": {
+           "transactions_uri": {
+             "_type": "page", 
+             "key": "transactions"
+           }, 
+           "bank_accounts_uri": {
+             "_type": "page", 
+             "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+             "_type": "page", 
+             "key": "refunds"
+           }, 
+           "debits_uri": {
+             "_type": "page", 
+             "key": "debits"
+           }, 
+           "holds_uri": {
+             "_type": "page", 
+             "key": "holds"
+           }, 
+           "credits_uri": {
+             "_type": "page", 
+             "key": "credits"
+           }, 
+           "cards_uri": {
+             "_type": "page", 
+             "key": "cards"
+           }
+         }, 
+         "facebook": null, 
+         "address": {}, 
+         "destination_uri": null, 
+         "business_name": "Levain Bakery", 
+         "credits_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/credits", 
+         "cards_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/cards", 
+         "holds_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/holds", 
+         "name": "William James", 
+         "dob": "1842-01", 
+         "created_at": "2013-06-05T02:30:15.717558Z", 
+         "is_identity_verified": true, 
+         "uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm", 
+         "refunds_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/refunds", 
+         "debits_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/debits", 
+         "transactions_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/transactions", 
+         "ssn_last4": "xxxx", 
+         "ein": "253912384"
+       }, 
+       {
+         "twitter": null, 
+         "meta": {}, 
+         "id": "AC6EhJMLs2MRhi96oKrenvtg", 
+         "email": null, 
+         "_type": "customer", 
+         "source_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/cards/CC6E36x9QZTpza9miY98ZwLl", 
+         "bank_accounts_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -711,28 +627,150 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/holds", 
+         "credits_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/credits", 
+         "cards_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/cards", 
+         "holds_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/holds", 
          "name": "Benny Riemann", 
          "dob": null, 
-         "created_at": "2013-05-06T18:48:53.619697Z", 
+         "created_at": "2013-06-05T02:30:14.451958Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC4FyESe8OiVSzVywCJjDP2x", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FyESe8OiVSzVywCJjDP2x/transactions", 
+         "uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg", 
+         "refunds_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/refunds", 
+         "debits_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/debits", 
+         "transactions_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC4FhaXnEQKBKxPR5nVV9KcV", 
+         "id": "AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "email": null, 
+         "_type": "customer", 
+         "source_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/cards/CC6CfiuaGQLFK8KCmkdN9sLK", 
+         "bank_accounts_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/bank_accounts", 
+         "phone": null, 
+         "_uris": {
+           "transactions_uri": {
+             "_type": "page", 
+             "key": "transactions"
+           }, 
+           "source_uri": {
+             "_type": "card", 
+             "key": "source"
+           }, 
+           "bank_accounts_uri": {
+             "_type": "page", 
+             "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+             "_type": "page", 
+             "key": "refunds"
+           }, 
+           "debits_uri": {
+             "_type": "page", 
+             "key": "debits"
+           }, 
+           "holds_uri": {
+             "_type": "page", 
+             "key": "holds"
+           }, 
+           "credits_uri": {
+             "_type": "page", 
+             "key": "credits"
+           }, 
+           "cards_uri": {
+             "_type": "page", 
+             "key": "cards"
+           }
+         }, 
+         "facebook": null, 
+         "address": {}, 
+         "destination_uri": null, 
+         "business_name": null, 
+         "credits_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/credits", 
+         "cards_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/cards", 
+         "holds_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/holds", 
+         "name": "Benny Riemann", 
+         "dob": null, 
+         "created_at": "2013-06-05T02:30:12.795445Z", 
+         "is_identity_verified": false, 
+         "uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "refunds_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/refunds", 
+         "debits_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/debits", 
+         "transactions_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/transactions", 
+         "ssn_last4": null, 
+         "ein": null
+       }, 
+       {
+         "twitter": null, 
+         "meta": {}, 
+         "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+         "email": null, 
+         "_type": "customer", 
+         "source_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/cards/CC7uYy1Z3UTZykFqReFNpvwb", 
+         "bank_accounts_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+         "phone": null, 
+         "_uris": {
+           "transactions_uri": {
+             "_type": "page", 
+             "key": "transactions"
+           }, 
+           "source_uri": {
+             "_type": "card", 
+             "key": "source"
+           }, 
+           "bank_accounts_uri": {
+             "_type": "page", 
+             "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+             "_type": "page", 
+             "key": "refunds"
+           }, 
+           "debits_uri": {
+             "_type": "page", 
+             "key": "debits"
+           }, 
+           "holds_uri": {
+             "_type": "page", 
+             "key": "holds"
+           }, 
+           "credits_uri": {
+             "_type": "page", 
+             "key": "credits"
+           }, 
+           "cards_uri": {
+             "_type": "page", 
+             "key": "cards"
+           }
+         }, 
+         "facebook": null, 
+         "address": {}, 
+         "destination_uri": null, 
+         "business_name": null, 
+         "credits_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
+         "cards_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
+         "holds_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+         "name": "Benny Riemann", 
+         "dob": null, 
+         "created_at": "2013-06-05T02:30:09.949061Z", 
+         "is_identity_verified": false, 
+         "uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
+         "refunds_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
+         "debits_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/debits", 
+         "transactions_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+         "ssn_last4": null, 
+         "ein": null
+       }, 
+       {
+         "twitter": null, 
+         "meta": {}, 
+         "id": "AC6xZWzXQuCRVCvRzV2E8wxN", 
          "email": "fee@poundpay.com", 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/bank_accounts", 
          "phone": "+16505551212", 
          "_uris": {
            "transactions_uri": {
@@ -767,28 +805,28 @@ Body
          "facebook": null, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/holds", 
+         "credits_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/credits", 
+         "cards_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/cards", 
+         "holds_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/holds", 
          "name": null, 
          "dob": null, 
-         "created_at": "2013-05-06T18:48:53.369018Z", 
+         "created_at": "2013-06-05T02:30:08.864265Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC4FhaXnEQKBKxPR5nVV9KcV", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4FhaXnEQKBKxPR5nVV9KcV/transactions", 
+         "uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN", 
+         "refunds_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/refunds", 
+         "debits_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/debits", 
+         "transactions_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC4Fh33Y9uYPpSzbOcBj2v17", 
+         "id": "AC6xYZFJYuW5g8XJPPuKOhCD", 
          "email": "escrow@poundpay.com", 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -824,28 +862,28 @@ Body
          "address": null, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/holds", 
+         "credits_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/credits", 
+         "cards_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/cards", 
+         "holds_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/holds", 
          "name": null, 
          "dob": null, 
-         "created_at": "2013-05-06T18:48:53.367221Z", 
+         "created_at": "2013-06-05T02:30:08.850803Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC4Fh33Y9uYPpSzbOcBj2v17", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4Fh33Y9uYPpSzbOcBj2v17/transactions", 
+         "uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD", 
+         "refunds_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/refunds", 
+         "debits_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/debits", 
+         "transactions_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC4F9s3nv0cyQePd9NPEb12V", 
+         "id": "AC6xEUte50oDdcfGLsXBLXHx", 
          "email": "whc@example.org", 
          "_type": "customer", 
-         "source_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/bank_accounts/BA4FhkIqJ79uktI1eAiHlN73", 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/bank_accounts", 
+         "source_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts/BA6y061VCy7hxqPki9CsLoWX", 
+         "bank_accounts_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
          "phone": "+16505551212", 
          "_uris": {
            "holds_uri": {
@@ -886,25 +924,25 @@ Body
            }
          }, 
          "facebook": null, 
-         "destination_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/bank_accounts/BA4FhkIqJ79uktI1eAiHlN73", 
+         "destination_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts/BA6y061VCy7hxqPki9CsLoWX", 
          "business_name": null, 
-         "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/cards", 
-         "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/holds", 
+         "credits_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/credits", 
+         "cards_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/cards", 
+         "holds_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/holds", 
          "name": "William Henry Cavendish III", 
          "dob": null, 
-         "created_at": "2013-05-06T18:48:53.258718Z", 
+         "created_at": "2013-06-05T02:30:08.562678Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC4F9s3nv0cyQePd9NPEb12V", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/refunds", 
-         "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/debits", 
-         "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/AC4F9s3nv0cyQePd9NPEb12V/transactions", 
+         "uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+         "refunds_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
+         "debits_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/debits", 
+         "transactions_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
          "ssn_last4": null, 
          "ein": null
        }
      ], 
-     "previous_uri": null, 
-     "uri": "/v1/customers?limit=10&offset=0", 
+     "previous_uri": "/v1/customers?limit=10&offset=0", 
+     "uri": "/v1/customers?limit=10&offset=10", 
      "_uris": {
        "first_uri": {
          "_type": "page", 
@@ -924,10 +962,10 @@ Body
        }
      }, 
      "limit": 10, 
-     "offset": 0, 
-     "total": 8, 
+     "offset": 10, 
+     "total": 19, 
      "next_uri": null, 
-     "last_uri": "/v1/customers?limit=10&offset=0"
+     "last_uri": "/v1/customers?limit=10&offset=10"
    }
 
 Update a Customer
@@ -954,29 +992,36 @@ Request
    *optional* **string**. Last four digits of the Social Security Number of the customer or
    representative of the business. Defaults to ``null``.
 
-``business_name``
-   *optional* **string**. Full business name if the customer is a business. If there is a business
-   name and EIN present, the customer will be treated as a business instead
-   of a person. Defaults to ``null``.
+``meta``
+   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
 
 ``address``
-   ``line1``
-      *optional* **string**. Street address of the person or business.
 
-   ``line2``
-      *optional* **string**. Second line of the address for the person or business.
+   .. cssclass:: nested1
 
-   ``city``
-      *optional* **string**. City of the person or business.
+   *optional* **object**.
 
-   ``state``
-      *optional* **string**. State of the person or business.
+      ``default``
+         *optional* **string**. Defaults to ``null``.
 
-   ``postal_code``
-      *optional* **string**. Postal code/zip code of the person or business.
+      ``line1``
+         *optional* **string**. Street address of the person or business.
 
-   ``country_code``
-      *optional* **string**. Two character country code.
+      ``line2``
+         *optional* **string**. Second line of the address for the person or business.
+
+      ``city``
+         *optional* **string**. City of the person or business.
+
+      ``state``
+         *optional* **string**. State of the person or business.
+
+      ``postal_code``
+         *optional* **string**. Postal code/zip code of the person or business.
+
+      ``country_code``
+         *optional* **string**. Two character country code.
+
 
 
 ``phone``
@@ -1015,24 +1060,24 @@ Body
    {
      "_type": "customer", 
      "twitter": null, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/bank_accounts", 
      "phone": null, 
      "meta": {}, 
      "facebook": null, 
      "address": {}, 
      "source_uri": null, 
      "business_name": null, 
-     "id": "CU4HOFx0bMGZ3X4qRSATeSJ3", 
-     "credits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/holds", 
+     "id": "CUcg3mf9t505OfkrA1dZAMK", 
+     "credits_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/credits", 
+     "cards_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/cards", 
+     "holds_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/holds", 
      "name": "Richie McCaw", 
      "dob": null, 
      "ssn_last4": null, 
-     "created_at": "2013-05-06T18:48:55.628485Z", 
+     "created_at": "2013-06-05T02:31:28.292314Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CU4HOFx0bMGZ3X4qRSATeSJ3", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/refunds", 
+     "uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK", 
+     "refunds_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -1063,8 +1108,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/debits", 
-     "transactions_uri": "/v1/marketplaces/TEST-MP4F99ERJk2SZGw3p9Is2GUp/accounts/CU4HOFx0bMGZ3X4qRSATeSJ3/transactions", 
+     "debits_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/debits", 
+     "transactions_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/transactions", 
      "destination_uri": null, 
      "email": null, 
      "ein": null
