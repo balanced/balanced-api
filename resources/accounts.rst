@@ -12,793 +12,1251 @@ Accounts
 Fields
 ------
 
-``id`` 
-    **string**.  
- 
-``uri`` 
-    **string**. The URI of the account. 
- 
-``created_at`` 
-    **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this 
-    account was created. 
- 
-``name`` 
-    **string**. The name of the account. 
- 
-``email_address`` 
-    **string**. The email address of the account. 
- 
-``roles`` 
-    **list**. A list of roles the account has. Can be zero, one, or both of 
-    ``buyer``, ``merchant`` 
- 
-``debits_uri`` 
-    **string**. URI for all debits associated with the account. 
- 
-``credits_uri`` 
-    **string**. URI for all credits associated with the account. 
- 
-``refunds_uri`` 
-    **string**. URI for all refunds associated with the account. 
- 
-``holds_uri`` 
-    **string**. URI for all holds associated with the account. 
- 
-``meta`` 
-    **object**. A single-level dictionary of string-type key/value pairs. 
- 
-``transactions_uri`` 
-    **string**. URI for all transactions associated with the account. 
- 
-``bank_accounts_uri`` 
-    **string**. URI for all bank accounts associated with the account. 
- 
-``cards_uri`` 
-    **string**. URI for all cards associated with the account. 
- 
+``bank_accounts_uri``
+   **string**. URI for all bank accounts associated with the account.
+
+``cards_uri``
+   **string**. URI for all cards associated with the account.
+
+``created_at``
+   **string**. `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this
+   account was created.
+
+``credits_uri``
+   **string**. URI for all credits associated with the account.
+
+``customer_uri``
+   **string**.
+
+``debits_uri``
+   **string**. URI for all debits associated with the account.
+
+``email_address``
+   **string**. The email address of the account.
+
+``holds_uri``
+   **string**. URI for all holds associated with the account.
+
+``id``
+   **string**.
+
+``merchant_uri``
+   **object**.
+
+``meta``
+   **key-value**. A single-level dictionary of string-type key/value pairs.
+
+``name``
+   **string**. The name of the account.
+
+``refunds_uri``
+   **string**. URI for all refunds associated with the account.
+
+``roles``
+   **list**. A list of roles the account has. Can be zero, one, or both of
+   ``buyer``, ``merchant``
+
+``transactions_uri``
+   **string**. URI for all transactions associated with the account.
+
+``uri``
+   **string**. The URI of the account.
 
 Create a Buyer
 --------------
 
-.. code:: 
- 
-    POST /v1/marketplaces/:marketplace_id/accounts 
- 
+.. code::
+
+
+   POST /v1/marketplaces/:marketplace_id/accounts
 
 Request
 ~~~~~~~
 
-``name`` 
-    *optional* **string**. The display ``name`` of the account. Length must be **<=** ``128``. 
- 
-``email_address`` 
-    *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts 
-    on your marketplace. 
- 
-``card_uri`` 
-    *optional* **string**. The URI of the tokenized card. 
- 
-``card`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**. See `Create a Card <./cards.rst#create-a-card>`_. 
- 
+``name``
+   *optional* **string**. The display ``name`` of the account. If a ``card`` is provided with a ``name`` then that is used as the
+   default. Otherwise no default is provided and this field is
+   **required**.
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "card_uri": "/v1/marketplaces/TEST-MP5M4nHP6iiDtbkDXVkjiusq/cards/CCbdcd92d9474c11e2914d68a86d3cb93a",  
-        "email_address": "b@m.com",  
-        "name": "Benny Riemann" 
-    } 
- 
+``email_address``
+   *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts
+   on your marketplace. Defaults to ``null``.
+
+``card_uri``
+   *optional* **string**. The URI of the tokenized card.
+
+``card``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `Create a Card <./cards.rst#create-a-card>`_.
+
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+       "card_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/cards/CC6CfiuaGQLFK8KCmkdN9sLK", 
+       "meta": {}, 
+       "email_address": null, 
+       "name": "Benny Riemann"
+   }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 201 CREATED 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/cards",  
-        "created_at": "2012-12-15T22:49:31.554194Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/debits",  
-        "email_address": "b@m.com",  
-        "holds_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/holds",  
-        "id": "AC5NFYVfNjOdqwyelUZi4XPk",  
-        "meta": {},  
-        "name": "Benny Riemann",  
-        "refunds_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/refunds",  
-        "roles": [ 
-            "buyer" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP5NyJ2vjLRbv4BGX5HFcBS2/accounts/AC5NFYVfNjOdqwyelUZi4XPk" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 201 CREATED
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/transactions", 
+     "email_address": null, 
+     "id": "AC6EhJMLs2MRhi96oKrenvtg", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/holds", 
+     "name": "Benny Riemann", 
+     "roles": [
+       "buyer"
+     ], 
+     "created_at": "2013-06-05T02:30:14.451958Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/refunds", 
+     "customer_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/debits"
+   }
 
 Create a Business Merchant
 --------------------------
 
-.. code:: 
- 
-    POST /v1/marketplaces/:marketplace_id/accounts 
- 
+.. code::
+
+
+   POST /v1/marketplaces/:marketplace_id/accounts
 
 Request
 ~~~~~~~
 
-``name`` 
-    *optional* **string**. The display ``name`` of the account. Length must be **<=** ``128``. 
- 
-``email_address`` 
-    *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts 
-    on your marketplace. 
- 
-``bank_account_uri`` 
-    *optional* **string**. The URI of the bank account created via *balanced.js*. 
- 
-``bank_account`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**. See `BankAccount <./bank_accounts.rst>`_. 
- 
-``merchant_uri`` 
-    *optional* **string**. The URI of the merchant account created during a request for more 
-    information. 
- 
-``merchant`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**.  
-        ``type`` 
-            *required* **string**. Merchant type. It should be one of: ``person`` or ``business``. 
- 
-        ``phone_number`` 
-            *required* **string**. E.164 formatted phone number. Length must be **<=** ``15``. 
- 
-        ``email_address`` 
-            *optional* **string** or **null**. RFC-2822 formatted email address. 
- 
-        ``meta`` 
-            *optional* **object**. Single level mapping from string keys to string values. 
- 
-        ``tax_id`` 
-            *optional* **string**. Length must be **between** ``4`` and ``9``. 
- 
-        ``person`` 
-            .. cssclass:: nested2 
- 
-            *optional* **object**.  
-                ``name`` 
-                    *required* **string**. Sequence of characters. 
- 
-                ``dob`` 
-                    *required* **string**. Date-of-birth formatted as ``YYYY-MM-DD``. 
- 
-                ``city`` 
-                    *optional* **string**. City. 
- 
-                ``postal_code`` 
-                    *required* **string**. Postal code. This is known as a zip code in the USA. 
-                    *requires* ``country_code``. 
- 
-                ``street_address`` 
-                    *required* **string**. Street address. 
-                    *requires* ``postal_code``. 
- 
-                ``country_code`` 
-                    *optional* **string**. `ISO-3166-3 
-                    <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_ 
-                    three character country code. 
- 
-                ``tax_id`` 
-                    *optional* **string**. Length must be **between** ``4`` and ``9``. 
- 
- 
-        ``name`` 
-            *optional* **string**. Sequence of characters. Length must be **<=** ``128``. 
- 
-        ``production`` 
-            *optional* **boolean**. Flag value, should be ``true`` or ``false``. 
- 
-        ``city`` 
-            *optional* **string**. City. 
- 
-        ``postal_code`` 
-            *required* **string**. Postal code. This is known as a zip code in the USA. 
-            *requires* ``country_code``. 
- 
-        ``street_address`` 
-            *required* **string**. Street address. 
-            *requires* ``postal_code``. 
- 
-        ``country_code`` 
-            *optional* **string**. `ISO-3166-3 
-            <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_ 
-            three character country code. 
- 
- 
+``name``
+   *optional* **string**. The display ``name`` of the account. If a ``card`` is provided with a ``name`` then that is used as the
+   default. Otherwise no default is provided and this field is
+   **required**.
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "merchant": { 
-            "phone_number": "+19046281796",  
-            "city": "San Francisco",  
-            "name": "jo",  
-            "person": { 
-                "city": "San Francisco",  
-                "state": "CA",  
-                "postal_code": "94110",  
-                "name": "jo",  
-                "dob": "1984-01",  
-                "street_address": "Somewhere over the rainbow",  
-                "tax_id": "066038800" 
-            },  
-            "state": "CA",  
-            "postal_code": "94110",  
-            "type": "business",  
-            "street_address": "Somewhere over the rainbow",  
-            "tax_id": "147826600" 
-        } 
-    } 
- 
+``email_address``
+   *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts
+   on your marketplace. Defaults to ``null``.
+
+``bank_account_uri``
+   *optional* **string**. The URI of the bank account created via *balanced.js*.
+
+``bank_account``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `BankAccount <./bank_accounts.rst>`_.
+
+
+``merchant_uri``
+   *optional* **string**. The URI of the merchant account created during a request for more
+   information.
+
+``merchant``
+
+   .. cssclass:: nested1
+
+   *required* **object**.
+
+      ``type``
+         *required* **string**. Merchant type. It should be one of: ``person`` or ``business``.
+
+      ``phone_number``
+         *required* **string**. E.164 formatted phone number.
+
+      ``email_address``
+         *optional* **string** or **null**. RFC-2822 formatted email address. Defaults to ``null``.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+      ``tax_id``
+         *optional* **string**. For *person* merchants `tax_id` is optional, defaulting to ``null``.
+         For *business* merchants `tax_id` is required.
+
+      ``person``
+
+         .. cssclass:: nested1
+
+         *required* **object**.
+
+            ``name``
+               *required* **string**.
+
+            ``dob``
+               *required* **string**. Date-of-birth formatted as ``YYYY-MM-DD``.
+
+            ``city``
+               *required* **string**. City. Defaults to ``null``.
+
+            ``postal_code``
+               *required* **string**. Postal code. This is known as a zip code in the USA.
+               *requires* ``country_code``.
+
+            ``street_address``
+               *required* **string**. Street address.
+               *requires* ``postal_code``.
+
+            ``country_code``
+               *required* **string**. `ISO-3166-3
+               <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+               three character country code. Defaults to ``USA``.
+
+            ``tax_id``
+               *required* **string**.
+
+
+
+      ``name``
+         *optional* **string**. If an account is referenced in the resolving URI then the default is
+         null. If this is nested in an account creation then the account
+         ``name`` is used. Otherwise no default is provided and this field is
+         required.
+
+      ``production``
+         *optional* **boolean**. Flag value, should be ``true`` or ``false``. Defaults to ``null``.
+
+      ``city``
+         *optional* **string**. City. Defaults to ``null``.
+
+      ``postal_code``
+         *required* **string**. Postal code. This is known as a zip code in the USA.
+         *requires* ``country_code``.
+
+      ``street_address``
+         *required* **string**. Street address.
+         *requires* ``postal_code``.
+
+      ``country_code``
+         *optional* **string**. `ISO-3166-3
+         <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+         three character country code. Defaults to ``USA``.
+
+
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+       "merchant": {
+           "phone_number": "+16505551234", 
+           "name": "Levain Bakery", 
+           "person": {
+               "phone_number": "+16505551234", 
+               "name": "William James", 
+               "dob": "1842-01-01", 
+               "postal_code": "10023", 
+               "country_code": "USA", 
+               "street_address": "167 West 74th Street", 
+               "tax_id": "393483992"
+           }, 
+           "postal_code": "10023", 
+           "country_code": "USA", 
+           "type": "business", 
+           "street_address": "167 West 74th Street", 
+           "tax_id": "253912384"
+       }, 
+       "name": null, 
+       "bank_account_uri": null, 
+       "meta": {}, 
+       "email_address": null, 
+       "merchant_uri": null
+   }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 201 CREATED 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/cards",  
-        "created_at": "2012-12-15T22:49:34.361859Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/debits",  
-        "email_address": null,  
-        "holds_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/holds",  
-        "id": "AC5QPL6Xu6vy465OjHoTEBSy",  
-        "meta": {},  
-        "name": "jo",  
-        "refunds_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/refunds",  
-        "roles": [ 
-            "merchant" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP5QJsNpY7YYODYdKMFsNpEe/accounts/AC5QPL6Xu6vy465OjHoTEBSy" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 201 CREATED
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/transactions", 
+     "email_address": null, 
+     "id": "AC6GYfhsHiUt9sNvAxii2SsG", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/holds", 
+     "name": "Levain Bakery", 
+     "roles": [
+       "merchant"
+     ], 
+     "created_at": "2013-06-05T02:30:16.839761Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/refunds", 
+     "customer_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/debits"
+   }
 
 Create a Person Merchant
 ------------------------
 
-.. code:: 
- 
-    POST /v1/marketplaces/:marketplace_id/accounts 
- 
+.. code::
+
+
+   POST /v1/marketplaces/:marketplace_id/accounts
 
 Request
 ~~~~~~~
 
-``name`` 
-    *optional* **string**. The display ``name`` of the account. Length must be **<=** ``128``. 
- 
-``email_address`` 
-    *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts 
-    on your marketplace. 
- 
-``bank_account_uri`` 
-    *optional* **string**. The URI of the bank account created via *balanced.js*. 
- 
-``bank_account`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**. See `BankAccount <./bank_accounts.rst>`_. 
- 
-``merchant_uri`` 
-    *optional* **string**. The URI of the merchant account created during a request for more 
-    information. 
- 
-``merchant`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**.  
-        ``type`` 
-            *required* **string**. Merchant type. It should be one of: ``person`` or ``business``. 
- 
-        ``phone_number`` 
-            *required* **string**. E.164 formatted phone number. Length must be **<=** ``15``. 
- 
-        ``email_address`` 
-            *optional* **string** or **null**. RFC-2822 formatted email address. 
- 
-        ``meta`` 
-            *optional* **object**. Single level mapping from string keys to string values. 
- 
-        ``tax_id`` 
-            *optional* **string**. Length must be **between** ``4`` and ``9``. 
- 
-        ``dob`` 
-            *optional* **string**. Date-of-birth formatted as ``YYYY-MM-DD``. 
- 
-        ``name`` 
-            *optional* **string**. Sequence of characters. Length must be **<=** ``128``. 
- 
-        ``production`` 
-            *optional* **boolean**. Flag value, should be ``true`` or ``false``. 
- 
-        ``city`` 
-            *optional* **string**. City. 
- 
-        ``postal_code`` 
-            *required* **string**. Postal code. This is known as a zip code in the USA. 
-            *requires* ``country_code``. 
- 
-        ``street_address`` 
-            *required* **string**. Street address. 
-            *requires* ``postal_code``. 
- 
-        ``country_code`` 
-            *optional* **string**. `ISO-3166-3 
-            <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_ 
-            three character country code. 
- 
- 
+``name``
+   *optional* **string**. The display ``name`` of the account. If a ``card`` is provided with a ``name`` then that is used as the
+   default. Otherwise no default is provided and this field is
+   **required**.
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "merchant": { 
-            "phone_number": "+19046281796",  
-            "city": "San Francisco",  
-            "name": "jo",  
-            "dob": "1984-01",  
-            "state": "CA",  
-            "postal_code": "94110",  
-            "type": "person",  
-            "street_address": "Somewhere over the rainbow",  
-            "tax_id": "202642300" 
-        } 
-    } 
- 
+``email_address``
+   *optional* **string** or **null**. Email address of the account. It must be **unique** among all accounts
+   on your marketplace. Defaults to ``null``.
+
+``bank_account_uri``
+   *optional* **string**. The URI of the bank account created via *balanced.js*.
+
+``bank_account``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `BankAccount <./bank_accounts.rst>`_.
+
+
+``merchant_uri``
+   *optional* **string**. The URI of the merchant account created during a request for more
+   information.
+
+``merchant``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      ``type``
+         *required* **string**. Merchant type. It should be one of: ``person`` or ``business``.
+
+      ``phone_number``
+         *required* **string**. E.164 formatted phone number.
+
+      ``email_address``
+         *optional* **string** or **null**. RFC-2822 formatted email address. Defaults to ``null``.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+      ``tax_id``
+         *optional* **string**. For *person* merchants `tax_id` is optional, defaulting to ``null``.
+         For *business* merchants `tax_id` is required.
+
+      ``dob``
+         *optional* **string**. Date-of-birth formatted as ``YYYY-MM-DD``. For *person* merchants `dob` is required. For *business* merchants
+         `dob` is optional, defaulting to ``null``.
+
+      ``name``
+         *optional* **string**. If an account is referenced in the resolving URI then the default is
+         null. If this is nested in an account creation then the account
+         ``name`` is used. Otherwise no default is provided and this field is
+         required.
+
+      ``production``
+         *optional* **boolean**. Flag value, should be ``true`` or ``false``. Defaults to ``null``.
+
+      ``city``
+         *optional* **string**. City. Defaults to ``null``.
+
+      ``postal_code``
+         *required* **string**. Postal code. This is known as a zip code in the USA.
+         *requires* ``country_code``.
+
+      ``street_address``
+         *required* **string**. Street address.
+         *requires* ``postal_code``.
+
+      ``country_code``
+         *optional* **string**. `ISO-3166-3
+         <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+         three character country code. Defaults to ``USA``.
+
+
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+       "merchant": {
+           "phone_number": "+16505551234", 
+           "name": "William James", 
+           "dob": "1842-01-01", 
+           "postal_code": "10023", 
+           "country_code": "USA", 
+           "type": "person", 
+           "street_address": "167 West 74th Street", 
+           "tax_id": "393-48-3992"
+       }, 
+       "name": null, 
+       "bank_account_uri": null, 
+       "meta": {}, 
+       "email_address": null, 
+       "merchant_uri": null
+   }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 201 CREATED 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/cards",  
-        "created_at": "2012-12-15T22:49:37.000905Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/debits",  
-        "email_address": null,  
-        "holds_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/holds",  
-        "id": "AC5TNNGqfTxuGNBsdYmI53se",  
-        "meta": {},  
-        "name": "jo",  
-        "refunds_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/refunds",  
-        "roles": [ 
-            "merchant" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP5THB5asyoKgpqypMnYCxHs/accounts/AC5TNNGqfTxuGNBsdYmI53se" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 201 CREATED
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/transactions", 
+     "email_address": null, 
+     "id": "AC6KoUKKh6XlVHBxXuu6Zbw2", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/holds", 
+     "name": "William James", 
+     "roles": [
+       "merchant"
+     ], 
+     "created_at": "2013-06-05T02:30:19.898192Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/refunds", 
+     "customer_uri": "/v1/customers/AC6KoUKKh6XlVHBxXuu6Zbw2", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/debits"
+   }
 
 Retrieve an Account
 -------------------
 
-.. code:: 
- 
-    GET /v1/marketplaces/:marketplace_id/accounts/:account_id 
- 
+Request
+~~~~~~~
 
-Body 
-~~~~ 
- 
-Headers 
-~~~~~~~ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-~~~~ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/cards",  
-        "created_at": "2012-12-15T22:49:38.283006Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/debits",  
-        "email_address": "email.6@y.com",  
-        "holds_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/holds",  
-        "id": "AC5Vfcm7X1YJQqLNYyYxhqye",  
-        "meta": {},  
-        "name": null,  
-        "refunds_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/refunds",  
-        "roles": [ 
-            "buyer" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP5VaigUeVxlQfukExkQbj9o/accounts/AC5Vfcm7X1YJQqLNYyYxhqye" 
-    } 
- 
+Response
+~~~~~~~~
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+     "email_address": null, 
+     "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+     "name": "Benny Riemann", 
+     "roles": [
+       "buyer"
+     ], 
+     "created_at": "2013-06-05T02:30:09.949061Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
+     "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits"
+   }
+
+.. code::
+
+
+   HEAD /v1/marketplaces/:marketplace_id/accounts/:account_id
+   GET /v1/marketplaces/:marketplace_id/accounts/:account_id
+
+Request
+~~~~~~~
+
+Response
+~~~~~~~~
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+     "email_address": null, 
+     "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+     "name": "Benny Riemann", 
+     "roles": [
+       "buyer"
+     ], 
+     "created_at": "2013-06-05T02:30:09.949061Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
+     "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits"
+   }
 
 List all Accounts
 -----------------
 
-.. code:: 
- 
-    GET /v1/marketplaces/:marketplace_id/accounts 
- 
+Request
+~~~~~~~
 
-Response 
-~~~~~~~~ 
- 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "first_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts?limit=10&offset=0",  
-        "items": [ 
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/cards",  
-                "created_at": "2012-12-15T22:49:39.533841Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/debits",  
-                "email_address": "email.1@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/holds",  
-                "id": "AC5WEpkqe7ZlWWqTx2D6gJey",  
-                "meta": {},  
-                "name": "Merchants, Inc.",  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/refunds",  
-                "roles": [ 
-                    "merchant",  
-                    "buyer" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WEpkqe7ZlWWqTx2D6gJey" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/cards",  
-                "created_at": "2012-12-15T22:49:39.554866Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/debits",  
-                "email_address": "email.3@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/holds",  
-                "id": "AC5WFTOnbV8Apvw0FLfGohIe",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/refunds",  
-                "roles": [ 
-                    "merchant",  
-                    "buyer" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFTOnbV8Apvw0FLfGohIe" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/cards",  
-                "created_at": "2012-12-15T22:49:39.555371Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/debits",  
-                "email_address": "email.4@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/holds",  
-                "id": "AC5WFVYW4NWoHWdyi0kfKss2",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/refunds",  
-                "roles": [ 
-                    "buyer" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WFVYW4NWoHWdyi0kfKss2" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/cards",  
-                "created_at": "2012-12-15T22:49:39.572323Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/debits",  
-                "email_address": "email.5@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/holds",  
-                "id": "AC5WH760BHgAEQN6Q2Bfa3Me",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/refunds",  
-                "roles": [ 
-                    "buyer" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WH760BHgAEQN6Q2Bfa3Me" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/cards",  
-                "created_at": "2012-12-15T22:49:39.599625Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/debits",  
-                "email_address": "email.7@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/holds",  
-                "id": "AC5WJ1hvBL5XCdYSuvj4eQWK",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/refunds",  
-                "roles": [ 
-                    "merchant" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ1hvBL5XCdYSuvj4eQWK" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/cards",  
-                "created_at": "2012-12-15T22:49:39.600089Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/debits",  
-                "email_address": "email.8@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/holds",  
-                "id": "AC5WJ3nxCWMi2XKpKp7msOaC",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/refunds",  
-                "roles": [ 
-                    "buyer" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WJ3nxCWMi2XKpKp7msOaC" 
-            },  
-            { 
-                "bank_accounts_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/bank_accounts",  
-                "cards_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/cards",  
-                "created_at": "2012-12-15T22:49:39.613773Z",  
-                "credits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/credits",  
-                "debits_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/debits",  
-                "email_address": "email.10@y.com",  
-                "holds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/holds",  
-                "id": "AC5WK0BOCzO5caAbzjyA5Oum",  
-                "meta": {},  
-                "name": null,  
-                "refunds_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/refunds",  
-                "roles": [ 
-                    "merchant" 
-                ],  
-                "transactions_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum/transactions",  
-                "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts/AC5WK0BOCzO5caAbzjyA5Oum" 
-            } 
-        ],  
-        "last_uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts?limit=10&offset=0",  
-        "limit": 10,  
-        "next_uri": null,  
-        "offset": 0,  
-        "previous_uri": null,  
-        "total": 7,  
-        "uri": "/v1/marketplaces/TEST-MP5WDqqEwx35T5gDRaVjdmtQ/accounts?limit=10&offset=0" 
-    } 
- 
+.. code::
+
+
+   HEAD /v1/marketplaces/:marketplace_id/accounts
+   GET /v1/marketplaces/:marketplace_id/accounts
+
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "first_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=0", 
+     "_type": "page", 
+     "items": [
+       {
+         "_type": "account", 
+         "_uris": {
+           "transactions_uri": {
+             "_type": "page", 
+             "key": "transactions"
+           }, 
+           "bank_accounts_uri": {
+             "_type": "page", 
+             "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+             "_type": "page", 
+             "key": "refunds"
+           }, 
+           "customer_uri": {
+             "_type": "customer", 
+             "key": "customer"
+           }, 
+           "debits_uri": {
+             "_type": "page", 
+             "key": "debits"
+           }, 
+           "holds_uri": {
+             "_type": "page", 
+             "key": "holds"
+           }, 
+           "credits_uri": {
+             "_type": "page", 
+             "key": "credits"
+           }, 
+           "cards_uri": {
+             "_type": "page", 
+             "key": "cards"
+           }
+         }, 
+         "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/holds", 
+         "name": "William Henry Cavendish III", 
+         "roles": [
+           "merchant", 
+           "buyer"
+         ], 
+         "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
+         "created_at": "2013-06-05T02:30:08.562678Z", 
+         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx", 
+         "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
+         "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
+         "customer_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+         "meta": {}, 
+         "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/debits", 
+         "email_address": "whc@example.org", 
+         "id": "AC6xEUte50oDdcfGLsXBLXHx", 
+         "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/credits", 
+         "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/cards"
+       }, 
+       {
+         "_type": "account", 
+         "_uris": {
+           "transactions_uri": {
+             "_type": "page", 
+             "key": "transactions"
+           }, 
+           "bank_accounts_uri": {
+             "_type": "page", 
+             "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+             "_type": "page", 
+             "key": "refunds"
+           }, 
+           "customer_uri": {
+             "_type": "customer", 
+             "key": "customer"
+           }, 
+           "debits_uri": {
+             "_type": "page", 
+             "key": "debits"
+           }, 
+           "holds_uri": {
+             "_type": "page", 
+             "key": "holds"
+           }, 
+           "credits_uri": {
+             "_type": "page", 
+             "key": "credits"
+           }, 
+           "cards_uri": {
+             "_type": "page", 
+             "key": "cards"
+           }
+         }, 
+         "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/holds", 
+         "name": "Benny Riemann", 
+         "roles": [
+           "buyer"
+         ], 
+         "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/transactions", 
+         "created_at": "2013-06-05T02:30:12.795445Z", 
+         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/bank_accounts", 
+         "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/refunds", 
+         "customer_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "meta": {}, 
+         "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/debits", 
+         "email_address": null, 
+         "id": "AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/credits", 
+         "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/cards"
+       }
+     ], 
+     "previous_uri": null, 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=0", 
+     "_uris": {
+       "first_uri": {
+         "_type": "page", 
+         "key": "first"
+       }, 
+       "next_uri": {
+         "_type": "page", 
+         "key": "next"
+       }, 
+       "previous_uri": {
+         "_type": "page", 
+         "key": "previous"
+       }, 
+       "last_uri": {
+         "_type": "page", 
+         "key": "last"
+       }
+     }, 
+     "limit": 2, 
+     "offset": 0, 
+     "total": 8, 
+     "next_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=2", 
+     "last_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=6"
+   }
 
 Update an Account
 -----------------
 
-.. code:: 
- 
-    PUT /v1/marketplaces/:marketplace_id/accounts/:account_id 
- 
+.. code::
+
+
+   PUT /v1/marketplaces/:marketplace_id/accounts/:account_id
 
 Request
 ~~~~~~~
 
-``name`` 
-    *optional* **string**. The display ``name`` of the account. Length must be **<=** ``128``. 
- 
-``email_address`` 
-    *optional* **string** or **null**. RFC-2822 formatted email address. 
- 
-``meta`` 
-    *optional* **object**. Single level mapping from string keys to string values. 
- 
-``card_uri`` 
-    *optional* **string**. Tokenized card URI. 
- 
-``card`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**. See `Card <./cards.rst>`_. 
- 
-``bank_account_uri`` 
-    *optional* **string**. Tokenized bank account URI. 
- 
-``bank_account`` 
-    .. cssclass:: nested1 
- 
-    *optional* **object**. See `BankAccount <./bank_accounts.rst>`_. 
- 
+``name``
+   *optional* **string**. The display ``name`` of the account.
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "card_uri": "/v1/marketplaces/TEST-MP5YbxIiVo9DeeqeqvaUgyhk/cards/CCc438d20f474c11e2952668a86d3cb93a",  
-        "meta": { 
-            "more-data": "here" 
-        },  
-        "email_address": "new@email.com",  
-        "name": "my new name" 
-    } 
- 
+``email_address``
+   *optional* **string** or **null**. RFC-2822 formatted email address.
+
+``meta``
+   *optional* **key-value**. Single level mapping from string keys to string values.
+
+``card_uri``
+   *optional* **string**. Tokenized card URI.
+
+``card``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `Card <./cards.rst>`_.
+
+
+``bank_account_uri``
+   *optional* **string**. Tokenized bank account URI.
+
+``bank_account``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `BankAccount <./bank_accounts.rst>`_.
+
+
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+       "customer_uri": "v1/customers/AC6SLZUwlvc2kNoNa4s4srxB", 
+       "_type": "account", 
+       "holds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/holds", 
+       "name": [
+           "my new name"
+       ], 
+       "roles": [
+           "buyer"
+       ], 
+       "created_at": "2013-06-05T02:30:27.335644+00:00Z", 
+       "bank_accounts_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/bank_accounts", 
+       "refunds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/refunds", 
+       "_uris": {
+           "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+           }, 
+           "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+           }, 
+           "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+           }, 
+           "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+           }, 
+           "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+           }, 
+           "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+           }, 
+           "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+           }
+       }, 
+       "meta": {
+           "more-data": "here"
+       }, 
+       "debits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/debits", 
+       "transactions_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/transactions", 
+       "email_address": null, 
+       "id": "AC6SLZUwlvc2kNoNa4s4srxB", 
+       "credits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/credits", 
+       "cards_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/cards"
+   }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/cards",  
-        "created_at": "2012-12-15T22:49:42.362531Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/debits",  
-        "email_address": "new@email.com",  
-        "holds_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/holds",  
-        "id": "AC5ZPGuGNWYhPskAMZ2PCHiO",  
-        "meta": { 
-            "more-data": "here" 
-        },  
-        "name": "my new name",  
-        "refunds_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/refunds",  
-        "roles": [ 
-            "buyer" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP5ZKonhsltLtGIPm2cdBd1w/accounts/AC5ZPGuGNWYhPskAMZ2PCHiO" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/bank_accounts", 
+     "meta": {
+       "more-data": "here"
+     }, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/transactions", 
+     "email_address": null, 
+     "id": "AC6V4Sk3GbKvsA8aFczsOBPN", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/holds", 
+     "name": "[u'my new name']", 
+     "roles": [
+       "buyer"
+     ], 
+     "created_at": "2013-06-05T02:30:29.384525Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/refunds", 
+     "customer_uri": "/v1/customers/AC6V4Sk3GbKvsA8aFczsOBPN", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/debits"
+   }
 
 Promote a Buyer Account to a Merchant
 -------------------------------------
 
-.. code:: 
- 
-    PUT /v1/marketplaces/:marketplace_id/accounts/:account_id 
- 
+.. code::
+
+
+   PUT /v1/marketplaces/:marketplace_id/accounts/:account_id
 
 Request
 ~~~~~~~
 
-``merchant_uri`` 
-    *optional* **string**. See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_. 
- 
-``merchant`` 
-    .. cssclass:: nested2 
- 
-    *optional* **object**. See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_. 
- 
- 
+``merchant_uri``
+   See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_.
 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "merchant": { 
-            "phone_number": "+19046281796",  
-            "city": "San Francisco",  
-            "name": "jo",  
-            "dob": "1984-01",  
-            "state": "CA",  
-            "postal_code": "94110",  
-            "type": "person",  
-            "street_address": "Somewhere over the rainbow",  
-            "tax_id": "303112200" 
-        } 
-    } 
- 
+
+``merchant``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_.
+
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+       "merchant": {
+           "phone_number": "+16505551234", 
+           "name": "William James", 
+           "dob": "1842-01-01", 
+           "postal_code": "10023", 
+           "country_code": "USA", 
+           "type": "person", 
+           "street_address": "167 West 74th Street", 
+           "tax_id": "393-48-3992"
+       }, 
+       "customer_uri": "v1/customers/AC6XoUMHxgABT6pBpQkb6rbW", 
+       "_type": "account", 
+       "holds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/holds", 
+       "name": "Benny Riemann", 
+       "roles": [
+           "buyer"
+       ], 
+       "created_at": "2013-06-05T02:30:31.447963+00:00Z", 
+       "bank_accounts_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/bank_accounts", 
+       "refunds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/refunds", 
+       "_uris": {
+           "transactions_uri": {
+               "_type": "page", 
+               "key": "transactions"
+           }, 
+           "bank_accounts_uri": {
+               "_type": "page", 
+               "key": "bank_accounts"
+           }, 
+           "refunds_uri": {
+               "_type": "page", 
+               "key": "refunds"
+           }, 
+           "customer_uri": {
+               "_type": "customer", 
+               "key": "customer"
+           }, 
+           "debits_uri": {
+               "_type": "page", 
+               "key": "debits"
+           }, 
+           "holds_uri": {
+               "_type": "page", 
+               "key": "holds"
+           }, 
+           "credits_uri": {
+               "_type": "page", 
+               "key": "credits"
+           }, 
+           "cards_uri": {
+               "_type": "page", 
+               "key": "cards"
+           }
+       }, 
+       "meta": {}, 
+       "debits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/debits", 
+       "transactions_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/transactions", 
+       "email_address": null, 
+       "id": "AC6XoUMHxgABT6pBpQkb6rbW", 
+       "credits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/credits", 
+       "cards_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/cards"
+   }
 
 Response
 ~~~~~~~~
 
-Headers 
-^^^^^^^ 
- 
-.. code::  
- 
-    Status: 200 OK 
- 
-Body 
-^^^^ 
- 
-.. code:: javascript 
- 
-    { 
-        "bank_accounts_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/bank_accounts",  
-        "cards_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/cards",  
-        "created_at": "2012-12-15T22:49:45.101981Z",  
-        "credits_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/credits",  
-        "debits_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/debits",  
-        "email_address": "email.6@y.com",  
-        "holds_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/holds",  
-        "id": "AC62UHRPdY95uhWuF8VV0yrU",  
-        "meta": {},  
-        "name": null,  
-        "refunds_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/refunds",  
-        "roles": [ 
-            "merchant",  
-            "buyer" 
-        ],  
-        "transactions_uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU/transactions",  
-        "uri": "/v1/marketplaces/TEST-MP62PRebLxMEXPSzBbCrOuFQ/accounts/AC62UHRPdY95uhWuF8VV0yrU" 
-    } 
- 
+
+Headers
+^^^^^^^
+
+.. code::
+
+   Status: 200 OK
+
+
+Body
+^^^^
+
+.. code:: javascript
+
+   {
+     "_type": "account", 
+     "_uris": {
+       "holds_uri": {
+         "_type": "page", 
+         "key": "holds"
+       }, 
+       "bank_accounts_uri": {
+         "_type": "page", 
+         "key": "bank_accounts"
+       }, 
+       "refunds_uri": {
+         "_type": "page", 
+         "key": "refunds"
+       }, 
+       "customer_uri": {
+         "_type": "customer", 
+         "key": "customer"
+       }, 
+       "debits_uri": {
+         "_type": "page", 
+         "key": "debits"
+       }, 
+       "transactions_uri": {
+         "_type": "page", 
+         "key": "transactions"
+       }, 
+       "credits_uri": {
+         "_type": "page", 
+         "key": "credits"
+       }, 
+       "cards_uri": {
+         "_type": "page", 
+         "key": "cards"
+       }
+     }, 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/bank_accounts", 
+     "meta": {}, 
+     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/transactions", 
+     "email_address": null, 
+     "id": "AC70q5xcXN3wpmLC4N6EQdGg", 
+     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/holds", 
+     "name": "Benny Riemann", 
+     "roles": [
+       "merchant", 
+       "buyer"
+     ], 
+     "created_at": "2013-06-05T02:30:34.132070Z", 
+     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/refunds", 
+     "customer_uri": "/v1/customers/AC70q5xcXN3wpmLC4N6EQdGg", 
+     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/debits"
+   }
 
