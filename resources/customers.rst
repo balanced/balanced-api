@@ -105,29 +105,28 @@ Request
 ~~~~~~~
 
 ``name``
-   *optional* **string**. Name of the customer or representative of the business. Defaults to ``null``.
+   *optional* **string** or **null**. Name of the customer or representative of the business.
 
 ``email``
-   *optional* **string**. Email address of the customer. Defaults to ``null``.
+   *optional* **string** or **null**. Email address of the customer.
 
 ``meta``
-   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+   *optional* **key-value** or **null**. Single level mapping from string keys to string values.
 
 ``ssn_last4``
-   *optional* **string**. Last four digits of the Social Security Number of the customer or
-   representative of the business. Defaults to ``null``.
+   *optional* **string** or **null**. Last four digits of the Social Security Number of the customer or
+   representative of the business.
 
-``meta``
-   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+``business_name``
+   *optional* **string** or **null**. Full business name if the customer is a business. If there is a business
+   name and EIN present, the customer will be treated as a business instead
+   of a person.
 
 ``address``
 
    .. cssclass:: nested1
 
    *optional* **object**.
-
-      ``default``
-         *optional* **string**. Defaults to ``null``.
 
       ``line1``
          *optional* **string**. Street address of the person or business.
@@ -150,23 +149,120 @@ Request
 
 
 ``phone``
-   *optional* **string**. Phone number of the person or business. Defaults to ``null``.
+   *optional* **string** or **null**. Phone number of the person or business.
 
 ``dob``
-   *optional* **string**. Date of birth of the customer or representative of the business.
-   Format is YYYY-MM e.g. "1980-05" Defaults to ``null``.
+   *optional* **string** or **null**. Date of birth of the customer or representative of the business.
+   Format is YYYY-MM e.g. "1980-05"
 
 ``ein``
-   *optional* **string**. Employee Identification Number of the business if the customer is a
+   *optional* **string** or **null**. Employee Identification Number of the business if the customer is a
    business. If there is a business name and EIN present, the customer will
-   be treated as a business instead of a person. Defaults to ``null``.
+   be treated as a business instead of a person.
 
 ``facebook``
-   *optional* **string**. Facebook ID or username of the customer or representative of the
-   business Defaults to ``null``.
+   *optional* **string** or **null**. Facebook ID or username of the customer or representative of the
+   business
 
 ``twitter``
-   *optional* **string**. Twitter ID or username of the customer or representative of the business Defaults to ``null``.
+   *optional* **string** or **null**. Twitter ID or username of the customer or representative of the business
+
+``card_uri``
+   *optional* **string**. The URI of a card tokenized via *balanced.js*.
+
+``card``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      ``card_number``
+         *required* **string**. The digits of the credit card number.
+
+      ``expiration_year``
+         *required* **integer**. Expiration year.
+
+      ``expiration_month``
+         *required* **integer**. Expiration month (e.g. 1 for January).
+
+      ``security_code``
+         *optional* **string**. The 3-4 digit security code for the card.
+
+      ``name``
+         *optional* **string**.
+
+      ``phone_number``
+         *optional* **string**. E.164 formatted phone number.
+
+      ``city``
+         *optional* **string**. City. Defaults to ``null``.
+
+      ``region``
+         *optional* **string**. Region (e.g. state, province, etc). This field has been
+         **deprecated**.
+
+      ``state``
+         *optional* **string**. US state. This field has been **deprecated**.
+
+      ``postal_code``
+         *required* **string**. Postal code. This is known as a zip code in the USA.
+         *requires* ``country_code``.
+
+      ``street_address``
+         *optional* **string**. Street address.
+         *requires* ``postal_code``. Defaults to ``null``.
+
+      ``country_code``
+         *optional* **string**. `ISO-3166-3
+         <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+         three character country code. Defaults to ``USA``.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+      ``is_valid``
+         *optional* **boolean**. Indicates whether the card is active (``true``) or has been deactivated
+         (``false``). Defaults to ``true``.
+
+
+
+``bank_account_uri``
+   *optional* **string**. The URI of a bank account tokenized via *balanced.js*.
+
+``bank_account``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      ``name``
+         *required* **string**. Name on the bank account.
+
+      ``account_number``
+         *required* **string**. Bank account number.
+
+      ``bank_code``
+         *required* **string**. Bank account code.
+
+      ``routing_number``
+         *required* **string**. Bank account code.
+
+      ``bank_code``
+         *required* **string**.
+
+      ``routing_number``
+         *required* **string**.
+
+      ``account_type``
+         *optional* **string**.
+
+      ``type``
+         *optional* **string**.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+
 
 
 Body
@@ -217,7 +313,7 @@ Body
    {
      "_type": "customer", 
      "twitter": "@balanced", 
-     "bank_accounts_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/bank_accounts", 
      "phone": "(904) 555-1796", 
      "meta": {
        "meta can store": "any flat key/value data you like", 
@@ -234,17 +330,17 @@ Body
      }, 
      "source_uri": null, 
      "business_name": "Balanced", 
-     "id": "CU4UALP4h1o5KTwj28zkIEU", 
-     "credits_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/credits", 
-     "cards_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/cards", 
-     "holds_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/holds", 
+     "id": "CUrWYoWJKiOl6cWrn8jVkhi", 
+     "credits_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/credits", 
+     "cards_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/cards", 
+     "holds_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/holds", 
      "name": "John Lee Hooker", 
      "dob": null, 
      "ssn_last4": "xxxx", 
-     "created_at": "2013-06-05T02:31:21.752921Z", 
+     "created_at": "2013-06-06T23:16:03.511468Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU", 
-     "refunds_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/refunds", 
+     "uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi", 
+     "refunds_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -275,8 +371,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/debits", 
-     "transactions_uri": "/v1/customers/CU4UALP4h1o5KTwj28zkIEU/transactions", 
+     "debits_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/debits", 
+     "transactions_uri": "/v1/customers/CUrWYoWJKiOl6cWrn8jVkhi/transactions", 
      "destination_uri": null, 
      "email": "user@example.org", 
      "ein": "123456789"
@@ -311,7 +407,7 @@ Body
    {
      "_type": "customer", 
      "twitter": null, 
-     "bank_accounts_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/bank_accounts", 
      "phone": null, 
      "meta": {}, 
      "facebook": null, 
@@ -325,17 +421,17 @@ Body
      }, 
      "source_uri": null, 
      "business_name": null, 
-     "id": "CU5SZBVyZXLjVn0rGh9DkWY", 
-     "credits_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/credits", 
-     "cards_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/cards", 
-     "holds_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/holds", 
+     "id": "CUt0SEFAg8rOm1efpElP2uc", 
+     "credits_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/credits", 
+     "cards_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/cards", 
+     "holds_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/holds", 
      "name": null, 
      "dob": null, 
      "ssn_last4": null, 
-     "created_at": "2013-06-05T02:31:22.618258Z", 
+     "created_at": "2013-06-06T23:16:04.453902Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY", 
-     "refunds_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/refunds", 
+     "uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc", 
+     "refunds_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -366,8 +462,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/debits", 
-     "transactions_uri": "/v1/customers/CU5SZBVyZXLjVn0rGh9DkWY/transactions", 
+     "debits_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/debits", 
+     "transactions_uri": "/v1/customers/CUt0SEFAg8rOm1efpElP2uc/transactions", 
      "destination_uri": null, 
      "email": null, 
      "ein": null
@@ -412,11 +508,11 @@ Body
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6IIXuoA0UWUxduVgD5PmJg", 
+         "id": "AC7cJaCfbjyZlQD229pVHoQv", 
          "email": null, 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/bank_accounts", 
          "phone": "+16505551234", 
          "_uris": {
            "transactions_uri": {
@@ -452,28 +548,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/credits", 
-         "cards_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/cards", 
-         "holds_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/holds", 
+         "credits_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/credits", 
+         "cards_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/cards", 
+         "holds_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/holds", 
          "name": "William James", 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:18.407401Z", 
+         "created_at": "2013-06-06T23:15:06.345031Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg", 
-         "refunds_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/refunds", 
-         "debits_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/debits", 
-         "transactions_uri": "/v1/customers/AC6IIXuoA0UWUxduVgD5PmJg/transactions", 
+         "uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv", 
+         "refunds_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/refunds", 
+         "debits_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/debits", 
+         "transactions_uri": "/v1/customers/AC7cJaCfbjyZlQD229pVHoQv/transactions", 
          "ssn_last4": null, 
          "ein": "393483992"
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6GYfhsHiUt9sNvAxii2SsG", 
+         "id": "AC7blw98unHYJRxnuEEoTXQz", 
          "email": null, 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/bank_accounts", 
          "phone": "+16505551234", 
          "_uris": {
            "transactions_uri": {
@@ -509,28 +605,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": "Levain Bakery", 
-         "credits_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/credits", 
-         "cards_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/cards", 
-         "holds_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/holds", 
+         "credits_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/credits", 
+         "cards_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/cards", 
+         "holds_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/holds", 
          "name": "William James", 
          "dob": "1842-01", 
-         "created_at": "2013-06-05T02:30:16.839761Z", 
+         "created_at": "2013-06-06T23:15:05.116712Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG", 
-         "refunds_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/refunds", 
-         "debits_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/debits", 
-         "transactions_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG/transactions", 
+         "uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz", 
+         "refunds_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/refunds", 
+         "debits_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/debits", 
+         "transactions_uri": "/v1/customers/AC7blw98unHYJRxnuEEoTXQz/transactions", 
          "ssn_last4": "xxxx", 
          "ein": "253912384"
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6FHYIFdjvhki3hF6ZqEkbm", 
+         "id": "AC7ai9JceoGaJuONww3G6cHC", 
          "email": null, 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/bank_accounts", 
          "phone": "+16505551234", 
          "_uris": {
            "transactions_uri": {
@@ -566,28 +662,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": "Levain Bakery", 
-         "credits_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/credits", 
-         "cards_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/cards", 
-         "holds_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/holds", 
+         "credits_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/credits", 
+         "cards_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/cards", 
+         "holds_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/holds", 
          "name": "William James", 
          "dob": "1842-01", 
-         "created_at": "2013-06-05T02:30:15.717558Z", 
+         "created_at": "2013-06-06T23:15:04.182572Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm", 
-         "refunds_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/refunds", 
-         "debits_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/debits", 
-         "transactions_uri": "/v1/customers/AC6FHYIFdjvhki3hF6ZqEkbm/transactions", 
+         "uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC", 
+         "refunds_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/refunds", 
+         "debits_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/debits", 
+         "transactions_uri": "/v1/customers/AC7ai9JceoGaJuONww3G6cHC/transactions", 
          "ssn_last4": "xxxx", 
          "ein": "253912384"
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6EhJMLs2MRhi96oKrenvtg", 
+         "id": "AC795MDqTD7JfARMXuN2uszK", 
          "email": null, 
          "_type": "customer", 
-         "source_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/cards/CC6E36x9QZTpza9miY98ZwLl", 
-         "bank_accounts_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/bank_accounts", 
+         "source_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/cards/CC78WsRlMvHA9ntuIPcp75mE", 
+         "bank_accounts_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -627,28 +723,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/credits", 
-         "cards_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/cards", 
-         "holds_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/holds", 
+         "credits_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/credits", 
+         "cards_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/cards", 
+         "holds_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/holds", 
          "name": "Benny Riemann", 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:14.451958Z", 
+         "created_at": "2013-06-06T23:15:03.118708Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg", 
-         "refunds_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/refunds", 
-         "debits_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/debits", 
-         "transactions_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg/transactions", 
+         "uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK", 
+         "refunds_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/refunds", 
+         "debits_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/debits", 
+         "transactions_uri": "/v1/customers/AC795MDqTD7JfARMXuN2uszK/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "id": "AC77drSig6AAZXYtvLyx4pey", 
          "email": null, 
          "_type": "customer", 
-         "source_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/cards/CC6CfiuaGQLFK8KCmkdN9sLK", 
-         "bank_accounts_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/bank_accounts", 
+         "source_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/cards/CC7708hFSajwPepxuK7jy4Bk", 
+         "bank_accounts_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -688,28 +784,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/credits", 
-         "cards_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/cards", 
-         "holds_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/holds", 
+         "credits_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/credits", 
+         "cards_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/cards", 
+         "holds_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/holds", 
          "name": "Benny Riemann", 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:12.795445Z", 
+         "created_at": "2013-06-06T23:15:01.447210Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c", 
-         "refunds_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/refunds", 
-         "debits_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/debits", 
-         "transactions_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c/transactions", 
+         "uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey", 
+         "refunds_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/refunds", 
+         "debits_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/debits", 
+         "transactions_uri": "/v1/customers/AC77drSig6AAZXYtvLyx4pey/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
+         "id": "AC74u3FlUdGRzoRVqobCvhfW", 
          "email": null, 
          "_type": "customer", 
-         "source_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/cards/CC7uYy1Z3UTZykFqReFNpvwb", 
-         "bank_accounts_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+         "source_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/cards/CC6d1n4vID0GHQvPo8To1eU", 
+         "bank_accounts_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -749,28 +845,28 @@ Body
          "address": {}, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
-         "cards_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
-         "holds_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+         "credits_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/credits", 
+         "cards_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/cards", 
+         "holds_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/holds", 
          "name": "Benny Riemann", 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:09.949061Z", 
+         "created_at": "2013-06-06T23:14:59.021264Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
-         "refunds_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
-         "debits_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/debits", 
-         "transactions_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+         "uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW", 
+         "refunds_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/refunds", 
+         "debits_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/debits", 
+         "transactions_uri": "/v1/customers/AC74u3FlUdGRzoRVqobCvhfW/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6xZWzXQuCRVCvRzV2E8wxN", 
+         "id": "AC73tqZIlb2GVeLzP7r09dHV", 
          "email": "fee@poundpay.com", 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/bank_accounts", 
          "phone": "+16505551212", 
          "_uris": {
            "transactions_uri": {
@@ -805,28 +901,28 @@ Body
          "facebook": null, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/credits", 
-         "cards_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/cards", 
-         "holds_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/holds", 
+         "credits_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/credits", 
+         "cards_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/cards", 
+         "holds_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/holds", 
          "name": null, 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:08.864265Z", 
+         "created_at": "2013-06-06T23:14:58.117284Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN", 
-         "refunds_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/refunds", 
-         "debits_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/debits", 
-         "transactions_uri": "/v1/customers/AC6xZWzXQuCRVCvRzV2E8wxN/transactions", 
+         "uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV", 
+         "refunds_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/refunds", 
+         "debits_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/debits", 
+         "transactions_uri": "/v1/customers/AC73tqZIlb2GVeLzP7r09dHV/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6xYZFJYuW5g8XJPPuKOhCD", 
+         "id": "AC73tlmYDK7tMnmMcEz4j60f", 
          "email": "escrow@poundpay.com", 
          "_type": "customer", 
          "source_uri": null, 
-         "bank_accounts_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/bank_accounts", 
+         "bank_accounts_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/bank_accounts", 
          "phone": null, 
          "_uris": {
            "transactions_uri": {
@@ -862,28 +958,28 @@ Body
          "address": null, 
          "destination_uri": null, 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/credits", 
-         "cards_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/cards", 
-         "holds_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/holds", 
+         "credits_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/credits", 
+         "cards_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/cards", 
+         "holds_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/holds", 
          "name": null, 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:08.850803Z", 
+         "created_at": "2013-06-06T23:14:58.116138Z", 
          "is_identity_verified": false, 
-         "uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD", 
-         "refunds_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/refunds", 
-         "debits_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/debits", 
-         "transactions_uri": "/v1/customers/AC6xYZFJYuW5g8XJPPuKOhCD/transactions", 
+         "uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f", 
+         "refunds_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/refunds", 
+         "debits_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/debits", 
+         "transactions_uri": "/v1/customers/AC73tlmYDK7tMnmMcEz4j60f/transactions", 
          "ssn_last4": null, 
          "ein": null
        }, 
        {
          "twitter": null, 
          "meta": {}, 
-         "id": "AC6xEUte50oDdcfGLsXBLXHx", 
+         "id": "AC738T1zFtWV7uxzgchCPDSn", 
          "email": "whc@example.org", 
          "_type": "customer", 
-         "source_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts/BA6y061VCy7hxqPki9CsLoWX", 
-         "bank_accounts_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
+         "source_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/bank_accounts/BA73txY5gdJpzx1YQ6FYhnaf", 
+         "bank_accounts_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/bank_accounts", 
          "phone": "+16505551212", 
          "_uris": {
            "holds_uri": {
@@ -924,19 +1020,19 @@ Body
            }
          }, 
          "facebook": null, 
-         "destination_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts/BA6y061VCy7hxqPki9CsLoWX", 
+         "destination_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/bank_accounts/BA73txY5gdJpzx1YQ6FYhnaf", 
          "business_name": null, 
-         "credits_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/credits", 
-         "cards_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/cards", 
-         "holds_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/holds", 
+         "credits_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/credits", 
+         "cards_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/cards", 
+         "holds_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/holds", 
          "name": "William Henry Cavendish III", 
          "dob": null, 
-         "created_at": "2013-06-05T02:30:08.562678Z", 
+         "created_at": "2013-06-06T23:14:57.822657Z", 
          "is_identity_verified": true, 
-         "uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
-         "refunds_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
-         "debits_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/debits", 
-         "transactions_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
+         "uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn", 
+         "refunds_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/refunds", 
+         "debits_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/debits", 
+         "transactions_uri": "/v1/customers/AC738T1zFtWV7uxzgchCPDSn/transactions", 
          "ssn_last4": null, 
          "ein": null
        }
@@ -980,29 +1076,28 @@ Request
 ~~~~~~~
 
 ``name``
-   *optional* **string**. Name of the customer or representative of the business. Defaults to ``null``.
+   *optional* **string** or **null**. Name of the customer or representative of the business.
 
 ``email``
-   *optional* **string**. Email address of the customer. Defaults to ``null``.
+   *optional* **string** or **null**. Email address of the customer.
 
 ``meta``
-   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+   *optional* **key-value** or **null**. Single level mapping from string keys to string values.
 
 ``ssn_last4``
-   *optional* **string**. Last four digits of the Social Security Number of the customer or
-   representative of the business. Defaults to ``null``.
+   *optional* **string** or **null**. Last four digits of the Social Security Number of the customer or
+   representative of the business.
 
-``meta``
-   *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+``business_name``
+   *optional* **string** or **null**. Full business name if the customer is a business. If there is a business
+   name and EIN present, the customer will be treated as a business instead
+   of a person.
 
 ``address``
 
    .. cssclass:: nested1
 
    *optional* **object**.
-
-      ``default``
-         *optional* **string**. Defaults to ``null``.
 
       ``line1``
          *optional* **string**. Street address of the person or business.
@@ -1025,23 +1120,120 @@ Request
 
 
 ``phone``
-   *optional* **string**. Phone number of the person or business. Defaults to ``null``.
+   *optional* **string** or **null**. Phone number of the person or business.
 
 ``dob``
-   *optional* **string**. Date of birth of the customer or representative of the business.
-   Format is YYYY-MM e.g. "1980-05" Defaults to ``null``.
+   *optional* **string** or **null**. Date of birth of the customer or representative of the business.
+   Format is YYYY-MM e.g. "1980-05"
 
 ``ein``
-   *optional* **string**. Employee Identification Number of the business if the customer is a
+   *optional* **string** or **null**. Employee Identification Number of the business if the customer is a
    business. If there is a business name and EIN present, the customer will
-   be treated as a business instead of a person. Defaults to ``null``.
+   be treated as a business instead of a person.
 
 ``facebook``
-   *optional* **string**. Facebook ID or username of the customer or representative of the
-   business Defaults to ``null``.
+   *optional* **string** or **null**. Facebook ID or username of the customer or representative of the
+   business
 
 ``twitter``
-   *optional* **string**. Twitter ID or username of the customer or representative of the business Defaults to ``null``.
+   *optional* **string** or **null**. Twitter ID or username of the customer or representative of the business
+
+``card_uri``
+   *optional* **string**. The URI of a card tokenized via *balanced.js*.
+
+``card``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      ``card_number``
+         *required* **string**. The digits of the credit card number.
+
+      ``expiration_year``
+         *required* **integer**. Expiration year.
+
+      ``expiration_month``
+         *required* **integer**. Expiration month (e.g. 1 for January).
+
+      ``security_code``
+         *optional* **string**. The 3-4 digit security code for the card.
+
+      ``name``
+         *optional* **string**.
+
+      ``phone_number``
+         *optional* **string**. E.164 formatted phone number.
+
+      ``city``
+         *optional* **string**. City. Defaults to ``null``.
+
+      ``region``
+         *optional* **string**. Region (e.g. state, province, etc). This field has been
+         **deprecated**.
+
+      ``state``
+         *optional* **string**. US state. This field has been **deprecated**.
+
+      ``postal_code``
+         *required* **string**. Postal code. This is known as a zip code in the USA.
+         *requires* ``country_code``.
+
+      ``street_address``
+         *optional* **string**. Street address.
+         *requires* ``postal_code``. Defaults to ``null``.
+
+      ``country_code``
+         *optional* **string**. `ISO-3166-3
+         <http://www.iso.org/iso/home/standards/country_codes.htm#2012_iso3166-3>`_
+         three character country code. Defaults to ``USA``.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+      ``is_valid``
+         *optional* **boolean**. Indicates whether the card is active (``true``) or has been deactivated
+         (``false``). Defaults to ``true``.
+
+
+
+``bank_account_uri``
+   *optional* **string**. The URI of a bank account tokenized via *balanced.js*.
+
+``bank_account``
+
+   .. cssclass:: nested1
+
+   *optional* **object**.
+
+      ``name``
+         *required* **string**. Name on the bank account.
+
+      ``account_number``
+         *required* **string**. Bank account number.
+
+      ``bank_code``
+         *required* **string**. Bank account code.
+
+      ``routing_number``
+         *required* **string**. Bank account code.
+
+      ``bank_code``
+         *required* **string**.
+
+      ``routing_number``
+         *required* **string**.
+
+      ``account_type``
+         *optional* **string**.
+
+      ``type``
+         *optional* **string**.
+
+      ``meta``
+         *optional* **key-value**. Single level mapping from string keys to string values. Defaults to ``{}``.
+
+
 
 
 Headers
@@ -1060,24 +1252,24 @@ Body
    {
      "_type": "customer", 
      "twitter": null, 
-     "bank_accounts_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/bank_accounts", 
+     "bank_accounts_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/bank_accounts", 
      "phone": null, 
      "meta": {}, 
      "facebook": null, 
      "address": {}, 
      "source_uri": null, 
      "business_name": null, 
-     "id": "CUcg3mf9t505OfkrA1dZAMK", 
-     "credits_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/credits", 
-     "cards_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/cards", 
-     "holds_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/holds", 
+     "id": "CUyTfRWxX1BePUJJ4ujqO6j", 
+     "credits_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/credits", 
+     "cards_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/cards", 
+     "holds_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/holds", 
      "name": "Richie McCaw", 
      "dob": null, 
      "ssn_last4": null, 
-     "created_at": "2013-06-05T02:31:28.292314Z", 
+     "created_at": "2013-06-06T23:16:09.676084Z", 
      "is_identity_verified": false, 
-     "uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK", 
-     "refunds_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/refunds", 
+     "uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j", 
+     "refunds_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/refunds", 
      "_uris": {
        "holds_uri": {
          "_type": "page", 
@@ -1108,8 +1300,8 @@ Body
          "key": "cards"
        }
      }, 
-     "debits_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/debits", 
-     "transactions_uri": "/v1/customers/CUcg3mf9t505OfkrA1dZAMK/transactions", 
+     "debits_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/debits", 
+     "transactions_uri": "/v1/customers/CUyTfRWxX1BePUJJ4ujqO6j/transactions", 
      "destination_uri": null, 
      "email": null, 
      "ein": null
