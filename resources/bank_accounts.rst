@@ -28,6 +28,9 @@ Fields
 ``credits_uri``
    **string**.
 
+``customer``
+   **object**.
+
 ``fingerprint``
    **string**. Uniquely identifies the bank account (``account_number`` and
    ``routing_number``).
@@ -118,7 +121,7 @@ Body
 .. code:: javascript
 
    {
-     "credits_uri": "/v1/bank_accounts/BA7crrOhaob70K5gPhEDoFrO/credits", 
+     "credits_uri": "/v1/bank_accounts/BA35KuiDRPZNGEPdcZjk1PVE/credits", 
      "bank_name": "WELLS FARGO BANK NA", 
      "_type": "bank_account", 
      "bank_code": "121042882", 
@@ -138,13 +141,13 @@ Body
      "fingerprint": "5RmnMJRZsh25mMx985ApmR", 
      "routing_number": "121042882", 
      "can_debit": false, 
-     "id": "BA7crrOhaob70K5gPhEDoFrO", 
-     "verifications_uri": "/v1/bank_accounts/BA7crrOhaob70K5gPhEDoFrO/verifications", 
+     "id": "BA35KuiDRPZNGEPdcZjk1PVE", 
+     "verifications_uri": "/v1/bank_accounts/BA35KuiDRPZNGEPdcZjk1PVE/verifications", 
      "customer": null, 
      "verification_uri": null, 
      "name": "Homer Jay", 
-     "created_at": "2013-06-05T02:30:44.821165Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/bank_accounts/BA7crrOhaob70K5gPhEDoFrO", 
+     "created_at": "2013-06-06T21:59:44.678107Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/bank_accounts/BA35KuiDRPZNGEPdcZjk1PVE", 
      "is_valid": true, 
      "account_number": "xxx233a", 
      "type": "checking"
@@ -177,7 +180,7 @@ Body
 .. code:: javascript
 
    {
-     "credits_uri": "/v1/bank_accounts/BA7de69a7RvAkgUqwWndiuCq/credits", 
+     "credits_uri": "/v1/bank_accounts/BA36vg40P1D0Us1jlbKICMgw/credits", 
      "bank_name": "WELLS FARGO BANK NA", 
      "_type": "bank_account", 
      "bank_code": "121042882", 
@@ -197,13 +200,13 @@ Body
      "fingerprint": "5RmnMJRZsh25mMx985ApmR", 
      "routing_number": "121042882", 
      "can_debit": false, 
-     "id": "BA7de69a7RvAkgUqwWndiuCq", 
-     "verifications_uri": "/v1/bank_accounts/BA7de69a7RvAkgUqwWndiuCq/verifications", 
+     "id": "BA36vg40P1D0Us1jlbKICMgw", 
+     "verifications_uri": "/v1/bank_accounts/BA36vg40P1D0Us1jlbKICMgw/verifications", 
      "customer": null, 
      "verification_uri": null, 
      "name": "Homer Jay", 
-     "created_at": "2013-06-05T02:30:45.542411Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/bank_accounts/BA7de69a7RvAkgUqwWndiuCq", 
+     "created_at": "2013-06-06T21:59:45.350883Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/bank_accounts/BA36vg40P1D0Us1jlbKICMgw", 
      "is_valid": true, 
      "account_number": "xxx233a", 
      "type": "checking"
@@ -242,18 +245,18 @@ Body
 .. code:: javascript
 
    {
-     "first_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0", 
+     "first_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0", 
      "_type": "page", 
      "items": [
        {
          "customer": {
            "twitter": null, 
            "meta": {}, 
-           "id": "CU7f5AM7kd7Y9NJRe3d7RXJw", 
+           "id": "CU386UYGkRIxJ1og2jajjTE2", 
            "email": null, 
            "_type": "customer", 
            "source_uri": null, 
-           "bank_accounts_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/bank_accounts", 
+           "bank_accounts_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/bank_accounts", 
            "phone": "+16505551234", 
            "_uris": {
              "transactions_uri": {
@@ -291,19 +294,19 @@ Body
            }, 
            "facebook": null, 
            "address": {}, 
-           "destination_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu", 
+           "destination_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h", 
            "business_name": null, 
-           "credits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/credits", 
-           "cards_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/cards", 
-           "holds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/holds", 
+           "credits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/credits", 
+           "cards_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/cards", 
+           "holds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/holds", 
            "name": null, 
            "dob": null, 
-           "created_at": "2013-06-05T02:30:47.174948Z", 
+           "created_at": "2013-06-06T21:59:46.783063Z", 
            "is_identity_verified": true, 
-           "uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw", 
-           "refunds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/refunds", 
-           "debits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/debits", 
-           "transactions_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/transactions", 
+           "uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2", 
+           "refunds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/refunds", 
+           "debits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/debits", 
+           "transactions_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/transactions", 
            "ssn_last4": null, 
            "ein": "393483992"
          }, 
@@ -322,9 +325,9 @@ Body
          }, 
          "bank_code": "121042882", 
          "can_debit": false, 
-         "created_at": "2013-06-05T02:30:46.416613Z", 
+         "created_at": "2013-06-06T21:59:46.163059Z", 
          "verification_uri": null, 
-         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu", 
+         "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h", 
          "is_valid": true, 
          "meta": {}, 
          "account_number": "xxx233a", 
@@ -366,33 +369,33 @@ Body
                "key": "cards"
              }
            }, 
-           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/holds", 
+           "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/holds", 
            "name": "William James", 
            "roles": [
              "merchant"
            ], 
-           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/transactions", 
-           "created_at": "2013-06-05T02:30:46.607596Z", 
-           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe", 
-           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts", 
-           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/refunds", 
-           "customer_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe", 
+           "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/transactions", 
+           "created_at": "2013-06-06T21:59:46.286553Z", 
+           "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/refunds", 
+           "customer_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg", 
            "meta": {}, 
-           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/debits", 
+           "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/debits", 
            "email_address": null, 
-           "id": "AC7es2SmXDh2rcN8tgzidSOe", 
-           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/credits", 
-           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/cards"
+           "id": "AC37yiAn5M6zGCC30kJX3whg", 
+           "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/cards"
          }, 
          "routing_number": "121042882", 
-         "credits_uri": "/v1/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu/credits", 
+         "credits_uri": "/v1/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h/credits", 
          "type": "checking", 
-         "id": "BA7edXbVyyfTiUkCn1BijUvu", 
-         "verifications_uri": "/v1/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu/verifications"
+         "id": "BA37qcCBhJ5loKox7sEhiF3h", 
+         "verifications_uri": "/v1/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h/verifications"
        }
      ], 
      "previous_uri": null, 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0", 
      "_uris": {
        "first_uri": {
          "_type": "page", 
@@ -415,7 +418,7 @@ Body
      "offset": 0, 
      "total": 1, 
      "next_uri": null, 
-     "last_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0"
+     "last_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0"
    }
 
 List All Bank Accounts for an Account
@@ -451,18 +454,18 @@ Body
 .. code:: javascript
 
    {
-     "first_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0", 
+     "first_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0", 
      "_type": "page", 
      "items": [
        {
          "customer": {
            "twitter": null, 
            "meta": {}, 
-           "id": "CU7f5AM7kd7Y9NJRe3d7RXJw", 
+           "id": "CU386UYGkRIxJ1og2jajjTE2", 
            "email": null, 
            "_type": "customer", 
            "source_uri": null, 
-           "bank_accounts_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/bank_accounts", 
+           "bank_accounts_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/bank_accounts", 
            "phone": "+16505551234", 
            "_uris": {
              "transactions_uri": {
@@ -500,19 +503,19 @@ Body
            }, 
            "facebook": null, 
            "address": {}, 
-           "destination_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu", 
+           "destination_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h", 
            "business_name": null, 
-           "credits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/credits", 
-           "cards_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/cards", 
-           "holds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/holds", 
+           "credits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/credits", 
+           "cards_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/cards", 
+           "holds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/holds", 
            "name": null, 
            "dob": null, 
-           "created_at": "2013-06-05T02:30:47.174948Z", 
+           "created_at": "2013-06-06T21:59:46.783063Z", 
            "is_identity_verified": true, 
-           "uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw", 
-           "refunds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/refunds", 
-           "debits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/debits", 
-           "transactions_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/transactions", 
+           "uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2", 
+           "refunds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/refunds", 
+           "debits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/debits", 
+           "transactions_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/transactions", 
            "ssn_last4": null, 
            "ein": "393483992"
          }, 
@@ -531,9 +534,9 @@ Body
          }, 
          "bank_code": "121042882", 
          "can_debit": false, 
-         "created_at": "2013-06-05T02:30:46.416613Z", 
+         "created_at": "2013-06-06T21:59:46.163059Z", 
          "verification_uri": null, 
-         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu", 
+         "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h", 
          "is_valid": true, 
          "meta": {}, 
          "account_number": "xxx233a", 
@@ -575,33 +578,33 @@ Body
                "key": "cards"
              }
            }, 
-           "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/holds", 
+           "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/holds", 
            "name": "William James", 
            "roles": [
              "merchant"
            ], 
-           "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/transactions", 
-           "created_at": "2013-06-05T02:30:46.607596Z", 
-           "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe", 
-           "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts", 
-           "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/refunds", 
-           "customer_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe", 
+           "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/transactions", 
+           "created_at": "2013-06-06T21:59:46.286553Z", 
+           "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg", 
+           "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts", 
+           "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/refunds", 
+           "customer_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg", 
            "meta": {}, 
-           "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/debits", 
+           "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/debits", 
            "email_address": null, 
-           "id": "AC7es2SmXDh2rcN8tgzidSOe", 
-           "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/credits", 
-           "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/cards"
+           "id": "AC37yiAn5M6zGCC30kJX3whg", 
+           "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/credits", 
+           "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/cards"
          }, 
          "routing_number": "121042882", 
-         "credits_uri": "/v1/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu/credits", 
+         "credits_uri": "/v1/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h/credits", 
          "type": "checking", 
-         "id": "BA7edXbVyyfTiUkCn1BijUvu", 
-         "verifications_uri": "/v1/bank_accounts/BA7edXbVyyfTiUkCn1BijUvu/verifications"
+         "id": "BA37qcCBhJ5loKox7sEhiF3h", 
+         "verifications_uri": "/v1/bank_accounts/BA37qcCBhJ5loKox7sEhiF3h/verifications"
        }
      ], 
      "previous_uri": null, 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0", 
      "_uris": {
        "first_uri": {
          "_type": "page", 
@@ -624,7 +627,7 @@ Body
      "offset": 0, 
      "total": 1, 
      "next_uri": null, 
-     "last_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts?limit=2&offset=0"
+     "last_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts?limit=2&offset=0"
    }
 
 Associate a Bank Account with an Account
@@ -654,7 +657,7 @@ Body
        "name": "Homer Jay", 
        "bank_code": "121042882", 
        "type": "checking", 
-       "created_at": "2013-06-05T02:30:48.876026+00:00Z", 
+       "created_at": "2013-06-06T21:59:48.298484+00:00Z", 
        "account_number": "xxx233a", 
        "verification_uri": null, 
        "is_valid": true, 
@@ -669,14 +672,14 @@ Body
            }
        }, 
        "meta": {}, 
-       "credits_uri": "v1/bank_accounts/BA7h0ccmFymGhSENOU3GM5oI/credits", 
+       "credits_uri": "v1/bank_accounts/BA39OO6gHlBpZLrX4soUCdDO/credits", 
        "last_four": "233a", 
        "fingerprint": "5RmnMJRZsh25mMx985ApmR", 
        "routing_number": "121042882", 
        "can_debit": false, 
-       "id": "BA7h0ccmFymGhSENOU3GM5oI", 
-       "verifications_uri": "v1/bank_accounts/BA7h0ccmFymGhSENOU3GM5oI/verifications", 
-       "account_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe"
+       "id": "BA39OO6gHlBpZLrX4soUCdDO", 
+       "verifications_uri": "v1/bank_accounts/BA39OO6gHlBpZLrX4soUCdDO/verifications", 
+       "account_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg"
    }
 
 Response
@@ -697,23 +700,23 @@ Body
 .. code:: javascript
 
    {
-     "credits_uri": "/v1/bank_accounts/BA7iVqRsIEB6YqybOqftoa2r/credits", 
+     "credits_uri": "/v1/bank_accounts/BA3b5eeNUSPVOzD6xKJLHCN1/credits", 
      "bank_name": "WELLS FARGO BANK NA", 
      "_type": "bank_account", 
      "bank_code": "121042882", 
      "account": {
-       "customer_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe", 
+       "customer_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg", 
        "_type": "account", 
-       "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/holds", 
+       "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/holds", 
        "name": "William James", 
        "roles": [
          "merchant"
        ], 
-       "created_at": "2013-06-05T02:30:46.607596Z", 
+       "created_at": "2013-06-06T21:59:46.286553Z", 
        "meta": {}, 
-       "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe", 
-       "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts", 
-       "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/refunds", 
+       "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg", 
+       "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts", 
+       "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/refunds", 
        "_uris": {
          "holds_uri": {
            "_type": "page", 
@@ -748,12 +751,12 @@ Body
            "key": "cards"
          }
        }, 
-       "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/debits", 
-       "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/transactions", 
+       "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/debits", 
+       "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/transactions", 
        "email_address": null, 
-       "id": "AC7es2SmXDh2rcN8tgzidSOe", 
-       "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/credits", 
-       "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/cards"
+       "id": "AC37yiAn5M6zGCC30kJX3whg", 
+       "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/credits", 
+       "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/cards"
      }, 
      "_uris": {
        "verifications_uri": {
@@ -770,16 +773,16 @@ Body
      "fingerprint": "5RmnMJRZsh25mMx985ApmR", 
      "routing_number": "121042882", 
      "can_debit": false, 
-     "id": "BA7iVqRsIEB6YqybOqftoa2r", 
-     "verifications_uri": "/v1/bank_accounts/BA7iVqRsIEB6YqybOqftoa2r/verifications", 
+     "id": "BA3b5eeNUSPVOzD6xKJLHCN1", 
+     "verifications_uri": "/v1/bank_accounts/BA3b5eeNUSPVOzD6xKJLHCN1/verifications", 
      "customer": {
        "twitter": null, 
        "meta": {}, 
-       "id": "CU7f5AM7kd7Y9NJRe3d7RXJw", 
+       "id": "CU386UYGkRIxJ1og2jajjTE2", 
        "email": null, 
        "_type": "customer", 
        "source_uri": null, 
-       "bank_accounts_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/bank_accounts", 
+       "bank_accounts_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/bank_accounts", 
        "phone": "+16505551234", 
        "_uris": {
          "holds_uri": {
@@ -817,26 +820,26 @@ Body
        }, 
        "facebook": null, 
        "address": {}, 
-       "destination_uri": "/v1/customers/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7iVqRsIEB6YqybOqftoa2r", 
+       "destination_uri": "/v1/customers/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA3b5eeNUSPVOzD6xKJLHCN1", 
        "business_name": null, 
-       "credits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/credits", 
-       "cards_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/cards", 
-       "holds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/holds", 
+       "credits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/credits", 
+       "cards_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/cards", 
+       "holds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/holds", 
        "name": null, 
        "dob": null, 
-       "created_at": "2013-06-05T02:30:47.174948Z", 
+       "created_at": "2013-06-06T21:59:46.783063Z", 
        "is_identity_verified": true, 
-       "uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw", 
-       "refunds_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/refunds", 
-       "debits_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/debits", 
-       "transactions_uri": "/v1/customers/CU7f5AM7kd7Y9NJRe3d7RXJw/transactions", 
+       "uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2", 
+       "refunds_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/refunds", 
+       "debits_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/debits", 
+       "transactions_uri": "/v1/customers/CU386UYGkRIxJ1og2jajjTE2/transactions", 
        "ssn_last4": null, 
        "ein": "393483992"
      }, 
      "verification_uri": null, 
      "name": "Homer Jay", 
-     "created_at": "2013-06-05T02:30:50.606562Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC7es2SmXDh2rcN8tgzidSOe/bank_accounts/BA7iVqRsIEB6YqybOqftoa2r", 
+     "created_at": "2013-06-06T21:59:49.419282Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC37yiAn5M6zGCC30kJX3whg/bank_accounts/BA3b5eeNUSPVOzD6xKJLHCN1", 
      "is_valid": true, 
      "account_number": "xxx233a", 
      "type": "checking"

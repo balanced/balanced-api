@@ -25,9 +25,6 @@ Fields
 ``credits_uri``
    **string**. URI for all credits associated with the account.
 
-``customer_uri``
-   **string**.
-
 ``debits_uri``
    **string**. URI for all debits associated with the account.
 
@@ -101,7 +98,7 @@ Body
 .. code:: javascript
 
    {
-       "card_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/cards/CC6CfiuaGQLFK8KCmkdN9sLK", 
+       "card_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/cards/CC2KFEUVBH24b31kNbkxljJl", 
        "meta": {}, 
        "email_address": null, 
        "name": "Benny Riemann"
@@ -160,23 +157,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/transactions", 
      "email_address": null, 
-     "id": "AC6EhJMLs2MRhi96oKrenvtg", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/holds", 
+     "id": "AC2MjqNc8jEWuEgURiDB3cM0", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/holds", 
      "name": "Benny Riemann", 
      "roles": [
        "buyer"
      ], 
-     "created_at": "2013-06-05T02:30:14.451958Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/refunds", 
-     "customer_uri": "/v1/customers/AC6EhJMLs2MRhi96oKrenvtg", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6EhJMLs2MRhi96oKrenvtg/debits"
+     "created_at": "2013-06-06T21:59:27.398707Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/refunds", 
+     "customer_uri": "/v1/customers/AC2MjqNc8jEWuEgURiDB3cM0", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/debits"
    }
 
 Create a Business Merchant
@@ -258,7 +255,7 @@ Request
 
             ``street_address``
                *required* **string**. Street address.
-               *requires* ``postal_code``.
+               *requires* ``postal_code``. Defaults to ``null``.
 
             ``country_code``
                *required* **string**. `ISO-3166-3
@@ -287,8 +284,8 @@ Request
          *requires* ``country_code``.
 
       ``street_address``
-         *required* **string**. Street address.
-         *requires* ``postal_code``.
+         *optional* **string**. Street address.
+         *requires* ``postal_code``. Defaults to ``null``.
 
       ``country_code``
          *optional* **string**. `ISO-3166-3
@@ -382,23 +379,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/transactions", 
      "email_address": null, 
-     "id": "AC6GYfhsHiUt9sNvAxii2SsG", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/holds", 
+     "id": "AC2OCKliLQnUnZutMDCLYYH5", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/holds", 
      "name": "Levain Bakery", 
      "roles": [
        "merchant"
      ], 
-     "created_at": "2013-06-05T02:30:16.839761Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/refunds", 
-     "customer_uri": "/v1/customers/AC6GYfhsHiUt9sNvAxii2SsG", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6GYfhsHiUt9sNvAxii2SsG/debits"
+     "created_at": "2013-06-06T21:59:29.448647Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/refunds", 
+     "customer_uri": "/v1/customers/AC2OCKliLQnUnZutMDCLYYH5", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2OCKliLQnUnZutMDCLYYH5/debits"
    }
 
 Create a Person Merchant
@@ -480,8 +477,8 @@ Request
          *requires* ``country_code``.
 
       ``street_address``
-         *required* **string**. Street address.
-         *requires* ``postal_code``.
+         *optional* **string**. Street address.
+         *requires* ``postal_code``. Defaults to ``null``.
 
       ``country_code``
          *optional* **string**. `ISO-3166-3
@@ -567,23 +564,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/transactions", 
      "email_address": null, 
-     "id": "AC6KoUKKh6XlVHBxXuu6Zbw2", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/holds", 
+     "id": "AC2QPCn9KSKuvlqG3vdHpcpk", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/holds", 
      "name": "William James", 
      "roles": [
        "merchant"
      ], 
-     "created_at": "2013-06-05T02:30:19.898192Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/refunds", 
-     "customer_uri": "/v1/customers/AC6KoUKKh6XlVHBxXuu6Zbw2", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6KoUKKh6XlVHBxXuu6Zbw2/debits"
+     "created_at": "2013-06-06T21:59:31.414768Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/refunds", 
+     "customer_uri": "/v1/customers/AC2QPCn9KSKuvlqG3vdHpcpk", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2QPCn9KSKuvlqG3vdHpcpk/debits"
    }
 
 Retrieve an Account
@@ -644,23 +641,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/transactions", 
      "email_address": null, 
-     "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+     "id": "AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/holds", 
      "name": "Benny Riemann", 
      "roles": [
        "buyer"
      ], 
-     "created_at": "2013-06-05T02:30:09.949061Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
-     "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits"
+     "created_at": "2013-06-06T21:59:23.772410Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/refunds", 
+     "customer_uri": "/v1/customers/AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/debits"
    }
 
 .. code::
@@ -724,23 +721,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/transactions", 
      "email_address": null, 
-     "id": "AC6zdJPkzqXpIxTgvxpYse4G", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/holds", 
+     "id": "AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/holds", 
      "name": "Benny Riemann", 
      "roles": [
        "buyer"
      ], 
-     "created_at": "2013-06-05T02:30:09.949061Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/refunds", 
-     "customer_uri": "/v1/customers/AC6zdJPkzqXpIxTgvxpYse4G", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6zdJPkzqXpIxTgvxpYse4G/debits"
+     "created_at": "2013-06-06T21:59:23.772410Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/refunds", 
+     "customer_uri": "/v1/customers/AC2IeyzRJbL9DnV4nRy1RyQw", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/debits"
    }
 
 List all Accounts
@@ -770,7 +767,7 @@ Body
 .. code:: javascript
 
    {
-     "first_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=0", 
+     "first_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts?limit=2&offset=0", 
      "_type": "page", 
      "items": [
        {
@@ -809,24 +806,23 @@ Body
              "key": "cards"
            }
          }, 
-         "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/holds", 
-         "name": "William Henry Cavendish III", 
+         "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/holds", 
+         "name": "Benny Riemann", 
          "roles": [
-           "merchant", 
            "buyer"
          ], 
-         "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/transactions", 
-         "created_at": "2013-06-05T02:30:08.562678Z", 
-         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx", 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/bank_accounts", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/refunds", 
-         "customer_uri": "/v1/customers/AC6xEUte50oDdcfGLsXBLXHx", 
+         "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/transactions", 
+         "created_at": "2013-06-06T21:59:27.398707Z", 
+         "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0", 
+         "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/bank_accounts", 
+         "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/refunds", 
+         "customer_uri": "/v1/customers/AC2MjqNc8jEWuEgURiDB3cM0", 
          "meta": {}, 
-         "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/debits", 
-         "email_address": "whc@example.org", 
-         "id": "AC6xEUte50oDdcfGLsXBLXHx", 
-         "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6xEUte50oDdcfGLsXBLXHx/cards"
+         "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/debits", 
+         "email_address": null, 
+         "id": "AC2MjqNc8jEWuEgURiDB3cM0", 
+         "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/credits", 
+         "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2MjqNc8jEWuEgURiDB3cM0/cards"
        }, 
        {
          "_type": "account", 
@@ -864,27 +860,27 @@ Body
              "key": "cards"
            }
          }, 
-         "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/holds", 
+         "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/holds", 
          "name": "Benny Riemann", 
          "roles": [
            "buyer"
          ], 
-         "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/transactions", 
-         "created_at": "2013-06-05T02:30:12.795445Z", 
-         "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c", 
-         "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/bank_accounts", 
-         "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/refunds", 
-         "customer_uri": "/v1/customers/AC6Cqa5V3LtTgsLhwqk6BX4c", 
+         "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/transactions", 
+         "created_at": "2013-06-06T21:59:23.772410Z", 
+         "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw", 
+         "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/bank_accounts", 
+         "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/refunds", 
+         "customer_uri": "/v1/customers/AC2IeyzRJbL9DnV4nRy1RyQw", 
          "meta": {}, 
-         "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/debits", 
+         "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/debits", 
          "email_address": null, 
-         "id": "AC6Cqa5V3LtTgsLhwqk6BX4c", 
-         "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/credits", 
-         "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6Cqa5V3LtTgsLhwqk6BX4c/cards"
+         "id": "AC2IeyzRJbL9DnV4nRy1RyQw", 
+         "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/credits", 
+         "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2IeyzRJbL9DnV4nRy1RyQw/cards"
        }
      ], 
      "previous_uri": null, 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=0", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts?limit=2&offset=0", 
      "_uris": {
        "first_uri": {
          "_type": "page", 
@@ -906,8 +902,8 @@ Body
      "limit": 2, 
      "offset": 0, 
      "total": 8, 
-     "next_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=2", 
-     "last_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts?limit=2&offset=6"
+     "next_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts?limit=2&offset=2", 
+     "last_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts?limit=2&offset=6"
    }
 
 Update an Account
@@ -962,18 +958,18 @@ Body
 .. code:: javascript
 
    {
-       "customer_uri": "v1/customers/AC6SLZUwlvc2kNoNa4s4srxB", 
+       "customer_uri": "v1/customers/AC2VYryhiVHIrlRX2lvR8mcG", 
        "_type": "account", 
-       "holds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/holds", 
+       "holds_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/holds", 
        "name": [
            "my new name"
        ], 
        "roles": [
            "buyer"
        ], 
-       "created_at": "2013-06-05T02:30:27.335644+00:00Z", 
-       "bank_accounts_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/bank_accounts", 
-       "refunds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/refunds", 
+       "created_at": "2013-06-06T21:59:35.987052+00:00Z", 
+       "bank_accounts_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/bank_accounts", 
+       "refunds_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/refunds", 
        "_uris": {
            "transactions_uri": {
                "_type": "page", 
@@ -1011,12 +1007,12 @@ Body
        "meta": {
            "more-data": "here"
        }, 
-       "debits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/debits", 
-       "transactions_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/transactions", 
+       "debits_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/debits", 
+       "transactions_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/transactions", 
        "email_address": null, 
-       "id": "AC6SLZUwlvc2kNoNa4s4srxB", 
-       "credits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/credits", 
-       "cards_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6SLZUwlvc2kNoNa4s4srxB/cards"
+       "id": "AC2VYryhiVHIrlRX2lvR8mcG", 
+       "credits_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/credits", 
+       "cards_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2VYryhiVHIrlRX2lvR8mcG/cards"
    }
 
 Response
@@ -1072,25 +1068,25 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/bank_accounts", 
      "meta": {
        "more-data": "here"
      }, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/transactions", 
      "email_address": null, 
-     "id": "AC6V4Sk3GbKvsA8aFczsOBPN", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/holds", 
+     "id": "AC2Y8tI03DpOwA4jgOsTZ8ls", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/holds", 
      "name": "[u'my new name']", 
      "roles": [
        "buyer"
      ], 
-     "created_at": "2013-06-05T02:30:29.384525Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/refunds", 
-     "customer_uri": "/v1/customers/AC6V4Sk3GbKvsA8aFczsOBPN", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6V4Sk3GbKvsA8aFczsOBPN/debits"
+     "created_at": "2013-06-06T21:59:37.909128Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/refunds", 
+     "customer_uri": "/v1/customers/AC2Y8tI03DpOwA4jgOsTZ8ls", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC2Y8tI03DpOwA4jgOsTZ8ls/debits"
    }
 
 Promote a Buyer Account to a Merchant
@@ -1134,16 +1130,16 @@ Body
            "street_address": "167 West 74th Street", 
            "tax_id": "393-48-3992"
        }, 
-       "customer_uri": "v1/customers/AC6XoUMHxgABT6pBpQkb6rbW", 
+       "customer_uri": "v1/customers/AC30mh6nPelUVZ22zQXS0jf1", 
        "_type": "account", 
-       "holds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/holds", 
+       "holds_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/holds", 
        "name": "Benny Riemann", 
        "roles": [
            "buyer"
        ], 
-       "created_at": "2013-06-05T02:30:31.447963+00:00Z", 
-       "bank_accounts_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/bank_accounts", 
-       "refunds_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/refunds", 
+       "created_at": "2013-06-06T21:59:39.881760+00:00Z", 
+       "bank_accounts_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/bank_accounts", 
+       "refunds_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/refunds", 
        "_uris": {
            "transactions_uri": {
                "_type": "page", 
@@ -1179,12 +1175,12 @@ Body
            }
        }, 
        "meta": {}, 
-       "debits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/debits", 
-       "transactions_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/transactions", 
+       "debits_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/debits", 
+       "transactions_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/transactions", 
        "email_address": null, 
-       "id": "AC6XoUMHxgABT6pBpQkb6rbW", 
-       "credits_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/credits", 
-       "cards_uri": "v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC6XoUMHxgABT6pBpQkb6rbW/cards"
+       "id": "AC30mh6nPelUVZ22zQXS0jf1", 
+       "credits_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/credits", 
+       "cards_uri": "v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC30mh6nPelUVZ22zQXS0jf1/cards"
    }
 
 Response
@@ -1240,23 +1236,23 @@ Body
          "key": "cards"
        }
      }, 
-     "bank_accounts_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/bank_accounts", 
+     "bank_accounts_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/bank_accounts", 
      "meta": {}, 
-     "transactions_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/transactions", 
+     "transactions_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/transactions", 
      "email_address": null, 
-     "id": "AC70q5xcXN3wpmLC4N6EQdGg", 
-     "credits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/credits", 
-     "cards_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/cards", 
-     "holds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/holds", 
+     "id": "AC32FjmOwON60fHdxuu9iqtI", 
+     "credits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/credits", 
+     "cards_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/cards", 
+     "holds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/holds", 
      "name": "Benny Riemann", 
      "roles": [
        "merchant", 
        "buyer"
      ], 
-     "created_at": "2013-06-05T02:30:34.132070Z", 
-     "uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg", 
-     "refunds_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/refunds", 
-     "customer_uri": "/v1/customers/AC70q5xcXN3wpmLC4N6EQdGg", 
-     "debits_uri": "/v1/marketplaces/TEST-MP6xDq5coY66zGqeAztpK2Sj/accounts/AC70q5xcXN3wpmLC4N6EQdGg/debits"
+     "created_at": "2013-06-06T21:59:41.936303Z", 
+     "uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI", 
+     "refunds_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/refunds", 
+     "customer_uri": "/v1/customers/AC32FjmOwON60fHdxuu9iqtI", 
+     "debits_uri": "/v1/marketplaces/TEST-MP2GVQpfufeUMl3gJH9UWmRG/accounts/AC32FjmOwON60fHdxuu9iqtI/debits"
    }
 
