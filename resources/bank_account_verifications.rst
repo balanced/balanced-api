@@ -59,10 +59,10 @@ Body
      "_type": "bank_account_authentication", 
      "_uris": {}, 
      "state": "pending", 
-     "id": "BZ73GqcZZjG6pstvHg3jlLe8", 
+     "id": "BZ6Y4OEfc18M1GWUj8hC430K", 
      "attempts": 0, 
      "remaining_attempts": 3, 
-     "uri": "/v1/bank_accounts/BA72UYkfSvRbkZw0co5FMUl9/verifications/BZ73GqcZZjG6pstvHg3jlLe8"
+     "uri": "/v1/bank_accounts/BA6XqzI1Lr6ut0KwVQshePbi/verifications/BZ6Y4OEfc18M1GWUj8hC430K"
    }
 
 Retrieve a Bank Account Verification for a Bank Account
@@ -95,10 +95,10 @@ Body
      "_type": "bank_account_authentication", 
      "_uris": {}, 
      "state": "pending", 
-     "id": "BZ75lGgH5m7TqLLgT8D1h3AY", 
+     "id": "BZ6ZwuztRVmnLhMUvAEWxrqa", 
      "attempts": 0, 
      "remaining_attempts": 3, 
-     "uri": "/v1/bank_accounts/BA74tup6WmqptmRyEb4dgXtA/verifications/BZ75lGgH5m7TqLLgT8D1h3AY"
+     "uri": "/v1/bank_accounts/BA6YOiksYHMikBnjNX69f1fN/verifications/BZ6ZwuztRVmnLhMUvAEWxrqa"
    }
 
 List All Bank Account Verifications for a Bank Account
@@ -134,21 +134,21 @@ Body
 .. code:: javascript
 
    {
-     "first_uri": "/v1/bank_accounts/BA76tnMg9MgRXsTwpRLvlKaz/verifications?limit=10&offset=0", 
+     "first_uri": "/v1/bank_accounts/BA70x0zvREKMTn9iQe9PeNDp/verifications?limit=10&offset=0", 
      "_type": "page", 
      "items": [
        {
          "_type": "bank_account_authentication", 
          "attempts": 0, 
-         "uri": "/v1/bank_accounts/BA76tnMg9MgRXsTwpRLvlKaz/verifications/BZ77sEHYD9kkUAdSyyn9rUTs", 
+         "uri": "/v1/bank_accounts/BA70x0zvREKMTn9iQe9PeNDp/verifications/BZ71gxQuhzxp1jglOPl7qTY4", 
          "state": "pending", 
          "_uris": {}, 
-         "id": "BZ77sEHYD9kkUAdSyyn9rUTs", 
+         "id": "BZ71gxQuhzxp1jglOPl7qTY4", 
          "remaining_attempts": 3
        }
      ], 
      "previous_uri": null, 
-     "uri": "/v1/bank_accounts/BA76tnMg9MgRXsTwpRLvlKaz/verifications?limit=10&offset=0", 
+     "uri": "/v1/bank_accounts/BA70x0zvREKMTn9iQe9PeNDp/verifications?limit=10&offset=0", 
      "_uris": {
        "first_uri": {
          "_type": "page", 
@@ -171,7 +171,7 @@ Body
      "offset": 0, 
      "total": 1, 
      "next_uri": null, 
-     "last_uri": "/v1/bank_accounts/BA76tnMg9MgRXsTwpRLvlKaz/verifications?limit=10&offset=0"
+     "last_uri": "/v1/bank_accounts/BA70x0zvREKMTn9iQe9PeNDp/verifications?limit=10&offset=0"
    }
 
 Confirm a Bank Account Verification
@@ -212,9 +212,9 @@ Body
      "_type": "bank_account_authentication", 
      "_uris": {}, 
      "state": "verified", 
-     "id": "BZ79YPAHXafxOS74YdFLlWEE", 
+     "id": "BZ72YLcyWbUTTy2GwigoUYsM", 
      "attempts": 1, 
      "remaining_attempts": 2, 
-     "uri": "/v1/bank_accounts/BA78U6B752TWJNUFheuXKcZM/verifications/BZ79YPAHXafxOS74YdFLlWEE"
+     "uri": "/v1/bank_accounts/BA72cPO5x2E3Plgaxt0K56eQ/verifications/BZ72YLcyWbUTTy2GwigoUYsM"
    }
 
