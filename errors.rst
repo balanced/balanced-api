@@ -4,31 +4,30 @@ Errors
 Fields
 ------
 
-``status_code`` 
-    **string**. HTTP response code of the exception. 
- 
-``status`` 
-    **string**.  
- 
-``additional`` 
-    **string**. Any additional information that may describe how to resolve the issue. 
- 
-``category_type`` 
-    **string**. The type of the exception. Values: ``request``, 
-    ``banking``, or ``logical`` 
- 
-``category_code`` 
-    **string**. The code of the exception. 
- 
-``extras`` 
-    **object**. Any extra information associated with this exception. 
- 
-``description`` 
-    **string**. Description of the exception 
- 
-``request_id`` 
-    **string**. An ID that can be used to identify and debug the exception. 
- 
+``additional``
+   **string**. Any additional information that may describe how to resolve the issue.
+
+``category_code``
+   **string**. The code of the exception.
+
+``category_type``
+   **string**. The type of the exception. Values: ``request``,
+   ``banking``, or ``logical``
+
+``description``
+   **string**. Description of the exception
+
+``extras``
+   **key-value**. Any extra information associated with this exception.
+
+``request_id``
+   **string**. An ID that can be used to identify and debug the exception.
+
+``status``
+   **string**.
+
+``status_code``
+   **string**. HTTP response code of the exception.
 
 Status Codes
 ------------
@@ -61,533 +60,506 @@ Category Types
 Category Codes
 --------------
 
-authorization-failed 
-~~~~~~~~~~~~~~~~~~~~ 
- 
-The processor did not accept this hold. 
- 
-:status_code: 402 
-:category_type: banking 
-:category_code: authorization-failed 
- 
-card-declined 
-~~~~~~~~~~~~~ 
- 
-This card was declined by the processor. 
- 
-:status_code: 402 
-:category_type: banking 
-:category_code: card-declined 
- 
-funding-destination-declined 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The processor did not accept the transaction. 
- 
-:status_code: 402 
-:category_type: banking 
-:category_code: funding-destination-declined 
- 
-account-already-merchant 
-~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The account is already a merchant. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: account-already-merchant 
- 
-address-verification-failed 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This address could not be verified. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: address-verification-failed 
- 
-authorization-expired 
-~~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold has already expired. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: authorization-expired 
- 
-bank-account-already-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The bank account is already associated with an account -- it cannot be 
-associated. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: bank-account-already-associated 
- 
-bank-account-authentication-failed 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-Bank account authentication amounts do not match. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: bank-account-authentication-failed 
- 
-bank-account-authentication-not-pending 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-Bank account authentication is not in state ``pending``. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: bank-account-authentication-not-pending 
- 
-bank-account-not-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The bank account is not associated with the given account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: bank-account-not-associated 
- 
-bank-account-not-valid 
-~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This bank account has already been marked as invalid/deactivated. It cannot 
-be used again. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: bank-account-not-valid 
- 
-business-kyc 
-~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: business-kyc 
- 
-business-principal-kyc 
-~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: business-principal-kyc 
- 
-cannot-associate-bank-account 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The bank account was tokenized on a different marketplace than the one 
-used for this request. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: cannot-associate-bank-account 
- 
-cannot-associate-card 
-~~~~~~~~~~~~~~~~~~~~~ 
- 
-The card was tokenized on a different marketplace than the one used for 
-this request. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: cannot-associate-card 
- 
-cannot-associate-merchant-with-account 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The merchant information was created on a different marketplace than the 
-one used for this request. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: cannot-associate-merchant-with-account 
- 
-cannot-capture-authorization 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold has already been captured or voided, and cannot be captured. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: cannot-capture-authorization 
- 
-cannot-void-authorization 
-~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold has already been captured or voided, and cannot be voided. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: cannot-void-authorization 
- 
-capture-void-attempt 
-~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold has already been captured, which cannot be reversed. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: capture-void-attempt 
- 
-card-already-funding-src 
-~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The card is already associated with an account -- it cannot be associated 
-again. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: card-already-funding-src 
- 
-card-not-associated 
-~~~~~~~~~~~~~~~~~~~ 
- 
-The card is not associated with the given account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: card-not-associated 
- 
-card-not-valid 
-~~~~~~~~~~~~~~ 
- 
-This card has already been marked as invalid/deactivated. It cannot be used 
-again. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: card-not-valid 
- 
-card-not-validated 
-~~~~~~~~~~~~~~~~~~ 
- 
-The card could not be validated -- either the card number or security code 
-may be wrong. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: card-not-validated 
- 
-debit-already-refunded 
-~~~~~~~~~~~~~~~~~~~~~~ 
- 
-Debit has already been fully refunded. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: debit-already-refunded 
- 
-debit-not-found 
-~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: debit-not-found 
- 
-duplicate-email-address 
-~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-An account with the given email address already exists. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: duplicate-email-address 
- 
-funding-destination-already-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding destination is already associated with an account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-destination-already-associated 
- 
-funding-destination-not-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding destination is not associated with the account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-destination-not-associated 
- 
-funding-destination-not-creditable 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding destination cannot have a credit created against it. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-destination-not-creditable 
- 
-funding-source-already-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source is already associated with an account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-already-associated 
- 
-funding-source-not-associated 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source is not associated with an account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-associated 
- 
-funding-source-not-authorizable 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source cannot have an authorization created against 
-it. Authorizations are only valid for card-type funding sources. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-authorizable 
- 
-funding-source-not-debitable 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source cannot have a debit created against it. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-debitable 
- 
-funding-source-not-hold 
-~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source cannot have a hold created against it. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-hold 
- 
-funding-source-not-refundable 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source cannot be refunded. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-refundable 
- 
-funding-source-not-settle 
-~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The given funding source cannot settle. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: funding-source-not-settle 
- 
-hold-not-associated-account 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold is not associated with this account. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: hold-not-associated-account 
- 
-hold-not-associated-marketplace 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold is not associated with this marketplace. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: hold-not-associated-marketplace 
- 
-identity-verification-error 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: identity-verification-error 
- 
-insufficient-funds 
-~~~~~~~~~~~~~~~~~~ 
- 
-Marketplace escrow balance is insufficient to issue this credit. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: insufficient-funds 
- 
-invoice-already-settled 
-~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: invoice-already-settled 
- 
-invoice-busy 
-~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: invoice-busy 
- 
-invoice-invalid-total-fee 
-~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: invoice-invalid-total-fee 
- 
-invoice-no-funding-source 
-~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: invoice-no-funding-source 
- 
-invoice-unripe 
-~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: invoice-unripe 
- 
-marketplace-already-created 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-Marketplace has already been created. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: marketplace-already-created 
- 
-multiple-debits 
-~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: multiple-debits 
- 
-no-funding-destination 
-~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The account has no valid funding destinations. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: no-funding-destination 
- 
-no-funding-source 
-~~~~~~~~~~~~~~~~~ 
- 
-The account has no valid funding sources. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: no-funding-source 
- 
-person-kyc 
-~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: person-kyc 
- 
-refund-insufficient-funds 
-~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-Marketplace escrow balance is insufficient to issue this refund. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: refund-insufficient-funds 
- 
-reverse-void-attempt 
-~~~~~~~~~~~~~~~~~~~~ 
- 
-This hold has already been voided, which cannot be reversed. 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: reverse-void-attempt 
- 
-unexpected-payload 
-~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 409 
-:category_type: logical 
-:category_code: unexpected-payload 
- 
-incomplete-account-info 
-~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-No buyer or merchant info was provided. Either "merchant/merchant_uri" or 
-"card/card_uri" fields must be present. 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: incomplete-account-info 
- 
-invalid-amount 
-~~~~~~~~~~~~~~ 
- 
-Refund amount cannot be greater than the amount of the original debit. 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: invalid-amount 
- 
-invalid-bank-account-number 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-This bank account number is not alpha numeric (ascii). It can not be used. 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: invalid-bank-account-number 
- 
-invalid-routing-number 
-~~~~~~~~~~~~~~~~~~~~~~ 
- 
-The routing number provided for the bank account was invalid. 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: invalid-routing-number 
- 
-invoice-illegal-funding-source 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: invoice-illegal-funding-source 
- 
-invoice-invalid-funding-source 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: invoice-invalid-funding-source 
- 
-precog-bad-request 
-~~~~~~~~~~~~~~~~~~ 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: precog-bad-request 
- 
-refund-invalid-debit-state 
-~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- 
-State of debit to refund must be ``succeeded``. 
- 
-:status_code: 400 
-:category_type: request 
-:category_code: refund-invalid-debit-state 
- 
+authorization-failed
+~~~~~~~~~~~~~~~~~~~~
+
+The processor did not accept this hold.
+
+:status_code:402
+:category_type:banking
+:category_code:authorization-failed
+
+card-declined
+~~~~~~~~~~~~~
+
+This card was declined by the processor.
+
+:status_code:402
+:category_type:banking
+:category_code:card-declined
+
+funding-destination-declined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The processor did not accept the transaction.
+
+:status_code:402
+:category_type:banking
+:category_code:funding-destination-declined
+
+account-already-merchant
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The account is already a merchant.
+
+:status_code:409
+:category_type:logical
+:category_code:account-already-merchant
+
+address-verification-failed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This address could not be verified.
+
+:status_code:409
+:category_type:logical
+:category_code:address-verification-failed
+
+authorization-expired
+~~~~~~~~~~~~~~~~~~~~~
+
+This hold has already expired.
+
+:status_code:409
+:category_type:logical
+:category_code:authorization-expired
+
+bank-account-already-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The bank account is already associated with an account -- it cannot be
+associated.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-already-associated
+
+bank-account-authentication-already-exists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bank account authentication amounts do not match.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-authentication-already-exists
+
+bank-account-authentication-failed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bank account authentication amounts do not match.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-authentication-failed
+
+bank-account-authentication-not-pending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bank account authentication is not in state ``pending``.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-authentication-not-pending
+
+bank-account-not-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The bank account is not associated with the given account.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-not-associated
+
+bank-account-not-valid
+~~~~~~~~~~~~~~~~~~~~~~
+
+This bank account has already been marked as invalid/deactivated. It cannot
+be used again.
+
+:status_code:409
+:category_type:logical
+:category_code:bank-account-not-valid
+
+business-kyc
+~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:business-kyc
+
+business-principal-kyc
+~~~~~~~~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:business-principal-kyc
+
+cannot-associate-bank-account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The bank account was tokenized on a different marketplace than the one
+used for this request.
+
+:status_code:409
+:category_type:logical
+:category_code:cannot-associate-bank-account
+
+cannot-associate-card
+~~~~~~~~~~~~~~~~~~~~~
+
+The card was tokenized on a different marketplace than the one used for
+this request.
+
+:status_code:409
+:category_type:logical
+:category_code:cannot-associate-card
+
+cannot-associate-merchant-with-account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The merchant information was created on a different marketplace than the
+one used for this request.
+
+:status_code:409
+:category_type:logical
+:category_code:cannot-associate-merchant-with-account
+
+cannot-capture-authorization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This hold has already been captured or voided, and cannot be captured.
+
+:status_code:409
+:category_type:logical
+:category_code:cannot-capture-authorization
+
+cannot-void-authorization
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This hold has already been captured or voided, and cannot be voided.
+
+:status_code:409
+:category_type:logical
+:category_code:cannot-void-authorization
+
+capture-void-attempt
+~~~~~~~~~~~~~~~~~~~~
+
+This hold has already been captured, which cannot be reversed.
+
+:status_code:409
+:category_type:logical
+:category_code:capture-void-attempt
+
+card-already-funding-src
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The card is already associated with an account -- it cannot be associated
+again.
+
+:status_code:409
+:category_type:logical
+:category_code:card-already-funding-src
+
+card-not-associated
+~~~~~~~~~~~~~~~~~~~
+
+The card is not associated with the given account.
+
+:status_code:409
+:category_type:logical
+:category_code:card-not-associated
+
+card-not-valid
+~~~~~~~~~~~~~~
+
+This card has already been marked as invalid/deactivated. It cannot be used
+again.
+
+:status_code:409
+:category_type:logical
+:category_code:card-not-valid
+
+card-not-validated
+~~~~~~~~~~~~~~~~~~
+
+The card could not be validated -- either the card number or security code
+may be wrong.
+
+:status_code:409
+:category_type:logical
+:category_code:card-not-validated
+
+debit-already-refunded
+~~~~~~~~~~~~~~~~~~~~~~
+
+Debit has already been fully refunded.
+
+:status_code:409
+:category_type:logical
+:category_code:debit-already-refunded
+
+debit-not-found
+~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:debit-not-found
+
+duplicate-email-address
+~~~~~~~~~~~~~~~~~~~~~~~
+
+An account with the given email address already exists.
+
+:status_code:409
+:category_type:logical
+:category_code:duplicate-email-address
+
+funding-destination-already-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding destination is already associated with an account.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-destination-already-associated
+
+funding-destination-not-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding destination is not associated with the account.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-destination-not-associated
+
+funding-destination-not-creditable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding destination cannot have a credit created against it.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-destination-not-creditable
+
+funding-source-already-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source is already associated with an account.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-already-associated
+
+funding-source-not-associated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source is not associated with an account.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-not-associated
+
+funding-source-not-authorizable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source cannot have an authorization created against
+it. Authorizations are only valid for card-type funding sources.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-not-authorizable
+
+funding-source-not-debitable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source cannot have a debit created against it.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-not-debitable
+
+funding-source-not-hold
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source cannot have a hold created against it.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-not-hold
+
+funding-source-not-refundable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The given funding source cannot be refunded.
+
+:status_code:409
+:category_type:logical
+:category_code:funding-source-not-refundable
+
+hold-not-associated-account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This hold is not associated with this account.
+
+:status_code:409
+:category_type:logical
+:category_code:hold-not-associated-account
+
+hold-not-associated-marketplace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This hold is not associated with this marketplace.
+
+:status_code:409
+:category_type:logical
+:category_code:hold-not-associated-marketplace
+
+identity-verification-error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:identity-verification-error
+
+insufficient-funds
+~~~~~~~~~~~~~~~~~~
+
+Marketplace balance is insufficient to issue this credit
+
+:status_code:409
+:category_type:logical
+:category_code:insufficient-funds
+
+insufficient-funds
+~~~~~~~~~~~~~~~~~~
+
+Marketplace escrow balance is insufficient to issue this credit.
+
+:status_code:409
+:category_type:logical
+:category_code:insufficient-funds
+
+insufficient-funds
+~~~~~~~~~~~~~~~~~~
+
+Account balance is insufficient to issue this debit
+
+:status_code:409
+:category_type:logical
+:category_code:insufficient-funds
+
+marketplace-already-created
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Marketplace has already been created.
+
+:status_code:409
+:category_type:logical
+:category_code:marketplace-already-created
+
+marketplace-cannot-prepay-fees
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:marketplace-cannot-prepay-fees
+
+multiple-debits
+~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:multiple-debits
+
+no-funding-destination
+~~~~~~~~~~~~~~~~~~~~~~
+
+The account has no valid funding destinations.
+
+:status_code:409
+:category_type:logical
+:category_code:no-funding-destination
+
+no-funding-source
+~~~~~~~~~~~~~~~~~
+
+The account has no valid funding sources.
+
+:status_code:409
+:category_type:logical
+:category_code:no-funding-source
+
+person-kyc
+~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:person-kyc
+
+precog-logical-error
+~~~~~~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:precog-logical-error
+
+refund-insufficient-funds
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Marketplace escrow balance is insufficient to issue this refund.
+
+:status_code:409
+:category_type:logical
+:category_code:refund-insufficient-funds
+
+unexpected-payload
+~~~~~~~~~~~~~~~~~~
+
+:status_code:409
+:category_type:logical
+:category_code:unexpected-payload
+
+incomplete-account-info
+~~~~~~~~~~~~~~~~~~~~~~~
+
+No buyer or merchant info was provided. Either "merchant/merchant_uri" or
+"card/card_uri" fields must be present.
+
+:status_code:400
+:category_type:request
+:category_code:incomplete-account-info
+
+invalid-amount
+~~~~~~~~~~~~~~
+
+Refund amount cannot be greater than the amount of the original debit.
+
+:status_code:400
+:category_type:request
+:category_code:invalid-amount
+
+invalid-bank-account-number
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This bank account number is not alpha numeric (ascii). It can not be used.
+
+:status_code:400
+:category_type:request
+:category_code:invalid-bank-account-number
+
+invalid-routing-number
+~~~~~~~~~~~~~~~~~~~~~~
+
+The routing number provided for the bank account was invalid.
+
+:status_code:400
+:category_type:request
+:category_code:invalid-routing-number
+
+precog-bad-request
+~~~~~~~~~~~~~~~~~~
+
+:status_code:400
+:category_type:request
+:category_code:precog-bad-request
+
+refund-invalid-debit-state
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+State of debit to refund must be ``succeeded``.
+
+:status_code:400
+:category_type:request
+:category_code:refund-invalid-debit-state
 
