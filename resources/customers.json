@@ -1,78 +1,105 @@
 {
-	"$schema": "http://json-schema.org/draft-03/schema#",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"properties": {
-        "uri": {
+        "id": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
         "created_at": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "required": true
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "required": true
         },
         "name": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "business_name": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "email": {
-            "type": "string",
-            "format": "email"
+            "type": ["string", "null"],
+            "format": "email",
+            "required": true
         },
         "source": {
-            "$ref": "<url to financial instrument"
+            "type": {
+                "anyOf": [
+                    { "type": "null" },
+                    { "$ref": "<url to financial instrument" }
+                ]
+            },
+            "required": true
         },
         "destination": {
-            "$ref": "<url to financial instrument"
+            "type": {
+                "anyOf": [
+                    { "type": "null" },
+                    { "$ref": "<url to financial instrument" }
+                ]
+            },
+            "required": true
         },
         "phone": {
-            "type": "string",
-            "format": "phone"
+            "type": ["string", "null"],
+            "format": "phone",
+            "required": true
         },
         "ssn_last4": {
-            "type": "string",
-            "minLength": 4,
-            "maxLength": 4
+            "type": ["string", "null"],
+            "pattern": "[0-9]{4}",
+            "required": true
         },
         "ein": {
             "type": "string",
-            "minLength": 9,
-            "maxLength": 9
+            "pattern": "[0-9]{9}",
+            "required": true
         },
         "dob_month": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 12
+            "maximum": 12,
+            "required": true
         },
         "dob_year": {
-            "type": "integer"
+            "type": "integer",
+            "required": true
         },
         "cards_uri": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
         "bank_accounts_uri": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
         "debits_uri": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
         "credits_uri": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
 		"address": {
-            "$ref": "<url to address definition"
+            "$ref": "<url to address definition",
+            "required": true
 		},
         "meta": {
-            "type": "object"
+            "type": "object",
+            "required": true
         }
 	}
 }
