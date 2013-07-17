@@ -31,21 +31,18 @@
             "required": true
         },
         "source": {
-            "type": {
-                "anyOf": [
-                    { "type": "null" },
-                    { "$ref": "<url to financial instrument" }
-                ]
-            },
+            "anyOf": [
+                { "type": "null" },
+                { "$ref": "cards.json" },
+                { "$ref": "bank_accounts.json" }
+            ],
             "required": true
         },
         "destination": {
-            "type": {
-                "anyOf": [
-                    { "type": "null" },
-                    { "$ref": "<url to financial instrument" }
-                ]
-            },
+            "anyOf": [
+                { "type": "null" },
+                { "$ref": "bank_accounts.json" }
+            ],
             "required": true
         },
         "phone": {
@@ -94,12 +91,13 @@
             "required": true
         },
 		"address": {
-            "$ref": "<url to address definition",
+            "$ref": "address.json",
             "required": true
 		},
         "meta": {
             "type": "object",
             "required": true
         }
-	}
+	},
+    "additionalProperties": false
 }
