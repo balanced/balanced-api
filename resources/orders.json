@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "id": "<url to def on github>",
+    "uri": "https://api.balancedpayments.com/orders",
+    "properties": {
+        "uri": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "debits_uri": {
+            "type": "string",
+            "format": "uri"
+        },
+        "credits_uri": {
+            "type": "string",
+            "format": "uri"
+        },
+        "refunds_uri": {
+            "type": "string",
+            "format": "uri"
+        },
+        "reversals_uri": {
+            "type": "string",
+            "format": "uri"
+        },
+        "currency": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "escrowed": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "marketplace_fee": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "description": {
+            "type": "string",
+            "default": null
+        },
+        "delivery_address": {
+            "$ref": "<url to address definition"
+        },
+        "meta": {
+            "type": "object"
+        }
+    }
+}

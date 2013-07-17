@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "line1": {
+            "type": "string"
+        },
+        "line2": {
+            "type": "string"
+        },
+    	"locality": {
+    		"type": "string"
+    	},
+        "region": {
+            "type": "string"
+        },
+        "postal_code": {
+            "type": "string"
+        },
+        "country_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
+        }
+    }
+}
