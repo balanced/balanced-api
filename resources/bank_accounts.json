@@ -44,7 +44,7 @@
             "required": true
         },
 		"address": {
-            "$ref": "address.json",
+            "$ref": "../address.json",
             "required": true
 		},
         "signature": {

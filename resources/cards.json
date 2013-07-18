@@ -60,7 +60,7 @@
             "required": true
         },
 		"address": {
-            "$ref": "address.json",
+            "$ref": "../address.json",
             "required": true
 		},
         "avs_result_code": {
