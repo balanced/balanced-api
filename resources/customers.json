@@ -70,6 +70,10 @@
             "type": "integer",
             "required": true
         },
+        "merchant_status": {
+            "type": "string",
+            "enum": ["need-more-information", "underwritten", "rejected"]
+        },
         "cards_uri": {
             "type": "string",
             "format": "uri",
