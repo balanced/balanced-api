@@ -19,7 +19,7 @@
         },
         "customer": {
             "anyOf": [
-                { "type": "string" },
+                { "type": "null" },
                 { "$ref": "customers.json" }
             ],
             "required": true
