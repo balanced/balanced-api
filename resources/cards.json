@@ -85,10 +85,6 @@
             "type": "boolean",
             "required": true
         },
-        "can_credit": {
-            "type": "boolean",
-            "required": true
-        },
         "is_verified": {
             "type": "boolean",
             "required": true
