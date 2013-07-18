@@ -89,7 +89,7 @@
             "type": "boolean",
             "required": true
         },
-        "holds_uri": {
+        "card_authorizations_uri": {
             "type": "string",
             "format": "uri",
             "required": true
