@@ -63,6 +63,11 @@
             "type": ["string", "null"],
             "required": true
         },
+        "status": {
+            "type": "string",
+            "enum": ["pending", "succeeded", "failed"],
+            "required": true
+        },
         "failure_reason_code": {
             "type": ["string", "null"],
             "required": true
