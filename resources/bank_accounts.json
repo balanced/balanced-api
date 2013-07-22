@@ -1,7 +1,7 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"type": "object",
-	"properties": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
         "id": {
             "type": "string",
             "format": "uri",
@@ -43,10 +43,10 @@
             "enum": ["checking", "savings"],
             "required": true
         },
-		"address": {
+        "address": {
             "$ref": "../address.json",
             "required": true
-		},
+        },
         "signature": {
             "type": "string",
             "required": true

@@ -1,7 +1,7 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"type": "object",
-	"properties": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
         "id": {
             "type": "string",
             "format": "uri",
@@ -59,10 +59,10 @@
             "type": "string",
             "required": true
         },
-		"address": {
+        "address": {
             "$ref": "../address.json",
             "required": true
-		},
+        },
         "avs_result_code": {
             "type": "string",
             "pattern": "[A-Z]",

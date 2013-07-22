@@ -1,7 +1,7 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"type": "object",
-	"properties": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
         "id": {
             "type": "string",
             "format": "uri",
@@ -94,14 +94,14 @@
             "format": "uri",
             "required": true
         },
-		"address": {
+        "address": {
             "$ref": "../address.json",
             "required": true
-		},
+        },
         "meta": {
             "type": "object",
             "required": true
         }
-	},
+    },
     "additionalProperties": false
 }
