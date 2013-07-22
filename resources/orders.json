@@ -1,10 +1,13 @@
 {
-    "$schema": "http://json-schema.org/draft-03/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "id": "<url to def on github>",
-    "uri": "https://api.balancedpayments.com/orders",
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/orders.json",
     "properties": {
-        "uri": {
+        "id": {
+            "type": "string",
+            "pattern": "OR[a-zA-Z0-9]{22}"
+        },
+        "href": {
             "type": "string",
             "format": "uri"
         },
@@ -15,22 +18,6 @@
         "updated_at": {
             "type": "string",
             "format": "date-time"
-        },
-        "debits_uri": {
-            "type": "string",
-            "format": "uri"
-        },
-        "credits_uri": {
-            "type": "string",
-            "format": "uri"
-        },
-        "refunds_uri": {
-            "type": "string",
-            "format": "uri"
-        },
-        "reversals_uri": {
-            "type": "string",
-            "format": "uri"
         },
         "currency": {
             "type": "string",
@@ -58,6 +45,7 @@
         },
         "meta": {
             "type": "object"
-        }
+        },
+        "links": []
     }
 }
