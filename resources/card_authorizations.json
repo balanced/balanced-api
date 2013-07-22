@@ -1,8 +1,14 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/card_authorizations.json",
+   	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"properties": {
         "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "HL[a-zA-Z0-9]{22}",
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -60,10 +66,13 @@
             "type": ["string", "null"],
             "required": true
         },
-        "debit_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
+        "meta": {
+            "type": "object",
+            "requird": true
+        },
+        "links": {
+            "type": "array",
+            "requird": false
         }
     },
     "additionalProperties": false

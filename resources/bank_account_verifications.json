@@ -1,8 +1,14 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/bank_account_verifications.json",
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"properties": {
         "id": {
+            "type": "string",
+            "pattern": "BZ[a-zA-Z0-9]{22}",
+            "required": true
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -49,6 +55,14 @@
             "minimum": 1,
             "maximum": 99,
             "required": true
+        },
+        "meta": {
+            "type": "object",
+            "required": true
+        },
+        "links": {
+            "type": "array",
+            "required": false
         }
     },
     "additionalProperties": false

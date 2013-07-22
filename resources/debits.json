@@ -1,8 +1,14 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/debits.json",
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"properties": {
         "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "WD[a-zA-Z0-9]{22}",
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -76,10 +82,13 @@
             "type": ["string", "null"],
             "required": true
         },
-        "refunds_uri": {
-            "type": "string",
-            "format": "uri",
+        "meta": {
+            "type": "object",
             "required": true
+        },
+        "links": {
+            "type": "array",
+            "required": false
         }
     },
     "additionalProperties": false

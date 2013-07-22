@@ -1,51 +1,64 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/orders.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/orders.json",
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "OR[a-zA-Z0-9]{22}"
+            "pattern": "OR[a-zA-Z0-9]{22}",
+            "required": true
         },
         "href": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "required": true
         },
         "created_at": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "required": true
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "requird": true
         },
         "currency": {
             "type": "string",
             "minLength": 3,
-            "maxLength": 3
+            "maxLength": 3,
+            "required": true
         },
         "amount": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "required": true
         },
-        "escrowed": {
+        "amount_escrowed": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "required": true
         },
         "marketplace_fee": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "required": true
         },
         "description": {
-            "type": "string",
-            "default": null
+            "type": ["string", "null"],
+            "required": true
         },
         "delivery_address": {
-            "$ref": "<url to address definition"
+            "$ref": "../address.json",
+            "required": true
         },
         "meta": {
-            "type": "object"
+            "type": "object",
+            "required": true
         },
-        "links": []
+        "links": {
+            "type": "array",
+            "required": false
+        }
     }
 }

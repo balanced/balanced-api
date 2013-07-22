@@ -1,8 +1,14 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/cards.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "CC[a-zA-Z0-9]{22}",
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -19,7 +25,7 @@
         },
         "customer": {
             "anyOf": [
-                { "type": "string" },
+                { "type": "null" },
                 { "$ref": "customers.json" }
             ],
             "required": true
@@ -89,20 +95,13 @@
             "type": "boolean",
             "required": true
         },
-        "card_authorizations_uri": {
-            "type": "string",
-            "format": "uri",
+        "meta": {
+            "type": "object",
             "required": true
         },
-        "debits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "credits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
+        "links": {
+            "type": "array",
+            "required": false
         }
     },
     "additionalProperties": false

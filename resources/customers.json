@@ -1,8 +1,14 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/customers.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "CU[a-zA-Z0-9]{22}",
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -74,26 +80,6 @@
             "type": "string",
             "enum": ["need-more-information", "underwritten", "rejected"]
         },
-        "cards_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "bank_accounts_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "debits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "credits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
         "address": {
             "$ref": "../address.json",
             "required": true
@@ -101,6 +87,10 @@
         "meta": {
             "type": "object",
             "required": true
+        },
+        "links": {
+            "type": "array",
+            "requird": false
         }
     },
     "additionalProperties": false

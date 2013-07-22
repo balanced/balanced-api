@@ -1,8 +1,14 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/bank_accounts.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "BA[a-zA-Z0-9]{22}",
+        },
+        "href": {
             "type": "string",
             "format": "uri",
             "required": true
@@ -64,20 +70,13 @@
             "type": "boolean",
             "required": true
         },
-        "bank_account_verification_uri": {
-            "type": "string",
-            "format": "uri",
+        "meta": {
+            "type": "object",
             "required": true
         },
-        "debits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "credits_uri": {
-            "type": "string",
-            "format": "uri",
-            "required": true
+        "links": {
+            "type": "array",
+            "required": false
         }
     },
     "additionalProperties": false
