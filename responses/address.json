@@ -9,9 +9,9 @@
         "line2": {
             "type": "string"
         },
-    	"locality": {
-    		"type": "string"
-    	},
+        "locality": {
+            "type": "string"
+        },
         "region": {
             "type": "string"
         },
