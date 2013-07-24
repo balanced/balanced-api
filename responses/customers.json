@@ -81,7 +81,7 @@
             "enum": ["need-more-information", "underwritten", "rejected"]
         },
         "address": {
-            "$ref": "../address.json",
+            "$ref": "address.json",
             "required": true
         },
         "meta": {

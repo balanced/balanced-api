@@ -49,7 +49,7 @@
             "required": true
         },
         "delivery_address": {
-            "$ref": "../address.json",
+            "$ref": "address.json",
             "required": true
         },
         "meta": {
