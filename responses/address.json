@@ -1,4 +1,5 @@
 {
+    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/address.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
