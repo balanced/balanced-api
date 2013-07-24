@@ -1,5 +1,5 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/resources/bank_accounts.json",
+    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/bank_accounts.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
