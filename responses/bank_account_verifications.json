@@ -39,9 +39,12 @@
             "maximum": 3,
             "required": true
         },
-        "status": {
-            "type": "string",
-            "enum": ["pending", "succeeded"],
+        "deposit_status": {
+            "$ref": "status.json",
+            "required": true
+        },
+        "verification_status": {
+            "$ref": "status.json",
             "required": true
         },
         "amount1": {

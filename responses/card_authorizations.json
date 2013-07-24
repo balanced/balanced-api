@@ -54,8 +54,7 @@
             "required": true
         },
         "status": {
-            "type": "string",
-            "enum": ["succeeded", "failed"],
+            "$ref": "status.json",
             "required": true
         },
         "failure_reason_code": {

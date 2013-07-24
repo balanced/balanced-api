@@ -70,8 +70,7 @@
             "required": true
         },
         "status": {
-            "type": "string",
-            "enum": ["pending", "succeeded", "failed"],
+            "$ref": "status.json",
             "required": true
         },
         "failure_reason_code": {
