@@ -7,7 +7,7 @@
 	    "properties": {
 		"credits.reversals": { "type": "string", "format": "uri", "required": true }
 	    }
-	    "required": true
+	    "required": false
 	},
 	"meta": {
 	    "type": "object",

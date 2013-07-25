@@ -1,12 +1,11 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/bank_accounts.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "BA[a-zA-Z0-9]{22}",
+            "pattern": "CC[a-zA-Z0-9]{22}",
         },
         "href": {
             "type": "string",
@@ -27,23 +26,48 @@
             "type": ["string", "null"],
             "required": true
         },
-        "account_number": {
+        "number": {
             "type": "string",
-            "pattern": "x*[0-9]{4}",
+            "pattern": "[0-9]{6}x{5,6}[0-9]{4}",
             "required": true
         },
-        "routing_number": {
-            "type": "string",
-            "pattern": "[0-9]{9}",
+        "month": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12,
             "required": true
         },
-        "account_type": {
+        "year": {
+            "type": "integer",
+            "required": true
+        },
+        "cvv": {
+            "anyOf": [
+                { "type": "string", "pattern": "x{3,4}" },
+                { "type": "null" }
+            ],
+            "required": true
+        },
+        "cvv_result_code": {
             "type": "string",
-            "enum": ["checking", "savings"],
+            "pattern": "[DIMNPSUX]",
+            "required": true
+        },
+        "cvv_result": {
+            "type": "string",
             "required": true
         },
         "address": {
             "$ref": "address.json",
+            "required": true
+        },
+        "avs_result_code": {
+            "type": "string",
+            "pattern": "[A-Z]",
+            "required": true
+        },
+        "avs_result": {
+            "type": "string",
             "required": true
         },
         "signature": {
@@ -59,7 +83,7 @@
             "type": "boolean",
             "required": true
         },
-        "can_credit": {
+        "is_verified": {
             "type": "boolean",
             "required": true
         },
@@ -75,7 +99,7 @@
 		    "format": "uri",
 		    "required": true
 		}
-	    },
+	    }
             "required": true,
 	    "additionalProperties": false
         }

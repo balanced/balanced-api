@@ -10,10 +10,9 @@
 		"customers.credits": { "type": "string", "format": "uri", "required": true },
 		"customers.debits": { "type": "string", "format": "uri", "required": true },
 		"customers.refunds": { "type": "string", "format": "uri", "required": true },
-		"customers.reversals": { "type": "string", "format": "uri", "required": true },
-		"customers.transactions": { "type": "string", "format": "uri", "required": true }
+		"customers.reversals": { "type": "string", "format": "uri", "required": true }
 	    }
-	    "required": true
+	    "required": false
 	},
 	"meta": {
 	    "type": "object",

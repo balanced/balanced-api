@@ -1,12 +1,11 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/debits.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "WD[a-zA-Z0-9]{22}",
+            "pattern": "BA[a-zA-Z0-9]{22}",
         },
         "href": {
             "type": "string",
@@ -23,41 +22,44 @@
             "format": "date-time",
             "required": true
         },
-	"amount": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 10000000,
+        "name": {
+            "type": ["string", "null"],
             "required": true
         },
-        "marketplace_fee": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 10000000,
-            "required": true
-        },
-        "currency": {
+        "account_number": {
             "type": "string",
-            "enum": ["USD"],
+            "pattern": "x*[0-9]{4}",
             "required": true
         },
-        "appears_on_statement_as": {
+        "routing_number": {
+            "type": "string",
+            "pattern": "[0-9]{9}",
+            "required": true
+        },
+        "account_type": {
+            "type": "string",
+            "enum": ["checking", "savings"],
+            "required": true
+        },
+        "address": {
+            "$ref": "address.json",
+            "required": true
+        },
+        "signature": {
             "type": "string",
             "required": true
         },
-        "description": {
-            "type": ["string", "null"],
+        "brand": {
+            "type": "string",
+            "enum": ["Visa", "MasterCard", "Discover", "American Express"],
+            "required": false
+        },
+        "can_debit": {
+            "type": "boolean",
             "required": true
         },
-        "status": {
-            "$ref": "status.json",
-            "required": true
-        },
-        "failure_reason_code": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "failure_reason": {
-            "type": ["string", "null"],
+        "can_credit": {
+            "type": "boolean",
             "required": true
         },
         "meta": {
@@ -67,22 +69,12 @@
         "links": {
             "type": "object",
 	    "properties": {
-		"source": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		},
 		"customer": {
 		    "type": ["null", "string"],
 		    "format": "uri",
 		    "required": true
-		},
-		"order": {
-		    "type": ["null", "string"],
-		    "format": "uri",
-		    "required": true
 		}
-	    }
+	    },
             "required": true,
 	    "additionalProperties": false
         }

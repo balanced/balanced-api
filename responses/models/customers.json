@@ -1,12 +1,11 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/card_holds.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "HL[a-zA-Z0-9]{22}",
+            "pattern": "CU[a-zA-Z0-9]{22}",
         },
         "href": {
             "type": "string",
@@ -23,56 +22,71 @@
             "format": "date-time",
             "required": true
         },
-        "amount": {
+        "name": {
+            "type": ["string", "null"],
+            "required": true
+        },
+        "business_name": {
+            "type": ["string", "null"],
+            "required": true
+        },
+        "email": {
+            "type": ["string", "null"],
+            "format": "email",
+            "required": true
+        },
+       "phone": {
+            "type": ["string", "null"],
+            "format": "phone",
+            "required": true
+        },
+        "ssn_last4": {
+            "type": ["string", "null"],
+            "pattern": "[0-9]{4}",
+            "required": true
+        },
+        "ein": {
+            "type": "string",
+            "pattern": "[0-9]{9}",
+            "required": true
+        },
+        "dob_month": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 10000000,
+            "maximum": 12,
             "required": true
         },
-        "currency": {
+        "dob_year": {
+            "type": "integer",
+            "required": true
+        },
+        "merchant_status": {
             "type": "string",
-            "enum": ["USD"],
-            "required": true
+            "enum": ["need-more-information", "underwritten", "rejected"]
         },
-        "appears_on_statement_as": {
-            "type": "string",
-            "required": true
-        },
-        "description": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "status": {
-            "$ref": "status.json",
-            "required": true
-        },
-        "failure_reason_code": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "failure_reason": {
-            "type": ["string", "null"],
+        "address": {
+            "$ref": "address.json",
             "required": true
         },
         "meta": {
             "type": "object",
-            "requird": true
+            "required": true
         },
         "links": {
             "type": "object",
 	    "properties": {
-		"card": {
-		    "type": "string"
+		"source": {
+		    "type": ["null", "string"],
 		    "format": "uri",
 		    "required": true
 		},
-		"debit": {
+		"destionation": {
 		    "type": ["null", "string"],
 		    "format": "uri",
 		    "required": true
 		}
-	    }
-            "requird": true,
+	    },
+            "required": true,
 	    "additionalProperties": false
         }
     },

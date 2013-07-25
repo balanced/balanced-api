@@ -1,12 +1,11 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/reversals.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
-            "pattern": "RV[a-zA-Z0-9]{22}",
+            "pattern": "BZ[a-zA-Z0-9]{22}",
+            "required": true
         },
         "href": {
             "type": "string",
@@ -23,37 +22,36 @@
             "format": "date-time",
             "required": true
         },
-        "amount": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 10000000,
-            "required": true
-        },
-        "marketplace_fee": {
+	"attempts": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 10000000,
+            "maximum": 3,
             "required": true
         },
-        "currency": {
-            "type": "string",
-            "enum": ["USD"],
+        "attempts_remaining": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3,
             "required": true
         },
-        "description": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "status": {
+        "deposit_status": {
             "$ref": "status.json",
             "required": true
         },
-        "failure_reason_code": {
-            "type": ["string", "null"],
+        "verification_status": {
+            "$ref": "status.json",
             "required": true
         },
-        "failure_reason": {
-            "type": ["string", "null"],
+        "amount1": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99,
+            "required": true
+        },
+        "amount2": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99,
             "required": true
         },
         "meta": {
@@ -63,17 +61,12 @@
         "links": {
             "type": "object",
 	    "properties": {
-		"credits": {
+		"bank_account": {
 		    "type": "string",
-		    "format": "uri"
-		    "required": true
-		},
-		"order": {
-		    "type": ["null", "string"],
 		    "format": "uri",
 		    "required": true
 		}
-	    },
+	    }
             "required": true,
 	    "additionalProperties": false
         }

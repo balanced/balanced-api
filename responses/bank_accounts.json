@@ -7,7 +7,7 @@
 	    "properties": {
 		"bank_accounts.verifications":  { "type": "string", "format": "uri", "required": true }
 	    },
-	    "required": true
+	    "required": false
 	},
 	"meta": {
 	    "type": "object",
