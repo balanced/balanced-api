@@ -36,24 +36,7 @@
             "format": "email",
             "required": true
         },
-	/*
-        "source": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "cards.json" },
-                { "$ref": "bank_accounts.json" }
-            ],
-            "required": true
-        },
-        "destination": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "bank_accounts.json" }
-            ],
-            "required": true
-        },
-	*/
-        "phone": {
+       "phone": {
             "type": ["string", "null"],
             "format": "phone",
             "required": true

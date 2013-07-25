@@ -23,27 +23,7 @@
             "format": "date-time",
             "required": true
         },
-	/*
-        "customer": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "customers.json" }
-            ],
-            "required": true
-        },
-        "destination": {
-            "$ref": "bank_accounts.json",
-            "required": true
-        },
-        "order": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "orders.json" }
-            ],
-            "required": true
-        },
-	*/
-        "amount": {
+	"amount": {
             "type": "integer",
             "minimum": 1,
             "maximum": 100000000,

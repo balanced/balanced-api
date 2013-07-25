@@ -23,21 +23,6 @@
             "format": "date-time",
             "required": true
         },
-	/*
-        "credit": {
-	    "type": "string",
-	    "format": "uri", ///////////////////
-            "$ref": "debits.json",
-            "required": true
-        },
-        "order": {
-            "anyOf": [
-                { "type": "null" },
-                { "type": "string", "format": "uri" }
-            ],
-            "required": true
-        },
-	*/
         "amount": {
             "type": "integer",
             "minimum": 1,

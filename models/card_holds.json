@@ -23,19 +23,6 @@
             "format": "date-time",
             "required": true
         },
-	/*
-        "card": {
-            "$ref": "cards.json",
-            "required": true
-        },
-        "debit": {
-            "anyOf": [
-                { "$ref": "debits.json" },
-                { "type": "null" }
-            ],
-            "required": true
-        },
-	*/
         "amount": {
             "type": "integer",
             "minimum": 1,

@@ -23,29 +23,6 @@
             "format": "date-time",
             "required": true
         },
-/*
-        "customer": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "customers.json" }
-            ],
-            "required": true
-        },
-        "source": {
-            "anyOf": [
-                { "$ref": "cards.json" },
-                { "$ref": "bank_accounts.json" }
-            ],
-            "required": true
-        },
-        "order": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "orders.json" }
-            ],
-            "required": true
-        },
-  */
 	"amount": {
             "type": "integer",
             "minimum": 1,

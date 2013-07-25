@@ -23,13 +23,7 @@
             "format": "date-time",
             "required": true
         },
-	/*
-        "bank_account": {
-            "$ref": "bank_accounts.json",
-            "required": true
-        },
-	*/
-        "attempts": {
+	"attempts": {
             "type": "integer",
             "minimum": 0,
             "maximum": 3,

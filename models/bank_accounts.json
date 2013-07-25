@@ -23,15 +23,6 @@
             "format": "date-time",
             "required": true
         },
-	/*
-        "customer": {
-            "anyOf": [
-                { "type": "string" },
-                { "$ref": "customers.json" }
-            ],
-            "required": true
-        },
-	*/
         "name": {
             "type": ["string", "null"],
             "required": true
