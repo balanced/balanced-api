@@ -49,11 +49,6 @@
             "type": "string",
             "required": true
         },
-        "brand": {
-            "type": "string",
-            "enum": ["Visa", "MasterCard", "Discover", "American Express"],
-            "required": false
-        },
         "can_debit": {
             "type": "boolean",
             "required": true
