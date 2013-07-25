@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+	"links": {
+	    "type": "object",
+	    "properties": {
+		"bank_accounts.verifications":  { "type": "string", "format": "uri", "required": true }
+	    },
+	    "required": true
+	},
+	"meta": {
+	    "type": "object",
+	    "required": false
+	},
+	"bank_accounts": { "items": { "$ref": "models/bank_accounts.json" }  "type": "array", "minItems": 1, "uniqueItems": true },
+    },
+}

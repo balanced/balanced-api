@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+	"links": {
+	    "type": "object",
+	    "properties": {
+		"credits.reversals": { "type": "string", "format": "uri", "required": true }
+	    }
+	    "required": true
+	},
+	"meta": {
+	    "type": "object",
+	    "required": false
+	},
+	"credits": { "items": { "$ref": "models/credits.json" } "type": "array", "minItems": 1, "uniqueItems": true },
+    },
+}
