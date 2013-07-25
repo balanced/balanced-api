@@ -13,6 +13,6 @@
 	    "type": "object",
 	    "required": false
 	},
-	"bank_accounts": { "items": { "$ref": "models/bank_accounts.json" }  "type": "array", "minItems": 1, "uniqueItems": true },
+	"bank_accounts": { "items": { "$ref": "models/bank_accounts.json" }  "type": "array", "minItems": 1, "uniqueItems": true }
     },
 }

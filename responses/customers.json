@@ -19,6 +19,6 @@
 	    "type": "object",
 	    "required": false
 	},
-	"customers": { "items": { "$ref": "models/customers.json" } "type": "array", "minItems": 1, "uniqueItems": true },
-    },
+	"customers": { "items": { "$ref": "models/customers.json" } "type": "array", "minItems": 1, "uniqueItems": true }
+    }
 }
