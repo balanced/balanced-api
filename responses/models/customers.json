@@ -42,7 +42,7 @@
         },
         "ssn_last4": {
             "type": ["string", "null"],
-            "pattern": "[0-9]{4}",
+            "pattern": "x{4}",
             "required": true
         },
         "ein": {
