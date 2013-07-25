@@ -23,17 +23,21 @@
             "format": "date-time",
             "required": true
         },
+	/*
         "credit": {
+	    "type": "string",
+	    "format": "uri", ///////////////////
             "$ref": "debits.json",
             "required": true
         },
         "order": {
             "anyOf": [
                 { "type": "null" },
-                { "$ref": "orders.json" }
+                { "type": "string", "format": "uri" }
             ],
             "required": true
         },
+	*/
         "amount": {
             "type": "integer",
             "minimum": 1,
@@ -72,8 +76,21 @@
             "required": true
         },
         "links": {
-            "type": "array",
-            "required": false
+            "type": "object",
+	    "properties": {
+		"credits": {
+		    "type": "string",
+		    "format": "uri"
+		    "required": true
+		},
+		"order": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false
+		}
+	    },
+            "required": true,
+	    "additionalProperties": false
         }
     },
     "additionalProperties": false
