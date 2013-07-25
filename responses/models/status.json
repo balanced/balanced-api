@@ -1,5 +1,4 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/bank_account_verifications.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "string",
     "enum": ["pending", "succeeded", "failed"]

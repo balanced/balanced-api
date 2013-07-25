@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "BA[a-zA-Z0-9]{22}",
+        },
+        "href": {
+            "type": "string",
+            "format": "uri",
+            "required": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "name": {
+            "type": ["string", "null"],
+            "required": true
+        },
+        "account_number": {
+            "type": "string",
+            "pattern": "x*[0-9]{4}",
+            "required": true
+        },
+        "routing_number": {
+            "type": "string",
+            "pattern": "[0-9]{9}",
+            "required": true
+        },
+        "account_type": {
+            "type": "string",
+            "enum": ["checking", "savings"],
+            "required": true
+        },
+        "address": {
+            "$ref": "address.json",
+            "required": true
+        },
+        "signature": {
+            "type": "string",
+            "required": true
+        },
+        "brand": {
+            "type": "string",
+            "enum": ["Visa", "MasterCard", "Discover", "American Express"],
+            "required": false
+        },
+        "can_debit": {
+            "type": "boolean",
+            "required": true
+        },
+        "can_credit": {
+            "type": "boolean",
+            "required": true
+        },
+        "meta": {
+            "type": "object",
+            "required": true
+        },
+        "links": {
+            "type": "object",
+	    "properties": {
+		"customer": {
+		    "type": ["null", "string"],
+		    "format": "uri",
+		    "required": true
+		}
+	    },
+            "required": true,
+	    "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

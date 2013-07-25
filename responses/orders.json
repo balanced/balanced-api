@@ -1,64 +1,15 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/orders.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-        "id": {
-            "type": "string",
-            "pattern": "OR[a-zA-Z0-9]{22}",
-            "required": true
-        },
-        "href": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "required": true
-        },
-        "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "requird": true
-        },
-        "currency": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 3,
-            "required": true
-        },
-        "amount": {
-            "type": "integer",
-            "minimum": 0,
-            "required": true
-        },
-        "amount_escrowed": {
-            "type": "integer",
-            "minimum": 0,
-            "required": true
-        },
-        "marketplace_fee": {
-            "type": "integer",
-            "minimum": 0,
-            "required": true
-        },
-        "description": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "delivery_address": {
-            "$ref": "address.json",
-            "required": true
-        },
-        "meta": {
-            "type": "object",
-            "required": true
-        },
-        "links": {
-            "type": "array",
-            "required": false
-        }
+	"links": {
+	    "type": "object",
+	    "required": false
+	},
+	"meta": {
+	    "type": "object",
+	    "required": false
+	},
+	"orders": { "items": { "$ref": "models/orders.json" } "type": "array", "minItems": 1, "uniqueItems": true }
     }
 }

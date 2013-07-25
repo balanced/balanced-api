@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "CC[a-zA-Z0-9]{22}",
+        },
+        "href": {
+            "type": "string",
+            "format": "uri",
+            "required": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "name": {
+            "type": ["string", "null"],
+            "required": true
+        },
+        "number": {
+            "type": "string",
+            "pattern": "[0-9]{6}x{5,6}[0-9]{4}",
+            "required": true
+        },
+        "month": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12,
+            "required": true
+        },
+        "year": {
+            "type": "integer",
+            "required": true
+        },
+        "cvv": {
+            "anyOf": [
+                { "type": "string", "pattern": "x{3,4}" },
+                { "type": "null" }
+            ],
+            "required": true
+        },
+        "cvv_result_code": {
+            "type": "string",
+            "pattern": "[DIMNPSUX]",
+            "required": true
+        },
+        "cvv_result": {
+            "type": "string",
+            "required": true
+        },
+        "address": {
+            "$ref": "address.json",
+            "required": true
+        },
+        "avs_result_code": {
+            "type": "string",
+            "pattern": "[A-Z]",
+            "required": true
+        },
+        "avs_result": {
+            "type": "string",
+            "required": true
+        },
+        "signature": {
+            "type": "string",
+            "required": true
+        },
+        "brand": {
+            "type": "string",
+            "enum": ["Visa", "MasterCard", "Discover", "American Express"],
+            "required": false
+        },
+        "can_debit": {
+            "type": "boolean",
+            "required": true
+        },
+        "is_verified": {
+            "type": "boolean",
+            "required": true
+        },
+        "meta": {
+            "type": "object",
+            "required": true
+        },
+        "links": {
+            "type": "object",
+	    "properties": {
+		"customer": {
+		    "type": ["null", "string"],
+		    "format": "uri",
+		    "required": true
+		}
+	    }
+            "required": true,
+	    "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
