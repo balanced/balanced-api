@@ -22,7 +22,7 @@
             "format": "date-time",
             "required": true
         },
-	"attempts": {
+    "attempts": {
             "type": "integer",
             "minimum": 0,
             "maximum": 3,
@@ -60,15 +60,15 @@
         },
         "links": {
             "type": "object",
-	    "properties": {
-		"bank_account": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		}
-	    }
+            "properties": {
+                "bank_account": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": true,
-	    "additionalProperties": false
+            "additionalProperties": false
         }
     },
     "additionalProperties": false

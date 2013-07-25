@@ -93,15 +93,15 @@
         },
         "links": {
             "type": "object",
-	    "properties": {
-		"customer": {
-		    "type": ["null", "string"],
-		    "format": "uri",
-		    "required": true
-		}
-	    }
+            "properties": {
+                "customer": {
+                    "type": ["null", "string"],
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": true,
-	    "additionalProperties": false
+            "additionalProperties": false
         }
     },
     "additionalProperties": false

@@ -20,11 +20,11 @@
         "updated_at": {
             "type": "string",
             "format": "date-time",
-            "requird": true
+            "required": true
         },
         "currency": {
             "type": "string",
-	    "enum": ["USD"],
+            "enum": ["USD"],
             "required": true
         },
         "amount": {

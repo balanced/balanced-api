@@ -61,20 +61,20 @@
         },
         "links": {
             "type": "object",
-	    "properties": {
-		"credits": {
-		    "type": "string",
-		    "format": "uri"
-		    "required": true
-		},
-		"order": {
-		    "type": ["null", "string"],
-		    "format": "uri",
-		    "required": true
-		}
-	    },
+            "properties": {
+                "credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "order": {
+                    "type": ["null", "string"],
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": true,
-	    "additionalProperties": false
+            "additionalProperties": false
         }
     },
     "additionalProperties": false

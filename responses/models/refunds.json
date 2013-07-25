@@ -22,7 +22,7 @@
             "format": "date-time",
             "required": true
         },
-	"amount": {
+        "amount": {
             "type": "integer",
             "minimum": 1,
             "maximum": 10000000,
@@ -53,20 +53,20 @@
         },
         "links": {
             "type": "object",
-	    "properties": {
-		"debit": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		},
-		"order": {
-		    "type": ["null", "string"],
-		    "format": "uri",
-		    "required": true
-		}
-	    },
+            "properties": {
+                "debit": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "order": {
+                    "type": ["null", "string"],
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": true,
-	    "additionalProperties": false
+            "additionalProperties": false
         }
     },
     "additionalProperties": false

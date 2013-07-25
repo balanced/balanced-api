@@ -59,20 +59,20 @@
         },
         "links": {
             "type": "object",
-	    "properties": {
-		"card": {
-		    "type": "string"
-		    "format": "uri",
-		    "required": true
-		},
-		"debit": {
-		    "type": ["null", "string"],
-		    "format": "uri",
-		    "required": true
-		}
-	    }
+            "properties": {
+                "card": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "debit": {
+                    "type": ["null", "string"],
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "requird": true,
-	    "additionalProperties": false
+            "additionalProperties": false
         }
     },
     "additionalProperties": false
