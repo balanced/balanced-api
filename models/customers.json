@@ -77,17 +77,17 @@
             "type": "object",
 	    "properties": {
 		"source": {
-		    "type": "string",
+		    "type": ["null", "string"],
 		    "format": "uri",
-		    "required": false
+		    "required": true
 		},
 		"destionation": {
-		    "type": "string",
+		    "type": ["null", "string"],
 		    "format": "uri",
-		    "required": false,
+		    "required": true
 		}
 	    },
-            "required": false,
+            "required": true,
 	    "additionalProperties": false
         }
     },

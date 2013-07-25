@@ -61,9 +61,9 @@
 		    "required": true
 		},
 		"order": {
-		    "type": "string",
+		    "type": ["null", "string"],
 		    "format": "uri",
-		    "required": false
+		    "required": true
 		}
 	    },
             "required": true,

@@ -67,9 +67,9 @@
 		    "required": true
 		},
 		"debit": {
-		    "type": "string",
+		    "type": ["null", "string"],
 		    "format": "uri",
-		    "required": false
+		    "required": true
 		}
 	    }
             "requird": true,
