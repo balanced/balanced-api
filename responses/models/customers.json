@@ -46,7 +46,7 @@
             "required": true
         },
         "ein": {
-            "type": "string",
+            "type": ["string", "null"],
             "pattern": "[0-9]{9}",
             "required": true
         },
