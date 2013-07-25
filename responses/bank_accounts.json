@@ -23,6 +23,7 @@
             "format": "date-time",
             "required": true
         },
+	/*
         "customer": {
             "anyOf": [
                 { "type": "string" },
@@ -30,6 +31,7 @@
             ],
             "required": true
         },
+	*/
         "name": {
             "type": ["string", "null"],
             "required": true
@@ -75,8 +77,16 @@
             "required": true
         },
         "links": {
-            "type": "array",
-            "required": false
+            "type": "object",
+	    "properties": {
+		"customer": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false
+		}
+	    },
+            "required": false,
+	    "additionalProperties": false
         }
     },
     "additionalProperties": false

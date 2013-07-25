@@ -36,6 +36,7 @@
             "format": "email",
             "required": true
         },
+	/*
         "source": {
             "anyOf": [
                 { "type": "null" },
@@ -51,6 +52,7 @@
             ],
             "required": true
         },
+	*/
         "phone": {
             "type": ["string", "null"],
             "format": "phone",
@@ -89,8 +91,21 @@
             "required": true
         },
         "links": {
-            "type": "array",
-            "requird": false
+            "type": "object",
+	    "properties": {
+		"source": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false
+		},
+		"destionation": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false,
+		}
+	    },
+            "required": false,
+	    "additionalProperties": false
         }
     },
     "additionalProperties": false

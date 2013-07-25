@@ -23,10 +23,12 @@
             "format": "date-time",
             "required": true
         },
+	/*
         "bank_account": {
             "$ref": "bank_accounts.json",
             "required": true
         },
+	*/
         "attempts": {
             "type": "integer",
             "minimum": 0,
@@ -64,8 +66,16 @@
             "required": true
         },
         "links": {
-            "type": "array",
-            "required": false
+            "type": "object",
+	    "properties": {
+		"bank_account": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		}
+	    }
+            "required": true,
+	    "additionalProperties": false
         }
     },
     "additionalProperties": false

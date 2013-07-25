@@ -23,6 +23,7 @@
             "format": "date-time",
             "required": true
         },
+/*
         "customer": {
             "anyOf": [
                 { "type": "null" },
@@ -44,7 +45,8 @@
             ],
             "required": true
         },
-        "amount": {
+  */
+	"amount": {
             "type": "integer",
             "minimum": 1,
             "maximum": 10000000,
@@ -86,8 +88,26 @@
             "required": true
         },
         "links": {
-            "type": "array",
-            "required": false
+            "type": "object",
+	    "properties": {
+		"source": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		},
+		"customer": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false
+		},
+		"order": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": false
+		}
+	    }
+            "required": true,
+	    "additionalProperties": false
         }
     },
     "additionalProperties": false

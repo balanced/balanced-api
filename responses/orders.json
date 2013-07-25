@@ -25,8 +25,7 @@
         },
         "currency": {
             "type": "string",
-            "minLength": 3,
-            "maxLength": 3,
+	    "enum": ["USD"],
             "required": true
         },
         "amount": {
@@ -55,10 +54,7 @@
         "meta": {
             "type": "object",
             "required": true
-        },
-        "links": {
-            "type": "array",
-            "required": false
         }
-    }
+    },
+    "additionalProperties": false
 }
