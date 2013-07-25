@@ -1,112 +1,24 @@
 {
-    "id": "https://github.com/matin/balanced-api/blob/revision1/responses/customers.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-        "id": {
-            "type": "string",
-            "required": true,
-            "pattern": "CU[a-zA-Z0-9]{22}",
-        },
-        "href": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
-        "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "required": true
-        },
-        "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "required": true
-        },
-        "name": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "business_name": {
-            "type": ["string", "null"],
-            "required": true
-        },
-        "email": {
-            "type": ["string", "null"],
-            "format": "email",
-            "required": true
-        },
-	/*
-        "source": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "cards.json" },
-                { "$ref": "bank_accounts.json" }
-            ],
-            "required": true
-        },
-        "destination": {
-            "anyOf": [
-                { "type": "null" },
-                { "$ref": "bank_accounts.json" }
-            ],
-            "required": true
-        },
-	*/
-        "phone": {
-            "type": ["string", "null"],
-            "format": "phone",
-            "required": true
-        },
-        "ssn_last4": {
-            "type": ["string", "null"],
-            "pattern": "[0-9]{4}",
-            "required": true
-        },
-        "ein": {
-            "type": "string",
-            "pattern": "[0-9]{9}",
-            "required": true
-        },
-        "dob_month": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 12,
-            "required": true
-        },
-        "dob_year": {
-            "type": "integer",
-            "required": true
-        },
-        "merchant_status": {
-            "type": "string",
-            "enum": ["need-more-information", "underwritten", "rejected"]
-        },
-        "address": {
-            "$ref": "address.json",
-            "required": true
-        },
-        "meta": {
-            "type": "object",
-            "required": true
-        },
-        "links": {
-            "type": "object",
+	"links": {
+	    "type": "object",
 	    "properties": {
-		"source": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": false
-		},
-		"destionation": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": false,
-		}
-	    },
-            "required": false,
-	    "additionalProperties": false
-        }
+		"customers.cards": { "type": "string", "format": "uri", "required": true },
+		"customers.bank_accounts": { "type": "string", "format": "uri", "required": true },
+		"customers.credits": { "type": "string", "format": "uri", "required": true },
+		"customers.debits": { "type": "string", "format": "uri", "required": true },
+		"customers.refunds": { "type": "string", "format": "uri", "required": true },
+		"customers.reversals": { "type": "string", "format": "uri", "required": true },
+		"customers.transactions": { "type": "string", "format": "uri", "required": true }
+	    }
+	    "required": true
+	},
+	"meta": {
+	    "type": "object",
+	    "required": false
+	},
+	"customers": { "items": { "$ref": "models/customers.json" } "type": "array", "minItems": 1, "uniqueItems": true },
     },
-    "additionalProperties": false
 }
