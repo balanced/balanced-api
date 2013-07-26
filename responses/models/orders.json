@@ -53,6 +53,18 @@
         "meta": {
             "type": "object",
             "required": true
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "merchant": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
+            },
+            "required": true,
+            "additionalProperties": false
         }
     },
     "additionalProperties": false
