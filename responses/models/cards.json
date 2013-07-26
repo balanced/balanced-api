@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "CC[a-zA-Z0-9]{22}",
+            "pattern": "CC[a-zA-Z0-9]{21,22}"
         },
         "href": {
             "type": "string",
@@ -23,12 +23,15 @@
             "required": true
         },
         "name": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "number": {
             "type": "string",
-            "pattern": "[0-9]{6}x{5,6}[0-9]{4}",
+            "pattern": "x{11,12}[0-9]{4}",
             "required": true
         },
         "month": {
@@ -43,8 +46,13 @@
         },
         "cvv": {
             "anyOf": [
-                { "type": "string", "pattern": "x{3,4}" },
-                { "type": "null" }
+                {
+                    "type": "string",
+                    "pattern": "x{3,4}"
+                },
+                {
+                    "type": "null"
+                }
             ],
             "required": true
         },
@@ -76,7 +84,12 @@
         },
         "brand": {
             "type": "string",
-            "enum": ["Visa", "MasterCard", "Discover", "American Express"],
+            "enum": [
+                "Visa",
+                "MasterCard",
+                "Discover",
+                "American Express"
+            ],
             "required": false
         },
         "can_debit": {
@@ -95,7 +108,10 @@
             "type": "object",
             "properties": {
                 "customer": {
-                    "type": ["null", "string"],
+                    "type": [
+                        "null",
+                        "string"
+                    ],
                     "format": "uri",
                     "required": true
                 }
