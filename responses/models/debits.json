@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "WD[a-zA-Z0-9]{22}"
+            "pattern": "WD[a-zA-Z0-9]{21,22}"
         },
         "href": {
             "type": "string",
