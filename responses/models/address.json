@@ -3,24 +3,31 @@
     "type": "object",
     "properties": {
         "line1": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "line2": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "locality": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "region": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "postal_code": {
-            "type": "string"
+            "type": ["string", "null"],
+            "required": true
         },
         "country_code": {
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 2
+            "anyOf": [
+                { "type": "string", "pattern": "[A-Z]{2}" },
+                { "type": "null" }
+            ],
+            "required": true
         }
     }
 }
