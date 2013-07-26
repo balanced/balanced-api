@@ -67,7 +67,7 @@
             "$ref": "bank_account.json"
         },
         "meta": {
-            "type": "object",
+            "type": "object"
         }
     }
 }
