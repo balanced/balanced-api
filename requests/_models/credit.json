@@ -16,7 +16,7 @@
             "enum": ["USD"],
         },
         "appears_on_statement_as": { "type": "string" },
-        "description": { "type": "string", "required": true },
+        "description": { "type": "string" },
         "meta": { "type": "object" }
     }
 }
