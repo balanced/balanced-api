@@ -1,18 +1,28 @@
 {
-    "amount": {
-        "type": "integer",
-        "minimum": 1,
-        "required": true
-    },
-    "marketplace_fee": {
-        "type": "integer",
-        "minimum": 0,
-    },
-    "currency": {
-        "type": "string",
-        "enum": ["USD"],
-    },
-    "appears_on_statement_as": { "type": "string" },
-    "description": { "type": "string" },
-    "meta": { "type": "object" }
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "amount": {
+            "type": "integer",
+            "minimum": 1,
+            "required": true
+        },
+        "marketplace_fee": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+        },
+        "currency": {
+            "type": "string",
+            "enum": ["USD"],
+            "default": "USD"
+        },
+        "appears_on_statement_as": {
+            "type": ["string", "null"]
+        },
+        "description": {
+            "type": ["string", "null"]
+        },
+        "meta": { "type": "object" }
+    }
 }
