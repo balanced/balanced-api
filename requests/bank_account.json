@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "account_number": {
+            "type": "string",
+            "pattern": "[0-9]{9}",
+            "required": true
+        },
+        "routing_number": {
+            "type": "string",
+            "pattern": "[0-9]{9}",
+            "required": true
+        },
+        "account_type": {
+            "type": "string",
+            "enum": ["checking", "savings"],
+            "required": true
+        },
+        "address": {
+            "$ref": "address.json",
+        },
+        "meta": {
+            "type": "object",
+        }
+    }
+}

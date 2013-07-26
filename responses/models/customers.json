@@ -42,22 +42,22 @@
         },
         "ssn_last4": {
             "type": ["string", "null"],
-            "pattern": "[0-9]{4}",
+            "pattern": "x{4}",
             "required": true
         },
         "ein": {
-            "type": "string",
+            "type": ["string", "null"],
             "pattern": "[0-9]{9}",
             "required": true
         },
         "dob_month": {
-            "type": "integer",
+            "type": ["integer", "null"],
             "minimum": 1,
             "maximum": 12,
             "required": true
         },
         "dob_year": {
-            "type": "integer",
+            "type": ["integer", "null"],
             "required": true
         },
         "merchant_status": {

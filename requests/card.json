@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+        },
+        "number": {
+            "type": "string",
+            "pattern": "[0-9]{15,16}",
+            "required": true
+        },
+        "month": {
+            "type": ["integer", "string"],
+            "minimum": 1,
+            "maximum": 12,
+            "required": true
+        },
+        "year": {
+            "type": ["integer", "string"],
+            "required": true
+        },
+        "cvv": {
+            "type": "string",
+            "pattern": "[0-9]{3,4}"
+        },
+        "address": {
+            "$ref": "address.json",
+        },
+        "meta": {
+            "type": "object",
+        },
+    }
+}
