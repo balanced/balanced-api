@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": ["string", "null"],
+        },
+        "business_name": {
+            "type": ["string", "null"],
+        },
+        "email": {
+            "type": ["string", "null"],
+            "format": "email",
+        },
+       "phone": {
+            "type": ["string", "null"],
+            "format": "phone",
+        },
+        "ssn_last4": {
+            "type": ["string", "null"],
+            "pattern": "[0-9]{4}",
+        },
+        "ein": {
+            "type": ["string", "null"],
+            "pattern": "[0-9]{9}",
+        },
+        "dob_month": {
+            "anyOf": [
+                {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                }
+                {
+                    "type": "string",
+                    "pattern": "(1[0-2])|[1-9]"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "dob_year": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string",
+                    "pattern": "[12][0-9]{3}"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "address": {
+            "$ref": "address.json",
+        },
+        "source": {
+            "anyOf": [
+                { "$ref": "card.json" },
+                { "$ref": "bank_account.json" }
+            ]
+        },
+        "destination": {
+            "$ref": "bank_account.json"
+        },
+        "meta": {
+            "type": "object",
+        }
+    }
+}
