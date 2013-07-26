@@ -1,7 +1,4 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-        "$include": "../_models/debit.json"
-    }
+    "$ref": "../_models/debit.json"
 }
