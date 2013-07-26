@@ -1,8 +1,12 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-        "$include": "_models/credit.json",
-		"destination": { "$ref": "bank_account.json" }
-    }
+    "allOf": [
+    	{ "$ref": "_models/credit.json" },
+    	{
+    		"type": "object",
+    		"properties": {
+    			"destination": { "$ref": "bank_account.json" }
+    		}
+    	}
+    ]
 }
