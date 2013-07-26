@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "allOf": [
-    	{ "$ref": "_models/credit.json" },
+    	{ "$ref": "_base/credit.json" },
     	{
     		"type": "object",
     		"properties": {
