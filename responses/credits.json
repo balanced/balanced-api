@@ -9,7 +9,22 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
-                }
+                },
+		"credits.customers": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		},
+		"credits.order": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		},
+		"credits.destination": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		}
             },
             "required": false
         },

@@ -62,12 +62,12 @@
             "properties": {
                 "card": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "CC[a-zA-Z0-9]{21,22}",
                     "required": true
                 },
                 "debit": {
                     "type": ["null", "string"],
-                    "format": "uri",
+		    "pattern": "WD[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

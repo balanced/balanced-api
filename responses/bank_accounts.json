@@ -9,7 +9,12 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
-                }
+                },
+		"bank_accounts.customers": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		}
             },
             "required": false
         },

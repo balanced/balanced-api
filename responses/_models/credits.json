@@ -82,12 +82,12 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+		    "pattern": "CU[a-zA-Z0-9]{21,22}"
                     "required": true
                 },
                 "destination": {
                     "type": "string",
-                    "format": "uri",
+		    "pattern": "BA[a-zA-Z0-9]{21,22}",
                     "required": true
                 },
                 "order": {
@@ -95,7 +95,7 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+		    "pattern": "OR[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

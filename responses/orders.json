@@ -29,7 +29,12 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
-                }
+                },
+		"orders.merchant": {
+		    "type": "string",
+		    "format": "uri",
+		    "required": true
+		}
             },
             "required": false
         },

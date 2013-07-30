@@ -59,7 +59,7 @@
             "properties": {
                 "merchant": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "CU[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

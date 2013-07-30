@@ -87,16 +87,16 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
-                    "required": true
+                    "pattern": "CU[a-zA-Z0-9]{21,22}",
+		    "required": true
                 },
                 "order": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "format": "uri",
-                    "required": true
+                    "pattern": "OR[a-zA-Z0-9]{21,22}",
+		    "required": true
                 }
             },
             "required": true,
