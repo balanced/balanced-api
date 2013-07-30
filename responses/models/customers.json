@@ -100,20 +100,6 @@
             "type": "object",
             "required": true
         },
-        "twitter": {
-            "type": [
-                "null",
-                "string"
-            ],
-            "required": true
-        },
-        "facebook": {
-            "type": [
-                "null",
-                "string"
-            ],
-            "required": true
-        },
         "links": {
             "type": "object",
             "properties": {
