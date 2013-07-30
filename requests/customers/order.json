@@ -1,8 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/customers/:customer_id/orders",
-    "anyof": [
-        { "type": "object", "properties": { } },
-        { "type": "null" }
-    ]
+    "properties": {
+        "description": { "type": "string" },
+        "delivery_address": { "$ref": "../_models/address.json" },
+        "meta": { "type": "object" }
+    }
 }

@@ -17,6 +17,10 @@
             "enum": ["USD"],
             "default": "USD"
         },
+        "order_href": {
+            "type": "string",
+            "format": "uri"
+        },
         "appears_on_statement_as": {
             "type": ["string", "null"]
         },
