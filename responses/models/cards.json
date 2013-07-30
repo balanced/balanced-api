@@ -57,12 +57,36 @@
             "required": true
         },
         "cvv_result_code": {
-            "type": "string",
-            "pattern": "[DIMNPSUX]",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "[DIMNPSUX]",
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "required": true
         },
         "cvv_result": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "enum": [
+                        "Suspicious transaction",
+                        "Failed data validation check",
+                        "Match",
+                        "No Match",
+                        "Not Processed",
+                        "Should have been present",
+                        "Issuer unable to process request",
+                        "Card does not support verification"
+                    ]
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "required": true
         },
         "address": {
@@ -70,12 +94,54 @@
             "required": true
         },
         "avs_result_code": {
-            "type": "string",
-            "pattern": "[A-Z]",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "[A-Z]"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "required": true
         },
         "avs_result": {
-            "type": "string",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "enum": [
+                        "Street address matches, but 5-digit and 9-digit postal code do not match.",
+                        "Street address matches, but postal code not verified.",
+                        "Street address and postal code do not match.",
+                        "Street address and postal code match.",
+                        "AVS data is invalid or AVS is not allowed for this card type.",
+                        "Card member's name does not match, but billing postal code matches.",
+                        "Non-U.S. issuing bank does not support AVS.",
+                        "Card member's name does not match. Street address and postal code match.",
+                        "Address not verified.",
+                        "Card member's name, billing address, and postal code match. Shipping information verified and chargeback protection guaranteed through the Fraud Protection Program.",
+                        "Card member's name matches but billing address and billing postal code do not match.",
+                        "Card member's name and billing postal code match, but billing address does not match.",
+                        "Street address and postal code match.",
+                        "Street address and postal code do not match.",
+                        "Card member's name and billing address match, but billing postal code does not match.",
+                        "Postal code matches, but street address not verified.",
+                        "Card member's name, billing address, and postal code match. Shipping information verified but chargeback protection not guaranteed.",
+                        "System unavailable.",
+                        "U.S.-issuing bank does not support AVS.",
+                        "Card member's name does not match, but street address matches.",
+                        "Address information unavailable.",
+                        "Card member's name, billing address, and billing postal code match.",
+                        "Street address does not match, but 9-digit postal code matches.",
+                        "Street address and 9-digit postal code match.",
+                        "Street address and 5-digit postal code match.",
+                        "Street address does not match, but 5-digit postal code matches."
+                    ]
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "required": true
         },
         "signature": {
