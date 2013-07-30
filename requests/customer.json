@@ -60,11 +60,21 @@
         "source": {
             "anyOf": [
                 { "$ref": "card.json" },
-                { "$ref": "bank_account.json" }
+                { "$ref": "bank_account.json" },
+                { "type": "null" }
             ]
         },
+        "source_href": {
+            "type": ["string", "null"]
+        },
         "destination": {
-            "$ref": "bank_account.json"
+            "anyOf": [
+                { "$ref": "bank_account.json" },
+                { "type": "null" }
+            ]
+        },
+        "destination_href": {
+            "type": ["string", "null"]
         },
         "meta": {
             "type": "object"
