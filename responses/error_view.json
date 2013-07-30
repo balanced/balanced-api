@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "_uris": {
+            "type": "object",
+            "required": true
+        },
+        "status": {
+            "type": "string",
+            "required": true
+        },
+        "category_code": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "string",
+            "required": true
+        },
+        "status_code": {
+            "type": "integer",
+            "required": true
+        },
+        "category_type": {
+            "type": "string",
+            "required": true
+        },
+        "request_id": {
+            "type": "string",
+            "required": true
+        }
+    },
+    "additionalProperties": false
+}

@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "RF[a-zA-Z0-9]{22}",
+            "pattern": "RF[a-zA-Z0-9]{21,22}"
         },
         "href": {
             "type": "string",
@@ -36,11 +36,16 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "status": {
@@ -60,7 +65,10 @@
                     "required": true
                 },
                 "order": {
-                    "type": ["null", "string"],
+                    "type": [
+                        "null",
+                        "string"
+                    ],
                     "format": "uri",
                     "required": true
                 }

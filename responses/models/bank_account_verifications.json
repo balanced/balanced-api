@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "BZ[a-zA-Z0-9]{22}",
+            "pattern": "BZ[a-zA-Z0-9]{21,22}",
             "required": true
         },
         "href": {
@@ -40,18 +40,6 @@
         },
         "verification_status": {
             "$ref": "status.json",
-            "required": true
-        },
-        "amount1": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 99,
-            "required": true
-        },
-        "amount2": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 99,
             "required": true
         },
         "meta": {
