@@ -27,7 +27,7 @@
 	},
 	"response": {
 	    "body": {
-		"$ref": "../responses/cards.json",
+		"$ref": "../responses/cards.json"
 	    }
 	    "status_code": 201
 	}
@@ -44,7 +44,7 @@
 	    "body": {
 		"allOf": [
 		    {
-			"$ref": "../responses/cards.json",
+			"$ref": "../responses/cards.json"
 		    },
 		    /*
 		      object looks like:
