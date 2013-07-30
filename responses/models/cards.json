@@ -56,15 +56,17 @@
             ],
             "required": true
         },
-        "cvv_result_code": {
+        "cvv_match": {
             "anyOf": [
                 {
                     "type": "string",
-                    "pattern": "[DIMNPSUX]",
+                    "enum": [
+                        "yes",
+                        "no"
+                        "unsupported"
+                    ]
                 },
-                {
-                    "type": "null"
-                }
+                { "type": "null" }
             ],
             "required": true
         },
@@ -93,15 +95,31 @@
             "$ref": "address.json",
             "required": true
         },
-        "avs_result_code": {
+        "avs_street_match": {
             "anyOf": [
                 {
                     "type": "string",
-                    "pattern": "[A-Z]"
+                    "enum": [
+                        "yes",
+                        "no"
+                        "unsupported"
+                    ]
                 },
+                { "type": "null" }
+            ],
+            "required": true
+        },
+        "avs_postal_match": {
+            "anyOf": [
                 {
-                    "type": "null"
-                }
+                    "type": "string",
+                    "enum": [
+                        "yes",
+                        "no"
+                        "unsupported"
+                    ]
+                },
+                { "type": "null" }
             ],
             "required": true
         },
