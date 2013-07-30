@@ -19,7 +19,7 @@
         },
         "credits": {
             "items": {
-                "$ref": "models/credits.json"
+                "$ref": "_models/credits.json"
             },
             "type": "array",
             "minItems": 1,

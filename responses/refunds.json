@@ -12,7 +12,7 @@
         },
         "refunds": {
             "items": {
-                "$ref": "models/refunds.json"
+                "$ref": "_models/refunds.json"
             },
             "type": "array",
             "minItems": 1,

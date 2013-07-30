@@ -19,7 +19,7 @@
         },
         "reversals": {
             "items": {
-                "$ref": "models/reversals.json"
+                "$ref": "_models/reversals.json"
             },
             "type": "array",
             "minItems": 1,

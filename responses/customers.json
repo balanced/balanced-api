@@ -44,7 +44,7 @@
         },
         "customers": {
             "items": {
-                "$ref": "models/customers.json"
+                "$ref": "_models/customers.json"
             },
             "type": "array",
             "minItems": 1,

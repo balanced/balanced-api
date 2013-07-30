@@ -12,7 +12,7 @@
         },
         "bank_accounts": {
             "items": {
-                "$ref": "models/bank_accounts.json"
+                "$ref": "_models/bank_accounts.json"
             },
             "type": "array",
             "minItems": 1,
@@ -20,7 +20,7 @@
         },
         "bank_account_verifications": {
             "items": {
-                "$ref": "models/bank_account_verifications.json"
+                "$ref": "_models/bank_account_verifications.json"
             },
             "type": "array",
             "minItems": 1,
@@ -28,7 +28,7 @@
         },
         "card_holds": {
             "items": {
-                "$ref": "models/card_holds.json"
+                "$ref": "_models/card_holds.json"
             },
             "type": "array",
             "minItems": 1,
@@ -36,7 +36,7 @@
         },
         "cards": {
             "items": {
-                "$ref": "models/cards.json"
+                "$ref": "_models/cards.json"
             },
             "type": "array",
             "minItems": 1,
@@ -44,7 +44,7 @@
         },
         "credits": {
             "items": {
-                "$ref": "models/credits.json"
+                "$ref": "_models/credits.json"
             },
             "type": "array",
             "minItems": 1,
@@ -52,7 +52,7 @@
         },
         "customers": {
             "items": {
-                "$ref": "models/customers.json"
+                "$ref": "_models/customers.json"
             },
             "type": "array",
             "minItems": 1,
@@ -60,7 +60,7 @@
         },
         "debits": {
             "items": {
-                "$ref": "models/debits.json"
+                "$ref": "_models/debits.json"
             },
             "type": "array",
             "minItems": 1,
@@ -68,7 +68,7 @@
         },
         "orders": {
             "items": {
-                "$ref": "models/orders.json"
+                "$ref": "_models/orders.json"
             },
             "type": "array",
             "minItems": 1,
@@ -76,7 +76,7 @@
         },
         "refunds": {
             "items": {
-                "$ref": "models/refunds.json"
+                "$ref": "_models/refunds.json"
             },
             "type": "array",
             "minItems": 1,
@@ -84,7 +84,7 @@
         },
         "reversals": {
             "items": {
-                "$ref": "models/reversals.json"
+                "$ref": "_models/reversals.json"
             },
             "type": "array",
             "minItems": 1,

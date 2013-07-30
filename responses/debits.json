@@ -19,7 +19,7 @@
         },
         "debits": {
             "items": {
-                "$ref": "models/debits.json"
+                "$ref": "_models/debits.json"
             },
             "type": "array",
             "minItems": 1,

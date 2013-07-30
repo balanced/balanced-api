@@ -38,7 +38,7 @@
             "required": false
         },
         "orders": {
-            "items": { "$ref": "models/orders.json" },
+            "items": { "$ref": "_models/orders.json" },
             "type": "array",
             "minItems": 1,
             "uniqueItems": true
