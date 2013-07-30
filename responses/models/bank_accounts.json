@@ -51,7 +51,7 @@
             "$ref": "address.json",
             "required": true
         },
-        "signature": {
+        "fingerprint": {
             "type": "string",
             "required": true
         },
