@@ -1,0 +1,76 @@
+[
+    {
+	"method": "POST",
+	"href": "/customers",
+	"body": {
+	    // params to the post body
+	    "name": "some name"
+	},
+	"validate": {
+	    "$ref": "../responses/customers.json"
+	},
+	"status_code": 201 // status code to check against
+    },
+    {
+	"method": "POST",
+	"href": "/cards",
+	"body": {
+	    "number": "4111111111111111",
+	    "year": "2016",
+	    "month": "12"
+	},
+	"validate": {
+	    "$ref": "../responses/cards.json",
+	}
+	"status_code": 201
+    },
+    {
+	"method": "POST",
+	"href": "{0,customer.cards}" // url computed using hypermedia data from first response and object customer link cards
+	"body": {
+	    "href": "{1,cards.href}"
+	},
+	"validate": {
+	    "allOf": [
+		{
+		    "$ref": "../responses/cards.json",
+		},
+		/*
+		  object looks like:
+		  {
+		  "cards": [{
+		  . . .
+		  "links": {
+		  "customer": "/customers/[id of customer now associated with]"
+		  }
+		  }],
+		  "links": { . . . }
+		  }
+		*/
+		{
+		    "type": "object",
+		    "properties": {
+			"cards": {
+			    "type": "array",
+			    "items": {
+				"type": "object",
+				"properties": {
+				    "links": {
+					"type": "object",
+					"properties": {
+					    "customer": {
+						"type": "string",
+						"pattern": "{0,customers.id}" // check that the id of the customer is now in the links for this card
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    ]
+	}
+	// status code not required if you don't care to check it
+    }
+]
