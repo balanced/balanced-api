@@ -2,12 +2,12 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/debits",
     "allOf": [
-    	{ "$ref": "_base/debit.json" },
-    	{
-    		"type": "object",
-    		"properties": {
-    			"source": { "$ref": "card.json" }
-    		}
-    	}
+        { "$ref": "_models/debit.json" },
+        {
+            "type": "object",
+            "properties": {
+                "source": { "$ref": "card.json" }
+            }
+        }
     ]
 }

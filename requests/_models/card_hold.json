@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/cards_holds",
+    "type": "object",
+    "properties": {
+        "amount": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000000,
+            "required": true
+        },
+        "currency": {
+            "type": "string",
+            "enum": ["USD"],
+        },
+        "appears_on_statement_as": {
+            "type": "string",
+        },
+        "description": {
+            "type": ["string", "null"],
+        },
+        "meta": {
+            "type": "object",
+        }
+    }
+}

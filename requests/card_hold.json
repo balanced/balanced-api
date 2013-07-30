@@ -1,12 +1,12 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "/credits",
+    "title": "/card_holds",
     "allOf": [
-        { "$ref": "_models/credit.json" },
+        { "$ref": "_models/card_hold.json" },
         {
             "type": "object",
             "properties": {
-                "destination": { "$ref": "bank_account.json" }
+                "card": { "$ref": "card.json" }
             }
         }
     ]
