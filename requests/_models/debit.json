@@ -22,7 +22,15 @@
             "format": "uri"
         },
         "appears_on_statement_as": {
-            "type": ["string", "null"]
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "(BAL\\*)?[a-zA-Z0-9\\.<>\\(\\)\\{\\}\\[\\]\\+&!\\$*;\\-%_\\?:\\#@~='\" ^\\`]{1-18}",
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "description": {
             "type": ["string", "null"]
