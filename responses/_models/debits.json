@@ -42,6 +42,7 @@
         "appears_on_statement_as": {
             "type": "string",
             "pattern": "BAL\\*[a-zA-Z0-9\\.<>\\(\\)\\{\\}\\[\\]\\+&!\\$*;\\-%_\\?:\\#@~='\" ^\\`]{1-18}",
+            "description": "All printable ascii characters except for /,\t\n\r\f",
             "required": true
         },
         "description": {
