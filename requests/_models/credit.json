@@ -16,10 +16,22 @@
             "enum": ["USD"],
         },
         "order_href": {
-            "type": "string",
-            "format": "uri"
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
-        "appears_on_statement_as": { "type": "string" },
+        "appears_on_statement_as": {
+            "anyOf": [
+                { "type": "string" },
+                { "type": "null" }
+            ]
+        },
         "description": { "type": "string" },
         "meta": { "type": "object" }
     }
