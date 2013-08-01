@@ -28,8 +28,13 @@
         },
         "appears_on_statement_as": {
             "anyOf": [
-                { "type": "string" },
-                { "type": "null" }
+                {
+                    "type": "string",
+                    "pattern": "[a-zA-Z0-9 \\.\\-\\*]{1,18}"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "description": { "type": "string" },

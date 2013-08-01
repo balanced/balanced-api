@@ -34,6 +34,7 @@
         },
         "appears_on_statement_as": {
             "type": "string",
+            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-\\*]{1,18}",
             "required": true
         },
         "description": {
