@@ -37,16 +37,40 @@ def validator_fix_ref(contents, fileName):
 def validator_required(validator, required, instance, schema):
     # json schema will print the path when the error is raised
 
+
     if required and not instance:
-        yield jsonschema.exceptions.ValidationError('Missing required property')
+        if not (('null' in schema.get('type', []) and instance is None)
+                or ('object' in schema.get('type', []) and isinstance(instance, dict))) :
+            yield jsonschema.exceptions.ValidationError('Missing required property')
 
-def validator_equal(validator, data, instance, schema):
-
-    import ipdb; ipdb.set_trace()
+def validator_equals(validator, data, instance, schema):
+    if isinstance(data, dict):
+        if not isinstance(instance, dict):
+            yield jsonschema.exceptions.ValidationError('Equals did not find object')
+            return
+        for k, v in data.iteritems():
+            for err in validator_equals(validator, v, instance.get(k, None), data):
+                yield err
+    elif isinstance(data, list):
+        if not isinstance(instance, list):
+            yield jsonschema.exceptions.ValidationError('Equals did not find array')
+            return
+        if len(instance) < len(data):
+            yield jsonschema.exceptions.ValidationError('Equals array not long enough')
+            return
+        a = 0
+        while a < len(data):
+            for err in validator_equals(validator, data[a], instance[a], data):
+                yield err
+            a += 1
+    else:
+        if data != instance:
+            yield jsonschema.exceptions.ValidationError('Equals')
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          {
                                              "required": validator_required,
+                                             "equals": validator_equals,
                                          })
 
 
@@ -82,6 +106,8 @@ class Runner(object):
             return scenario
 
     def run_scenario(self, scenario, data, path):
+
+        sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
 
         scenario = self.resolve_deps(scenario, data)
 
