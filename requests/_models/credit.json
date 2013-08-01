@@ -9,18 +9,26 @@
         },
         "marketplace_fee": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 0
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ]
         },
         "order_href": {
             "type": "string",
             "format": "uri"
         },
-        "appears_on_statement_as": { "type": "string" },
-        "description": { "type": "string" },
-        "meta": { "type": "object" }
+        "appears_on_statement_as": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "meta": {
+            "type": "object"
+        }
     }
 }

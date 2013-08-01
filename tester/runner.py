@@ -41,7 +41,8 @@ def validator_required(validator, required, instance, schema):
     if required and not instance:
         if not (('null' in schema.get('type', []) and instance is None)
                 or ('object' in schema.get('type', []) and isinstance(instance, dict))
-                or ('boolean' in schema.get('type', []) and instance is False)):
+                or ('boolean' in schema.get('type', []) and instance is False)
+                or ('integer' in schema.get('type', []) and instance is 0)):
             yield jsonschema.exceptions.ValidationError('Missing required property')
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
@@ -118,9 +119,10 @@ class Runner(object):
         if 'schema' in scenario['request']:
             try:
                 against = validator_fix_ref(json.loads(scenario['request']['schema']), path)
-            except:
+            except Exception, e:
                 print('Error loading request schema for {0}'
                       .format(scenario['name']))
+                print(str(e))
                 sys.exit(1)
             validator(against).validate(body)
         else:
@@ -149,7 +151,7 @@ class Runner(object):
         try:
             against = validator_fix_ref(json.loads(scenario['response'].get('schema', '{}')), path)
         except:
-            print('could not load json, could not parse schema for {0}'.format(scenario['name']))
+            print('could not parse response schema for {0}'.format(scenario['name']))
             sys.exit(1)
 
         if VALIDATE_SCHEMA == '1':
