@@ -14,7 +14,9 @@ import requests
 import jsonschema
 
 ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change this to balanced api
-ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS', 'application/vnd.balancedpayments+json; version=1.1, application/vnd.api+json')
+ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
+                                'application/vnd.balancedpayments+json; version=1.1, '
+                                'application/vnd.api+json')
 VALIDATE_SCHEMA = os.environ.get('VALIDATE_SCHEMA', '1')
 
 # the $ref do not work with relative paths as specified in the spec
@@ -40,7 +42,7 @@ def validator_required(validator, required, instance, schema):
 
     if required and not instance:
         if not (('null' in schema.get('type', []) and instance is None)
-                or ('object' in schema.get('type', []) and isinstance(instance, dict))) :
+                or ('object' in schema.get('type', []) and isinstance(instance, dict))):
             yield jsonschema.exceptions.ValidationError('Missing required property')
 
 def validator_equals(validator, data, instance, schema):
@@ -123,9 +125,10 @@ class Runner(object):
 
         if 'status_code' in scenario['response']:
             if scenario['response']['status_code'] != resp.status_code:
-                sys.stderr.write('Scenario {0} failed with wrong status code {1} != {2}'.format(scenario['name'],
-                                                                                                scenario['response']['status_code'],
-                                                                                                resp.status_code))
+                sys.stderr.write('Scenario {0} failed with wrong status code {1} != {2}'
+                                 .format(scenario['name'],
+                                         scenario['response']['status_code'],
+                                         resp.status_code))
                 sys.exit(1)
 
         resp_json = resp.json()
@@ -141,7 +144,7 @@ class Runner(object):
         return resp_json
 
 
-    def parseFile(self, name):
+    def parse_file(self, name):
 
         scenarios = {}
 
@@ -150,7 +153,7 @@ class Runner(object):
         data = yaml.load(open(name).read())
 
         for other in data.get('require', []):
-            scenarios.update(**parseFile(os.path.join(os.path.dirname(name), other)))
+            scenarios.update(**self.parse_file(os.path.join(os.path.dirname(name), other)))
 
         for scenario in data.get('scenarios', []):
             scenarios[scenario['name']] = self.run_scenario(scenario, scenarios, name)
@@ -162,7 +165,7 @@ def main():
     if len(sys.argv) == 2:
         runner = Runner()
         runner.cache = json.load(open('fixtures.json'))
-        runner.parseFile(sys.argv[1])
+        runner.parse_file(sys.argv[1])
     else:
         print('python {0} [file of scenario to run]'.format(sys.argv[0]))
 

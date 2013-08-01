@@ -37,5 +37,3 @@ scenarios:
           { "equals": { "cards": [ { "links": { "customer": "{customer_create,customers.id}" } } ] } }
           ]
         }
-
-      equals: |
