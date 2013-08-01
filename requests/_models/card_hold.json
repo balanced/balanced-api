@@ -6,7 +6,6 @@
         "amount": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 10000000,
             "required": true
         },
         "currency": {
@@ -14,7 +13,14 @@
             "enum": ["USD"],
         },
         "appears_on_statement_as": {
-            "type": "string",
+            "anyOf" : [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "description": {
             "type": ["string", "null"],
