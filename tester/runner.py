@@ -17,6 +17,7 @@ ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change th
 ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS', 'application/vnd.balancedpayments+json; version=1.1, application/vnd.api+json')
 VALIDATE_SCHEMA = os.environ.get('VALIDATE_SCHEMA', '1')
 
+# the $ref do not work with relative paths as specified in the spec
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
         if '$ref' in contents:
@@ -39,11 +40,12 @@ def validator_required(validator, required, instance, schema):
     if required and not instance:
         yield jsonschema.exceptions.ValidationError('Missing required property')
 
-#validator = jsonschema.Draft4Validator
+def validator_equal(validator, data, instance, schema):
+
+    import ipdb; ipdb.set_trace()
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          {
-                                             #"$ref": validator_ref
                                              "required": validator_required,
                                          })
 
@@ -79,7 +81,7 @@ class Runner(object):
         else:
             return scenario
 
-    def runScenario(self, scenario, data, path):
+    def run_scenario(self, scenario, data, path):
 
         scenario = self.resolve_deps(scenario, data)
 
@@ -125,15 +127,12 @@ class Runner(object):
             scenarios.update(**parseFile(os.path.join(os.path.dirname(name), other)))
 
         for scenario in data.get('scenarios', []):
-            scenarios[scenario['name']] = self.runScenario(scenario, scenarios, name)
+            scenarios[scenario['name']] = self.run_scenario(scenario, scenarios, name)
 
         return scenarios
 
 
 def main():
-    #global cache
-    #cache = json.load(open('fixtures.json'))
-
     if len(sys.argv) == 2:
         runner = Runner()
         runner.cache = json.load(open('fixtures.json'))

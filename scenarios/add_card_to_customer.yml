@@ -1,5 +1,5 @@
-require:
-  - other files with scenarios to import
+#require:
+#  - other files with scenarios to import
 scenarios:
   - name: customer_create
     request:
@@ -10,7 +10,11 @@ scenarios:
     response:
       status_code: 201
       body: |
-        { "$ref": "../responses/customers.json" }
+        { "allOf": [
+         { "$ref": "../responses/customers.json"  },
+         { "equals": "testing" }
+         ]
+        }
   - name: card_create
     request:
       method: POST
@@ -26,13 +30,13 @@ scenarios:
   - name: add_card_to_customer
     request:
       method: POST
-      href: {customer_create,customer.cards}
+      href: "{customer_create,customers.cards}"
       body:
-        href: {card_create,cards.href}
+        href: "{card_create,cards.href}"
     response:
       body: |
         { "$ref": "../responses/cards.json" }
       equals: |
         {
-           "cards": [ { "links": { "customer": "{customer_create,customer.id}" } } ]
+           "cards": [ { "links": { "customer": "{customer_create,customers.id}" } } ]
         }

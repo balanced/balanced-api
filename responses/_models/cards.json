@@ -62,11 +62,13 @@
                     "type": "string",
                     "enum": [
                         "yes",
-                        "no"
+                        "no",
                         "unsupported"
                     ]
                 },
-                { "type": "null" }
+                {
+                    "type": "null"
+                }
             ],
             "required": true
         },
@@ -101,11 +103,13 @@
                     "type": "string",
                     "enum": [
                         "yes",
-                        "no"
+                        "no",
                         "unsupported"
                     ]
                 },
-                { "type": "null" }
+                {
+                    "type": "null"
+                }
             ],
             "required": true
         },
@@ -115,11 +119,13 @@
                     "type": "string",
                     "enum": [
                         "yes",
-                        "no"
+                        "no",
                         "unsupported"
                     ]
                 },
-                { "type": "null" }
+                {
+                    "type": "null"
+                }
             ],
             "required": true
         },
@@ -197,7 +203,7 @@
                         "string"
                     ],
                     "pattern": "CU[a-zA-Z0-9]{21,22}",
-		    "required": true
+                    "required": true
                 }
             },
             "required": true,
