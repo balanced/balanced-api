@@ -2,11 +2,15 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/card_holds",
     "allOf": [
-        { "$ref": "_models/card_hold.json" },
+        {
+            "$ref": "_models/card_hold.json"
+        },
         {
             "type": "object",
             "properties": {
-                "card": { "$ref": "card.json" }
+                "card": {
+                    "$ref": "card.json"
+                }
             }
         }
     ]

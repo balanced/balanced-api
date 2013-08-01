@@ -4,18 +4,18 @@
     "properties": {
         "links": {
             "type": "object",
-	    "properties": {
-		"refunds.debit": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		},
-		"refunds.order": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		}
-	    }
+            "properties": {
+                "refunds.debit": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "refunds.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": false
         },
         "meta": {

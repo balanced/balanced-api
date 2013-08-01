@@ -10,16 +10,16 @@
                     "format": "uri",
                     "required": true
                 },
-		"reversals.credits" {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		},
-		"reversals.order": {
-		    "type": "string",
-		    "format": "uri",
-		    "required": true
-		}
+                "reversals.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "reversals.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
             },
             "required": false
         },
