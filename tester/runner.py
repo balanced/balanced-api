@@ -38,41 +38,15 @@ def validator_fix_ref(contents, fileName):
 
 def validator_required(validator, required, instance, schema):
     # json schema will print the path when the error is raised
-
-
     if required and not instance:
         if not (('null' in schema.get('type', []) and instance is None)
-                or ('object' in schema.get('type', []) and isinstance(instance, dict))):
+                or ('object' in schema.get('type', []) and isinstance(instance, dict))
+                or ('boolean' in schema.get('type', []) and instance is False)):
             yield jsonschema.exceptions.ValidationError('Missing required property')
-
-def validator_equals(validator, data, instance, schema):
-    if isinstance(data, dict):
-        if not isinstance(instance, dict):
-            yield jsonschema.exceptions.ValidationError('Equals did not find object')
-            return
-        for k, v in data.iteritems():
-            for err in validator_equals(validator, v, instance.get(k, None), data):
-                yield err
-    elif isinstance(data, list):
-        if not isinstance(instance, list):
-            yield jsonschema.exceptions.ValidationError('Equals did not find array')
-            return
-        if len(instance) < len(data):
-            yield jsonschema.exceptions.ValidationError('Equals array not long enough')
-            return
-        a = 0
-        while a < len(data):
-            for err in validator_equals(validator, data[a], instance[a], data):
-                yield err
-            a += 1
-    else:
-        if data != instance:
-            yield jsonschema.exceptions.ValidationError('Equals')
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          {
                                              "required": validator_required,
-                                             "equals": validator_equals,
                                          })
 
 
@@ -107,15 +81,55 @@ class Runner(object):
         else:
             return scenario
 
+
+    def equals(self, data, instance):
+        ret = 0
+        if isinstance(data, dict):
+            if not isinstance(instance, dict):
+                return 1
+            for k, v in data.iteritems():
+                ret += self.equals(v, instance.get(k, None))
+            return ret
+        elif isinstance(data, list):
+            if not isinstance(instance, list):
+                return 1
+            if len(instance) < len(data):
+                return 1
+            a = 0
+            while a < len(data):
+                ret += self.equals(data[a], instance[a])
+                a += 1
+            return ret
+        else:
+            if data != instance:
+                return 1
+            else:
+                return 0
+
+
     def run_scenario(self, scenario, data, path):
 
         sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
 
         scenario = self.resolve_deps(scenario, data)
 
+        body = scenario['request'].get('body', {})
+
+        if 'schema' in scenario['request']:
+            try:
+                against = validator_fix_ref(json.loads(scenario['request']['schema']), path)
+            except:
+                print('Error loading request schema for {0}'
+                      .format(scenario['name']))
+                sys.exit(1)
+            validator(against).validate(body)
+        else:
+            sys.stderr.write('Warning: {0} missing schema section for request'
+                             .format(scenario['name']))
+
         req = requests.Request(scenario['request']['method'],
                                ROOT_URL + scenario['request']['href'],
-                               data=scenario['request'].get('body', {}),
+                               data=body,
                                headers={
                                    'Accept': ACCEPT_HEADERS,
                                },
@@ -133,13 +147,23 @@ class Runner(object):
 
         resp_json = resp.json()
         try:
-            against = validator_fix_ref(json.loads(scenario['response'].get('body', '{}')), path)
+            against = validator_fix_ref(json.loads(scenario['response'].get('schema', '{}')), path)
         except:
-            print('could not json error, could not parse schema for {0}'.format(scenario['name']))
+            print('could not load json, could not parse schema for {0}'.format(scenario['name']))
             sys.exit(1)
 
         if VALIDATE_SCHEMA == '1':
+            if not against:
+                sys.stderr.write('Warning: no schema to validate response against for {0}'
+                                 .format(scenario['name']))
             validator(against).validate(resp_json)
+
+        if 'equals' in scenario['response']:
+            if 0 != self.equals(json.loads(scenario['response']['equals']), resp_json):
+                print('Error validating equals for {0}'.format(scenario['name']))
+                print(json.dumps(resp_json, indent=4))
+                print(scenario['response']['equals'])
+                sys.exit(1)
 
         return resp_json
 

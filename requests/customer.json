@@ -4,26 +4,44 @@
     "type": "object",
     "properties": {
         "name": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "business_name": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "email": {
-            "type": ["string", "null"],
-            "format": "email",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "email"
         },
-       "phone": {
-            "type": ["string", "null"],
-            "format": "phone",
+        "phone": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "phone"
         },
         "ssn_last4": {
-            "type": ["string", "null"],
-            "pattern": "[0-9]{4}",
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "[0-9]{4}"
         },
         "ein": {
-            "type": ["string", "null"],
-            "pattern": "[0-9]{9}",
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "[0-9]{9}"
         },
         "dob_month": {
             "anyOf": [
@@ -31,7 +49,7 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 12
-                }
+                },
                 {
                     "type": "string",
                     "pattern": "(1[0-2])|[1-9]"
@@ -56,26 +74,42 @@
             ]
         },
         "address": {
-            "$ref": "address.json",
+            "$ref": "_models/address.json"
         },
         "source": {
             "anyOf": [
-                { "$ref": "card.json" },
-                { "$ref": "bank_account.json" },
-                { "type": "null" }
+                {
+                    "$ref": "card.json"
+                },
+                {
+                    "$ref": "bank_account.json"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "source_href": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "destination": {
             "anyOf": [
-                { "$ref": "bank_account.json" },
-                { "type": "null" }
+                {
+                    "$ref": "bank_account.json"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "destination_href": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "meta": {
             "type": "object"
