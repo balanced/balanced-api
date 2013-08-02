@@ -10,7 +10,7 @@
                     "format": "uri",
                     "required": true
                 },
-                "reversals.credits": {
+                "reversals.credit": {
                     "type": "string",
                     "format": "uri",
                     "required": true

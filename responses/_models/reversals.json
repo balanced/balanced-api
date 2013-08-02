@@ -73,7 +73,7 @@
         "links": {
             "type": "object",
             "properties": {
-                "credits": {
+                "credit": {
                     "type": "string",
                     "pattern": "CR[a-zA-Z0-9]{21,22}",
                     "required": true
