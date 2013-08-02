@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "HL[a-zA-Z0-9]{21,22}",
+            "pattern": "HL[a-zA-Z0-9]{21,22}"
         },
         "href": {
             "type": "string",
@@ -30,7 +30,9 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "appears_on_statement_as": {
@@ -38,7 +40,10 @@
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "status": {
@@ -46,11 +51,17 @@
             "required": true
         },
         "failure_reason_code": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "failure_reason": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "meta": {
@@ -66,8 +77,11 @@
                     "required": true
                 },
                 "debit": {
-                    "type": ["null", "string"],
-		    "pattern": "WD[a-zA-Z0-9]{21,22}",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "WD[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

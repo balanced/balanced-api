@@ -24,7 +24,9 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "amount": {
@@ -43,7 +45,10 @@
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "delivery_address": {

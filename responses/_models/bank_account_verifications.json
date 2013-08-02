@@ -51,7 +51,7 @@
             "properties": {
                 "bank_account": {
                     "type": "string",
-		    "pattern": "BA[a-zA-Z0-9]{21,22}",
+                    "pattern": "BA[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

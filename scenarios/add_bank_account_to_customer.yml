@@ -11,7 +11,7 @@ scenarios:
         routing_number: "0021000021"
         account_number: "9900000002"
         name: what up
-        type: checkin
+        account_type: checking
     response:
       status_code: 201
       schema: |

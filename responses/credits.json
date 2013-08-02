@@ -10,7 +10,7 @@
                     "format": "uri",
                     "required": true
                 },
-                "credits.customers": {
+                "credits.customer": {
                     "type": "string",
                     "format": "uri",
                     "required": true

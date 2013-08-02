@@ -2,5 +2,5 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/credits/:credit_id/reversals",
     "type": "object",
-    "properties": { }
+    "properties": {}
 }

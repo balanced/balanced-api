@@ -38,6 +38,8 @@ def validator_fix_ref(contents, fileName):
 
 def validator_required(validator, required, instance, schema):
     # json schema will print the path when the error is raised
+    return
+
     if required and not instance:
         if not (('null' in schema.get('type', []) and instance is None)
                 or ('object' in schema.get('type', []) and isinstance(instance, dict))
@@ -47,6 +49,7 @@ def validator_required(validator, required, instance, schema):
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          {
+                                             "properties": jsonschema._validators.properties_draft3,
                                              "required": validator_required,
                                          })
 

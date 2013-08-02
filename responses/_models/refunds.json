@@ -69,7 +69,7 @@
                         "null",
                         "string"
                     ],
-		    "pattern": "OR[a-zA-Z0-9]{21,22}",
+                    "pattern": "OR[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

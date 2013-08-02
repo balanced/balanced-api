@@ -3,7 +3,9 @@
 FAILED=""
 code=0
 
-for i in ../**/*.json
+FILES=`find .. -name "*.json"`
+
+for i in $FILES
 do
 	 if node _fix.js $i; then
 	 	echo "OK $i"

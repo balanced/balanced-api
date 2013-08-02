@@ -3,7 +3,9 @@
 FAILED=""
 code=0
 
-for i in ../scenarios/*.yml
+FILES=`find ../scenarios -name "*.yml"`
+
+for i in $FILES
 do
 	 if python runner.py $i; then
 	 	echo "OK $i"

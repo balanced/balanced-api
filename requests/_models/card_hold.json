@@ -11,16 +11,21 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ]
         },
         "appears_on_statement_as": {
-            "type": "string",
+            "type": "string"
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "meta": {
-            "type": "object",
+            "type": "object"
         }
     }
 }

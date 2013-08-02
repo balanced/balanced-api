@@ -2,7 +2,12 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/bank_accounts/:bank_account_id/bank_account_verifications",
     "anyof": [
-	    { "type": "object", "properties": { } },
-		{ "type": "null" }
-	]
+        {
+            "type": "object",
+            "properties": {}
+        },
+        {
+            "type": "null"
+        }
+    ]
 }
