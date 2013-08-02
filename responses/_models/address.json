@@ -40,11 +40,11 @@
         "country_code": {
             "anyOf": [
                 {
-                    "type": "string",
-                    "pattern": "[A-Z]{2}"
+                    "type": "null"
                 },
                 {
-                    "type": "null"
+                    "type": "string",
+                    "pattern": "[A-Z]{2}"
                 }
             ],
             "required": true

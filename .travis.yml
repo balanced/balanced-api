@@ -1,0 +1,9 @@
+before_install:
+  - git submodule update --init --recursive
+language: python
+python:
+  - 2.7
+install:
+  - pip install -r tester/requirements.txt
+script:
+  - cd tester && ./check_json.sh

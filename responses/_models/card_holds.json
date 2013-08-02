@@ -22,11 +22,11 @@
             "format": "date-time",
             "required": true
         },
-	"expires_at": {
-	    "type": "string",
-	    "format": "date-time",
-	    "required": true
-	},
+        "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
         "amount": {
             "type": "integer",
             "minimum": 1,

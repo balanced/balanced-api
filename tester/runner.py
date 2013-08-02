@@ -128,9 +128,10 @@ class Runner(object):
 
         req = requests.Request(scenario['request']['method'],
                                ROOT_URL + scenario['request']['href'],
-                               data=body,
+                               data=json.dumps(body),
                                headers={
                                    'Accept': ACCEPT_HEADERS,
+                                   'Content-type': 'application/json',
                                },
                                auth=(self.cache['secret'], ''),
                            ).prepare()
