@@ -1,5 +1,5 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/cards/:card_id/holds",
-    "$ref": "../_models/hold.json"
+    "$ref": "../_models/card_hold.json"
 }

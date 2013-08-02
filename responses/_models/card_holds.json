@@ -22,6 +22,11 @@
             "format": "date-time",
             "required": true
         },
+	"expires_at": {
+	    "type": "string",
+	    "format": "date-time",
+	    "required": true
+	},
         "amount": {
             "type": "integer",
             "minimum": 1,
@@ -73,7 +78,7 @@
             "properties": {
                 "card": {
                     "type": "string",
-                    "pattern": "CC[a-zA-Z0-9]{21,22}",
+                    "pattern": "CC[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "debit": {
@@ -81,7 +86,7 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "WD[a-zA-Z0-9]{21,22}",
+                    "pattern": "WD[a-zA-Z0-9]{16,32}",
                     "required": true
                 }
             },

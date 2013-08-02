@@ -123,7 +123,7 @@ class Runner(object):
                 sys.exit(1)
             validator(against).validate(body)
         else:
-            sys.stderr.write('Warning: {0} missing schema section for request'
+            sys.stderr.write('Warning: {0} missing schema section for request\n'
                              .format(scenario['name']))
 
         req = requests.Request(scenario['request']['method'],
@@ -153,7 +153,7 @@ class Runner(object):
 
         if VALIDATE_SCHEMA == '1':
             if not against:
-                sys.stderr.write('Warning: no schema to validate response against for {0}'
+                sys.stderr.write('Warning: no schema to validate response against for {0}\n'
                                  .format(scenario['name']))
             validator(against).validate(resp_json)
 
