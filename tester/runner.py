@@ -19,7 +19,7 @@ ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
                                 'application/vnd.api+json')
 VALIDATE_SCHEMA = os.environ.get('VALIDATE_SCHEMA', '1')
 
-# the $ref do not work with relative paths as specified in the spec
+# the $ref do not work with relative paths as specified in the jsonschema spec
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
         if '$ref' in contents:
@@ -37,15 +37,9 @@ def validator_fix_ref(contents, fileName):
         return contents
 
 def validator_required(validator, required, instance, schema):
-    # json schema will print the path when the error is raised
+    # the properties function in draft3 takes care of required
+    # this validator has an issue with the form of required that we are using
     return
-
-    if required and not instance:
-        if not (('null' in schema.get('type', []) and instance is None)
-                or ('object' in schema.get('type', []) and isinstance(instance, dict))
-                or ('boolean' in schema.get('type', []) and instance is False)
-                or ('integer' in schema.get('type', []) and instance is 0)):
-            yield jsonschema.exceptions.ValidationError('Missing required property')
 
 validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          {
