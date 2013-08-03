@@ -6,7 +6,6 @@
         "amount": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 10000000,
             "required": true
         },
         "currency": {
@@ -16,7 +15,15 @@
             ]
         },
         "appears_on_statement_as": {
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "[a-zA-Z0-9 \\.\\-\\*]{1,18}"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "description": {
             "type": [

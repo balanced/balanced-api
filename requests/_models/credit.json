@@ -18,8 +18,15 @@
             ]
         },
         "order_href": {
-            "type": "string",
-            "format": "uri"
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "appears_on_statement_as": {
             "type": "string"

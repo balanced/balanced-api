@@ -7,7 +7,7 @@ FILES=`find .. -name "*.json"`
 
 for i in $FILES
 do
-	 if node _fix.js $i; then
+	 if node _fix.js $i > /dev/null ; then
 	 	echo "OK $i"
 	else
 		echo "FAILED $i"

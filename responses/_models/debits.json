@@ -25,13 +25,11 @@
         "amount": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 10000000,
             "required": true
         },
         "marketplace_fee": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 10000000,
             "required": true
         },
         "currency": {
@@ -43,6 +41,7 @@
         },
         "appears_on_statement_as": {
             "type": "string",
+            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-\\*]{1,18}",
             "required": true
         },
         "description": {
