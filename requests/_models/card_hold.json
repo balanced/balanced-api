@@ -10,10 +10,12 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ]
         },
         "appears_on_statement_as": {
-            "anyOf" : [
+            "anyOf": [
                 {
                     "type": "string",
                     "pattern": "[a-zA-Z0-9 \\.\\-\\*]{1,18}"
@@ -24,10 +26,13 @@
             ]
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "meta": {
-            "type": "object",
+            "type": "object"
         }
     }
 }

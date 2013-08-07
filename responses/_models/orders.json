@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "OR[a-zA-Z0-9]{21,22}",
+            "pattern": "OR[a-zA-Z0-9]{16,32}",
             "required": true
         },
         "href": {
@@ -24,7 +24,9 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "amount": {
@@ -43,7 +45,10 @@
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "delivery_address": {
@@ -59,7 +64,7 @@
             "properties": {
                 "merchant": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "CU[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

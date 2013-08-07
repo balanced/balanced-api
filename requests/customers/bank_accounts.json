@@ -2,10 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/customers/:customer_id/bank_accounts",
     "anyOf": [
-        { "$ref": "../bank_account.json" },
+        {
+            "$ref": "../bank_account.json"
+        },
         {
             "properties": {
-                "href": { "type": "string" }
+                "href": {
+                    "type": "string"
+                }
             }
         }
     ]

@@ -14,7 +14,9 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "default": "USD"
         },
         "order_href": {
@@ -40,8 +42,13 @@
             ]
         },
         "description": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         },
-        "meta": { "type": "object" }
+        "meta": {
+            "type": "object"
+        }
     }
 }

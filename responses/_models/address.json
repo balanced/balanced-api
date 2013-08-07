@@ -3,29 +3,49 @@
     "type": "object",
     "properties": {
         "line1": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "line2": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "locality": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "region": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "postal_code": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "country_code": {
             "anyOf": [
-                { "type": "string", "pattern": "[A-Z]{2}" },
-                { "type": "null" }
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "string",
+                    "pattern": "[A-Z]{2}"
+                }
             ],
             "required": true
         }

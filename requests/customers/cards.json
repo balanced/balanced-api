@@ -2,10 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/customers/:customer_id/cards",
     "anyOf": [
-        { "$ref": "../card.json" },
+        {
+            "$ref": "../card.json"
+        },
         {
             "properties": {
-                "href": { "type": "string" }
+                "href": {
+                    "type": "string"
+                }
             }
         }
     ]

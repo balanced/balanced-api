@@ -1,0 +1,17 @@
+require:
+  - add_card_to_customer.yml
+scenarios:
+  - name: debit_customer
+    request:
+      method: POST
+      href: "{customer_create,customers.debits}"
+      schema: |
+        { "$ref": "../requests/customers/debit.json" }
+      body:
+        amount: 5000
+    response:
+      status_code: 201
+      schema: |
+        { "$ref": "../responses/debits.json" }
+      equals: |
+        { "debits": [ { "links": { "customer": "{customer_create,customers.id}" } } ] }

@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "CR[a-zA-Z0-9]{21,22}"
+            "pattern": "CR[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -81,12 +81,12 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+                    "pattern": "CU[a-zA-Z0-9]{21,22}",
                     "required": true
                 },
                 "destination": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "BA[a-zA-Z0-9]{21,22}",
                     "required": true
                 },
                 "order": {
@@ -94,7 +94,7 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+                    "pattern": "OR[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

@@ -3,7 +3,7 @@
     "properties": {
         "_uris": {
             "type": "object",
-            "required": true
+            "required": false
         },
         "status": {
             "type": "string",

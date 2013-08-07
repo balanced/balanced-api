@@ -9,11 +9,13 @@
         },
         "marketplace_fee": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 0
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ]
         },
         "order_href": {
             "anyOf": [
@@ -27,17 +29,13 @@
             ]
         },
         "appears_on_statement_as": {
-            "anyOf": [
-                {
-                    "type": "string",
-                    "pattern": "[a-zA-Z0-9 \\.\\-\\*]{1,18}"
-                },
-                {
-                    "type": "null"
-                }
-            ]
+            "type": "string"
         },
-        "description": { "type": "string" },
-        "meta": { "type": "object" }
+        "description": {
+            "type": "string"
+        },
+        "meta": {
+            "type": "object"
+        }
     }
 }

@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "RV[a-zA-Z0-9]{21,22}",
+            "pattern": "RV[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -34,11 +34,16 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "status": {
@@ -46,11 +51,17 @@
             "required": true
         },
         "failure_reason_code": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "failure_reason": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "meta": {
@@ -60,14 +71,17 @@
         "links": {
             "type": "object",
             "properties": {
-                "credits": {
+                "credit": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "CR[a-zA-Z0-9]{21,22}",
                     "required": true
                 },
                 "order": {
-                    "type": ["null", "string"],
-                    "format": "uri",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "HL[a-zA-Z0-9]{21,22}",
+            "pattern": "HL[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -22,6 +22,11 @@
             "format": "date-time",
             "required": true
         },
+        "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
         "amount": {
             "type": "integer",
             "minimum": 1,
@@ -29,7 +34,9 @@
         },
         "currency": {
             "type": "string",
-            "enum": ["USD"],
+            "enum": [
+                "USD"
+            ],
             "required": true
         },
         "appears_on_statement_as": {
@@ -38,7 +45,10 @@
             "required": true
         },
         "description": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "status": {
@@ -46,11 +56,17 @@
             "required": true
         },
         "failure_reason_code": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "failure_reason": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "required": true
         },
         "meta": {
@@ -62,12 +78,15 @@
             "properties": {
                 "card": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "CC[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "debit": {
-                    "type": ["null", "string"],
-                    "format": "uri",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "WD[a-zA-Z0-9]{16,32}",
                     "required": true
                 }
             },

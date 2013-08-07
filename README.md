@@ -34,3 +34,12 @@ by the Balanced team) to the specs must be submitted via pull request and can
 only be merged in by @matin after giving the community a chance to comment on
 the changes.
 
+
+Running Tests
+=============
+
+Create a new python2 virtual environment.
+cd tester
+pip install -r requirements.txt
+python fixture_data.py > fixtures.json
+python runner.py ../scenarios/[scenario name]

@@ -4,6 +4,18 @@
     "properties": {
         "links": {
             "type": "object",
+            "properties": {
+                "card_holds.debit": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "card_holds.card": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
+            },
             "required": false
         },
         "meta": {

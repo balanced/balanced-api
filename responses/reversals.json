@@ -9,6 +9,16 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
+                },
+                "reversals.credit": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "reversals.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
                 }
             },
             "required": false

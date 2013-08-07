@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "name": {
-            "type": "string",
+            "type": "string"
         },
         "number": {
             "type": "string",
@@ -12,13 +12,19 @@
             "required": true
         },
         "month": {
-            "type": ["integer", "string"],
+            "type": [
+                "integer",
+                "string"
+            ],
             "minimum": 1,
             "maximum": 12,
             "required": true
         },
         "year": {
-            "type": ["integer", "string"],
+            "type": [
+                "integer",
+                "string"
+            ],
             "required": true
         },
         "cvv": {
@@ -26,10 +32,10 @@
             "pattern": "[0-9]{3,4}"
         },
         "address": {
-            "$ref": "address.json",
+            "$ref": "_models/address.json"
         },
         "meta": {
-            "type": "object",
-        },
+            "type": "object"
+        }
     }
 }

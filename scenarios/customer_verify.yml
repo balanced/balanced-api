@@ -1,0 +1,22 @@
+require:
+  - customer_create.yml
+scenarios:
+  - name: customer_verify
+    request:
+      method: PUT
+      href: "{customer_create,customers.href}"
+      schema: |
+        { "$ref": "../requests/customer.json" }
+      body:
+        name: Henry Ford
+        dob_month: 7
+        dob_year: 1863
+        address:
+          postal_code: "48120"
+          country_code: "US"
+    response:
+      status_code: 200
+      schema: |
+        { "$ref": "../responses/customers.json" }
+      body: |
+        { "customers": [ { "merchant_status": "underwritten" } ] }

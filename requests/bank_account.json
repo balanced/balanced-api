@@ -19,14 +19,17 @@
         },
         "account_type": {
             "type": "string",
-            "enum": ["checking", "savings"],
+            "enum": [
+                "checking",
+                "savings"
+            ],
             "required": true
         },
         "address": {
-            "$ref": "address.json",
+            "$ref": "_models/address.json"
         },
         "meta": {
-            "type": "object",
+            "type": "object"
         }
     }
 }

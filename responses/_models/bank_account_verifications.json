@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "BZ[a-zA-Z0-9]{21,22}",
+            "pattern": "BZ[a-zA-Z0-9]{16,32}",
             "required": true
         },
         "href": {
@@ -51,7 +51,7 @@
             "properties": {
                 "bank_account": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "BA[a-zA-Z0-9]{21,22}",
                     "required": true
                 }
             },

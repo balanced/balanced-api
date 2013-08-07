@@ -2,8 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/customers/:customer_id/orders",
     "properties": {
-        "description": { "type": "string" },
-        "delivery_address": { "$ref": "../_models/address.json" },
-        "meta": { "type": "object" }
+        "description": {
+            "type": "string"
+        },
+        "delivery_address": {
+            "$ref": "../_models/address.json"
+        },
+        "meta": {
+            "type": "object"
+        }
     }
 }

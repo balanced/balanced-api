@@ -9,6 +9,16 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
+                },
+                "debits.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "debits.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
                 }
             },
             "required": false

@@ -19,6 +19,11 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
+                },
+                "cards.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
                 }
             },
             "required": false
