@@ -34,7 +34,7 @@
             "anyOf": [
                 {
                     "type": "string",
-                    "pattern": "[a-zA-Z0-9 \\.\\-\\*]{1,18}"
+                    "pattern": "[a-zA-Z0-9 \\.\\-]{1,18}"
                 },
                 {
                     "type": "null"
