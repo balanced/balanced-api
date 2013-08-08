@@ -8,7 +8,7 @@
         },
         "number": {
             "type": "string",
-            "pattern": "([0-9][ \\-*]){15,16}",
+            "pattern": "([0-9][ \\-]*){15,16}",
             "required": true
         },
         "month": {
