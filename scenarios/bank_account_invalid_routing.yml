@@ -1,0 +1,14 @@
+scenarios:
+  - name: bank_accounts_invalid_routing
+    request:
+      method: POST
+      href: /bank_accounts
+      schema: |
+        { "$ref": "../requests/bank_account.json" }
+      body:
+        routing_number: "100000007"
+        account_number: "8887776665555"
+        account_type: checking
+        name: Random man
+    response:
+      status_code: 400

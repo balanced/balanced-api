@@ -1,0 +1,27 @@
+require:
+  - customer_create.yml
+scenarios:
+  - name: fail_card
+    request:
+      method: POST
+      href: "{customer_create,customers.cards}"
+      schema: |
+        { "$ref": "../requests/customers/cards.json" }
+      body:
+        number: 4444444444444448
+        cvv: 123
+        month: 12
+        year: 2018
+    response:
+      schema: |
+        { "$ref": "../responses/cards.json" }
+  - name: debit_failure
+    request:
+      method: POST
+      href: "{fail_card,cards.debits}"
+      schema: |
+        { "$ref": "../requests/cards/debit.json" }
+      body:
+        amount: 5000
+    response:
+      status_code: 402 # payment required

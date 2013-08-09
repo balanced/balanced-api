@@ -1,0 +1,32 @@
+require:
+  - debit_customer.yml # to load money into the marketplace
+scenarios:
+  - name: bank_account_create_failed
+    request:
+      method: POST
+      href: /bank_accounts
+      schema: |
+        { "$ref": "../requests/bank_account.json" }
+      body:
+        routing_number: "021000021"
+        account_number: "9900000004"
+        account_type: checking
+        name: Random lady
+    response:
+      status_code: 201
+      schema: |
+        { "$ref": "../responses/bank_accounts.json" }
+  - name: credit_pending
+    request:
+      method: POST
+      href: "{bank_account_create_failed,bank_accounts.credits}"
+      schema: |
+        { "$ref": "../requests/bank_accounts/credit.json" }
+      body:
+        amount: 100
+    response:
+      status_code: 201
+      schema: |
+        { "$ref": "../responses/credits.json" }
+      equals: |
+        { "credits": [ { "status": "failed" } ] }
