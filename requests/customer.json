@@ -46,13 +46,7 @@
         "dob_month": {
             "anyOf": [
                 {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 12
-                },
-                {
-                    "type": "string",
-                    "pattern": "(1[0-2])|[1-9]"
+                    "$ref": "_models/month.json"
                 },
                 {
                     "type": "null"
@@ -62,11 +56,7 @@
         "dob_year": {
             "anyOf": [
                 {
-                    "type": "integer"
-                },
-                {
-                    "type": "string",
-                    "pattern": "[12][0-9]{3}"
+                    "$ref": "_models/year.json"
                 },
                 {
                     "type": "null"
