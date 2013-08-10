@@ -6,7 +6,7 @@ scenarios:
       method: POST
       href: "{create_bank_account,bank_accounts.verifications}"
       schema: |
-        { "$ref": "../requests/bank_accounts/verifications.json" }
+        { "$ref": "../requests/bank_accounts/verification.json" }
       body: {}
     response:
       status_code: 201
