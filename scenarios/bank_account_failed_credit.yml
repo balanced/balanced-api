@@ -1,5 +1,5 @@
 require:
-  - debit_customer.yml # to load money into the marketplace
+  - customer_debit.yml # to load money into the marketplace
 scenarios:
   - name: bank_account_create_failed
     request:

@@ -1,5 +1,5 @@
 require:
-  - add_card_to_customer.yml
+  - customer_add_card.yml
 scenarios:
   - name: create_hold
     request:

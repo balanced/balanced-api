@@ -1,5 +1,5 @@
 require:
-  - credit_customer.yml
+  - customer_credit.yml
 scenarios:
   - name: create_reversal
     request:

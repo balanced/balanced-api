@@ -1,6 +1,6 @@
 require:
-  - debit_customer.yml # here to load money into the marketplace
-  - add_bank_account_to_customer.yml
+  - customer_debit.yml # here to load money into the marketplace
+  - customer_add_bank_account.yml
 scenarios:
   - name: credit_customer
     request:

@@ -1,5 +1,5 @@
 require:
-  - add_bank_account_to_customer.yml
+  - customer_add_bank_account.yml
 scenarios:
   - name: create_verification
     request:
