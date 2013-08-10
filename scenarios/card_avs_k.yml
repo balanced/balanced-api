@@ -1,0 +1,18 @@
+scenarios:
+  - name: card_avs
+    request:
+      method: POST
+      href: /cards
+      schema: |
+        { "$ref": "../requests/cards.json" }
+      body:
+        number: "4111111111111111"
+        month: 12
+        year: 2018
+        address:
+          postal_code: "00011"
+    response:
+      schema: |
+        { "$ref": "../responses/cards.json" }
+      equals: |
+        { "cards": [ { "avs_result": "Card member's name and billing postal code match, but billing address does not match." } ] }
