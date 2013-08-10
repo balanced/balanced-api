@@ -3,7 +3,7 @@
 FAILED=""
 code=0
 
-FILES=`find ../scenarios -name "*.yml"`
+FILES=`find ../scenarios -name "*.yml" | sort`
 
 for i in $FILES
 do

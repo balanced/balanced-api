@@ -4,12 +4,13 @@ scenarios:
       method: POST
       href: /cards
       schema: |
-        { "$ref": "../requests/cards.json" }
+        { "$ref": "../requests/card.json" }
       body:
         number: "4111111111111111"
         month: 12
         year: 2018
         address:
+          country_code: US
           postal_code: "00024"
     response:
       schema: |

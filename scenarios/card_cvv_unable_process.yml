@@ -4,10 +4,10 @@ scenarios:
       method: POST
       href: /cards
       schema: |
-        { "$ref": "../requests/cards.json" }
+        { "$ref": "../requests/card.json" }
       body:
         number: "4111111111111111"
-        cvv: 995
+        cvv: "995"
         month: 12
         year: 2018
     response:
