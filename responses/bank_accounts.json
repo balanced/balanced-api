@@ -10,6 +10,11 @@
                     "format": "uri",
                     "required": true
                 },
+                "bank_accounts.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
                 "bank_accounts.customer": {
                     "type": "string",
                     "format": "uri",
