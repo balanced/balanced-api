@@ -10,6 +10,11 @@
                     "format": "uri",
                     "required": true
                 },
+                "refunds.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
                 "refunds.order": {
                     "type": "string",
                     "format": "uri",

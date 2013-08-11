@@ -34,6 +34,12 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
+                },
+                "customers.orders": {
+                    "description": "Orders in which the customer is either a buyer or merchant",
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
                 }
             },
             "required": false
