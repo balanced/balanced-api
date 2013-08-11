@@ -11,11 +11,11 @@
             "pattern": "([0-9][ \\-]*){15,16}",
             "required": true
         },
-        "month": {
+        "expiration_month": {
             "$ref": "_models/month.json",
             "required": true
         },
-        "year": {
+        "expiration_year": {
             "$ref": "_models/year.json",
             "required": true
         },
