@@ -10,11 +10,6 @@
                     "format": "uri",
                     "required": true
                 },
-                "cards.credits": {
-                    "type": "string",
-                    "format": "uri",
-                    "required": true
-                },
                 "cards.debits": {
                     "type": "string",
                     "format": "uri",
