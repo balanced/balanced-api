@@ -44,9 +44,5 @@
             ],
             "default": "US"
         }
-    },
-    "dependencies": {
-        "line2": "line1",
-        "locality": "region",
     }
 }
