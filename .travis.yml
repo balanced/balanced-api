@@ -6,4 +6,4 @@ python:
 install:
   - pip install -r tester/requirements.txt
 script:
-  - cd tester && ./check_json.sh
+  - cd tester && ./check_json.sh && DRY_RUN=1 ./run_scenarios.sh

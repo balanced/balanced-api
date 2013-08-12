@@ -20,7 +20,7 @@ scenarios:
         "account_number": "xxxxx8202",
         "rounting_number": "121042882",
         "account_type": "checking",
-#        "bank_name": "Wells Fargo",
+        "bank_name": "Wells Fargo",
         "address": {
           "line1": null,
           "line2": null,

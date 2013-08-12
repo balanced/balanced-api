@@ -14,10 +14,10 @@ scenarios:
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_street_match": "yes"}]}
+      matches: {"cards": [{"avs_street_match": "yes"}]}
 
   - name: avs_street_match_no
     request:
@@ -34,10 +34,10 @@ scenarios:
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_street_match": "no"}]}
+      matches: {"cards": [{"avs_street_match": "no"}]}
 
   - name: avs_street_match_unsupported
     request:
@@ -54,10 +54,10 @@ scenarios:
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_street_match": "unsupported"}]}
+      matches: {"cards": [{"avs_street_match": "unsupported"}]}
 
   - name: avs_street_match_null
     request:
@@ -71,7 +71,7 @@ scenarios:
         "expiration_year": 2016,
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_street_match": null}]}
+      matches: {"cards": [{"avs_street_match": null}]}

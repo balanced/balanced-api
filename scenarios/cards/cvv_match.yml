@@ -12,10 +12,10 @@ scenarios:
         "cvv": "123"
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "yes"}]}
+      matches: {"cards": [{"cvv_match": "yes"}]}
 
   - name: cvv_match_no
     request:
@@ -30,10 +30,10 @@ scenarios:
         "cvv": "456"
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "no"}]}
+      matches: {"cards": [{"cvv_match": "no"}]}
 
   - name: cvv_match_unsupported
     request:
@@ -48,10 +48,10 @@ scenarios:
         "cvv": "789"
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "unsupported"}]}
+      matches: {"cards": [{"cvv_match": "unsupported"}]}
 
   - name: cvv_match_yes
     request:
@@ -65,8 +65,7 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "../responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": null}]}
-
+      matches: {"cards": [{"cvv_match": null}]}
