@@ -20,11 +20,25 @@ ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
 
 DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
 
+
+def find_file(fromFile, fileName):
+    path = os.path.join(os.path.dirname(fromFile), fileName)
+    if os.path.isfile(path):
+        return path
+    path = os.path.join('..', fileName)
+    if os.path.isfile(path):
+        return path
+    print('Could not find file {0}\n'.format(fileName))
+    sys.exit(1)
+
 # the $ref do not work with relative paths as specified in the jsonschema spec
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
         if '$ref' in contents:
-            path = os.path.join(os.path.dirname(fileName), contents['$ref'])
+            ##path = os.path.join(os.path.dirname(fileName), contents['$ref'])
+            ##cont = open(path).read()
+            #cont = read_file(fileName, contents['$ref'])
+            path = find_file(fileName, contents['$ref'])
             cont = open(path).read()
             return validator_fix_ref(json.loads(cont), path)
         else:
@@ -182,7 +196,10 @@ class Runner(object):
         data = yaml.load(open(name).read())
 
         for other in data.get('require', []):
-            scenarios.update(**self.parse_file(os.path.join(os.path.dirname(name), other)))
+            scenarios.update(**self.parse_file(
+                #os.path.join(os.path.dirname(name), other)
+                find_file(name, other)
+            ))
 
         for scenario in data.get('scenarios', []):
             scenarios[scenario['name']] = self.run_scenario(scenario, scenarios, name)
