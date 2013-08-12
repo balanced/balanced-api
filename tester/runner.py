@@ -17,7 +17,8 @@ ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change th
 ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
                                 'application/vnd.balancedpayments+json; version=1.1, '
                                 'application/vnd.api+json')
-VALIDATE_SCHEMA = os.environ.get('VALIDATE_SCHEMA', '1')
+
+DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
 
 # the $ref do not work with relative paths as specified in the jsonschema spec
 def validator_fix_ref(contents, fileName):
@@ -66,6 +67,8 @@ class Runner(object):
 
     def resolve_deps(self, scenario, data):
         def fix_match(matchgroup):
+            if DRY_RUN:
+                return 'asdf'
             return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)] )
         if isinstance(scenario, str):
             return re.sub(r'\{(\w+),(\w+\.\w+)\}', fix_match, scenario)
@@ -126,18 +129,19 @@ class Runner(object):
             sys.stderr.write('Warning: {0} missing schema section for request\n'
                              .format(scenario['name']))
 
-        req = requests.Request(scenario['request']['method'],
-                               ROOT_URL + scenario['request']['href'],
-                               data=json.dumps(body),
-                               headers={
+        if not DRY_RUN:
+            req = requests.Request(scenario['request']['method'],
+                                   ROOT_URL + scenario['request']['href'],
+                                   data=json.dumps(body),
+                                   headers={
                                    'Accept': ACCEPT_HEADERS,
-                                   'Content-type': 'application/json',
-                               },
-                               auth=(self.cache['secret'], ''),
-                           ).prepare()
-        resp = self.session.send(req)
+                                       'Content-type': 'application/json',
+                                   },
+                                   auth=(self.cache['secret'], ''),
+                               ).prepare()
+            resp = self.session.send(req)
 
-        if 'status_code' in scenario['response']:
+        if 'status_code' in scenario['response'] and not DRY_RUN:
             if scenario['response']['status_code'] != resp.status_code:
                 sys.stderr.write('Scenario {0} failed with wrong status code {1} != {2}'
                                  .format(scenario['name'],
@@ -145,21 +149,21 @@ class Runner(object):
                                          resp.status_code))
                 sys.exit(1)
 
-        resp_json = resp.json()
+        resp_json = resp.json() if not DRY_RUN else {}
         try:
             against = validator_fix_ref(scenario['response'].get('schema', {}), path)
         except:
             print('could not parse response schema for {0}'.format(scenario['name']))
             sys.exit(1)
 
-        if VALIDATE_SCHEMA == '1':
+        if not DRY_RUN:
             if not against:
                 sys.stderr.write('Warning: no schema to validate response against for {0}\n'
                                  .format(scenario['name']))
             validator(against).validate(resp_json)
 
         if 'matches' in scenario['response']:
-            if 0 != self.equals(scenario['response']['matches'], resp_json):
+            if 0 != self.equals(scenario['response']['matches'], resp_json) and not DRY_RUN:
                 print('Error validating equals for {0}'.format(scenario['name']))
                 print(json.dumps(resp_json, indent=4))
                 print(scenario['response']['matches'])
