@@ -51,4 +51,4 @@ scenarios:
       schema: 
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      equals: {"bank_accounts": [{"bank_name": "JP Morgan Chase"}]}
+      equals: {"bank_accounts": [{"bank_name": "JPMorgan Chase"}]}

@@ -3,12 +3,18 @@ scenarios:
     request:
       method: POST
       href: /bank_accounts
+      schema:
+        "$ref": "requests/bank_account.json"
       body: {
         "name": "Kareem Abdul-Jabbar",
         "account_number": "9900000000",
         "routing_number": "021000021",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/bank_accounts.json"
 
   - name: verified_bank_account
     request:
