@@ -19,7 +19,7 @@ scenarios:
       status_code: 201
       equals: {"cards": [{"avs_street_match": "yes"}]}
 
-  - name: avs_postal_match_no
+  - name: avs_street_match_no
     request:
       method: POST
       href: /cards
@@ -39,7 +39,7 @@ scenarios:
       status_code: 201
       equals: {"cards": [{"avs_street_match": "no"}]}
 
-  - name: avs_postal_match_unsupported
+  - name: avs_street_match_unsupported
     request:
       method: POST
       href: /cards
@@ -59,7 +59,7 @@ scenarios:
       status_code: 201
       equals: {"cards": [{"avs_street_match": "unsupported"}]}
 
-  - name: avs_postal_match_null
+  - name: avs_street_match_null
     request:
       method: POST
       href: /cards
