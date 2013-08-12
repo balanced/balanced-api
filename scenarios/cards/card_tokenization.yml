@@ -1,5 +1,5 @@
 scenarios:
-  - name: create_card
+  - name: tokenize_code
     request:
       method: POST
       href: /cards
@@ -123,9 +123,9 @@ scenarios:
         "$ref": "../responses/errors.json"
       status_code: 409
 
-  - name: create_card
+  - name: unstore_card
     request:
       method: DELETE
-      href: "{card,href}"
+      href: "{tokenize_card,href}"
     response:
       status_code: 204
