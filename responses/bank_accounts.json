@@ -19,6 +19,11 @@
                     "type": "string",
                     "format": "uri",
                     "required": true
+                },
+                "bank_accounts.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
                 }
             },
             "required": false
