@@ -90,7 +90,8 @@
                 "need-more-information",
                 "underwritten",
                 "rejected"
-            ]
+            ],
+            "required": true
         },
         "address": {
             "$ref": "address.json",

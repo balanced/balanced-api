@@ -26,6 +26,8 @@ scenarios:
         "routing_number": "321174851",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
 
   - name: bank_account_successful
     request:
@@ -37,6 +39,8 @@ scenarios:
         "routing_number": "021000021",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
 
   - name: verified_bank_account_successful
     request:
@@ -48,6 +52,8 @@ scenarios:
         "routing_number": "321174851",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
 
   - name: bank_account_failed
     request:
@@ -59,6 +65,8 @@ scenarios:
         "routing_number": "021000021",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
 
   - name: verified_bank_account_failed
     request:
@@ -70,3 +78,5 @@ scenarios:
         "routing_number": "021000021",
         "account_type": "checking"
       }
+    response:
+      status_code: 201
