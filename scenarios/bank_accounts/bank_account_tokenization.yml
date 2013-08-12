@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -13,7 +13,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{
         "name": "Jack Lalanne",
@@ -37,7 +37,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -46,7 +46,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{"account_type": "checking"}]}
 
@@ -55,7 +55,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -64,7 +64,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{"account_type": "savings"}]}
 
@@ -73,7 +73,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Mahmoud Abdelkader",
         "account_number": "200938202",
@@ -89,7 +89,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{
         "address": {

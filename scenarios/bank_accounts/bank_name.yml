@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -13,7 +13,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{"bank_name": "Wells Fargo"}]}
 
@@ -22,7 +22,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Michael Johnson",
         "account_number": "982379283",
@@ -31,7 +31,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{"bank_name": "Bank of America"}]}
 
@@ -40,7 +40,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Maurice Green",
         "account_number": "33727930",
@@ -49,6 +49,6 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/bank_accounts.json"
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{"bank_name": "JP Morgan Chase"}]}

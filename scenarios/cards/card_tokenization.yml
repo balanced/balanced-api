@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1111",
         "expiration_month": 12,
@@ -12,7 +12,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/cards.json"
+        "$ref": "responses/cards.json"
       status_code: 201
       equals: {"cards": [{
         "name": null
@@ -41,7 +41,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1111",
         "expiration_month": "12",
@@ -49,7 +49,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/cards.json"
+        "$ref": "responses/cards.json"
       status_code: 201
       equals: {"cards": [{
         "expiration_month": 12,
@@ -61,7 +61,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Frida Kahlo",
         "number": "4111 1111 1111 1111",
@@ -70,7 +70,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/cards.json"
+        "$ref": "responses/cards.json"
       status_code: 201
       equals: {"cards": [{"name": "Frida Kahlo"}]}
 
@@ -79,7 +79,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1111",
         "expiration_month": 12,
@@ -94,7 +94,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/cards.json"
+        "$ref": "responses/cards.json"
       status_code: 201
       equals: {"cards": [{
         "address": {
@@ -112,7 +112,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1112",
         "expiration_month": 12,
@@ -120,7 +120,7 @@ scenarios:
       }
     response:
       schema: 
-        "$ref": "../responses/errors.json"
+        "$ref": "responses/errors.json"
       status_code: 409
 
   - name: unstore_card
