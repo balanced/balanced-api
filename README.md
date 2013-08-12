@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/balanced/balanced-api.png?branch=revision1)](https://travis-ci.org/balanced/balanced-api)
+
 Balanced API Spec
 =================
 
@@ -39,7 +41,9 @@ Running Tests
 =============
 
 Create a new python2 virtual environment.
-cd tester
-pip install -r requirements.txt
-python fixture_data.py > fixtures.json
-python runner.py ../scenarios/[scenario name]
+```
+  $ cd tester
+  $ pip install -r requirements.txt
+  $ python fixture_data.py > fixtures.json
+  $ python runner.py ../scenarios/[scenario name]
+```
