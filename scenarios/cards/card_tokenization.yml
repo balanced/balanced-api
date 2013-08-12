@@ -1,0 +1,88 @@
+scenarios:
+  - name: mask_card_number
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"number": "xxxxxxxxxxxx1111"}]}
+
+  - name: expiration_string
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": "12",
+        "expiration_year": "2016"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{
+        "expiration_month": 12,
+        "expiration_year": 2016
+      }]}
+
+  - name: cardholder_name
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Frida Kahlo",
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"name": "Frida Kahlo"}]}
+
+  - name: cardholder_address
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "line1": "7 Bis Rue de l'Abbé de l'Épée",
+          "line2": "Apt 4",
+          "locality": "Versailles",
+          "postal_code": "78000",
+          "country_code": "FR"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{
+        "address": {
+          "line1": "7 Bis Rue de l'Abbé de l'Épée",
+          "line2": "Apt 4",
+          "locality": "Versailles",
+          "region": null,
+          "postal_code": "78000",
+          "country_code": "FR"
+        }
+      }]}
