@@ -41,13 +41,7 @@
                     "type": "string",
                     "pattern": "[A-Z]{2}"
                 }
-            ],
-            "default": "US"
+            ]
         }
-    },
-    "dependencies": {
-        "line2": "line1",
-        "locality": "region",
-        "postal_code": "country_code"
     }
 }

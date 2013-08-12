@@ -1,0 +1,79 @@
+scenarios:
+  - name: avs_postal_match_yes
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "postal_code": "94301"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_postal_match": "yes"}]}
+
+  - name: avs_postal_match_no
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body:
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "postal_code": "94102"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_postal_match": "no"}]}
+
+  - name: avs_postal_match_unsupported
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body:
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "postal_code": "10001"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_postal_match": "unsupported"}]}
+
+  - name: avs_postal_match_null
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_postal_match": null}]}

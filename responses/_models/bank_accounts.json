@@ -47,6 +47,10 @@
             ],
             "required": true
         },
+        "bank_name": {
+            "type": "string",
+            "required": true
+        },
         "address": {
             "$ref": "address.json",
             "required": true

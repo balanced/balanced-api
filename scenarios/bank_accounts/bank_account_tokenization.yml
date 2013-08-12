@@ -1,0 +1,109 @@
+scenarios:
+  - name: tokenize_bank_account
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Jack Lalanne",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "checking"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{
+        "name": "Jack Lalanne",
+        "account_number": "xxxxx8202",
+        "rounting_number": "121042882",
+        "account_type": "checking",
+        "bank_name": "Wells Fargo",
+        "address": {
+          "line1": null,
+          "line2": null,
+          "locality": null,
+          "region": null,
+          "postal_code": null
+          "country_code": null
+        },
+        "meta": {}
+      }]}
+
+  - name: checking_account
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Jack Lalanne",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "checking"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{"account_type": "checking"}]}
+
+  - name: savings_account
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Jack Lalanne",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "savings"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{"account_type": "savings"}]}
+
+  - name: bank_account_address
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Mahmoud Abdelkader",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "checking",
+        "address": {
+          "line1": "965 Mission St",
+          "line2": "Suite 425",
+          "locality": "San Francisco",
+          "region": "CA",
+          "postal_code": "94103"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{
+        "address": {
+          "line1": "965 Mission St",
+          "line2": "Suite 425",
+          "locality": "San Francisco",
+          "region": "CA",
+          "postal_code": "94103"
+        }
+      }]}
+
+  - name: unstore_bank_account
+    request:
+      method: DELETE
+      href: "{tokenize_bank_account,href}"
+    response:
+      status_code: 204

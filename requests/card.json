@@ -11,20 +11,12 @@
             "pattern": "([0-9][ \\-]*){15,16}",
             "required": true
         },
-        "month": {
-            "type": [
-                "integer",
-                "string"
-            ],
-            "minimum": 1,
-            "maximum": 12,
+        "expiration_month": {
+            "$ref": "_models/month.json",
             "required": true
         },
-        "year": {
-            "type": [
-                "integer",
-                "string"
-            ],
+        "expiration_year": {
+            "$ref": "_models/year.json",
             "required": true
         },
         "cvv": {

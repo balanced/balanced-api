@@ -1,0 +1,54 @@
+scenarios:
+  - name: bank_name_wells_fargo
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Jack Lalanne",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "checking"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{"bank_name": "Wells Fargo"}]}
+
+  - name: bank_name_boa
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Michael Johnson",
+        "account_number": "982379283",
+        "routing_number": "121000358",
+        "account_type": "checking"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{"bank_name": "Bank of America"}]}
+
+  - name: bank_name_jpmc
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "name": "Maurice Green",
+        "account_number": "33727930",
+        "routing_number": "322271627",
+        "account_type": "checking"
+      }
+    response:
+      schema: 
+        "$ref": "../responses/bank_accounts.json"
+      status_code: 201
+      equals: {"bank_accounts": [{"bank_name": "JP Morgan Chase"}]}

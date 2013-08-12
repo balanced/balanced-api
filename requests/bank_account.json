@@ -9,7 +9,7 @@
         },
         "account_number": {
             "type": "string",
-            "pattern": "[0-9]{9}",
+            "pattern": "[0-9]+",
             "required": true
         },
         "routing_number": {
