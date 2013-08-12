@@ -1,0 +1,68 @@
+scenarios:
+  - name: card_brand_visa
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"brand": "Visa"}]}
+
+  - name: card_brand_mc
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "5105 1051 0510 5100",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"brand": "MasterCard"}]}
+
+  - name: card_brand_amex
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "3782 822463 10005",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"brand": "American Express"}]}
+
+  - name: card_brand_discover
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "6011 1111 1111 1117",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"brand": "Discover"}]}
