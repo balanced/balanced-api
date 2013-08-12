@@ -25,6 +25,21 @@ scenarios:
         "status": "pending"
       }]}
 
+  - name: credit_existing_bank_account
+    request:
+      method: POST
+      href: "{bank_account,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      equals: {"credits": [{"status": "pending"}]}
+
   - name: credit_bank_account_successful
     request:
       method: POST
