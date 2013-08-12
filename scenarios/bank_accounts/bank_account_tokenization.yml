@@ -2,7 +2,7 @@ scenarios:
   - name: tokenize_bank_account
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
@@ -35,7 +35,7 @@ scenarios:
   - name: checking_account
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
@@ -53,7 +53,7 @@ scenarios:
   - name: savings_account
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
@@ -71,7 +71,7 @@ scenarios:
   - name: bank_account_address
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {

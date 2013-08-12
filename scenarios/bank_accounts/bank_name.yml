@@ -2,7 +2,7 @@ scenarios:
   - name: bank_name_wells_fargo
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
@@ -20,7 +20,7 @@ scenarios:
   - name: bank_name_boa
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
@@ -38,7 +38,7 @@ scenarios:
   - name: bank_name_jpmc
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
         "$ref": "requests/card.json"
       body: {
