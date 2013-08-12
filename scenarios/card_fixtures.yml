@@ -1,0 +1,14 @@
+scenarios:
+  - name: card
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      status_code: 201

@@ -1,15 +1,10 @@
+require:
+  - ../card_fixtures.yml
 scenarios:
-  - name: tokenize_code
+  - name: retrieve_card
     request:
-      method: POST
-      href: /cards
-      schema:
-        "$ref": "requests/card.json"
-      body: {
-        "number": "4111 1111 1111 1111",
-        "expiration_month": 12,
-        "expiration_year": 2016,
-      }
+      method: GET
+      href: "{card,href}"
     response:
       schema: 
         "$ref": "responses/cards.json"
@@ -126,6 +121,6 @@ scenarios:
   - name: unstore_card
     request:
       method: DELETE
-      href: "{tokenize_card,href}"
+      href: "{card,href}"
     response:
       status_code: 204
