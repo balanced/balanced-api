@@ -1,6 +1,12 @@
 require:
   - ../bank_account_fixtures.yml
 scenarios:
+  - name: load_balance_80000
+    request:
+      method: POST
+      href: "{verified_bank_account_successful,bank_accounts.debits}"
+      body: {"amount": 80000}
+
   - name: credit_new_bank_account
     request:
       method: POST
@@ -31,9 +37,7 @@ scenarios:
       href: "{bank_account,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
-      body: {
-        "amount": 20000
-      }
+      body: {"amount": 20000}
     response:
       status_code: 201
       schema:
@@ -46,9 +50,7 @@ scenarios:
       href: "{bank_account_successful,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
-      body: {
-        "amount": 20000
-      }
+      body: {"amount": 20000}
     response:
       status_code: 201
       schema:
@@ -61,11 +63,21 @@ scenarios:
       href: "{bank_account_failed,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
-      body: {
-        "amount": 20000
-      }
+      body: {"amount": 20000}
     response:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
       equals: {"credits": [{"status": "failed"}]}
+
+  - name: credit_bank_account_insufficient_escrow
+    request:
+      method: POST
+      href: "{bank_account, bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {"amount": 20000}
+    response:
+      status_code: 402
+      schema:
+        "$ref": "../errors.json"
