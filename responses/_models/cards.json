@@ -182,10 +182,6 @@
             ],
             "required": false
         },
-        "can_debit": {
-            "type": "boolean",
-            "required": true
-        },
         "is_verified": {
             "type": "boolean",
             "required": true
