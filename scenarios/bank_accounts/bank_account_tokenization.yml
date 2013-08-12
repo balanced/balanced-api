@@ -6,7 +6,7 @@ scenarios:
       method: GET
       href: "{bank_account,href}"
     response:
-      schema: 
+      schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 200
       matches: {"bank_accounts": [{
@@ -20,7 +20,7 @@ scenarios:
           "line2": null,
           "locality": null,
           "region": null,
-          "postal_code": null
+          "postal_code": null,
           "country_code": null
         },
         "meta": {}
@@ -31,7 +31,7 @@ scenarios:
       method: POST
       href: /bank_accounts
       schema:
-        "$ref": "requests/card.json"
+        "$ref": "requests/bank_account.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -39,7 +39,7 @@ scenarios:
         "account_type": "savings"
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{"account_type": "savings"}]}
@@ -49,7 +49,7 @@ scenarios:
       method: POST
       href: /bank_accounts
       schema:
-        "$ref": "requests/card.json"
+        "$ref": "requests/bank_account.json"
       body: {
         "name": "Mahmoud Abdelkader",
         "account_number": "200938202",
@@ -64,7 +64,7 @@ scenarios:
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{

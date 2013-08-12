@@ -6,6 +6,8 @@ scenarios:
       method: POST
       href: "{verified_bank_account_successful,bank_accounts.debits}"
       body: {"amount": 80000}
+    response:
+      status_code: 201
 
   - name: credit_new_bank_account
     request:

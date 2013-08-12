@@ -6,4 +6,4 @@ python:
 install:
   - pip install -r tester/requirements.txt
 script:
-  - cd tester && ./check_json.sh
+  - cd tester && ./travis.sh
