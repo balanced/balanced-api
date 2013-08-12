@@ -16,7 +16,7 @@ scenarios:
         "$ref": "../responses/bank_accounts.json"
       status_code: 201
       equals: {"bank_accounts": [{
-        "name": "Jack Lalanne"
+        "name": "Jack Lalanne",
         "account_number": "xxxxx8202",
         "rounting_number": "121042882",
         "account_type": "checking",
