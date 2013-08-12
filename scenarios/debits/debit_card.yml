@@ -4,7 +4,7 @@ scenarios:
   - name: debit_card
     request:
       method: POST
-      href: "{card,href}"
+      href: "{card,cards.debits}"
       schema:
         "$ref": "requests/cards/debit.json"
       body: {"amount": 20000}
