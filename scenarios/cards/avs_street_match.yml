@@ -1,0 +1,77 @@
+scenarios:
+  - name: avs_street_match_yes
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "line1": "965 Mission St"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_street_match": "yes"}]}
+
+  - name: avs_postal_match_no
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "line1": "21 Jump St"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_street_match": "no"}]}
+
+  - name: avs_postal_match_unsupported
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "address": {
+          "line1": "1984 Elm St"
+        }
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_street_match": "unsupported"}]}
+
+  - name: avs_postal_match_null
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema: 
+        "$ref": "../responses/cards.json"
+      status_code: 201
+      equals: {"cards": [{"avs_street_match": null}]}
