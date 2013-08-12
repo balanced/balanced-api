@@ -86,3 +86,19 @@ scenarios:
           "country_code": "FR"
         }
       }]}
+
+  - name: fails_luhn
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "../requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1112",
+        "expiration_month": 12,
+        "expiration_year": 2016
+      }
+    response:
+      schema: 
+        "$ref": "../responses/errors.json"
+      status_code: 409
