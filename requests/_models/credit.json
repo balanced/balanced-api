@@ -29,10 +29,10 @@
             ]
         },
         "appears_on_statement_as": {
-            "type": "string"
+            "type": ["string", "null"]
         },
         "description": {
-            "type": "string"
+            "type": ["string", "null"]
         },
         "meta": {
             "type": "object"
