@@ -18,7 +18,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      equals: {"debits": [{"status": "pending"}]}
+      matches: {"debits": [{"status": "pending"}]}
 
   - name: debit_verified_bank_account_successful
     request:
@@ -33,7 +33,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      equals: {"debits": [{"status": "successful"}]}
+      matches: {"debits": [{"status": "successful"}]}
 
   - name: debit_verified_bank_account_failed
     request:
@@ -48,4 +48,4 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      equals: {"debits": [{"status": "failed"}]}
+      matches: {"debits": [{"status": "failed"}]}

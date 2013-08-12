@@ -9,7 +9,7 @@ scenarios:
       schema: 
         "$ref": "responses/bank_accounts.json"
       status_code: 200
-      equals: {"bank_accounts": [{
+      matches: {"bank_accounts": [{
         "name": "Kareem Abdul-Jabbar",
         "account_number": "xxxxxx0000",
         "rounting_number": "021000021",
@@ -42,7 +42,7 @@ scenarios:
       schema: 
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      equals: {"bank_accounts": [{"account_type": "savings"}]}
+      matches: {"bank_accounts": [{"account_type": "savings"}]}
 
   - name: bank_account_address
     request:
@@ -67,7 +67,7 @@ scenarios:
       schema: 
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      equals: {"bank_accounts": [{
+      matches: {"bank_accounts": [{
         "address": {
           "line1": "965 Mission St",
           "line2": "Suite 425",

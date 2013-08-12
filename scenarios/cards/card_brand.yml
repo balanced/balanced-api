@@ -14,7 +14,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"brand": "Visa"}]}
+      matches: {"cards": [{"brand": "Visa"}]}
 
   - name: card_brand_mc
     request:
@@ -31,7 +31,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"brand": "MasterCard"}]}
+      matches: {"cards": [{"brand": "MasterCard"}]}
 
   - name: card_brand_amex
     request:
@@ -48,7 +48,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"brand": "American Express"}]}
+      matches: {"cards": [{"brand": "American Express"}]}
 
   - name: card_brand_discover
     request:
@@ -65,4 +65,4 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"brand": "Discover"}]}
+      matches: {"cards": [{"brand": "Discover"}]}

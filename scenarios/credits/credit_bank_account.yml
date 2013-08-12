@@ -26,7 +26,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
-      equals: {"credits": [{
+      matches: {"credits": [{
         "amount": 20000,
         "status": "pending"
       }]}
@@ -42,7 +42,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
-      equals: {"credits": [{"status": "pending"}]}
+      matches: {"credits": [{"status": "pending"}]}
 
   - name: credit_bank_account_successful
     request:
@@ -55,7 +55,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
-      equals: {"credits": [{"status": "successful"}]}
+      matches: {"credits": [{"status": "successful"}]}
 
   - name: credit_bank_account_failed
     request:
@@ -68,7 +68,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
-      equals: {"credits": [{"status": "failed"}]}
+      matches: {"credits": [{"status": "failed"}]}
 
   - name: credit_bank_account_insufficient_escrow
     request:

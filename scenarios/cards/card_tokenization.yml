@@ -9,7 +9,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 200
-      equals: {"cards": [{
+      matches: {"cards": [{
         "name": null,
         "number": "xxxxxxxxxxxx1111",
         "expiration_month": 12,
@@ -46,7 +46,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{
+      matches: {"cards": [{
         "expiration_month": 12,
         "expiration_year": 2016
       }]}
@@ -67,7 +67,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"name": "Frida Kahlo"}]}
+      matches: {"cards": [{"name": "Frida Kahlo"}]}
 
   - name: cardholder_address
     request:
@@ -91,7 +91,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{
+      matches: {"cards": [{
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",

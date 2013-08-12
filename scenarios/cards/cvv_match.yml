@@ -15,7 +15,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "yes"}]}
+      matches: {"cards": [{"cvv_match": "yes"}]}
 
   - name: cvv_match_no
     request:
@@ -33,7 +33,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "no"}]}
+      matches: {"cards": [{"cvv_match": "no"}]}
 
   - name: cvv_match_unsupported
     request:
@@ -51,7 +51,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": "unsupported"}]}
+      matches: {"cards": [{"cvv_match": "unsupported"}]}
 
   - name: cvv_match_yes
     request:
@@ -68,5 +68,5 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"cvv_match": null}]}
+      matches: {"cards": [{"cvv_match": null}]}
 

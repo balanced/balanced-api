@@ -17,7 +17,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_postal_match": "yes"}]}
+      matches: {"cards": [{"avs_postal_match": "yes"}]}
 
   - name: avs_postal_match_no
     request:
@@ -37,7 +37,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_postal_match": "no"}]}
+      matches: {"cards": [{"avs_postal_match": "no"}]}
 
   - name: avs_postal_match_unsupported
     request:
@@ -57,7 +57,7 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_postal_match": "unsupported"}]}
+      matches: {"cards": [{"avs_postal_match": "unsupported"}]}
 
   - name: avs_postal_match_null
     request:
@@ -74,4 +74,4 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      equals: {"cards": [{"avs_postal_match": null}]}
+      matches: {"cards": [{"avs_postal_match": null}]}
