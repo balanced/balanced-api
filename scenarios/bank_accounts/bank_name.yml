@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "../../requests/bank_account.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -22,7 +22,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "../../requests/bank_account.json"
       body: {
         "name": "Michael Johnson",
         "account_number": "982379283",
@@ -40,7 +40,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "../../requests/bank_account.json"
       body: {
         "name": "Maurice Green",
         "account_number": "33727930",

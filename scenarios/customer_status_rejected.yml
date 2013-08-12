@@ -8,7 +8,7 @@ scenarios:
       body:
         name: Henry Ford
         dob_month: 7
-        dob_year: 1863
+        dob_year: 1963
     response:
       schema:
         "$ref": "../responses/customers.json"

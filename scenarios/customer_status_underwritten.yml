@@ -8,11 +8,11 @@ scenarios:
       body:
         name: Henry Ford
         dob_month: 7
-        dob_year: 1863
+        dob_year: 1963
         address:
           country_code: US
-          postal_code: 48120
+          postal_code: "48120"
     response:
       schema:
         "$ref": "../responses/customers.json"
-      matches: "customers": [ { "merchant_status": "underwritten" } ] }
+      matches: { "customers": [ { "merchant_status": "underwritten" } ] }

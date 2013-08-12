@@ -68,6 +68,7 @@ class Runner(object):
     def resolve_deps(self, scenario, data):
         def fix_match(matchgroup):
             if DRY_RUN:
+                gg = data[matchgroup.group(1)]
                 return 'asdf'
             return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)] )
         if isinstance(scenario, str):
