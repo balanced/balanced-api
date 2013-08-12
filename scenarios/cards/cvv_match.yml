@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -12,17 +12,17 @@ scenarios:
         "cvv": "123"
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
-      matches: { "cards": [{"cvv_match": "yes"}]}
+      matches: {"cards": [{"cvv_match": "yes"}]}
 
   - name: cvv_match_no
     request:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -30,8 +30,8 @@ scenarios:
         "cvv": "456"
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"cvv_match": "no"}]}
 
@@ -40,7 +40,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -48,8 +48,8 @@ scenarios:
         "cvv": "789"
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"cvv_match": "unsupported"}]}
 
@@ -58,14 +58,15 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"cvv_match": null}]}
+

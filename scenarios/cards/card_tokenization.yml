@@ -1,19 +1,14 @@
+require:
+  - ../card_fixtures.yml
 scenarios:
-  - name: tokenize_code
+  - name: retrieve_card
     request:
-      method: POST
-      href: /cards
-      schema:
-        "$ref": "../../requests/card.json"
-      body: {
-        "number": "4111 1111 1111 1111",
-        "expiration_month": 12,
-        "expiration_year": 2016,
-      }
+      method: GET
+      href: "{card,cards[0].href}"
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
-      status_code: 201
+      schema: 
+        "$ref": "responses/cards.json"
+      status_code: 200
       matches: {"cards": [{
         "name": null,
         "number": "xxxxxxxxxxxx1111",
@@ -41,15 +36,15 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1111",
         "expiration_month": "12",
         "expiration_year": "2016"
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
         "expiration_month": 12,
@@ -61,7 +56,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Frida Kahlo",
         "number": "4111 1111 1111 1111",
@@ -69,8 +64,8 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"name": "Frida Kahlo"}]}
 
@@ -79,7 +74,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1111",
         "expiration_month": 12,
@@ -93,8 +88,8 @@ scenarios:
         }
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
         "address": {
@@ -112,20 +107,20 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111 1111 1111 1112",
         "expiration_month": 12,
         "expiration_year": 2016
       }
     response:
-      schema:
-        "$ref": "../../responses/errors.json"
+      schema: 
+        "$ref": "responses/errors.json"
       status_code: 409
 
   - name: unstore_card
     request:
       method: DELETE
-      href: "{tokenize_card,href}"
+      href: "{card,href}"
     response:
       status_code: 204

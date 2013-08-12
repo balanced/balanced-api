@@ -2,9 +2,9 @@ scenarios:
   - name: bank_name_wells_fargo
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
-        "$ref": "../../requests/bank_account.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -12,17 +12,17 @@ scenarios:
         "account_type": "checking"
       }
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
+      schema: 
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{"bank_name": "Wells Fargo"}]}
 
   - name: bank_name_boa
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
-        "$ref": "../../requests/bank_account.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Michael Johnson",
         "account_number": "982379283",
@@ -30,17 +30,17 @@ scenarios:
         "account_type": "checking"
       }
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
+      schema: 
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{"bank_name": "Bank of America"}]}
 
   - name: bank_name_jpmc
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
-        "$ref": "../../requests/bank_account.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Maurice Green",
         "account_number": "33727930",
@@ -48,7 +48,7 @@ scenarios:
         "account_type": "checking"
       }
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
+      schema: 
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
-      matches: {"bank_accounts": [{"bank_name": "JP Morgan Chase"}]}
+      matches: {"bank_accounts": [{"bank_name": "JPMorgan Chase"}]}

@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -14,8 +14,8 @@ scenarios:
         }
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_street_match": "yes"}]}
 
@@ -24,7 +24,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -34,8 +34,8 @@ scenarios:
         }
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_street_match": "no"}]}
 
@@ -44,7 +44,7 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
@@ -54,8 +54,8 @@ scenarios:
         }
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_street_match": "unsupported"}]}
 
@@ -64,14 +64,14 @@ scenarios:
       method: POST
       href: /cards
       schema:
-        "$ref": "../../requests/card.json"
+        "$ref": "requests/card.json"
       body: {
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016,
       }
     response:
-      schema:
-        "$ref": "../../responses/cards.json"
+      schema: 
+        "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_street_match": null}]}

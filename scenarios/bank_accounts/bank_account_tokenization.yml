@@ -1,61 +1,37 @@
+require:
+  - ../bank_account_fixtures.yml
 scenarios:
-  - name: tokenize_bank_account
+  - name: retrieve_bank_account
     request:
-      method: POST
-      href: /bank_accounts
-      schema:
-        "$ref": "../../requests/bank_account.json"
-      body: {
-        "name": "Jack Lalanne",
-        "account_number": "200938202",
-        "routing_number": "121042882",
-        "account_type": "checking"
-      }
+      method: GET
+      href: "{bank_account,href}"
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
-      status_code: 201
+      schema: 
+        "$ref": "responses/bank_accounts.json"
+      status_code: 200
       matches: {"bank_accounts": [{
-        "name": "Jack Lalanne",
-        "account_number": "xxxxx8202",
-        "rounting_number": "121042882",
+        "name": "Kareem Abdul-Jabbar",
+        "account_number": "xxxxxx0000",
+        "rounting_number": "021000021",
         "account_type": "checking",
-        "bank_name": "Wells Fargo",
+        "bank_name": "JPMorgan Chase",
         "address": {
           "line1": null,
           "line2": null,
           "locality": null,
           "region": null,
-          "postal_code": null,
+          "postal_code": null
           "country_code": null
         },
         "meta": {}
       }]}
 
-  - name: checking_account
+  - name: savings_account
     request:
       method: POST
       href: /bank_accounts
       schema:
-        "$ref": "../../requests/bank_account.json"
-      body: {
-        "name": "Jack Lalanne",
-        "account_number": "200938202",
-        "routing_number": "121042882",
-        "account_type": "checking"
-      }
-    response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
-      status_code: 201
-      matches: {"bank_accounts": [{"account_type": "checking"}]}
-
-  - name: savings_account
-    request:
-      method: POST
-      href: /cards
-      schema:
-        "$ref": "../../requests/bank_account.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Jack Lalanne",
         "account_number": "200938202",
@@ -63,17 +39,17 @@ scenarios:
         "account_type": "savings"
       }
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
+      schema: 
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{"account_type": "savings"}]}
 
   - name: bank_account_address
     request:
       method: POST
-      href: /cards
+      href: /bank_accounts
       schema:
-        "$ref": "../../requests/bank_account.json"
+        "$ref": "requests/card.json"
       body: {
         "name": "Mahmoud Abdelkader",
         "account_number": "200938202",
@@ -88,8 +64,8 @@ scenarios:
         }
       }
     response:
-      schema:
-        "$ref": "../../responses/bank_accounts.json"
+      schema: 
+        "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{
         "address": {

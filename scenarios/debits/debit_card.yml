@@ -1,0 +1,15 @@
+require:
+  - ../card_fixtures.yml
+scenarios:
+  - name: debit_card
+    request:
+      method: POST
+      href: "{card,cards.debits}"
+      schema:
+        "$ref": "requests/cards/debit.json"
+      body: {"amount": 20000}
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      matches: {"debits": [{"status": "successful"}]}
