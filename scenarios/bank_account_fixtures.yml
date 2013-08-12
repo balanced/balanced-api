@@ -1,0 +1,66 @@
+scenarios:
+  - name: bank_account
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Kareem Abdul-Jabbar",
+        "account_number": "9900000000",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }
+
+  - name: verified_bank_account
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Wit Chamberlain",
+        "account_number": "9900000001",
+        "routing_number": "321174851",
+        "account_type": "checking"
+      }
+
+  - name: bank_account_successful
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Michael Jordan",
+        "account_number": "9900000002",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }
+
+  - name: verified_bank_account_successful
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Larry Bird",
+        "account_number": "9900000003",
+        "routing_number": "321174851",
+        "account_type": "checking"
+      }
+
+  - name: bank_account_failed
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Karl Malone",
+        "account_number": "9900000004",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }
+
+  - name: verified_bank_account_failed
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Magic Johnson",
+        "account_number": "9900000004",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }

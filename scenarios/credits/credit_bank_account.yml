@@ -1,0 +1,56 @@
+require:
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: credit_new_bank_account
+    request:
+      method: POST
+      href: /credits
+      schema:
+        "$ref": "requests/credit.json"
+      body: {
+        "amount": 20000,
+        "destination": {
+          "name": "Kareem Abdul-Jabbar",
+          "account_number": "9900000000",
+          "routing_number": "021000021",
+          "account_type": "checking"
+        }
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      equals: {"credits": [{
+        "amount": 20000,
+        "status": "pending"
+      }]}
+
+  - name: credit_bank_account_successful
+    request:
+      method: POST
+      href: "{bank_account_successful,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      equals: {"credits": [{"status": "successful"}]}
+
+  - name: credit_bank_account_failed
+    request:
+      method: POST
+      href: "{bank_account_failed,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      equals: {"credits": [{"status": "failed"}]}
