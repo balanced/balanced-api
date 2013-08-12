@@ -26,24 +26,6 @@ scenarios:
         "meta": {}
       }]}
 
-  - name: checking_account
-    request:
-      method: POST
-      href: /bank_accounts
-      schema:
-        "$ref": "requests/card.json"
-      body: {
-        "name": "Jack Lalanne",
-        "account_number": "200938202",
-        "routing_number": "121042882",
-        "account_type": "checking"
-      }
-    response:
-      schema: 
-        "$ref": "responses/bank_accounts.json"
-      status_code: 201
-      equals: {"bank_accounts": [{"account_type": "checking"}]}
-
   - name: savings_account
     request:
       method: POST
