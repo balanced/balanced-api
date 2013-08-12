@@ -48,6 +48,5 @@
     "dependencies": {
         "line2": "line1",
         "locality": "region",
-        "postal_code": "country_code"
     }
 }
