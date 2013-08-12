@@ -8,7 +8,7 @@ scenarios:
     response:
       schema: 
         "$ref": "responses/cards.json"
-      status_code: 201
+      status_code: 200
       equals: {"cards": [{
         "name": null
         "number": "xxxxxxxxxxxx1111",
