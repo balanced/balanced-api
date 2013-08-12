@@ -4,13 +4,13 @@ scenarios:
   - name: retrieve_card
     request:
       method: GET
-      href: "{card,href}"
+      href: "{card,cards[0].href}"
     response:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 200
       equals: {"cards": [{
-        "name": null
+        "name": null,
         "number": "xxxxxxxxxxxx1111",
         "expiration_month": 12,
         "expiration_year": 2016,
