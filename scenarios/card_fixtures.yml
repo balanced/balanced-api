@@ -12,3 +12,5 @@ scenarios:
       }
     response:
       status_code: 201
+      schema:
+        "$ref": "responses/cards.json"
