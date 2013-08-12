@@ -5,38 +5,37 @@ scenarios:
     request:
       method: POST
       href: /customers
-      schema: |
-        { "$ref": "../requests/customer.json" }
+      schema:
+        "$ref": "../requests/customer.json"
       body:
         name: some name
     response:
       status_code: 201
-      schema: |
-         { "$ref": "../responses/customers.json" }
+      schema:
+         "$ref": "../responses/customers.json"
   - name: card_create
     request:
       method: POST
       href: /cards
-      schema: |
-        { "$ref": "../requests/card.json" }
+      schema:
+        "$ref": "../requests/card.json"
       body:
         number: "4111111111111111"
         year: 2016
         month: 12
     response:
-      schema: |
-        { "$ref": "../responses/cards.json" }
+      schema:
+        "$ref": "../responses/cards.json"
       status_code: 201
   - name: add_card_to_customer
     request:
       method: POST
       href: "{customer_create,customers.cards}"
-      schema: |
-        { "$ref": "../requests/customers/cards.json" }
+      schema:
+        "$ref": "../requests/customers/cards.json"
       body:
         href: "{card_create,cards.href}"
     response:
-      schema: |
-        { "$ref": "../responses/cards.json" }
-      equals: |
-        { "cards": [ { "links": { "customer": "{customer_create,customers.id}" } } ] }
+      schema:
+        "$ref": "../responses/cards.json"
+      equals: { "cards": [ { "links": { "customer": "{customer_create,customers.id}" } } ] }

@@ -3,13 +3,13 @@ scenarios:
     request:
       method: POST
       href: /cards
-      schema: |
-        { "$ref": "../requests/card.json" }
+      schema:
+        "$ref": "../requests/card.json"
       body:
         number: "4111111111111111"
         year: 2016
         month: 12
     response:
-      schema: |
-        { "$ref": "../responses/cards.json" }
+      schema:
+        "$ref": "../responses/cards.json"
       status_code: 201

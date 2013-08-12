@@ -5,8 +5,8 @@ scenarios:
     request:
       method: PUT
       href: "{customer_create,customers.href}"
-      schema: |
-        { "$ref": "../requests/customer.json" }
+      schema:
+        "$ref": "../requests/customer.json"
       body:
         name: Henry Ford
         dob_month: 7
@@ -16,7 +16,6 @@ scenarios:
           country_code: "US"
     response:
       status_code: 200
-      schema: |
-        { "$ref": "../responses/customers.json" }
-      body: |
-        { "customers": [ { "merchant_status": "underwritten" } ] }
+      schema:
+        "$ref": "../responses/customers.json"
+      matches: { "customers": [ { "merchant_status": "underwritten" } ] }

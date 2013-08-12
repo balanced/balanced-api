@@ -5,14 +5,13 @@ scenarios:
     request:
       method: POST
       href: "{customer_create,customers.debits}"
-      schema: |
-        { "$ref": "../requests/customers/debit.json" }
+      schema:
+        "$ref": "../requests/customers/debit.json"
       body:
         amount: 5000
         appears_on_statement_as: "testing.com"
     response:
       status_code: 201
-      schema: |
-        { "$ref": "../responses/debits.json" }
-      equals: |
-        { "debits": [ { "links": { "customer": "{customer_create,customers.id}" }, "appears_on_statement_as": "BAL*testing.com" } ] }
+      schema:
+        "$ref": "../responses/debits.json"
+      equals: { "debits": [ { "links": { "customer": "{customer_create,customers.id}" }, "appears_on_statement_as": "BAL*testing.com" } ] }

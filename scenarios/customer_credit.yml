@@ -6,11 +6,11 @@ scenarios:
     request:
       method: POST
       href: "{customer_create,customers.credits}" # the last scenario to run with the name is the one we are referencing
-      schema: |
-        { "$ref": "../requests/customers/credit.json" }
+      schema:
+        "$ref": "../requests/customers/credit.json"
       body:
         amount: 3000
     response:
       status_code: 201
-      schema: |
-        { "$ref": "../responses/credits.json" }
+      schema:
+        "$ref": "../responses/credits.json"

@@ -115,7 +115,7 @@ class Runner(object):
 
         if 'schema' in scenario['request']:
             try:
-                against = validator_fix_ref(json.loads(scenario['request']['schema']), path)
+                against = validator_fix_ref(scenario['request']['schema'], path)
             except Exception, e:
                 print('Error loading request schema for {0}'
                       .format(scenario['name']))
@@ -147,7 +147,7 @@ class Runner(object):
 
         resp_json = resp.json()
         try:
-            against = validator_fix_ref(json.loads(scenario['response'].get('schema', '{}')), path)
+            against = validator_fix_ref(scenario['response'].get('schema', {}), path)
         except:
             print('could not parse response schema for {0}'.format(scenario['name']))
             sys.exit(1)
@@ -158,11 +158,11 @@ class Runner(object):
                                  .format(scenario['name']))
             validator(against).validate(resp_json)
 
-        if 'equals' in scenario['response']:
-            if 0 != self.equals(json.loads(scenario['response']['equals']), resp_json):
+        if 'matches' in scenario['response']:
+            if 0 != self.equals(scenario['response']['matches'], resp_json):
                 print('Error validating equals for {0}'.format(scenario['name']))
                 print(json.dumps(resp_json, indent=4))
-                print(scenario['response']['equals'])
+                print(scenario['response']['matches'])
                 sys.exit(1)
 
         return resp_json

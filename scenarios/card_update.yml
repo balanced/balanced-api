@@ -9,7 +9,6 @@ scenarios:
         meta:
           testing: random
     response:
-      schema: |
-        { "$ref": "../responses/cards.json" }
-      equals: |
-        { "cards": [ { "meta": { "testing": "random" } } ] }
+      schema:
+        "$ref": "../responses/cards.json"
+      matches: { "cards": [ { "meta": { "testing": "random" } } ] }

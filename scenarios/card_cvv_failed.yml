@@ -3,15 +3,14 @@ scenarios:
     request:
       method: POST
       href: /cards
-      schema: |
-        { "$ref": "../requests/card.json" }
+      schema:
+        "$ref": "../requests/card.json"
       body:
         number: "4111111111111111"
         cvv: "991"
         month: 12
         year: 2018
     response:
-      schema: |
-        { "$ref": "../responses/cards.json" }
-      equals: |
-        { "cards": [ { "cvv_result": "Failed data validation check" } ] }
+      schema:
+        "$ref": "../responses/cards.json"
+      matches: { "cards": [ { "cvv_result": "Failed data validation check" } ] }

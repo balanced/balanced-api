@@ -5,9 +5,9 @@ scenarios:
     request:
       method: POST
       href: "{credit_customer,credits.reversals}"
-      schema: |
-        { "$ref": "../requests/credits/reversal.json" }
+      schema:
+        "$ref": "../requests/credits/reversal.json"
     response:
       status_code: 201
-      schema: |
-        { "$ref": "../responses/reversals.json" }
+      schema:
+        "$ref": "../responses/reversals.json"

@@ -3,8 +3,8 @@ scenarios:
     request:
       method: POST
       href: /cards
-      schema: |
-        { "$ref": "../requests/card.json" }
+      schema:
+        "$ref": "../requests/card.json"
       body:
         number: "4222222222222220"
         cvv: "123"

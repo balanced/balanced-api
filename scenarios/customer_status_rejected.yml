@@ -1,0 +1,15 @@
+scenarios:
+  - name: customer_merchant_status
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "../requests/customer.json"
+      body:
+        name: Henry Ford
+        dob_month: 7
+        dob_year: 1863
+    response:
+      schema:
+        "$ref": "../responses/customers.json"
+      matches: { "customers": [ { "merchant_status": "need-more-information" } ] }
