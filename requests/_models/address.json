@@ -41,8 +41,7 @@
                     "type": "string",
                     "pattern": "[A-Z]{2}"
                 }
-            ],
-            "default": "US"
+            ]
         }
     }
 }
