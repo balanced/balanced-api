@@ -45,7 +45,7 @@ scenarios:
         "name": "Jack Lalanne",
         "account_number": "200938202",
         "routing_number": "121042882",
-        "account_type": "checking"
+        "account_type": "savings"
       }
     response:
       schema: 
