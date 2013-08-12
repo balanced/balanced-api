@@ -1,0 +1,51 @@
+# TODO:
+# - attempt to debit new bank account. will fail
+# - attempt to debit unverified bank account. will fail
+
+require:
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: debit_verified_bank_account
+    request:
+      method: POST
+      href: "{verified_bank_account,bank_accounts.debits}"
+      schema:
+        "$ref": "requests/bank_accounts/debit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      equals: {"debits": [{"status": "pending"}]}
+
+  - name: debit_verified_bank_account_successful
+    request:
+      method: POST
+      href: "{verified_bank_account_successful,bank_accounts.debits}"
+      schema:
+        "$ref": "requests/bank_accounts/debit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      equals: {"debits": [{"status": "successful"}]}
+
+  - name: debit_verified_bank_account_failed
+    request:
+      method: POST
+      href: "{verified_bank_account,bank_accounts.debits}"
+      schema:
+        "$ref": "requests/bank_accounts/debit.json"
+      body: {
+        "amount": 20000
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      equals: {"debits": [{"status": "failed"}]}
