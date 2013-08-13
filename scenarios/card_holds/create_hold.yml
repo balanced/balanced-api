@@ -1,0 +1,17 @@
+require:
+  - ../card_fixtures.yml
+scenarios:
+  - name: create_hold
+    request:
+      method: POST
+      href: "{card,cards.card_holds}"
+      schema:
+        "$ref": "requests/cards/hold.json"
+      body: {
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/card_holds.json"
+      matches: {"card_holds": [ { "amount": 1234 } ] }

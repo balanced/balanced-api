@@ -4,9 +4,7 @@
     "properties": {
         "links": {
             "type": "object",
-            "properties": {
-
-            },
+            "properties": {},
             "required": false
         },
         "meta": {
