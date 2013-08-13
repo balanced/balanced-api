@@ -4,7 +4,7 @@ scenarios:
   - name: retrieve_bank_account
     request:
       method: GET
-      href: "{bank_account,href}"
+      href: "{bank_account,bank_accounts.href}"
     response:
       schema:
         "$ref": "responses/bank_accounts.json"
@@ -80,6 +80,6 @@ scenarios:
   - name: unstore_bank_account
     request:
       method: DELETE
-      href: "{tokenize_bank_account,href}"
+      href: "{bank_account,bank_accounts.href}"
     response:
       status_code: 204

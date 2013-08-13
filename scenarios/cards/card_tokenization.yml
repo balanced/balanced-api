@@ -121,6 +121,6 @@ scenarios:
   - name: unstore_card
     request:
       method: DELETE
-      href: "{card,href}"
+      href: "{card,cards.href}"
     response:
       status_code: 204
