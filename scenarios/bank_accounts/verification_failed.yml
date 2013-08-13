@@ -1,0 +1,62 @@
+require:
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: create_verification
+    request:
+      method: POST
+      href: "{bank_account,bank_accounts.verifications}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "attempts_remaining": 3, "verification_status": "pending" } ] }
+
+  - name: submit_verification1
+    request:
+      method: POST
+      href: "{create_verification,bank_account_verifications.href}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+      body: {
+        "amount_1": 10,
+        "amount_2": 15
+      }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "attempts_remaining": 2, "verification_status": "pending" } ] }
+
+  - name: submit_verification2
+    request:
+      method: POST
+      href: "{create_verification,bank_account_verifications.href}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+      body: {
+        "amount_1": 33,
+        "amount_2": 42
+      }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "attempts_remaining": 1, "verification_status": "pending" } ] }
+
+  - name: submit_verification3
+    request:
+      method: POST
+      href: "{create_verification,bank_account_verifications.href}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+      body: {
+        "amount_1": 99,
+        "amount_2": 21
+      }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "attempts_remaining": 0, "verification_status": "failed" } ] }

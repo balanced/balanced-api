@@ -28,6 +28,23 @@ scenarios:
       }
     response:
       status_code: 201
+  - name: verified_bank_account_create_verify
+    request:
+      method: POST
+      href: "{verified_bank_account,bank_accounts.verifications}"
+    response:
+      status_code: 201
+  - name: verified_bank_account_do_verify
+    request:
+      method: PUT
+      href: "{verified_bank_account_create_verify,bank_account_verifications.href}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 201
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
 
   - name: bank_account_successful
     request:
@@ -54,6 +71,23 @@ scenarios:
       }
     response:
       status_code: 201
+  - name: verified_bank_account_successful_create_verify
+    request:
+      method: POST
+      href: "{verified_bank_account_successful,bank_accounts.verifications}"
+    response:
+      status_code: 201
+  - name: verified_bank_account_do_verify
+    request:
+      method: PUT
+      href: "{verified_bank_account_successful_create_verify,bank_account_verifications.href}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 201
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
 
   - name: bank_account_failed
     request:
@@ -80,3 +114,20 @@ scenarios:
       }
     response:
       status_code: 201
+  - name: verified_bank_account_failed_create_verify
+    request:
+      method: POST
+      href: "{verified_bank_account_failed,bank_accounts.verifications}"
+    response:
+      status_code: 201
+  - name: verified_bank_account_do_verify
+    request:
+      method: PUT
+      href: "{verified_bank_account_failed_create_verify,bank_account_verifications.href}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 201
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
