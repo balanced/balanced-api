@@ -1,10 +1,6 @@
 {
     "type": "object",
     "properties": {
-        "_uris": {
-            "type": "object",
-            "required": false
-        },
         "status": {
             "type": "string",
             "required": true
@@ -14,7 +10,9 @@
             "required": true
         },
         "description": {
+            "__example": "Human readable error message about what went wrong. Your request id is OHMasdfasdfasdfasdf",
             "type": "string",
+            "pattern": ".*\\. Your request id is OHM[a-zA-Z0-9]*\\.",
             "required": true
         },
         "status_code": {
