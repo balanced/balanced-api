@@ -1,0 +1,15 @@
+require:
+  - ../debits/debit_card.yml
+scenarios:
+  - name: create_failed_refund
+    request:
+      method: POST
+      href: "{debit_card,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+      body: { "amount": 200000000 }
+    response:
+      status_code: 401
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Can not refund more than origional debit" }

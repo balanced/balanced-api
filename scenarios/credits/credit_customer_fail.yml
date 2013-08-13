@@ -1,0 +1,17 @@
+require:
+  - ../customer_fixtures.yml
+scenarios:
+  - name: fail_credit_customer
+    request:
+      method: POST
+      href: "{customer,customers,credits}"
+      schema:
+        "$ref": "requests/customers/credit.json"
+      body: {
+        "amount": 1234
+      }
+    response:
+      status_code: 400
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Customer does not have bank account associated" }

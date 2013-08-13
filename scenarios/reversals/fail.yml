@@ -1,0 +1,15 @@
+require:
+  - ../credits/credit_bank_account.yml
+scenarios:
+  - name: failed_reversal
+    request:
+      method: POST
+      href: "{credit_new_bank_account,credits.reversals}"
+      schema:
+        "$ref": "requests/credits/reversal.json"
+      body: { "amount": 10000000 }
+    response:
+      status_code: 401
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Reversal can not be more than origional credit" }
