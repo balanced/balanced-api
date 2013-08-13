@@ -16,14 +16,14 @@
             ],
             "required": true
         },
-        "locality": {
+        "city": {
             "type": [
                 "string",
                 "null"
             ],
             "required": true
         },
-        "region": {
+        "state": {
             "type": [
                 "string",
                 "null"

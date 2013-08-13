@@ -1,0 +1,17 @@
+require:
+  - ../customer_fixtures.yml
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: add_bank_account_to_customer
+    request:
+      method: PATCH
+      href: "{bank_account,bank_accounts.href}"
+      body: [{
+        "op": "replace",
+        "path": "bank_accounts/0/links/customer",
+        "value": "{customer,customers.id}"
+      }]
+    response:
+      schema:
+        "$ref": "responses/bank_accounts.json"
+      matches: { "bank_accounts": [ { "links": { "customer": "{customer,customers.id}" } } ] }

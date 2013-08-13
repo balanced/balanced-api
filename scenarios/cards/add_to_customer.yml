@@ -1,0 +1,17 @@
+require:
+  - ../card_fixtures.yml
+  - ../customer_fixtures.yml
+scenarios:
+  - name: add_card_to_customer
+    request:
+      method: PATCH
+      href: "{card,cards.href}"
+      body: [{
+        "op": "replace",
+        "path": "/cards/0/links/customer",
+        "value": "{customer,customers.id}"
+      }]
+    response:
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "links": { "customer": "{customer,customers.id}" } } ] }

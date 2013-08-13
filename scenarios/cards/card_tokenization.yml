@@ -4,9 +4,9 @@ scenarios:
   - name: retrieve_card
     request:
       method: GET
-      href: "{card,cards[0].href}"
+      href: "{card,cards.href}"
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 200
       matches: {"cards": [{
@@ -43,7 +43,7 @@ scenarios:
         "expiration_year": "2016"
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
@@ -64,7 +64,7 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"name": "Frida Kahlo"}]}
@@ -88,7 +88,7 @@ scenarios:
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
@@ -114,7 +114,7 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/errors.json"
       status_code: 409
 
