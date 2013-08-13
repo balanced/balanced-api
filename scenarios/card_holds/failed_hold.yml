@@ -4,7 +4,7 @@ scenarios:
   - name: create_failed_hold
     request:
       method: POST
-      href: "{card_processor_failure,cards.card_holds}"
+      href: "{card_processor_failure,cards.holds}"
       schema:
         "$ref": "requests/cards/hold.json"
       body: {

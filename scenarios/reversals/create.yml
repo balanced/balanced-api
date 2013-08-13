@@ -1,0 +1,13 @@
+require:
+  - ../credits/credit_bank_account.yml
+scenarios:
+  - name: reversals_create
+    request:
+      method: POST
+      href: "{credit_existing_bank_account,bank_accounts.reversals}"
+      schema:
+        "$ref": "requests/credits/reversal.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/reversals.json"

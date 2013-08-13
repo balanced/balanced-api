@@ -1,0 +1,13 @@
+require:
+  - ../debits/debit_card.yml
+scenarios:
+  - name: create_refund
+    request:
+      method: POST
+      href: "{debit_card,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/refunds.json"
