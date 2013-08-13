@@ -20,8 +20,8 @@ scenarios:
         "address": {
           "line1": null,
           "line2": null,
-          "locality": null,
-          "region": null,
+          "city": null,
+          "state": null,
           "country_code": null
         },
         "avs_street_match": null,
@@ -82,7 +82,7 @@ scenarios:
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",
-          "locality": "Versailles",
+          "city": "Versailles",
           "postal_code": "78000",
           "country_code": "FR"
         }
@@ -95,8 +95,8 @@ scenarios:
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",
-          "locality": "Versailles",
-          "region": null,
+          "city": "Versailles",
+          "state": null,
           "postal_code": "78000",
           "country_code": "FR"
         }
