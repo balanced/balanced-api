@@ -83,7 +83,7 @@ class Runner(object):
             if DRY_RUN:
                 gg = data[matchgroup.group(1)]
                 return 'asdf'
-            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)] )
+            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)]['response'] )
         if isinstance(scenario, str):
             return re.sub(r'\{(\w+),(\w+\.\w+)\}', fix_match, scenario)
         elif isinstance(scenario, list):
@@ -139,8 +139,9 @@ class Runner(object):
                 sys.exit(1)
             validator(against).validate(body)
         else:
-            sys.stderr.write('Warning: {0} missing schema section for request\n'
-                             .format(scenario['name']))
+            if body:
+                sys.stderr.write('Warning: {0} missing schema section for request\n'
+                                 .format(scenario['name']))
 
         if not DRY_RUN:
             req = requests.Request(scenario['request']['method'],
@@ -190,7 +191,11 @@ class Runner(object):
                 sys.exit(1)
 
 
-        return resp_json
+        return {
+            'response': resp_json,
+            'status_code': resp.status_code if not DRY_RUN else 0,
+            'request': body
+        }
 
 
     def parse_file(self, name):
@@ -216,7 +221,7 @@ def main():
     if len(sys.argv) == 2:
         runner = Runner()
         runner.cache = json.load(open('fixtures.json'))
-        runner.parse_file(sys.argv[1])
+        result = runner.parse_file(sys.argv[1])
     else:
         print('python {0} [file of scenario to run]'.format(sys.argv[0]))
 
