@@ -51,3 +51,39 @@ scenarios:
       schema:
         "$ref": "responses/orders.json"
       matches: { "orders": [ { "amount_escrowed": 0 } ] }
+
+  - name: create_reversal
+    request:
+      method: POST
+      href: "{create_credit,credits.reversals}"
+      schema:
+        "$ref": "requests/credits/reversal.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/reversals.json"
+      matches: { "reversals": [ { "status": "pending" } ] }
+
+  # because the reversal is pending
+  # the amount_escrowed in the order will be 0
+  - name: check_order_escrow_3
+    request:
+      method: GET
+      href: "{order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: { "orders": [ { "amount_escrowed": 0 } ] }
+
+  - name: create_refund_fail
+    request:
+      method: POST
+      href: "{create_debit,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 400
+      schema:
+        "$ref": "responses/errors.json"
+      matches: { "description": "Can not create refund greater than amount escrowed in order" }

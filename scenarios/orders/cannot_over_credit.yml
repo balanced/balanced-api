@@ -27,7 +27,7 @@ scenarios:
         "$ref": "responses/orders.json"
       matches: { "orders": [ { "amount_escrowed": 1234 } ] }
 
-  - name: create_credit
+  - name: create_credit_fail
     request:
       method: POST
       href: "{add_bank_account,bank_accounts.credits}"
@@ -35,12 +35,13 @@ scenarios:
         "$ref": "requests/bank_accounts/credit.json"
       body: {
         "order": "{order,orders.href}",
-        "amount": 1234
+        "amount": 2000
       }
     response:
-      status_code: 201
+      status_code: 400
       shcema:
-        "$ref": "responses/credits.json"
+        "$ref": "responses/errors.json"
+      matches: { "description": "Can not credit more than is in order" }
 
   - name: check_order_escrow_2
     request:
@@ -50,4 +51,4 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
-      matches: { "orders": [ { "amount_escrowed": 0 } ] }
+      matches: { "orders": [ { "amount_escrowed": 1234 } ] }
