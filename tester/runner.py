@@ -100,13 +100,13 @@ class Runner(object):
             return scenario
 
 
-    def equals(self, data, instance):
+    def equals(self, data, instance, assertIn):
         ret = 0
         if isinstance(data, dict):
             if not isinstance(instance, dict):
                 return 1
             for k, v in data.iteritems():
-                ret += self.equals(v, instance.get(k, None))
+                ret += self.equals(v, instance.get(k, None), assertIn)
             return ret
         elif isinstance(data, list):
             if not isinstance(instance, list):
@@ -115,15 +115,14 @@ class Runner(object):
                 return 1
             a = 0
             while a < len(data):
-                ret += self.equals(data[a], instance[a])
+                ret += self.equals(data[a], instance[a], assertIn)
                 a += 1
             return ret
         else:
-            if data != instance:
-                return 1
+            if assertIn:
+                return 0 if instance and data in instance else 1
             else:
-                return 0
-
+                return 0 if data == instance else 1
 
     def run_scenario(self, scenario, data, path):
 
@@ -180,11 +179,19 @@ class Runner(object):
             validator(against).validate(resp_json)
 
         if 'matches' in scenario['response']:
-            if 0 != self.equals(scenario['response']['matches'], resp_json) and not DRY_RUN:
+            if 0 != self.equals(scenario['response']['matches'], resp_json, False) and not DRY_RUN:
                 print('Error validating equals for {0}'.format(scenario['name']))
                 print(json.dumps(resp_json, indent=4))
                 print(scenario['response']['matches'])
                 sys.exit(1)
+
+        if 'assertIn' in scenario['response']:
+            if 0 != self.equals(scenario['response']['assertIn'], resp_json, True) and not DRY_RUN:
+                print('Error validating assertIn for {0}'.format(scenario['name']))
+                print(json.dumps(resp_json, indent=4))
+                print(scenario['response']['assertIn'])
+                sys.exit(1)
+
 
         return resp_json
 
