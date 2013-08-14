@@ -1,0 +1,73 @@
+require:
+  - ../customers/set_default_source.yml
+scenarios:
+  - name: create_debit
+    request:
+      method: POST
+      href: "{customer,customers.debits}"
+      schema:
+        "$ref": "requests/customers/debit.json"
+      body: {
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      matches: { "debits": [ { "links": { "source": "{card,cards.id}" } } ] }
+
+  - name: new_card
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/cards.json"
+
+  - name: change_default_source
+    request:
+      method: PATCH
+      href: "{customer,customers.href}"
+      body: [{
+        "op": "replace",
+        "path": "/customers/0/links/source",
+        "value": "{new_card,cards.id}"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "links": { "source": "{new_card,cards.id}" } } ] }
+
+  # this refund should go back onto the card that
+  # this debit was create with
+  # not the new default source on the customer
+  - name: create_refund
+    request:
+      method: POST
+      href: "{create_debit,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/refunds.json"
+      matches: { "refunds": [ { "links": { "debit": "{create_debit,debits.id}" } } ] }
+
+  - name: check_debit
+    request:
+      method: GET
+      href: "{create_debit,debits.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/debits.json"
+      matches: { "debits": [ { "links": { "source": "{card,cards.id}" } } ] }

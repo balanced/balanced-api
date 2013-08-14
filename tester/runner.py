@@ -37,9 +37,6 @@ def find_file(fromFile, fileName):
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
         if '$ref' in contents:
-            ##path = os.path.join(os.path.dirname(fileName), contents['$ref'])
-            ##cont = open(path).read()
-            #cont = read_file(fileName, contents['$ref'])
             path = find_file(fileName, contents['$ref'])
             cont = open(path).read()
             return validator_fix_ref(json.loads(cont), path)
@@ -206,7 +203,6 @@ class Runner(object):
 
         for other in data.get('require', []):
             scenarios.update(**self.parse_file(
-                #os.path.join(os.path.dirname(name), other)
                 find_file(name, other)
             ))
 

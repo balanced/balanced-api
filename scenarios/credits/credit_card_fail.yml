@@ -1,0 +1,19 @@
+require:
+  - ../card_fixtures.yml
+scenarios:
+  - name: credit_card
+    request:
+      method: POST
+      # Do not construct uri with id like this
+      # doing this can lead to unexpected cases
+      # there is no credits end point on a card
+
+      href: "/cards/{card,cards.id}/credits"
+      body: {
+        "amount": 1234
+      }
+    response:
+      status_code: 404
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Not found" }
