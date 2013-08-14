@@ -1,0 +1,33 @@
+require:
+  - create.yml
+  - ../customers/underwrite_with_destination.yml
+scenarios:
+  - name: create_debit
+    request:
+      method: POST
+      href: "{add_card_to_customer,cards.debits}"
+      schema:
+        "$ref": "requests/cards/debit.json"
+      body: {
+        "order": "{order,orders.href}",
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+
+  - name: create_credit
+    request:
+      method: POST
+      href: "{add_bank_account,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "order": "{order,orders.href}",
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      shcema:
+        "$ref": "responses/credits.json"

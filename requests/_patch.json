@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Patch_requests",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "op": {
+                "type": "string",
+                "enum": [
+                    "add",
+                    "remove",
+                    "replace",
+                    "move",
+                    "copy",
+                    "test"
+                ],
+                "required": true
+            },
+            "path": {
+                "type": "string",
+                "pattern": "/\\w+s/0/.+",
+                "required": true
+            },
+            "value": {
+                "required": false
+            }
+        },
+        "additionalProperties": false
+    },
+    "required": true,
+    "uniqueItems": true,
+    "minItems": 1
+}

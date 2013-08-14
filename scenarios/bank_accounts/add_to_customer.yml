@@ -6,9 +6,11 @@ scenarios:
     request:
       method: PATCH
       href: "{bank_account,bank_accounts.href}"
+      schema:
+        "$ref": "requests/_patch.json"
       body: [{
         "op": "replace",
-        "path": "bank_accounts/0/links/customer",
+        "path": "/bank_accounts/0/links/customer",
         "value": "{customer,customers.id}"
       }]
     response:

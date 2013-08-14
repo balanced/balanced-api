@@ -6,6 +6,8 @@ scenarios:
     request:
       method: PATCH
       href: "{card,cards.href}"
+      schema:
+        "$ref": "requests/_patch.json"
       body: [{
         "op": "replace",
         "path": "/cards/0/links/customer",
