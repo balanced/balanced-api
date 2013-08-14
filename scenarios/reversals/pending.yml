@@ -4,7 +4,7 @@ scenarios:
       method: POST
       href: /credits
       schema:
-        "$ref": "requests/credits.json"
+        "$ref": "requests/credit.json"
       body: {
         "amount": 1234,
         "source": {
