@@ -83,7 +83,8 @@ scenarios:
       schema:
         "$ref": "requests/debits/refund.json"
     response:
-      status_code: 400
+      status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      matches: { "description": "Can not create refund greater than amount escrowed in order" }
+      assertIn: { "description": "Order escrow balanced is insufficient to issue this refund." }
+      matches: { "category_code": "insufficient-funds" }

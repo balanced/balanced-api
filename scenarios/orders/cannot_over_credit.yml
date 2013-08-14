@@ -38,10 +38,11 @@ scenarios:
         "amount": 2000
       }
     response:
-      status_code: 400
+      status_code: 409
       shcema:
         "$ref": "responses/errors.json"
-      matches: { "description": "Can not credit more than is in order" }
+      assertIn: { "description": "Order escrow balanced is insufficient to issue this credit." }
+      matches: { "category_code": "insufficient-funds" }
 
   - name: check_order_escrow_2
     request:
