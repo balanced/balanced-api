@@ -34,7 +34,8 @@ scenarios:
       schema:
         "$ref": "requests/card_holds/debit.json"
     response:
-      status_code: 400
+      status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Can not capture expired card hold" }
+      matches: { "category_code": "cannot-capture-authorization" }
+      assertIn: { "description": "This hold has already been captured or voided, and cannot be captured." }

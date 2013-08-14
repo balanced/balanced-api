@@ -11,4 +11,7 @@ scenarios:
         "amount": 444
       }
     response:
-      status_code: 401
+      status_code: 402
+      schema:
+        "$ref": "responses/errors.json"
+      matches: { "category_code": "card-declined" }

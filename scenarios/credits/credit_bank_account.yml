@@ -75,11 +75,13 @@ scenarios:
   - name: credit_bank_account_insufficient_escrow
     request:
       method: POST
-      href: "{bank_account, bank_accounts.credits}"
+      href: "{bank_account,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
-      body: {"amount": 20000}
+      body: {"amount": 99999999 }
     response:
-      status_code: 402
+      status_code: 409
       schema:
         "$ref": "responses/errors.json"
+      assertIn: { "description": "Marketplace escrow balance is insufficient to issue this credit." }
+      matches: { "category_code": "insufficient-funds" }

@@ -130,13 +130,16 @@
                         "This hold has already been voided, which cannot be reversed.",
                         "This hold has already expired.",
                         "This hold is not associated with this account.",
-                        "This hold is not associated with this marketplace."
+                        "This hold is not associated with this marketplace.",
+                        "Order escrow balanced is insufficient to issue this credit.",
+                        "Order escrow balanced is insufficient to issue this refund.",
+                        "Order requires merchant be underwritten."
                     ]
                 },
-		{
-		    "type": "string",
-		    "pattern": ".*\\. Your request id is OHM[a-zA-Z0-9]*\\."
-		},
+                {
+                    "type": "string",
+                    "pattern": ".*\\. Your request id is OHM[a-zA-Z0-9]*\\."
+                },
                 {
                     "type": "null"
                 }
@@ -149,8 +152,8 @@
                 400,
                 402,
                 403,
-		409
-	    ],
+                409
+            ],
             "required": true
         },
         "category_type": {

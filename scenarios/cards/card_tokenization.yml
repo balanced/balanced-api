@@ -117,6 +117,8 @@ scenarios:
       schema:
         "$ref": "responses/errors.json"
       status_code: 409
+      matches: { "category_code": "card-not-validated" }
+      assertIn: { "description": "The card could not be validated -- either the card number or security code\nmay be wrong." }
 
   - name: unstore_card
     request:
