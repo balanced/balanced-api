@@ -22,6 +22,7 @@ ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 
 DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
 
+DUMP_JSON = os.environ.get('DUMP_JSON', '0') != '0'
 
 def find_file(fromFile, fileName):
     path = os.path.join(os.path.dirname(fromFile), fileName)
@@ -30,7 +31,7 @@ def find_file(fromFile, fileName):
     path = os.path.join('..', fileName)
     if os.path.isfile(path):
         return path
-    print('Could not find file {0}\n'.format(fileName))
+    sys.stderr.write('Could not find file {0}\n'.format(fileName))
     sys.exit(1)
 
 # the $ref do not work with relative paths as specified in the jsonschema spec
@@ -133,9 +134,9 @@ class Runner(object):
             try:
                 against = validator_fix_ref(scenario['request']['schema'], path)
             except Exception, e:
-                print('Error loading request schema for {0}'
+                sys.stderr.write('Error loading request schema for {0}'
                       .format(scenario['name']))
-                print(str(e))
+                sys.stderr.write(str(e))
                 sys.exit(1)
             validator(against).validate(body)
         else:
@@ -167,7 +168,7 @@ class Runner(object):
         try:
             against = validator_fix_ref(scenario['response'].get('schema', {}), path)
         except:
-            print('could not parse response schema for {0}'.format(scenario['name']))
+            sys.stderr.write('could not parse response schema for {0}'.format(scenario['name']))
             sys.exit(1)
 
         if not DRY_RUN:
@@ -178,16 +179,16 @@ class Runner(object):
 
         if 'matches' in scenario['response']:
             if 0 != self.equals(scenario['response']['matches'], resp_json, False) and not DRY_RUN:
-                print('Error validating equals for {0}'.format(scenario['name']))
-                print(json.dumps(resp_json, indent=4))
-                print(scenario['response']['matches'])
+                sys.stderr.write('Error validating equals for {0}'.format(scenario['name']))
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(scenario['response']['matches'])
                 sys.exit(1)
 
         if 'assertIn' in scenario['response']:
             if 0 != self.equals(scenario['response']['assertIn'], resp_json, True) and not DRY_RUN:
-                print('Error validating assertIn for {0}'.format(scenario['name']))
-                print(json.dumps(resp_json, indent=4))
-                print(scenario['response']['assertIn'])
+                sys.stderr.write('Error validating assertIn for {0}'.format(scenario['name']))
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(scenario['response']['assertIn'])
                 sys.exit(1)
 
 
@@ -222,6 +223,8 @@ def main():
         runner = Runner()
         runner.cache = json.load(open('fixtures.json'))
         result = runner.parse_file(sys.argv[1])
+        if DUMP_JSON:
+            sys.stdout.write(json.dumps(result, indent=1))
     else:
         print('python {0} [file of scenario to run]'.format(sys.argv[0]))
 
