@@ -68,7 +68,8 @@
                 "invalid-reversal-amount",
                 "invalid-routing-number",
                 "precog-bad-request",
-                "refund-invalid-debit-state"
+                "refund-invalid-debit-state",
+                "not-found"
             ],
             "required": true
         },
