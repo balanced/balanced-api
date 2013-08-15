@@ -6,9 +6,9 @@ JSON_SCENARIOS= $(SCENARIOS:.yml=.json)
 all: scenarios.json
 
 clean:
-	rm -rf $(JSON_SCENARIOS)
+	rm -rf $(JSON_SCENARIOS) scenarios.json
 
-# want the
+
 scenarios.json: $(JSON_SCENARIOS)
 	$(PYTHON) combine.py $(JSON_SCENARIOS) > $@
 
