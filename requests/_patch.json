@@ -22,6 +22,11 @@
                 "pattern": "/\\w+s/0/.+",
                 "required": true
             },
+            "from": {
+                "type": "string",
+                "pattern": "/\\w+s/0/.+",
+                "required": false
+            },
             "value": {
                 "required": false
             }

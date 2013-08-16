@@ -13,7 +13,7 @@ import yaml
 import requests
 import jsonschema
 
-ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change this to balanced api
+ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000')  # TODO: change this to balanced api
 API_VERSION = os.environ.get('API_VERSION', '1.1')
 ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
                                 'application/vnd.balancedpayments+json; version={version}, '
@@ -23,6 +23,7 @@ ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
 
 DUMP_JSON = os.environ.get('DUMP_JSON', '0') != '0'
+
 
 def find_file(fromFile, fileName):
     path = os.path.join(os.path.dirname(fromFile), fileName)
@@ -34,6 +35,7 @@ def find_file(fromFile, fileName):
     sys.stderr.write('Could not find file {0}\n'.format(fileName))
     sys.exit(1)
 
+
 # the $ref do not work with relative paths as specified in the jsonschema spec
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
@@ -44,12 +46,13 @@ def validator_fix_ref(contents, fileName):
         else:
             return dict(
                 (k, validator_fix_ref(v, fileName))
-                for k,v in contents.iteritems()
+                for k, v in contents.iteritems()
             )
     elif isinstance(contents, list):
         return [validator_fix_ref(v, fileName) for v in contents]
     else:
         return contents
+
 
 def validator_required(validator, required, instance, schema):
     # the properties function in draft3 takes care of required
@@ -84,7 +87,7 @@ class Runner(object):
             if DRY_RUN:
                 gg = data[matchgroup.group(1)]
                 return 'asdf'
-            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)]['response'] )
+            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)]['response'])
         if isinstance(scenario, str):
             return re.sub(r'\{(\w+),(\w+\.\w+)\}', fix_match, scenario)
         elif isinstance(scenario, list):
@@ -96,7 +99,6 @@ class Runner(object):
             )
         else:
             return scenario
-
 
     def equals(self, data, instance, assertIn):
         ret = 0
@@ -135,7 +137,7 @@ class Runner(object):
                 against = validator_fix_ref(scenario['request']['schema'], path)
             except Exception, e:
                 sys.stderr.write('Error loading request schema for {0}'
-                      .format(scenario['name']))
+                                 .format(scenario['name']))
                 sys.stderr.write(str(e))
                 sys.exit(1)
             validator(against).validate(body)
@@ -149,11 +151,11 @@ class Runner(object):
                                    ROOT_URL + scenario['request']['href'],
                                    data=json.dumps(body),
                                    headers={
-                                   'Accept': ACCEPT_HEADERS,
+                                       'Accept': ACCEPT_HEADERS,
                                        'Content-type': 'application/json',
                                    },
                                    auth=(self.cache['secret'], ''),
-                               ).prepare()
+                                   ).prepare()
             resp = self.session.send(req)
 
         if 'status_code' in scenario['response'] and not DRY_RUN:
@@ -181,23 +183,21 @@ class Runner(object):
             if 0 != self.equals(scenario['response']['matches'], resp_json, False) and not DRY_RUN:
                 sys.stderr.write('Error validating equals for {0}'.format(scenario['name']))
                 sys.stderr.write(json.dumps(resp_json, indent=4))
-                sys.stderr.write(scenario['response']['matches'])
+                sys.stderr.write(json.dumps(scenario['response']['matches'], indent=4))
                 sys.exit(1)
 
         if 'assertIn' in scenario['response']:
             if 0 != self.equals(scenario['response']['assertIn'], resp_json, True) and not DRY_RUN:
                 sys.stderr.write('Error validating assertIn for {0}'.format(scenario['name']))
                 sys.stderr.write(json.dumps(resp_json, indent=4))
-                sys.stderr.write(scenario['response']['assertIn'])
+                sys.stderr.write(json.dumps(scenario['response']['assertIn'], indent=4))
                 sys.exit(1)
-
 
         return {
             'response': resp_json,
             'status_code': resp.status_code if not DRY_RUN else 0,
             'request': body
         }
-
 
     def parse_file(self, name):
 
