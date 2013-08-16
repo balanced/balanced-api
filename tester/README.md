@@ -21,6 +21,7 @@ This directory contains all the code for running the scenarios against the api a
 ```
    $ cd tester
    $ pip install -r requirements.txt
+   $ python fixture_data.py > fixtures.json
    $ python runner.py ../scenarios/the_name_of_the_file.yml
 ```
 
@@ -28,6 +29,7 @@ This directory contains all the code for running the scenarios against the api a
 ```
    $ cd tester
    $ pip install -r requirements.txt
+   $ python fixture_data.py > fixtures.json
    $ ./run_scenarios.sh
 ```
 
@@ -35,13 +37,15 @@ This directory contains all the code for running the scenarios against the api a
 ```
    $ cd tester
    $ pip install -r requirements.txt
+   $ ROOT_URL="https://api.balancedpayments.com" python fixture_data.py > fixtures.json
    $ ROOT_URL="https://api.balancedpayments.com" ./run_scenarios.sh
 ```
 
-### Running scenarios against another api version
+### Running scenarios against a different api version
 ```
    $ cd tester
    $ pip install -r requirements.txt
+   $ API_VERSION=1.1 python fixture_data.py > fixtures.json
    $ API_VERSION=1.1 ./run_scenarios.sh
 ```
 
@@ -50,4 +54,12 @@ This directory contains all the code for running the scenarios against the api a
    $ cd tester
    $ pip install -r requirements.txt
    $ ./travis.sh
+```
+
+### Creating scenarios.json for the docs
+```
+   $ cd tester
+   $ pip install -r requirements.txt
+   $ python fixture_data.py > fixtures.json
+   $ make
 ```

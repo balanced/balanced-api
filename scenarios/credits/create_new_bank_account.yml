@@ -1,0 +1,9 @@
+scenarios:
+  - name: create_root_credit
+    request:
+      method: POST
+      href: /credits
+      schema:
+        "$ref": "requests/credit.json"
+      body: {
+        "amount

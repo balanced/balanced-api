@@ -5,8 +5,9 @@ scenarios:
       href: /customers
       schema:
         "$ref": "../requests/customer.json"
-      body:
-        name: Balanced testing
+      body: {
+        "name": "Balanced testing"
+      }
     response:
       status_code: 201
       schema:
