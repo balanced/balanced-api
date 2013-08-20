@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "CU[a-zA-Z0-9]{16,32}"
+            "pattern": "(AC|CU)[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
