@@ -14,4 +14,4 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/customers.json"
-      matches: { "customers": [ { "links": { "source": "{bank_account,bank_accounts.id}" } } ] }
+      matches: { "customers": [ { "links": { "destination": "{bank_account,bank_accounts.id}" } } ] }

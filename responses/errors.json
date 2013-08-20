@@ -70,7 +70,8 @@
                 "precog-bad-request",
                 "refund-invalid-debit-state",
                 "not-found",
-                "patch-test-failed"
+                "patch-test-failed",
+		"request"
             ],
             "required": true
         },
@@ -140,7 +141,7 @@
                 },
                 {
                     "type": "string",
-                    "pattern": ".*\\. Your request id is OHM[a-zA-Z0-9]*\\."
+                    "pattern": ".* Your request id is OHM[a-zA-Z0-9]*\\."
                 },
                 {
                     "type": "null"

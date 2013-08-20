@@ -62,7 +62,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/reversals.json"
-      matches: { "reversals": [ { "status": "successful" } ] }
+      matches: { "reversals": [ { "status": "succeeded" } ] }
 
   - name: check_order_escrow_3
     request:
