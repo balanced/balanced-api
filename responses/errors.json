@@ -69,7 +69,9 @@
                 "invalid-routing-number",
                 "precog-bad-request",
                 "refund-invalid-debit-state",
-                "not-found"
+                "not-found",
+                "patch-test-failed",
+		"request"
             ],
             "required": true
         },
@@ -139,13 +141,19 @@
                 },
                 {
                     "type": "string",
-                    "pattern": ".*\\. Your request id is OHM[a-zA-Z0-9]*\\."
+                    "pattern": ".* Your request id is OHM[a-zA-Z0-9]*\\."
                 },
                 {
                     "type": "null"
                 }
             ],
             "required": true
+        },
+        "additional": {
+            "required": false
+        },
+        "extras": {
+            "required": false
         },
         "status_code": {
             "type": "integer",

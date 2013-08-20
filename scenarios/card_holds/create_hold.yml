@@ -4,7 +4,7 @@ scenarios:
   - name: create_hold
     request:
       method: POST
-      href: "{card,cards.card_holds}"
+      href: "{card,cards.holds}"
       schema:
         "$ref": "requests/cards/hold.json"
       body: {

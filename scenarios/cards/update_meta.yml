@@ -56,6 +56,22 @@ scenarios:
         "$ref": "responses/cards.json"
       matches: { "cards": [ { "meta": { "asdf": "after checking the value" } } ] }
 
+  - name: update_meta_test_fail
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "test",
+        "path": "/cards/0/meta/asdf",
+        "value": "not the right value"
+      }]
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+
   - name: update_meta_move
     request:
       href: "{card,cards.href}"

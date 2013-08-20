@@ -9,7 +9,7 @@ scenarios:
         "$ref": "requests/debits/refund.json"
       body: { "amount": 200000000 }
     response:
-      status_code: 401
+      status_code: 400
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Can not refund more than origional debit" }
+      assertIn: { "description": "must be <= 20000" }

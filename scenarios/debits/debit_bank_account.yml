@@ -33,7 +33,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      matches: {"debits": [{"status": "successful"}]}
+      matches: {"debits": [{"status": "succeeded"}]}
 
   - name: debit_verified_bank_account_failed
     request:
