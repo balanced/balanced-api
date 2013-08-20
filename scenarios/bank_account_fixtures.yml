@@ -43,7 +43,7 @@ scenarios:
         "amount_2": 1
       }
     response:
-      status_code: 201
+      status_code: 200
       matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
 
   - name: bank_account_successful
@@ -86,7 +86,7 @@ scenarios:
         "amount_2": 1
       }
     response:
-      status_code: 201
+      status_code: 200
       matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
 
   - name: bank_account_failed
@@ -129,5 +129,5 @@ scenarios:
         "amount_2": 1
       }
     response:
-      status_code: 201
+      status_code: 200
       matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }

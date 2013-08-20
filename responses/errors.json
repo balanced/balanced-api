@@ -69,7 +69,8 @@
                 "invalid-routing-number",
                 "precog-bad-request",
                 "refund-invalid-debit-state",
-                "not-found"
+                "not-found",
+                "patch-test-failed"
             ],
             "required": true
         },
@@ -146,6 +147,12 @@
                 }
             ],
             "required": true
+        },
+        "additional": {
+            "required": false
+        },
+        "extras": {
+            "required": false
         },
         "status_code": {
             "type": "integer",

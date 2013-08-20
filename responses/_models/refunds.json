@@ -59,7 +59,7 @@
             "properties": {
                 "debit": {
                     "type": "string",
-                    "pattern": "WD[a-zA-Z0-9]{21,22}",
+                    "pattern": "WD[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "order": {
@@ -67,7 +67,7 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "OR[a-zA-Z0-9]{21,22}",
+                    "pattern": "OR[a-zA-Z0-9]{16,32}",
                     "required": true
                 }
             },

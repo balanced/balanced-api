@@ -78,7 +78,7 @@
             "properties": {
                 "source": {
                     "type": "string",
-                    "format": "uri",
+                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "customer": {
@@ -86,7 +86,7 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "CU[a-zA-Z0-9]{21,22}",
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "order": {
@@ -94,7 +94,7 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "OR[a-zA-Z0-9]{21,22}",
+                    "pattern": "OR[a-zA-Z0-9]{16,32}",
                     "required": true
                 }
             },
