@@ -11,7 +11,7 @@ scenarios:
         "amount": 8979
       }
     response:
-      status_code: 400
+      status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Customer does not have funding source associated" }
+      assertIn: { "description": "has no funding source" }
