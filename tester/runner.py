@@ -248,10 +248,7 @@ class Runner(object):
         }
 
     def parse_file(self, name):
-
         scenarios = {}
-
-        contents = open(name).read()
 
         data = yaml.load(open(name).read())
 
@@ -261,7 +258,9 @@ class Runner(object):
             ))
 
         for scenario in data.get('scenarios', []):
-            scenarios[scenario['name']] = self.run_scenario(scenario, scenarios, name)
+            scenarios[scenario['name']] = self.run_scenario(
+                scenario, scenarios, name
+            )
 
         return scenarios
 
