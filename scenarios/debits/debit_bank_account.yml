@@ -33,7 +33,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      matches: {"debits": [{"status": "successful"}]}
+      matches: {"debits": [{"status": "succeeded"}]}
 
   - name: debit_verified_bank_account_failed
     request:
@@ -49,3 +49,18 @@ scenarios:
       schema:
         "$ref": "responses/debits.json"
       matches: {"debits": [{"status": "failed"}]}
+
+  - name: debit_unverified_bank_account
+    request:
+      method: POST
+      href: "{bank_account,bank_accounts.debits}"
+      schema:
+        "$ref": "requests/bank_accounts/debit.json"
+      body: {
+        "amount": 123
+      }
+    response:
+      status_code: 400
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Can not debit unverified bank account" }

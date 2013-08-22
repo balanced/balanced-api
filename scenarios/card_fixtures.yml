@@ -14,3 +14,19 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/cards.json"
+
+  - name: card_processor_failure
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4444444444444448",
+        "expiration_month": 12,
+        "expiration_year": 2018
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/cards.json"

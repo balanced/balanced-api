@@ -1,0 +1,17 @@
+require:
+  - ../customer_fixtures.yml
+scenarios:
+  - name: fail_debit_customer
+    request:
+      method: POST
+      href: "{customer,customers.debits}"
+      schema:
+        "$ref": "requests/customers/debit.json"
+      body: {
+        "amount": 8979
+      }
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "has no funding source" }

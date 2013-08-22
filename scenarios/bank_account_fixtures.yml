@@ -1,3 +1,5 @@
+require:
+  - ./customer_fixtures.yml
 scenarios:
   - name: bank_account
     request:
@@ -28,6 +30,38 @@ scenarios:
       }
     response:
       status_code: 201
+
+  - name: associate_bank_account_with_customer
+    request:
+      method: PUT
+      href: "{customer,customers.href}"
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "bank_account_uri": "{verified_bank_account,bank_accounts.href}"
+      }
+    response:
+      schema:
+        "$ref": "responses/customers.json"
+
+  - name: verified_bank_account_create_verification
+    request:
+      method: POST
+      href: "{verified_bank_account,bank_accounts.verifications}"
+    response:
+      status_code: 201
+
+  - name: verified_bank_account_verify_verification
+    request:
+      method: PUT
+      href: "{verified_bank_account,bank_accounts.verification}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 200
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
 
   - name: bank_account_successful
     request:
@@ -68,7 +102,7 @@ scenarios:
     response:
       status_code: 201
 
-  - name: verified_bank_account_failed
+  - name: verified_bank_account_no_customer
     request:
       method: POST
       href: /bank_accounts
@@ -80,3 +114,10 @@ scenarios:
       }
     response:
       status_code: 201
+
+  - name: verified_bank_account_no_customer_verify
+    request:
+      method: POST
+      href: "{verified_bank_account_no_customer,bank_accounts.verifications}"
+    response:
+      status_code: 409

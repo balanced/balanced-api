@@ -1,0 +1,29 @@
+require:
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: create_verification
+    request:
+      method: POST
+      href: "{bank_account,bank_accounts.verifications}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "attempts_remaining": 3, "verification_status": "pending" } ] }
+  - name: submit_verification
+    request:
+      method: PUT
+      href: "{create_verification,bank_account_verifications.href}"
+      schema:
+        "$ref": "requests/bank_accounts/verification.json"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_account_verifications.json"
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }

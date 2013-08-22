@@ -4,9 +4,9 @@ scenarios:
   - name: retrieve_card
     request:
       method: GET
-      href: "{card,href}"
+      href: "{card,cards.href}"
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 200
       matches: {"cards": [{
@@ -20,8 +20,8 @@ scenarios:
         "address": {
           "line1": null,
           "line2": null,
-          "locality": null,
-          "region": null,
+          "city": null,
+          "state": null,
           "country_code": null
         },
         "avs_street_match": null,
@@ -43,7 +43,7 @@ scenarios:
         "expiration_year": "2016"
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
@@ -64,7 +64,7 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"name": "Frida Kahlo"}]}
@@ -82,21 +82,21 @@ scenarios:
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",
-          "locality": "Versailles",
+          "city": "Versailles",
           "postal_code": "78000",
           "country_code": "FR"
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",
-          "locality": "Versailles",
-          "region": null,
+          "city": "Versailles",
+          "state": null,
           "postal_code": "78000",
           "country_code": "FR"
         }
@@ -114,13 +114,15 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/errors.json"
       status_code: 409
+      matches: { "category_code": "card-not-validated" }
+      assertIn: { "description": "The card could not be validated -- either the card number or security code\nmay be wrong." }
 
   - name: unstore_card
     request:
       method: DELETE
-      href: "{card,href}"
+      href: "{card,cards.href}"
     response:
       status_code: 204

@@ -1,0 +1,90 @@
+require:
+  - create.yml
+  - ../customers/underwrite_with_destination.yml
+scenarios:
+  - name: create_debit
+    request:
+      method: POST
+      href: "{add_card_to_customer,cards.debits}"
+      schema:
+        "$ref": "requests/cards/debit.json"
+      body: {
+        "order": "{order,orders.href}",
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+
+  - name: check_order_escrow_1
+    request:
+      method: GET
+      href: "{order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: { "orders": [ { "amount_escrowed": 1234 } ] }
+
+  - name: create_credit
+    request:
+      method: POST
+      href: "{add_bank_account,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "order": "{order,orders.href}",
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      shcema:
+        "$ref": "responses/credits.json"
+
+  - name: check_order_escrow_2
+    request:
+      method: GET
+      href: "{order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: { "orders": [ { "amount_escrowed": 0 } ] }
+
+  - name: create_reversal
+    request:
+      method: POST
+      href: "{create_credit,credits.reversals}"
+      schema:
+        "$ref": "requests/credits/reversal.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/reversals.json"
+      matches: { "reversals": [ { "status": "pending" } ] }
+
+  # because the reversal is pending
+  # the amount_escrowed in the order will be 0
+  - name: check_order_escrow_3
+    request:
+      method: GET
+      href: "{order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: { "orders": [ { "amount_escrowed": 0 } ] }
+
+  - name: create_refund_fail
+    request:
+      method: POST
+      href: "{create_debit,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Order escrow balanced is insufficient to issue this refund." }
+      matches: { "category_code": "insufficient-funds" }

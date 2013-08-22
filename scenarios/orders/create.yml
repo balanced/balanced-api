@@ -1,0 +1,13 @@
+require:
+  - ../cards/add_to_customer.yml
+scenarios:
+  - name: order
+    request:
+      method: POST
+      href: "{customer,customers.orders}"
+      schema:
+        "$ref": "requests/customers/order.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/orders.json"

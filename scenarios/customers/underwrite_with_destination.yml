@@ -1,0 +1,77 @@
+require:
+  - ../bank_account_fixtures.yml
+scenarios:
+  - name: create_underwritten
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "name": "Henry Ford",
+        "dob_month": 7,
+        "dob_year": 1963,
+        "address": {
+          "postal_code": "48120"
+        }
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "merchant_status": "underwritten" } ] }
+
+  - name: add_bank_account
+    request:
+      method: PATCH
+      href: "{bank_account,bank_accounts.href}"
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "{create_underwritten,customers.id}"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_accounts.json"
+      matches: { "bank_accounts": [ { "links": { "customer": "{create_underwritten,customers.id}" } } ] }
+
+
+  - name: create_underwritten_successful
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "name": "Henry Ford-successful",
+        "dob_month": 7,
+        "dob_year": 1963,
+        "address": {
+          "postal_code": "48120"
+        }
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "merchant_status": "underwritten" } ] }
+
+  - name: add_bank_account_successful
+    request:
+      method: PATCH
+      href: "{bank_account_successful,bank_accounts.href}"
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "{create_underwritten_successful,customers.id}"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/bank_accounts.json"
+      matches: { "bank_accounts": [ { "links": { "customer": "{create_underwritten_successful,customers.id}" } } ] }
