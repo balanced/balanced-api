@@ -111,6 +111,13 @@ class Runner(object):
         else:
             return scenario
 
+    def regex_equals(self, instance, patterns):
+        for field, regex in patterns.iteritems():
+            match = re.match(regex, instance[field])
+            if not match:
+                return False
+        return True
+
     def equals(self, data, instance, assertIn):
         ret = 0
         if isinstance(data, dict):
@@ -135,12 +142,15 @@ class Runner(object):
             else:
                 return 0 if data == instance else 1
 
+
     def run_scenario(self, scenario, data, path):
         sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
 
         scenario = self.resolve_deps(scenario, data)
 
         request_scenario = scenario['request']
+        response = scenario['response']
+        name = scenario['name']
         body = request_scenario.get('body', {})
 
         if 'schema' in request_scenario:
@@ -148,8 +158,7 @@ class Runner(object):
                 against = validator_fix_ref(request_scenario['schema'], path)
             except Exception, e:
                 sys.stderr.write(
-                    'Error loading request schema for {0}'.format(
-                        scenario['name'])
+                    'Error loading request schema for {0}'.format(name)
                 )
                 sys.stderr.write(str(e))
                 sys.exit(1)
@@ -158,12 +167,16 @@ class Runner(object):
             if body:
                 sys.stderr.write(
                     'Warning: {0} missing schema section for request\n'.format(
-                        scenario['name']
+                        name
                     )
                 )
 
         if not DRY_RUN:
-            print scenario['name'], ROOT_URL + request_scenario['href'], request_scenario['method']
+            print (
+                name,
+                ROOT_URL + request_scenario['href'],
+                request_scenario['method']
+            )
             req = requests.Request(
                 method=request_scenario['method'],
                 url=ROOT_URL + request_scenario['href'],
@@ -176,39 +189,56 @@ class Runner(object):
             ).prepare()
             resp = self.session.send(req)
 
-        if 'status_code' in scenario['response'] and not DRY_RUN:
-            if scenario['response']['status_code'] != resp.status_code:
-                sys.stderr.write('Scenario {0} failed with wrong status code {1} != {2}'
-                                 .format(scenario['name'],
-                                         scenario['response']['status_code'],
-                                         resp.status_code))
+        if 'status_code' in response and not DRY_RUN:
+            if response['status_code'] != resp.status_code:
+                sys.stderr.write(
+                    'Scenario {0} failed with wrong status code {1} != {2}'
+                    .format(name, response['status_code'], resp.status_code)
+                )
                 sys.exit(1)
 
         resp_json = resp.json() if not DRY_RUN else {}
         try:
-            against = validator_fix_ref(scenario['response'].get('schema', {}), path)
+            against = validator_fix_ref(response.get('schema', {}), path)
         except:
-            sys.stderr.write('could not parse response schema for {0}'.format(scenario['name']))
+            sys.stderr.write(
+                'could not parse response schema for {0}'.format(name)
+            )
             sys.exit(1)
 
         if not DRY_RUN:
             if not against:
-                sys.stderr.write('Warning: no schema to validate response against for {0}\n'
-                                 .format(scenario['name']))
+                sys.stderr.write(
+                    'Warning: no schema to validate response against for {0}\n'
+                    .format(name)
+                )
             validator(against).validate(resp_json)
 
-        if 'matches' in scenario['response']:
-            if 0 != self.equals(scenario['response']['matches'], resp_json, False) and not DRY_RUN:
-                sys.stderr.write('Error validating equals for {0}'.format(scenario['name']))
+        if 'matches' in response:
+            if 0 != self.equals(response['matches'], resp_json, False) and not DRY_RUN:
+                sys.stderr.write(
+                    'Error validating equals for {0}'.format(name)
+                )
                 sys.stderr.write(json.dumps(resp_json, indent=4))
-                sys.stderr.write(json.dumps(scenario['response']['matches'], indent=4))
+                sys.stderr.write(json.dumps(response['matches'], indent=4))
                 sys.exit(1)
 
-        if 'assertIn' in scenario['response']:
-            if 0 != self.equals(scenario['response']['assertIn'], resp_json, True) and not DRY_RUN:
-                sys.stderr.write('Error validating assertIn for {0}'.format(scenario['name']))
+        if 'assertIn' in response:
+            if 0 != self.equals(response['assertIn'], resp_json, True) and not DRY_RUN:
+                sys.stderr.write(
+                    'Error validating assertIn for {0}'.format(name)
+                )
                 sys.stderr.write(json.dumps(resp_json, indent=4))
-                sys.stderr.write(json.dumps(scenario['response']['assertIn'], indent=4))
+                sys.stderr.write(json.dumps(response['assertIn'], indent=4))
+                sys.exit(1)
+
+        if 'assertRegex' in response:
+            if not self.regex_equals(resp_json, response['assertRegex']):
+                sys.stderr.write(
+                    'Error validating assertRegex for {0}'.format(name)
+                )
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(json.dumps(response['assertRegex'], indent=4))
                 sys.exit(1)
 
         return {
