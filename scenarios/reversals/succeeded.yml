@@ -7,7 +7,7 @@ scenarios:
         "$ref": "requests/credit.json"
       body: {
         "amount": 1234,
-        "source": {
+        "destination": {
           "name": "Michael Jordan",
           "account_number": "9900000095",
           "routing_number": "021000021",
@@ -17,7 +17,7 @@ scenarios:
     response:
       status_code: 201
       schema:
-        "$ref": "responses/bank_accounts.json"
+        "$ref": "responses/credits.json"
   - name: create_reversal
     request:
       method: POST
@@ -28,4 +28,4 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/reversals.json"
-      matches: { "reversals": [ { "status": "pending" } ] }
+      matches: { "reversals": [ { "status": "succeeded" } ] }
