@@ -31,7 +31,7 @@ scenarios:
     response:
       status_code: 201
 
-  - name: associate_bank_account_with_customer
+  - name: associate_verified_bank_account_with_customer
     request:
       method: PUT
       href: "{customer,customers.href}"
@@ -89,6 +89,38 @@ scenarios:
     response:
       status_code: 201
 
+  - name: associate_verified_bank_account_successful_with_customer
+    request:
+      method: PUT
+      href: "{customer,customers.href}"
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "bank_account_uri": "{verified_bank_account_successful,bank_accounts.href}"
+      }
+    response:
+      schema:
+        "$ref": "responses/customers.json"
+
+  - name: verified_bank_account_successful_create_verification
+    request:
+      method: POST
+      href: "{verified_bank_account_successful,bank_accounts.verifications}"
+    response:
+      status_code: 201
+
+  - name: verified_bank_account_successful_verify_verification
+    request:
+      method: PUT
+      href: "{verified_bank_account_successful,bank_accounts.verification}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 200
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
+
   - name: bank_account_failed
     request:
       method: POST
@@ -102,6 +134,50 @@ scenarios:
     response:
       status_code: 201
 
+  - name: verified_bank_account_failed
+    request:
+      method: POST
+      href: /bank_accounts
+      body: {
+        "name": "Karl Malone",
+        "account_number": "9900000004",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }
+    response:
+      status_code: 201
+
+  - name: associate_verified_bank_account_failed_with_customer
+    request:
+      method: PUT
+      href: "{customer,customers.href}"
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "bank_account_uri": "{verified_bank_account_failed,bank_accounts.href}"
+      }
+    response:
+      schema:
+        "$ref": "responses/customers.json"
+
+  - name: verified_bank_account_failed_create_verification
+    request:
+      method: POST
+      href: "{verified_bank_account_failed,bank_accounts.verifications}"
+    response:
+      status_code: 201
+
+  - name: verified_bank_account_failed_verify_verification
+    request:
+      method: PUT
+      href: "{verified_bank_account_failed,bank_accounts.verification}"
+      body: {
+        "amount_1": 1,
+        "amount_2": 1
+      }
+    response:
+      status_code: 200
+      matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
   - name: verified_bank_account_no_customer
     request:
       method: POST
