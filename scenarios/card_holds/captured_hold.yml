@@ -6,7 +6,7 @@ scenarios:
       schema:
         "$ref": "requests/card.json"
       body: {
-        "number": "4444444444444441",
+        "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2018
       }
@@ -34,8 +34,17 @@ scenarios:
       schema:
         "$ref": "requests/card_holds/debit.json"
     response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+  - name: capture_hold_again
+    request:
+      method: POST
+      href: "{create_hold,card_holds.debits}"
+      schema:
+        "$ref": "requests/card_holds/debit.json"
+    response:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
       matches: { "category_code": "cannot-capture-authorization" }
-      assertIn: { "description": "This hold has already been captured or voided, and cannot be captured." }

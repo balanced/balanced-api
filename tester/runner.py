@@ -72,14 +72,23 @@ class Runner(object):
 
     session = requests.Session()
 
-    def get_Field(self, name, data):
+    def get_field(self, name, data):
+
         def resolve_link(match):
             return data[match.group(1)][0][match.group(2)]
-        b = name.split('.')
-        if b[1] in data[b[0]][0]:
-            return data[b[0]][0][b[1]]
+
+        controller, action = name.split('.')
+        try:
+            if action in data[controller][0]:
+                return data[controller][0][action]
+        except Exception as ex:
+            import ipdb; ipdb.set_trace()
         if name in data['links']:
-            return re.sub(r'\{(\w+)\.(\w+)\}', resolve_link, data['links'][name])
+            return re.sub(
+                r'\{(\w+)\.(\w+)\}',
+                resolve_link,
+                data['links'][name]
+            )
         return None
 
     def resolve_deps(self, scenario, data):
@@ -87,7 +96,9 @@ class Runner(object):
             if DRY_RUN:
                 gg = data[matchgroup.group(1)]
                 return 'asdf'
-            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)]['response'])
+            return self.get_field(
+                matchgroup.group(2), data[matchgroup.group(1)]['response']
+            )
         if isinstance(scenario, str):
             return re.sub(r'\{(\w+),(\w+\.\w+)\}', fix_match, scenario)
         elif isinstance(scenario, list):
@@ -125,37 +136,44 @@ class Runner(object):
                 return 0 if data == instance else 1
 
     def run_scenario(self, scenario, data, path):
-
         sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
 
         scenario = self.resolve_deps(scenario, data)
 
-        body = scenario['request'].get('body', {})
+        request_scenario = scenario['request']
+        body = request_scenario.get('body', {})
 
-        if 'schema' in scenario['request']:
+        if 'schema' in request_scenario:
             try:
-                against = validator_fix_ref(scenario['request']['schema'], path)
+                against = validator_fix_ref(request_scenario['schema'], path)
             except Exception, e:
-                sys.stderr.write('Error loading request schema for {0}'
-                                 .format(scenario['name']))
+                sys.stderr.write(
+                    'Error loading request schema for {0}'.format(
+                        scenario['name'])
+                )
                 sys.stderr.write(str(e))
                 sys.exit(1)
             validator(against).validate(body)
         else:
             if body:
-                sys.stderr.write('Warning: {0} missing schema section for request\n'
-                                 .format(scenario['name']))
+                sys.stderr.write(
+                    'Warning: {0} missing schema section for request\n'.format(
+                        scenario['name']
+                    )
+                )
 
         if not DRY_RUN:
-            req = requests.Request(scenario['request']['method'],
-                                   ROOT_URL + scenario['request']['href'],
-                                   data=json.dumps(body),
-                                   headers={
-                                       'Accept': ACCEPT_HEADERS,
-                                       'Content-type': 'application/json',
-                                   },
-                                   auth=(self.cache['secret'], ''),
-                                   ).prepare()
+            print scenario['name'], ROOT_URL + request_scenario['href'], request_scenario['method']
+            req = requests.Request(
+                method=request_scenario['method'],
+                url=ROOT_URL + request_scenario['href'],
+                data=json.dumps(body),
+                headers={
+                    'Accept': ACCEPT_HEADERS,
+                    'Content-type': 'application/json'
+                },
+                auth=(self.cache['secret'], ''),
+            ).prepare()
             resp = self.session.send(req)
 
         if 'status_code' in scenario['response'] and not DRY_RUN:
