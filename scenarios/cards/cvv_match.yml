@@ -27,6 +27,7 @@ scenarios:
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016,
+        "cvv": "902"
       }
     response:
       schema: 

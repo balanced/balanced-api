@@ -18,14 +18,14 @@ scenarios:
         "cvv_match": "yes",
         "cvv_result": "Match",
         "address": {
-          "line1": null,
+          "line1": "965 Mission St",
           "line2": null,
           "city": null,
           "state": null,
-          "postal_code": null,
+          "postal_code": "94103",
           "country_code": null
         },
-        "avs_street_match": unsupported,
+        "avs_street_match": "yes",
         "avs_postal_match": "yes",
         "avs_result": "Postal code matches, but street address not verified.",
         "brand": "Visa",

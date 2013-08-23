@@ -131,7 +131,7 @@ class Runner(object):
                 eq = self.equals(v, instance.get(k, None), assertRegex)
                 ret += eq
                 if eq:
-                    print 'err: {} != {}'.format(v, instance.get(k))
+                    print 'err: {}[{}] != {}'.format(k, v, instance.get(k))
             return ret
         elif isinstance(data, list):
             if not isinstance(instance, list):
