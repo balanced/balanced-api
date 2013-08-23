@@ -8,6 +8,10 @@
                 "amount": {
                     "type": "integer",
                     "minimum": 1
+                },
+                "marketplace_fee": {
+                    "type": "integer",
+                    "minimum": 0
                 }
             }
         },
