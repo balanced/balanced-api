@@ -27,7 +27,6 @@ scenarios:
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016,
-        "cvv": "456"
       }
     response:
       schema: 
@@ -45,28 +44,10 @@ scenarios:
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016,
-        "cvv": "789"
+        "cvv": "901"
       }
     response:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"cvv_match": "unsupported"}]}
-
-  - name: cvv_match_yes
-    request:
-      method: POST
-      href: /cards
-      schema:
-        "$ref": "requests/card.json"
-      body: {
-        "number": "4111111111111111",
-        "expiration_month": 12,
-        "expiration_year": 2016
-      }
-    response:
-      schema: 
-        "$ref": "responses/cards.json"
-      status_code: 201
-      matches: {"cards": [{"cvv_match": null}]}
-
