@@ -83,5 +83,5 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "has insufficient funds to cover a transfer of 99999999 to destination" }
+      assertRegex: { "description": "has insufficient funds to cover a transfer of 99999999 to destination" }
       matches: { "category_code": "insufficient-funds" }

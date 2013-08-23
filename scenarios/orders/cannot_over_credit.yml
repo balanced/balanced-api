@@ -41,7 +41,7 @@ scenarios:
       status_code: 409
       shcema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Order escrow balanced is insufficient to issue this credit." }
+      assertRegex: { "description": "Order escrow balanced is insufficient to issue this credit." }
       matches: { "category_code": "insufficient-funds" }
 
   - name: check_order_escrow_2

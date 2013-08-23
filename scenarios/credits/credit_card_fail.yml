@@ -16,4 +16,4 @@ scenarios:
       status_code: 404
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "not found" }
+      assertRegex: { "description": "not found" }

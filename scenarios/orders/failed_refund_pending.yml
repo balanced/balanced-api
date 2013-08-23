@@ -86,5 +86,5 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Order escrow balanced is insufficient to issue this refund." }
+      assertRegex: { "description": "Order escrow balanced is insufficient to issue this refund." }
       matches: { "category_code": "insufficient-funds" }

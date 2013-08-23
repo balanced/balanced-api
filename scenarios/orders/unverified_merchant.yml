@@ -40,7 +40,7 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: {
+      assertRegex: {
         "description": "Order requires merchant be underwritten.",
         "category_code": "kyc"
       }

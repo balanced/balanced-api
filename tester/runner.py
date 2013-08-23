@@ -122,20 +122,13 @@ class Runner(object):
         else:
             return scenario
 
-    def regex_equals(self, instance, patterns):
-        for field, regex in patterns.iteritems():
-            match = re.match(regex, instance[field])
-            if not match:
-                return False
-        return True
-
-    def equals(self, data, instance, assertIn):
+    def equals(self, data, instance, assertRegex):
         ret = 0
         if isinstance(data, dict):
             if not isinstance(instance, dict):
                 return 1
             for k, v in data.iteritems():
-                eq = self.equals(v, instance.get(k, None), assertIn)
+                eq = self.equals(v, instance.get(k, None), assertRegex)
                 ret += eq
                 if eq:
                     print 'err: {} != {}'.format(v, instance.get(k))
@@ -146,14 +139,18 @@ class Runner(object):
             if len(instance) < len(data):
                 return 1
             for i in xrange(len(data)):
-                ret += self.equals(data[i], instance[i], assertIn)
+                ret += self.equals(data[i], instance[i], assertRegex)
             return ret
         else:
-            if assertIn:
-                return 0 if instance and data in instance else 1
+            if assertRegex:
+                try:
+                    if re.match(data, instance):
+                        return 0
+                except TypeError:
+                    pass
+                return 1
             else:
                 return 0 if data == instance else 1
-
 
     def run_scenario(self, scenario, data, path):
         sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
@@ -210,7 +207,7 @@ class Runner(object):
                 sys.exit(1)
 
         resp_json = {}
-        if resp.status_code != 204 and not DRY_RUN:
+        if not DRY_RUN and resp.status_code != 204:
             resp_json = resp.json()
 
         try:
@@ -238,17 +235,8 @@ class Runner(object):
                 sys.stderr.write(json.dumps(response['matches'], indent=4))
                 sys.exit(1)
 
-        if 'assertIn' in response:
-            if 0 != self.equals(response['assertIn'], resp_json, True) and not DRY_RUN:
-                sys.stderr.write(
-                    'Error validating assertIn for {0}'.format(name)
-                )
-                sys.stderr.write(json.dumps(resp_json, indent=4))
-                sys.stderr.write(json.dumps(response['assertIn'], indent=4))
-                sys.exit(1)
-
         if 'assertRegex' in response:
-            if not self.regex_equals(resp_json, response['assertRegex']):
+            if 0 != self.equals(response['assertRegex'], resp_json, True) and not DRY_RUN:
                 sys.stderr.write(
                     'Error validating assertRegex for {0}'.format(name)
                 )

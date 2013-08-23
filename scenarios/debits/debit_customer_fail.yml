@@ -14,4 +14,4 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "has no funding source" }
+      assertRegex: { "description": "has no funding source" }

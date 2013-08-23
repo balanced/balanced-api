@@ -14,5 +14,5 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "Customer does not have bank account associated" }
+      assertRegex: { "description": "Customer does not have bank account associated" }
       matches: { "category_code": "funding-destination-not-associated" }

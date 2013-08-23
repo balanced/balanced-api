@@ -4,7 +4,7 @@ scenarios:
   - name: create_failed_refund
     request:
       method: POST
-      href: "{debit_card,debits.refunds}"
+      href: "{debit_customer_card,debits.refunds}"
       schema:
         "$ref": "requests/debits/refund.json"
       body: { "amount": 200000000 }
@@ -12,4 +12,4 @@ scenarios:
       status_code: 400
       schema:
         "$ref": "responses/errors.json"
-      assertIn: { "description": "must be <= 20000" }
+      assertRegex: { "description": "must be <= 20000" }

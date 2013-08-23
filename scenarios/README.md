@@ -51,5 +51,5 @@ scenarios:
   * when referencing other scenarios by name, the most recent scenario with that name is references (you can overwrite the result of a scenario)
   * all required files are isolated from each other (eg, if both files require a customer scenario, then two different customers will be created.  Additionally "{customer,customers.href}" will reference the last customer scenario)
   * matches in the response will assert that the field in the response and the value given are equal
-  * assertIn in the response will assert that the field in the response contains the value that is asserted
+  * assertRegex in the response will assert that the field in the response matches the regular expression
   * all paths are relative or from the root of this repository
