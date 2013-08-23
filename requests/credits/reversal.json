@@ -1,6 +1,14 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "/credits/:credit_id/reversals",
-    "type": "object",
-    "properties": {}
+    // should be able to make this null in the post as well
+    "anyOf": [
+		{
+			"type": "object",
+			"properties": {}
+		},
+		{
+			"type": "null"
+		}
+    ]
 }
