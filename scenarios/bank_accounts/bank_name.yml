@@ -15,7 +15,7 @@ scenarios:
       schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      matches: {"bank_accounts": [{"bank_name": "Wells Fargo"}]}
+      matches: {"bank_accounts": [{"bank_name": "WELLS FARGO BANK NA"}]}
 
   - name: bank_name_boa
     request:
@@ -33,7 +33,7 @@ scenarios:
       schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      matches: {"bank_accounts": [{"bank_name": "Bank of America"}]}
+      matches: {"bank_accounts": [{"bank_name": "BANK OF AMERICA, N.A."}]}
 
   - name: bank_name_jpmc
     request:
@@ -51,4 +51,4 @@ scenarios:
       schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
-      matches: {"bank_accounts": [{"bank_name": "JPMorgan Chase"}]}
+      matches: {"bank_accounts": [{"bank_name": "J.P. MORGAN CHASE BANK, N.A."}]}

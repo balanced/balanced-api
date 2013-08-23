@@ -1,10 +1,24 @@
 require:
   - ../bank_account_fixtures.yml
 scenarios:
+
+  - name: associate_bank_account_to_verify_with_customer
+    request:
+      method: PUT
+      href: "{customer,customers.href}"
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "bank_account_uri": "{bank_account_to_verify,bank_accounts.href}"
+      }
+    response:
+      schema:
+        "$ref": "responses/customers.json"
+
   - name: create_verification
     request:
       method: POST
-      href: "{bank_account,bank_accounts.verifications}"
+      href: "{bank_account_to_verify,bank_accounts.verifications}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
     response:
@@ -12,6 +26,7 @@ scenarios:
       schema:
         "$ref": "responses/bank_account_verifications.json"
       matches: { "bank_account_verifications": [ { "attempts_remaining": 3, "verification_status": "pending" } ] }
+
   - name: submit_verification
     request:
       method: PUT
