@@ -12,4 +12,4 @@ scenarios:
       status_code: 400
       schema:
         "$ref": "responses/errors.json"
-      assertRegex: { "description": "must be <= 20000" }
+      assertRegex: { "description": ".*must be <= 20000" }
