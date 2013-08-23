@@ -14,19 +14,20 @@ scenarios:
         "number": "xxxxxxxxxxxx1111",
         "expiration_month": 12,
         "expiration_year": 2016,
-        "cvv": null,
-        "cvv_match": null,
-        "cvv_result": "Not Processed",
+        "cvv": xxx,
+        "cvv_match": "yes",
+        "cvv_result": "Match",
         "address": {
           "line1": null,
           "line2": null,
           "city": null,
           "state": null,
+          "postal_code": null,
           "country_code": null
         },
-        "avs_street_match": null,
-        "avs_postal_match": null,
-        "avs_result": "Address not verified.",
+        "avs_street_match": unsupported,
+        "avs_postal_match": "yes",
+        "avs_result": "Postal code matches, but street address not verified.",
         "brand": "Visa",
         "meta": {}
       }]}
@@ -91,16 +92,18 @@ scenarios:
       schema:
         "$ref": "responses/cards.json"
       status_code: 201
-      matches: {"cards": [{
-        "address": {
-          "line1": "7 Bis Rue de l'Abbé de l'Épée",
-          "line2": "Apt 4",
-          "city": "Versailles",
-          "state": null,
-          "postal_code": "78000",
-          "country_code": "FR"
-        }
-      }]}
+      matches: {
+        "cards": [{
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "state": null,
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }]
+     }
 
   - name: fails_luhn
     request:
@@ -118,7 +121,7 @@ scenarios:
         "$ref": "responses/errors.json"
       status_code: 409
       matches: { "category_code": "card-not-validated" }
-      assertIn: { "description": "The card could not be validated -- either the card number or security code\nmay be wrong." }
+      assertRegex: { "description": "^Card cannot be validated" }
 
   - name: unstore_card
     request:

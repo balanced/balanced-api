@@ -13,11 +13,14 @@ import yaml
 import requests
 import jsonschema
 
-ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000')  # TODO: change this to balanced api
+
+ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000')
 API_VERSION = os.environ.get('API_VERSION', '1.1')
-ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
-                                'application/vnd.balancedpayments+json; version={version}, '
-                                'application/vnd.api+json')
+ACCEPT_HEADERS = os.environ.get(
+    'ACCEPT_HEADERS',
+    ('application/vnd.balancedpayments+json; version={version}, '
+     'application/vnd.api+json')
+)
 ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 
 DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
@@ -64,6 +67,14 @@ validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                              "properties": jsonschema._validators.properties_draft3,
                                              "required": validator_required,
                                          })
+
+
+def validate(resp_json):
+    class Validator(object):
+
+        def against(self, schema):
+            validator(schema).validate(resp_json)
+    return Validator()
 
 
 class Runner(object):
@@ -155,14 +166,14 @@ class Runner(object):
 
         if 'schema' in request_scenario:
             try:
-                against = validator_fix_ref(request_scenario['schema'], path)
+                schema = validator_fix_ref(request_scenario['schema'], path)
             except Exception, e:
                 sys.stderr.write(
                     'Error loading request schema for {0}'.format(name)
                 )
                 sys.stderr.write(str(e))
                 sys.exit(1)
-            validator(against).validate(body)
+            validate(body).against(schema)
         else:
             if body:
                 sys.stderr.write(
@@ -197,9 +208,12 @@ class Runner(object):
                 )
                 sys.exit(1)
 
-        resp_json = resp.json() if not DRY_RUN else {}
+        resp_json = {}
+        if resp.status_code != 204 and not DRY_RUN:
+            resp_json = resp.json()
+
         try:
-            against = validator_fix_ref(response.get('schema', {}), path)
+            schema = validator_fix_ref(response.get('schema', {}), path)
         except:
             sys.stderr.write(
                 'could not parse response schema for {0}'.format(name)
@@ -207,12 +221,12 @@ class Runner(object):
             sys.exit(1)
 
         if not DRY_RUN:
-            if not against:
+            if not schema:
                 sys.stderr.write(
                     'Warning: no schema to validate response against for {0}\n'
                     .format(name)
                 )
-            validator(against).validate(resp_json)
+            validate(resp_json).against(schema)
 
         if 'matches' in response:
             if 0 != self.equals(response['matches'], resp_json, False) and not DRY_RUN:

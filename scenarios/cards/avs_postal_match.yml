@@ -29,9 +29,6 @@ scenarios:
         "number": "4111111111111111",
         "expiration_month": 12,
         "expiration_year": 2016,
-        "address": {
-          "postal_code": "94102"
-        }
       }
     response:
       schema: 
