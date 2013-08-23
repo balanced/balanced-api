@@ -10,7 +10,8 @@ scenarios:
         "expiration_month": 12,
         "expiration_year": 2016,
         "address": {
-          "line1": "965 Mission St"
+          "line1": "965 Mission St",
+          "postal_code": "94103"
         }
       }
     response:
@@ -30,7 +31,8 @@ scenarios:
         "expiration_month": 12,
         "expiration_year": 2016,
         "address": {
-          "line1": "21 Jump St"
+          "line1": "21 Jump St",
+          "postal_code": "90210"
         }
       }
     response:
@@ -50,7 +52,8 @@ scenarios:
         "expiration_month": 12,
         "expiration_year": 2016,
         "address": {
-          "line1": "1984 Elm St"
+          "line1": "1984 Elm St",
+          "postal_code": "90210"
         }
       }
     response:
@@ -74,4 +77,4 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      matches: {"cards": [{"avs_street_match": null}]}
+      matches: {"cards": [{"avs_street_match": "unsupported"}]}
