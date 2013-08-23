@@ -30,6 +30,7 @@ scenarios:
         "$ref": "responses/marketplaces.json"
       body: {
         "marketplaces": [{
-          "amount_escrowed": 80000
+          "in_escrow": 80000,
+          "unsettled_fees": 2000
         }]
       }

@@ -28,6 +28,7 @@ scenarios:
         "$ref": "responses/marketplaces.json"
       body: {
         "marketplaces": [{
-          "amount_escrowed": 0
+          "in_escrow": 0,
+          "unsettled_fees": 0
         }]
       }

@@ -22,9 +22,14 @@
             "format": "date-time",
             "required": true
         },
-        "amount_escrowed": {
+        "in_escrow": {
             "type": "integer",
             "required": true
+        },
+        "unsettled_fees": {
+            "type": "integer",
+            "required": true,
+            "description": "The total amount of fees collected by the marketplace that have yet to be settled to their bank account by Balanced."
         },
         "domain_url": {
             "type": "string",

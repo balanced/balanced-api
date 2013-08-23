@@ -13,6 +13,10 @@
                     "type": "integer",
                     "minimum": 0
                 }
+            },
+            "dependencies": {
+                "amount": "marketplace_fee",
+                "marketplace_fee": "amount"
             }
         },
         {
