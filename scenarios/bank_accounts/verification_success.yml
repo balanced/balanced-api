@@ -9,7 +9,7 @@ scenarios:
       schema:
         "$ref": "requests/customer.json"
       body: {
-        "bank_account_uri": "{bank_account_to_verify,bank_accounts.href}"
+        "bank_account_uri": "{bank_account,bank_accounts.href}"
       }
     response:
       schema:
@@ -18,7 +18,7 @@ scenarios:
   - name: create_verification
     request:
       method: POST
-      href: "{bank_account_to_verify,bank_accounts.verifications}"
+      href: "{bank_account,bank_accounts.verifications}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
     response:

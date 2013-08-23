@@ -1,14 +1,14 @@
 require:
   - ../bank_account_fixtures.yml
 scenarios:
-  - name: associate_bank_account_to_fail_verification_with_customer
+  - name: associate_bank_account_with_customer
     request:
       method: PUT
       href: "{customer,customers.href}"
       schema:
         "$ref": "requests/customer.json"
       body: {
-        "bank_account_uri": "{bank_account_to_fail_verification,bank_accounts.href}"
+        "bank_account_uri": "{bank_account,bank_accounts.href}"
       }
     response:
       schema:
@@ -17,7 +17,7 @@ scenarios:
   - name: create_verification
     request:
       method: POST
-      href: "{bank_account_to_fail_verification,bank_accounts.verifications}"
+      href: "{bank_account,bank_accounts.verifications}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
     response:
