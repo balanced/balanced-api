@@ -135,17 +135,18 @@ class Runner(object):
             if not isinstance(instance, dict):
                 return 1
             for k, v in data.iteritems():
-                ret += self.equals(v, instance.get(k, None), assertIn)
+                eq = self.equals(v, instance.get(k, None), assertIn)
+                ret += eq
+                if eq:
+                    print 'err: {} != {}'.format(v, instance.get(k))
             return ret
         elif isinstance(data, list):
             if not isinstance(instance, list):
                 return 1
             if len(instance) < len(data):
                 return 1
-            a = 0
-            while a < len(data):
-                ret += self.equals(data[a], instance[a], assertIn)
-                a += 1
+            for i in xrange(len(data)):
+                ret += self.equals(data[i], instance[i], assertIn)
             return ret
         else:
             if assertIn:

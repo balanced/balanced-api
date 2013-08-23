@@ -12,10 +12,9 @@ scenarios:
       matches: {"bank_accounts": [{
         "name": "Kareem Abdul-Jabbar",
         "account_number": "xxxxxx0000",
-        "rounting_number": "021000021",
+        "routing_number": "021000021",
         "account_type": "checking",
-        "bank_name": "JPMorgan Chase",
-        "country_code": "US",
+        "bank_name": "JPMORGAN CHASE BANK",
         "meta": {}
       }]}
 
@@ -48,14 +47,18 @@ scenarios:
         "account_number": "200938202",
         "routing_number": "121042882",
         "account_type": "checking",
-        "country_code": "US",
+        "address": {
+          "country_code": "US",
+        }
       }
     response:
       schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{
-        "country_code": "US"
+        "address": {
+          "country_code": "US"
+        }
       }]}
 
   - name: unstore_bank_account
