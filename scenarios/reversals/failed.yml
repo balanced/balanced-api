@@ -9,7 +9,7 @@ scenarios:
         "amount": 1234,
         "destination": {
           "name": "Michael Jordan",
-          "account_number": "9900000099",
+          "account_number": "9900000006",
           "routing_number": "021000021",
           "account_type": "checking"
         }
@@ -28,4 +28,4 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/reversals.json"
-      matches: { "reversals": [ { "status": "failure" } ] }
+      matches: { "reversals": [ { "status": "failed" } ] }
