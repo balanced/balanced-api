@@ -4,7 +4,7 @@ scenarios:
   - name: fail_credit_customer
     request:
       method: POST
-      href: "{customer,customers,credits}"
+      href: "{customer,customers.credits}"
       schema:
         "$ref": "requests/customers/credit.json"
       body: {
@@ -14,5 +14,4 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertRegex: { "description": "Customer does not have bank account associated" }
-      matches: { "category_code": "funding-destination-not-associated" }
+      matches: { "category_code": "no-funding-destination" }
