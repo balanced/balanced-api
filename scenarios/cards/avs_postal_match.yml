@@ -47,7 +47,7 @@ scenarios:
         "expiration_month": 12,
         "expiration_year": 2016,
         "address": {
-          "postal_code": "10001"
+          "postal_code": "90210"
         }
       }
     response:
@@ -55,20 +55,3 @@ scenarios:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_postal_match": "unsupported"}]}
-
-  - name: avs_postal_match_null
-    request:
-      method: POST
-      href: /cards
-      schema:
-        "$ref": "requests/card.json"
-      body: {
-        "number": "4111111111111111",
-        "expiration_month": 12,
-        "expiration_year": 2016
-      }
-    response:
-      schema: 
-        "$ref": "responses/cards.json"
-      status_code: 201
-      matches: {"cards": [{"avs_postal_match": null}]}
