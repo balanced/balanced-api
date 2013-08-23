@@ -20,7 +20,7 @@ scenarios:
   - name: debit_buyer
     request:
       method: POST
-      href: "{buyer,customer.debits"
+      href: "{buyer,customer.debits}"
       schema:
         "$ref": "requests/customers/debits.json"
       body: {
