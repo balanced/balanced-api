@@ -7,10 +7,6 @@
             "minimum": 1,
             "required": true
         },
-        "marketplace_fee": {
-            "type": "integer",
-            "minimum": 0
-        },
         "currency": {
             "type": "string",
             "enum": [
