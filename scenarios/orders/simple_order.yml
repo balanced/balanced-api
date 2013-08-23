@@ -6,7 +6,7 @@ scenarios:
       method: POST
       href: "{underwritten_merchant,customer.orders}"
       schema:
-        "$ref": "requests/order.json"
+        "$ref": "requests/customers/order.json"
     response:
       status_code: 201
       schema:
