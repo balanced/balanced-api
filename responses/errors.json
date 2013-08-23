@@ -71,7 +71,7 @@
                 "refund-invalid-debit-state",
                 "not-found",
                 "patch-test-failed",
-		"request"
+                "request"
             ],
             "required": true
         },

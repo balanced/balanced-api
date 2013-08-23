@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "marketplaces.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.customers": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.cards": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.card_holds": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.refunds": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.transactions": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.bank_accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.callbacks": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "marketplaces.owner_customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "required": true
+                }
+            },
+            "required": false
+        },
+        "meta": {
+            "type": "object",
+            "required": false
+        },
+        "marketplaces": {
+            "items": {
+                "$ref": "_models/marketplaces.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "required": true
+        }
+    }
+}

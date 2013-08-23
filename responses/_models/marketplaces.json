@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "(MP|TEST-MP)[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri",
+            "required": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "in_escrow": {
+            "type": "number",
+            "required": true
+        },
+        "domain_url": {
+            "type": "string",
+            "required": true
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "support_email_address": {
+            "type": "string",
+            "format": "email",
+            "required": true
+        },
+        "support_phone_number": {
+            "type": "string",
+            "required": true
+        },
+        "production": {
+            "type": "boolean",
+            "required": true
+        },
+        "meta": {
+            "type": "object",
+            "required": true
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "owner_customer": {
+                    "type": "string",
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
+                    "required": true
+                }
+            },
+            "required": true,
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

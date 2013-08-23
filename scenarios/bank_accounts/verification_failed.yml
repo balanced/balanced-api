@@ -15,7 +15,7 @@ scenarios:
 
   - name: submit_verification1
     request:
-      method: POST
+      method: PUT
       href: "{create_verification,bank_account_verifications.href}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
@@ -24,14 +24,14 @@ scenarios:
         "amount_2": 15
       }
     response:
-      status_code: 200
+      status_code: 409
       schema:
-        "$ref": "responses/bank_account_verifications.json"
-      matches: { "bank_account_verifications": [ { "attempts_remaining": 2, "verification_status": "pending" } ] }
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Authentication amounts do not match" }
 
   - name: submit_verification2
     request:
-      method: POST
+      method: PUT
       href: "{create_verification,bank_account_verifications.href}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
@@ -40,14 +40,14 @@ scenarios:
         "amount_2": 42
       }
     response:
-      status_code: 200
+      status_code: 409
       schema:
-        "$ref": "responses/bank_account_verifications.json"
-      matches: { "bank_account_verifications": [ { "attempts_remaining": 1, "verification_status": "pending" } ] }
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Authentication amounts do not match" }
 
   - name: submit_verification3
     request:
-      method: POST
+      method: PUT
       href: "{create_verification,bank_account_verifications.href}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
@@ -55,6 +55,17 @@ scenarios:
         "amount_1": 99,
         "amount_2": 21
       }
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+      assertIn: { "description": "Authentication amounts do not match" }
+
+
+  - name: check_verification
+    request:
+      method: GET
+      href: "{create_verification,bank_account_verifications.href}"
     response:
       status_code: 200
       schema:
