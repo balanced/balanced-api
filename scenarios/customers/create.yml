@@ -1,0 +1,15 @@
+scenarios:
+  - name: customer_create
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "name": "Balanced Testing",
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "name": "Balanced Testing" } ] }

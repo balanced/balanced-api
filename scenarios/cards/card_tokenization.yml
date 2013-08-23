@@ -4,9 +4,9 @@ scenarios:
   - name: retrieve_card
     request:
       method: GET
-      href: "{card,href}"
+      href: "{card,cards.href}"
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 200
       matches: {"cards": [{
@@ -14,19 +14,20 @@ scenarios:
         "number": "xxxxxxxxxxxx1111",
         "expiration_month": 12,
         "expiration_year": 2016,
-        "cvv": null,
-        "cvv_match": null,
-        "cvv_result": "Not Processed",
+        "cvv": xxx,
+        "cvv_match": "yes",
+        "cvv_result": "Match",
         "address": {
           "line1": null,
           "line2": null,
-          "locality": null,
-          "region": null,
+          "city": null,
+          "state": null,
+          "postal_code": null,
           "country_code": null
         },
-        "avs_street_match": null,
-        "avs_postal_match": null,
-        "avs_result": "Address not verified.",
+        "avs_street_match": unsupported,
+        "avs_postal_match": "yes",
+        "avs_result": "Postal code matches, but street address not verified.",
         "brand": "Visa",
         "meta": {}
       }]}
@@ -43,7 +44,7 @@ scenarios:
         "expiration_year": "2016"
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{
@@ -64,7 +65,7 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"name": "Frida Kahlo"}]}
@@ -82,25 +83,27 @@ scenarios:
         "address": {
           "line1": "7 Bis Rue de l'Abbé de l'Épée",
           "line2": "Apt 4",
-          "locality": "Versailles",
+          "city": "Versailles",
           "postal_code": "78000",
           "country_code": "FR"
         }
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/cards.json"
       status_code: 201
-      matches: {"cards": [{
-        "address": {
-          "line1": "7 Bis Rue de l'Abbé de l'Épée",
-          "line2": "Apt 4",
-          "locality": "Versailles",
-          "region": null,
-          "postal_code": "78000",
-          "country_code": "FR"
-        }
-      }]}
+      matches: {
+        "cards": [{
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "state": null,
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }]
+     }
 
   - name: fails_luhn
     request:
@@ -114,13 +117,15 @@ scenarios:
         "expiration_year": 2016
       }
     response:
-      schema: 
+      schema:
         "$ref": "responses/errors.json"
       status_code: 409
+      matches: { "category_code": "card-not-validated" }
+      assertRegex: { "description": "^Card cannot be validated" }
 
   - name: unstore_card
     request:
       method: DELETE
-      href: "{card,href}"
+      href: "{card,cards.href}"
     response:
       status_code: 204

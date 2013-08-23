@@ -1,0 +1,106 @@
+require:
+  - ../card_fixtures.yml
+scenarios:
+  - name: update_meta_add
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be added"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "meta": { "asdf": "the value to be added" } } ] }
+
+  - name: update_meta_replace
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/cards/0/meta/asdf",
+        "value": "new value"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "meta": { "asdf": "new value" } } ] }
+
+  - name: update_meta_safe
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "test",
+        "path": "/cards/0/meta/asdf",
+        "value": "new value"
+      },{
+        "op": "replace",
+        "path": "/cards/0/meta/asdf",
+        "value": "after checking the value"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "meta": { "asdf": "after checking the value" } } ] }
+
+  - name: update_meta_test_fail
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "test",
+        "path": "/cards/0/meta/asdf",
+        "value": "not the right value"
+      }]
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+
+  - name: update_meta_move
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "move",
+        "from": "/cards/0/meta/asdf",
+        "path": "/cards/0/meta/zxcv"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "meta": { "zxcv": "after checking the value" } } ] }
+
+  - name: update_meta_remove
+    request:
+      href: "{card,cards.href}"
+      method: PATCH
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "remove",
+        "path": "/cards/0/meta/zxcv"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: { "cards": [ { "meta": {} } ] }

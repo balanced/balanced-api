@@ -5,7 +5,7 @@
         "id": {
             "type": "string",
             "required": true,
-            "pattern": "CU[a-zA-Z0-9]{16,32}"
+            "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -109,7 +109,7 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}",
                     "required": true
                 },
                 "destination": {
@@ -117,7 +117,7 @@
                         "null",
                         "string"
                     ],
-                    "format": "uri",
+                    "pattern": "BA[a-zA-Z0-9]{16,32}",
                     "required": true
                 }
             },

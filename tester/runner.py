@@ -13,12 +13,19 @@ import yaml
 import requests
 import jsonschema
 
-ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change this to balanced api
-ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
-                                'application/vnd.balancedpayments+json; version=1.1, '
-                                'application/vnd.api+json')
+
+ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000')
+API_VERSION = os.environ.get('API_VERSION', '1.1')
+ACCEPT_HEADERS = os.environ.get(
+    'ACCEPT_HEADERS',
+    ('application/vnd.balancedpayments+json; version={version}, '
+     'application/vnd.api+json')
+)
+ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 
 DRY_RUN = os.environ.get('DRY_RUN', '0') != '0'
+
+DUMP_JSON = os.environ.get('DUMP_JSON', '0') != '0'
 
 
 def find_file(fromFile, fileName):
@@ -28,28 +35,27 @@ def find_file(fromFile, fileName):
     path = os.path.join('..', fileName)
     if os.path.isfile(path):
         return path
-    print('Could not find file {0}\n'.format(fileName))
+    sys.stderr.write('Could not find file {0}\n'.format(fileName))
     sys.exit(1)
+
 
 # the $ref do not work with relative paths as specified in the jsonschema spec
 def validator_fix_ref(contents, fileName):
     if isinstance(contents, dict):
         if '$ref' in contents:
-            ##path = os.path.join(os.path.dirname(fileName), contents['$ref'])
-            ##cont = open(path).read()
-            #cont = read_file(fileName, contents['$ref'])
             path = find_file(fileName, contents['$ref'])
             cont = open(path).read()
             return validator_fix_ref(json.loads(cont), path)
         else:
             return dict(
                 (k, validator_fix_ref(v, fileName))
-                for k,v in contents.iteritems()
+                for k, v in contents.iteritems()
             )
     elif isinstance(contents, list):
         return [validator_fix_ref(v, fileName) for v in contents]
     else:
         return contents
+
 
 def validator_required(validator, required, instance, schema):
     # the properties function in draft3 takes care of required
@@ -63,20 +69,37 @@ validator = jsonschema.validators.extend(jsonschema.Draft4Validator,
                                          })
 
 
+def validate(resp_json):
+    class Validator(object):
+
+        def against(self, schema):
+            validator(schema).validate(resp_json)
+    return Validator()
+
+
 class Runner(object):
 
     cache = {}
 
     session = requests.Session()
 
-    def get_Field(self, name, data):
+    def get_field(self, name, data):
+
         def resolve_link(match):
             return data[match.group(1)][0][match.group(2)]
-        b = name.split('.')
-        if b[1] in data[b[0]][0]:
-            return data[b[0]][0][b[1]]
+
+        controller, action = name.split('.')
+        try:
+            if action in data[controller][0]:
+                return data[controller][0][action]
+        except Exception as ex:
+            import ipdb; ipdb.set_trace()
         if name in data['links']:
-            return re.sub(r'\{(\w+)\.(\w+)\}', resolve_link, data['links'][name])
+            return re.sub(
+                r'\{(\w+)\.(\w+)\}',
+                resolve_link,
+                data['links'][name]
+            )
         return None
 
     def resolve_deps(self, scenario, data):
@@ -84,7 +107,9 @@ class Runner(object):
             if DRY_RUN:
                 gg = data[matchgroup.group(1)]
                 return 'asdf'
-            return self.get_Field(matchgroup.group(2), data[matchgroup.group(1)] )
+            return self.get_field(
+                matchgroup.group(2), data[matchgroup.group(1)]['response']
+            )
         if isinstance(scenario, str):
             return re.sub(r'\{(\w+),(\w+\.\w+)\}', fix_match, scenario)
         elif isinstance(scenario, list):
@@ -97,14 +122,20 @@ class Runner(object):
         else:
             return scenario
 
+    def regex_equals(self, instance, patterns):
+        for field, regex in patterns.iteritems():
+            match = re.match(regex, instance[field])
+            if not match:
+                return False
+        return True
 
-    def equals(self, data, instance):
+    def equals(self, data, instance, assertIn):
         ret = 0
         if isinstance(data, dict):
             if not isinstance(instance, dict):
                 return 1
             for k, v in data.iteritems():
-                ret += self.equals(v, instance.get(k, None))
+                ret += self.equals(v, instance.get(k, None), assertIn)
             return ret
         elif isinstance(data, list):
             if not isinstance(instance, list):
@@ -113,96 +144,137 @@ class Runner(object):
                 return 1
             a = 0
             while a < len(data):
-                ret += self.equals(data[a], instance[a])
+                ret += self.equals(data[a], instance[a], assertIn)
                 a += 1
             return ret
         else:
-            if data != instance:
-                return 1
+            if assertIn:
+                return 0 if instance and data in instance else 1
             else:
-                return 0
+                return 0 if data == instance else 1
 
 
     def run_scenario(self, scenario, data, path):
-
         sys.stderr.write('Running scenario {0}\n'.format(scenario['name']))
 
         scenario = self.resolve_deps(scenario, data)
 
-        body = scenario['request'].get('body', {})
+        request_scenario = scenario['request']
+        response = scenario['response']
+        name = scenario['name']
+        body = request_scenario.get('body', {})
 
-        if 'schema' in scenario['request']:
+        if 'schema' in request_scenario:
             try:
-                against = validator_fix_ref(scenario['request']['schema'], path)
+                schema = validator_fix_ref(request_scenario['schema'], path)
             except Exception, e:
-                print('Error loading request schema for {0}'
-                      .format(scenario['name']))
-                print(str(e))
+                sys.stderr.write(
+                    'Error loading request schema for {0}'.format(name)
+                )
+                sys.stderr.write(str(e))
                 sys.exit(1)
-            validator(against).validate(body)
+            validate(body).against(schema)
         else:
-            sys.stderr.write('Warning: {0} missing schema section for request\n'
-                             .format(scenario['name']))
+            if body:
+                sys.stderr.write(
+                    'Warning: {0} missing schema section for request\n'.format(
+                        name
+                    )
+                )
 
         if not DRY_RUN:
-            req = requests.Request(scenario['request']['method'],
-                                   ROOT_URL + scenario['request']['href'],
-                                   data=json.dumps(body),
-                                   headers={
-                                   'Accept': ACCEPT_HEADERS,
-                                       'Content-type': 'application/json',
-                                   },
-                                   auth=(self.cache['secret'], ''),
-                               ).prepare()
+            print (
+                name,
+                ROOT_URL + request_scenario['href'],
+                request_scenario['method']
+            )
+            req = requests.Request(
+                method=request_scenario['method'],
+                url=ROOT_URL + request_scenario['href'],
+                data=json.dumps(body),
+                headers={
+                    'Accept': ACCEPT_HEADERS,
+                    'Content-type': 'application/json'
+                },
+                auth=(self.cache['secret'], ''),
+            ).prepare()
             resp = self.session.send(req)
 
-        if 'status_code' in scenario['response'] and not DRY_RUN:
-            if scenario['response']['status_code'] != resp.status_code:
-                sys.stderr.write('Scenario {0} failed with wrong status code {1} != {2}'
-                                 .format(scenario['name'],
-                                         scenario['response']['status_code'],
-                                         resp.status_code))
+        if 'status_code' in response and not DRY_RUN:
+            if response['status_code'] != resp.status_code:
+                sys.stderr.write(
+                    'Scenario {0} failed with wrong status code {1} != {2}'
+                    .format(name, response['status_code'], resp.status_code)
+                )
                 sys.exit(1)
 
-        resp_json = resp.json() if not DRY_RUN else {}
+        resp_json = {}
+        if resp.status_code != 204 and not DRY_RUN:
+            resp_json = resp.json()
+
         try:
-            against = validator_fix_ref(scenario['response'].get('schema', {}), path)
+            schema = validator_fix_ref(response.get('schema', {}), path)
         except:
-            print('could not parse response schema for {0}'.format(scenario['name']))
+            sys.stderr.write(
+                'could not parse response schema for {0}'.format(name)
+            )
             sys.exit(1)
 
         if not DRY_RUN:
-            if not against:
-                sys.stderr.write('Warning: no schema to validate response against for {0}\n'
-                                 .format(scenario['name']))
-            validator(against).validate(resp_json)
+            if not schema:
+                sys.stderr.write(
+                    'Warning: no schema to validate response against for {0}\n'
+                    .format(name)
+                )
+            validate(resp_json).against(schema)
 
-        if 'matches' in scenario['response']:
-            if 0 != self.equals(scenario['response']['matches'], resp_json) and not DRY_RUN:
-                print('Error validating equals for {0}'.format(scenario['name']))
-                print(json.dumps(resp_json, indent=4))
-                print(scenario['response']['matches'])
+        if 'matches' in response:
+            if 0 != self.equals(response['matches'], resp_json, False) and not DRY_RUN:
+                sys.stderr.write(
+                    'Error validating equals for {0}'.format(name)
+                )
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(json.dumps(response['matches'], indent=4))
                 sys.exit(1)
 
-        return resp_json
+        if 'assertIn' in response:
+            if 0 != self.equals(response['assertIn'], resp_json, True) and not DRY_RUN:
+                sys.stderr.write(
+                    'Error validating assertIn for {0}'.format(name)
+                )
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(json.dumps(response['assertIn'], indent=4))
+                sys.exit(1)
 
+        if 'assertRegex' in response:
+            if not self.regex_equals(resp_json, response['assertRegex']):
+                sys.stderr.write(
+                    'Error validating assertRegex for {0}'.format(name)
+                )
+                sys.stderr.write(json.dumps(resp_json, indent=4))
+                sys.stderr.write(json.dumps(response['assertRegex'], indent=4))
+                sys.exit(1)
+
+        return {
+            'response': resp_json,
+            'status_code': resp.status_code if not DRY_RUN else 0,
+            'request': body
+        }
 
     def parse_file(self, name):
-
         scenarios = {}
-
-        contents = open(name).read()
 
         data = yaml.load(open(name).read())
 
         for other in data.get('require', []):
             scenarios.update(**self.parse_file(
-                #os.path.join(os.path.dirname(name), other)
                 find_file(name, other)
             ))
 
         for scenario in data.get('scenarios', []):
-            scenarios[scenario['name']] = self.run_scenario(scenario, scenarios, name)
+            scenarios[scenario['name']] = self.run_scenario(
+                scenario, scenarios, name
+            )
 
         return scenarios
 
@@ -211,7 +283,9 @@ def main():
     if len(sys.argv) == 2:
         runner = Runner()
         runner.cache = json.load(open('fixtures.json'))
-        runner.parse_file(sys.argv[1])
+        result = runner.parse_file(sys.argv[1])
+        if DUMP_JSON:
+            sys.stdout.write(json.dumps(result, indent=1))
     else:
         print('python {0} [file of scenario to run]'.format(sys.argv[0]))
 

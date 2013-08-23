@@ -4,7 +4,11 @@ import json
 import requests
 
 ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000') # TODO: change this to balanced api
-ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS', 'application/vnd.balancedpayments+json; version=1.1, application/vnd.api+json')
+API_VERSION = os.environ.get('API_VERSION', '1.1')
+ACCEPT_HEADERS = os.environ.get('ACCEPT_HEADERS',
+                                'application/vnd.balancedpayments+json; version={version}, '
+                                'application/vnd.api+json')
+ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 
 cache = {}
 

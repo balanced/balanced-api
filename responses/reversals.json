@@ -5,17 +5,7 @@
         "links": {
             "type": "object",
             "properties": {
-                "reversals.events": {
-                    "type": "string",
-                    "format": "uri",
-                    "required": true
-                },
                 "reversals.credit": {
-                    "type": "string",
-                    "format": "uri",
-                    "required": true
-                },
-                "reversals.customer": {
                     "type": "string",
                     "format": "uri",
                     "required": true

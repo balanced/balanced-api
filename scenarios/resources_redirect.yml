@@ -1,0 +1,11 @@
+require:
+  - customer_fixtures.yml
+scenarios:
+  - name: get_resouces
+    request:
+      method: GET
+      href: "/resources/{customer,customers.id}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/customers.json"

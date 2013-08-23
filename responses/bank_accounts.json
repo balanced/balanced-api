@@ -15,12 +15,12 @@
                     "format": "uri",
                     "required": true
                 },
-                "bank_accounts.customer": {
+                "bank_accounts.debits": {
                     "type": "string",
                     "format": "uri",
                     "required": true
                 },
-                "bank_accounts.debits": {
+                "bank_accounts.customer": {
                     "type": "string",
                     "format": "uri",
                     "required": true

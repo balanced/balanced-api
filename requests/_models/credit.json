@@ -17,7 +17,7 @@
                 "USD"
             ]
         },
-        "order_href": {
+        "order": {
             "anyOf": [
                 {
                     "type": "string",

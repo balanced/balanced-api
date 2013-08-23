@@ -1,0 +1,9 @@
+scenarios:
+  - name: get_root
+    request:
+      method: GET
+      href: /
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/marketplaces.json"

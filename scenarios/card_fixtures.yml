@@ -1,3 +1,5 @@
+require:
+  - ./customer_fixtures.yml
 scenarios:
   - name: card
     request:
@@ -9,6 +11,51 @@ scenarios:
         "number": "4111 1111 1111 1111",
         "expiration_month": 12,
         "expiration_year": 2016,
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/cards.json"
+
+  - name: customer_card
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4111 1111 1111 1111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/cards.json"
+
+  - name: associate_customer_card_with_customer
+    request:
+      method: PUT
+      href: "{customer,customers.href}"
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "card_uri": "{customer_card,cards.href}"
+      }
+    response:
+      schema:
+        "$ref": "responses/customers.json"
+
+  - name: card_processor_failure
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4444444444444448",
+        "expiration_month": 12,
+        "expiration_year": 2018
       }
     response:
       status_code: 201

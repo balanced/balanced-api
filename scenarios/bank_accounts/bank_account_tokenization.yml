@@ -4,7 +4,7 @@ scenarios:
   - name: retrieve_bank_account
     request:
       method: GET
-      href: "{bank_account,href}"
+      href: "{bank_account,bank_accounts.href}"
     response:
       schema:
         "$ref": "responses/bank_accounts.json"
@@ -15,14 +15,7 @@ scenarios:
         "rounting_number": "021000021",
         "account_type": "checking",
         "bank_name": "JPMorgan Chase",
-        "address": {
-          "line1": null,
-          "line2": null,
-          "locality": null,
-          "region": null,
-          "postal_code": null,
-          "country_code": null
-        },
+        "country_code": "US",
         "meta": {}
       }]}
 
@@ -55,31 +48,19 @@ scenarios:
         "account_number": "200938202",
         "routing_number": "121042882",
         "account_type": "checking",
-        "address": {
-          "line1": "965 Mission St",
-          "line2": "Suite 425",
-          "locality": "San Francisco",
-          "region": "CA",
-          "postal_code": "94103"
-        }
+        "country_code": "US",
       }
     response:
       schema:
         "$ref": "responses/bank_accounts.json"
       status_code: 201
       matches: {"bank_accounts": [{
-        "address": {
-          "line1": "965 Mission St",
-          "line2": "Suite 425",
-          "locality": "San Francisco",
-          "region": "CA",
-          "postal_code": "94103"
-        }
+        "country_code": "US"
       }]}
 
   - name: unstore_bank_account
     request:
       method: DELETE
-      href: "{tokenize_bank_account,href}"
+      href: "{bank_account,bank_accounts.href}"
     response:
       status_code: 204

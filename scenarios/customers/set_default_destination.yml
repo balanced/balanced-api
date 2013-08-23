@@ -1,0 +1,17 @@
+require:
+  - ../bank_accounts/add_to_customer.yml
+scenarios:
+  - name: set_default_source
+    request:
+      method: PATCH
+      href: "{customer,customers.href}"
+      body: [{
+        "op": "replace",
+        "path": "/customers/0/links/destination",
+        "value": "{bank_account,bank_accounts.id}"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "links": { "destination": "{bank_account,bank_accounts.id}" } } ] }

@@ -57,7 +57,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/credits.json"
-      matches: {"credits": [{"status": "successful"}]}
+      matches: {"credits": [{"status": "succeeded"}]}
 
   - name: credit_bank_account_failed
     request:
@@ -75,11 +75,13 @@ scenarios:
   - name: credit_bank_account_insufficient_escrow
     request:
       method: POST
-      href: "{bank_account, bank_accounts.credits}"
+      href: "{bank_account,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
-      body: {"amount": 20000}
+      body: {"amount": 99999999 }
     response:
-      status_code: 402
+      status_code: 409
       schema:
         "$ref": "responses/errors.json"
+      assertIn: { "description": "has insufficient funds to cover a transfer of 99999999 to destination" }
+      matches: { "category_code": "insufficient-funds" }

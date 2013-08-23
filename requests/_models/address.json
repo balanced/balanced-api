@@ -14,13 +14,13 @@
                 "null"
             ]
         },
-        "locality": {
+        "city": {
             "type": [
                 "string",
                 "null"
             ]
         },
-        "region": {
+        "state": {
             "type": [
                 "string",
                 "null"
@@ -43,5 +43,6 @@
                 }
             ]
         }
-    }
+    },
+    "additionalProperties": false
 }
