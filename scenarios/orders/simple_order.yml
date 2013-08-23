@@ -1,0 +1,87 @@
+require:
+  - ../customer_fixtures.yml
+scenarios:
+  - name: order
+    request:
+      method: POST
+      href: "{underwritten_merchant,customer.orders}"
+      schema:
+        "$ref": "requests/order.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders": [{
+        "links":{
+          "merchant": "{underwritten_merchant,id}"
+        }
+      }]}
+
+  - name: debit_buyer
+    request:
+      method: POST
+      href: "{buyer,customer.debits"
+      schema:
+        "$ref": "requests/customers/debits.json"
+      body: {
+        "amount": 10000,
+        "marketplace_fee": 2000,
+        "order": "{order,href}"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      matches: {"orders": [{
+        "links": {
+          "debits.order": "{order,id}"
+        }
+      }]}
+
+  - name: check_escrow_after_debit
+    request:
+      method: GET
+      href: "{order,href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders": [{
+        "amount": 10000,
+        "amount_escrowed": 8000,
+        "marketplace_fee": 2000
+      }]}
+
+  - name: pay_merchant
+    request:
+      method: POST
+      href: "{underwritten_merchant,customer.credits}"
+      schema:
+        "$ref": "requests/customers/credit.json"
+      body: {
+        "amount": 8000
+        "order": "{order,href}"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      matches: {"orders": [{
+        "links": {
+          "credits.order": "{order,id}"
+        }
+      }]}
+
+  - name: check_escrow_after_credit
+    request:
+      method: GET
+      href: "{order,href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders": [{
+        "amount": 10000,
+        "amount_escrowed": 0,
+        "marketplace_fee": 2000
+      }]}
