@@ -1,0 +1,33 @@
+require:
+	- one_debit.yml
+scenarios:
+  - name: refund_debit
+    request:
+      method: POST
+      href: "{debit_with_marketplace_fee,debits.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/refunds.json"
+      matches: {
+        "refunds": [{
+          "amount": 10000,
+          "marketplace_fee": 2000
+        }]
+      }
+
+  - name: check_marketplace_escrow_after_refund
+    request:
+      method: GET
+      href: "/marketplaces"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/marketplaces.json"
+      body: {
+        "marketplaces": [{
+          "amount_escrowed": 0
+        }]
+      }

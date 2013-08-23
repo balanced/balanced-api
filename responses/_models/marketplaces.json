@@ -22,8 +22,8 @@
             "format": "date-time",
             "required": true
         },
-        "in_escrow": {
-            "type": "number",
+        "amount_escrowed": {
+            "type": "integer",
             "required": true
         },
         "domain_url": {
