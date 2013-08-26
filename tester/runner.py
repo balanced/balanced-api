@@ -131,7 +131,7 @@ class Runner(object):
                 eq = self.equals(v, instance.get(k, None), assertRegex)
                 ret += eq
                 if eq:
-                    print 'err: {}[{}] != {}'.format(k, v, instance.get(k))
+                    sys.stderr.write('err: {}[{}] != {}'.format(k, v, instance.get(k)))
             return ret
         elif isinstance(data, list):
             if not isinstance(instance, list):
@@ -181,11 +181,11 @@ class Runner(object):
                 )
 
         if not DRY_RUN:
-            print (
+            sys.stderr.write('{0}: {2} {1}\n'.format(
                 name,
                 ROOT_URL + request_scenario['href'],
                 request_scenario['method']
-            )
+            ))
             req = requests.Request(
                 method=request_scenario['method'],
                 url=ROOT_URL + request_scenario['href'],
