@@ -1,5 +1,5 @@
 require:
-	- ../card_fixtures.yml
+  - ../card_fixtures.yml
 scenarios:
   - name: debit_with_marketplace_fee
     request:

@@ -12,3 +12,23 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "../responses/customers.json"
+
+  - name: underwritten_merchant
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "requests/customer.json"
+      body: {
+        "name": "Henry Ford",
+        "dob_month": 7,
+        "dob_year": 1963,
+        "address": {
+          "postal_code": "48120"
+        }
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/customers.json"
+      matches: { "customers": [ { "merchant_status": "underwritten" } ] }

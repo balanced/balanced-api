@@ -1,5 +1,5 @@
 require:
-	- one_debit.yml
+  - one_debit.yml
 scenarios:
   - name: attempt_partial_refund_without_marketplace_fee
     request:
@@ -25,6 +25,7 @@ scenarios:
       schema:
         "$ref": "requests/debits/refund.json"
       body: {
+        "marketplace_fee": 10,
         "amount": 5000
       }
     response:

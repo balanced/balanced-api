@@ -161,6 +161,7 @@ class Runner(object):
         response = scenario['response']
         name = scenario['name']
         body = request_scenario.get('body', {})
+        options = scenario.get('options', [])
 
         if 'schema' in request_scenario:
             try:
@@ -186,7 +187,12 @@ class Runner(object):
                 ROOT_URL + request_scenario['href'],
                 request_scenario['method']
             ))
-            req = requests.Request(
+            kwargs = {}
+            if 'no-secret-key' not in options:
+                kwargs['auth'] = (self.cache['secret'], '')
+            if 'no-follow-redirects' in options:
+                kwargs['allow_redirects'] = False
+            resp = requests.request(
                 method=request_scenario['method'],
                 url=ROOT_URL + request_scenario['href'],
                 data=json.dumps(body),
@@ -194,9 +200,8 @@ class Runner(object):
                     'Accept': ACCEPT_HEADERS,
                     'Content-type': 'application/json'
                 },
-                auth=(self.cache['secret'], ''),
-            ).prepare()
-            resp = self.session.send(req)
+                **kwargs
+            )
 
         if 'status_code' in response and not DRY_RUN:
             if response['status_code'] != resp.status_code:

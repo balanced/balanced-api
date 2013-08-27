@@ -1,5 +1,5 @@
 require:
-	- one_debit.yml
+  - one_debit.yml
 scenarios:
   - name: refund_debit
     request:

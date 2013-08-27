@@ -1,0 +1,15 @@
+scenarios:
+  - name: redirect_tokenize
+    options:
+      - no-follow-redirects
+    request:
+      method: POST
+      href: /cards
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2018,
+        "redirect_url": "http://example.com/redirect_to?testing=123"
+      }
+    response:
+      status_code: 302

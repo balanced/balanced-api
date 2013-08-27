@@ -1,5 +1,6 @@
 require:
   - ../customer_fixtures.yml
+  - ../cards/add_to_customer.yml
 scenarios:
   - name: order
     request:
@@ -13,20 +14,20 @@ scenarios:
         "$ref": "responses/orders.json"
       matches: {"orders": [{
         "links":{
-          "merchant": "{underwritten_merchant,id}"
+          "merchant": "{underwritten_merchant,customer.id}"
         }
       }]}
 
   - name: debit_buyer
     request:
       method: POST
-      href: "{buyer,customer.debits}"
+      href: "{customer,customers.debits}"
       schema:
-        "$ref": "requests/customers/debits.json"
+        "$ref": "requests/customers/debit.json"
       body: {
         "amount": 10000,
         "marketplace_fee": 2000,
-        "order": "{order,href}"
+        "order": "{order,orders.href}"
       }
     response:
       status_code: 201
@@ -34,7 +35,7 @@ scenarios:
         "$ref": "responses/debits.json"
       matches: {"orders": [{
         "links": {
-          "debits.order": "{order,id}"
+          "debits.order": "{order,orders.id}"
         }
       }]}
 
@@ -59,8 +60,8 @@ scenarios:
       schema:
         "$ref": "requests/customers/credit.json"
       body: {
-        "amount": 8000
-        "order": "{order,href}"
+        "amount": 8000,
+        "order": "{order,orders.href}"
       }
     response:
       status_code: 201
@@ -68,14 +69,14 @@ scenarios:
         "$ref": "responses/credits.json"
       matches: {"orders": [{
         "links": {
-          "credits.order": "{order,id}"
+          "credits.order": "{order,orders.id}"
         }
       }]}
 
   - name: check_escrow_after_credit
     request:
       method: GET
-      href: "{order,href}"
+      href: "{order,orders.href}"
     response:
       status_code: 200
       schema:
