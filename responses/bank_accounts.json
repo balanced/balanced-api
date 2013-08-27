@@ -8,21 +8,25 @@
                 "bank_accounts.verifications": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/bank_accounts/{bank_accounts.id}/verifications",
                     "required": true
                 },
                 "bank_accounts.credits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/bank_accounts/{bank_accounts.id}/credits",
                     "required": true
                 },
                 "bank_accounts.debits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/bank_accounts/{bank_accounts.id}/debits",
                     "required": true
                 },
                 "bank_accounts.customer": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{bank_accounts.customer}",
                     "required": true
                 }
             },

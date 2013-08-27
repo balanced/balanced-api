@@ -8,11 +8,13 @@
                 "refunds.debit": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/debit/{refunds.debit}",
                     "required": true
                 },
                 "refunds.order": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/order/{refunds.order}",
                     "required": true
                 }
             },

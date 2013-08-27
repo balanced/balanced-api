@@ -8,6 +8,7 @@
                 "bank_account_verifications.bank_account": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/bank_accounts/{bank_account_verifications.bank_account}",
                     "required": true
                 }
             },

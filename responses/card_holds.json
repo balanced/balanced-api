@@ -8,11 +8,13 @@
                 "card_holds.debit": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/debit/{card_holds.debit}",
                     "required": true
                 },
                 "card_holds.card": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/cards/{card_holds.card}",
                     "required": true
                 }
             },

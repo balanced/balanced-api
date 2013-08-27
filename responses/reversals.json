@@ -8,11 +8,13 @@
                 "reversals.credit": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/credits/{reversals.credit}",
                     "required": true
                 },
                 "reversals.order": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{reversals.order}",
                     "required": true
                 }
             },

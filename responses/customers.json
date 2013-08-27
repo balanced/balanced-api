@@ -8,37 +8,44 @@
                 "customers.cards": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/cards",
                     "required": true
                 },
                 "customers.bank_accounts": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/bank_accounts",
                     "required": true
                 },
                 "customers.credits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/credits",
                     "required": true
                 },
                 "customers.debits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/debits",
                     "required": true
                 },
                 "customers.refunds": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/refunds",
                     "required": true
                 },
                 "customers.reversals": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/reversals",
                     "required": true
                 },
                 "customers.orders": {
                     "description": "Orders in which the customer is either a buyer or merchant",
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{customers.id}/orders",
                     "required": true
                 }
             },

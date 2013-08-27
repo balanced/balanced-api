@@ -8,21 +8,25 @@
                 "credits.reversals": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/credits/{credits.id}/reversals",
                     "required": true
                 },
                 "credits.customer": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customer/{credits.customer}",
                     "required": true
                 },
                 "credits.order": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/order/{credits.order}",
                     "required": true
                 },
                 "credits.destination": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/resources/{credits.destination}",
                     "required": true
                 }
             },

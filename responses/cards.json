@@ -8,16 +8,19 @@
                 "cards.holds": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/cards/{cards.id}/holds",
                     "required": true
                 },
                 "cards.debits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/cards/{cards.id}/debits",
                     "required": true
                 },
                 "cards.customer": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{cards.customer}",
                     "required": true
                 }
             },

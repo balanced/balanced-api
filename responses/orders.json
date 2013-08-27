@@ -8,31 +8,37 @@
                 "orders.debits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{orders.id}/debits",
                     "required": true
                 },
                 "orders.refunds": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{orders.id}/refunds",
                     "required": true
                 },
                 "orders.credits": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{orders.id}/credits",
                     "required": true
                 },
                 "orders.reversals": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{orders.id}/reversals",
                     "required": true
                 },
                 "orders.buyers": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/orders/{orders.id}/buyers",
                     "required": true
                 },
                 "orders.merchant": {
                     "type": "string",
                     "format": "uri",
+                    "pattern": "/customers/{orders.merchant}",
                     "required": true
                 }
             },
