@@ -8,7 +8,7 @@
                 "cards.holds": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/cards/{cards.id}/holds",
+                    "pattern": "/cards/{cards.id}/card_holds",
                     "required": true
                 },
                 "cards.debits": {

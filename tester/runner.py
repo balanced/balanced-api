@@ -13,13 +13,16 @@ import yaml
 import requests
 import jsonschema
 
+config = {}
+if os.path.isfile('../config.yml'):
+    config = yaml.load(open('../config.yml').read())
 
-ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:5000')
-API_VERSION = os.environ.get('API_VERSION', '1.1')
+ROOT_URL = os.environ.get('ROOT_URL', config.get('root_url', 'http://localhost:5000'))
+API_VERSION = os.environ.get('API_VERSION', config.get('api_version', '1.1'))
 ACCEPT_HEADERS = os.environ.get(
     'ACCEPT_HEADERS',
-    ('application/vnd.balancedpayments+json; version={version}, '
-     'application/vnd.api+json')
+    config.get('accept_headers', ('application/vnd.balancedpayments+json; version={version}, '
+                                  'application/vnd.api+json'))
 )
 ACCEPT_HEADERS = ACCEPT_HEADERS.replace('{version}', API_VERSION)
 
@@ -180,6 +183,12 @@ class Runner(object):
                         name
                     )
                 )
+        if not (isinstance(request_scenario['href'], str)
+            or isinstance(request_scenario['href'], unicode)):
+            sys.stderr.write(
+                'href for scenario must be string'
+            )
+            sys.exit(1)
 
         if not DRY_RUN:
             sys.stderr.write('{0}: {2} {1}\n'.format(
