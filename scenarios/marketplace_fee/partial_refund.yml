@@ -28,7 +28,7 @@ scenarios:
         "$ref": "requests/debits/refund.json"
       body: {
         "marketplace_fee": 10,
-        "amount": 5000
+        "amount": 1000
       }
     response:
       status_code: 201
@@ -36,7 +36,7 @@ scenarios:
         "$ref": "responses/refunds.json"
       matches: {
         "refunds": [{
-          "amount": 5000,
+          "amount": 1000,
           "marketplace_fee": 10
         }]
       }
