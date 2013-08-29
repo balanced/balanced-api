@@ -3,16 +3,18 @@ require:
 scenarios:
   - name: associate_bank_account_with_customer
     request:
-      method: PUT
-      href: "{customer,customers.href}"
+      method: PATCH
+      href: "{bank_account,bank_accounts.href}"
       schema:
-        "$ref": "requests/customer.json"
-      body: {
-        "bank_account_uri": "{bank_account,bank_accounts.href}"
-      }
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "{customer,customers.id}"
+      }]
     response:
       schema:
-        "$ref": "responses/customers.json"
+        "$ref": "responses/bank_accounts.json"
 
   - name: create_verification
     request:

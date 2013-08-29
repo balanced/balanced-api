@@ -95,16 +95,18 @@ scenarios:
 
   - name: associate_verified_bank_account_successful_with_customer
     request:
-      method: PUT
-      href: "{customer,customers.href}"
+      method: PATCH
+      href: "{verified_bank_account_successful,bank_accounts.href}"
       schema:
-        "$ref": "requests/customer.json"
-      body: {
-        "bank_account_uri": "{verified_bank_account_successful,bank_accounts.href}"
-      }
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "{customer,customers.id}"
+      }]
     response:
       schema:
-        "$ref": "responses/customers.json"
+        "$ref": "responses/bank_accounts.json"
 
   - name: verified_bank_account_successful_create_verification
     request:
@@ -116,7 +118,7 @@ scenarios:
   - name: verified_bank_account_successful_verify_verification
     request:
       method: PUT
-      href: "{verified_bank_account_successful_create_verification,bank_accounts.verification}"
+      href: "{verified_bank_account_successful_create_verification,bank_account_verifications.href}"
       body: {
         "amount_1": 1,
         "amount_2": 1
@@ -153,16 +155,19 @@ scenarios:
 
   - name: associate_verified_bank_account_failed_with_customer
     request:
-      method: PUT
-      href: "{customer,customers.href}"
+      method: PATCH
+      href: "{verified_bank_account_failed,bank_accounts.href}"
       schema:
-        "$ref": "requests/customer.json"
-      body: {
-        "bank_account_uri": "{verified_bank_account_failed,bank_accounts.href}"
-      }
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "{customer,customers.id}"
+      }]
     response:
       schema:
-        "$ref": "responses/customers.json"
+        "$ref": "responses/bank_accounts.json"
+
 
   - name: verified_bank_account_failed_create_verification
     request:
@@ -182,6 +187,7 @@ scenarios:
     response:
       status_code: 200
       matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
+
   - name: verified_bank_account_no_customer
     request:
       method: POST

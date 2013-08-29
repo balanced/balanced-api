@@ -96,6 +96,7 @@ class Runner(object):
             if action in data[controller][0]:
                 return data[controller][0][action]
         except Exception as ex:
+            sys.stderr.write(ex)
             import ipdb; ipdb.set_trace()
         if name in data['links']:
             return re.sub(

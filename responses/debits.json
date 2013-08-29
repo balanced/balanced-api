@@ -20,7 +20,7 @@
                 "debits.order": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/order/{debits.order}",
+                    "pattern": "/orders/{debits.order}",
                     "required": true
                 }
             },

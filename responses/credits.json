@@ -14,13 +14,13 @@
                 "credits.customer": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/customer/{credits.customer}",
+                    "pattern": "/customers/{credits.customer}",
                     "required": true
                 },
                 "credits.order": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/order/{credits.order}",
+                    "pattern": "/orders/{credits.order}",
                     "required": true
                 },
                 "credits.destination": {
