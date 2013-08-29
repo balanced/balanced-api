@@ -12,7 +12,9 @@ scenarios:
       status_code: 400
       schema:
         "$ref": "responses/errors.json"
-      assertRegex: { "description": "marketplace_fee must be specified if amount is specified." }
+      assertRegex: {
+        "description": ".*marketplace_fee must be specified if amount is specified."
+      }
       matches: {
         "category_type": "request",
         "category_code": "request"
@@ -34,8 +36,8 @@ scenarios:
         "$ref": "responses/refunds.json"
       matches: {
         "refunds": [{
-          "amount": 4000,
-          "marketplace_fee": 1000
+          "amount": 5000,
+          "marketplace_fee": 10
         }]
       }
 
