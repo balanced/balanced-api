@@ -84,4 +84,4 @@ scenarios:
       schema:
         "$ref": "responses/errors.json"
       assertRegex: { "description": ".*has insufficient funds to cover a transfer of 99999999 to destination" }
-      matches: { "category_code": "insufficient-funds" }
+      matches: { "category_code": "account-insufficient-funds" }

@@ -8,6 +8,7 @@
         "category_code": {
             "type": "string",
             "enum": [
+                "account-insufficient-funds",
                 "authorization-failed",
                 "card-declined",
                 "funding-destination-declined",
