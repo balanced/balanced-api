@@ -89,14 +89,17 @@ class Runner(object):
     def get_field(self, name, data):
 
         def resolve_link(match):
-            return data[match.group(1)][0][match.group(2)]
+            if match.group(2) in data[match.group(1)][0]:
+                return data[match.group(1)][0][match.group(2)]
+            else:
+                return data[match.group(1)][0]['links'][match.group(2)]
 
         controller, action = name.split('.')
         try:
             if action in data[controller][0]:
                 return data[controller][0][action]
         except Exception as ex:
-            sys.stderr.write(ex)
+            #sys.stderr.write(ex)
             import ipdb; ipdb.set_trace()
         if name in data['links']:
             return re.sub(

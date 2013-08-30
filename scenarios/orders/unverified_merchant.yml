@@ -34,12 +34,13 @@ scenarios:
       schema:
         "$ref": "requests/bank_accounts/credit.json"
       body: {
-        "amount": 1234
+        "amount": 1234,
+        "order": "{order,orders.href}"
       }
     response:
       status_code: 409
-      schema:
-        "$ref": "responses/errors.json"
+      #schema:
+      #  "$ref": "responses/errors.json"
       assertRegex: {
         "description": "Order requires merchant be underwritten.",
         "category_code": "kyc"

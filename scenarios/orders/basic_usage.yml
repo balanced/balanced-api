@@ -9,7 +9,9 @@ scenarios:
       schema:
         "$ref": "requests/cards/debit.json"
       body: {
-        "order": "{order,orders.href}",
+        "links": {
+          "order": "{order,orders.id}"
+        },
         "amount": 1234
       }
     response:
@@ -34,7 +36,9 @@ scenarios:
       schema:
         "$ref": "requests/bank_accounts/credit.json"
       body: {
-        "order": "{order,orders.href}",
+        "links": {
+          "order": "{order,orders.id}"
+        },
         "amount": 1234
       }
     response:
