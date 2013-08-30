@@ -5,7 +5,7 @@
         "links": {
             "type": "object",
             "properties": {
-                "cards.holds": {
+                "cards.card_holds": {
                     "type": "string",
                     "format": "uri",
                     "pattern": "/cards/{cards.id}/card_holds",
