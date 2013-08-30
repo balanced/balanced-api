@@ -1,4 +1,5 @@
 require:
+  - ../cards/add_to_customer.yml
   - create.yml
   - ../customers/underwrite_with_destination.yml
 scenarios:
@@ -9,9 +10,10 @@ scenarios:
       schema:
         "$ref": "requests/cards/debit.json"
       body: {
-        "links": {
-          "order": "{order,orders.id}"
-        },
+        # "links": {
+        #   "order": "{order,orders.id}"
+        # },
+        "order": "{order,orders.href}",
         "amount": 1234
       }
     response:

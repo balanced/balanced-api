@@ -1,7 +1,17 @@
 require:
-  - create.yml
+  - ../cards/add_to_customer.yml
   - ../bank_accounts/add_to_customer.yml
+#  - ../customer_fixtures.yml
 scenarios:
+  - name: order
+    request:
+      method: POST
+      href: "{customer,customers.orders}"
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/orders.json"
+
   - name: create_debit
     request:
       method: POST
@@ -39,9 +49,9 @@ scenarios:
       }
     response:
       status_code: 409
-      #schema:
-      #  "$ref": "responses/errors.json"
+      schema:
+        "$ref": "responses/errors.json"
       assertRegex: {
-        "description": "Order requires merchant be underwritten.",
-        "category_code": "kyc"
+        "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
+        "category_code": "order-kyc"
       }
