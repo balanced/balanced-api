@@ -187,23 +187,3 @@ scenarios:
     response:
       status_code: 200
       matches: { "bank_account_verifications": [ { "verification_status": "succeeded" } ] }
-
-  - name: verified_bank_account_no_customer
-    request:
-      method: POST
-      href: /bank_accounts
-      body: {
-        "name": "Magic Johnson",
-        "account_number": "9900000004",
-        "routing_number": "021000021",
-        "account_type": "checking"
-      }
-    response:
-      status_code: 201
-
-  - name: verified_bank_account_no_customer_verify
-    request:
-      method: POST
-      href: "{verified_bank_account_no_customer,bank_accounts.verifications}"
-    response:
-      status_code: 409
