@@ -40,7 +40,7 @@ scenarios:
   - name: create_credit
     request:
       method: POST
-      href: "{bank_account,bank_accounts.credits}"
+      href: "{verified_bank_account_successful,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
       body: {

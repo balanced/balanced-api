@@ -1,6 +1,7 @@
 require:
+  - ../cards/add_to_customer.yml
   - create.yml
-  - ../customers/underwrite_with_destination.yml
+#  - ../customers/underwrite_with_destination.yml
 scenarios:
   - name: create_debit
     request:
@@ -30,7 +31,7 @@ scenarios:
   - name: create_credit
     request:
       method: POST
-      href: "{add_bank_account,bank_accounts.credits}"
+      href: "{add_bank_account_to_customer_1,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
       body: {

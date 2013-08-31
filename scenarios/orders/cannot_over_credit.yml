@@ -1,6 +1,7 @@
 require:
+  - ../cards/add_to_customer.yml
   - create.yml
-  - ../customers/underwrite_with_destination.yml
+#  - ../customers/underwrite_with_destination.yml
 scenarios:
   - name: create_debit
     request:
@@ -30,9 +31,9 @@ scenarios:
   - name: create_credit_fail
     request:
       method: POST
-      href: "{add_bank_account,bank_accounts.credits}"
+      href: "{customer,customers.credits}"
       schema:
-        "$ref": "requests/bank_accounts/credit.json"
+        "$ref": "requests/customers/credit.json"
       body: {
         "order": "{order,orders.href}",
         "amount": 2000
@@ -41,8 +42,8 @@ scenarios:
       status_code: 409
       shcema:
         "$ref": "responses/errors.json"
-      assertRegex: { "description": "Order escrow balanced is insufficient to issue this credit." }
-      matches: { "category_code": "insufficient-funds" }
+      assertRegex: { "description": ".*is insufficient to cover transfer of 2000.*" }
+      matches: { "category_code": "account-insufficient-funds" }
 
   - name: check_order_escrow_2
     request:
