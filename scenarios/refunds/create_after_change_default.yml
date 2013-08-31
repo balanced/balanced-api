@@ -14,7 +14,7 @@ scenarios:
       status_code: 201
       schema:
         "$ref": "responses/debits.json"
-      matches: { "debits": [ { "links": { "source": "{card,cards.id}" } } ] }
+      matches: { "debits": [ { "links": { "source": "{other_card,cards.id}" } } ] }
 
   - name: new_card
     request:
@@ -70,4 +70,4 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/debits.json"
-      matches: { "debits": [ { "links": { "source": "{card,cards.id}" } } ] }
+      matches: { "debits": [ { "links": { "source": "{other_card,cards.id}" } } ] }
