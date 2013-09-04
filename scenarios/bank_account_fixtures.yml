@@ -36,17 +36,15 @@ scenarios:
   - name: associate_verified_bank_account_with_customer
     request:
       method: PUT
-      href: "{customer,customers.href}"
-      schema:
-        "$ref": "requests/customer.json"
+      href: "{verified_bank_account,bank_accounts.href}"
       body: {
         "links": {
-          "source": "{verified_bank_account,bank_accounts.id}"
+          "customer": "{customer,customers.id}"
         }
       }
     response:
       schema:
-        "$ref": "responses/customers.json"
+        "$ref": "responses/bank_accounts.json"
 
   - name: verified_bank_account_create_verification
     request:
@@ -167,7 +165,6 @@ scenarios:
     response:
       schema:
         "$ref": "responses/bank_accounts.json"
-
 
   - name: verified_bank_account_failed_create_verification
     request:
