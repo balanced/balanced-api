@@ -3,6 +3,46 @@ require:
 scenarios:
 
   # Tokenize card using balanced.js or by POSTing directly from mobile app
+  - name: new_card_failing_avs
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "name": "Darius the Great",
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+        "cvv": "123",
+        "address": {
+          "line1": "21 Jump St",
+          "city": "San Francisco",
+          "state": "CA",
+          "postal_code": "90210"
+        }
+      }
+    response:
+      schema:
+        "$ref": "responses/cards.json"
+      status_code: 201
+
+  # Verify that address and CVV match
+  - name: verify_avs_match_fails
+    request:
+      method: GET
+      href: "{new_card,cards.href}"
+    resposne:
+      status_code: 200
+      schema:
+        "$ref": "responses/cards.json"
+      matches: {"cards": [{
+        "avs_street_match": "no",
+        "avs_postal_match": "no",
+        "cvv_match": "yes"
+      }]}
+
+  # Tokenize another card using balanced.js or by POSTing directly from mobile app
   - name: new_card
     request:
       method: POST
@@ -42,6 +82,7 @@ scenarios:
         "avs_postal_match": "yes",
         "cvv_match": "yes"
       }]}
+
 
   # Create the new customer and add the new card as their default payment method
   - name: new_buyer
