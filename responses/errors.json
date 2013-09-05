@@ -73,7 +73,7 @@
                 "not-found",
                 "patch-test-failed",
                 "request",
-		"order-kyc"
+                "order-kyc"
             ],
             "required": true
         },

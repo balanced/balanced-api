@@ -22,7 +22,7 @@ scenarios:
       method: POST
       href: "{bank_account,bank_accounts.bank_account_verifications}"
       schema:
-        "$ref": "requests/bank_accounts/verification.json"
+        "$ref": "requests/bank_accounts/bank_account_verification.json"
     response:
       status_code: 201
       schema:
@@ -34,7 +34,7 @@ scenarios:
       method: PUT
       href: "{create_verification,bank_account_verifications.href}"
       schema:
-        "$ref": "requests/bank_accounts/verification.json"
+        "$ref": "requests/bank_accounts/bank_account_verification.json"
       body: {
         "amount_1": 1,
         "amount_2": 1
