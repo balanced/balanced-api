@@ -1,3 +1,5 @@
+require:
+  - ../debits/create_new_card.yml
 scenarios:
   - name: create_root_credit
     request:
