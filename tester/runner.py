@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
 # This file is designed to run one scenario at a time
 # scenarios can include in other scenario using a require block at the top

@@ -1,0 +1,4 @@
+PyYAML==3.10
+jsonschema==2.0.0
+requests==1.2.3
+wsgiref==0.1.2
