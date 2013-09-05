@@ -5,10 +5,10 @@
         "links": {
             "type": "object",
             "properties": {
-                "bank_accounts.verifications": {
+                "bank_accounts.bank_account_verifications": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/bank_accounts/{bank_accounts.id}/verifications",
+                    "pattern": "/bank_accounts/{bank_accounts.id}/bank_account_verifications",
                     "required": true
                 },
                 "bank_accounts.credits": {
@@ -27,6 +27,12 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/customers/{bank_accounts.customer}",
+                    "required": true
+                },
+                "bank_accounts.bank_account_verification": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/bank_account_verifications/{bank_accounts.bank_account_verification}",
                     "required": true
                 }
             },

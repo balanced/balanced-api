@@ -20,7 +20,7 @@ scenarios:
   - name: create_verification
     request:
       method: POST
-      href: "{bank_account,bank_accounts.verifications}"
+      href: "{bank_account,bank_accounts.bank_account_verifications}"
       schema:
         "$ref": "requests/bank_accounts/verification.json"
     response:

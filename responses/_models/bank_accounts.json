@@ -81,6 +81,14 @@
                     ],
                     "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
                     "required": true
+                },
+                "bank_account_verification": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "BZ[a-zA-Z0-9]{16,32}",
+                    "required": true
                 }
             },
             "required": true,

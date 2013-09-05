@@ -49,14 +49,14 @@ scenarios:
   - name: verified_bank_account_create_verification
     request:
       method: POST
-      href: "{verified_bank_account,bank_accounts.verifications}"
+      href: "{verified_bank_account,bank_accounts.bank_account_verifications}"
     response:
       status_code: 201
 
   - name: verified_bank_account_verify_verification
     request:
       method: PUT
-      href: "{verified_bank_account,bank_accounts.verification}"
+      href: "{verified_bank_account_create_verification,bank_account_verifications.href}"
       body: {
         "amount_1": 1,
         "amount_2": 1
@@ -109,7 +109,7 @@ scenarios:
   - name: verified_bank_account_successful_create_verification
     request:
       method: POST
-      href: "{verified_bank_account_successful,bank_accounts.verifications}"
+      href: "{verified_bank_account_successful,bank_accounts.bank_account_verifications}"
     response:
       status_code: 201
 
@@ -169,14 +169,14 @@ scenarios:
   - name: verified_bank_account_failed_create_verification
     request:
       method: POST
-      href: "{verified_bank_account_failed,bank_accounts.verifications}"
+      href: "{verified_bank_account_failed,bank_accounts.bank_account_verifications}"
     response:
       status_code: 201
 
   - name: verified_bank_account_failed_verify_verification
     request:
       method: PUT
-      href: "{verified_bank_account_failed,bank_accounts.verification}"
+      href: "{verified_bank_account_failed_create_verification,bank_account_verifications.href}"
       body: {
         "amount_1": 1,
         "amount_2": 1
