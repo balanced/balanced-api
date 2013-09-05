@@ -224,6 +224,9 @@ class Runner(object):
                     'Scenario {0} failed with wrong status code {1} != {2}'
                     .format(name, response['status_code'], resp.status_code)
                 )
+                sys.stderr.write(
+                    str(resp.json())
+                )
                 sys.exit(1)
 
         resp_json = {}

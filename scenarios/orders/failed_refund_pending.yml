@@ -3,6 +3,20 @@ require:
   - create.yml
 #  - ../customers/underwrite_with_destination.yml
 scenarios:
+
+  - name: associate_failed_bank_account_with_customer
+    request:
+      method: PUT
+      href: "{bank_account_failed,bank_accounts.href}"
+      body: {
+        "links": {
+          "customer": "{customer,customers.id}"
+        }
+      }
+    response:
+      schema:
+        "$ref": "responses/bank_accounts.json"
+
   - name: create_debit
     request:
       method: POST
@@ -28,10 +42,10 @@ scenarios:
         "$ref": "responses/orders.json"
       matches: { "orders": [ { "amount_escrowed": 1234 } ] }
 
-  - name: create_credit
+  - name: create_failed_credit
     request:
       method: POST
-      href: "{add_bank_account_to_customer_1,bank_accounts.credits}"
+      href: "{bank_account_failed,bank_accounts.credits}"
       schema:
         "$ref": "requests/bank_accounts/credit.json"
       body: {
@@ -40,8 +54,35 @@ scenarios:
       }
     response:
       status_code: 201
-      shcema:
+      schema:
         "$ref": "responses/credits.json"
+      martches: { "credits": [ { "status": "failed" } ] }
+
+  - name: check_order_escrow_2
+    request:
+      method: GET
+      href: "{order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: { "orders": [ { "amount_escrowed": 1234 } ] }
+
+  - name: create_pending_credit
+    request:
+      method: POST
+      href: "{bank_account,bank_accounts.credits}"
+      schema:
+        "$ref": "requests/bank_accounts/credit.json"
+      body: {
+        "order": "{order,orders.href}",
+        "amount": 1234
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      martches: { "credits": [ { "status": "pending" } ] }
 
   - name: check_order_escrow_2
     request:
@@ -53,31 +94,7 @@ scenarios:
         "$ref": "responses/orders.json"
       matches: { "orders": [ { "amount_escrowed": 0 } ] }
 
-  - name: create_reversal
-    request:
-      method: POST
-      href: "{create_credit,credits.reversals}"
-      schema:
-        "$ref": "requests/credits/reversal.json"
-    response:
-      status_code: 201
-      schema:
-        "$ref": "responses/reversals.json"
-      matches: { "reversals": [ { "status": "pending" } ] }
-
-  # because the reversal is pending
-  # the amount_escrowed in the order will be 0
-  - name: check_order_escrow_3
-    request:
-      method: GET
-      href: "{order,orders.href}"
-    response:
-      status_code: 200
-      schema:
-        "$ref": "responses/orders.json"
-      matches: { "orders": [ { "amount_escrowed": 0 } ] }
-
-  - name: create_refund_fail
+  - name: create_refund_failure
     request:
       method: POST
       href: "{create_debit,debits.refunds}"
@@ -87,5 +104,5 @@ scenarios:
       status_code: 409
       schema:
         "$ref": "responses/errors.json"
-      assertRegex: { "description": "Order escrow balanced is insufficient to issue this refund." }
-      matches: { "category_code": "insufficient-funds" }
+      assertRegex: { "description": ".*is insufficient to cover transfer of 1234.*" }
+      matches: { "category_code": "account-insufficient-funds" }
