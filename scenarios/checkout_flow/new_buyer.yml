@@ -85,6 +85,9 @@ scenarios:
           "city": "San Francisco",
           "state": "CA",
           "postal_code": "94103"
+        },
+        "meta": {
+          "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
         }
       }
     response:
@@ -118,5 +121,28 @@ scenarios:
         "description": "Catherine Malandrino Black Top",
         "links": {
           "order": "{new_order,orders.id}"
+        }
+      }]}
+
+  # Add the shipping information once the item has been shipped
+  - name: update_meta_on_order:
+    request:
+      method: PUT
+      href: "new_order,orders.href"
+      body: {
+        "meta": {
+          "courier": "usps",
+          "tracking_number": "9405510899359008595488"
+        }
+      }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders"[{
+        "meta": {
+          "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+          "courier": "usps",
+          "tracking_number": "9405510899359008595488"
         }
       }]}
