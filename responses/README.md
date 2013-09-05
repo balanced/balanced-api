@@ -3,7 +3,7 @@
 This directory defines the form of all the possible responses from the balanced api.
 
 ### Example response
-``` js
+``` json
   {
    "customers": [
     {
