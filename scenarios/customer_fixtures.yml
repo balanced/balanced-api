@@ -32,3 +32,35 @@ scenarios:
       schema:
         "$ref": "responses/customers.json"
       matches: { "customers": [ { "merchant_status": "underwritten" } ] }
+
+  - name: customer_with_card
+    request:
+      method: POST
+      href: /customers
+      schema:
+        "$ref": "requests/customers.json"
+      body: {
+        "name": "Darius the Great",
+        "email": "darius.great@gmail.com",
+        "source": {
+          "name": "Darius the Great",
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "123",
+          "address": {
+            "line1": "965 Mission St",
+            "line2": "Suite 425",
+            "city": "San Francisco",
+            "state": "CA",
+            "postal_code": "94103"
+          }
+        },
+        "meta": {
+          "ip_address": "174.240.15.249"
+        }
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/customers.json"
