@@ -1,5 +1,5 @@
 require:
-	- new_buyer_purchases_an_item.yml
+  - new_buyer_purchases_an_item.yml
 scenarios:
   # The buyer or seller cancel the order prior to the seller being paid
   - name: fetch_order
@@ -10,11 +10,6 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
-
-  - name: fetch_debits_for_order
-    request:
-      method: POST
-      href:
 
   # Refund the debit, which leaves the order empty
   - name: fetch_debits
@@ -47,7 +42,7 @@ scenarios:
     request:
       method: GET
       href: "{new_order,orders.href}"
-    responses:
+    response:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
