@@ -10,11 +10,11 @@ scenarios:
       schema:
         "$ref": "responses/customers.json"
 
-  # Fetch all of the buyer's cards
-  - name: fetch_all_cards
+  # Fetch default card for a buyer
+  - name: fetch_source
     request:
       method: GET
-      href: "{customer_with_card,customers.cards}"
+      href: "{fetch_customer,customers.source}"
     response:
       status_code: 200
       schema:
