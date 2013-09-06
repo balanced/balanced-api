@@ -180,7 +180,7 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
-      matches: {"orders"[{
+      matches: {"orders": [{
         "meta": {
           "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
           "courier": "usps",
