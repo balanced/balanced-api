@@ -33,12 +33,12 @@ scenarios:
         "$ref": "responses/customers.json"
       matches: { "customers": [ { "merchant_status": "underwritten" } ] }
 
-  - name: customer_with_cards
+  - name: customer_with_card
     request:
       method: POST
       href: /customers
       schema:
-        "$ref": "requests/customers.json"
+        "$ref": "requests/customer.json"
       body: {
         "name": "Darius the Great",
         "email": "darius.great@gmail.com",
