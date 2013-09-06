@@ -83,7 +83,6 @@ scenarios:
         "cvv_match": "yes"
       }]}
 
-
   # Create the new customer and add the new card as their default payment method
   - name: new_buyer
     request:
@@ -106,7 +105,8 @@ scenarios:
       matches: {
         "customers": [{
           "links": {
-            "source": "{new_card,id}"
+            "source": "{new_card,cards.id}",
+            "destination": null,
           }
         }]
       }
@@ -151,7 +151,8 @@ scenarios:
         "amount": 10000,
         "marketplace_fee": 2000,
         "order": "{new_order,orders.href}",
-        "appears_on_statement_as": "Vaunte-Alice Ryan"
+        "appears_on_statement_as": "Vaunte-Alice Ryan",
+        "description": "Catherine Malandrino Black Top",
       }
     response:
       status_code: 201
@@ -166,10 +167,10 @@ scenarios:
       }]}
 
   # Add the shipping information once the item has been shipped
-  - name: update_meta_on_order
+  - name: clobber_meta_on_order
     request:
       method: PUT
-      href: "new_order,orders.href"
+      href: "{new_order,orders.href}"
       body: {
         "meta": {
           "courier": "usps",
@@ -180,10 +181,38 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
-      matches: {"orders": [{
-        "meta": {
-          "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
-          "courier": "usps",
-          "tracking_number": "9405510899359008595488"
-        }
-      }]}
+      matches: {
+        "orders": [{
+          "meta": {
+            "courier": "usps",
+            "tracking_number": "9405510899359008595488"
+          }
+        }]
+      }
+
+
+  # Add the shipping information once the item has been shipped
+  - name: update_meta_on_order
+    request:
+      method: PATCH
+      href: "{new_order,orders.href}"
+      schema:
+        "$ref": "requests/_patch.json"
+      body: [{
+        "op": "add",
+        "path": "/orders/0/meta/listing",
+        "value": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
+      }]
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {
+        "orders": [{
+          "meta": {
+            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+            "courier": "usps",
+            "tracking_number": "9405510899359008595488"
+          }
+        }]
+      }
