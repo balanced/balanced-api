@@ -79,7 +79,7 @@ scenarios:
         "$ref": "requests/_patch.json"
       body: [{
         "op": "replace",
-        "path": "/customers/0/source",
+        "path": "/customers/0/links/source",
         "value": "{tokenize_new_card,cards.href}"
       }]
     response:
@@ -151,7 +151,7 @@ scenarios:
   - name: update_meta_on_order
     request:
       method: PUT
-      href: "new_order,orders.href"
+      href: "{new_order,orders.href}"
       body: {
         "meta": {
           "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
