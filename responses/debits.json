@@ -22,6 +22,12 @@
                     "format": "uri",
                     "pattern": "/orders/{debits.order}",
                     "required": true
+                },
+                "debits.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{debits.source}",
+                    "required": true
                 }
             },
             "required": false

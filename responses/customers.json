@@ -47,6 +47,18 @@
                     "format": "uri",
                     "pattern": "/customers/{customers.id}/orders",
                     "required": true
+                },
+                "customers.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{customers.source}",
+                    "required": true
+                },
+                "customers.destination": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{customers.destination}",
+                    "required": true
                 }
             },
             "required": false
