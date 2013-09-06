@@ -75,11 +75,23 @@ scenarios:
     request:
       method: PATCH
       href: "{fetch_customer,customers.href}"
+      schema:
+        "$ref": "requests/_patch.json"
       body: {
         "op": "replace",
         "path": "/customers/0/source",
         "value": "{tokenize_new_card,cards.href}"
       }
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/customers.json"
+      matches: {["customers": {
+        "links": {
+          "source": "{tokenize_new_card,cards.id}"
+        }
+      }]}
+
   # Create the new order and debit the buyer
   - name: new_order
     request:
