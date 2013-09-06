@@ -1,0 +1,60 @@
+require:
+	- new_buyer_purchases_an_item.yml
+scenarios:
+  # The buyer or seller cancel the order prior to the seller being paid
+  - name: fetch_order
+    request:
+      method: GET
+      href: "{new_order,orders.href}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+
+  - name: fetch_debits_for_order
+    request:
+      method: POST
+      href:
+
+  # Refund the debit, which leaves the order empty
+  - name: fetch_debits
+    request:
+      method: GET
+      href: "{fetch_order,orders.debits}"
+    response:
+      status_code: 200
+      schema:
+        "$ref": "responses/debits.json"
+      matches: {"debits": [{
+        "amount": 10000,
+        "description": "Catherine Malandrino Black Top"
+      }]}
+
+  - name: refund_debit
+    request:
+      method: POST
+      href: "{fetch_debits,debits/0.refunds}"
+      schema:
+        "$ref": "requests/debits/refund.json"
+    response:
+      status_code: 201
+      matches: {"refunds": [{
+        "amount": 10000,
+        "description": "Catherine Malandrino Black Top"
+      }]}
+
+  - name: confirm_order_is_canceled
+    request:
+      method: GET
+      href: "{new_order,orders.href}"
+    responses:
+      status_code: 200
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders": [{
+        "amount": 0,
+        "amount_escrowed": 0,
+        "marketplace_fee": 0,
+        "currency": "USD",
+        "description": "Catherine Malandrino Black Top"
+      }]}
