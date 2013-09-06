@@ -161,6 +161,7 @@ scenarios:
       matches: {"debits": [{
         "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
         "description": "Catherine Malandrino Black Top",
+        "status": "succeeded",
         "links": {
           "order": "{new_order,orders.id}"
         }
