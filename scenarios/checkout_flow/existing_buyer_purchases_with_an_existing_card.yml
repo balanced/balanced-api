@@ -77,7 +77,7 @@ scenarios:
       }]}
 
   # Add the shipping information once the item has been shipped
-  - name: update_meta_on_order:
+  - name: update_meta_on_order
     request:
       method: PUT
       href: "new_order,orders.href"
@@ -92,7 +92,7 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
-      matches: {"orders"[{
+      matches: {"orders": [{
         "meta": {
           "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
           "courier": "usps",
