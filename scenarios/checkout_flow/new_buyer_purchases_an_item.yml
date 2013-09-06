@@ -31,8 +31,8 @@ scenarios:
   - name: verify_avs_match_fails
     request:
       method: GET
-      href: "{new_card,cards.href}"
-    resposne:
+      href: "{new_card_failing_avs,cards.href}"
+    response:
       status_code: 200
       schema:
         "$ref": "responses/cards.json"
@@ -73,7 +73,7 @@ scenarios:
     request:
       method: GET
       href: "{new_card,cards.href}"
-    resposne:
+    response:
       status_code: 200
       schema:
         "$ref": "responses/cards.json"
