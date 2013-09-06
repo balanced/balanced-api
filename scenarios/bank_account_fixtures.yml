@@ -103,8 +103,14 @@ scenarios:
         "value": "{customer,customers.id}"
       }]
     response:
+      status_code: 200
       schema:
         "$ref": "responses/bank_accounts.json"
+      matches: {"bank_accounts": [{
+        "links": {
+          "customer": "{customer,customers.id}"
+        }
+      }]}
 
   - name: verified_bank_account_successful_create_verification
     request:
