@@ -166,7 +166,7 @@ scenarios:
       }]}
 
   # Add the shipping information once the item has been shipped
-  - name: update_meta_on_order:
+  - name: update_meta_on_order
     request:
       method: PUT
       href: "new_order,orders.href"
