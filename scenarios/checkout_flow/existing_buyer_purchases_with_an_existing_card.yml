@@ -60,6 +60,7 @@ scenarios:
         "amount": 10000,
         "marketplace_fee": 2000,
         "order": "{new_order,orders.href}",
+        "description": "Catherine Malandrino Black Top",
         "appears_on_statement_as": "Vaunte-Alice Ryan"
       }
     response:
@@ -67,8 +68,8 @@ scenarios:
       schema:
         "$ref": "responses/debits.json"
       matches: {"debits": [{
-        "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
         "description": "Catherine Malandrino Black Top",
+        "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
         "links": {
           "order": "{new_order,orders.id}"
         }
@@ -81,6 +82,7 @@ scenarios:
       href: "new_order,orders.href"
       body: {
         "meta": {
+          "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
           "courier": "usps",
           "tracking_number": "9405510899359008595488"
         }
