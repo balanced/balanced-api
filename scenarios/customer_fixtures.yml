@@ -33,7 +33,7 @@ scenarios:
         "$ref": "responses/customers.json"
       matches: { "customers": [ { "merchant_status": "underwritten" } ] }
 
-  - name: customer_with_card
+  - name: customer_with_cards
     request:
       method: POST
       href: /customers
