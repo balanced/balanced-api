@@ -1,0 +1,55 @@
+require:
+  - ../customer_fixtures.yml
+scenarios:
+  - name: order_with_description
+    request:
+      method: POST
+      href: "{merchant_with_bank_account,customers.orders}"
+      schema:
+        "$ref": "requests/customers/order.json"
+      body: {
+        "description": "Beats by Dr. Dre"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/orders.json"
+      matches: {"orders":[{
+        "description": "Beats by Dr. Dre"
+      }]}
+
+  - name: debit_without_description
+    request:
+      method: POST
+      href: "{customer_with_card,customers.debits}"
+      schema:
+        "$ref": "requests/customers/debit.json"
+      body: {
+        "amount": 10000,
+        "order": "{order_with_description,orders.href}"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/debits.json"
+      matches: {"debits":[{
+        "description": "Beats by Dr. Dre"
+      }]}
+
+  - name: credit_without_description
+    request:
+      method: POST
+      href: "{merchant_with_bank_account,customers.credits}"
+      schema:
+        "$ref": "requests/customers/credit.json"
+      body: {
+        "amount": 10000,
+        "order": "{order_with_description,orders.href}"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/credits.json"
+      matches: {"credits":[{
+        "description": "Beats by Dr. Dre"
+      }]}

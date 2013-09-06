@@ -151,8 +151,7 @@ scenarios:
         "amount": 10000,
         "marketplace_fee": 2000,
         "order": "{new_order,orders.href}",
-        "appears_on_statement_as": "Vaunte-Alice Ryan",
-        "description": "Catherine Malandrino Black Top"
+        "appears_on_statement_as": "Vaunte-Alice Ryan"
       }
     response:
       status_code: 201
