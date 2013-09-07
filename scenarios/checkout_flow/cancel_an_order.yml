@@ -10,6 +10,9 @@ scenarios:
       status_code: 200
       schema:
         "$ref": "responses/orders.json"
+      matches: {"orders": [{
+        "description": "Catherine Malandrino Black Top"
+      }]}
 
   # Refund the debit, which leaves the order empty
   - name: fetch_debits
@@ -28,7 +31,7 @@ scenarios:
   - name: refund_debit
     request:
       method: POST
-      href: "{fetch_debits,debits/0.refunds}"
+      href: "{fetch_debits,debits.refunds}"
       schema:
         "$ref": "requests/debits/refund.json"
     response:
