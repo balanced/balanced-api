@@ -86,7 +86,7 @@
         },
         "marketplaces": {
             "items": {
-                "$ref": "_models/marketplaces.json"
+                "$ref": "_models/marketplace.json"
             },
             "type": "array",
             "minItems": 1,

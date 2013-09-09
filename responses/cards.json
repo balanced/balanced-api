@@ -32,7 +32,7 @@
         },
         "cards": {
             "items": {
-                "$ref": "_models/cards.json"
+                "$ref": "_models/card.json"
             },
             "type": "array",
             "minItems": 1,
