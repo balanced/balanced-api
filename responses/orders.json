@@ -50,7 +50,7 @@
         },
         "orders": {
             "items": {
-                "$ref": "_models/orders.json"
+                "$ref": "_models/order.json"
             },
             "type": "array",
             "minItems": 1,
