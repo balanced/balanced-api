@@ -1,4 +1,4 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "$ref": "_models/events.json"
+    "$ref": "_models/event.json"
 }

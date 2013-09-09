@@ -20,7 +20,7 @@
         },
         "bank_account_verifications": {
             "items": {
-                "$ref": "_models/bank_account_verifications.json"
+                "$ref": "_models/bank_account_verification.json"
             },
             "type": "array",
             "minItems": 1,

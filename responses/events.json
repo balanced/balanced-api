@@ -13,7 +13,7 @@
         },
         "events": {
             "items": {
-                "$ref": "_models/events.json"
+                "$ref": "_models/event.json"
             },
             "type": "array",
             "minItems": 1,
