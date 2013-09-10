@@ -52,7 +52,6 @@ scenarios:
       matches: {"orders": [{
         "amount": 0,
         "amount_escrowed": 0,
-        "marketplace_fee": 0,
         "currency": "USD",
         "description": "Catherine Malandrino Black Top"
       }]}

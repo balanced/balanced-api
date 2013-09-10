@@ -8,8 +8,7 @@ scenarios:
       schema:
         "$ref": "requests/debits/refund.json"
       body: {
-        "amount": 200000000,
-        "marketplace_fee": 0
+        "amount": 200000000
       }
     response:
       status_code: 400
