@@ -39,7 +39,6 @@ scenarios:
         "$ref": "requests/customers/debit.json"
       body: {
         "amount": 10000,
-        "marketplace_fee": 2000,
         "order": "{order,orders.href}"
       }
     response:
@@ -62,8 +61,7 @@ scenarios:
         "$ref": "responses/orders.json"
       matches: {"orders": [{
         "amount": 10000,
-        "amount_escrowed": 8000,
-        "marketplace_fee": 2000
+        "amount_escrowed": 10000,
       }]}
 
   - name: pay_merchant
@@ -73,7 +71,7 @@ scenarios:
       schema:
         "$ref": "requests/customers/credit.json"
       body: {
-        "amount": 8000,
+        "amount": 10000,
         "order": "{order,orders.href}"
       }
     response:
@@ -97,5 +95,4 @@ scenarios:
       matches: {"orders": [{
         "amount": 10000,
         "amount_escrowed": 0,
-        "marketplace_fee": 2000
       }]}
