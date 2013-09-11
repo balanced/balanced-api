@@ -73,7 +73,8 @@
                 "not-found",
                 "patch-test-failed",
                 "request",
-                "order-kyc"
+                "order-kyc",
+                "method-not-allowed"
             ],
             "required": true
         },
@@ -163,6 +164,7 @@
                 400,
                 402,
                 403,
+                405,
                 404,
                 409
             ],
