@@ -58,3 +58,20 @@ scenarios:
         "$ref": "responses/cards.json"
       status_code: 201
       matches: {"cards": [{"avs_postal_match": "unsupported"}]}
+
+  - name: avs_postal_match_unused
+    request:
+      method: POST
+      href: /cards
+      schema:
+        "$ref": "requests/card.json"
+      body: {
+        "number": "4111111111111111",
+        "expiration_month": 12,
+        "expiration_year": 2016,
+      }
+    response:
+      schema:
+        "$ref": "responses/cards.json"
+      status_code: 201
+      matches: {"cards": [{"avs_postal_match": null}]}

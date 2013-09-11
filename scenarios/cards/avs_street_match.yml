@@ -77,4 +77,4 @@ scenarios:
       schema: 
         "$ref": "responses/cards.json"
       status_code: 201
-      matches: {"cards": [{"avs_street_match": "unsupported"}]}
+      matches: {"cards": [{"avs_street_match": null}]}
