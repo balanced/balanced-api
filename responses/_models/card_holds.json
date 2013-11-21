@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "HL[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri",
+            "required": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000000,
+            "required": true
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ],
+            "required": true
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "status": {
+            "$ref": "status.json",
+            "required": true
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "failure_reason": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "meta": {
+            "type": "object",
+            "requird": true
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "card": {
+                    "type": "string",
+                    "pattern": "CC[a-zA-Z0-9]{16,32}",
+                    "required": true
+                },
+                "debit": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "WD[a-zA-Z0-9]{16,32}",
+                    "required": true
+                }
+            },
+            "requird": true,
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

@@ -14,7 +14,7 @@ This directory defines the form of all the possible responses from the balanced 
      },
      "created_at": "2013-08-16T03:19:00.112349Z",
      "dob_month": null,
-     "merchant_status": "need-more-information",
+     "merchant_status": "no-match",
      "updated_at": "2013-08-16T03:19:00.112350Z",
      "phone": null,
      "href": "/customers/CU4CQ5MkeOIuxwL2IGI4I2RG",
