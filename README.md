@@ -7,7 +7,7 @@ materially effect the global economy by creating new jobs and economic activity
 that previously did not exist. Airbnb, Kickstarter, Etsy, and other
 marketplaces have created new forms of income for businesses and individuals.
 That's what gets the [Balanced](https://www.balancedpayments.com/) team excited
-and what the [Balanced API](https://www.balancedpayments.com/docs/integration)
+and what the [Balanced API](https://docs.balancedpayments.com/current/api.html)
 hopes to support.
 
 Payments for marketplaces is unfortunately painful because of unique
