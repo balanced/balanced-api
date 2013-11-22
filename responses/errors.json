@@ -74,7 +74,7 @@
                 "patch-test-failed",
                 "request",
                 "order-kyc",
-		"method-not-allowed"
+                "method-not-allowed"
             ],
             "required": true
         },
