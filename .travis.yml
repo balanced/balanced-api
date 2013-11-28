@@ -1,9 +1,4 @@
-before_install:
-  - git submodule update --init --recursive
-language: python
-python:
-  - 2.7
-install:
-  - pip install -r tester/requirements.txt
-script:
-  - cd tester && ./travis.sh
+language: ruby
+rvm:
+  - 2.0.0
+script: ./bin/cucumber --format=progress
