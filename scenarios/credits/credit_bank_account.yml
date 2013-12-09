@@ -17,6 +17,7 @@ scenarios:
         "$ref": "requests/credit.json"
       body: {
         "amount": 20000,
+        "appears_on_statement_as": "Rent My Bike",
         "destination": {
           "name": "Kareem Abdul-Jabbar",
           "account_number": "9900000000",
@@ -30,6 +31,7 @@ scenarios:
         "$ref": "responses/credits.json"
       matches: {"credits": [{
         "amount": 20000,
+        "appears_on_statement_as": "Rent My Bike",
         "status": "pending"
       }]}
 
