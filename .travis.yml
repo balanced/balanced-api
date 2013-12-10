@@ -1,4 +1,4 @@
 language: ruby
 rvm:
   - 2.0.0
-script: ./bin/cucumber --format=progress
+script: bin/rake cruise

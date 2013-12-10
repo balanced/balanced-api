@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "line1": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "line2": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "city": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "state": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "postal_code": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "required": true
+        },
+        "country_code": {
+            "anyOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "string",
+                    "pattern": "[A-Z]{2}"
+                }
+            ],
+            "required": true
+        }
+    },
+    "additionalProperties": false
+}

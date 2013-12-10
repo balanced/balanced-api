@@ -19,6 +19,7 @@ GEM
     multi_json (1.8.2)
     multi_test (0.0.2)
     multi_xml (0.5.5)
+    rake (10.1.0)
 
 PLATFORMS
   ruby
@@ -27,3 +28,4 @@ DEPENDENCIES
   cucumber
   httparty
   json-schema
+  rake
