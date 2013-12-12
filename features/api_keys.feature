@@ -30,3 +30,29 @@ Feature: API Keys
         "required": ["api_keys"]
       }
       """
+
+  Scenario: Retrieve information about an existing API key
+    Right now, there's not a whole lot of extra information, but we support it
+    anyway.
+
+    Given I have created an API key
+    When I GET to /api_keys/:api_key giving the key
+    Then I should get a 200 OK status code
+    And the response has this schema:
+      """
+      {
+        "api_keys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "properties": {
+            "href": { "type": "string" },
+            "id": { "type": "string" },
+            "secret": { "type": "string" },
+            "links": { "type": "object" },
+            "meta": { "type": "object" }
+          }
+        },
+        "required": ["api_keys"]
+      }
+      """
