@@ -12,6 +12,17 @@ When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url
   @response_body = JSON.parse(response.body)
 end
 
+When(/^I POST to (\/.*) without my secret key$/) do |url|
+  options = {
+      headers: {
+        "Accept" => "application/vnd.api+json;revision=1.1",
+      },
+    }
+  response = HTTParty.post("https://api.balancedpayments.com#{url}", options)
+  @response_code = response.code
+  @response_body = JSON.parse(response.body)
+end
+
 Then(/^I should get a (.+) status code$/) do |code|
   assert_equal code.to_i, @response_code
 end
