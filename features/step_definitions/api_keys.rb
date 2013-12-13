@@ -25,3 +25,22 @@ When(/^I GET to \/api_keys\/:api_key giving the key$/) do
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end 
+
+Given(/^I have created more than one API keys$/) do
+  2.times { step "I have created an API key" }
+end                                                                                                                                                                
+                                                                                                                                                                   
+When(/^I GET to \/api_keys$/) do                                                                                                                                   
+  options = {
+    headers: {
+      "Accept" => "application/vnd.api+json;revision=1.1",
+    },
+    basic_auth: {
+        username: @api_secret,
+        password: "",
+    }
+  }
+  response = HTTParty.get("https://api.balancedpayments.com/api_keys", options)
+  @response_code = response.code
+  @response_body = JSON.parse(response.body)
+end 

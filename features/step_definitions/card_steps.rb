@@ -28,7 +28,7 @@ Then(/^I should get a (.+) status code$/) do |code|
 end
 
 Then(/^the response has this schema:$/) do |schema|
-  assert JSON::Validator.validate(JSON.parse(schema), @response_body)
+  assert JSON::Validator.validate!(JSON.parse(schema), @response_body)
 end
 
 When(/^I GET "(.*?)" from the previous response$/) do |keys|
