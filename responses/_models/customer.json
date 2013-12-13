@@ -87,7 +87,7 @@
         "merchant_status": {
             "type": "string",
             "enum": [
-                "need-more-information",
+                "no-match",
                 "underwritten",
                 "rejected"
             ],
