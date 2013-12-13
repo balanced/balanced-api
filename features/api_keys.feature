@@ -97,3 +97,12 @@ Feature: API Keys
         "required": ["api_keys"]
       }
       """
+
+  Scenario: Remove an API key
+    Sometimes, a customer just doesn't want an API key any more. Deleting that
+    key will get rid of it.
+
+    Given I have created an API key
+    When I DELETE to /api_keys/:api_key giving the key
+    Then I should get a 204 OK status code
+    And there should be no response body
