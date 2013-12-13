@@ -5,12 +5,10 @@
     "type": "object",
     "properties": {
         "links": {
-            "type": "object",
-            "required": false
+            "type": "object"
         },
         "meta": {
-            "type": "object",
-            "required": false
+            "type": "object"
         },
         "cards": {
             "items": {
@@ -19,8 +17,10 @@
             "type": "array",
             "minItems": 1,
             "maxItems": 1,
-            "uniqueItems": true,
-            "required": true
+            "uniqueItems": true
         }
-    }
+    },
+    "required": [
+        "cards"
+    ]
 }
