@@ -57,11 +57,20 @@ end
 
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
-  assert JSON::Validator.validate!(JSON.parse(schema), @response_body)
+  begin
+    JSON::Validator.validate!(JSON.parse(schema), @response_body)
+  rescue JSON::Schema::ValidationError
+    assert false, $!.message
+  end
 end
 
 Then(/^the response is valid according to the "(.*?)" schema$/) do |filename|
-  assert JSON::Validator.validate(File.join("fixtures", "#{filename}.json"), @response_body), "The response failed the '#{filename}' schema. Here's the body: #{@response_body}"
+  file_name = File.join('fixtures', "#{filename}.json")
+  begin
+    JSON::Validator.validate!(file_name, @response_body)
+  rescue JSON::Schema::ValidationError
+    assert false, "The response failed the '#{filename}' schema. Here's the body: #{@response_body}\nWith error: #{$!.message}"
+  end
 end
 
 Then(/^I should get a (.+) status code$/) do |code|
