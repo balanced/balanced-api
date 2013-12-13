@@ -1,14 +1,17 @@
 require 'httparty'
 require 'json'
 
+$root_url = 'https://api.balancedpayments.com'
+$accept_header = 'application/vnd.api+json;revision=1.1'
+
 # First, we need to create an API key. This is as easy as making a POST request.
 
 options = {
   headers: {
-    "Accept" => "application/vnd.api+json;revision=1.1",
+    "Accept" => $accept_header,
   },
 }
-response = HTTParty.post("https://api.balancedpayments.com/api_keys", options)
+response = HTTParty.post("#{$root_url}/api_keys", options)
 $api_secret = JSON.parse(response.body)["api_keys"][0]["secret"]
 
 # Now that we have our key, we need to make a marketplace. Lots of our scenarios
@@ -16,7 +19,7 @@ $api_secret = JSON.parse(response.body)["api_keys"][0]["secret"]
 
 options = {
   headers: {
-    "Accept" => "application/vnd.api+json;revision=1.1",
+    "Accept" => $accept_header,
   },
   basic_auth: {
     username: $api_secret,
@@ -24,4 +27,4 @@ options = {
   },
 }
 
-HTTParty.post("https://api.balancedpayments.com/marketplaces", options)
+HTTParty.post("#{$root_url}/marketplaces", options)
