@@ -1,14 +1,14 @@
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   options = {
     headers: {
-      "Accept" => "application/vnd.api+json;revision=1.1",
+      "Accept" => $accept_header,
     },
     basic_auth: {
         username: @api_secret,
         password: "",
     }
   }
-  response = HTTParty.send(verb.downcase, "https://api.balancedpayments.com#{url}", options)
+  response = HTTParty.send(verb.downcase, "#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end
@@ -16,11 +16,11 @@ end
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
   options = {
       headers: {
-        "Accept" => "application/vnd.api+json;revision=1.1",
+        "Accept" => $accept_header,
       },
       body: JSON.parse(body)
     }
-  response = HTTParty.post("https://api.balancedpayments.com#{url}", options)
+  response = HTTParty.post("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end
@@ -28,10 +28,10 @@ end
 When(/^I POST to (\/.*) without my secret key$/) do |url|
   options = {
       headers: {
-        "Accept" => "application/vnd.api+json;revision=1.1",
+        "Accept" => $accept_header,
       },
     }
-  response = HTTParty.post("https://api.balancedpayments.com#{url}", options)
+  response = HTTParty.post("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end
@@ -42,7 +42,7 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
   url = keys.split('.').inject(@response_body) {|o, k| Array(o[k])[0] }
   options = {
     headers: {
-      "Accept" => "application/vnd.api+json;revision=1.1",
+      "Accept" => $accept_header,
     },
     basic_auth: {
         username: $api_secret,
@@ -50,7 +50,7 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
     }
   }
 
-  response = HTTParty.get("https://api.balancedpayments.com#{url}", options)
+  response = HTTParty.get("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end
@@ -71,4 +71,3 @@ end
 Then(/^there should be no response body$/) do
   assert_nil @response_body
 end
-

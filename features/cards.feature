@@ -22,19 +22,4 @@ Feature: Tokenize a credit card
       }
       """
     Then I should get a 201 Created status code
-    And the response has this schema:
-      """
-      {
-        "cards": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 1,
-          "uniqueItems": true,
-          "required": true
-        }
-      }
-      """
-
-      When I GET "cards.href" from the previous response
-      Then I should get a 200 OK status code
-      And the response is valid according to the "cards" schema
+    And the response is valid according to the "card_tokens" schema
