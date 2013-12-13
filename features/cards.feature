@@ -38,3 +38,4 @@ Feature: Tokenize a credit card
       When I GET "cards.href" from the previous response
       Then I should get a 200 OK status code
       And the response is valid according to the "cards" schema
+      And the response isasdf valid according to the "cards" schema
