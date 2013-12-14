@@ -16,11 +16,12 @@ module Balanced
       end
 
       def POST (endpoint, body)
+        body = JSON.parse(body) if body.is_a? String
         options = {
           headers: {
             'Accept' => @accept_header,
           },
-          body: JSON.parse(body),
+          body: body,
           basic_auth: {
             username: @api_secret,
             password: '',

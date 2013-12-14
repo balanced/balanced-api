@@ -70,8 +70,12 @@ Then(/^the fields on this (.*) match:$/) do |resource, against|
     end
   end
 
-  checker JSON.parse(against), @client.body["#{resource}s"][0], ''
+  checker JSON.parse(against), @client["#{resource}s"], ''
 
+end
+
+Then(/^there should be more than two (.*) paged$/) do |name|
+  assert @client.body[name].size >= 2, "There were not more than two #{name}"
 end
 
 
