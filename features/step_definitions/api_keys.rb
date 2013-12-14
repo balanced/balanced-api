@@ -5,10 +5,9 @@ Given(/^I have created an API key$/) do
     },
   }
   response = HTTParty.post("#{$root_url}/api_keys", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
-  @api_secret = @response_body["api_keys"][0]["secret"] # ugh
-  @api_key = @response_body["api_keys"][0]["id"]
+  @client.RAW(response)
+  @api_secret = @client['secret']
+  @api_key = @client['id']
 end
 
 When(/^I GET to \/api_keys\/:api_key giving the key$/) do
@@ -21,9 +20,8 @@ When(/^I GET to \/api_keys\/:api_key giving the key$/) do
         password: "",
     }
   }
-  response = HTTParty.get("#{$root_url}/api_keys/#{@api_key}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  response = HTTParty.get("#{@client.root_url}/api_keys/#{@api_key}", options)
+  @client.RAW(response)
 end
 
 When(/^I DELETE to \/api_keys\/:api_key giving the key$/) do
@@ -36,9 +34,8 @@ When(/^I DELETE to \/api_keys\/:api_key giving the key$/) do
         password: "",
     }
   }
-  response = HTTParty.delete("#{$root_url}/api_keys/#{@api_key}", options)
-  @response_code = response.code
-  @response_body = response.body
+  response = HTTParty.delete("#{@client.root_url}/api_keys/#{@api_key}", options)
+  @client.RAW(response)
 end
 
 Given(/^I have created more than one API keys$/) do
