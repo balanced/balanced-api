@@ -23,3 +23,10 @@ Feature: Tokenize a credit card
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "card_tokens" schema
+
+    When I GET "cards.href" from the previous response
+    Then I should get a 200 OK status code
+    And The response is valid according to the "cards" schema
+
+
+    # Currently there is a bug with validating the address

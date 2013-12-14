@@ -1,73 +1,88 @@
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
-  options = {
-    headers: {
-      "Accept" => $accept_header,
-    },
-    basic_auth: {
-        username: @api_secret,
-        password: "",
-    }
-  }
-  response = HTTParty.send(verb.downcase, "#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+
+  @client.verb(verb, url)
+
 end
 
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
-  options = {
-      headers: {
-        "Accept" => $accept_header,
-      },
-      body: JSON.parse(body)
-    }
-  response = HTTParty.post("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
-end
-
-When(/^I POST to (\/.*) without my secret key$/) do |url|
-  options = {
-      headers: {
-        "Accept" => $accept_header,
-      },
-    }
-  response = HTTParty.post("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
-end
-
-When(/^I GET "(.*?)" from the previous response$/) do |keys|
-  # hax to access a Ruby hash like dot notation
-  # Array shennanigans is because we only support the first element
-  url = keys.split('.').inject(@response_body) {|o, k| Array(o[k])[0] }
+  # use for tokenizing cards and bank accounts
   options = {
     headers: {
       "Accept" => $accept_header,
     },
-    basic_auth: {
-        username: $api_secret,
-        password: "",
-    }
+    body: JSON.parse(body)
   }
-
-  response = HTTParty.get("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  response = HTTParty.post("#{$root_url}#{url}", options)
+  @client.RAW(response)
 end
+
+When(/^I POST to (\/.*) without my secret key$/) do |url|
+  # used for creating api keys for new marketplaces
+  options = {
+    headers: {
+      "Accept" => $accept_header,
+    },
+  }
+  response = HTTParty.post("#{$root_url}#{url}", options)
+  @client.RAW(response)
+end
+
+When(/^I GET "(.*?)" from the previous response$/) do |keys|
+  @client.GET(@client.inject keys)
+end
+
+
+When(/^I POST to (\/.*) with the JSON API body:$/) do |url, body|
+  @client.POST(url, body)
+end
+
+
 
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
-  assert JSON::Validator.validate!(JSON.parse(schema), @response_body)
+  @client.validate(schema)
+  # end
 end
 
 Then(/^the response is valid according to the "(.*?)" schema$/) do |filename|
-  assert JSON::Validator.validate(File.join("fixtures", "#{filename}.json"), @response_body), "The response failed the '#{filename}' schema. Here's the body: #{@response_body}"
+  @client.validate(filename)
 end
 
 Then(/^I should get a (.+) status code$/) do |code|
-  assert_equal code.to_i, @response_code
+  assert_equal code.to_i, @client.code
 end
 
 Then(/^there should be no response body$/) do
-  assert_nil @response_body
+  assert_nil @client.body
+end
+
+
+Then(/^the fields on this (.*) match:$/) do |resource, against|
+
+  def checker(from, of, nesting)
+    assert_not_nil of, nesting
+    from.each_pair do |key, val|
+      if val.is_a? String or val.is_a? Integer
+        assert_equal val, of[key], "#{nesting}>#{key}"
+      else
+        checker val, of[key], "#{nesting}>#{key}"
+      end
+    end
+  end
+
+  checker JSON.parse(against), @client["#{resource}s"], ''
+
+end
+
+Then(/^there should be more than two (.*) paged$/) do |name|
+  assert @client.body[name].size >= 2, "There were not more than two #{name}"
+end
+
+
+
+# TODO: move?
+
+Before do |scenario|
+  @client = Balanced::MinAPI::Client.new($api_secret, $accept_header, $root_url)
+  @client.running = scenario
 end
