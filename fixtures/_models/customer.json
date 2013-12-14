@@ -4,69 +4,60 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "name": {
             "type": [
                 "null",
                 "string"
-            ],
-            "required": true
+            ]
         },
         "business_name": {
             "type": [
                 "null",
                 "string"
-            ],
-            "required": true
+            ]
         },
         "email": {
             "type": [
                 "null",
                 "string"
             ],
-            "format": "email",
-            "required": true
+            "format": "email"
+
         },
         "phone": {
             "type": [
                 "null",
                 "string"
             ],
-            "format": "phone",
-            "required": true
+            "format": "phone"
         },
         "ssn_last4": {
             "type": [
                 "null",
                 "string"
             ],
-            "pattern": "x{4}",
-            "required": true
+            "pattern": "x{4}"
         },
         "ein": {
             "type": [
                 "null",
                 "string"
             ],
-            "pattern": "[0-9]{9}",
-            "required": true
+            "pattern": "[0-9]{9}"
         },
         "dob_month": {
             "type": [
@@ -74,32 +65,28 @@
                 "integer"
             ],
             "minimum": 1,
-            "maximum": 12,
-            "required": true
+            "maximum": 12
         },
         "dob_year": {
             "type": [
                 "null",
                 "integer"
-            ],
-            "required": true
+            ]
         },
         "merchant_status": {
             "type": "string",
             "enum": [
                 "need-more-information",
                 "underwritten",
-                "rejected"
-            ],
-            "required": true
+                "rejected",
+		"no-match"
+            ]
         },
         "address": {
-            "$ref": "address.json",
-            "required": true
+            "$ref": "address.json"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
@@ -109,21 +96,40 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
                 },
                 "destination": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "BA[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "BA[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "source",
+                "destination"
+            ],
             "additionalProperties": false
         }
     },
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "name",
+        "business_name",
+        "email",
+        "phone",
+        "ssn_last4",
+        "ein",
+        "dob_month",
+        "dob_year",
+        "merchant_status",
+        "address",
+        "meta",
+        "links"
+    ],
     "additionalProperties": false
 }

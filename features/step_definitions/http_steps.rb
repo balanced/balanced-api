@@ -4,8 +4,8 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
       "Accept" => $accept_header,
     },
     basic_auth: {
-        username: @api_secret,
-        password: "",
+      username: @api_secret,
+      password: "",
     }
   }
   response = HTTParty.send(verb.downcase, "#{$root_url}#{url}", options)
@@ -15,11 +15,12 @@ end
 
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
   options = {
-      headers: {
-        "Accept" => $accept_header,
-      },
-      body: JSON.parse(body)
-    }
+    headers: {
+      "Accept" => $accept_header,
+    },
+    body: JSON.parse(body)
+  }
+
   response = HTTParty.post("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
@@ -27,10 +28,11 @@ end
 
 When(/^I POST to (\/.*) without my secret key$/) do |url|
   options = {
-      headers: {
-        "Accept" => $accept_header,
-      },
-    }
+    headers: {
+      "Accept" => $accept_header,
+    },
+  }
+
   response = HTTParty.post("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
@@ -45,12 +47,28 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
       "Accept" => $accept_header,
     },
     basic_auth: {
-        username: $api_secret,
-        password: "",
+      username: $api_secret,
+      password: "",
     }
   }
 
   response = HTTParty.get("#{$root_url}#{url}", options)
+  @response_code = response.code
+  @response_body = JSON.parse(response.body)
+end
+
+When(/^I POST to (\/.*) with the JSON API body:$/) do |url, body|
+  options = {
+    headers: {
+      "Accept" => $accept_header,
+    },
+    body: JSON.parse(body),
+    basic_auth: {
+      username: $api_secret,
+      password: "",
+    }
+  }
+  response = HTTParty.post("#{$root_url}#{url}", options)
   @response_code = response.code
   @response_body = JSON.parse(response.body)
 end
@@ -79,4 +97,19 @@ end
 
 Then(/^there should be no response body$/) do
   assert_nil @response_body
+end
+
+def checker(from, of, nesting)
+  assert_not_nil of, nesting
+  from.each_pair do |key, val|
+    if val.is_a? String or val.is_a? Integer
+      assert_equal val, of[key], "#{nesting}>#{key}"
+    else
+      checker val, of[key], "#{nesting}>#{key}"
+    end
+  end
+end
+
+Then(/^the fields on this (.*) match:$/) do |resource, against|
+  checker JSON.parse(against), @response_body["#{resource}s"][0], ''
 end
