@@ -1,19 +1,9 @@
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
-  options = {
-    headers: {
-      "Accept" => $accept_header,
-    },
-    basic_auth: {
-      username: @api_secret,
-      password: "",
-    }
-  }
-  response = HTTParty.send(verb.downcase, "#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  @client.verb(verb, url)
 end
 
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
+  # use for tokenizing cards and bank accounts
   options = {
     headers: {
       "Accept" => $accept_header,
@@ -22,11 +12,11 @@ When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url
   }
 
   response = HTTParty.post("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  @client.RAW(response)
 end
 
 When(/^I POST to (\/.*) without my secret key$/) do |url|
+  # used for creating api keys for new marketplaces
   options = {
     headers: {
       "Accept" => $accept_header,
@@ -34,73 +24,37 @@ When(/^I POST to (\/.*) without my secret key$/) do |url|
   }
 
   response = HTTParty.post("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  @client.RAW(response)
 end
 
 When(/^I GET "(.*?)" from the previous response$/) do |keys|
-  # hax to access a Ruby hash like dot notation
-  # Array shennanigans is because we only support the first element
-  url = keys.split('.').inject(@response_body) {|o, k| Array(o[k])[0] }
-  options = {
-    headers: {
-      "Accept" => $accept_header,
-    },
-    basic_auth: {
-      username: $api_secret,
-      password: "",
-    }
-  }
-
-  response = HTTParty.get("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  @client.GET(@client.inject keys)
 end
 
 When(/^I POST to (\/.*) with the JSON API body:$/) do |url, body|
-  options = {
-    headers: {
-      "Accept" => $accept_header,
-    },
-    body: JSON.parse(body),
-    basic_auth: {
-      username: $api_secret,
-      password: "",
-    }
-  }
-  response = HTTParty.post("#{$root_url}#{url}", options)
-  @response_code = response.code
-  @response_body = JSON.parse(response.body)
+  @client.POST(url, body)
 end
 
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
-  begin
-    JSON::Validator.validate!(JSON.parse(schema), @response_body)
-  rescue JSON::Schema::ValidationError => e
-    flunk(e.message)
-  end
+  @client.validate(schema)
 end
 
 Then(/^the response is valid according to the "(.*?)" schema$/) do |filename|
-  file_name = File.join('fixtures', "#{filename}.json")
-  begin
-    JSON::Validator.validate!(file_name, @response_body)
-  rescue JSON::Schema::ValidationError => e
-    flunk(e.message)
-  end
+  @client.validate(filename)
 end
 
 Then(/^I should get a (.+) status code$/) do |code|
-  assert_equal code.to_i, @response_code
+  assert_equal code.to_i, @client.code
 end
 
 Then(/^there should be no response body$/) do
-  assert_nil @response_body
+  assert_nil @client.body
 end
 
 def checker(from, of, nesting)
   assert_not_nil of, nesting
+
   from.each_pair do |key, val|
     if val.is_a? String or val.is_a? Integer
       assert_equal val, of[key], "#{nesting}>#{key}"
@@ -111,5 +65,12 @@ def checker(from, of, nesting)
 end
 
 Then(/^the fields on this (.*) match:$/) do |resource, against|
-  checker JSON.parse(against), @response_body["#{resource}s"][0], ''
+  checker JSON.parse(against), @client.body["#{resource}s"][0], ''
+end
+
+# TODO: move?
+
+Before do |scenario|
+  @client = Balanced::MinAPI::Client.new($api_secret, $accept_header, $root_url)
+  @client.running = scenario
 end
