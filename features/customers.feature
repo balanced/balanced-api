@@ -21,3 +21,13 @@ Feature: Customers
         "email": "email@example.com"
       }
       """
+
+  Scenario: testing stuff
+    When I GET to /customers
+    Then I should get a 200 OK status code
+
+  # Scenario: List all customers
+  #   Given I have created more than one Customer
+  #   When I GET to /customers
+  #   Then I should get a 200 OK status code
+  #   And there should be more than two customers paged

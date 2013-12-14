@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 
+# TODO: move this into the lib
 $root_url = 'https://api.balancedpayments.com'
 $accept_header = 'application/vnd.api+json;revision=1.1'
 
@@ -28,3 +29,9 @@ options = {
 }
 
 HTTParty.post("#{$root_url}/marketplaces", options)
+
+$: << File.dirname(__FILE__)+'/../../lib'
+
+require 'min_json_api'
+
+$client = Balanced::MinAPI::Client.new($api_secret, $accept_header, $root_url)
