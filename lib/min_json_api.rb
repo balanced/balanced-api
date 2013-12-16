@@ -66,7 +66,7 @@ module Balanced
         end
       end
 
-      def inject (key)
+      def inject(key)
         # hax to access a Ruby hash like dot notation
         key.split('.').inject(body) {|o, k| Array(o[k])[0] }
       end
@@ -88,7 +88,6 @@ module Balanced
           body.select { |x| x != 'links' and x != 'meta' }.values.first.first[name]
         end
       end
-
     end
   end
 end
