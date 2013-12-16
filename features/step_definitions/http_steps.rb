@@ -2,7 +2,7 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   @client.verb(verb, url)
 end
 
-When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
+When(/^I POST to (\/\S*) without my secret key with the JSON API body:$/) do |url, body|
   # use for tokenizing cards and bank accounts
   options = {
     headers: {
@@ -15,7 +15,7 @@ When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url
   @client.RAW(response)
 end
 
-When(/^I POST to (\/.*) without my secret key$/) do |url|
+When(/^I POST to (\/\S*) without my secret key$/) do |url|
   # used for creating api keys for new marketplaces
   options = {
     headers: {
@@ -31,7 +31,7 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
   @client.GET(@client.inject keys)
 end
 
-When(/^I POST to (\/.*) with the JSON API body:$/) do |url, body|
+When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   @client.POST(url, body)
 end
 

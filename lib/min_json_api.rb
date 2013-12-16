@@ -74,17 +74,9 @@ module Balanced
       def validate(against)
         file_name = File.join('fixtures', "#{against}.json")
         if File.exists? file_name and not against.is_a? Hash
-          begin
-            JSON::Validator.validate!(file_name, body)
-          rescue JSON::Schema::ValidationError
-            assert false, "The response failed the '#{filename}' schema. With error: #{$!.message}\nHere's the body: #{@response.last.body}\n"
-          end
+          JSON::Validator.validate!(file_name, body)
         else
-          begin
-            JSON::Validator.validate!(against, body)
-          rescue JSON::Schema::ValidationError
-            assert false, $!.message
-          end
+          JSON::Validator.validate!(against, body)
         end
       end
 
