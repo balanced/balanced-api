@@ -32,3 +32,9 @@ Feature: Customers
     When I GET to /customers
     Then I should get a 200 OK status code
     And there should be more than two customers paged
+
+  Scenario: Remove a customer
+    Given I have created a Customer
+    When I DELETE to /customers/:customer_id giving the customer_id
+    Then I should get a 204 OK status code
+    And there should be no response body
