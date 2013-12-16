@@ -4,7 +4,6 @@ Feature: Customers
   All debit and credits can be tracked for a specific customer.
 
   Scenario: Creating a customer
-
     When I POST to /customers with the JSON API body:
       """
       {
