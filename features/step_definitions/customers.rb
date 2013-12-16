@@ -20,3 +20,17 @@ When(/^I GET to \/customers\/:customer_id giving the customer_id$/) do
   response = HTTParty.get("#{@client.root_url}/customers/#{@customer_id}", options)
   @client.RAW(response)
 end
+
+When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
+  options = {
+    headers: {
+      "Accept" => $accept_header,
+    },
+    basic_auth: {
+        username: $api_secret,
+        password: "",
+    }
+  }
+  response = HTTParty.delete("#{@client.root_url}/customers/#{@customer_id}", options)
+  @client.RAW(response)
+end
