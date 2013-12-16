@@ -21,6 +21,12 @@ Feature: Customers
       }
       """
 
+  Scenario: Get a customer
+    Given I have created a Customer
+    When I GET to /customers/:customer_id giving the customer_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "customers" schema
+
   Scenario: List all customers
     Given I have created more than one Customer
     When I GET to /customers
