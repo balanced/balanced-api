@@ -54,10 +54,21 @@ Feature: Tokenize a credit card
     When I PUT to /cards/:card_id with the JSON API body:
       """
       {
-        "number": "4111111111111111",
-        "expiration_month": "12",
-        "expiration_year": 2016
+        "meta": {
+          "random": "only allowed to change meta and customer on PUT/PATCH"
+        }
       }
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+
+  Scenario: Debit a card
+    Given I have tokenized a card
+    When I POST to /cards/:card_id/debits with the JSON API body:
+      """
+      {
+        "amount": "50"
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema

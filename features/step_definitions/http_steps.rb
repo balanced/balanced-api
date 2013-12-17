@@ -35,6 +35,10 @@ When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   @client.post(@client.hydrater(url), body)
 end
 
+When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
+  @client.put(@client.hydrater(url), body)
+end
+
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
   @client.validate(schema)
@@ -79,6 +83,12 @@ end
 Then(/^there should be more than two (.*) paged$/) do |name|
   assert @client.last_body[name].size >= 2, "There were not more than two #{name}"
 end
+
+Then(/^debug$/) do
+  puts JSON.pretty_generate @client.last_body
+  puts "response code: #{@client.last_code}"
+end
+
 
 # TODO: move?
 
