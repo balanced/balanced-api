@@ -33,3 +33,26 @@ Feature: Debit a card or bank account
       }
     }
     """
+
+    Scenario: Debiting a customer
+      If the debit is done directly on the customer resource
+      then that customers default "funding source" will be used
+      when preforming the debit
+      Given I have a customer with a card
+      When I POST to /customers/:customer_id/debits with the JSON API body:
+      """
+      {
+        "amount": 2000
+      }
+      """
+      Then I should get a 201 Created status code
+      And the response is valid according to the "debits" schema
+      And the fields on this debit match:
+      """
+      {
+        "amount": 2000,
+        "links": {
+          "customer": ":customer_id"
+        }
+      }
+      """
