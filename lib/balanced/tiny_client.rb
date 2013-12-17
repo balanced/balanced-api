@@ -12,6 +12,7 @@ module Balanced
       @root_url = root_url
 
       @responses = []
+      @hydrate_tokens = {}
     end
 
     def post(endpoint, body)
@@ -68,6 +69,20 @@ module Balanced
     def inject(key)
       # hax to access a Ruby hash like dot notation
       key.split('.').inject(last_body) {|o, k| Array(o[k])[0] }
+    end
+
+    def hydrater(what)
+      @hydrate_tokens.each_pair do |key, value|
+        if key.class == Symbol
+          key = ":#{key}"
+        end
+        what = what.gsub(key, value)
+      end
+      what
+    end
+
+    def add_hydrate(key, value)
+      @hydrate_tokens[key] = value
     end
 
     def validate(against)

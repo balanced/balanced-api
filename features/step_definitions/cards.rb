@@ -1,5 +1,5 @@
 Given(/^I have tokenized a card$/) do
-  @client.post('/cards', 
+  @client.post('/cards',
     {
       number: "4111111111111111",
       expiration_month: "12",
@@ -7,6 +7,7 @@ Given(/^I have tokenized a card$/) do
     }
   )
   @card_id = @client['cards']['id']
+  @client.add_hydrate(:card_id, @card_id)
 end
 
 Given(/^I have tokenized more than one card$/) do
