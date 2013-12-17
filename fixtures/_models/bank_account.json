@@ -4,72 +4,58 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "BA[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "name": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "account_number": {
             "type": "string",
-            "pattern": "x*[0-9]{4}",
-            "required": true
+            "pattern": "x*[0-9]{4}"
         },
         "routing_number": {
             "type": "string",
-            "pattern": "[0-9]{9}",
-            "required": true
+            "pattern": "[0-9]{9}"
         },
         "account_type": {
             "type": "string",
             "enum": [
                 "checking",
                 "savings"
-            ],
-            "required": true
+            ]
         },
         "bank_name": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "address": {
-            "$ref": "address.json",
-            "required": true
+            "$ref": "address.json"
         },
         "fingerprint": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "can_debit": {
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
         },
         "can_credit": {
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
@@ -79,21 +65,39 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 },
                 "bank_account_verification": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "BZ[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "BZ[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "customer",
+                "bank_account_verification"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "name",
+        "account_number",
+        "routing_number",
+        "account_type",
+        "bank_name",
+        "address",
+        "fingerprint",
+        "can_debit",
+        "can_credit",
+        "meta",
+        "links"
+    ]
 }
