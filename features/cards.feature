@@ -36,7 +36,7 @@ Feature: Tokenize a credit card
     And the response is valid according to the "cards" schema
 
   @failing
-  Scenario: List all cards
+  Scenario: List cards
     Given I have tokenized more than one card
     When I GET to /cards
     Then I should get a 200 OK status code
