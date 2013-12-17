@@ -47,3 +47,17 @@ Feature: Tokenize a credit card
     When I DELETE to /cards/:card_id
     Then I should get a 204 OK status code
     And there should be no response body
+
+  @failing
+  Scenario: Update a card
+    Given I have tokenized a card
+    When I PUT to /cards/:card_id with the JSON API body:
+      """
+      {
+        "number": "4111111111111111",
+        "expiration_month": "12",
+        "expiration_year": 2016
+      }
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema

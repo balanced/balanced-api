@@ -33,6 +33,24 @@ module Balanced
       response
     end
 
+    def put(endpoint, body)
+      body = JSON.parse(body) if body.is_a? String
+      options = {
+        headers: {
+          'Accept' => @accept_header,
+        },
+        body: body,
+        basic_auth: {
+          username: @api_secret,
+          password: '',
+        }
+      }
+
+      response = HTTParty.put("#{@root_url}#{endpoint}", options)
+      @responses << response
+      response
+    end
+
     def get(endpoint)
       verb 'GET', endpoint
     end

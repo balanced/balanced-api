@@ -26,6 +26,9 @@ probably work as well. [Let us
 know](https://github.com/balanced/balanced-api/issues/new) if you have any
 problems running these specs, and we'd be happy to help.
 
+If you're working on a new scenario, the 'focus' task is useful. Tag a scenario
+with `@focus`, and then run `bin/rake focus`. It will only run that single scenario.
+
 ### Discussions around changes
 
 Speaking of issues, that's the second purpose of this repository. If you would

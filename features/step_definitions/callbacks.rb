@@ -1,6 +1,6 @@
 Given(/^I have created a callback$/) do
-  @client.post('/callbacks', {})
-  @callback_id = @client['id']
+  @client.post('/callbacks', {url: "http://example.com/callback"})
+  @callback_id = @client.last_body['callbacks'].first['id']
 end
 
 Given(/^I have created more than one callback$/) do
