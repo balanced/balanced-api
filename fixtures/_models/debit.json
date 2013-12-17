@@ -4,98 +4,84 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "WD[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "amount": {
             "type": "integer",
-            "minimum": 1,
-            "required": true
+            "minimum": 1
         },
         "currency": {
             "type": "string",
             "enum": [
                 "USD"
-            ],
-            "required": true
+            ]
         },
         "appears_on_statement_as": {
             "type": "string",
-            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}",
-            "required": true
+            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
         },
         "description": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "status": {
-            "$ref": "status.json",
-            "required": true
+            "$ref": "status.json"
         },
         "failure_reason_code": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "failure_reason": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "source": {
                     "type": "string",
-                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
                 },
                 "customer": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "OR[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required" : ["source", "customer", "order"],
             "additionalProperties": false
         }
     },
+    "required": ["id", "href", "created_at", "updated_at", "amount", "currency", "appears_on_statement_as", "description", "status", "failure_reason_code", "failure_reason", "meta", "links" ],
     "additionalProperties": false
 }

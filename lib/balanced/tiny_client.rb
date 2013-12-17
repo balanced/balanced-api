@@ -89,8 +89,9 @@ module Balanced
     end
 
     def validate(against)
-      file_name = File.join('fixtures', "#{against}.json")
-      if File.exists? file_name and not against.is_a? Hash
+      file_name = File.join(File.dirname(__FILE__), "../..", 'fixtures', "#{against}.json")
+      if File.exists?(file_name) and not against.is_a? Hash
+              puts last_body
         JSON::Validator.validate!(file_name, last_body)
       else
         JSON::Validator.validate!(against, last_body)
