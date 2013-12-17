@@ -27,3 +27,10 @@ Feature: Tokenize a credit card
     When I GET "cards.href" from the previous response
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+
+  @failing
+  Scenario: Retrieve a card
+    Given I have tokenized a card
+    When I GET to /cards/:card_id giving the card_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
