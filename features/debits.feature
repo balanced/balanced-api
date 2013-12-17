@@ -19,3 +19,17 @@ Feature: Debit a card or bank account
       "amount": 20000
     }
     """
+
+  Scenario: Retrieving debits for a card
+    Given I have debited a card
+    When I GET to /cards/:card_id/debits
+    Then I should get a 200 OK status code
+    And the response is valid according to the "debits" schema
+    And the fields on these debits match:
+    """
+    {
+      "links": {
+        "source": ":card_id"
+      }
+    }
+    """

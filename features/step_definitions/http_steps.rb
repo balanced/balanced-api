@@ -65,7 +65,15 @@ def checker(from, of, nesting)
 end
 
 Then(/^the fields on this (.*) match:$/) do |resource, against|
-  checker JSON.parse(against), @client["#{resource}s"], ''
+  checker JSON.parse(@client.hydrater against), @client["#{resource}s"], ''
+end
+
+
+Then(/^the fields on these (.*) match:$/) do |resource, against|
+  against = JSON.parse(@client.hydrater against)
+  @client.last_body[resource].each do |body|
+    checker against, body, ''
+  end
 end
 
 Then(/^there should be more than two (.*) paged$/) do |name|

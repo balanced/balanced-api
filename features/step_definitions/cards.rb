@@ -17,18 +17,3 @@ end
 When(/^I GET to \/cards\/:card_id giving the card_id$/) do
   @client.get("/cards/#{@card_id}")
 end
-
-# When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
-#   @client.delete(
-#   # options = {
-#   #   headers: {
-#   #     "Accept" => $accept_header,
-#   #   },
-#   #   basic_auth: {
-#   #       username: $api_secret,
-#   #       password: "",
-#   #   }
-#   # }
-#   # response = HTTParty.delete("#{@client.root_url}/cards/#{@card_id}", options)
-#   # @client.add_response(response)
-# end
