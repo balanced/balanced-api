@@ -40,7 +40,7 @@ When(/^I POST to \/cards\/:card_id\/debits giving the card_id, with the JSON API
   @client.post("/cards/#{@card_id}/debits", body)
 end
 
-Given(/^I have sufficent funds in my marketplaces$/) do
+Given(/^I have sufficient funds in my marketplaces$/) do
   step 'I have tokenized a card'
   @client.post("/cards/#{@card_id}/debits", {
                  amount: 50000

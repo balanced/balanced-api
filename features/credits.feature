@@ -5,7 +5,7 @@ Feature: Credits
   then that customer's default bank account will be used instead.
 
   Scenario: Credit a bank account
-    Given I have sufficent funds in my marketplaces
+    Given I have sufficient funds in my marketplaces
     And I have tokenized a bank account
     When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
@@ -13,5 +13,5 @@ Feature: Credits
       "amount": 1234
     }
     """
-    And I should get a 201 Created status code
+    Then I should get a 201 Created status code
     And the response is valid according to the "credits" schema

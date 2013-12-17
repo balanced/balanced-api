@@ -13,3 +13,13 @@ end
 Given(/^I have tokenized more than one bank account$/) do
   2.times { step 'I have tokenized a bank account' }
 end
+
+
+Given(/^I have a verified bank account$/) do
+  step 'I have tokenized a bank account'
+  @client.post("/bank_accounts/#{@bank_account_id}/verifications", {})
+  @client.put(@client['bank_account_verifications']['href'], {
+                amount_1: 1,
+                amount_2: 1
+              })
+end

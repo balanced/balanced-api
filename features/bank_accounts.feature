@@ -57,3 +57,26 @@ Feature: Bank accounts
     """
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema
+
+  Scenario: Credit a bank account
+    Given I have sufficient funds in my marketplaces
+    And I have tokenized a bank account
+    When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
+    """
+    {
+      "amount": 1234
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+  Scenario: Debit a bank account
+    Given I have a verified bank account
+    When I POST to /bank_accounts/:bank_account_id/debits with the JSON API body:
+    """
+    {
+      "amount": 1234
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
