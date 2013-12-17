@@ -1,5 +1,5 @@
 Given(/^I have tokenized a card$/) do
-  @client.POST('/cards', 
+  @client.post('/cards', 
     {
       number: "4111111111111111",
       expiration_month: "12",
@@ -14,7 +14,7 @@ Given(/^I have tokenized more than one card$/) do
 end
 
 When(/^I GET to \/cards\/:card_id giving the card_id$/) do
-  @client.GET("/cards/#{@card_id}")
+  @client.get("/cards/#{@card_id}")
 end
 
 When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
@@ -28,5 +28,5 @@ When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
     }
   }
   response = HTTParty.delete("#{@client.root_url}/cards/#{@card_id}", options)
-  @client.RAW(response)
+  @client.add_response(response)
 end
