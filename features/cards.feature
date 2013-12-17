@@ -61,3 +61,15 @@ Feature: Tokenize a credit card
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+
+  @failing
+  Scenario: Debit a card
+    Given I have tokenized a card
+    When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
+      """
+      {
+        "amount": "1"
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "_models/debit" schema
