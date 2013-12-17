@@ -34,3 +34,16 @@ Feature: Tokenize a credit card
     When I GET to /cards/:card_id giving the card_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+
+  @failing
+  Scenario: List all cards
+    Given I have tokenized more than one card
+    When I GET to /cards
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+
+  Scenario: Remove a card
+    Given I have tokenized a card
+    When I DELETE to /cards/:card_id giving the card_id
+    Then I should get a 204 OK status code
+    And there should be no response body
