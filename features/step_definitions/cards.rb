@@ -30,3 +30,8 @@ When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
   response = HTTParty.delete("#{@client.root_url}/cards/#{@card_id}", options)
   @client.add_response(response)
 end
+
+When(/^I PUT to \/cards\/:card_id giving the card_id, with the JSON API body:$/) do |body|
+  @client.put("/cards/#{@card_id}", body)
+end
+
