@@ -32,7 +32,7 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
 end
 
 When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.post(url, body)
+  @client.post(@client.hydrater(url), body)
 end
 
 require 'json-schema'
