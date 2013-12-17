@@ -32,6 +32,6 @@ HTTParty.post("#{$root_url}/marketplaces", options)
 
 $:.unshift(File.dirname(__FILE__)+'/../../lib')
 
-require 'min_json_api'
+require 'balanced/tiny_client'
 
-$client = Balanced::MinAPI::Client.new($api_secret, $accept_header, $root_url)
+$client = Balanced::TinyClient.new($api_secret, $accept_header, $root_url)

@@ -1,5 +1,5 @@
 Given(/^I have created a callback$/) do
-  @client.POST('/callbacks', {})
+  @client.post('/callbacks', {})
   @callback_id = @client['id']
 end
 
@@ -8,7 +8,7 @@ Given(/^I have created more than one callback$/) do
 end
 
 When(/^I GET to \/callbacks\/:callback_id giving the callback_id$/) do
-  @client.GET("/callbacks/#{@callback_id}")
+  @client.get("/callbacks/#{@callback_id}")
 end
 
 When(/^I DELETE to \/callbacks\/:callback_id giving the callback_id$/) do
@@ -22,5 +22,5 @@ When(/^I DELETE to \/callbacks\/:callback_id giving the callback_id$/) do
     }
   }
   response = HTTParty.delete("#{@client.root_url}/callbacks/#{@callback_id}", options)
-  @client.RAW(response)
+  @client.add_response(response)
 end

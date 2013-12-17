@@ -1,5 +1,5 @@
 Given(/^I have created a Customer$/) do
-  @client.POST('/customers', {})
+  @client.post('/customers', {})
   @customer_id = @client['id']
 end
 
@@ -8,7 +8,7 @@ Given(/^I have created more than one Customer$/) do
 end
 
 When(/^I GET to \/customers\/:customer_id giving the customer_id$/) do
-  @client.GET("/customers/#{@customer_id}")
+  @client.get("/customers/#{@customer_id}")
 end
 
 When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
@@ -22,5 +22,5 @@ When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
     }
   }
   response = HTTParty.delete("#{@client.root_url}/customers/#{@customer_id}", options)
-  @client.RAW(response)
+  @client.add_response(response)
 end

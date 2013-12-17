@@ -5,7 +5,7 @@ Given(/^I have created an API key$/) do
     },
   }
   response = HTTParty.post("#{$root_url}/api_keys", options)
-  @client.RAW(response)
+  @client.add_response(response)
   @api_secret = @client['secret']
   @api_key = @client['id']
 end
@@ -21,7 +21,7 @@ When(/^I GET to \/api_keys\/:api_key giving the key$/) do
     }
   }
   response = HTTParty.get("#{@client.root_url}/api_keys/#{@api_key}", options)
-  @client.RAW(response)
+  @client.add_response(response)
 end
 
 When(/^I DELETE to \/api_keys\/:api_key giving the key$/) do
@@ -35,7 +35,7 @@ When(/^I DELETE to \/api_keys\/:api_key giving the key$/) do
     }
   }
   response = HTTParty.delete("#{@client.root_url}/api_keys/#{@api_key}", options)
-  @client.RAW(response)
+  @client.add_response(response)
 end
 
 Given(/^I have created more than one API keys$/) do
