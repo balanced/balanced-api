@@ -37,6 +37,10 @@ module Balanced
       verb 'GET', endpoint
     end
 
+    def delete(endpoint)
+      verb 'DELETE', endpoint
+    end
+
     def add_response(response)
       @responses << response
     end
@@ -87,10 +91,16 @@ module Balanced
 
     def validate(against)
       file_name = File.join('fixtures', "#{against}.json")
-      if File.exists? file_name and not against.is_a? Hash
-        JSON::Validator.validate!(file_name, last_body)
-      else
-        JSON::Validator.validate!(against, last_body)
+      begin
+        if File.exists? file_name and not against.is_a? Hash
+          JSON::Validator.validate!(file_name, last_body)
+        else
+          JSON::Validator.validate!(against, last_body)
+        end
+      rescue JSON::Schema::ValidationError => e
+        puts JSON.pretty_generate last_body
+        puts e.message
+        raise e
       end
     end
 
