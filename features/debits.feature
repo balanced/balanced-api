@@ -12,3 +12,10 @@ Feature: Debit a card or bank account
     }
     """
     Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+    """
+    {
+      "amount": 20000
+    }
+    """
