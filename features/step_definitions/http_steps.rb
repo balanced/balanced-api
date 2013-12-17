@@ -1,5 +1,5 @@
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
-  @client.verb(verb, url)
+  @client.verb(verb, @client.hydrater(url))
 end
 
 When(/^I POST to (\/\S*) without my secret key with the JSON API body:$/) do |url, body|

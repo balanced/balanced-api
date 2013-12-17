@@ -44,6 +44,6 @@ Feature: Tokenize a credit card
 
   Scenario: Remove a card
     Given I have tokenized a card
-    When I DELETE to /cards/:card_id giving the card_id
+    When I DELETE to /cards/:card_id
     Then I should get a 204 OK status code
     And there should be no response body
