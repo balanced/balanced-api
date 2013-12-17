@@ -4,60 +4,64 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "BZ[a-zA-Z0-9]{16,32}",
-            "required": true
+            "pattern": "BZ[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "attempts": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 3,
-            "required": true
+            "maximum": 3
         },
         "attempts_remaining": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 3,
-            "required": true
+            "maximum": 3
         },
         "deposit_status": {
-            "$ref": "status.json",
-            "required": true
+            "$ref": "status.json"
         },
         "verification_status": {
-            "$ref": "status.json",
-            "required": true
+            "$ref": "status.json"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "bank_account": {
                     "type": "string",
-                    "pattern": "BA[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "BA[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "bank_account"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "attempts",
+        "attempts_remaining",
+        "deposit_status",
+        "verification_status",
+        "meta",
+        "links"
+    ]
 }

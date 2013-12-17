@@ -23,3 +23,10 @@ Given(/^I have a verified bank account$/) do
                 amount_2: 1
               })
 end
+
+Given(/^I have a bank account with a verification$/) do
+  step 'I have tokenized a bank account'
+  @client.post("/bank_accounts/#{@bank_account_id}/verifications", {})
+  @bank_account_verification_id = @client['bank_account_verifications']['id']
+  @client.add_hydrate :bank_account_verification_id, @bank_account_verification_id
+end

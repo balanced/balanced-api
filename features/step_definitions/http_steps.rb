@@ -70,6 +70,7 @@ end
 
 Then(/^the fields on this (.*) match:$/) do |resource, against|
   checker JSON.parse(@client.hydrater against), @client["#{resource}s"], ''
+  assert_equal @client.last_body["#{resource}s"].size, 1
 end
 
 Then(/^the fields on these (.*) match:$/) do |resource, against|
