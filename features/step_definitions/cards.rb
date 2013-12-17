@@ -9,8 +9,8 @@ Given(/^I have tokenized a card$/) do
   @card_id = @client['cards']['id']
 end
 
-Given(/^I have created more than one card$/) do
-  2.times { step "I have created a card" }
+Given(/^I have tokenized more than one card$/) do
+  2.times { step "I have tokenized a card" }
 end
 
 When(/^I GET to \/cards\/:card_id giving the card_id$/) do
