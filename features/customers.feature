@@ -22,19 +22,19 @@ Feature: Customers
       """
 
   Scenario: Get a customer
-    Given I have created a Customer
+    Given I have created a customer
     When I GET to /customers/:customer_id giving the customer_id
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
 
   Scenario: List all customers
-    Given I have created more than one Customer
+    Given I have created more than one customer
     When I GET to /customers
     Then I should get a 200 OK status code
     And there should be more than two customers paged
 
   Scenario: Remove a customer
-    Given I have created a Customer
+    Given I have created a customer
     When I DELETE to /customers/:customer_id giving the customer_id
     Then I should get a 204 OK status code
     And there should be no response body

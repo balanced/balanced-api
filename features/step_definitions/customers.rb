@@ -1,10 +1,11 @@
-Given(/^I have created a Customer$/) do
+Given(/^I have created a customer$/) do
   @client.post('/customers', {})
   @customer_id = @client['id']
+  @client.add_hydrate :customer_id, @customer_id
 end
 
-Given(/^I have created more than one Customer$/) do
-  2.times { step "I have created a Customer" }
+Given(/^I have created more than one customer$/) do
+  2.times { step "I have created a customer" }
 end
 
 When(/^I GET to \/customers\/:customer_id giving the customer_id$/) do
