@@ -22,7 +22,6 @@ Feature: Callbacks
     Then I should get a 200 OK status code
     # TODO: Callback schema?                                                                                                                                      
 
-  @failing
   Scenario: Remove a callback
     Given I have created a callback
     When I DELETE to /callbacks/:callback_id giving the callback_id
