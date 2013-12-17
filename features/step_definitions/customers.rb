@@ -8,17 +8,7 @@ Given(/^I have created more than one Customer$/) do
 end
 
 When(/^I GET to \/customers\/:customer_id giving the customer_id$/) do
-  options = {
-    headers: {
-      "Accept" => $accept_header,
-    },
-    basic_auth: {
-        username: $api_secret,
-        password: "",
-    }
-  }
-  response = HTTParty.get("#{@client.root_url}/customers/#{@customer_id}", options)
-  @client.RAW(response)
+  @client.GET("/customers/#{@customer_id}")
 end
 
 When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
