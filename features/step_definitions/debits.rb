@@ -3,6 +3,8 @@ Given(/^I have debited a card$/) do
   @client.post("/cards/#{@card_id}/debits", {
                  'amount' => 1234
                })
+  @debit_id = @client['debits']['id']
+  @client.add_hydrate :debit_id, @debit_id
 end
 
 Given(/^I have a customer with a card$/) do
@@ -14,4 +16,8 @@ Given(/^I have a customer with a card$/) do
                 }
               })
 
+end
+
+Given(/^I have more than one debit$/) do
+  2.times { step 'I have debited a card' }
 end

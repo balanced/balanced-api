@@ -4,71 +4,79 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "RF[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "amount": {
             "type": "integer",
-            "minimum": 1,
-            "required": true
+            "minimum": 1
         },
         "currency": {
             "type": "string",
             "enum": [
                 "USD"
-            ],
-            "required": true
+            ]
         },
         "description": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "status": {
-            "$ref": "status.json",
-            "required": true
+            "$ref": "status.json"
+        },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "RF[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "debit": {
                     "type": "string",
-                    "pattern": "WD[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "WD[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "OR[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "debit",
+                "order"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "description",
+        "status",
+        "meta",
+        "links"
+    ]
 }

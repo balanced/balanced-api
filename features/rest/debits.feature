@@ -56,3 +56,36 @@ Feature: Debit a card or bank account
       }
     }
     """
+
+  Scenario: List debits
+    Given I have more than one debit
+    When I GET to /debits
+    Then I should get a 200 OK status code
+    And the response is valid according to the "debits" schema
+
+  Scenario: Update a debit
+    Given I have debited a card
+    When I PUT to /debits/:debit_id with the JSON API body:
+    """
+    {
+      "meta": {
+        "order.status": "shipped"
+      }
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+    """
+    {
+      "meta": {
+        "order.status": "shipped"
+      }
+    }
+    """
+
+  Scenario: Refund a debit
+    Given I have debited a card
+    When I POST to /debits/:debit_id/refunds
+    Then I should get a 201 Created status code
+    And the response is valid according to the "refunds" schema

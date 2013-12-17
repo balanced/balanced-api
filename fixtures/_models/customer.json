@@ -36,7 +36,6 @@
                 "string"
             ],
             "format": "email"
-
         },
         "phone": {
             "type": [
@@ -79,7 +78,7 @@
                 "need-more-information",
                 "underwritten",
                 "rejected",
-		"no-match"
+                "no-match"
             ]
         },
         "address": {

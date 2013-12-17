@@ -1,37 +1,38 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "links": {
             "type": "object",
             "properties": {
-                "cards.card_holds": {
+                "refunds.debit": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/cards/{cards.id}/card_holds"
+                    "pattern": "/debits/{refunds.debit}"
                 },
-                "cards.debits": {
+                "refunds.order": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/cards/{cards.id}/debits"
+                    "pattern": "/orders/{refunds.order}"
                 },
-                "cards.customer": {
+                "refunds.events": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/customers/{cards.customer}"
+                    "pattern": "/refunds/{refunds.id}/events"
                 }
             },
             "required": [
-                "cards.customer",
-                "cards.debits",
-                "cards.card_holds"
+                "refunds.debit",
+                "refunds.order",
+                "refunds.events"
             ]
         },
         "meta": {
             "type": "object"
         },
-        "cards": {
+        "refunds": {
             "items": {
-                "$ref": "_models/card.json"
+                "$ref": "_models/refund.json"
             },
             "type": "array",
             "minItems": 1,
@@ -39,6 +40,6 @@
         }
     },
     "required": [
-        "cards"
+        "refunds"
     ]
 }
