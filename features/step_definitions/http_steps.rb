@@ -35,6 +35,10 @@ When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   @client.post(@client.hydrater(url), body)
 end
 
+When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
+  @client.put(@client.hydrater(url), body)
+end
+
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
   @client.validate(schema)
@@ -67,7 +71,6 @@ end
 Then(/^the fields on this (.*) match:$/) do |resource, against|
   checker JSON.parse(@client.hydrater against), @client["#{resource}s"], ''
 end
-
 
 Then(/^the fields on these (.*) match:$/) do |resource, against|
   against = JSON.parse(@client.hydrater against)
