@@ -2,52 +2,111 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-        "href": {
-            "type": "string",
-            "format": "uri",
-            "required": true
-        },
         "id": {
             "type": "string",
-            "pattern": "EV[a-zA-Z0-9]{16,32}",
-            "required": true
+            "pattern": "EV[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
         },
         "occurred_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "type": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "entity": {
             "anyOf": [
                 {
-                    "$ref": "_models/bank_accounts.json"
+                    "bank_accounts": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/bank_accounts.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/bank_account_verifications.json"
+                    "bank_account_verifications": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/bank_account_verifications.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/card_holds.json"
+                    "card_holds": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/card_holds.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/credits.json"
+                    "credits": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/credits.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/customers.json"
+                    "customers": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/customers.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/debits.josn"
+                    "debits": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/debits.josn"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/refunds.json"
+                    "debits": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/refunds.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 },
                 {
-                    "$ref": "_models/reversals.json"
+                    "reversals": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "_models/reversals.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
                 }
             ]
         }
-    }
+    },
+    "required": [
+        "id",
+        "href",
+        "occurred_at",
+        "type",
+        "entity"
+    ]
 }
