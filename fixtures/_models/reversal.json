@@ -49,6 +49,10 @@
                 "null"
             ]
         },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "RV[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
         "meta": {
             "type": "object"
         },
