@@ -36,7 +36,7 @@ When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.put(@client.hydrater(url), body)
+  @client.put(@client.hydrater(url), @client.hydrater(body))
 end
 
 require 'json-schema'

@@ -38,3 +38,49 @@ Feature: Customers
     When I DELETE to /customers/:customer_id giving the customer_id
     Then I should get a 204 OK status code
     And there should be no response body
+
+  @failing
+  Scenario: Add a card to a customer
+    Given I have tokenized a card
+    And I have created a customer
+    When I PUT to /cards/:card_id with the JSON API body:
+    """
+    {
+      "links": {
+        "customer": ":customer_id"
+      }
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+    """
+    {
+      "links": {
+        "customer": ":customer_id"
+      }
+    }
+    """
+
+  @failing
+  Scenario: Add a bank account to a customer
+    Given I have tokenized a bank account
+    And I have created a customer
+    When I PUT to /bank_accounts/:bank_account_id with the JSON API body:
+    """
+    {
+      "links": {
+        "customer": ":customer_id"
+      }
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank_account match:
+    """
+    {
+      "links": {
+        "customer": ":customer_id"
+      }
+    }
+    """
