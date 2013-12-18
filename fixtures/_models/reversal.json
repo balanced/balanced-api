@@ -4,85 +4,89 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "RV[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "amount": {
             "type": "integer",
-            "minimum": 1,
-            "required": true
+            "minimum": 1
         },
         "currency": {
             "type": "string",
             "enum": [
                 "USD"
-            ],
-            "required": true
+            ]
         },
         "description": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "status": {
-            "$ref": "status.json",
-            "required": true
+            "$ref": "status.json"
         },
         "failure_reason_code": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "failure_reason": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "credit": {
                     "type": "string",
-                    "pattern": "CR[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "CR[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
                     "type": [
                         "null",
                         "string"
                     ],
-                    "pattern": "OR[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "credit",
+                "order"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "description",
+        "status",
+        "failure_reason_code",
+        "failure_reason",
+        "meta",
+        "links"
+    ]
 }

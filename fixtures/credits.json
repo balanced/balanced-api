@@ -8,32 +8,27 @@
                 "credits.reversals": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/credits/{credits.id}/reversals",
-                    "required": true
+                    "pattern": "/credits/{credits.id}/reversals"
                 },
                 "credits.customer": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/customers/{credits.customer}",
-                    "required": true
+                    "pattern": "/customers/{credits.customer}"
                 },
                 "credits.order": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/orders/{credits.order}",
-                    "required": true
+                    "pattern": "/orders/{credits.order}"
                 },
                 "credits.destination": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/resources/{credits.destination}",
-                    "required": true
+                    "pattern": "/resources/{credits.destination}"
                 },
                 "credits.events": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/credits/{credits.id}/events",
-                    "required": true
+                    "pattern": "/credits/{credits.id}/events"
                 }
             },
             "required": [
@@ -45,8 +40,7 @@
             ]
         },
         "meta": {
-            "type": "object",
-            "required": false
+            "type": "object"
         },
         "credits": {
             "items": {
@@ -54,8 +48,7 @@
             },
             "type": "array",
             "minItems": 1,
-            "uniqueItems": true,
-            "required": true
+            "uniqueItems": true
         }
     },
     "required": [

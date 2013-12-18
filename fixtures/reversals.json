@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "reversals.credit": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/credits/{reversals.credit}",
+                    "required": true
+                },
+                "reversals.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/orders/{reversals.order}",
+                    "required": true
+                },
+                "reversals.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/reversals/{reversals.id}/events",
+                    "required": true
+                }
+            },
+            "required": [
+                "reversals.credit",
+                "reversals.order",
+                "reversals.events"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "reversals": {
+            "items": {
+                "$ref": "_models/reversal.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "reversals"
+    ]
+}

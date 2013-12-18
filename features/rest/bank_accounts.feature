@@ -59,7 +59,7 @@ Feature: Bank accounts
     And the response is valid according to the "bank_accounts" schema
 
   Scenario: Credit a bank account
-    Given I have sufficient funds in my marketplaces
+    Given I have sufficient funds in my marketplace
     And I have tokenized a bank account
     When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
