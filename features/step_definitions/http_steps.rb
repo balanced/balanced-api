@@ -2,6 +2,10 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   @client.verb(verb, @client.hydrater(url))
 end
 
+When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
+  step "I #{verb} to #{url}"
+end
+
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
   # use for tokenizing cards and bank accounts
   options = {
