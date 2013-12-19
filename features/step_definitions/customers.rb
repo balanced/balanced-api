@@ -12,6 +12,10 @@ When(/^I GET to \/customers\/:customer_id giving the customer_id$/) do
   @client.get("/customers/#{@customer_id}")
 end
 
+When(/^I GET to \/resources\/:customer_id giving the customer_id$/) do
+  @client.get("/resources/#{@customer_id}")
+end
+
 When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
   options = {
     headers: {
