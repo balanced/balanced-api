@@ -6,6 +6,30 @@ When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
   step "I #{verb} to #{url}"
 end
 
+def env
+  {
+    "bank_accounts_id" => @bank_account_id,
+    "credits_id" => @credit_id,
+  }
+end
+
+
+When(/^I make a POST request to the href "(.*?)"$/) do |keys|
+  @client.post(@client.inject(keys), {}, env)
+end 
+
+When(/^I make a POST request to the link "(.*?)" with the body:$/) do |keys, body|
+  body = @client.post(@client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
+  @credit_id = @client['credits']['id'] rescue nil
+  body
+end 
+
+When(/^I make a POST request to the link "(.*?)"$/) do |keys|
+  body = @client.post(@client.hydrater(@client.last_body["links"][keys]), {}, env)
+  @credit_id = @client['credits']['id'] rescue nil
+  body
+end 
+
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
   # use for tokenizing cards and bank accounts
   options = {

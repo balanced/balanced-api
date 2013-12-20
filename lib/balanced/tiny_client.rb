@@ -15,7 +15,7 @@ module Balanced
       @hydrate_tokens = {}
     end
 
-    def post(endpoint, body)
+    def post(endpoint, body, env={})
       body = JSON.parse(body) if body.is_a? String
       options = {
         headers: {
@@ -28,7 +28,16 @@ module Balanced
         }
       }
 
-      response = HTTParty.post("#{@root_url}#{endpoint}", options)
+      require 'uri_template'
+      # I am so sorry
+      template = "#{@root_url}#{endpoint}".gsub(/{(.*?)}/) do
+        "{#{$1.gsub(".", "_")}}"
+      end
+      # TODO: does using . in uri variables make sense? http://tools.ietf.org/html/rfc6570#section-3.2.1
+      template = URITemplate.new(template)
+      url = template.expand(env)
+
+      response = HTTParty.post(url, options)
       @responses << response
       response
     end
@@ -63,7 +72,7 @@ module Balanced
       @responses << response
     end
 
-    def verb(verb, url)
+    def verb(verb, url, env={})
       options = {
         headers: {
           'Accept' => @accept_header

@@ -30,6 +30,17 @@ options = {
 
 HTTParty.post("#{$root_url}/marketplaces", options)
 
+# create an initial amount of money in the marketplace
+# Sorry, whoever owns this card. ;)
+HTTParty.post("#{$root_url}/debits", options.merge(body: {
+        amount: 10_000_000, # WE"RE RICH!!!!
+        source: {
+          number: "4111111111111111",
+          expiration_year: "2018",
+          expiration_month: 12
+        }
+}))
+
 $:.unshift(File.dirname(__FILE__)+'/../../lib')
 
 require 'balanced/tiny_client'

@@ -20,6 +20,7 @@ GEM
     multi_test (0.0.2)
     multi_xml (0.5.5)
     rake (10.1.0)
+    uri_template (0.6.0)
 
 PLATFORMS
   ruby
@@ -29,3 +30,4 @@ DEPENDENCIES
   httparty
   json-schema
   rake
+  uri_template
