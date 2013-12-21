@@ -10,6 +10,7 @@ def env
   {
     "bank_accounts_id" => @bank_account_id,
     "credits_id" => @credit_id,
+    "cards_id" => @card_id,
   }
 end
 
@@ -21,6 +22,7 @@ end
 When(/^I make a POST request to the link "(.*?)" with the body:$/) do |keys, body|
   body = @client.post(@client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
+  @cards_id = @client['cards']['id'] rescue nil
   body
 end 
 
