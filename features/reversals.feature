@@ -54,3 +54,24 @@ Feature: Reversals
     When I make a POST request to the link "credits.reversals"
     Then I should get a 201 Created status code
     And the response is valid according to the "reversals" schema
+
+  Scenario: Reverse a bank account credit
+
+    When I POST to /credits with the JSON API body:
+      """
+      {
+        "amount": 1234,
+        "destination": {
+          "name": "Michael Jordan",
+          "account_number": "9900000095",
+          "routing_number": "021000021",
+          "account_type": "checking"
+        }
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+    When I make a POST request to the link "credits.reversals"
+    Then I should get a 201 Created status code
+    And the response is valid according to the "reversals" schema
