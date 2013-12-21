@@ -60,7 +60,9 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
 end
 
 When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.post(@client.hydrater(url), body)
+  body = @client.post(@client.hydrater(url), body)
+  @credit_id = @client['credits']['id'] rescue nil
+  body
 end
 
 When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
