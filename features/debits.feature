@@ -9,7 +9,7 @@ Feature: Debit cards
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
-  Scenario: Debit a card
+  Scenario: Debit a customer card
     Given I have tokenized a customer card
     When I make a POST request to the link "cards.debits" with the body:
       """
