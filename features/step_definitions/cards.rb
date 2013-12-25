@@ -27,6 +27,18 @@ Given(/^I have tokenized a customer card$/) do
   @client.add_hydrate(:card_id, @card_id)
 end
 
+Given(/^I have debited that card$/) do
+  @client.post(@client.hydrater(@client.last_body["links"]["cards.debits"]),
+    {
+      amount: 2000,
+    },
+    env
+  )
+  @debit_id = @client['debits']['id']
+  @client.add_hydrate(:debit_id, @debit_id)
+end
+
+
 Given(/^I have tokenized more than one card$/) do
   2.times { step "I have tokenized a card" }
 end
