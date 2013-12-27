@@ -12,6 +12,7 @@ def env
     "credits_id" => @credit_id,
     "cards_id" => @card_id,
     "debits_id" => @debit_id,
+    "customers_id" => @customer_id,
   }
 end
 
