@@ -14,6 +14,7 @@ options = {
 }
 response = HTTParty.post("#{$root_url}/api_keys", options)
 $api_secret = JSON.parse(response.body)["api_keys"][0]["secret"]
+puts "SECRET: #{$api_secret}"
 
 # Now that we have our key, we need to make a marketplace. Lots of our scenarios
 # will fail unless we've made at least one.
@@ -28,7 +29,9 @@ options = {
   },
 }
 
-HTTParty.post("#{$root_url}/marketplaces", options)
+response = HTTParty.post("#{$root_url}/marketplaces", options)
+marketplace_id = response["marketplaces"][0]["id"]
+puts "MARKETPLACE: #{marketplace_id}"
 
 # create an initial amount of money in the marketplace
 # Sorry, whoever owns this card. ;)
