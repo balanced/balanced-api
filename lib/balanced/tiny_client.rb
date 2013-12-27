@@ -60,6 +60,25 @@ module Balanced
       response
     end
 
+    def patch(endpoint, body)
+      body = JSON.parse(body) if body.is_a? String
+      options = {
+        headers: {
+          'Accept' => @accept_header,
+          'Content-Type' => "application/json", # github: https://github.com/balanced/balanced-api/issues/458
+        },
+        body: JSON.dump(body), # sometimes we send arrays and then it gets confused
+        basic_auth: {
+          username: @api_secret,
+          password: '',
+        }
+      }
+
+      response = HTTParty.patch("#{@root_url}#{endpoint}", options)
+      @responses << response
+      response
+    end
+
     def get(endpoint)
       verb 'GET', endpoint
     end
