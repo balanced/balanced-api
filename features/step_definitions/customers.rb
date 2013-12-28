@@ -3,7 +3,7 @@ Given(/^I have created a customer$/) do
   @customer_id = @client['id']
   @client.add_hydrate :customer_id, @customer_id
 
-  customer_url = @client['customers']['href']
+  @customer_url = @client['customers']['href']
 
   # tokenize a card for them
   @client.post('/cards',
@@ -19,8 +19,8 @@ Given(/^I have created a customer$/) do
     }
   )
   card_url = @client['cards']['href']
-  card_id = @client['cards']['id']
-  @client.patch(card_url, 
+  @card_id = @client['cards']['id']
+  @client.patch(card_url,
     [{
       op: "replace",
       path: "/cards/0/links/customer",
@@ -29,18 +29,18 @@ Given(/^I have created a customer$/) do
   )
   
   # associate their card so that they have a funding source
-  @client.patch(customer_url, 
+  @client.patch(@customer_url,
     [{
       op: "replace",
       path: "/customers/0/links/source",
-      value: card_id
+      value: @card_id
     }]
   )
 
   ## TODO: fix hax
   # Right now, we rely on last_body in places becuase the client is mutable
   # this is bad and we should stop it.
-  @client.get(customer_url)
+  @client.get(@customer_url)
 end
 
 

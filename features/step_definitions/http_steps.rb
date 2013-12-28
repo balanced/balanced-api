@@ -25,6 +25,7 @@ When(/^I make a POST request to the link "(.*?)" with the body:$/) do |keys, bod
   body = @client.post(@client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
+  @debit_url = @client['debits']['href'] rescue nil
   body
 end 
 
