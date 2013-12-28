@@ -22,6 +22,10 @@ Given(/^I have a verified bank account$/) do
                 amount_1: 1,
                 amount_2: 1
               })
+  # TODO: fix hax
+  # client has mutable state, we care about the account, not the verification
+
+  @client.get("/bank_accounts/#{@bank_account_id}")
 end
 
 Given(/^I have a bank account with a verification$/) do
