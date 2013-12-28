@@ -28,6 +28,17 @@ Given(/^I have a verified bank account$/) do
   @client.get("/bank_accounts/#{@bank_account_id}")
 end
 
+Given(/^I have attempted to verify a bank account and failed$/) do
+  @client.post('/bank_accounts', {
+    name: "Karl Malone",
+    account_number: "9900000004",
+    routing_number: "021000021",
+    account_type: "checking",
+  })
+  @bank_account_id = @client['bank_accounts']['id']
+  @client.add_hydrate(:bank_account_id, @bank_account_id)
+end
+
 Given(/^I have a bank account with a verification$/) do
   step 'I have tokenized a bank account'
   @client.post("/bank_accounts/#{@bank_account_id}/verifications", {})

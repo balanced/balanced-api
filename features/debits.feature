@@ -30,3 +30,16 @@ Feature: Debit cards
       """
       { "status": "succeeded" }
       """
+
+  Scenario: Debits to unverified bank accounts fail
+    Given I have attempted to verify a bank account and failed
+    When I make a POST request to the link "bank_accounts.debits" with the body:
+      """
+      { "amount": 20000 }
+      """
+    Then I should get a 409 Conflict status code
+    And the response is valid according to the "debits" schema
+    And the fields on these debits match:
+      """
+      { "status": "failed" }
+      """
