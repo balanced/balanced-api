@@ -2,6 +2,10 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   @client.verb(verb, @client.hydrater(url))
 end
 
+When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
+  @client.verb(verb, @client.hydrater(url), body)
+end
+
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
   step "I #{verb} to #{url}"
 end
@@ -21,8 +25,8 @@ When(/^I make a POST request to the href "(.*?)"$/) do |keys|
   @client.post(@client.inject(keys), {}, env)
 end 
 
-When(/^I make a POST request to the link "(.*?)" with the body:$/) do |keys, body|
-  body = @client.post(@client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
+When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
+  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
   @debit_url = @client['debits']['href'] rescue nil
