@@ -1,6 +1,6 @@
 Feature: Bank accounts
-  The bank account resource respresent a funding source or
-  destiation that is backed by a bank account.  Marketplaces
+  The bank account resource respresents a funding source or
+  destination that is backed by a bank account.  Marketplaces
   are able to credit out to bank accounts without doing any verifications
   but to debit from a bank account, micro deposit verifications are
   required.
