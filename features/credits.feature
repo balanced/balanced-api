@@ -15,3 +15,17 @@ Feature: Credit cards
        "category_code": "not-found"
       }
     """
+
+  Scenario: Credit a customer
+    Given I have a customer with a tokenized bank account
+    When  I POST to /customers/:customers_id/credit with the JSON API body:
+    """
+      {
+        "amount": 500
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+
+
+ 
