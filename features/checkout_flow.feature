@@ -130,7 +130,7 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "debits" schema
-    """
+      """
         {
           "description": "Catherine Malandrino Black Top",
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
@@ -142,7 +142,7 @@ Feature: Credit cards
 
 
    When I make a PUT request to /orders/:order_id with the JSON API body:
-    """
+      """
         {
           "meta": {
           "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
@@ -152,7 +152,7 @@ Feature: Credit cards
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
-    """
+      """
           {
             "meta": {
               "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
@@ -162,8 +162,80 @@ Feature: Credit cards
           }
       """
 
+  Scenario: Existing buyer makes a purchase with an existing card
+    When I make a GET request to /customers/:customer_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "customers" schema
+
+    Then I make a GET request to "customers.source"
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+
+    When I make a POST request to /customers/:customer_id/orders with the body:
+      """
+        {
+          "description": "Catherine Malandrino Black Top",
+          "delivery_address": {
+            "line1": "965 Mission St",
+            "line2": "Suite 425",
+            "city": "San Francisco",
+            "state": "CA",
+            "postal_code": "94103"
+          },
+          "meta": {
+            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
+          }
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "orders" schema
+      """
+        {
+        "links":{ "merchant": "#{@customers_id}"
+        }
+      """
+
+    When I make a POST request to "customers.debits" with the body
+      """
+        {
+          "amount": 10000,
+          "order": "#{@orders_id}",
+          "appears_on_statement_as": "Vaunte-Alice Ryan"
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "debits" schema
+      """
+        {
+          "description": "Catherine Malandrino Black Top",
+          "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
+          "status": "succeeded",
+          "links": {
+            "order": "#{@orders_id}",
+        }
+      """
 
 
+    When I make a PUT request to /orders/:order_id with the JSON API body:
+      """
+          {
+            "meta": {
+            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+            "courier": "usps",
+            "tracking_number": "9405510899359008595488"
+          }
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "orders" schema
+      """
+        {
+          "meta": {
+            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+            "courier": "usps",
+            "tracking_number": "9405510899359008595488"
+          }
+        }
+      """
 
 
 
