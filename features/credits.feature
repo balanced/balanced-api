@@ -42,6 +42,5 @@ Feature: Credit cards
       {
        "category_code": "no-funding-destination"
       }
-    """
-
+`    """
 
