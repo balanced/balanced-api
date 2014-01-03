@@ -357,4 +357,3 @@ Feature: Credit cards
             }
           }
       """
-
