@@ -232,3 +232,122 @@ Feature: Credit cards
           "brand": "Discover"
         }
       """
+
+  Scenario: Retrieving a card
+    Given I have a tokenized card
+    When  I make a GET request to /cards/:card_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+          "name": null,
+          "number": "xxxxxxxxxxxx1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": xxx,
+          "cvv_match": "yes",
+          "cvv_result": "Match",
+          "address": {
+            "line1": "965 Mission St",
+            "line2": null,
+            "city": null,
+            "state": null,
+            "postal_code": "94103",
+            "country_code": null
+          },
+          "avs_street_match": "yes",
+          "avs_postal_match": "yes",
+          "avs_result": "Postal code matches, but street address not verified.",
+          "brand": "Visa",
+          "meta": {}
+        }
+      """
+
+  Scenario: Tokenizing a card
+    When I make a POST request to /cards with the body
+      """
+        {
+          "number": "4111 1111 1111 1111",
+          "expiration_month": "12",
+          "expiration_year": "2016"
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+
+    When I make a POST request to /cards with the body
+      """
+        {
+          "name": "Frida Kahlo",
+          "number": "4111 1111 1111 1111",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "name": "Frida Kahlo"
+        }
+      """
+
+    When I make a POST request to /cards with the body
+      """
+        {
+          "number": "4111 1111 1111 1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "state": null,
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }
+      """
+
+  Scenario: Tokenization fails luhn test
+    When I make a POST request to /cards with the body
+      """
+        {
+          "number": "4111 1111 1111 1112",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+    Then I should get a 409 status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+        {
+          "category_code": "card-not-validated"
+        }
+      """
+
+  Scenario: Unstore a card
+    Given I have a tokenized card
+    When I make a DELETE request to /cards/:card_id
+    Then I should get a 204 status code
+   
