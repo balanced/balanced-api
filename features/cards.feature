@@ -97,4 +97,67 @@ Feature: Credit cards
         {
          "avs_postal_match": null
         }
-      ""
+     """
+
+ Scenario: AVS street matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "965 Mission St",
+            "postal_code": "94103"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "avs_street_match": "yes"
+        }
+      """
+
+  Scenario: AVS street does not matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "21 Jump St",
+            "postal_code": "90210"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "avs_street_match": "no"
+        }
+      """
+
+  Scenario: AVS street match is null
+    When I make a POST request to /cards with the body:
+    """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+          "avs_street_match": null
+        }
+      """
+
