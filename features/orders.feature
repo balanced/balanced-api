@@ -202,7 +202,7 @@ Feature: Orders
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": "#{@orders_id}",
+       "order": "#{@orders_id}",
         "amount": 1234
       }
     """
@@ -212,15 +212,13 @@ Feature: Orders
     """
       {
         "amount": 1234,
-        "order": "#{@orders_id}",
+        "order": "{order,orders.href}"
       }
     """
     Then I should get a 409 status code
-    And the response is valid according to the "errors" schema
-    And the fields on this error match:
     """
       {
-        "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
+         "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
         "category_code": "order-kyc"
       }
     """
