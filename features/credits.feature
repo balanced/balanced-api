@@ -1,4 +1,5 @@
-Feature: Credit cards
+Feature: Credits
+  Credits are used for sending money to a customer
 
   @failing
   Scenario: Crediting a deleted card leads to failure
@@ -17,22 +18,20 @@ Feature: Credit cards
       }
     """
 
-  @failing
   Scenario: Credit a customer
     Given I have a customer with a tokenized bank account
-    When  I POST to /customers/:customers_id/credit with the JSON API body:
+    When  I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
         "amount": 500
       }
     """
     Then I should get a 201 Created status code
-    And the response is valid according to the "debits" schema
+    And the response is valid according to the "credits" schema
 
-  @failing
   Scenario: Crediting without a funding source leads to failure
-    Given I have a customer without an associated funding instrument
-    When I POST to /customers/:customers_id/credit with the JSON API body:
+    Given I have created a customer
+    When I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
         "amount": 1234
@@ -45,5 +44,4 @@ Feature: Credit cards
       {
        "category_code": "no-funding-destination"
       }
-`    """
-
+    """
