@@ -43,6 +43,8 @@ Status Codes
 
 **401** Unauthorized - HTTP Authentication must be used to access the requested URI.
 
+**402** Payment Required
+
 **404** Not Found - Requested URI doesn't exist.
 
 **405** Method Not Allowed - HTTP method used is not allowed for the requested URI.
