@@ -8,6 +8,7 @@ Feature: Orders
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
 
+
   @failing
   Scenario: Checking escrow of order after creating a debit
     Given I have tokenized a customer card
@@ -97,6 +98,7 @@ Feature: Orders
         "amount_escrowed": 0
       }
     """
+
 
 
   @failing
@@ -202,6 +204,7 @@ Feature: Orders
         { "description": "Beats by Dr. Dre"}
       }
     """
+
 
   @failing
   Scenario: Crediting an unverified merchant will result in failure

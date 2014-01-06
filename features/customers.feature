@@ -54,6 +54,7 @@ Feature: Customers
       }
       """
 
+
   @failing
   Scenario: Set the default destination
     When I make a PATCH request to the link "href" with the body:
@@ -72,6 +73,7 @@ Feature: Customers
         "links": { "destination": "#{@bank_accounts_id}" }
       }
     """
+
 
   @failing
   Scenario: Underwrite a customer
@@ -108,4 +110,3 @@ Feature: Customers
       "merchant_status": "underwritten"
     }
     """
-

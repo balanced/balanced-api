@@ -44,6 +44,7 @@ Feature: Credit cards
         }
       """
 
+
   @failing
   Scenario: Existing buyer makes a purchase with a new card
     When I make a GET request to /customers/:customer_id
@@ -244,6 +245,7 @@ Feature: Credit cards
           }
         }
       """
+
 
   @failing
   Scenario: New buyer makes a purchase
