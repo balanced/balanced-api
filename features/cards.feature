@@ -350,4 +350,79 @@ Feature: Credit cards
     Given I have a tokenized card
     When I make a DELETE request to /cards/:card_id
     Then I should get a 204 status code
-   
+
+
+  Scenario: CVV matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "123"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": "yes"
+        }
+      """
+
+  Scenario: CVV does not match
+    When I make a POST request to /cards with the body:
+      """
+        {
+           "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "902"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "cvv_match": "no"
+        }
+      """
+
+  Scenario: CVV is unsupported
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "901"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": "unsupported"
+        }
+      """
+
+  Scenario: CVV is unused
+    When I make a POST request to /cards with the body:
+    """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": null
+        }
+     """
