@@ -32,7 +32,6 @@ Feature: Reversals
     Then I should get a 400 status code
     And the response is valid according to the "errors" schema
 
-  @failing
   Scenario: Reverse a bank account credit
 
     When I POST to /credits with the JSON API body:
@@ -41,7 +40,7 @@ Feature: Reversals
         "amount": 1234,
         "destination": {
           "name": "Michael Jordan",
-          "account_number": "9900000004",
+          "account_number": "9900000095",
           "routing_number": "021000021",
           "account_type": "checking"
         }
