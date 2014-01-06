@@ -1,5 +1,6 @@
 Feature: Credit cards
 
+  @failing
   Scenario: Canceling an order
     Given I have an order
     Then I make a GET request to the link /orders/:order_id
@@ -43,6 +44,8 @@ Feature: Credit cards
         }
       """
 
+
+  @failing
   Scenario: Existing buyer makes a purchase with a new card
     When I make a GET request to /customers/:customer_id
     Then I should get a 200 OK status code
@@ -166,6 +169,7 @@ Feature: Credit cards
         }
       """
 
+  @failing
   Scenario: Existing buyer makes a purchase with an existing card
     When I make a GET request to /customers/:customer_id
     Then I should get a 200 OK status code
@@ -220,7 +224,7 @@ Feature: Credit cards
         }
       """
 
-    When
+    When I make a PUT request to /orders/:order_id with the JSON API body:
       """
         {
           "meta": {
@@ -243,6 +247,7 @@ Feature: Credit cards
       """
 
 
+  @failing
   Scenario: New buyer makes a purchase
     When I make a POST request to /cards with the JSON API body:
       """

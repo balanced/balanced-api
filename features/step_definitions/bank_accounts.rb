@@ -45,3 +45,13 @@ Given(/^I have a bank account with a verification$/) do
   @bank_account_verification_id = @client['bank_account_verifications']['id']
   @client.add_hydrate :bank_account_verification_id, @bank_account_verification_id
 end
+
+Given(/^I have a customer with a tokenized bank account$/) do
+  step 'I have created a customer'
+  step 'I have tokenized a bank account'
+  @client.put("/bank_accounts/#{@bank_account_id}", {
+                 links: {
+                   customer: @customer_id
+                 }
+               })
+end

@@ -23,7 +23,7 @@ end
 
 When(/^I make a POST request to the href "(.*?)"$/) do |keys|
   @client.post(@client.inject(keys), {}, env)
-end 
+end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
@@ -31,13 +31,13 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   @cards_id = @client['cards']['id'] rescue nil
   @debit_url = @client['debits']['href'] rescue nil
   body
-end 
+end
 
 When(/^I make a POST request to the link "(.*?)"$/) do |keys|
   body = @client.post(@client.hydrater(@client.last_body["links"][keys]), {}, env)
   @credit_id = @client['credits']['id'] rescue nil
   body
-end 
+end
 
 When(/^I POST to (\/.*) without my secret key with the JSON API body:$/) do |url, body|
   # use for tokenizing cards and bank accounts
@@ -122,6 +122,12 @@ end
 
 Then(/^there should be more than two (.*) paged$/) do |name|
   assert @client.last_body[name].size >= 2, "There were not more than two #{name}"
+end
+
+
+Then(/^debug$/) do
+  puts "HTTP status code: #{@client.last_code}"
+  puts "HTTP body: #{@client.last_body}"
 end
 
 # TODO: move?

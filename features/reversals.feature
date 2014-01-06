@@ -1,5 +1,5 @@
 Feature: Reversals
-  
+
   Scenario: Reverse a credit.
 
     Given I have tokenized a bank account
@@ -14,7 +14,6 @@ Feature: Reversals
     Then I should get a 201 Created status code
     And the response is valid according to the "reversals" schema
 
-  @failing
   Scenario: Failed reversal
     You can't reverse a particular amount.
 
@@ -33,7 +32,7 @@ Feature: Reversals
     Then I should get a 400 status code
     And the response is valid according to the "errors" schema
 
-  @failing 
+  @failing
   Scenario: Reverse a bank account credit
 
     When I POST to /credits with the JSON API body:

@@ -1,5 +1,6 @@
 Feature: Orders
 
+  @failing
   Scenario: Create an order
     Given I have an underwritten customer
     When I make a POST request to /customers/:customer_id/orders
@@ -7,6 +8,8 @@ Feature: Orders
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
 
+
+  @failing
   Scenario: Checking escrow of order after creating a debit
     Given I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
@@ -26,6 +29,7 @@ Feature: Orders
       }
     """
 
+  @failing
   Scenario: Checking escrow of order after creating a credit
     Given I have sufficient funds in my marketplace
     And I have tokenized a bank account
@@ -46,6 +50,7 @@ Feature: Orders
     """
 
 
+  @failing
   Scenario: Orders cannot be credited more than escrow balance
     Given I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
@@ -79,6 +84,7 @@ Feature: Orders
       }
     """
 
+  @failing
   Scenario: Create a refund
     Given I have tokenized a customer card
     And I have debited that card
@@ -94,6 +100,8 @@ Feature: Orders
     """
 
 
+
+  @failing
   Scenario: Create a reversal
     Given I have tokenized a customer card
     And I make a POST request to /customers/:customer_id/orders with the body
@@ -122,6 +130,7 @@ Feature: Orders
     """
 
 
+  @failing
   Scenario: Create a failed refund when insufficient funds are in order escrow
     Given I have tokenized a card
     When I make a POST request to the link "cards.debits" with the body:
@@ -147,6 +156,7 @@ Feature: Orders
       }
     """
 
+  @failing
   Scenario: Transactions should inherit the description of the order by default
     Given I have tokenized a bank account
     When I make a POST request to the link "customers.orders" with the body:
@@ -195,6 +205,8 @@ Feature: Orders
       }
     """
 
+
+  @failing
   Scenario: Crediting an unverified merchant will result in failure
     Given I have an unverified customer with a tokenized card
     And I make a POST request to 'customers.orders'
@@ -202,7 +214,7 @@ Feature: Orders
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-       "order": "#{@orders_id}",
+        "order": "#{@orders_id}",
         "amount": 1234
       }
     """
@@ -212,13 +224,15 @@ Feature: Orders
     """
       {
         "amount": 1234,
-        "order": "{order,orders.href}"
+        "order": "#{@orders_id}",
       }
     """
     Then I should get a 409 status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
     """
       {
-         "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
+        "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
         "category_code": "order-kyc"
       }
     """

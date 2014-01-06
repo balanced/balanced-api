@@ -53,9 +53,8 @@ Feature: Debit cards
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
-   @failing @gh-460
    Scenario: Failing to debit a customer
-     Given I have created a customer
+     Given I have created a customer without a card and bank account
      When I make a POST request to the link "customers.debits" with the body:
       """
       { "amount": 8979 }

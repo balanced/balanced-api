@@ -27,7 +27,7 @@ Given(/^I have created a customer$/) do
       value: @customer_id,
     }]
   )
-  
+
   # associate their card so that they have a funding source
   @client.patch(@customer_url,
     [{
@@ -41,6 +41,14 @@ Given(/^I have created a customer$/) do
   # Right now, we rely on last_body in places becuase the client is mutable
   # this is bad and we should stop it.
   @client.get(@customer_url)
+end
+
+Given(/^I have created a customer without a card and bank account$/) do
+  @client.post('/customers', {})
+  @customer_id = @client['id']
+  @client.add_hydrate :customer_id, @customer_id
+
+  @customer_url = @client['customers']['href']
 end
 
 
