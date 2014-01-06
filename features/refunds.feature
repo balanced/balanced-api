@@ -1,5 +1,5 @@
 Feature: Refunds
- 
+
   Scenario: Create a refund
     Given I have tokenized a customer card
     And I have debited that card
@@ -8,7 +8,6 @@ Feature: Refunds
     Then I should get a 201 Created status code
     And the response is valid according to the "refunds" schema
 
-  @failing @gh-459
   Scenario: Create a failed refund
     Given I have tokenized a customer card
     And I have debited that card
