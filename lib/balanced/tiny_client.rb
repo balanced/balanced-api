@@ -83,7 +83,7 @@ module Balanced
       verb 'GET', endpoint
     end
 
-    def delete(endpoint)
+    def delete(endpoint, body=nil, env={})
       verb 'DELETE', endpoint
     end
 

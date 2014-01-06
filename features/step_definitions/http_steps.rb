@@ -21,8 +21,9 @@ def env
 end
 
 
-When(/^I make a POST request to the href "(.*?)"$/) do |keys|
-  @client.post(@client.inject(keys), {}, env)
+When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
+  link = @client[keys] || @client.inject(keys)
+  @client.send(verb.downcase, link, {}, env)
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
@@ -33,8 +34,8 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body
 end
 
-When(/^I make a POST request to the link "(.*?)"$/) do |keys|
-  body = @client.post(@client.hydrater(@client.last_body["links"][keys]), {}, env)
+When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
+  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
   @credit_id = @client['credits']['id'] rescue nil
   body
 end
