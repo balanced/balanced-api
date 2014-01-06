@@ -42,7 +42,7 @@ module Balanced
       response
     end
 
-    def put(endpoint, body)
+    def put(endpoint, body, env={})
       body = JSON.parse(body) if body.is_a? String
       options = {
         headers: {
