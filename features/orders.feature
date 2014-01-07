@@ -148,15 +148,17 @@ Feature: Orders
     When I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": "#{@orders_id}",
+        "order": "<%= @orders_id %>",
         "amount": 1234
       }
     """
     And I have tokenized a bank account
     Then I make a POST request to the link "bank_accounts.credits" with the body:
     """
-        "order": "#{@orders_id}",
+      {
+        "order": "<%= @orders_id %>",
         "amount": 1234
+      }
     """
     When I make a POST request to the link "debits.refunds"
     Then I should get a 409 status code
@@ -190,7 +192,7 @@ Feature: Orders
     """
       {
         "amount": 10000,
-        "order": "#{@orders_id}",
+        "order": "<%= @orders_id %>",
       }
     """
 
@@ -206,7 +208,7 @@ Feature: Orders
     """
       {
         "amount": 10000,
-        "order": "#{@orders_id}",
+        "order": "<%= @orders_id %>",
       }
     """
     Then I should get a 201 Created status code
@@ -225,7 +227,7 @@ Feature: Orders
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": "#{@orders_id}",
+        "order": "<%= @orders_id %>",
         "amount": 1234
       }
     """
@@ -235,7 +237,7 @@ Feature: Orders
     """
       {
         "amount": 1234,
-        "order": "#{@orders_id}",
+        "order": "<%= @orders_id %>",
       }
     """
     Then I should get a 409 status code
