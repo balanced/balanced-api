@@ -76,7 +76,7 @@ Feature: Orders
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "order": "#{@orders_id}",
+      "order": "<%= @orders_id %>",
       "amount": 2000
     }
     """
