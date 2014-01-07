@@ -4,68 +4,58 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "OR[a-zA-Z0-9]{16,32}",
-            "required": true
+            "pattern": "OR[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "currency": {
             "type": "string",
             "enum": [
                 "USD"
-            ],
-            "required": true
+            ]
         },
         "amount": {
             "type": "integer",
-            "minimum": 0,
-            "required": true
+            "minimum": 0
         },
         "amount_escrowed": {
             "type": "integer",
-            "minimum": 0,
-            "required": true
+            "minimum": 0
         },
         "description": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "delivery_address": {
-            "$ref": "address.json",
-            "required": true
+            "$ref": "address.json"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "merchant": {
                     "type": "string",
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [ "merchant" ],
             "additionalProperties": false
         }
     },
+    "required": ["id", "href", "created_at", "updated_at", "currency", "amount", "amount_escrowed", "description", "delivery_address", "meta", "links"],
     "additionalProperties": false
 }

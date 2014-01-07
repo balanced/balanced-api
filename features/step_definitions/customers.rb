@@ -1,5 +1,13 @@
 Given(/^I have created a customer$/) do
-  @client.post('/customers', {})
+  @client.post('/customers', 
+    {
+      name: 'Henry Ford',
+      dob: '1863-07',
+      address: {
+        postal_code: '48120'
+      }
+    }
+  )
   @customer_id = @client['id']
   @client.add_hydrate :customer_id, @customer_id
 

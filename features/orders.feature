@@ -1,8 +1,8 @@
 Feature: Orders
 
-  @failing
+  @failing @gh-469
   Scenario: Create an order
-    Given I have an underwritten customer
+    Given I have created a customer
     When I make a POST request to /customers/:customer_id/orders
 
     Then I should get a 201 Created status code
