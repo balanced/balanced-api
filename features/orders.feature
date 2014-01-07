@@ -89,15 +89,17 @@ Feature: Orders
       }
     """
 
-  @failing
+  @failing @gh-469
   Scenario: Create a refund
-    Given I have tokenized a customer card
+    Given I have created an order
+    And I have tokenized a customer card
     And I have debited that card
 
     When I make a POST request to the link "debits.refunds"
-    And I make a GET request to the link /orders/:order_id
+    And I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
-    And the response is valid according to the "order" schema
+    And the response is valid according to the "orders" schema
+    And the fields on this error match:
     """
       {
         "amount_escrowed": 0
