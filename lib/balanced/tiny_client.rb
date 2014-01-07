@@ -101,8 +101,10 @@ module Balanced
     def verb(verb, url, env={}, body=nil)
       options = {
         headers: {
-          'Accept' => @accept_header
+          'Accept' => @accept_header,
+          'Content-Type' => "application/json", # github: https://github.com/balanced/balanced-api/issues/458
         },
+        body: JSON.dump(body), # sometimes we send arrays and then it gets confused
         basic_auth: {
           username: @api_secret,
           password: '',

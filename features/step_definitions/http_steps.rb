@@ -9,6 +9,10 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
+  $logger.debug("Making request to #{url}")
+  $logger.debug("hydrated: #{@client.hydrater(url)}")
+  body = @client.hydrater body
+  $logger.debug("body: #{body}")
   @client.verb(verb, @client.hydrater(url), env, body)
 end
 

@@ -16,22 +16,23 @@ Feature: Customers
       }
       """
 
-  @failing
   Scenario: Set the default destination
-    When I make a PATCH request to the link "href" with the body:
+    Given I have created a customer without a card and bank account
+    And I have tokenized a bank account
+    When I make a PATCH request to /customers/:customer_id with the body:
     """
-      {
-        "op": "replace",
-        "path": "/customers/0/links/destination",
-        "value": "#{@bank_accounts_id}"
-      }
+    [{
+      "op": "replace",
+      "path": "/customers/0/links/destination",
+      "value": ":bank_account_id"
+    }]
     """
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
     And the fields on this customer match:
     """
       {
-        "links": { "destination": "#{@bank_accounts_id}" }
+        "links": { "destination": ":bank_account_id" }
       }
     """
 
@@ -48,11 +49,11 @@ Feature: Customers
     And the fields on this customer match:
     """
     {
-      "merchant_status": "need-more-information"
+      "merchant_status": "no-match"
     }
     """
 
-    When I make a PUT request to the link "href" with the body:
+    When I PUT to /customers/:customer_id with the body:
     """
     {
       "dob_month": 7,
@@ -62,6 +63,7 @@ Feature: Customers
       }
     }
     """
+    Then debug
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
     And the fields on this customer match:
@@ -70,4 +72,3 @@ Feature: Customers
       "merchant_status": "underwritten"
     }
     """
-
