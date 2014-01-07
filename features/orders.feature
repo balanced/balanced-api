@@ -99,7 +99,7 @@ Feature: Orders
     And I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
-    And the fields on this error match:
+    And the fields on this order match:
     """
       {
         "amount_escrowed": 0
