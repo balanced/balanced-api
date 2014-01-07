@@ -1,6 +1,8 @@
 require 'erb'
 
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
+  $logger.debug("Making request to #{url}")
+  $logger.debug("hydrated: #{@client.hydrater(url)}")
   @client.verb(verb, @client.hydrater(url), env)
   @order_id = @client['orders']['id'] rescue nil
   @client.add_hydrate(:order_id, @order_id) if @order_id
@@ -131,11 +133,6 @@ Then(/^there should be more than two (.*) paged$/) do |name|
   assert @client.last_body[name].size >= 2, "There were not more than two #{name}"
 end
 
-
-Then(/^debug$/) do
-  puts "HTTP status code: #{@client.last_code}"
-  puts "HTTP body: #{@client.last_body}"
-end
 
 # TODO: move?
 
