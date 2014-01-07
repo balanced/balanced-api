@@ -1,5 +1,9 @@
+require 'erb'
+
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
-  @client.verb(verb, @client.hydrater(url))
+  @client.verb(verb, @client.hydrater(url), env)
+  @order_id = @client['orders']['id'] rescue nil
+  @client.add_hydrate(:order_id, @order_id) if @order_id
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
@@ -17,6 +21,7 @@ def env
     "cards_id" => @card_id,
     "debits_id" => @debit_id,
     "customers_id" => @customer_id,
+    "orders_id" => @order_id,
   }
 end
 
@@ -27,6 +32,7 @@ When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
+  body = ERB.new(body).result(binding)
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil

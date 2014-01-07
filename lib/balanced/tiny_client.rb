@@ -28,6 +28,14 @@ module Balanced
         }
       }
 
+      url = expand_url(endpoint, env)
+
+      response = HTTParty.post(url, options)
+      @responses << response
+      response
+    end
+
+    def expand_url(endpoint, env)
       require 'uri_template'
       # I am so sorry
       template = "#{@root_url}#{endpoint}".gsub(/{(.*?)}/) do
@@ -35,11 +43,7 @@ module Balanced
       end
       # TODO: does using . in uri variables make sense? http://tools.ietf.org/html/rfc6570#section-3.2.1
       template = URITemplate.new(template)
-      url = template.expand(env)
-
-      response = HTTParty.post(url, options)
-      @responses << response
-      response
+      template.expand(env)
     end
 
     def put(endpoint, body, env={})
@@ -79,8 +83,8 @@ module Balanced
       response
     end
 
-    def get(endpoint)
-      verb 'GET', endpoint
+    def get(endpoint, body=nil, env={})
+      verb 'GET', endpoint, env
     end
 
     def delete(endpoint, body=nil, env={})
@@ -101,7 +105,10 @@ module Balanced
           password: '',
         }
       }
-      response = HTTParty.send(verb.downcase, "#{$root_url}#{url}", options)
+
+      url = expand_url(url, env)
+
+      response = HTTParty.send(verb.downcase, url, options)
       @responses << response
       response
     end
