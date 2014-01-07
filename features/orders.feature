@@ -107,28 +107,34 @@ Feature: Orders
     """
 
 
-  @failing
+  @failing @gh-469
   Scenario: Create a reversal
-    Given I have tokenized a customer card
-    And I make a POST request to /customers/:customer_id/orders with the body
+    Given I have created an order
+    And I have tokenized a customer card
+    And I make a POST request to /customers/:customer_id/orders with the body:
     """
-      "order": "#{@orders_id}",
+      {
+      "order": "<%= @orders_id %>",
       "amount": 1234
+      }
     """
     And I have tokenized a bank account
     And I make a POST request to the link "bank_accounts.credits" with the body:
     """
-        "order": "#{@orders_id}",
+      {
+        "order": "<%= @orders_id %>",
         "amount": 1234
+      }
     """
 
     When I make a POST request to the link "credits.reversals"
     Then I should get a 201 Created status code
     And the response is valid according to the "reversals" schema
 
-    When I make a GET request to the link /orders/:order_id
+    When I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
     """
       {
         "amount_escrowed": 0

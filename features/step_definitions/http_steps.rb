@@ -9,11 +9,15 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
-  @client.verb(verb, @client.hydrater(url), body)
+  @client.verb(verb, @client.hydrater(url), env, body)
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
   step "I #{verb} to #{url}"
+end
+
+When(/^I make a (\w+) request to (\/\S*?) with the body:$/) do |verb, url, body|
+  step "I #{verb} to #{url} with the body:", body
 end
 
 def env

@@ -41,9 +41,12 @@ module Balanced
       template = "#{@root_url}#{endpoint}".gsub(/{(.*?)}/) do
         "{#{$1.gsub(".", "_")}}"
       end
+      $logger.debug("expanding: #{template} with env: #{env}")
       # TODO: does using . in uri variables make sense? http://tools.ietf.org/html/rfc6570#section-3.2.1
       template = URITemplate.new(template)
-      template.expand(env)
+      url = template.expand(env)
+      $logger.debug("expanded: #{url}")
+      url
     end
 
     def put(endpoint, body, env={})
@@ -95,7 +98,7 @@ module Balanced
       @responses << response
     end
 
-    def verb(verb, url, env={})
+    def verb(verb, url, env={}, body=nil)
       options = {
         headers: {
           'Accept' => @accept_header
@@ -105,6 +108,8 @@ module Balanced
           password: '',
         }
       }
+
+      options[:body] = body if body
 
       url = expand_url(url, env)
 
