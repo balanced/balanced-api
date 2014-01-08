@@ -7,6 +7,7 @@ Given(/^I have tokenized a bank account$/) do
                })
   @bank_account_id = @client['bank_accounts']['id']
   @client.add_hydrate(:bank_account_id, @bank_account_id)
+  @client.add_hydrate(:bank_accounts_id, @bank_account_id)
 end
 
 

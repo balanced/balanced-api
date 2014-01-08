@@ -142,9 +142,10 @@ Feature: Orders
     """
 
 
-  @failing
+  @failing @gh-471
   Scenario: Create a failed refund when insufficient funds are in order escrow
-    Given I have tokenized a card
+    Given I have created an order
+    And I have tokenized a card
     When I make a POST request to the link "cards.debits" with the body:
     """
       {
@@ -160,7 +161,8 @@ Feature: Orders
         "amount": 1234
       }
     """
-    When I make a POST request to the link "debits.refunds"
+
+    When I make a POST request to the link "debits.refunds" of that debit
     Then I should get a 409 status code
     And the response is valid according to the "errors" schema
     And the fields on this error match:

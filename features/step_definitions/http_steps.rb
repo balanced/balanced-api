@@ -50,6 +50,7 @@ end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
   body = ERB.new(body).result(binding)
+  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
@@ -57,7 +58,14 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body
 end
 
+When(/^I make a (\w+) request to the link "(.*?)" of that (\w+)$/) do |verb, keys, resource|
+  id = instance_variable_get("@#{resource}_id")
+  @client.get("/resources/#{id}")
+  step %Q{I make a #{verb} request to the link "#{keys}"}
+end
+
 When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
+  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
   @credit_id = @client['credits']['id'] rescue nil
   body
