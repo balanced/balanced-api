@@ -36,9 +36,8 @@ Feature: Customers
       }
     """
 
-  @failing @gh-468
   Scenario: Underwrite a customer
-    When I Post to /customers with the body:
+    When I POST to /customers with the body:
     """
       {
         "name": "Henry Ford"
@@ -53,9 +52,10 @@ Feature: Customers
     }
     """
 
-    When I PUT to /customers/:customer_id with the body:
+    When I make a PUT request to the href "href" with the body:
     """
     {
+      "name": "Henry Ford",
       "dob_month": 7,
       "dob_year": 1963,
       "address": {
@@ -63,7 +63,6 @@ Feature: Customers
       }
     }
     """
-    Then debug
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
     And the fields on this customer match:

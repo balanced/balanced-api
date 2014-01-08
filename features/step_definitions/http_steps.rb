@@ -14,6 +14,8 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   body = @client.hydrater body
   $logger.debug("body: #{body}")
   @client.verb(verb, @client.hydrater(url), env, body)
+  @customer_id = @client['customers']['id'] rescue nil
+  @client.add_hydrate(:customer_id, @customer_id) if @customer_id
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
@@ -39,6 +41,11 @@ end
 When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
   link = @client[keys] || @client.inject(keys)
   @client.send(verb.downcase, link, {}, env)
+end
+
+When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, keys, body|
+  link = @client[keys] || @client.inject(keys)
+  @client.send(verb.downcase, link, body, env)
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
