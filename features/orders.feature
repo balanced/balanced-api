@@ -226,11 +226,12 @@ Feature: Orders
       }
     """
 
-  @failing
+  @failing @gh-474
   Scenario: Crediting an unverified merchant will result in failure
-    Given I have an unverified customer with a tokenized card
-    And I make a POST request to 'customers.orders'
+    Given I have created a non-underwritten customer with a tokenized bank account
+    And I make a POST request to the link "customers.orders"
 
+    And I fetch the card
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
@@ -240,11 +241,12 @@ Feature: Orders
     """
     Then I should get a 201 Created status code
 
+    When I fetch the bank account
     And I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
         "amount": 1234,
-        "order": "<%= @orders_id %>",
+        "order": "<%= @orders_id %>"
       }
     """
     Then I should get a 409 status code

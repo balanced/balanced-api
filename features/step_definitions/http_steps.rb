@@ -49,6 +49,7 @@ When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, ke
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
+        puts @client.last_body
   body = ERB.new(body).result(binding)
   $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
@@ -64,8 +65,10 @@ When(/^I make a (\w+) request to the link "(.*?)" of that (\w+)$/) do |verb, key
   step %Q{I make a #{verb} request to the link "#{keys}"}
 end
 
-When(/^I fetch the (\w+)$/) do |resource|
+When(/^I fetch the (.*+)$/) do |resource|
+  resource = resource.gsub(/\s/, "_")
   id = instance_variable_get("@#{resource}_id")
+  puts id
   @client.get("/resources/#{id}")
 end
 
