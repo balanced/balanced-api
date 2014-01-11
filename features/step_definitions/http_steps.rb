@@ -64,6 +64,11 @@ When(/^I make a (\w+) request to the link "(.*?)" of that (\w+)$/) do |verb, key
   step %Q{I make a #{verb} request to the link "#{keys}"}
 end
 
+When(/^I fetch the (\w+)$/) do |resource|
+  id = instance_variable_get("@#{resource}_id")
+  @client.get("/resources/#{id}")
+end
+
 When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
   $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)

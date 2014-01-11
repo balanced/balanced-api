@@ -172,21 +172,24 @@ Feature: Orders
       }
     """
 
-  @failing
+  @failing @gh-469
   Scenario: Transactions should inherit the description of the order by default
-    Given I have tokenized a bank account
-    When I make a POST request to the link "customers.orders" with the body:
+    Given I have created an order
+    And I have tokenized a bank account
+    When I fetch the customer
+    And I make a POST request to the link "customers.orders" with the body:
     """
       {
-       "description": "Beats by Dr. Dre" }
+       "description": "Beats by Dr. Dre"
       }
     """
 
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
     """
       {
-        { "description": "Beats by Dr. Dre" }
+        "description": "Beats by Dr. Dre"
       }
     """
 
@@ -200,9 +203,10 @@ Feature: Orders
 
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
     """
       {
-        "description": "Beats by Dr. Dre" }
+        "description": "Beats by Dr. Dre"
       }
     """
 
@@ -214,7 +218,8 @@ Feature: Orders
       }
     """
     Then I should get a 201 Created status code
-    And the response is valid according to the "debits" schema
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
     """
       {
         { "description": "Beats by Dr. Dre"}
