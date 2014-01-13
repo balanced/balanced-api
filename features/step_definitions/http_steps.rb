@@ -6,6 +6,8 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   @client.verb(verb, @client.hydrater(url), env)
   @order_id = @client['orders']['id'] rescue nil
   @client.add_hydrate(:order_id, @order_id) if @order_id
+  @customer_source = @client['customers']['links']['source'] rescue nil
+  @client.add_hydrate(:customers_source, @customer_source) if @customer_source
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
@@ -33,6 +35,7 @@ def env
     "cards_id" => @card_id,
     "debits_id" => @debit_id,
     "customers_id" => @customer_id,
+    "customers_source" => @customer_source,
     "orders_id" => @order_id,
   }
 end
@@ -54,6 +57,7 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
+  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
   @debit_url = @client['debits']['href'] rescue nil
   body
 end
@@ -74,6 +78,8 @@ end
 When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
   $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
+  @cards_id = @client['cards']['id'] rescue nil
+  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
   @credit_id = @client['credits']['id'] rescue nil
   body
 end
@@ -110,11 +116,16 @@ end
 When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   body = @client.post(@client.hydrater(url), @client.hydrater(body))
   @credit_id = @client['credits']['id'] rescue nil
+  @card_id = @client['cards']['id'] rescue nil
   body
 end
 
 When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
   @client.put(@client.hydrater(url), @client.hydrater(body))
+end
+
+When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
+  @client.patch(@client.hydrater(url), body)
 end
 
 require 'json-schema'
