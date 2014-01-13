@@ -1,20 +1,22 @@
 Feature: Credit cards
 
-  @failing
+  @failing @gh-469
   Scenario: Canceling an order
-    Given I have an order
-    Then I make a GET request to the link /orders/:order_id
+    Given I have created an order
+    Then I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
           "description": "Catherine Malandrino Black Top"
         }
       """
 
-    Then I make a GET request to "orders.debits"
+    Then I make a GET request to the link "orders.debits"
     Then I should get a 200 OK status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
       """
         {
           "amount": 10000,
@@ -22,9 +24,10 @@ Feature: Credit cards
         }
       """
 
-    Then I make a POST request to "debits.refunds"
+    Then I make a POST request to the link "debits.refunds"
     Then I should get a 201 OK status code
     And the response is valid according to the "refunds" schema
+    And the fields on this refund match:
       """
         {
           "amount": 10000,
@@ -32,9 +35,10 @@ Feature: Credit cards
         }
       """
 
-    Then I make a GET request to the link /orders/:order_id
+    Then I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
           "amount": 0,
