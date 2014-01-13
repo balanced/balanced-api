@@ -1,4 +1,5 @@
-Given(/^I have created an order$/) do                                                                                                                              
+Given(/^I have created an order$/) do
   step 'I have created a customer'
-  step 'I make a POST request to /customers/:customer_id/orders'
-end                                                                                                                                                                
+  @client.post(@client.hydrater('/customers/:customer_id/orders'), {})
+  @client.add_hydrate :order_id, @client['id']
+end

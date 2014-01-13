@@ -49,8 +49,7 @@ When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, ke
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
-        puts @client.last_body
-  body = ERB.new(body).result(binding)
+  body = ERB.new(@client.hydrater(body)).result(binding)
   $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
@@ -109,7 +108,7 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
 end
 
 When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = @client.post(@client.hydrater(url), body)
+  body = @client.post(@client.hydrater(url), @client.hydrater(body))
   @credit_id = @client['credits']['id'] rescue nil
   body
 end

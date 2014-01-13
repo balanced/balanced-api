@@ -10,6 +10,8 @@ Feature: Credits
     When I make a POST request to /cards/:cards_id/credits
     Then I should get a 404 status code
 
+    # the 404 error comes back in the error schema from rev0 instead of rev1
+
     And the response is valid according to the "errors" schema
     And the fields on this error match:
     """
