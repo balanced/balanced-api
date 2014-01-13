@@ -50,7 +50,6 @@ Feature: Credit cards
 
   @failing @gh-476
   Scenario: Existing buyer makes a purchase with a new card
-    Given logging is enabled
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
     Then I should get a 200 OK status code
