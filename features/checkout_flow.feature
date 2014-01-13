@@ -48,17 +48,19 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-476
   Scenario: Existing buyer makes a purchase with a new card
+    Given logging is enabled
+    Given I have created a customer
     When I make a GET request to /customers/:customer_id
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
 
-    Then I make a GET request to "customers.source"
+    Then I make a GET request to the link "customers.source"
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-    Then I make a POST request to /cards with the JSON API body:
+    Then I POST to /cards with the JSON API body:
       """
         {
           "name": "Darius the Great",
@@ -81,6 +83,7 @@ Feature: Credit cards
     When I make a GET request to /cards/:cards_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "avs_street_match": "yes",
@@ -89,23 +92,24 @@ Feature: Credit cards
         }
       """
 
-    When I make a PATCH request to /customers/:customer_id with the JSON API body:
+    When I PATCH to /customers/:customer_id with the JSON API body:
       """
         {
           "op": "replace",
           "path": "/customers/0/links/source",
-          "value": "#{@cards_id}"
+          "value": "<%= @cards_id %>"
         }
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
+    And the fields on this customer match:
       """
           {
-            "links": { "source": "#{@cards_id}" }
+            "links": { "source": "<%= @cards_id %>" }
           }
       """
 
-    When I make a POST request to /customers/:customer_id/orders with the body
+    When I make a POST request to /customers/:customer_id/orders with the body:
       """
         {
           "description": "Catherine Malandrino Black Top",
@@ -123,34 +127,36 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
-        "links":{ "merchant": "#{@customers_id}" }
+        "links":{ "merchant": "<%= @customers_id %>" }
         }
       """
 
-    When I make a POST request to "customers.debits" with the body
+    When I make a POST request to the link "customers.debits" with the body:
       """
         {
           "amount": 10000,
-          "order": "#{@orders_id}",
+          "order": "<%= @orders_id %>",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
       """
         {
           "description": "Catherine Malandrino Black Top",
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": "#{@orders_id}",
+            "order": "<%= @orders_id %>",
           }
         }
       """
 
-   When I make a PUT request to /orders/:order_id with the JSON API body:
+   When I PUT to /orders/:order_id with the JSON API body:
       """
         {
           "meta": {
@@ -162,6 +168,7 @@ Feature: Credit cards
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
           "meta": {
