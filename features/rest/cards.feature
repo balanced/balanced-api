@@ -8,7 +8,6 @@ Feature: Tokenize a credit card
   For more on tokenization as a concept, see ['tokenization' on
   Wikipedia.](http://en.wikipedia.org/wiki/Tokenization_%28data_security%29)
 
-  @failing
   Scenario: Tokenize a card without a secret key
     Cards are able to be tokenized without sending along a secret key. When
     this happens, the customer gets less information than if the key was sent.
@@ -28,14 +27,12 @@ Feature: Tokenize a credit card
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-  @failing
   Scenario: Retrieve a card
     Given I have tokenized a card
     When I GET to /cards/:card_id giving the card_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-  @failing
   Scenario: List cards
     Given I have tokenized more than one card
     When I GET to /cards
@@ -48,7 +45,6 @@ Feature: Tokenize a credit card
     Then I should get a 204 OK status code
     And there should be no response body
 
-  @failing
   Scenario: Update a card
     Given I have tokenized a card
     When I PUT to /cards/:card_id giving the card_id, with the JSON API body:
@@ -62,14 +58,13 @@ Feature: Tokenize a credit card
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-  @failing
   Scenario: Debit a card
     Given I have tokenized a card
     When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
       """
       {
-        "amount": "1"
+        "amount": "50"
       }
       """
     Then I should get a 201 Created status code
-    And the response is valid according to the "_models/debit" schema
+    And the response is valid according to the "debits" schema

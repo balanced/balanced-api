@@ -4,6 +4,7 @@ module Balanced
   class TinyClient
     attr_reader :api_secret, :root_url
     attr_reader :responses
+    attr_reader :hydrate_tokens
     attr_writer :running
 
     def initialize(api_secret, accept_header, root_url)
