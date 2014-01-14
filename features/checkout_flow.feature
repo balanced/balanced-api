@@ -181,13 +181,14 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-469
   Scenario: Existing buyer makes a purchase with an existing card
+    Given I have created a customer
     When I make a GET request to /customers/:customer_id
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
 
-    Then I make a GET request to "customers.source"
+    Then I make a GET request to the link "customers.source"
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
@@ -209,34 +210,36 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
-        "links":{ "merchant": "#{@customers_id}" }
+        "links":{ "merchant": "<%= @customers_id %>" }
         }
       """
 
-    When I make a POST request to "customers.debits" with the body
+    When I make a POST request to the link "customers.debits" with the body:
       """
         {
           "amount": 10000,
-          "order": "#{@orders_id}",
+          "order": "<%= @orders_id %>",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
       """
         {
           "description": "Catherine Malandrino Black Top",
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": "#{@orders_id}",
+            "order": "<%= @orders_id %>",
           }
         }
       """
 
-    When I make a PUT request to /orders/:order_id with the JSON API body:
+    When I PUT to /orders/:order_id with the JSON API body:
       """
         {
           "meta": {
@@ -248,6 +251,7 @@ Feature: Credit cards
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    And the fields on this order match:
       """
         {
           "meta": {
