@@ -192,19 +192,20 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-438
   Scenario: Detect a Mastercard card brand
     When I make a POST request to /cards with the body:
       """
         {
           "number": "5105 1051 0510 5100",
           "expiration_month": 12,
-          "expiration_year": 2016,
+          "expiration_year": 2016
         }
       """
 
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "brand": "MasterCard"
