@@ -57,7 +57,7 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
+  @client.add_hydrate(:card_id, @cards_id) if @cards_id
   @debit_url = @client['debits']['href'] rescue nil
   body
 end
@@ -79,7 +79,7 @@ When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
   $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
   @cards_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
+  @client.add_hydrate(:card_id, @cards_id) if @cards_id
   @credit_id = @client['credits']['id'] rescue nil
   body
 end
@@ -125,7 +125,7 @@ When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.patch(@client.hydrater(url), body)
+  @client.patch(@client.hydrater(url), @client.hydrater(body))
 end
 
 require 'json-schema'

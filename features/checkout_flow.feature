@@ -6,6 +6,8 @@ Feature: Credit cards
     Then I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
+    # how is this going to match, as we have not set any values on the order
+    # so the description is going to be empty
     And the fields on this order match:
       """
         {
@@ -48,7 +50,7 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-476
+  @failing @gh-476 @focus
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
@@ -79,7 +81,7 @@ Feature: Credit cards
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
 
-    When I make a GET request to /cards/:cards_id
+    When I make a GET request to /cards/:card_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
     And the fields on this card match:
@@ -91,20 +93,21 @@ Feature: Credit cards
         }
       """
 
+    And debug
     When I PATCH to /customers/:customer_id with the JSON API body:
       """
-        {
+        [{
           "op": "replace",
           "path": "/customers/0/links/source",
-          "value": "<%= @cards_id %>"
-        }
+          "value": ":card_id"
+        }]
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
     And the fields on this customer match:
       """
           {
-            "links": { "source": "<%= @cards_id %>" }
+            "links": { "source": ":card_id" }
           }
       """
 
@@ -129,7 +132,7 @@ Feature: Credit cards
     And the fields on this order match:
       """
         {
-        "links":{ "merchant": "<%= @customers_id %>" }
+        "links":{ "merchant": ":customer_id" }
         }
       """
 
@@ -137,7 +140,7 @@ Feature: Credit cards
       """
         {
           "amount": 10000,
-          "order": "<%= @orders_id %>",
+          "order": ":order_id",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
