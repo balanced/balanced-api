@@ -372,7 +372,6 @@ Feature: Credit cards
         }
       """
 
-  @failing
   Scenario: Unstore a card
     Given I have tokenized a card
     When I make a DELETE request to /cards/:card_id
