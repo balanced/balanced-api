@@ -1,21 +1,22 @@
 Feature: Credit cards
 
-  @failing
+  @failing @gh-479
   Scenario: Add a card to a customer
     Given I have created a customer
-    When I make a PATCH request to the link "href" with the body:
+    When I make a PATCH request to the href "href" with the body:
       """
-        {
+        [{
           "op": "replace",
           "path": "/cards/0/links/customer",
-          "value": "#{@customers_id}"
-        }
+          "value": "<%= @customer_id %>"
+        }]
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
-         "links": { "customer": "#{@customers_id}" }
+          "links": { "customer": "<%= @customer_id %>" }
         }
       """
 
