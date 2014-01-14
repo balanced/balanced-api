@@ -353,12 +353,12 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-481
   Scenario: Tokenization fails luhn test
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111 1111 1111 1112",
+          "number": "4111111111111112",
           "expiration_month": 12,
           "expiration_year": 2016
         }
