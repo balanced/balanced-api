@@ -252,19 +252,20 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-480
   Scenario: Retrieving a card
     Given I have tokenized a card
     When  I make a GET request to /cards/:card_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
     """
         {
           "name": null,
           "number": "xxxxxxxxxxxx1111",
           "expiration_month": 12,
           "expiration_year": 2016,
-          "cvv": xxx,
+          "cvv": "xxx",
           "cvv_match": "yes",
           "cvv_result": "Match",
           "address": {
