@@ -232,19 +232,20 @@ Feature: Credit cards
         }
       """
 
-  @failing
-  Scenario: Detect an Discover card brand
+  @failing @gh-438
+  Scenario: Detect a Discover card brand
     When I make a POST request to /cards with the body:
       """
         {
           "number": "6011 1111 1111 1117",
           "expiration_month": 12,
-          "expiration_year": 2016,
+          "expiration_year": 2016
         }
       """
 
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "brand": "Discover"
