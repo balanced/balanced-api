@@ -86,19 +86,20 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-438
   Scenario: AVS Postal code is unused
     When I make a POST request to /cards with the body:
       """
         {
           "number": "4111111111111111",
           "expiration_month": 12,
-          "expiration_year": 2016,
+          "expiration_year": 2016
         }
       """
 
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
          "avs_postal_match": null
