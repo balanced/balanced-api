@@ -378,7 +378,7 @@ Feature: Credit cards
     Then I should get a 204 status code
 
 
-  @failing
+  @failing @gh-438
   Scenario: CVV matches
     When I make a POST request to /cards with the body:
       """
@@ -392,6 +392,7 @@ Feature: Credit cards
 
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
     """
         {
          "cvv_match": "yes"
