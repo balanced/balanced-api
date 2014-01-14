@@ -284,7 +284,7 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-438
   Scenario: Tokenizing a card
     When I make a POST request to /cards with the body:
       """
@@ -296,6 +296,7 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "expiration_month": 12,
@@ -314,6 +315,7 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "name": "Frida Kahlo"
@@ -337,6 +339,7 @@ Feature: Credit cards
       """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
         {
           "address": {
