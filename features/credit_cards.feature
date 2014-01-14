@@ -1,0 +1,448 @@
+Feature: Credit cards
+
+  @failing
+  Scenario: Add a card to a customer
+    Given I have created a customer
+    When I make a PATCH request to the link "href" with the body:
+      """
+        {
+          "op": "replace",
+          "path": "/cards/0/links/customer",
+          "value": "#{@customers_id}"
+        }
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "links": { "customer": "#{@customers_id}" }
+        }
+      """
+
+  @failing
+  Scenario: AVS Postal code matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+         "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "postal_code": "94301"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "avs_postal_match": "yes"
+        }
+      """
+
+  @failing
+  Scenario: AVS Postal code does not match
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "postal_code": "90210"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "avs_postal_match": "no"
+        }
+      """
+
+  @failing
+  Scenario: AVS Postal code is unsupported
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "postal_code": "90211"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "avs_postal_match": "unsupported"
+        }
+      """
+
+  @failing
+  Scenario: AVS Postal code is unused
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "avs_postal_match": null
+        }
+     """
+
+ @failing
+ Scenario: AVS street matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "965 Mission St",
+            "postal_code": "94103"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "avs_street_match": "yes"
+        }
+      """
+
+  @failing
+  Scenario: AVS street does not matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "21 Jump St",
+            "postal_code": "90210"
+          }
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "avs_street_match": "no"
+        }
+      """
+
+  @failing
+  Scenario: AVS street match is null
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "avs_street_match": null
+        }
+      """
+
+  @failing
+  Scenario: Detect a Visa card brand
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111 1111 1111 1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "brand": "Visa"
+        }
+      """
+
+  @failing
+  Scenario: Detect a Mastercard card brand
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "5105 1051 0510 5100",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "brand": "MasterCard"
+        }
+      """
+
+  @failing
+  Scenario: Detect an American Express card brand
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "3782 822463 10005",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "brand": "American Express"
+        }
+      """
+
+  @failing
+  Scenario: Detect an Discover card brand
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "6011 1111 1111 1117",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "brand": "Discover"
+        }
+      """
+
+  @failing
+  Scenario: Retrieving a card
+    Given I have tokenized a card
+    When  I make a GET request to /cards/:card_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+          "name": null,
+          "number": "xxxxxxxxxxxx1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": xxx,
+          "cvv_match": "yes",
+          "cvv_result": "Match",
+          "address": {
+            "line1": "965 Mission St",
+            "line2": null,
+            "city": null,
+            "state": null,
+            "postal_code": "94103",
+            "country_code": null
+          },
+          "avs_street_match": "yes",
+          "avs_postal_match": "yes",
+          "avs_result": "Postal code matches, but street address not verified.",
+          "brand": "Visa",
+          "meta": {}
+        }
+      """
+
+  @failing
+  Scenario: Tokenizing a card
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111 1111 1111 1111",
+          "expiration_month": "12",
+          "expiration_year": "2016"
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "name": "Frida Kahlo",
+          "number": "4111 1111 1111 1111",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "name": "Frida Kahlo"
+        }
+      """
+
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111 1111 1111 1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }
+      """
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+          "address": {
+            "line1": "7 Bis Rue de l'Abbé de l'Épée",
+            "line2": "Apt 4",
+            "city": "Versailles",
+            "state": null,
+            "postal_code": "78000",
+            "country_code": "FR"
+          }
+        }
+      """
+
+  @failing
+  Scenario: Tokenization fails luhn test
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111 1111 1111 1112",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+    Then I should get a 409 status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+        {
+          "category_code": "card-not-validated"
+        }
+      """
+
+  @failing
+  Scenario: Unstore a card
+    Given I have tokenized a card
+    When I make a DELETE request to /cards/:card_id
+    Then I should get a 204 status code
+
+
+  @failing
+  Scenario: CVV matches
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "123"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": "yes"
+        }
+      """
+
+  @failing
+  Scenario: CVV does not match
+    When I make a POST request to /cards with the body:
+      """
+        {
+           "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "902"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+      """
+        {
+         "cvv_match": "no"
+        }
+      """
+
+  @failing
+  Scenario: CVV is unsupported
+    When I make a POST request to /cards with the body:
+      """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "901"
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": "unsupported"
+        }
+      """
+
+  @failing
+  Scenario: CVV is unused
+    When I make a POST request to /cards with the body:
+    """
+        {
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }
+      """
+
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "cards" schema
+    """
+        {
+         "cvv_match": null
+        }
+     """
