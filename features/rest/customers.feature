@@ -39,7 +39,6 @@ Feature: Customers
     Then I should get a 204 OK status code
     And there should be no response body
 
-  @failing
   Scenario: Add a card to a customer
     Given I have tokenized a card
     And I have created a customer
