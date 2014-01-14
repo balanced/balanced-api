@@ -61,7 +61,7 @@ Feature: Customers
     }
     """
 
-  @failing
+  @failing @gh-438
   Scenario: Add a bank account to a customer
     Given I have tokenized a bank account
     And I have created a customer
