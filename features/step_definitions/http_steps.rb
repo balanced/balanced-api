@@ -126,7 +126,8 @@ When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.patch(@client.hydrater(url), @client.hydrater(body))
+  body = ERB.new(@client.hydrater(body)).result(binding)
+  @client.patch(@client.hydrater(url), body)
 end
 
 require 'json-schema'
