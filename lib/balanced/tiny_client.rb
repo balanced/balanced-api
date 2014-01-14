@@ -68,7 +68,7 @@ module Balanced
       response
     end
 
-    def patch(endpoint, body)
+    def patch(endpoint, body, env={})
       body = JSON.parse(body) if body.is_a? String
       options = {
         headers: {
