@@ -11,6 +11,7 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
+  body = ERB.new(body).result(binding)
   $logger.debug("Making request to #{url}")
   $logger.debug("hydrated: #{@client.hydrater(url)}")
   body = @client.hydrater body
@@ -71,7 +72,6 @@ end
 When(/^I fetch the (.*+)$/) do |resource|
   resource = resource.gsub(/\s/, "_")
   id = instance_variable_get("@#{resource}_id")
-  puts id
   @client.get("/resources/#{id}")
 end
 
@@ -117,6 +117,7 @@ When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   body = @client.post(@client.hydrater(url), @client.hydrater(body))
   @credit_id = @client['credits']['id'] rescue nil
   @card_id = @client['cards']['id'] rescue nil
+  @client.add_hydrate(:cards_id, @card_id) if @card_id
   body
 end
 
@@ -125,7 +126,8 @@ When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.patch(@client.hydrater(url), @client.hydrater(body))
+  body = ERB.new(@client.hydrater(body)).result(binding)
+  @client.patch(@client.hydrater(url), body)
 end
 
 require 'json-schema'
@@ -147,11 +149,13 @@ Then(/^there should be no response body$/) do
 end
 
 def checker(from, of, nesting)
-  assert_not_nil of, nesting
+  assert_not_nil from, nesting
 
   from.each_pair do |key, val|
     if val.is_a? String or val.is_a? Integer
       assert_equal val, of[key], "#{nesting}>#{key}"
+    elsif val.nil?
+      assert_nil of[key]
     else
       checker val, of[key], "#{nesting}>#{key}"
     end
@@ -159,11 +163,13 @@ def checker(from, of, nesting)
 end
 
 Then(/^the fields on this (.*) match:$/) do |resource, against|
+  against = ERB.new(against).result(binding)
   checker JSON.parse(@client.hydrater against), @client["#{resource}s"], ''
   assert_equal @client.last_body["#{resource}s"].size, 1
 end
 
 Then(/^the fields on these (.*) match:$/) do |resource, against|
+  against = ERB.new(against).result(binding)
   against = JSON.parse(@client.hydrater against)
   @client.last_body[resource].each do |body|
     checker against, body, ''
