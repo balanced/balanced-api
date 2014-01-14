@@ -48,7 +48,7 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-476
+  @failing @gh-469
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
@@ -93,11 +93,11 @@ Feature: Credit cards
 
     When I PATCH to /customers/:customer_id with the JSON API body:
       """
-        {
+        [{
           "op": "replace",
           "path": "/customers/0/links/source",
           "value": "<%= @cards_id %>"
-        }
+        }]
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "customers" schema
