@@ -7,6 +7,86 @@ Feature: Orders
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
 
+  @failing @gh-469
+  Scenario: Basic order flow
+    Given I have a customer with a tokenized bank account
+    When I make a POST request to /customers/:customer_id/orders
+    Then I should get a 201 Created status code
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+      """
+      {
+        "links": { "merchant": "<%= @customer_id %>" }
+      }
+      """
+
+    When I fetch the customer
+    And I make a POST request to the link "customers.debits" with the body:
+      """
+      {
+        "amount": 10000,
+        "order": "<%= @order_href %>"
+      }
+      """
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+      {
+        "links": {
+          "order": "<%= @order_id %>"
+        }
+      }
+      """
+      
+    When I fetch the order
+    And I make a GET request to the link "orders.href"
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+      """
+      {
+        "amount": 10000,
+        "amount_escrowed": 10000
+      }
+      """
+
+    When I fetch the customer
+    And I make a POST request to the link "customers.credits" with the body:
+      """
+      {
+        "amount": 10000,
+        "order": "<%= @order_href %>"
+      }
+      """
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
+      """
+      {
+        "links": {
+          "order": "<%= @order_id %>"
+        }
+      }
+      """
+
+    When I fetch the order
+    And I make a GET request to the link "orders.href"
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+      """
+      {
+        "amount": 10000,
+        "amount_escrowed": 0
+      }
+      """
+
+  @failing @gh-469
   Scenario: Checking escrow of order after creating a debit
     Given I have created an order
     And I have tokenized a customer card
