@@ -50,7 +50,7 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-469
+  @failing @gh-469 @focus
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
