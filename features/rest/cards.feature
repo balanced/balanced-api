@@ -60,7 +60,6 @@ Feature: Tokenize a credit card
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-  @failing @gh-449
   Scenario: Debit a card
     Given I have tokenized a card
     When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
@@ -70,4 +69,4 @@ Feature: Tokenize a credit card
       }
       """
     Then I should get a 201 Created status code
-    And the response is valid according to the "_models/debit" schema
+    And the response is valid according to the "debits" schema
