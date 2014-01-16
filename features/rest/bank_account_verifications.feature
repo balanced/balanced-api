@@ -37,3 +37,15 @@ Feature: Bank account verifications
       "verification_status": "succeeded"
     }
     """
+
+  Scenario: Fail to confirm a verification
+    Given I have a bank account with a verification
+    When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
+    """
+    {
+      "amount_1": 2,
+      "amount_2": 2
+    }
+    """
+    Then I should get a 409 Conflict status code
+    And the response is valid according to the "errors" schema
