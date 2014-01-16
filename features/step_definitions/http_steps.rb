@@ -19,6 +19,7 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   @client.verb(verb, @client.hydrater(url), env, body)
   @customer_id = @client['customers']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
+  @client.add_hydrate(:order_id, @client['orders']['id']) if @client['orders']['id']
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
@@ -55,8 +56,9 @@ end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
   body = ERB.new(@client.hydrater(body)).result(binding)
-  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
-  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
+  href = @client.get_link(keys)
+  #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
+  body = @client.send(verb.downcase, @client.get_link(keys), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
   @client.add_hydrate(:card_id, @cards_id) if @cards_id
