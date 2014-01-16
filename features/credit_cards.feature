@@ -460,3 +460,158 @@ Feature: Credit cards
          "cvv_match": null
         }
      """
+
+  Scenario: Adding card metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be added"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+       { "meta": { "asdf": "the value to be added" } }
+      """
+
+  Scenario: Updating card metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be added"
+      }]
+      """
+
+    Then I fetch the card
+    And I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "replace",
+        "path": "/cards/0/meta/asdf",
+        "value": "new value"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+       { "meta": { "asdf": "new value" } }
+      """
+
+  Scenario: Safely updating the metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be tested"
+      }]
+      """
+
+    Then I fetch the card
+    And I make a PATCH request to the href "href" with the body:
+      """
+      [{
+        "op": "test",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be tested"
+      },{
+        "op": "replace",
+        "path": "/cards/0/meta/asdf",
+        "value": "after checking the value"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+       { "meta": { "asdf": "after checking the value" } }
+      """
+
+  Scenario: Failing to safely update the metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be tested"
+      }]
+      """
+
+    Then I fetch the card
+    And I make a PATCH request to the href "href" with the body:
+      """
+      [{
+        "op": "test",
+        "path": "/cards/0/meta/asdf",
+        "value": "not the right value"
+      },{
+        "op": "replace",
+        "path": "/cards/0/meta/asdf",
+        "value": "after checking the value"
+      }]
+      """
+    Then I should get a 409 Conflict status code
+    And the response is valid according to the "errors" schema
+
+  Scenario: Moving metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be moved"
+      }]
+      """
+
+    Then I fetch the card
+    And I make a PATCH request to the href "href" with the body:
+      """
+      [{
+        "op": "move",
+        "from": "/cards/0/meta/asdf",
+        "path": "/cards/0/meta/zxcv"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+       { "meta": { "zxcv": "the value to be moved" } }
+      """
+
+  Scenario: Removing metadata
+    Given I have tokenized a card
+    When I make a PATCH request to the href "href" with the body:
+      """
+       [{
+        "op": "add",
+        "path": "/cards/0/meta/asdf",
+        "value": "the value to be moved"
+      }]
+      """
+
+    Then I fetch the card
+    And I make a PATCH request to the href "href" with the body:
+      """
+      [{
+        "op": "remove",
+        "path": "/cards/0/meta/asdf"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+       { "meta": { } }
+      """
