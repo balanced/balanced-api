@@ -109,3 +109,22 @@ Feature: Bank accounts
       """
         {"bank_name": "J.P. MORGAN CHASE BANK, N.A."}
       """
+
+  @failing @gh-449
+  Scenario: Add a bank account to a customer
+    Given I have created a customer
+    And I have tokenized a bank account
+    When I make a PATCH request to the href "href" with the body:
+      """
+      [{
+        "op": "replace",
+        "path": "/bank_accounts/0/links/customer",
+        "value": "<%= @customer_id %>"
+      }]
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank account match:
+      """
+        { "links": { "customer": "<%= @customer_id %>" } }
+      """
