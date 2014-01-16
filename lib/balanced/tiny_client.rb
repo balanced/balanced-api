@@ -131,6 +131,24 @@ module Balanced
       end
     end
 
+    def get_link(keys)
+      @responses.reverse.each do |response|
+        #require 'debugger'; debugger
+        body= JSON.parse(response.body)
+        if body['links'][keys]
+          key = body['links'][keys]
+          kk = key.gsub(/\{(\w+)\.(\w+)\}/) do |match|
+            a = match[1...-1].split('.')
+            body[a[0]][0][a[1]]
+          end
+          #require 'debugger'; debugger
+          return kk
+          #return keys.split('.').inject(body)json['links'][keys]
+        end
+      end
+      '/boom'
+    end
+
     def inject(key)
       # hax to access a Ruby hash like dot notation
       key.split('.').inject(last_body) {|o, k| Array(o[k])[0] }
