@@ -1,22 +1,23 @@
 Feature: Credit cards
 
-  @failing @gh-479
   Scenario: Add a card to a customer
-    Given I have created a customer
-    When I make a PATCH request to the href "href" with the body:
+    Given I have tokenized a card
+    And I have created a customer
+    When I make a PATCH request to /cards/:card_id with the body:
       """
         [{
           "op": "replace",
           "path": "/cards/0/links/customer",
-          "value": "<%= @customer_id %>"
+          "value": ":customer_id"
         }]
       """
     Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
+    And I make a GET request to /cards/:card_id
+    Then the response is valid according to the "cards" schema
     And the fields on this card match:
       """
         {
-          "links": { "customer": "<%= @customer_id %>" }
+          "links": { "customer": ":customer_id" }
         }
       """
 
@@ -86,7 +87,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: AVS Postal code is unused
     When I make a POST request to /cards with the body:
       """
@@ -152,7 +152,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: AVS street match is null
     When I make a POST request to /cards with the body:
       """
@@ -172,7 +171,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: Detect a Visa card brand
     When I make a POST request to /cards with the body:
       """
@@ -192,7 +190,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: Detect a Mastercard card brand
     When I make a POST request to /cards with the body:
       """
@@ -212,7 +209,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: Detect an American Express card brand
     When I make a POST request to /cards with the body:
       """
@@ -232,7 +228,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: Detect a Discover card brand
     When I make a POST request to /cards with the body:
       """
@@ -252,7 +247,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-480
   Scenario: Retrieving a card
     Given I have tokenized a card
     When  I make a GET request to /cards/:card_id
@@ -271,7 +265,7 @@ Feature: Credit cards
           "address": {
             "line1": "965 Mission St",
             "line2": null,
-            "city": null,
+            "city": "Balo Alto",
             "state": null,
             "postal_code": "94103",
             "country_code": null
@@ -284,7 +278,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: Tokenizing a card
     When I make a POST request to /cards with the body:
       """
@@ -353,7 +346,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-481
   Scenario: Tokenization fails luhn test
     When I make a POST request to /cards with the body:
       """
@@ -377,8 +369,6 @@ Feature: Credit cards
     When I make a DELETE request to /cards/:card_id
     Then I should get a 204 status code
 
-
-  @failing @gh-438
   Scenario: CVV matches
     When I make a POST request to /cards with the body:
       """
@@ -399,7 +389,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: CVV does not match
     When I make a POST request to /cards with the body:
       """
@@ -420,7 +409,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: CVV is unsupported
     When I make a POST request to /cards with the body:
       """
@@ -441,7 +429,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-438
   Scenario: CVV is unused
     When I make a POST request to /cards with the body:
     """
