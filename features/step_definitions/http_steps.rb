@@ -48,6 +48,7 @@ When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
 end
 
 When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, keys, body|
+  body = ERB.new(body).result(binding)
   link = @client[keys] || @client.inject(keys)
   @client.send(verb.downcase, link, body, env)
 end
