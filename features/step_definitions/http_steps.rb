@@ -60,6 +60,7 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
   @client.add_hydrate(:card_id, @cards_id) if @cards_id
+  @client.add_hydrate(:order_id, @client['orders']['id']) if @client['orders']
   @debit_url = @client['debits']['href'] rescue nil
   body
 end
