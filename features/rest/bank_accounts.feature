@@ -75,3 +75,37 @@ Feature: Bank accounts
     """
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
+
+  @failing @gh-449
+  Scenario: Infer bank names
+    When I POST to /bank_accounts with the JSON API body:
+    """
+    {
+      "name": "Michael Johnson",
+      "account_number": "982379283",
+      "routing_number": "121000358",
+      "account_type": "checking"
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank account match:
+      """
+        {"bank_name": "BANK OF AMERICA, N.A."}
+      """
+
+    When I POST to /bank_accounts with the JSON API body:
+    """
+    {
+      "name": "Maurice Green",
+      "account_number": "33727930",
+      "routing_number": "322271627",
+      "account_type": "checking"
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank account match:
+      """
+        {"bank_name": "J.P. MORGAN CHASE BANK, N.A."}
+      """
