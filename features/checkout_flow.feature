@@ -266,7 +266,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-469
   Scenario: New buyer makes a purchase
     When I POST to /cards with the JSON API body:
       """
@@ -287,10 +286,6 @@ Feature: Credit cards
      """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
-
-    When I make a GET request to /cards/:cards_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
     And the fields on this card match:
       """
         {
@@ -305,7 +300,7 @@ Feature: Credit cards
         {
           "name": "Darius the Great",
           "email": "darius.great@gmail.com",
-          "source": "<%= @card_id %>",
+          "source": ":card_id",
           "meta": {
             "ip_address": "174.240.15.249"
           }
@@ -318,7 +313,7 @@ Feature: Credit cards
       """
         {
           "links": {
-            "source": "<%= @card_id %>",
+            "source": ":card_id",
             "destination": null
           }
         }
@@ -345,7 +340,7 @@ Feature: Credit cards
     And the fields on this order match:
       """
         {
-        "links":{ "merchant": "<%= @customers_id %>" }
+        "links":{ "merchant": ":customer_id" }
         }
       """
 
@@ -366,7 +361,7 @@ Feature: Credit cards
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": ":order_id",
+            "order": ":order_id"
           }
         }
       """

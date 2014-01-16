@@ -121,7 +121,7 @@ When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
   body = @client.post(@client.hydrater(url), @client.hydrater(body))
   @credit_id = @client['credits']['id'] rescue nil
   @card_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @card_id) if @card_id
+  @client.add_hydrate(:card_id, @card_id) if @card_id
   body
 end
 
