@@ -139,7 +139,7 @@ module Balanced
           key = body['links'][keys]
           kk = key.gsub(/\{(\w+)\.(\w+)\}/) do |match|
             a = match[1...-1].split('.')
-            body[a[0]][0][a[1]]
+            body[a[0]][0][a[1]] or body[a[0]][0]['links'][a[1]]
           end
           #require 'debugger'; debugger
           return kk

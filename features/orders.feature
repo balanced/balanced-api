@@ -108,7 +108,7 @@ Feature: Orders
 
   Scenario: Checking escrow of order after creating a credit
     Given I have an order with a debit
-    And I have tokenized a bank account
+    And I have tokenized a bank account and associated with the merchant
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
@@ -129,7 +129,7 @@ Feature: Orders
 
   Scenario: Orders cannot be credited more than escrow balance
     Given I have created an order
-    And I have tokenized a bank account
+    And I have tokenized a bank account and associated with the merchant
     And I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
     """
@@ -179,27 +179,30 @@ Feature: Orders
       }
     """
 
-  @failing @focus
   Scenario: Create a reversal
-    Given I have created an order
-    And I have tokenized a customer card
-    And I make a POST request to /customers/:customer_id/orders with the body:
+    Given I have an order with a debit
+    And I make a POST request to /customers/:merchant_id/bank_accounts with the body:
     """
-      {
-      "order": ":order_id",
-      "amount": 1234
-      }
+    {
+      "name": "Michael Jordan",
+      "account_number": "9900000002",
+      "routing_number": "021000021",
+      "account_type": "checking"
+    }
     """
-    # this bank account does not automatically succeed, which means that the
-    # credits can not be reversed instantly
-    # this is how it would normally happen in a prod marketplace
-    # but there are some ba numbers that can be reversed
-    And I have tokenized a bank account
     And I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
         "order": ":order_id",
-        "amount": 1234
+        "amount": 12345
+      }
+    """
+    When I make a GET request to /orders/:order_id
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+    """
+      {
+        "amount_escrowed": 0
       }
     """
 
@@ -213,7 +216,7 @@ Feature: Orders
     And the fields on this order match:
     """
       {
-        "amount_escrowed": 0
+        "amount_escrowed": 12345
       }
     """
 
