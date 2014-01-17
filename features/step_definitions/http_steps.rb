@@ -85,6 +85,7 @@ When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
   @cards_id = @client['cards']['id'] rescue nil
   @client.add_hydrate(:card_id, @cards_id) if @cards_id
   @credit_id = @client['credits']['id'] rescue nil
+  @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
   body
 end
 
