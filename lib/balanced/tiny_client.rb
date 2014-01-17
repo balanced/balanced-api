@@ -134,8 +134,8 @@ module Balanced
     def get_link(keys)
       @responses.reverse.each do |response|
         #require 'debugger'; debugger
-        body= JSON.parse(response.body)
-        if body['links'][keys]
+        body = JSON.parse(response.body)
+        if body and body['links'] and body['links'][keys]
           key = body['links'][keys]
           kk = key.gsub(/\{(\w+)\.(\w+)\}/) do |match|
             a = match[1...-1].split('.')

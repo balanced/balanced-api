@@ -106,20 +106,14 @@ Feature: Orders
       }
     """
 
-  @failing
   Scenario: Checking escrow of order after creating a credit
-    # this scenario makes no since as you are attempting to credit
-    # out from an order when there is no money in the order itself
-    # I believe that you were attempting to copy a scenario
-    # that was adding money to the order first
-    Given I have created an order
-    And I have sufficient funds in my marketplace
+    Given I have an order with a debit
     And I have tokenized a bank account
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
        "order": ":order_id",
-       "amount": 1234
+       "amount": 12345
     }
     """
     When I make a GET request to /orders/:order_id
@@ -128,7 +122,8 @@ Feature: Orders
     And the fields on this order match:
     """
       {
-        "amount_escrowed": 1234
+        "amount": 12345,
+        "amount_escrowed": 0
       }
     """
 
@@ -222,8 +217,6 @@ Feature: Orders
       }
     """
 
-
-  @failing @gh-471
   Scenario: Create a failed refund when insufficient funds are in order escrow
     Given I have created an order
     And I have tokenized a card
@@ -234,7 +227,7 @@ Feature: Orders
         "amount": 1234
       }
     """
-    And I have tokenized a bank account
+    And I have tokenized a bank account and associated with the merchant
     Then I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
@@ -243,13 +236,13 @@ Feature: Orders
       }
     """
 
-    When I make a POST request to the link "debits.refunds" of that debit
+    When I make a POST request to the link "debits.refunds"
     Then I should get a 409 status code
     And the response is valid according to the "errors" schema
     And the fields on this error match:
     """
       {
-       "category_code": "account-insufficient-funds"
+       "category_code": "insufficient-funds"
       }
     """
 

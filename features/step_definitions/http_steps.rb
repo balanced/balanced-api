@@ -80,8 +80,8 @@ When(/^I fetch the (.*+)$/) do |resource|
 end
 
 When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
-  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
-  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
+  #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
+  body = @client.send(verb.downcase, @client.get_link(keys), {}, env)
   @cards_id = @client['cards']['id'] rescue nil
   @client.add_hydrate(:card_id, @cards_id) if @cards_id
   @credit_id = @client['credits']['id'] rescue nil
