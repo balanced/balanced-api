@@ -29,3 +29,13 @@ When(/^I have tokenized a bank account and associated with the merchant$/) do
                 }
               })
 end
+
+
+Given(/^I have a merchant with an order with the body:$/) do |body|
+  step 'I have created a customer'
+  @merchant_id = @customer_id
+  @client.add_hydrate :merchant_id, @merchant_id
+  step 'I have tokenized a bank account and associated with the merchant'
+  @client.post("/customers/#{@merchant_id}/orders", @client.hydrater(body))
+  @client.add_hydrate :order_id, @client['id']
+end

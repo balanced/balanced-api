@@ -179,7 +179,7 @@ Feature: Orders
       }
     """
 
-  @failing
+  @failing @focus
   Scenario: Create a reversal
     Given I have created an order
     And I have tokenized a customer card
@@ -246,15 +246,12 @@ Feature: Orders
       }
     """
 
-  @failing @gh-469
   Scenario: Transactions should inherit the description of the order by default
-    Given I have tokenized a bank account
-    And I have created a customer
-    And I make a POST request to the link "customers.orders" with the body:
+    Given I have a merchant with an order with the body:
     """
-      {
-       "description": "Beats by Dr. Dre"
-      }
+    {
+      "description": "Beats by Dr. Dre"
+    }
     """
 
     Then I should get a 201 Created status code
@@ -265,7 +262,6 @@ Feature: Orders
         "description": "Beats by Dr. Dre"
       }
     """
-    Then debug
 
     Given I have another customer with a card
     Then I make a POST request to the link "customers.debits" with the body:
@@ -288,6 +284,7 @@ Feature: Orders
     # this scenario becomes complicted, as there are two different customers
     # that we need to reference.  The first customer is the merchant which the order
     # is created under.  The second is the one doing the buying.
+    Then I make a GET request to /customers/:merchant_id
     And I make a POST request to the link "customers.credits" with the body:
     """
       {
@@ -300,39 +297,6 @@ Feature: Orders
     And the fields on this credit match:
     """
       {
-        { "description": "Beats by Dr. Dre"}
-      }
-    """
-
-  @failing @gh-474
-  Scenario: Crediting an unverified merchant will result in failure
-    Given I have created a non-underwritten customer with a tokenized bank account
-    And I make a POST request to the link "customers.orders"
-
-    And I fetch the card
-    And I make a POST request to the link "cards.debits" with the body:
-    """
-      {
-        "order": ":order_id",
-        "amount": 1234
-      }
-    """
-    Then I should get a 201 Created status code
-
-    When I fetch the bank account
-    And I make a POST request to the link "bank_accounts.credits" with the body:
-    """
-      {
-        "amount": 1234,
-        "order": ":order_id"
-      }
-    """
-    Then I should get a 409 status code
-    And the response is valid according to the "errors" schema
-    And the fields on this error match:
-    """
-      {
-        "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
-        "category_code": "order-kyc"
+        "description": "Beats by Dr. Dre"
       }
     """
