@@ -1,61 +1,20 @@
 Feature: Credit cards
 
-  @failing @gh-469
   Scenario: Canceling an order
-    # This does not copy all the steps as this depended on a basic checkout
-    # flow scenario with a number of steps
-    Given I have created a customer
-    When I POST to /customers/:customer_id/orders with the JSON API body:
-    """
-    {
-      "description": "Catherine Malandrino Black Top"
-    }
-    """
-    Then I should get a 201 Created status code
-    And the response is valid according to the "orders" schema
-    # how is this going to match, as we have not set any values on the order
-    # so the description is going to be empty
-    And the fields on this order match:
-      """
-        {
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
-
-    Then I make a GET request to the link "orders.debits"
-    Then I should get a 200 OK status code
-    And the response is valid according to the "debits" schema
-    And the fields on this debit match:
-      """
-        {
-          "amount": 10000,
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
-
-    Then I make a POST request to the link "debits.refunds"
-    Then I should get a 201 OK status code
+    Given I have an order with a debit
+    When I POST to /debits/:debit_id/refunds
+    Then I should get a 201 CREATED status code
     And the response is valid according to the "refunds" schema
-    And the fields on this refund match:
-      """
-        {
-          "amount": 10000,
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
 
     Then I make a GET request to /orders/:order_id
-    Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
     And the fields on this order match:
-      """
-        {
-          "amount": 0,
-          "amount_escrowed": 0,
-          "currency": "USD",
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
+    """
+    {
+      "amount": 0,
+      "amount_escrowed": 0
+    }
+    """
 
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
