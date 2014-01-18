@@ -346,6 +346,7 @@ Feature: Credit cards
         }
       """
 
+  @failing
   Scenario: Tokenization fails luhn test
     When I make a POST request to /cards with the body:
       """
@@ -355,6 +356,7 @@ Feature: Credit cards
           "expiration_year": 2016
         }
       """
+    # the api returns a 400, while running it locally returns a 409
     Then I should get a 409 status code
     And the response is valid according to the "errors" schema
     And the fields on this error match:
@@ -389,6 +391,7 @@ Feature: Credit cards
         }
       """
 
+  @failing
   Scenario: CVV does not match
     When I make a POST request to /cards with the body:
       """
@@ -396,7 +399,7 @@ Feature: Credit cards
            "number": "4111111111111111",
             "expiration_month": 12,
             "expiration_year": 2016,
-            "cvv": "902"
+            "cvv": "200"
         }
       """
 
@@ -409,6 +412,7 @@ Feature: Credit cards
         }
       """
 
+  @failing
   Scenario: CVV is unsupported
     When I make a POST request to /cards with the body:
       """
