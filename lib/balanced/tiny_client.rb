@@ -4,6 +4,7 @@ module Balanced
   class TinyClient
     attr_reader :api_secret, :root_url
     attr_reader :responses
+    attr_reader :hydrate_tokens
     attr_writer :running
 
     def initialize(api_secret, accept_header, root_url)
@@ -128,6 +129,24 @@ module Balanced
       if @responses.last.body
         JSON.parse(@responses.last.body)
       end
+    end
+
+    def get_link(keys)
+      @responses.reverse.each do |response|
+        #require 'debugger'; debugger
+        body = JSON.parse(response.body)
+        if body and body['links'] and body['links'][keys]
+          key = body['links'][keys]
+          kk = key.gsub(/\{(\w+)\.(\w+)\}/) do |match|
+            a = match[1...-1].split('.')
+            body[a[0]][0][a[1]] or body[a[0]][0]['links'][a[1]]
+          end
+          #require 'debugger'; debugger
+          return kk
+          #return keys.split('.').inject(body)json['links'][keys]
+        end
+      end
+      '/boom'
     end
 
     def inject(key)

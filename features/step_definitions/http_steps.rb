@@ -19,6 +19,7 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   @client.verb(verb, @client.hydrater(url), env, body)
   @customer_id = @client['customers']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
+  @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
@@ -48,18 +49,20 @@ When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
 end
 
 When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, keys, body|
-  body = ERB.new(body).result(binding)
+  body = ERB.new(@client.hydrater body).result(binding)
   link = @client[keys] || @client.inject(keys)
   @client.send(verb.downcase, link, body, env)
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
-  body = ERB.new(body).result(binding)
-  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
-  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), JSON.parse(body), env)
+  body = ERB.new(@client.hydrater(body)).result(binding)
+  href = @client.get_link(keys)
+  #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
+  body = @client.send(verb.downcase, @client.get_link(keys), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
+  @client.add_hydrate(:card_id, @cards_id) if @cards_id
+  @client.add_hydrate(:order_id, @client['orders']['id']) if @client['orders']
   @debit_url = @client['debits']['href'] rescue nil
   body
 end
@@ -77,11 +80,12 @@ When(/^I fetch the (.*+)$/) do |resource|
 end
 
 When(/^I make a (\w+) request to the link "(.*?)"$/) do |verb, keys|
-  $logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
-  body = @client.send(verb.downcase, @client.hydrater(@client.last_body["links"][keys]), {}, env)
+  #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
+  body = @client.send(verb.downcase, @client.get_link(keys), {}, env)
   @cards_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @cards_id) if @cards_id
+  @client.add_hydrate(:card_id, @cards_id) if @cards_id
   @credit_id = @client['credits']['id'] rescue nil
+  @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
   body
 end
 
@@ -115,10 +119,10 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
 end
 
 When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = @client.post(@client.hydrater(url), body)
+  body = @client.post(@client.hydrater(url), @client.hydrater(body))
   @credit_id = @client['credits']['id'] rescue nil
   @card_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:cards_id, @card_id) if @card_id
+  @client.add_hydrate(:card_id, @card_id) if @card_id
   body
 end
 
@@ -127,7 +131,7 @@ When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = ERB.new(body).result(binding)
+  body = ERB.new(@client.hydrater(body)).result(binding)
   @client.patch(@client.hydrater(url), body)
 end
 

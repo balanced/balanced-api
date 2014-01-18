@@ -8,7 +8,6 @@ Feature: Tokenize a credit card
   For more on tokenization as a concept, see ['tokenization' on
   Wikipedia.](http://en.wikipedia.org/wiki/Tokenization_%28data_security%29)
 
-  @failing @gh-438
   Scenario: Tokenize a card without a secret key
     Cards are able to be tokenized without sending along a secret key. When
     this happens, the customer gets less information than if the key was sent.
@@ -34,7 +33,6 @@ Feature: Tokenize a credit card
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-  @failing @gh-438
   Scenario: List cards
     Given I have tokenized more than one card
     When I GET to /cards
@@ -65,7 +63,7 @@ Feature: Tokenize a credit card
     When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
       """
       {
-        "amount": "1"
+        "amount": "50"
       }
       """
     Then I should get a 201 Created status code

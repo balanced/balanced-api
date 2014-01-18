@@ -1,54 +1,21 @@
 Feature: Credit cards
 
-  @failing @gh-469
   Scenario: Canceling an order
-    Given I have created an order
-    Then I make a GET request to /orders/:order_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "orders" schema
-    And the fields on this order match:
-      """
-        {
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
-
-    Then I make a GET request to the link "orders.debits"
-    Then I should get a 200 OK status code
-    And the response is valid according to the "debits" schema
-    And the fields on this debit match:
-      """
-        {
-          "amount": 10000,
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
-
-    Then I make a POST request to the link "debits.refunds"
-    Then I should get a 201 OK status code
+    Given I have an order with a debit
+    When I POST to /debits/:debit_id/refunds
+    Then I should get a 201 CREATED status code
     And the response is valid according to the "refunds" schema
-    And the fields on this refund match:
-      """
-        {
-          "amount": 10000,
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
 
     Then I make a GET request to /orders/:order_id
-    Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
     And the fields on this order match:
-      """
-        {
-          "amount": 0,
-          "amount_escrowed": 0,
-          "currency": "USD",
-          "description": "Catherine Malandrino Black Top"
-        }
-      """
+    """
+    {
+      "amount": 0,
+      "amount_escrowed": 0
+    }
+    """
 
-  @failing @gh-469
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
@@ -79,7 +46,7 @@ Feature: Credit cards
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
 
-    When I make a GET request to /cards/:cards_id
+    When I make a GET request to /cards/:card_id
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
     And the fields on this card match:
@@ -96,7 +63,7 @@ Feature: Credit cards
         [{
           "op": "replace",
           "path": "/customers/0/links/source",
-          "value": "<%= @cards_id %>"
+          "value": ":card_id"
         }]
       """
     Then I should get a 200 OK status code
@@ -104,11 +71,11 @@ Feature: Credit cards
     And the fields on this customer match:
       """
           {
-            "links": { "source": "<%= @cards_id %>" }
+            "links": { "source": ":card_id" }
           }
       """
 
-    When I make a POST request to /customers/:customer_id/orders with the body:
+    When I make a POST request to the link "customers.orders" with the body:
       """
         {
           "description": "Catherine Malandrino Black Top",
@@ -129,15 +96,15 @@ Feature: Credit cards
     And the fields on this order match:
       """
         {
-        "links":{ "merchant": "<%= @customers_id %>" }
+        "links":{ "merchant": ":customer_id" }
         }
       """
 
-    When I make a POST request to the link "customers.debits" with the body:
+    When I make a POST request to /customers/:customer_id/debits with the body:
       """
         {
           "amount": 10000,
-          "order": "<%= @orders_id %>",
+          "order": ":order_id",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
@@ -150,7 +117,7 @@ Feature: Credit cards
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": "<%= @orders_id %>",
+            "order": ":order_id"
           }
         }
       """
@@ -178,7 +145,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-469
   Scenario: Existing buyer makes a purchase with an existing card
     Given I have created a customer
     When I make a GET request to /customers/:customer_id
@@ -210,7 +176,7 @@ Feature: Credit cards
     And the fields on this order match:
       """
         {
-        "links":{ "merchant": "<%= @customers_id %>" }
+        "links":{ "merchant": ":customer_id" }
         }
       """
 
@@ -218,7 +184,7 @@ Feature: Credit cards
       """
         {
           "amount": 10000,
-          "order": "<%= @orders_id %>",
+          "order": ":order_id",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
@@ -231,7 +197,7 @@ Feature: Credit cards
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": "<%= @orders_id %>",
+            "order": ":order_id"
           }
         }
       """
@@ -259,7 +225,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-469
   Scenario: New buyer makes a purchase
     When I POST to /cards with the JSON API body:
       """
@@ -280,10 +245,6 @@ Feature: Credit cards
      """
     Then I should get a 201 CREATED status code
     And the response is valid according to the "cards" schema
-
-    When I make a GET request to /cards/:cards_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
     And the fields on this card match:
       """
         {
@@ -298,7 +259,7 @@ Feature: Credit cards
         {
           "name": "Darius the Great",
           "email": "darius.great@gmail.com",
-          "source": "<%= @card_id %>",
+          "source": ":card_id",
           "meta": {
             "ip_address": "174.240.15.249"
           }
@@ -311,7 +272,7 @@ Feature: Credit cards
       """
         {
           "links": {
-            "source": "<%= @card_id %>",
+            "source": ":card_id",
             "destination": null
           }
         }
@@ -338,7 +299,7 @@ Feature: Credit cards
     And the fields on this order match:
       """
         {
-        "links":{ "merchant": "<%= @customers_id %>" }
+        "links":{ "merchant": ":customer_id" }
         }
       """
 
@@ -346,7 +307,7 @@ Feature: Credit cards
       """
         {
           "amount": 10000,
-          "order": "<%= @orders_id %>",
+          "order": ":order_id",
           "appears_on_statement_as": "Vaunte-Alice Ryan"
         }
       """
@@ -359,7 +320,7 @@ Feature: Credit cards
           "appears_on_statement_as": "BAL*Vaunte-Alice Ryan",
           "status": "succeeded",
           "links": {
-            "order": "#{@orders_id}",
+            "order": ":order_id"
           }
         }
       """

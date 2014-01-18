@@ -1,5 +1,5 @@
 Given(/^I have created a customer$/) do
-  @client.post('/customers', 
+  @client.post('/customers',
     {
       name: 'Henry Ford',
       dob: '1863-07',
@@ -84,4 +84,9 @@ When(/^I DELETE to \/customers\/:customer_id giving the customer_id$/) do
   }
   response = HTTParty.delete("#{@client.root_url}/customers/#{@customer_id}", options)
   @client.add_response(response)
+end
+
+
+Given(/^I have another customer with a card$/) do
+  step 'I have created a customer'
 end

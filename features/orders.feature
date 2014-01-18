@@ -1,6 +1,5 @@
 Feature: Orders
 
-  @failing @gh-469
   Scenario: Create an order
     Given I have created a customer
     When I make a POST request to /customers/:customer_id/orders
@@ -8,7 +7,6 @@ Feature: Orders
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
 
-  @failing @gh-469
   Scenario: Basic order flow
     Given I have a customer with a tokenized bank account
     When I make a POST request to /customers/:customer_id/orders
@@ -17,7 +15,7 @@ Feature: Orders
     And the fields on this order match:
       """
       {
-        "links": { "merchant": "<%= @customer_id %>" }
+        "links": { "merchant": ":customer_id" }
       }
       """
 
@@ -26,7 +24,7 @@ Feature: Orders
       """
       {
         "amount": 10000,
-        "order": "<%= @order_href %>"
+        "order": ":order_id"
       }
       """
 
@@ -36,13 +34,13 @@ Feature: Orders
       """
       {
         "links": {
-          "order": "<%= @order_id %>"
+          "order": ":order_id"
         }
       }
       """
-      
+
     When I fetch the order
-    And I make a GET request to the link "orders.href"
+    And I make a GET request to /orders/:order_id
 
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
@@ -59,7 +57,7 @@ Feature: Orders
       """
       {
         "amount": 10000,
-        "order": "<%= @order_href %>"
+        "order": ":order_id"
       }
       """
 
@@ -69,13 +67,13 @@ Feature: Orders
       """
       {
         "links": {
-          "order": "<%= @order_id %>"
+          "order": ":order_id"
         }
       }
       """
 
     When I fetch the order
-    And I make a GET request to the link "orders.href"
+    And I make a GET request to /orders/:order_id
 
     Then I should get a 200 OK status code
     And the response is valid according to the "orders" schema
@@ -87,14 +85,13 @@ Feature: Orders
       }
       """
 
-  @failing @gh-469
   Scenario: Checking escrow of order after creating a debit
     Given I have created an order
     And I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": "<%= @order_id %>",
+        "order": ":order_id",
         "amount": 1234
       }
     """
@@ -109,16 +106,14 @@ Feature: Orders
       }
     """
 
-  @failing @gh-469
   Scenario: Checking escrow of order after creating a credit
-    Given I have created an order
-    And I have sufficient funds in my marketplace
-    And I have tokenized a bank account
+    Given I have an order with a debit
+    And I have tokenized a bank account and associated with the merchant
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-       "order": "<%= @orders_id %>",
-       "amount": 1234
+       "order": ":order_id",
+       "amount": 12345
     }
     """
     When I make a GET request to /orders/:order_id
@@ -127,19 +122,19 @@ Feature: Orders
     And the fields on this order match:
     """
       {
+        "amount": 12345,
         "amount_escrowed": 0
       }
     """
 
-
-  @failing @gh-469
   Scenario: Orders cannot be credited more than escrow balance
     Given I have created an order
+    And I have tokenized a bank account and associated with the merchant
     And I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-      "order": "<%= @orders_id $>",
+      "order": ":order_id",
       "amount": 1234
       }
     """
@@ -155,7 +150,7 @@ Feature: Orders
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "order": "<%= @orders_id %>",
+      "order": ":order_id",
       "amount": 2000
     }
     """
@@ -164,11 +159,10 @@ Feature: Orders
     And the fields on this error match:
     """
       {
-       "category_code": "account-insufficient-funds"
+       "category_code": "insufficient-funds"
       }
     """
 
-  @failing @gh-469
   Scenario: Create a refund
     Given I have created an order
     And I have tokenized a customer card
@@ -185,24 +179,30 @@ Feature: Orders
       }
     """
 
-
-  @failing @gh-469
   Scenario: Create a reversal
-    Given I have created an order
-    And I have tokenized a customer card
-    And I make a POST request to /customers/:customer_id/orders with the body:
+    Given I have an order with a debit
+    And I make a POST request to /customers/:merchant_id/bank_accounts with the body:
     """
-      {
-      "order": "<%= @orders_id %>",
-      "amount": 1234
-      }
+    {
+      "name": "Michael Jordan",
+      "account_number": "9900000002",
+      "routing_number": "021000021",
+      "account_type": "checking"
+    }
     """
-    And I have tokenized a bank account
     And I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
-        "order": "<%= @orders_id %>",
-        "amount": 1234
+        "order": ":order_id",
+        "amount": 12345
+      }
+    """
+    When I make a GET request to /orders/:order_id
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+    """
+      {
+        "amount_escrowed": 0
       }
     """
 
@@ -216,51 +216,45 @@ Feature: Orders
     And the fields on this order match:
     """
       {
-        "amount_escrowed": 0
+        "amount_escrowed": 12345
       }
     """
 
-
-  @failing @gh-471
   Scenario: Create a failed refund when insufficient funds are in order escrow
     Given I have created an order
     And I have tokenized a card
     When I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": "<%= @orders_id %>",
+        "order": ":order_id",
         "amount": 1234
       }
     """
-    And I have tokenized a bank account
+    And I have tokenized a bank account and associated with the merchant
     Then I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
-        "order": "<%= @orders_id %>",
+        "order": ":order_id",
         "amount": 1234
       }
     """
 
-    When I make a POST request to the link "debits.refunds" of that debit
+    When I make a POST request to the link "debits.refunds"
     Then I should get a 409 status code
     And the response is valid according to the "errors" schema
     And the fields on this error match:
     """
       {
-       "category_code": "account-insufficient-funds"
+       "category_code": "insufficient-funds"
       }
     """
 
-  @failing @gh-469
   Scenario: Transactions should inherit the description of the order by default
-    Given I have created an order
-    And I have tokenized a bank account
-    When I fetch the customer
-    And I make a POST request to the link "customers.orders" with the body:
+    Given I have a merchant with an order with the body:
     """
-      {
-       "description": "Beats by Dr. Dre"
-      }
+    {
+      "description": "Beats by Dr. Dre"
+    }
     """
 
     Then I should get a 201 Created status code
@@ -272,11 +266,12 @@ Feature: Orders
       }
     """
 
-    And I make a POST request to the link "customers.debits" with the body:
+    Given I have another customer with a card
+    Then I make a POST request to the link "customers.debits" with the body:
     """
       {
         "amount": 10000,
-        "order": "<%= @orders_id %>",
+        "order": ":order_id"
       }
     """
 
@@ -289,11 +284,15 @@ Feature: Orders
       }
     """
 
+    # this scenario becomes complicted, as there are two different customers
+    # that we need to reference.  The first customer is the merchant which the order
+    # is created under.  The second is the one doing the buying.
+    Then I make a GET request to /customers/:merchant_id
     And I make a POST request to the link "customers.credits" with the body:
     """
       {
         "amount": 10000,
-        "order": "<%= @orders_id %>",
+        "order": ":order_id"
       }
     """
     Then I should get a 201 Created status code
@@ -301,39 +300,6 @@ Feature: Orders
     And the fields on this credit match:
     """
       {
-        { "description": "Beats by Dr. Dre"}
-      }
-    """
-
-  @failing @gh-474
-  Scenario: Crediting an unverified merchant will result in failure
-    Given I have created a non-underwritten customer with a tokenized bank account
-    And I make a POST request to the link "customers.orders"
-
-    And I fetch the card
-    And I make a POST request to the link "cards.debits" with the body:
-    """
-      {
-        "order": "<%= @orders_id %>",
-        "amount": 1234
-      }
-    """
-    Then I should get a 201 Created status code
-
-    When I fetch the bank account
-    And I make a POST request to the link "bank_accounts.credits" with the body:
-    """
-      {
-        "amount": 1234,
-        "order": "<%= @orders_id %>"
-      }
-    """
-    Then I should get a 409 status code
-    And the response is valid according to the "errors" schema
-    And the fields on this error match:
-    """
-      {
-        "description": "Order requires that merchant CU[a-zA-Z0-9]{16,32} be underwritten.",
-        "category_code": "order-kyc"
+        "description": "Beats by Dr. Dre"
       }
     """

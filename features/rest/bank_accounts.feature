@@ -5,7 +5,6 @@ Feature: Bank accounts
   but to debit from a bank account, micro deposit verifications are
   required.
 
-  @failing @gh-449
   Scenario: Tokenize a bank account
     When I POST to /bank_accounts without my secret key with the JSON API body:
     """
@@ -23,14 +22,12 @@ Feature: Bank accounts
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema
 
-  @failing @gh-449
   Scenario: Retrieve a bank account
     Given I have tokenized a bank account
     When I GET to /bank_accounts/:bank_account_id
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema
 
-  @failing @gh-449
   Scenario: List bank accounts
     Given I have tokenized more than one bank account
     When I GET to /bank_accounts
@@ -43,7 +40,6 @@ Feature: Bank accounts
     Then I should get a 204 OK status code
     And there should be no response body
 
-  @failing @gh-449
   Scenario: Update a bank account
     Given I have tokenized a bank account
     When I PUT to /bank_accounts/:bank_account_id with the JSON API body:
@@ -80,7 +76,6 @@ Feature: Bank accounts
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
-  @failing @gh-449
   Scenario: Infer bank names
     When I POST to /bank_accounts with the JSON API body:
     """
@@ -93,7 +88,7 @@ Feature: Bank accounts
     """
     Then I should get a 201 Created status code
     And the response is valid according to the "bank_accounts" schema
-    And the fields on this bank account match:
+    And the fields on this bank_account match:
       """
         {"bank_name": "BANK OF AMERICA, N.A."}
       """
@@ -109,12 +104,11 @@ Feature: Bank accounts
     """
     Then I should get a 201 Created status code
     And the response is valid according to the "bank_accounts" schema
-    And the fields on this bank account match:
+    And the fields on this bank_account match:
       """
         {"bank_name": "J.P. MORGAN CHASE BANK, N.A."}
       """
 
-  @failing @gh-449
   Scenario: Add a bank account to a customer
     Given I have created a customer
     And I have tokenized a bank account
@@ -123,12 +117,16 @@ Feature: Bank accounts
       [{
         "op": "replace",
         "path": "/bank_accounts/0/links/customer",
-        "value": "<%= @customer_id %>"
+        "value": ":customer_id"
       }]
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema
-    And the fields on this bank account match:
+    And the fields on this bank_account match:
       """
-        { "links": { "customer": "<%= @customer_id %>" } }
+        {
+          "links": {
+            "customer": ":customer_id"
+          }
+        }
       """
