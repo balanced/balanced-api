@@ -391,7 +391,7 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-487
   Scenario: CVV does not match
     When I make a POST request to /cards with the body:
       """
