@@ -412,7 +412,7 @@ Feature: Credit cards
         }
       """
 
-  @failing
+  @failing @gh-486
   Scenario: CVV is unsupported
     When I make a POST request to /cards with the body:
       """
