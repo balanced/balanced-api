@@ -1,0 +1,16 @@
+scenarios:
+  - name: attach_evidence_to_dispute
+    request:
+      method: POST
+      href:  "/disputes/{dispute,disputes.id}/evidence"
+      schema:
+        "$ref": "requests/evidence.json"
+      body: {
+        "filename": "filename",
+        "data": "000==",
+        "content_type": "application/pdf"
+      }
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/evidence.json"

@@ -1,0 +1,12 @@
+scenarios:
+  - name: delete_evidence
+    request:
+      method: POST
+      href:  "/evidence/{evidence,evidence.id}/delete"
+      schema:
+        "$ref": "requests/evidence.json"
+      body: {}
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/evidence.json"

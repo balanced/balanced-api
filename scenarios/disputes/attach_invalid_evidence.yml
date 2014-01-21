@@ -1,0 +1,17 @@
+scenarios:
+  - name: attach_invalid_evidence_to_dispute
+    request:
+      method: POST
+      href:  "/disputes/{dispute,disputes.id}/evidence"
+      schema:
+        "$ref": "requests/evidence.json"
+      body: {
+        "filename": "filename",
+        "data": "",
+        "content_type": "application/pdf"
+      }
+    response:
+      status_code: 400
+      schema:
+        "$ref": "responses/errors.json"
+      assertRegex: { "description": ".*invalid document" }

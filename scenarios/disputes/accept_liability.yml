@@ -1,0 +1,12 @@
+scenarios:
+  - name: accept_liability_for_dispute
+    request:
+      method: POST
+      href:  "/disputes/{dispute,disputes.id}/accept"
+      schema:
+        "$ref": "requests/dispute.json"
+      body: {}
+    response:
+      status_code: 201
+      schema:
+        "$ref": "responses/disputes.json"

@@ -5,16 +5,10 @@
         "links": {
             "type": "object",
             "properties": {
-                "disputes.transaction": {
+                "evidence.dispute": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/disputes/{disputes.id}/transaction",
-                    "required": true
-                },
-                "disputes.evidence": {
-                    "type": "string",
-                    "format": "uri",
-                    "pattern": "/disputes/{disputes.id}/evidence",
+                    "pattern": "/evidence/{evidence.id}/dispute",
                     "required": true
                 }
             },
@@ -24,9 +18,9 @@
             "type": "object",
             "required": false
         },
-        "disputes": {
+        "evidence": {
             "items": {
-                "$ref": "_models/dispute.json"
+                "$ref": "_models/evidence.json"
             },
             "type": "array",
             "minItems": 0,
