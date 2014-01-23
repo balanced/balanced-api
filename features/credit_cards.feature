@@ -346,7 +346,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-481
   Scenario: Tokenization fails luhn test
     When I make a POST request to /cards with the body:
       """
