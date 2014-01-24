@@ -3,7 +3,7 @@ Given(/^I have a customer who will dispute any charge$/) do
   @client.post('/cards',
     {
       number: "6500000000000002",
-      expiration_month: 12
+      expiration_month: 12,
       expiration_year: 3000,
       cvv: "123",
       customer: @customer_id
