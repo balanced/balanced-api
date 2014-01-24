@@ -10,7 +10,8 @@
                     "format": "uri",
                     "pattern": "/resources/{disputes.transaction}"
                 }
-            }
+            },
+            "required": ["disputes.transaction"]
         },
         "meta": {
             "type": "object"

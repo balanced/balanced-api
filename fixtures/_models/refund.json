@@ -57,11 +57,19 @@
                         "string"
                     ],
                     "pattern": "OR[a-zA-Z0-9]{16,32}"
+                },
+                "dispute": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
                 "debit",
-                "order"
+                "order",
+                "dispute"
             ],
             "additionalProperties": false
         }
