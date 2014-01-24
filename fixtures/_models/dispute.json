@@ -4,38 +4,31 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "DT[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "amount": {
-            "type": "integer",
-            "required": true
+            "type": "integer"
         },
         "currency": {
             "type": "string",
             "enum": [
                 "USD"
-            ],
-            "required": true
+            ]
         },
         "reason": {
             "type": "string",
-            "required": true
         },
         "status": {
             "type": "string",
@@ -43,35 +36,44 @@
                 "pending",
                 "won",
                 "lost"
-            ],
-            "required": true
+            ]
         },
         "initiated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "respond_by": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "transaction": {
                     "type": "string",
-                    "pattern": "(WD|RF)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(WD|RF)[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
-            "additionalProperties": false
+            "additionalProperties": false,
+            "required": ["transaction"]
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "reason",
+        "status",
+        "initiated_at",
+        "respond_by",
+        "meta",
+        "links"
+    ]
 }

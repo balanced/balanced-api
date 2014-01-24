@@ -3,13 +3,10 @@
     "type": "object",
     "properties": {
         "links": {
-            "type": "object",
-
-            "required": false
+            "type": "object"
         },
         "meta": {
-            "type": "object",
-            "required": false
+            "type": "object"
         },
         "disputes": {
             "items": {
@@ -17,8 +14,8 @@
             },
             "type": "array",
             "minItems": 0,
-            "uniqueItems": true,
-            "required": true
+            "uniqueItems": true
         }
-    }
+    },
+    "required": ["disputes"]
 }
