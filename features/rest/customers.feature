@@ -39,6 +39,23 @@ Feature: Customers
     Then I should get a 204 OK status code
     And there should be no response body
 
+  Scenario: Update a customer
+    Given I have created a customer
+    When I make a PUT request to the href "href" with the body:
+      """
+      {
+        "email": "asdf@balancedpayments.com"
+      }
+      """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "customers" schema
+    And the fields on this customer match:
+      """
+      {
+        "email": "asdf@balancedpayments.com"
+      }
+      """
+
   Scenario: Add a card to a customer
     Given I have tokenized a card
     And I have created a customer
