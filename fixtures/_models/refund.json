@@ -1,0 +1,82 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "RF[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "RF[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "debit": {
+                    "type": "string",
+                    "pattern": "WD[a-zA-Z0-9]{16,32}"
+                },
+                "order": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "debit",
+                "order"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "description",
+        "status",
+        "meta",
+        "links"
+    ]
+}

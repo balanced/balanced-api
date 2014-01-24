@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "BZ[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+        },
+        "attempts_remaining": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+        },
+        "deposit_status": {
+            "$ref": "status.json"
+        },
+        "verification_status": {
+            "$ref": "status.json"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "bank_account": {
+                    "type": "string",
+                    "pattern": "BA[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "bank_account"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "attempts",
+        "attempts_remaining",
+        "deposit_status",
+        "verification_status",
+        "meta",
+        "links"
+    ]
+}

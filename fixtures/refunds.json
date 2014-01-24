@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "refunds.debit": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/debits/{refunds.debit}"
+                },
+                "refunds.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/orders/{refunds.order}"
+                },
+                "refunds.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/refunds/{refunds.id}/events"
+                }
+            },
+            "required": [
+                "refunds.debit",
+                "refunds.order",
+                "refunds.events"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "refunds": {
+            "items": {
+                "$ref": "_models/refund.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "refunds"
+    ]
+}

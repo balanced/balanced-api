@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "cards.card_holds": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards/{cards.id}/card_holds"
+                },
+                "cards.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards/{cards.id}/debits"
+                },
+                "cards.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{cards.customer}"
+                }
+            },
+            "required": [
+                "cards.customer",
+                "cards.debits",
+                "cards.card_holds"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "cards": {
+            "items": {
+                "$ref": "_models/card.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "cards"
+    ]
+}

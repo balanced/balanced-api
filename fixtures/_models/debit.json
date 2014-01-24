@@ -1,0 +1,109 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "WD[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "appears_on_statement_as": {
+            "type": "string",
+            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "failure_reason": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
+                },
+                "customer": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                },
+                "order": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "source",
+                "customer",
+                "order"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "appears_on_statement_as",
+        "description",
+        "status",
+        "failure_reason_code",
+        "transaction_number",
+        "meta",
+        "links"
+    ]
+}

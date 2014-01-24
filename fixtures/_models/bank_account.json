@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "BA[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "name": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "account_number": {
+            "type": "string",
+            "pattern": "x*[0-9]{4}"
+        },
+        "routing_number": {
+            "type": "string",
+            "pattern": "[0-9]{9}"
+        },
+        "account_type": {
+            "type": "string",
+            "enum": [
+                "checking",
+                "savings"
+            ]
+        },
+        "bank_name": {
+            "type": "string"
+        },
+        "address": {
+            "$ref": "address.json"
+        },
+        "fingerprint": {
+            "type": "string"
+        },
+        "can_debit": {
+            "type": "boolean"
+        },
+        "can_credit": {
+            "type": "boolean"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                },
+                "bank_account_verification": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "BZ[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "customer",
+                "bank_account_verification"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "name",
+        "account_number",
+        "routing_number",
+        "account_type",
+        "bank_name",
+        "address",
+        "fingerprint",
+        "can_debit",
+        "can_credit",
+        "meta",
+        "links"
+    ]
+}
