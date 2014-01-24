@@ -28,7 +28,7 @@
             ]
         },
         "reason": {
-            "type": "string",
+            "type": "string"
         },
         "status": {
             "type": "string",

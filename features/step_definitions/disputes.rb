@@ -16,14 +16,18 @@ end
 Given(/^I have debited a card that will initiate a dispute$/) do
   step "I have a customer who will dispute any charge"
   @client.post("/cards/#{@dispute_card_id}/debits", {
-      'amount' => 1234
+      'amount' => 99999
   })
-  @dipsuted_debit_id = @client['debits']['id']
+  @disputed_debit_id = @client['debits']['id']
   @client.add_hydrate(:disputed_debit_id, @disputed_debit_id)
 end
 
 Given(/^I have a dispute$/) do
   step 'I have debited a card that will initiate a dispute'
-  @client.get("/debits/#{@disputed_debit_id}")
-  @client.add_hydrate(:dispute_id, @client['debits']['links']['dispute'])
+  @dispute_id = nil
+  while @dispute_id.nil?
+    @client.get("/debits/#{@disputed_debit_id}")
+    @dispute_id = @client['debits']['links']['dispute']
+  end
+  @client.add_hydrate(:dispute_id, @dispute_id)
 end

@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 
 # TODO: move this into the lib
-$root_url = ENV['BALANCED_ROOT'] || 'https://api.balancedpayments.com'
+$root_url = ENV['BALANCED_ROOT'] || 'http://localhost:5000'
 $accept_header = 'application/vnd.api+json;revision=1.1'
 
 # First, we need to create an API key. This is as easy as making a POST request.
