@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "disputes": {
+            "items": {
+                "$ref": "_models/dispute.json"
+            },
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true
+        }
+    },
+    "required": ["disputes"]
+}

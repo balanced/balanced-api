@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "DT[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "type": "integer"
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "reason": {
+            "type": "string",
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "pending",
+                "won",
+                "lost"
+            ]
+        },
+        "initiated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "respond_by": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "transaction": {
+                    "type": "string",
+                    "pattern": "(WD|RF)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["transaction"]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "reason",
+        "status",
+        "initiated_at",
+        "respond_by",
+        "meta",
+        "links"
+    ]
+}
