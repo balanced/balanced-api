@@ -3,7 +3,14 @@
     "type": "object",
     "properties": {
         "links": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "disputes.transaction": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{disputes.transaction}"
+                }
+            }
         },
         "meta": {
             "type": "object"
