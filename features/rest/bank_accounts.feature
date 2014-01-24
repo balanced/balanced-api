@@ -22,6 +22,49 @@ Feature: Bank accounts
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema
 
+  Scenario: Tokenize a savings account
+    When I make a POST request to /bank_accounts with the body:
+      """
+      {
+        "name": "Jack Lalanne",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "savings"
+      }
+      """
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank_account match:
+      """
+      { "account_type": "savings" }
+      """
+
+  Scenario: Tokenize a bank account with a country code
+    When I make a POST request to /bank_accounts with the body:
+      """
+      {
+        "name": "Mahmoud Abdelkader",
+        "account_number": "200938202",
+        "routing_number": "121042882",
+        "account_type": "checking",
+        "address": {
+          "country_code": "US"
+        }
+      }
+      """
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank_account match:
+      """
+      {
+        "address": {
+          "country_code": "US"
+        }
+      }
+      """
+
   Scenario: Retrieve a bank account
     Given I have tokenized a bank account
     When I GET to /bank_accounts/:bank_account_id
