@@ -1,0 +1,376 @@
+{
+    "required": true,
+    "type": "object",
+    "id": "marketplace",
+    "properties": {
+        "support_email_address": {
+            "required": true,
+            "type": "string",
+            "id": "support_email_address"
+        },
+        "callbacks_uri": {
+            "required": true,
+            "type": "string",
+            "id": "callbacks_uri"
+        },
+        "accounts_uri": {
+            "required": true,
+            "type": "string",
+            "id": "accounts_uri"
+        },
+        "meta": {
+            "required": true,
+            "type": "object",
+            "id": "meta"
+        },
+        "id": {
+            "required": true,
+            "type": "string",
+            "id": "id"
+        },
+        "domain_url": {
+            "required": true,
+            "type": "string",
+            "id": "domain_url"
+        },
+        "owner_account_uri": {
+            "required": true,
+            "type": "string",
+            "id": "owner_account_uri",
+            "format": "uri",
+            "pattern": "(/v1)?/marketplaces/(TEST-)?[A-z0-9]{16,32}/accounts/(CU|AC)[A-z0-9]{16,32}"
+        },
+        "_type": {
+            "required": true,
+            "type": "string",
+            "id": "_type"
+        },
+        "events_uri": {
+            "required": true,
+            "type": "string",
+            "id": "events_uri"
+        },
+        "reversals_uri": {
+            "required": true,
+            "type": "string",
+            "id": "reversals_uri"
+        },
+        "_uris": {
+            "required": true,
+            "type": "object",
+            "id": "_uris",
+            "properties": {
+                "callbacks_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "callbacks_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "holds_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "holds_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "owner_account_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "owner_account_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "accounts_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "accounts_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "events_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "events_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "bank_accounts_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "bank_accounts_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "refunds_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "refunds_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "debits_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "debits_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "owner_customer_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "owner_customer_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "customers_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "customers_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "transactions_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "transactions_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "reversals_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "reversals_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "credits_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "credits_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                },
+                "cards_uri": {
+                    "required": true,
+                    "type": "object",
+                    "id": "cards_uri",
+                    "properties": {
+                        "_type": {
+                            "required": true,
+                            "type": "string",
+                            "id": "_type"
+                        },
+                        "key": {
+                            "required": true,
+                            "type": "string",
+                            "id": "key"
+                        }
+                    }
+                }
+            }
+        },
+        "transactions_uri": {
+            "required": true,
+            "type": "string",
+            "id": "transactions_uri"
+        },
+        "bank_accounts_uri": {
+            "required": true,
+            "type": "string",
+            "id": "bank_accounts_uri"
+        },
+        "credits_uri": {
+            "required": true,
+            "type": "string",
+            "id": "credits_uri"
+        },
+        "cards_uri": {
+            "required": true,
+            "type": "string",
+            "id": "cards_uri"
+        },
+        "in_escrow": {
+            "required": true,
+            "type": "number",
+            "id": "in_escrow"
+        },
+        "holds_uri": {
+            "required": true,
+            "type": "string",
+            "id": "holds_uri"
+        },
+        "name": {
+            "required": true,
+            "type": "string",
+            "id": "name"
+        },
+        "can_reverse_transactions": {
+            "required": true,
+            "type": "boolean",
+            "id": "can_reverse_transactions"
+        },
+        "uri": {
+            "required": true,
+            "type": "string",
+            "id": "uri"
+        },
+        "support_phone_number": {
+            "required": true,
+            "type": "string",
+            "id": "support_phone_number"
+        },
+        "refunds_uri": {
+            "required": true,
+            "type": "string",
+            "id": "refunds_uri"
+        },
+        "debits_uri": {
+            "required": true,
+            "type": "string",
+            "id": "debits_uri"
+        },
+        "owner_customer_uri": {
+            "required": true,
+            "type": "string",
+            "id": "owner_customer_uri",
+            "format": "uri",
+            "pattern": "(/v1)?/customers/(CU|AC)[A-z0-9]{16,32}"
+        },
+        "customers_uri": {
+            "required": true,
+            "type": "string",
+            "id": "customers_uri"
+        }
+    }
+}
