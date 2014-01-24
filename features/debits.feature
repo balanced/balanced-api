@@ -61,3 +61,18 @@ Feature: Debit cards
       """
     Then I should get a 409 Conflict status code
     And the response is valid according to the "debits" schema
+
+   Scenario: Debiting a card directly
+     When I POST to /debits with the body:
+      """
+      {
+        "amount": 1234,
+        "source": {
+          "number": "4111111111111111",
+          "expiration_year": "2018",
+          "expiration_month": 12
+        }
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
