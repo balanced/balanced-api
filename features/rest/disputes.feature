@@ -1,6 +1,5 @@
 Feature: Disputes occur when customers dispute transactions
 
-  @focus
   Scenario: Retrieve a dispute
     Given I have a dispute
     When I GET to /disputes/:dispute_id
