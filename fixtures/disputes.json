@@ -9,9 +9,14 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/resources/{disputes.transaction}"
+                },
+                "disputes.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{disputes.events}"
                 }
             },
-            "required": ["disputes.transaction"]
+            "required": ["disputes.transaction", "disputes.events"]
         },
         "meta": {
             "type": "object"
