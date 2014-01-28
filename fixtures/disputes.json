@@ -13,7 +13,7 @@
                 "disputes.events": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/resources/{disputes.events}"
+                    "pattern": "/disputes/{disputes.id}/events"
                 }
             },
             "required": ["disputes.transaction", "disputes.events"]
