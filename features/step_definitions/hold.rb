@@ -11,8 +11,8 @@ When(/^I make a DELETE request to it$/) do
   step "I DELETE to #{href}"
 end
 
-Then(/^the card_hold has a "(.*?)" attribute$/) do |attribute|
-  assert @client.last_body["card_holds"][attribute]
+Then(/^the card_hold has a "(.*?)" attribute set$/) do |attribute|
+  assert_not_nil @client["card_holds"][attribute]
 end
 
 Given(/^I have voided a hold$/) do
@@ -22,5 +22,7 @@ end
 
 Then(/^I should not see that hold in the results$/) do
   hold_ids = @client.last_body["card_holds"].collect{|hold| hold["id"]}
-  assert_nil hold_ids.select{|id| id == @void_id }
+  hold_ids.each {|x|
+    assert x != @void_id
+  }
 end
