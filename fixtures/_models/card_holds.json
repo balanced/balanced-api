@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "HL[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "expires_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "appears_on_statement_as": {
+            "type": "string",
+            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "failure_reason": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "card": {
+                    "type": "string",
+                    "pattern": "CC[a-zA-Z0-9]{16,32}"
+                },
+                "debit": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "WD[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "requird": [
+                "card",
+                "debit"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "expires_at",
+        "amount",
+        "currency",
+        "appears_on_statement_as",
+        "description",
+        "status",
+        "failure_reason_code",
+        "failure_reason",
+        "meta",
+        "links"
+    ]
+}
