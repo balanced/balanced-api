@@ -28,6 +28,7 @@ Given(/^I have a dispute$/) do
   while @dispute_id.nil?
     @client.get("/debits/#{@disputed_debit_id}")
     @dispute_id = @client['debits']['links']['dispute']
+    sleep 1
   end
   @client.add_hydrate(:dispute_id, @dispute_id)
 end
