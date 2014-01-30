@@ -3,6 +3,7 @@ Given(/^I have created a hold$/) do
   hold_url = @client.last_body["links"]["cards.card_holds"]
   hold_url = hold_url.gsub("{cards.id}", @client.last_body["cards"][0]["id"])
   step "I POST to #{hold_url} with the body:", '{ "amount": 100 }'
+  @client.add_hydrate :card_hold_id, @client['id']
 end
 
 When(/^I make a DELETE request to it$/) do
