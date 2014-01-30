@@ -25,10 +25,12 @@ end
 Given(/^I have a dispute$/) do
   step 'I have debited a card that will initiate a dispute'
   @dispute_id = nil
-  while @dispute_id.nil?
+  count = 20
+  while @dispute_id.nil? and count > 0
+    count -= 1
     @client.get("/debits/#{@disputed_debit_id}")
     @dispute_id = @client['debits']['links']['dispute']
-    sleep 1
+    sleep 3
   end
   @client.add_hydrate(:dispute_id, @dispute_id)
 end
