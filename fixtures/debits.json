@@ -29,6 +29,11 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/debits/{debits.id}/events"
+                },
+                "debits.dispute": {
+                    "type": "stirng",
+                    "format": "uri",
+                    "pattern": "/disputes/{debits.dispute}"
                 }
             },
             "required": [
@@ -36,7 +41,8 @@
                 "debits.customer",
                 "debits.order",
                 "debits.source",
-                "debits.events"
+                "debits.events",
+                "debits.dispute"
             ]
         },
         "meta": {

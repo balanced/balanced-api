@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "RF[a-zA-Z0-9]{16,32}"
+            "pattern": "DT[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -19,8 +19,7 @@
             "format": "date-time"
         },
         "amount": {
-            "type": "integer",
-            "minimum": 1
+            "type": "integer"
         },
         "currency": {
             "type": "string",
@@ -28,18 +27,24 @@
                 "USD"
             ]
         },
-        "description": {
-            "type": [
-                "string",
-                "null"
-            ]
+        "reason": {
+            "type": "string"
         },
         "status": {
-            "$ref": "status.json"
-        },
-        "transaction_number": {
             "type": "string",
-            "pattern": "RF[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            "enum": [
+                "pending",
+                "won",
+                "lost"
+            ]
+        },
+        "initiated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "respond_by": {
+            "type": "string",
+            "format": "date-time"
         },
         "meta": {
             "type": "object"
@@ -47,31 +52,13 @@
         "links": {
             "type": "object",
             "properties": {
-                "debit": {
+                "transaction": {
                     "type": "string",
-                    "pattern": "WD[a-zA-Z0-9]{16,32}"
-                },
-                "order": {
-                    "type": [
-                        "null",
-                        "string"
-                    ],
-                    "pattern": "OR[a-zA-Z0-9]{16,32}"
-                },
-                "dispute": {
-                    "type": [
-                        "null",
-                        "string"
-                    ],
-                    "pattern": "DT[a-zA-Z0-9]{16,32}"
+                    "pattern": "(WD|RF)[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": [
-                "debit",
-                "order",
-                "dispute"
-            ],
-            "additionalProperties": false
+            "additionalProperties": false,
+            "required": ["transaction"]
         }
     },
     "additionalProperties": false,
@@ -82,8 +69,10 @@
         "updated_at",
         "amount",
         "currency",
-        "description",
+        "reason",
         "status",
+        "initiated_at",
+        "respond_by",
         "meta",
         "links"
     ]
