@@ -22,7 +22,9 @@ Feature: Credits
     When  I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
-        "amount": 500
+        "credits": [{
+          "amount": 500
+        }]
       }
     """
     Then I should get a 201 Created status code
@@ -33,7 +35,9 @@ Feature: Credits
     When I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
-        "amount": 1234
+        "credits": [{
+          "amount": 1234
+        }]
       }
     """
     Then I should get a 409 status code

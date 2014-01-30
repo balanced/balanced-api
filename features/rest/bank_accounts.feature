@@ -9,10 +9,12 @@ Feature: Bank accounts
     When I POST to /bank_accounts without my secret key with the JSON API body:
     """
     {
-      "name": "That guy over there",
-      "routing_number": "321174851",
-      "account_number": "9900000001",
-      "account_type": "checking"
+      "bank_accounts": [{
+        "name": "That guy over there",
+        "routing_number": "321174851",
+        "account_number": "9900000001",
+        "account_type": "checking"
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -26,10 +28,12 @@ Feature: Bank accounts
     When I make a POST request to /bank_accounts with the body:
       """
       {
-        "name": "Jack Lalanne",
-        "account_number": "200938202",
-        "routing_number": "121042882",
-        "account_type": "savings"
+        "bank_accounts": [{
+          "name": "Jack Lalanne",
+          "account_number": "200938202",
+          "routing_number": "121042882",
+          "account_type": "savings"
+        ]}
       }
       """
 
@@ -44,13 +48,15 @@ Feature: Bank accounts
     When I make a POST request to /bank_accounts with the body:
       """
       {
-        "name": "Mahmoud Abdelkader",
-        "account_number": "200938202",
-        "routing_number": "121042882",
-        "account_type": "checking",
-        "address": {
-          "country_code": "US"
-        }
+        "bank_accounts": [{
+          "name": "Mahmoud Abdelkader",
+          "account_number": "200938202",
+          "routing_number": "121042882",
+          "account_type": "checking",
+          "address": {
+            "country_code": "US"
+          }
+        }]
       }
       """
 
@@ -102,7 +108,9 @@ Feature: Bank accounts
     When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "amount": 1234
+      "credits": [{
+        "amount": 1234
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -113,7 +121,9 @@ Feature: Bank accounts
     When I POST to /bank_accounts/:bank_account_id/debits with the JSON API body:
     """
     {
-      "amount": 1234
+      "debits": [{
+        "amount": 1234
+      ]}
     }
     """
     Then I should get a 201 Created status code
@@ -123,10 +133,12 @@ Feature: Bank accounts
     When I POST to /bank_accounts with the JSON API body:
     """
     {
-      "name": "Michael Johnson",
-      "account_number": "982379283",
-      "routing_number": "121000358",
-      "account_type": "checking"
+      "bank_accounts": [{
+        "name": "Michael Johnson",
+        "account_number": "982379283",
+        "routing_number": "121000358",
+        "account_type": "checking"
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -139,10 +151,12 @@ Feature: Bank accounts
     When I POST to /bank_accounts with the JSON API body:
     """
     {
-      "name": "Maurice Green",
-      "account_number": "33727930",
-      "routing_number": "322271627",
-      "account_type": "checking"
+      "bank_accounts": [{
+        "name": "Maurice Green",
+        "account_number": "33727930",
+        "routing_number": "322271627",
+        "account_type": "checking"
+      }]
     }
     """
     Then I should get a 201 Created status code

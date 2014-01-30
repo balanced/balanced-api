@@ -7,8 +7,10 @@ Feature: Customers
     When I POST to /customers with the JSON API body:
       """
       {
-        "name": "Customer name",
-        "email": "email@example.com"
+        "customers": [{
+          "name": "Customer name",
+          "email": "email@example.com"
+        }]
       }
       """
     Then I should get a 201 Created status code
@@ -16,8 +18,10 @@ Feature: Customers
     And the fields on this customer match:
       """
       {
-        "name": "Customer name",
-        "email": "email@example.com"
+        "customers": [{
+          "name": "Customer name",
+          "email": "email@example.com"
+        }]
       }
       """
 
@@ -44,7 +48,9 @@ Feature: Customers
     When I make a PUT request to the href "href" with the body:
       """
       {
-        "email": "asdf@balancedpayments.com"
+        "customers": [{
+          "email": "asdf@balancedpayments.com"
+        }]
       }
       """
     Then I should get a 200 OK status code
@@ -62,9 +68,11 @@ Feature: Customers
     When I PUT to /cards/:card_id with the JSON API body:
     """
     {
-      "links": {
-        "customer": ":customer_id"
-      }
+      "cards": [{
+        "links": {
+          "customer": ":customer_id"
+        }
+      }]
     }
     """
     Then I should get a 200 OK status code
@@ -84,9 +92,11 @@ Feature: Customers
     When I PUT to /bank_accounts/:bank_account_id with the JSON API body:
     """
     {
-      "links": {
-        "customer": ":customer_id"
-      }
+      "bank_accounts": [{
+        "links": {
+          "customer": ":customer_id"
+        }
+      }]
     }
     """
     Then I should get a 200 OK status code

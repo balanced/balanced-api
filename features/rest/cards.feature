@@ -15,9 +15,11 @@ Feature: Tokenize a credit card
     When I POST to /cards without my secret key with the JSON API body:
       """
       {
-        "number": "4111111111111111",
-        "expiration_month": "12",
-        "expiration_year": 2016
+        "cards": [{
+          "number": "4111111111111111",
+          "expiration_month": "12",
+          "expiration_year": 2016
+        }}
       }
       """
     Then I should get a 201 Created status code
@@ -50,9 +52,11 @@ Feature: Tokenize a credit card
     When I PUT to /cards/:card_id giving the card_id, with the JSON API body:
       """
       {
-        "number": "4111111111111111",
-        "expiration_month": "12",
-        "expiration_year": 2016
+        "cards": [{
+          "number": "4111111111111111",
+          "expiration_month": "12",
+          "expiration_year": 2016
+        }]
       }
       """
     Then I should get a 200 OK status code
@@ -63,7 +67,9 @@ Feature: Tokenize a credit card
     When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
       """
       {
-        "amount": "50"
+        "debits": [{
+          "amount": "50"
+        }]
       }
       """
     Then I should get a 201 Created status code

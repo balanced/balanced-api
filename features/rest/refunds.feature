@@ -13,7 +13,9 @@ Feature: Refunds
     When I POST to /debits/:debit_id/refunds with the JSON API body:
     """
     {
-      "amount": 100
+      "refunds": [{
+        "amount": 100
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -50,7 +52,9 @@ Feature: Refunds
     When I PUT to /refunds/:refund_id with the JSON API body:
     """
     {
-      "description": "The customer cancel the order"
+      "refunds": [{
+        "description": "The customer cancel the order"
+      }]
     }
     """
     Then I should get a 200 OK status code
