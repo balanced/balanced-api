@@ -19,12 +19,18 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/refunds/{refunds.id}/events"
+                },
+                "refunds.dispute": {
+                    "type": "stirng",
+                    "format": "uri",
+                    "pattern": "/disputes/{refunds.dispute}"
                 }
             },
             "required": [
                 "refunds.debit",
                 "refunds.order",
-                "refunds.events"
+                "refunds.events",
+                "refunds.dispute"
             ]
         },
         "meta": {
