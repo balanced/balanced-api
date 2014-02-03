@@ -67,6 +67,13 @@
                     "type": "string",
                     "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
                 },
+                "dispute": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
+                },
                 "customer": {
                     "type": [
                         "null",
@@ -84,6 +91,7 @@
             },
             "required": [
                 "source",
+                "dispute",
                 "customer",
                 "order"
             ],
