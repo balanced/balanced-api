@@ -1,0 +1,110 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "HL[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "expires_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+	"voided_at": {
+	    "type": [
+		"string",
+		"null"
+	    ],
+	    "format": "date-time"
+	},
+	"transaction_number": {
+	    "type": "string",
+	    "pattern": "HL[0-9]{3}-[0-9]{3}-[0-9]{4}"
+	},
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "failure_reason": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "card": {
+                    "type": "string",
+                    "pattern": "CC[a-zA-Z0-9]{16,32}"
+                },
+                "debit": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "WD[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "requird": [
+                "card",
+                "debit"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "expires_at",
+	"voided_at",
+	"transaction_number",
+        "amount",
+        "currency",
+        "description",
+        "status",
+        "failure_reason_code",
+        "failure_reason",
+        "meta",
+        "links"
+    ]
+}

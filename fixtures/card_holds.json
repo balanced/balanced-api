@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "card_holds.debit": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/debits/{card_holds.debit}"
+                },
+                "card_holds.card": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards/{card_holds.card}"
+                }
+            },
+            "required": [
+                "card_holds.debit",
+                "card_holds.card"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "card_holds": {
+            "items": {
+                "$ref": "_models/card_holds.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "card_holds"
+    ]
+}
