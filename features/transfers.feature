@@ -40,8 +40,8 @@ Feature: Transfers
       { "amount": 123 }
       """
 
-    When I fetch the bank_account
-    Then the fields on this bank_account should match:
+    When I fetch the account
+    Then the fields on this account should match:
       """
       {
         "balance": 123
