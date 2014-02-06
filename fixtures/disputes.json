@@ -16,7 +16,10 @@
                     "pattern": "/disputes/{disputes.id}/events"
                 }
             },
-            "required": ["disputes.transaction", "disputes.events"]
+            "required": [
+                "disputes.transaction",
+                "disputes.events"
+            ]
         },
         "meta": {
             "type": "object"
@@ -30,5 +33,7 @@
             "uniqueItems": true
         }
     },
-    "required": ["disputes"]
+    "required": [
+        "disputes"
+    ]
 }

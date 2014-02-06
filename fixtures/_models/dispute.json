@@ -58,7 +58,9 @@
                 }
             },
             "additionalProperties": false,
-            "required": ["transaction"]
+            "required": [
+                "transaction"
+            ]
         }
     },
     "additionalProperties": false,

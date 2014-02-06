@@ -14,11 +14,17 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/cards/{card_holds.card}"
+                },
+                "card_holds.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/card_holds/{card_holds.id}/debits"
                 }
             },
             "required": [
                 "card_holds.debit",
-                "card_holds.card"
+                "card_holds.card",
+                "card_holds.debits"
             ]
         },
         "meta": {
