@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/debits",
+    "allOf": [
+        {
+            "$ref": "_models/debit.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "anyOf": [
+                        {
+                            "$ref": "card.json"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "pattern": "/(cards|bank_accounts)/(CC|BA)[a-zA-Z0-9]{16,32}"
+                        },
+                        {
+                            "type": "string",
+                            "pattern": "(BA|CC)[a-zA-Z0-9]{16,32}"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/customers",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "business_name": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "email": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "email"
+        },
+        "phone": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "phone"
+        },
+        "ssn_last4": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "[0-9]{4}"
+        },
+        "ein": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "pattern": "[0-9]{9}"
+        },
+        "dob_month": {
+            "anyOf": [
+                {
+                    "$ref": "_models/month.json"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "dob_year": {
+            "anyOf": [
+                {
+                    "$ref": "_models/year.json"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "address": {
+            "$ref": "_models/address.json"
+        },
+        "source": {
+            "description": "The default financial instrument used when debiting a customer",
+            "anyOf": [
+                {
+                    "$ref": "card.json"
+                },
+                {
+                    "$ref": "bank_account.json"
+                },
+                {
+                    "description": "Either the href or id of a card or bank account",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "destination": {
+            "description": "The default financial instrument used when crediting a customer",
+            "anyOf": [
+                {
+                    "$ref": "bank_account.json"
+                },
+                {
+                    "description": "Either the href or the id of a bank account",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "meta": {
+            "type": "object"
+        }
+    }
+}

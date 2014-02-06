@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "order": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "appears_on_statement_as": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "amount"
+    ]
+}

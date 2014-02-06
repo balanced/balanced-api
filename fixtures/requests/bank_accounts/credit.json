@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/bank_accounts/:bank_account_id/credits",
+    "$ref": "../_models/credit.json"
+}

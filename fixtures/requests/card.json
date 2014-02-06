@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/cards",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "number": {
+            "type": "string",
+            "pattern": "([0-9][ \\-]*){15,16}"
+        },
+        "expiration_month": {
+            "$ref": "_models/month.json"
+        },
+        "expiration_year": {
+            "$ref": "_models/year.json"
+        },
+        "cvv": {
+            "type": "string",
+            "pattern": "[0-9]{3,4}"
+        },
+        "address": {
+            "$ref": "_models/address.json"
+        },
+        "meta": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "number",
+        "expiration_month",
+        "expiration_year"
+    ]
+}

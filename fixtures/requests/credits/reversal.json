@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "/credits/:credit_id/reversals",
+    "anyOf": [
+        {
+            "type": "object",
+            "properties": {}
+        },
+        {
+            "type": "null"
+        }
+    ]
+}
