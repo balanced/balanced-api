@@ -4,45 +4,37 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "CC[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "name": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "number": {
             "type": "string",
-            "pattern": "x{11,12}[0-9]{4}",
-            "required": true
+            "pattern": "x{11,12}[0-9]{4}"
         },
         "expiration_month": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 12,
-            "required": true
+            "maximum": 12
         },
         "expiration_year": {
-            "type": "integer",
-            "required": true
+            "type": "integer"
         },
         "cvv": {
             "anyOf": [
@@ -53,8 +45,7 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "cvv_match": {
             "anyOf": [
@@ -69,8 +60,7 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "cvv_result": {
             "anyOf": [
@@ -90,12 +80,10 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "address": {
-            "$ref": "address.json",
-            "required": true
+            "$ref": "address.json"
         },
         "avs_street_match": {
             "anyOf": [
@@ -110,8 +98,7 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "avs_postal_match": {
             "anyOf": [
@@ -126,8 +113,7 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "avs_result": {
             "anyOf": [
@@ -165,12 +151,10 @@
                 {
                     "type": "null"
                 }
-            ],
-            "required": true
+            ]
         },
         "fingerprint": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "brand": {
             "type": "string",
@@ -179,16 +163,13 @@
                 "MasterCard",
                 "Discover",
                 "American Express"
-            ],
-            "required": false
+            ]
         },
         "is_verified": {
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
@@ -198,13 +179,35 @@
                         "null",
                         "string"
                     ],
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "customer"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "name",
+        "number",
+        "expiration_month",
+        "expiration_year",
+        "cvv",
+        "cvv_match",
+        "address",
+        "avs_street_match",
+        "avs_postal_match",
+        "avs_result",
+        "fingerprint",
+        "brand",
+        "is_verified",
+        "meta",
+        "links"
+    ]
 }

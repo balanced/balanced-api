@@ -66,39 +66,6 @@
         "address": {
             "$ref": "_models/address.json"
         },
-        "source": {
-            "description": "The default financial instrument used when debiting a customer",
-            "anyOf": [
-                {
-                    "$ref": "card.json"
-                },
-                {
-                    "$ref": "bank_account.json"
-                },
-                {
-                    "description": "Either the href or id of a card or bank account",
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "destination": {
-            "description": "The default financial instrument used when crediting a customer",
-            "anyOf": [
-                {
-                    "$ref": "bank_account.json"
-                },
-                {
-                    "description": "Either the href or the id of a bank account",
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
         "meta": {
             "type": "object"
         }

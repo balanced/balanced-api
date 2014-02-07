@@ -4,7 +4,12 @@
     "anyOf": [
         {
             "type": "object",
-            "properties": {}
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
         },
         {
             "type": "null"
