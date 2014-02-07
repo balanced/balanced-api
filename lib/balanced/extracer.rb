@@ -4,6 +4,41 @@ module Balanced
   class Extracer
     def initialize
      # @json = load_all_json
+      @requests = []
+      @links = {}
+    end
+
+    def log_request(method, endpoint, request, response)
+      # TODO: it would be nice to log the file name and line number for this step
+      # then we could look into providing links to the cucumber useage
+      require 'debugger'; debugger
+      @requests << {
+        method: method,
+        endpoing: endpoint,
+        request: request,
+        response: response
+      }
+      if response['links']
+        @links = @links.merge(response['links'])
+      end
+      # TODO: make these extract from arrays when those are being used
+      if method == 'POST'
+
+      elsif method == 'PUT'
+
+      end
+    end
+
+    def save
+      file = File.join(File.dirname(__FILE__)+'/../../balanced.rev1.json')
+      json = {
+        schemas: load_all_json,
+        requests: @requests,
+        links: @links
+      }
+      File.open(file, 'w') do |f|
+        f.write(JSON.pretty_generate(json))
+      end
     end
 
 
@@ -38,7 +73,6 @@ module Balanced
       end
       ret
     end
-
 
   end
 end

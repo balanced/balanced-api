@@ -8,7 +8,6 @@ Feature: Tokenize a credit card
   For more on tokenization as a concept, see ['tokenization' on
   Wikipedia.](http://en.wikipedia.org/wiki/Tokenization_%28data_security%29)
 
-  @focus
   Scenario: Tokenize a card without a secret key
     Cards are able to be tokenized without sending along a secret key. When
     this happens, the customer gets less information than if the key was sent.
@@ -21,12 +20,10 @@ Feature: Tokenize a credit card
         "expiration_year": 2016
       }
       """
-    Then debug
     Then I should get a 201 Created status code
     And the response is valid according to the "card_tokens" schema
 
     When I GET "cards.href" from the previous response
-    Then debug
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 

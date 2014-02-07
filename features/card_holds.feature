@@ -32,6 +32,7 @@ Feature: Holds
     Then the response is valid according to the "card_holds" schema
     And the card_hold has a "voided_at" attribute set
 
+  @focus
   Scenario: Voided holds aren't visible from the index
     Given I have voided a hold
     When I fetch the card

@@ -33,6 +33,7 @@ module Balanced
 
       response = HTTParty.post(url, options)
       @responses << response
+      $extracer.log_request('POST', endpoint, body, last_body)
       response
     end
 
@@ -65,6 +66,7 @@ module Balanced
 
       response = HTTParty.put("#{@root_url}#{endpoint}", options)
       @responses << response
+      $extracer.log_request('POST', endpoint, body, last_body)
       response
     end
 
