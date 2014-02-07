@@ -6,36 +6,31 @@
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "line2": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "city": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "state": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "postal_code": {
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "country_code": {
             "anyOf": [
@@ -46,9 +41,16 @@
                     "type": "string",
                     "pattern": "[A-Z]{2}"
                 }
-            ],
-            "required": true
+            ]
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "line1",
+        "line2",
+        "city",
+        "state",
+        "postal_code",
+        "country_code"
+    ]
 }

@@ -4,70 +4,74 @@
     "properties": {
         "id": {
             "type": "string",
-            "required": true,
             "pattern": "(MP|TEST-MP)[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
-            "format": "uri",
-            "required": true
+            "format": "uri"
         },
         "created_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "updated_at": {
             "type": "string",
-            "format": "date-time",
-            "required": true
+            "format": "date-time"
         },
         "in_escrow": {
-            "type": "integer",
-            "required": true
+            "type": "integer"
         },
         "unsettled_fees": {
             "type": "integer",
-            "required": true,
             "description": "The total amount of fees collected by the marketplace that have yet to be settled to their bank account by Balanced."
         },
         "domain_url": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "name": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "support_email_address": {
             "type": "string",
-            "format": "email",
-            "required": true
+            "format": "email"
         },
         "support_phone_number": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "production": {
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
         },
         "meta": {
-            "type": "object",
-            "required": true
+            "type": "object"
         },
         "links": {
             "type": "object",
             "properties": {
                 "owner_customer": {
                     "type": "string",
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}",
-                    "required": true
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 }
             },
-            "required": true,
+            "required": [
+                "owner_customer"
+            ],
             "additionalProperties": false
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "in_escrow",
+        "unsettled_fees",
+        "domain_url",
+        "name",
+        "support_email_address",
+        "support_phone_number",
+        "production",
+        "meta",
+        "links"
+    ]
 }
