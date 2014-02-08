@@ -65,7 +65,7 @@
             ]
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

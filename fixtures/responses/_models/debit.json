@@ -58,7 +58,7 @@
             "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

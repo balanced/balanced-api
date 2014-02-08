@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-03/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "id": {
@@ -173,7 +173,7 @@
             "type": "boolean"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

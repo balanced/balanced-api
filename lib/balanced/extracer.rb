@@ -14,6 +14,13 @@ module Balanced
     def log_request(method, endpoint, request, response)
       # TODO: it would be nice to log the file name and line number for this step
       # then we could look into providing links to the cucumber useage
+      if request.is_a? String
+        begin
+          request = JSON.parse(request)
+        rescue
+          # WHAT ARE WE EVEN GETTING
+          return
+        end
       @requests << {
         method: method,
         endpoing: endpoint,
