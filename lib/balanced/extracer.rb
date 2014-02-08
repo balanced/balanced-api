@@ -6,12 +6,14 @@ module Balanced
      # @json = load_all_json
       @requests = []
       @links = {}
+      # examples of the fields of these resources getting set or updated
+      @resources_create = Hash.new([])
+      @resources_update = Hash.new([])
     end
 
     def log_request(method, endpoint, request, response)
       # TODO: it would be nice to log the file name and line number for this step
       # then we could look into providing links to the cucumber useage
-      require 'debugger'; debugger
       @requests << {
         method: method,
         endpoing: endpoint,
@@ -23,10 +25,16 @@ module Balanced
       end
       # TODO: make these extract from arrays when those are being used
       if method == 'POST'
-
+        # the path is either /[resource_name] or /[some_other_resource]/[guid]/[resource_name]
+        # and the resource is getting created
+        resource = endpoint.split('/').last
+        @resources_create[resource] += [{request: request}]
       elsif method == 'PUT'
-
+        # the path will be /[resource_name]/[guid]
+        resource = endpoint.split('/')[1]
+        @resources_update[resource] += [{request: request}]
       end
+      # 'GET' & 'DELETE' requests are ignored, and 'PATCH' can be similar to a 'PUT' in updating
     end
 
     def save
@@ -34,7 +42,10 @@ module Balanced
       json = {
         schemas: load_all_json,
         requests: @requests,
-        links: @links
+        links: @links,
+        resources_create: @resources_create,
+        resources_update: @resources_update,
+        api_secret: $api_secret,
       }
       File.open(file, 'w') do |f|
         f.write(JSON.pretty_generate(json))

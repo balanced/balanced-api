@@ -1,3 +1,5 @@
+THIS WILL BE DEPRECATED
+
 ## Balanced-api requests directory
 
 The directory defines all the possible requests to the balanced api.

@@ -66,7 +66,7 @@ module Balanced
 
       response = HTTParty.put("#{@root_url}#{endpoint}", options)
       @responses << response
-      $extracer.log_request('POST', endpoint, body, last_body)
+      $extracer.log_request('PUT', endpoint, body, last_body)
       response
     end
 
@@ -86,6 +86,7 @@ module Balanced
 
       response = HTTParty.patch("#{@root_url}#{endpoint}", options)
       @responses << response
+      $extracer.log_request('PATCH', endpoint, body, last_body)
       response
     end
 
@@ -120,6 +121,7 @@ module Balanced
 
       response = HTTParty.send(verb.downcase, url, options)
       @responses << response
+      $extracer.log_request(verb, url, body, last_body)
       response
     end
 
@@ -135,7 +137,6 @@ module Balanced
 
     def get_link(keys)
       @responses.reverse.each do |response|
-        #require 'debugger'; debugger
         body = JSON.parse(response.body)
         if body and body['links'] and body['links'][keys]
           key = body['links'][keys]
@@ -143,12 +144,10 @@ module Balanced
             a = match[1...-1].split('.')
             body[a[0]][0][a[1]] or body[a[0]][0]['links'][a[1]]
           end
-          #require 'debugger'; debugger
           return kk
-          #return keys.split('.').inject(body)json['links'][keys]
         end
       end
-      '/boom'
+      '/idk_what_this_is_looking_for'
     end
 
     def inject(key)

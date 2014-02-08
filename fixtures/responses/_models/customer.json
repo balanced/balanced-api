@@ -19,18 +19,21 @@
             "format": "date-time"
         },
         "name": {
+            "description": "Name of the customer or representative of the business.",
             "type": [
                 "null",
                 "string"
             ]
         },
         "business_name": {
+            "description": "Full business name if the customer is a business. If there is a business name and EIN present, the customer will be treated as a business instead of a person.",
             "type": [
                 "null",
                 "string"
             ]
         },
         "email": {
+            "description": "Email address of the customer.",
             "type": [
                 "null",
                 "string"
@@ -38,6 +41,7 @@
             "format": "email"
         },
         "phone": {
+            "description": "Phone number of the person or business.",
             "type": [
                 "null",
                 "string"
@@ -45,6 +49,7 @@
             "format": "phone"
         },
         "ssn_last4": {
+            "description": "Last four digits of the Social Security Number of the customer or representative of the business.",
             "type": [
                 "null",
                 "string"
@@ -52,6 +57,7 @@
             "pattern": "x{4}"
         },
         "ein": {
+            "description": "Employee Identification Number of the business if the customer is a business. If there is a business name and EIN present, the customer will be treated as a business instead of a person.",
             "type": [
                 "null",
                 "string"
@@ -59,6 +65,7 @@
             "pattern": "[0-9]{9}"
         },
         "dob_month": {
+            "description": "Date of birth month of the customer or representative of the business.",
             "type": [
                 "null",
                 "integer"
@@ -67,6 +74,7 @@
             "maximum": 12
         },
         "dob_year": {
+            "description": "Date of birth year of the customer or representative of the business.",
             "type": [
                 "null",
                 "integer"

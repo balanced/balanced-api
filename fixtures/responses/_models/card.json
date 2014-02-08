@@ -25,18 +25,22 @@
             ]
         },
         "number": {
+            "description": "The digits of the credit card number.",
             "type": "string",
             "pattern": "x{11,12}[0-9]{4}"
         },
         "expiration_month": {
+            "description": "Expiration month (e.g. 1 for January).",
             "type": "integer",
             "minimum": 1,
             "maximum": 12
         },
         "expiration_year": {
+            "description": "Expiration year.",
             "type": "integer"
         },
         "cvv": {
+            "description": "The 3-4 digit security code for the card.",
             "anyOf": [
                 {
                     "type": "string",
