@@ -24,3 +24,18 @@ When(/^I DELETE to \/callbacks\/:callback_id giving the callback_id$/) do
   response = HTTParty.delete("#{@client.root_url}/callbacks/#{@callback_id}", options)
   @client.add_response(response)
 end
+
+After do
+  if @callback_id
+    options = {
+      headers: {
+        "Accept" => $accept_header,
+      },
+      basic_auth: {
+          username: $api_secret,
+          password: "",
+      }
+    }
+    response = HTTParty.delete("#{@client.root_url}/callbacks/#{@callback_id}", options)
+  end
+end
