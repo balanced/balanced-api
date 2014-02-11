@@ -139,7 +139,7 @@
                         "Order escrow balanced is insufficient to issue this credit.",
                         "Order escrow balanced is insufficient to issue this refund.",
                         "Order requires merchant be underwritten.",
-                        "Webhook URL already exists"
+                        "Webhook URL already exists."
                     ]
                 },
                 {
