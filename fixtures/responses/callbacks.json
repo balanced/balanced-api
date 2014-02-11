@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {}
+        },
+        "meta": {
+            "type": "object"
+        },
+        "callbacks": {
+            "items": {
+                "$ref": "_models/callback.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "callbacks"
+    ]
+}
