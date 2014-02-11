@@ -33,7 +33,7 @@ module Balanced
 
       response = HTTParty.post(url, options)
       @responses << response
-      $extracer.log_request('POST', endpoint, body, last_body)
+      $extracer.log_request('POST', endpoint, body, last_body) if last_code < 400
       response
     end
 
@@ -66,7 +66,7 @@ module Balanced
 
       response = HTTParty.put("#{@root_url}#{endpoint}", options)
       @responses << response
-      $extracer.log_request('PUT', endpoint, body, last_body)
+      $extracer.log_request('PUT', endpoint, body, last_body) if last_code < 400
       response
     end
 
@@ -86,7 +86,7 @@ module Balanced
 
       response = HTTParty.patch("#{@root_url}#{endpoint}", options)
       @responses << response
-      $extracer.log_request('PATCH', endpoint, body, last_body)
+      $extracer.log_request('PATCH', endpoint, body, last_body) if last_code < 400
       response
     end
 
@@ -121,7 +121,7 @@ module Balanced
 
       response = HTTParty.send(verb.downcase, url, options)
       @responses << response
-      $extracer.log_request(verb, url, body, last_body)
+      $extracer.log_request(verb, url, body, last_body) if last_code < 400
       response
     end
 

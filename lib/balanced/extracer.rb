@@ -3,7 +3,7 @@ require 'json'
 module Balanced
   class Extracer
     def initialize
-     # @json = load_all_json
+      # @json = load_all_json
       @requests = []
       @links = {}
       # examples of the fields of these resources getting set or updated
@@ -21,12 +21,17 @@ module Balanced
           # WHAT ARE WE EVEN GETTING
           return
         end
+      end
       @requests << {
         method: method,
         endpoing: endpoint,
-        request: request,
-        response: response
+        request: (request or {}),
+        response: (response or {}),
       }
+      if not response
+        # likely a 204 with a delete request
+        return
+      end
       if response['links']
         @links = @links.merge(response['links'])
       end
