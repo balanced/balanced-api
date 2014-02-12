@@ -47,5 +47,10 @@ HTTParty.post("#{$root_url}/debits", options.merge(body: {
 $:.unshift(File.dirname(__FILE__)+'/../../lib')
 
 require 'balanced/tiny_client'
+require 'balanced/extracer'
 
 $client = Balanced::TinyClient.new($api_secret, $accept_header, $root_url)
+
+at_exit do
+  $extracer.save
+end

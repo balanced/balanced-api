@@ -8,13 +8,14 @@ Feature: Callbacks
       }
       """
     Then I should get a 201 Created status code
-    # TODO: Callback schema?                                                                                                                                      
+    And the response is valid according to the "callbacks" schema
 
   Scenario: Retrieve information about an existing callback
     Given I have created a callback
     When I GET to /callbacks/:callback_id giving the callback_id
     Then I should get a 200 OK status code
-    # TODO: Callback schema?                                                                                                                                      
+    And the response is valid according to the "callbacks" schema
+
   Scenario: You can't create two callbacks
     When I POST to /callbacks with the JSON API body:
       """
@@ -34,7 +35,6 @@ Feature: Callbacks
       """
       { "category_code": "duplicate-webhook-url" }
       """
- 
 
   Scenario: List all callbacks
     You can only have one callback, but if you don't know the ID,

@@ -159,7 +159,7 @@ Feature: Credit cards
       """
         {
           "description": "Catherine Malandrino Black Top",
-          "delivery _address": {
+          "delivery_address": {
             "line1": "965 Mission St",
             "line2": "Suite 425",
             "city": "San Francisco",

@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "attempts": {
+            "description": "Number of attempts that have been made to verify the bank account.",
             "type": "integer",
             "minimum": 0,
             "maximum": 3
@@ -35,7 +36,7 @@
             "$ref": "status.json"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

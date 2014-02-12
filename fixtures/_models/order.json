@@ -42,7 +42,7 @@
             "$ref": "address.json"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

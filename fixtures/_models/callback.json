@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "CB[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "method": {
+            "type": "string",
+            "pattern": "post"
+        },
+        "revision": {
+            "type": "string",
+            "pattern": "1.[01]"
+        },
+        "links": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "url",
+        "method",
+        "revision",
+        "links"
+    ],
+    "additionalProperties": false
+}
