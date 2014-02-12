@@ -37,6 +37,9 @@ module Balanced
         @links = @links.merge(response['links'])
       end
       # TODO: make these extract from arrays when those are being used
+      if endpoint.start_with?($root_url)
+        endpoint = endpoint[$root_url.length..-1]
+      end
       if method == 'POST'
         # the path is either /[resource_name] or /[some_other_resource]/[guid]/[resource_name]
         # and the resource is getting created

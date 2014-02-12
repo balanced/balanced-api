@@ -30,6 +30,7 @@
             "format": "date-time"
         },
         "transaction_number": {
+            "description": "An identifier for this transaction.",
             "type": "string",
             "pattern": "HL[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },
@@ -44,6 +45,7 @@
             ]
         },
         "description": {
+            "description": " A description of the hold, used for display purposes.",
             "type": [
                 "string",
                 "null"
@@ -71,6 +73,7 @@
             "type": "object",
             "properties": {
                 "card": {
+                    "description": "The funding source for this hold.",
                     "type": "string",
                     "pattern": "CC[a-zA-Z0-9]{16,32}"
                 },
