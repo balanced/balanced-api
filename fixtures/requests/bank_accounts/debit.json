@@ -1,5 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "/bank_accounts/:bank_account_id/debits",
-    "$ref": "../_models/debit.json"
-}

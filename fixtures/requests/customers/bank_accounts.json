@@ -1,5 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "/customers/:customer_id/bank_accounts",
-    "$ref": "../bank_account.json"
-}
