@@ -11,6 +11,7 @@
             "format": "uri"
         },
         "created_at": {
+            "description": " `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this debit was created.",
             "type": "string",
             "format": "date-time"
         },
@@ -19,6 +20,7 @@
             "format": "date-time"
         },
         "amount": {
+            "description": "The amount of the debit.",
             "type": "integer",
             "minimum": 1
         },
@@ -29,10 +31,12 @@
             ]
         },
         "appears_on_statement_as": {
+            "description": "The text that will appear on the buyer's statement.",
             "type": "string",
             "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
         },
         "description": {
+            "description": "Free-text description of the debit.",
             "type": [
                 "string",
                 "null"
@@ -54,6 +58,7 @@
             ]
         },
         "transaction_number": {
+            "description": "An identifier for this transaction.",
             "type": "string",
             "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },

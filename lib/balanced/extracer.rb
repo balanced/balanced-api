@@ -22,12 +22,13 @@ module Balanced
           return
         end
       end
-      @requests << {
+      req = {
         method: method,
         endpoing: endpoint,
         request: (request or {}),
         response: (response or {}),
       }
+      @requests << req
       if not response
         # likely a 204 with a delete request
         return
@@ -40,11 +41,17 @@ module Balanced
         # the path is either /[resource_name] or /[some_other_resource]/[guid]/[resource_name]
         # and the resource is getting created
         resource = endpoint.split('/').last
-        @resources_create[resource] += [{request: request}]
+        if resource == 'verifications'  # gaaaaa
+          resource = 'bank_account_verifications'
+        end
+        @resources_create[resource] += [req]
       elsif method == 'PUT'
         # the path will be /[resource_name]/[guid]
         resource = endpoint.split('/')[1]
-        @resources_update[resource] += [{request: request}]
+        if resource == 'verifications'
+          resource = 'bank_account_verifications'
+        end
+        @resources_update[resource] += [req]
       end
       # 'GET' & 'DELETE' requests are ignored, and 'PATCH' can be similar to a 'PUT' in updating
     end

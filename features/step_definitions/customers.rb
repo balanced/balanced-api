@@ -2,7 +2,8 @@ Given(/^I have created a customer$/) do
   @client.post('/customers',
     {
       name: 'Henry Ford',
-      dob: '1863-07',
+      dob_year: '1963',
+      dob_month: '07',
       address: {
         postal_code: '48120'
       }

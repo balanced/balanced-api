@@ -16,11 +16,15 @@
         },
         "method": {
             "type": "string",
-            "pattern": "POST"
+            "pattern": "post"
         },
         "revision": {
             "type": "string",
             "pattern": "1.[01]"
+        },
+        "links": {
+            "type": "object",
+            "properties": {}
         }
     },
     "required": [
@@ -28,7 +32,8 @@
         "href",
         "url",
         "method",
-        "revision"
+        "revision",
+        "links"
     ],
     "additionalProperties": false
 }

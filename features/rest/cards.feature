@@ -17,7 +17,10 @@ Feature: Tokenize a credit card
       {
         "number": "4111111111111111",
         "expiration_month": "12",
-        "expiration_year": 2016
+        "expiration_year": 2016,
+        "meta": {
+          "create": "can set on create"
+        }
       }
       """
     Then I should get a 201 Created status code
@@ -50,9 +53,9 @@ Feature: Tokenize a credit card
     When I PUT to /cards/:card_id giving the card_id, with the JSON API body:
       """
       {
-        "number": "4111111111111111",
-        "expiration_month": "12",
-        "expiration_year": 2016
+        "meta": {
+          "something": "random"
+        }
       }
       """
     Then I should get a 200 OK status code
