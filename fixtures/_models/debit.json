@@ -70,7 +70,7 @@
             "properties": {
                 "source": {
                     "type": "string",
-                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
+                    "pattern": "(CC|BA|NT)[a-zA-Z0-9]{16,32}"
                 },
                 "dispute": {
                     "type": [
