@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "external_accounts.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{external_accounts.customer"
+                },
+                "external_accounts.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/external_accounts/{external_accounts.id}/debits"
+                }
+            },
+            "required": [
+                "external_accounts.customer",
+                "external_accounts.debits"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "external_accounts": {
+            "items": {
+                "$ref": "_models/external_account.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "external_accounts"
+    ]
+}
