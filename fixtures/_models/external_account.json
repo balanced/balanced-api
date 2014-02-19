@@ -22,6 +22,12 @@
         "network": {
             "type": "string"
         },
+        "can_debit": {
+            "type": "boolean"
+        },
+        "can_credit": {
+            "type": "boolean"
+        },
         "meta": {
             "$ref": "meta.json"
         },
