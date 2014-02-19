@@ -19,7 +19,7 @@
             "type": "string",
             "format": "date-time"
         },
-        "network": {
+        "provider": {
             "type": "string"
         },
         "can_debit": {
@@ -55,7 +55,7 @@
         "href",
         "created_at",
         "updated_at",
-        "network",
+        "provider",
         "meta",
         "links"
     ]
