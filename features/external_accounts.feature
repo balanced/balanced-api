@@ -1,10 +1,27 @@
 Feature: External accounts
+  External accounts allow balanced to interact with external providers for
+  charging and crediting to customers.
+
+  Scenario: Tokenize an external account
+    When I POST to /external_accounts without my secret key with the JSON API body:
+    """
+    {
+      "network": "test",
+      "token": "123123123123"
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "external_account_tokens" schema
+
+    When I GET /external_accounts/:external_account_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "external_accounts" schema
 
   Scenario: Retrieve an external account
     Given I have tokenized an external account
     When I GET to /external_accounts/:external_account_id
     Then I should get a 200 OK status code
-    And the response is valid according to the "extneral_accounts" schema
+    And the response is valid according to the "external_accounts" schema
 
   Scenario: List external accounts
     Given I have tokenized more than one external account
@@ -20,7 +37,7 @@ Feature: External accounts
 
   Scenario: Debit an external account
     Given I have an external account
-    When I POST to /external_account/:external_account_id/debits with the JSON API body:
+    When I POST to /external_accounts/:external_account_id/debits with the JSON API body:
     """
     {
       "amount": 1234
