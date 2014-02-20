@@ -8,7 +8,7 @@
                 "external_accounts.customer": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/customers/{external_accounts.customer"
+                    "pattern": "/customers/{external_accounts.customer}"
                 },
                 "external_accounts.debits": {
                     "type": "string",
