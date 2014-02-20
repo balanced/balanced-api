@@ -20,7 +20,11 @@
             "format": "date-time"
         },
         "provider": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+                "test",
+                "coinbase"
+            ]
         },
         "can_debit": {
             "type": "boolean"
