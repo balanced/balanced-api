@@ -6,7 +6,7 @@ Feature: External accounts
     When I POST to /external_accounts without my secret key with the JSON API body:
     """
     {
-      "network": "test",
+      "provider": "test",
       "token": "123123123123"
     }
     """
