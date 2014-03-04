@@ -247,7 +247,6 @@ Feature: Credit cards
         }
       """
 
-  @failing
   Scenario: Retrieving a card
     Given I have tokenized a card
     When  I make a GET request to /cards/:card_id

@@ -16,7 +16,11 @@
         },
         "method": {
             "type": "string",
-            "pattern": "post"
+            "enum": [
+                "post",
+                "put",
+                "get"
+            ]
         },
         "revision": {
             "type": "string",

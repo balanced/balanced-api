@@ -36,6 +36,23 @@ Feature: Callbacks
       { "category_code": "duplicate-webhook-url" }
       """
 
+  Scenario: Create a callback using GET method
+    When I POST to /callbacks with the JSON API body:
+    """
+    {
+      "url": "http://www.example.com/callback",
+      "method": "get"
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "callbacks" schema
+    And the fields on this callback match:
+    """
+    {
+      "method": "get"
+    }
+    """
+
   Scenario: List all callbacks
     You can only have one callback, but if you don't know the ID,
     getting the list makes sense. It'll just only have one.

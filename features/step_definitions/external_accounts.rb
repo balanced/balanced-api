@@ -1,7 +1,7 @@
 Given(/^I have an external account$/) do
   @client.post('/external_accounts', {
                  token: '123123',
-                 network: 'test'
+                 provider: 'test'
                })
   @external_account_id = @client['id']
   @client.add_hydrate :external_account_id, @external_account_id
