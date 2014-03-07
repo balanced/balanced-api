@@ -25,6 +25,30 @@ Feature: Reversal
     }
     """
 
+  Scenario: Creating a reversal with extra info
+    Given I have a bank account with a credit
+    When I POST to /credits/:credit_id/reversals with the JSON API body:
+    """
+    {
+      "description": "useful description",
+      "meta": {
+        "extra": "info"
+      }
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "reversals" schema
+    And the fields on this reversal match:
+    """
+    {
+      "description": "useful description",
+      "meta": {
+        "extra": "info"
+      }
+    }
+    """
+
+
   Scenario: List reversals
     Given I have a bank account with a reversal
     When I GET to /credits/:credit_id/reversals

@@ -38,12 +38,28 @@ Feature: Card Holds
     And I make a GET request to /card_holds
     Then I should not see that hold in the results
 
-  Scenario: Updating a hold
+  Scenario: Updating a hold description
     Given I have created a hold
     When I make a PUT request to /card_holds/:card_hold_id with the body:
     """
     {
-      "description": "the new description of a hold",
+      "description": "the new description of a hold"
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "card_holds" schema
+    And the fields on this card_hold match:
+    """
+    {
+      "description": "the new description of a hold"
+    }
+    """
+
+  Scenario: Updating a hold meta
+    Given I have created a hold
+    When I make a PUT request to /card_holds/:card_hold_id with the body:
+    """
+    {
       "meta": {
         "something": "random"
       }
@@ -54,7 +70,6 @@ Feature: Card Holds
     And the fields on this card_hold match:
     """
     {
-      "description": "the new description of a hold",
       "meta": {
         "something": "random"
       }
