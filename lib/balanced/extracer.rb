@@ -99,7 +99,7 @@ module Balanced
 
     def load_all_json
       ret = {}
-      path = File.join(File.dirname(__FILE__), "../..", 'fixtures/responses')
+      path = File.join(File.dirname(__FILE__), "../..", 'fixtures')
       Dir.glob("#{path}/**/*.json") do |f|
         json = resolve_refs(JSON.parse(File.read(f)), f)
         ret[f] = json
