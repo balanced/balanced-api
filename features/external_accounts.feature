@@ -13,7 +13,7 @@ Feature: External accounts
     Then I should get a 201 Created status code
     And the response is valid according to the "external_account_tokens" schema
 
-    When I GET /external_accounts/:external_account_id
+    When I GET "external_accounts.href" from the previous response
     Then I should get a 200 OK status code
     And the response is valid according to the "external_accounts" schema
 
@@ -31,7 +31,7 @@ Feature: External accounts
 
   Scenario: Unstore an external account
     Given I have tokenized an external account
-    When I DELETE to /external_accounts/:external_accounts_id
+    When I DELETE to /external_accounts/:external_account_id
     Then I should get a 204 OK status code
     And there should be no response body
 
@@ -46,7 +46,9 @@ Feature: External accounts
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
+  @failing
   Scenario: Add an external account to a customer
+    # the patch permission has an issue with external accounts
     Given I have created a customer
     And I have tokenized an external account
     When I make a PATCH request to the href "href" with the body:

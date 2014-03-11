@@ -30,7 +30,12 @@ Feature: Customers
       "phone": "123123123",
       "ein": "999999999",
       "address": {
-        "city": "San Francisco"
+        "line1": "123 Fake street",
+        "line2": "Suite 345",
+        "city": "San Francisco",
+        "state": "California",
+        "postal_code": "94000",
+        "country_code": "US"
       }
     }
     """

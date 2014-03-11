@@ -36,12 +36,28 @@ Feature: Credits
     }
     """
 
-  Scenario: Updating a credit
+  Scenario: Updating a credit description
     Given I have a bank account with a credit
     When I PUT to /credits/:credit_id with the body:
     """
     {
-      "description": "A new credit description",
+      "description": "A new credit description"
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
+    """
+    {
+      "description": "A new credit description"
+    }
+    """
+
+  Scenario: Updating a credit meta
+    Given I have a bank account with a credit
+    When I PUT to /credits/:credit_id with the body:
+    """
+    {
       "meta": {
         "something": "random"
       }
@@ -52,7 +68,6 @@ Feature: Credits
     And the fields on this credit match:
     """
     {
-      "description": "A new credit description",
       "meta": {
         "something": "random"
       }
