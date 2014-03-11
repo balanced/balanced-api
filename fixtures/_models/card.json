@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "name": {
+            "description": "Customer's name on card",
             "type": [
                 "string",
                 "null"
@@ -158,6 +159,7 @@
             ]
         },
         "fingerprint": {
+            "description": "A unique hash representing this card",
             "type": "string"
         },
         "brand": {
@@ -179,6 +181,7 @@
             "type": "object",
             "properties": {
                 "customer": {
+                    "description": "The customer this card is associated to",
                     "type": [
                         "null",
                         "string"

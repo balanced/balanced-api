@@ -42,6 +42,7 @@
             "type": "object",
             "properties": {
                 "bank_account": {
+                    "description": "The bank account this verification is associated with",
                     "type": "string",
                     "pattern": "BA[a-zA-Z0-9]{16,32}"
                 }

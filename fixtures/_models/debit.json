@@ -20,7 +20,7 @@
             "format": "date-time"
         },
         "amount": {
-            "description": "The amount of the debit.",
+            "description": "The amount of the debit in cents.",
             "type": "integer",
             "minimum": 1
         },
@@ -36,7 +36,7 @@
             "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
         },
         "description": {
-            "description": "Free-text description of the debit.",
+            "description": "Free-text description of the debit for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -52,6 +52,7 @@
             ]
         },
         "failure_reason": {
+            "description": "A human readable error message with the reason for the failure",
             "type": [
                 "string",
                 "null"
@@ -69,10 +70,12 @@
             "type": "object",
             "properties": {
                 "source": {
+                    "description": "The funding instrument debited",
                     "type": "string",
                     "pattern": "(CC|BA|NT)[a-zA-Z0-9]{16,32}"
                 },
                 "dispute": {
+                    "description": "The dispute your customer has filed with their bank associated with this debit",
                     "type": [
                         "null",
                         "string"
@@ -80,6 +83,7 @@
                     "pattern": "DT[a-zA-Z0-9]{16,32}"
                 },
                 "customer": {
+                    "description": "The customer for which the funding instrument is associated",
                     "type": [
                         "null",
                         "string"
@@ -87,6 +91,7 @@
                     "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
+                    "description": "The order this debit is associated with",
                     "type": [
                         "null",
                         "string"

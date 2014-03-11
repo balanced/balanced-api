@@ -11,10 +11,12 @@
             "format": "uri"
         },
         "url": {
+            "description": "The url the callbacks will be made to",
             "type": "string",
             "format": "uri"
         },
         "method": {
+            "description": "HTTP method used for the callback, one of ``post``, ``put`` or ``get``",
             "type": "string",
             "enum": [
                 "post",
@@ -23,6 +25,7 @@
             ]
         },
         "revision": {
+            "description": "The version of the api the call back requests will match",
             "type": "string",
             "pattern": "1.[01]"
         },

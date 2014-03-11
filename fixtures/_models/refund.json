@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "amount": {
+            "description": "The amount in cents for this refund",
             "type": "integer",
             "minimum": 1
         },
@@ -29,6 +30,7 @@
             ]
         },
         "description": {
+            "description": "Free-text description of the refund for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -48,10 +50,12 @@
             "type": "object",
             "properties": {
                 "debit": {
+                    "description": "The debit that is being refunded",
                     "type": "string",
                     "pattern": "WD[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
+                    "description": "The order this refund is associated with",
                     "type": [
                         "null",
                         "string"
@@ -59,6 +63,7 @@
                     "pattern": "OR[a-zA-Z0-9]{16,32}"
                 },
                 "dispute": {
+                    "description": "The dispute your customer has filed with their bank associated with this refund",
                     "type": [
                         "null",
                         "string"
