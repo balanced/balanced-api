@@ -40,7 +40,7 @@ Feature: Bank accounts
       { "account_type": "savings" }
       """
 
-  Scenario: Tokenize a bank account with a country code
+  Scenario: Tokenize a bank account with an address
     When I make a POST request to /bank_accounts with the body:
       """
       {
@@ -49,6 +49,11 @@ Feature: Bank accounts
         "routing_number": "121042882",
         "account_type": "checking",
         "address": {
+          "line1": "965 Mission St",
+          "line2": "Suite 425",
+          "city": "San Francisco",
+          "state": "CA",
+          "postal_code": "94103",
           "country_code": "US"
         }
       }
@@ -60,6 +65,10 @@ Feature: Bank accounts
       """
       {
         "address": {
+          "line1": "965 Mission St",
+          "line2": "Suite 425",
+          "city": "San Francisco",
+          "postal_code": "94103",
           "country_code": "US"
         }
       }

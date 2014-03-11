@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "amount": {
+            "description": "The amount in cents of this reversal",
             "type": "integer",
             "minimum": 1
         },
@@ -29,6 +30,7 @@
             ]
         },
         "description": {
+            "description": "Free-text description of the reversal for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -44,6 +46,7 @@
             ]
         },
         "failure_reason": {
+            "description": "A human readable error message with the reason for the failure",
             "type": [
                 "string",
                 "null"
@@ -60,10 +63,12 @@
             "type": "object",
             "properties": {
                 "credit": {
+                    "description": "The credit this reversal is associated with",
                     "type": "string",
                     "pattern": "CR[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
+                    "description": "The order this credit is assocaited with",
                     "type": [
                         "null",
                         "string"

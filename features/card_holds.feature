@@ -13,7 +13,8 @@ Feature: Card Holds
     When I make a POST request to /cards/:card_id/card_holds with the body:
     """
     {
-      "amount": 1234
+      "amount": 1234,
+      "description": "something for the dashboard"
     }
     """
     Then I should get a 201 Created status code

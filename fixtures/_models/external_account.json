@@ -20,6 +20,7 @@
             "format": "date-time"
         },
         "provider": {
+            "description": "The service provding the external account",
             "type": "string",
             "enum": [
                 "test",
@@ -27,9 +28,11 @@
             ]
         },
         "can_debit": {
+            "description": "If the external account can be debited",
             "type": "boolean"
         },
         "can_credit": {
+            "description": "If the external account can be credited",
             "type": "boolean"
         },
         "meta": {
@@ -39,7 +42,7 @@
             "type": "object",
             "properties": {
                 "customer": {
-                    "description": "Customer this bank_account is associated with",
+                    "description": "Customer this external_account is associated with",
                     "type": [
                         "null",
                         "string"
