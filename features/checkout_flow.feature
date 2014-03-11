@@ -1,4 +1,6 @@
-Feature: Credit cards
+Feature: Basic checkout flow
+  A simple scenarios depicting how one would could use orders to manage
+  and track the flow of funds.
 
   Scenario: Canceling an order
     Given I have an order with a debit

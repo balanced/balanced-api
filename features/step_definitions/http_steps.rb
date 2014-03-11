@@ -11,7 +11,6 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
 end
 
 When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
-  body = ERB.new(body).result(binding)
   $logger.debug("Making request to #{url}")
   $logger.debug("hydrated: #{@client.hydrater(url)}")
   body = @client.hydrater body
@@ -49,13 +48,13 @@ When(/^I make a (\w+) request to the href "(.*?)"$/) do |verb, keys|
 end
 
 When(/^I make a (\w+) request to the href "(.*?)" with the body:$/) do |verb, keys, body|
-  body = ERB.new(@client.hydrater body).result(binding)
+  body = @client.hydrater(body)
   link = @client[keys] || @client.inject(keys)
   @client.send(verb.downcase, link, body, env)
 end
 
 When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, keys, body|
-  body = ERB.new(@client.hydrater(body)).result(binding)
+  body = @client.hydrater(body)
   href = @client.get_link(keys)
   #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
   body = @client.send(verb.downcase, @client.get_link(keys), JSON.parse(body), env)
@@ -131,7 +130,7 @@ When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
 end
 
 When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = ERB.new(@client.hydrater(body)).result(binding)
+  body = @client.hydrater(body)
   @client.patch(@client.hydrater(url), body)
 end
 
@@ -168,14 +167,12 @@ def checker(from, of, nesting)
 end
 
 Then(/^the fields on this (.*) match:$/) do |resource, against|
-  against = ERB.new(against).result(binding)
-  checker JSON.parse(@client.hydrater against), @client["#{resource}s"], ''
+  checker JSON.parse(@client.hydrater(against)), @client["#{resource}s"], ''
   assert_equal @client.last_body["#{resource}s"].size, 1
 end
 
 Then(/^the fields on these (.*) match:$/) do |resource, against|
-  against = ERB.new(against).result(binding)
-  against = JSON.parse(@client.hydrater against)
+  against = JSON.parse(@client.hydrater(against))
   @client.last_body[resource].each do |body|
     checker against, body, ''
   end
