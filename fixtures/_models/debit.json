@@ -31,9 +31,7 @@
             ]
         },
         "appears_on_statement_as": {
-            "description": "The text that will appear on the buyer's statement.",
-            "type": "string",
-            "pattern": "BAL\\*[a-zA-Z0-9 \\.\\-]{1,18}"
+            "$ref": "appears_on_statement_as.json"
         },
         "description": {
             "description": "Free-text description of the debit for the dashboard.",
