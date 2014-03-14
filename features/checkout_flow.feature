@@ -60,20 +60,20 @@ Feature: Basic checkout flow
         }
       """
 
-    When I PATCH to /customers/:customer_id with the JSON API body:
+    When I PATCH to /cards/:card_id with the JSON API body:
       """
         [{
           "op": "replace",
-          "path": "/customers/0/links/source",
-          "value": ":card_id"
+          "path": "/cards/0/links/customer",
+          "value": ":customer_id"
         }]
       """
     Then I should get a 200 OK status code
-    And the response is valid according to the "customers" schema
-    And the fields on this customer match:
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
           {
-            "links": { "source": ":card_id" }
+            "links": { "customer": ":customer_id" }
           }
       """
 
