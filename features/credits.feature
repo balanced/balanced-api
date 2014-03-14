@@ -23,7 +23,7 @@ Feature: Credits
     """
       {
         "amount": 500,
-        "appears_on_statment_as": "Your lucky day"
+        "appears_on_statement_as": "Your lucky day"
       }
     """
     Then I should get a 201 Created status code
