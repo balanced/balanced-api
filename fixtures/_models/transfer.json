@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "(DP|WD|ST)[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "description": {
+            "type": "string"
+        },
+        "appears_on_statement_as": {
+            "$ref": "appears_on_statement_as.json"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "deposit",
+                "withdrawal",
+                "settlement"
+            ]
+        },
+        "failure_reason": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "pattern": "(CC|BA|NT)[a-zA-Z0-9]{16,32}"
+                },
+                "destination": {
+                    "type": "string",
+                    "pattern": "(BA|AT)[a-zA-Z0-9]{16,32}"
+                },
+                "customer": {
+                    "type": "string",
+                    "pattern": "(CU|AC|AT)[a-zA-Z0-9]{16,32}",
+                    "TODO": "which customer is this, the source or the destination??"
+                }
+            },
+            "required": [
+                "source",
+                "destination",
+                "customer"
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "description",
+        "appears_on_statement_as",
+        "meta",
+        "status",
+        "currency",
+        "type",
+        "failure_reason",
+        "failure_reason_code",
+        "links"
+    ]
+}
