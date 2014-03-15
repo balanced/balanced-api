@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
         "status": {
@@ -73,7 +74,8 @@
                 "patch-test-failed",
                 "request",
                 "order-kyc",
-                "method-not-allowed"
+                "method-not-allowed",
+                "duplicate-webhook-url"
             ]
         },
         "description": {
@@ -137,7 +139,8 @@
                         "This hold is not associated with this marketplace.",
                         "Order escrow balanced is insufficient to issue this credit.",
                         "Order escrow balanced is insufficient to issue this refund.",
-                        "Order requires merchant be underwritten."
+                        "Order requires merchant be underwritten.",
+                        "Webhook URL already exists."
                     ]
                 },
                 {

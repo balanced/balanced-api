@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "amount": {
+            "description": "The amount of the credit in cents.",
             "type": "integer",
             "minimum": 1
         },
@@ -29,10 +30,10 @@
             ]
         },
         "appears_on_statement_as": {
-            "type": "string",
-            "pattern": "[a-zA-Z0-9 \\.\\-]{1,18}"
+            "$ref": "appears_on_statement_as.json"
         },
         "description": {
+            "description": "Free-text description of the credit for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -48,6 +49,7 @@
             ]
         },
         "failure_reason": {
+            "description": "A human readable error message with the reason for the failure",
             "type": [
                 "string",
                 "null"
@@ -58,12 +60,13 @@
             "pattern": "CR[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",
             "properties": {
                 "customer": {
+                    "description": "The customer this funding destination is associated to",
                     "type": [
                         "null",
                         "string"
@@ -71,10 +74,12 @@
                     "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 },
                 "destination": {
+                    "description": "The funding destination for this credit",
                     "type": "string",
                     "pattern": "BA[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
+                    "description": "The order this credit is associated with",
                     "type": [
                         "null",
                         "string"

@@ -22,7 +22,8 @@ Feature: Credits
     When  I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
-        "amount": 500
+        "amount": 500,
+        "appears_on_statement_as": "Your lucky day"
       }
     """
     Then I should get a 201 Created status code
@@ -33,7 +34,8 @@ Feature: Credits
     When I POST to /customers/:customer_id/credits with the JSON API body:
     """
       {
-        "amount": 1234
+        "amount": 1234,
+        "description": "Will this credit work, nobody knows"
       }
     """
     Then I should get a 409 status code

@@ -33,6 +33,7 @@
             "minimum": 0
         },
         "description": {
+            "description": "Free-text description of the order for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -42,7 +43,7 @@
             "$ref": "address.json"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",

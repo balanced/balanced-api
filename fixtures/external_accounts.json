@@ -5,35 +5,35 @@
         "links": {
             "type": "object",
             "properties": {
-                "disputes.transaction": {
+                "external_accounts.customer": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/resources/{disputes.transaction}"
+                    "pattern": "/customers/{external_accounts.customer}"
                 },
-                "disputes.events": {
+                "external_accounts.debits": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/disputes/{disputes.id}/events"
+                    "pattern": "/external_accounts/{external_accounts.id}/debits"
                 }
             },
             "required": [
-                "disputes.transaction",
-                "disputes.events"
+                "external_accounts.customer",
+                "external_accounts.debits"
             ]
         },
         "meta": {
             "type": "object"
         },
-        "disputes": {
+        "external_accounts": {
             "items": {
-                "$ref": "_models/dispute.json"
+                "$ref": "_models/external_account.json"
             },
             "type": "array",
-            "minItems": 0,
+            "minItems": 1,
             "uniqueItems": true
         }
     },
     "required": [
-        "disputes"
+        "external_accounts"
     ]
 }

@@ -8,7 +8,8 @@ Feature: Customers
       """
       {
         "name": "Customer name",
-        "email": "email@example.com"
+        "email": "email@example.com",
+        "ssn_last4": "5555"
       }
       """
     Then I should get a 201 Created status code
@@ -20,6 +21,26 @@ Feature: Customers
         "email": "email@example.com"
       }
       """
+
+  Scenario: Creating a business customer
+    When I POST to /customers with the JSON API body:
+    """
+    {
+      "business_name": "Lucky something",
+      "phone": "123123123",
+      "ein": "999999999",
+      "address": {
+        "line1": "123 Fake street",
+        "line2": "Suite 345",
+        "city": "San Francisco",
+        "state": "California",
+        "postal_code": "94000",
+        "country_code": "US"
+      }
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "customers" schema
 
   Scenario: Get a customer
     Given I have created a customer

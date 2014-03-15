@@ -22,18 +22,20 @@
             "type": "string",
             "format": "date-time"
         },
-	"voided_at": {
-	    "type": [
-		"string",
-		"null"
-	    ],
-	    "format": "date-time"
-	},
-	"transaction_number": {
-	    "type": "string",
-	    "pattern": "HL[0-9]{3}-[0-9]{3}-[0-9]{4}"
-	},
+        "voided_at": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date-time"
+        },
+        "transaction_number": {
+            "description": "An identifier for this transaction.",
+            "type": "string",
+            "pattern": "HL[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
         "amount": {
+            "description": "Amount in cents for this card_hold",
             "type": "integer",
             "minimum": 1
         },
@@ -44,6 +46,7 @@
             ]
         },
         "description": {
+            "description": " A description of the hold, used for display purposes.",
             "type": [
                 "string",
                 "null"
@@ -59,22 +62,25 @@
             ]
         },
         "failure_reason": {
+            "description": "A human readable error message with the reason for the failure",
             "type": [
                 "string",
                 "null"
             ]
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",
             "properties": {
                 "card": {
+                    "description": "The funding source for this hold.",
                     "type": "string",
                     "pattern": "CC[a-zA-Z0-9]{16,32}"
                 },
                 "debit": {
+                    "description": "The debit that was created from this card_hold if it has been captured",
                     "type": [
                         "null",
                         "string"
@@ -96,8 +102,8 @@
         "created_at",
         "updated_at",
         "expires_at",
-	"voided_at",
-	"transaction_number",
+        "voided_at",
+        "transaction_number",
         "amount",
         "currency",
         "description",

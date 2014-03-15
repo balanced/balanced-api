@@ -36,7 +36,7 @@ puts "MARKETPLACE: #{marketplace_id}"
 # create an initial amount of money in the marketplace
 # Sorry, whoever owns this card. ;)
 HTTParty.post("#{$root_url}/debits", options.merge(body: {
-        amount: 10_000_000, # WE"RE RICH!!!!
+        amount: 100_000_00, # WE"RE RICH!!!!
         source: {
           number: "4111111111111111",
           expiration_year: "2018",
@@ -47,5 +47,10 @@ HTTParty.post("#{$root_url}/debits", options.merge(body: {
 $:.unshift(File.dirname(__FILE__)+'/../../lib')
 
 require 'balanced/tiny_client'
+require 'balanced/extracer'
 
 $client = Balanced::TinyClient.new($api_secret, $accept_header, $root_url)
+
+at_exit do
+  $extracer.save
+end

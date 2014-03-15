@@ -247,7 +247,6 @@ Feature: Credit cards
         }
       """
 
-  @failing
   Scenario: Retrieving a card
     Given I have tokenized a card
     When  I make a GET request to /cards/:card_id
@@ -370,6 +369,16 @@ Feature: Credit cards
     Given I have tokenized a card
     When I make a DELETE request to /cards/:card_id
     Then I should get a 204 status code
+
+  Scenario: Unstored cards aren't visible from the index
+    Given I have unstored a card
+    And I make a GET request to /cards
+    Then I should not see that card in the results
+
+  Scenario: Unstored cards are still GET-able
+    Given I have unstored a card
+    And I make a GET request to it
+    Then I should see that card in the results
 
   Scenario: CVV matches
     When I make a POST request to /cards with the body:
@@ -604,3 +613,4 @@ Feature: Credit cards
       """
        { "meta": { } }
       """
+

@@ -19,6 +19,7 @@
             "format": "date-time"
         },
         "attempts": {
+            "description": "Number of attempts that have been made to verify the bank account.",
             "type": "integer",
             "minimum": 0,
             "maximum": 3
@@ -35,12 +36,13 @@
             "$ref": "status.json"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",
             "properties": {
                 "bank_account": {
+                    "description": "The bank account this verification is associated with",
                     "type": "string",
                     "pattern": "BA[a-zA-Z0-9]{16,32}"
                 }
