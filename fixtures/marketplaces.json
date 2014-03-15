@@ -1,0 +1,100 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "marketplaces.cards": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards"
+                },
+                "marketplaces.bank_accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/bank_accounts"
+                },
+                "marketplaces.external_accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/external_accounts"
+                },
+                "marketplaces.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/credits"
+                },
+                "marketplaces.debits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/debits"
+                },
+                "marketplaces.refunds": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/refunds"
+                },
+                "marketplaces.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/reversals"
+                },
+                "marketplaces.customers": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers"
+                },
+                "marketplaces.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/events"
+                },
+                "marketplaces.callbacks": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/callbacks"
+                },
+                "marketplaces.card_holds": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/card_holds"
+                },
+                "marketplaces.orders": {
+                    "description": "Orders in which the customer is either a buyer or merchant",
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/orders",
+                    "TODO": "THIS IS MISSING"
+                }
+            },
+            "required": [
+                "marketplaces.cards",
+                "marketplaces.bank_accounts",
+                "marketplaces.credits",
+                "marketplaces.debits",
+                "marketplaces.refunds",
+                "marketplaces.reversals",
+                "marketplaces.customers",
+                "marketplaces.events",
+                "marketplaces.callbacks",
+                "marketplaces.card_holds"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "marketplaces": {
+            "items": {
+                "$ref": "_models/marketplace.json"
+            },
+            "type": "array",
+            "minItems": 1,
+						"maxItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "marketplaces"
+    ]
+}
