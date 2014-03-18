@@ -15,6 +15,11 @@
                     "format": "uri",
                     "pattern": "/customers/{customers.id}/bank_accounts"
                 },
+                "customers.external_accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{customers.id}/external_accounts"
+                },
                 "customers.credits": {
                     "type": "string",
                     "format": "uri",

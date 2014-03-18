@@ -18,8 +18,11 @@ Feature: Tokenize a credit card
         "cards": [{
           "number": "4111111111111111",
           "expiration_month": "12",
-          "expiration_year": 2016
-        }}
+          "expiration_year": 2016,
+          "meta": {
+            "create": "can set on create"
+          }
+        }]
       }
       """
     Then I should get a 201 Created status code
@@ -53,9 +56,9 @@ Feature: Tokenize a credit card
       """
       {
         "cards": [{
-          "number": "4111111111111111",
-          "expiration_month": "12",
-          "expiration_year": 2016
+          "meta": {
+            "something": "random"
+          }
         }]
       }
       """

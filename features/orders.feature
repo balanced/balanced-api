@@ -40,7 +40,7 @@ Feature: Orders
         }
       }
       """
-      
+
     When I fetch the order
     And I make a GET request to /orders/:order_id
 
@@ -326,4 +326,24 @@ Feature: Orders
       {
         "description": "Beats by Dr. Dre"
       }
+    """
+
+  Scenario: Update an order description
+    Given I have created a customer
+    When I make a POST request to /customers/:customer_id/orders
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "orders" schema
+
+    Then I PUT to /orders/:order_id with the JSON API body:
+    """
+    {
+      "description": "Bob's service"
+    }
+    """
+    Then the fields on this order match:
+    """
+    {
+      "description": "Bob's service"
+    }
     """

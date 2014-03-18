@@ -75,3 +75,29 @@ Given(/^I have sufficient funds in my marketplace$/) do
                  amount: 50000
                })
 end
+
+Given(/^I have unstored a card$/) do
+  step "I have tokenized a card"
+  @card_id = @client.last_body["cards"][0]["id"]
+  @card_url = @client.last_body["cards"][0]["href"]
+  step "I make a DELETE request to /cards/:card_id"
+end
+
+Then(/^I should not see that card in the results$/) do
+ card_ids = @client.last_body["cards"].collect{|card| card["id"]}
+ card_ids.each {|x|
+   assert x != @card_id
+ }
+end
+
+
+Given(/^I make a GET request to it$/) do
+  step "I GET to #{@card_url}"
+end
+
+Then(/^I should see that card in the results$/) do
+ card_ids = @client.last_body["cards"].collect{|card| card["id"]}
+ card_ids.each {|x|
+   assert x == @card_id
+ }
+end

@@ -23,7 +23,7 @@
                     "bank_accounts": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/bank_accounts.json"
+                            "$ref": "../bank_accounts.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -33,7 +33,7 @@
                     "bank_account_verifications": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/bank_account_verifications.json"
+                            "$ref": "../bank_account_verifications.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -43,7 +43,7 @@
                     "card_holds": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/card_holds.json"
+                            "$ref": "../card_holds.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -53,7 +53,7 @@
                     "credits": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/credits.json"
+                            "$ref": "../credits.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -63,7 +63,7 @@
                     "customers": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/customers.json"
+                            "$ref": "../customers.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -73,17 +73,17 @@
                     "debits": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/debits.josn"
+                            "$ref": "../debits.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
                     }
                 },
                 {
-                    "debits": {
+                    "refunds": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/refunds.json"
+                            "$ref": "../refunds.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true
@@ -93,7 +93,7 @@
                     "reversals": {
                         "type": "array",
                         "item": {
-                            "$ref": "_models/reversals.json"
+                            "$ref": "../reversals.json"
                         },
                         "minItems": 1,
                         "uniqueItems": true

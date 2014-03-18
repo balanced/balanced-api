@@ -23,7 +23,8 @@ Feature: Credits
     """
       {
         "credits": [{
-          "amount": 500
+          "amount": 500,
+          "appears_on_statement_as": "Your lucky day"
         }]
       }
     """
@@ -36,7 +37,8 @@ Feature: Credits
     """
       {
         "credits": [{
-          "amount": 1234
+          "amount": 1234,
+          "description": "Will this credit work? Nobody knows"
         }]
       }
     """

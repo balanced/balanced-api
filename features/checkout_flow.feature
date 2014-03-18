@@ -1,4 +1,6 @@
-Feature: Credit cards
+Feature: Basic checkout flow
+  A simple scenarios depicting how one would could use orders to manage
+  and track the flow of funds.
 
   Scenario: Canceling an order
     Given I have an order with a debit
@@ -60,20 +62,20 @@ Feature: Credit cards
         }
       """
 
-    When I PATCH to /customers/:customer_id with the JSON API body:
+    When I PATCH to /cards/:card_id with the JSON API body:
       """
         [{
           "op": "replace",
-          "path": "/customers/0/links/source",
-          "value": ":card_id"
+          "path": "/cards/0/links/customer",
+          "value": ":customer_id"
         }]
       """
     Then I should get a 200 OK status code
-    And the response is valid according to the "customers" schema
-    And the fields on this customer match:
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
           {
-            "links": { "source": ":card_id" }
+            "links": { "customer": ":customer_id" }
           }
       """
 

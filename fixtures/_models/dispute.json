@@ -47,7 +47,7 @@
             "format": "date-time"
         },
         "meta": {
-            "type": "object"
+            "$ref": "meta.json"
         },
         "links": {
             "type": "object",
@@ -58,7 +58,9 @@
                 }
             },
             "additionalProperties": false,
-            "required": ["transaction"]
+            "required": [
+                "transaction"
+            ]
         }
     },
     "additionalProperties": false,
