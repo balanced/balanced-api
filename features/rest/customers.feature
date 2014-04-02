@@ -19,10 +19,8 @@ Feature: Customers
     And the fields on this customer match:
       """
       {
-        "customers": [{
-          "name": "Customer name",
-          "email": "email@example.com"
-        }]
+        "name": "Customer name",
+        "email": "email@example.com"
       }
       """
 

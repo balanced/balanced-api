@@ -142,17 +142,17 @@ Feature: Credit cards
   Scenario: AVS street does not match
     When I make a POST request to /cards with the body:
       """
-        {
-          "cards": [{
-            "number": "4111111111111111",
-            "expiration_month": 12,
-            "expiration_year": 2016,
-            "address": {
-              "line1": "21 Jump St",
-              "postal_code": "90210"
-            }
-          ]}
-        }
+      {
+        "cards": [{
+          "number": "4111111111111111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "address": {
+            "line1": "21 Jump St",
+            "postal_code": "90210"
+          }
+        }]
+      }
       """
 
     Then I should get a 201 CREATED status code
@@ -193,7 +193,7 @@ Feature: Credit cards
             "number": "4111 1111 1111 1111",
             "expiration_month": 12,
             "expiration_year": 2016
-          ]}
+          }]
         }
       """
 
@@ -214,7 +214,7 @@ Feature: Credit cards
             "number": "5105 1051 0510 5100",
             "expiration_month": 12,
             "expiration_year": 2016
-          ]}
+          }]
         }
       """
 
@@ -235,7 +235,7 @@ Feature: Credit cards
             "number": "3782 822463 10005",
             "expiration_month": 12,
             "expiration_year": 2016
-          ]}
+          }]
         }
       """
 
@@ -251,13 +251,13 @@ Feature: Credit cards
   Scenario: Detect a Discover card brand
     When I make a POST request to /cards with the body:
       """
-        {
-          "cards": [{
-            "number": "6011 1111 1111 1117",
-            "expiration_month": 12,
-            "expiration_year": 2016
-          }]
-        }
+      {
+        "cards": [{
+          "number": "6011 1111 1111 1117",
+          "expiration_month": 12,
+          "expiration_year": 2016
+        }]
+      }
       """
 
     Then I should get a 201 CREATED status code
@@ -277,28 +277,26 @@ Feature: Credit cards
     And the fields on this card match:
     """
         {
-          "cards": [{
-            "name": null,
-            "number": "xxxxxxxxxxxx1111",
-            "expiration_month": 12,
-            "expiration_year": 2016,
-            "cvv": "xxx",
-            "cvv_match": "yes",
-            "cvv_result": "Match",
-            "address": {
-              "line1": "965 Mission St",
-              "line2": null,
-              "city": "Balo Alto",
-              "state": null,
-              "postal_code": "94103",
-              "country_code": null
-            },
-            "avs_street_match": "yes",
-            "avs_postal_match": "yes",
-            "avs_result": "Postal code matches, but street address not verified.",
-            "brand": "Visa",
-            "meta": {}
-          }]
+          "name": null,
+          "number": "xxxxxxxxxxxx1111",
+          "expiration_month": 12,
+          "expiration_year": 2016,
+          "cvv": "xxx",
+          "cvv_match": "yes",
+          "cvv_result": "Match",
+          "address": {
+            "line1": "965 Mission St",
+            "line2": null,
+            "city": "Balo Alto",
+            "state": null,
+            "postal_code": "94103",
+            "country_code": null
+          },
+          "avs_street_match": "yes",
+          "avs_postal_match": "yes",
+          "avs_result": "Postal code matches, but street address not verified.",
+          "brand": "Visa",
+          "meta": {}
         }
       """
 
@@ -653,4 +651,3 @@ Feature: Credit cards
       """
        { "meta": { } }
       """
-

@@ -25,7 +25,7 @@ Feature: Bank account verifications
     When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
     """
     {
-      "verifications": [{
+      "bank_account_verifications": [{
         "amount_1": 1,
         "amount_2": 1
       }]
@@ -45,7 +45,7 @@ Feature: Bank account verifications
     When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
     """
     {
-      "verifications": [{
+      "bank_account_verifications": [{
         "amount_1": 2,
         "amount_2": 2
       }]

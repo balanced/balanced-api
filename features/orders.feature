@@ -163,7 +163,7 @@ Feature: Orders
       "credits": [{
         "order": ":order_id",
         "amount": 2000
-      ]}
+      }]
     }
     """
     Then I should get a 409 status code

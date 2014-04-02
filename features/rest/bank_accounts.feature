@@ -9,12 +9,10 @@ Feature: Bank accounts
     When I POST to /bank_accounts without my secret key with the JSON API body:
     """
     {
-      "bank_accounts": [{
-        "name": "That guy over there",
-        "routing_number": "321174851",
-        "account_number": "9900000001",
-        "account_type": "checking"
-      }]
+      "name": "That guy over there",
+      "routing_number": "321174851",
+      "account_number": "9900000001",
+      "account_type": "checking"
     }
     """
     Then I should get a 201 Created status code
@@ -33,7 +31,7 @@ Feature: Bank accounts
           "account_number": "200938202",
           "routing_number": "121042882",
           "account_type": "savings"
-        ]}
+        }]
       }
       """
 
@@ -132,7 +130,7 @@ Feature: Bank accounts
     {
       "debits": [{
         "amount": 1234
-      ]}
+      }]
     }
     """
     Then I should get a 201 Created status code

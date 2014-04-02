@@ -27,7 +27,7 @@ Feature: Reversals
 
     When I make a POST request to the link "credits.reversals" with the body:
       """
-      { "reversal": [{"amount": 10000000 }] }
+      { "reversals": [{"amount": 10000000 }] }
       """
     Then I should get a 400 status code
     And the response is valid according to the "errors" schema

@@ -5,4 +5,3 @@ gem "httparty"
 gem "json-schema"
 gem "uri_template"
 gem "rake"
-gem 'debugger'

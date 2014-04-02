@@ -15,14 +15,12 @@ Feature: Tokenize a credit card
     When I POST to /cards without my secret key with the JSON API body:
       """
       {
-        "cards": [{
-          "number": "4111111111111111",
-          "expiration_month": "12",
-          "expiration_year": 2016,
-          "meta": {
-            "create": "can set on create"
-          }
-        }]
+        "number": "4111111111111111",
+        "expiration_month": "12",
+        "expiration_year": 2016,
+        "meta": {
+          "create": "can set on create"
+        }
       }
       """
     Then I should get a 201 Created status code
