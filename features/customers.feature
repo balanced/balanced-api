@@ -4,7 +4,9 @@ Feature: Customers
     When I POST to /customers with the JSON API body:
       """
       {
-        "name": "Balanced Testing"
+        "customers": [{
+          "name": "Balanced Testing"
+        }]
       }
       """
     Then I should get a 201 Created status code
@@ -40,7 +42,9 @@ Feature: Customers
     When I POST to /customers with the body:
     """
       {
-        "name": "Henry Ford"
+        "customers": [{
+          "name": "Henry Ford"
+        }]
       }
     """
     Then I should get a 201 Created status code
@@ -55,12 +59,14 @@ Feature: Customers
     When I make a PUT request to the href "href" with the body:
     """
     {
-      "name": "Henry Ford",
-      "dob_month": 7,
-      "dob_year": 1963,
-      "address": {
-        "postal_code": "48120"
-      }
+      "customers": [{
+        "name": "Henry Ford",
+        "dob_month": 7,
+        "dob_year": 1963,
+        "address": {
+          "postal_code": "48120"
+        }
+      }]
     }
     """
     Then I should get a 200 OK status code

@@ -25,12 +25,14 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-         "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "address": {
-            "postal_code": "94301"
-          }
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "address": {
+              "postal_code": "94301"
+            }
+          }]
         }
       """
 
@@ -47,12 +49,14 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "address": {
-            "postal_code": "90210"
-          }
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "address": {
+              "postal_code": "90210"
+            }
+          }]
         }
       """
 
@@ -69,12 +73,14 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "address": {
-            "postal_code": "90211"
-          }
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "address": {
+              "postal_code": "90211"
+            }
+          }]
         }
       """
 
@@ -91,9 +97,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -110,13 +118,15 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "address": {
-            "line1": "965 Mission St",
-            "postal_code": "94103"
-          }
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "address": {
+              "line1": "965 Mission St",
+              "postal_code": "94103"
+            }
+          }]
         }
       """
 
@@ -132,7 +142,8 @@ Feature: Credit cards
   Scenario: AVS street does not match
     When I make a POST request to /cards with the body:
       """
-        {
+      {
+        "cards": [{
           "number": "4111111111111111",
           "expiration_month": 12,
           "expiration_year": 2016,
@@ -140,7 +151,8 @@ Feature: Credit cards
             "line1": "21 Jump St",
             "postal_code": "90210"
           }
-        }
+        }]
+      }
       """
 
     Then I should get a 201 CREATED status code
@@ -156,9 +168,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -175,9 +189,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111 1111 1111 1111",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "4111 1111 1111 1111",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -194,9 +210,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "5105 1051 0510 5100",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "5105 1051 0510 5100",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -213,9 +231,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "3782 822463 10005",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "3782 822463 10005",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -231,11 +251,13 @@ Feature: Credit cards
   Scenario: Detect a Discover card brand
     When I make a POST request to /cards with the body:
       """
-        {
+      {
+        "cards": [{
           "number": "6011 1111 1111 1117",
           "expiration_month": 12,
           "expiration_year": 2016
-        }
+        }]
+      }
       """
 
     Then I should get a 201 CREATED status code
@@ -247,6 +269,7 @@ Feature: Credit cards
         }
       """
 
+  @failing
   Scenario: Retrieving a card
     Given I have tokenized a card
     When  I make a GET request to /cards/:card_id
@@ -282,9 +305,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111 1111 1111 1111",
-          "expiration_month": "12",
-          "expiration_year": "2016"
+          "cards": [{
+            "number": "4111 1111 1111 1111",
+            "expiration_month": "12",
+            "expiration_year": "2016"
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -300,10 +325,12 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "name": "Frida Kahlo",
-          "number": "4111 1111 1111 1111",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "name": "Frida Kahlo",
+            "number": "4111 1111 1111 1111",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -318,16 +345,18 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111 1111 1111 1111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "address": {
-            "line1": "7 Bis Rue de l'Abbé de l'Épée",
-            "line2": "Apt 4",
-            "city": "Versailles",
-            "postal_code": "78000",
-            "country_code": "FR"
-          }
+          "cards": [{
+            "number": "4111 1111 1111 1111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "address": {
+              "line1": "7 Bis Rue de l'Abbé de l'Épée",
+              "line2": "Apt 4",
+              "city": "Versailles",
+              "postal_code": "78000",
+              "country_code": "FR"
+            }
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -350,9 +379,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111112",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "4111111111111112",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
     # the api returns a 400, while running it locally returns a 409
@@ -384,10 +415,12 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "cvv": "123"
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "123"
+          }]
         }
       """
 
@@ -404,10 +437,12 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-           "number": "5112000200000002",
+          "cards": [{
+            "number": "5112000200000002",
             "expiration_month": 12,
             "expiration_year": 2016,
             "cvv": "200"
+          }]
         }
       """
 
@@ -424,10 +459,12 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4457000300000007 ",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "cvv": "901"
+          "cards": [{
+            "number": "4457000300000007 ",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "901"
+          }]
         }
       """
 
@@ -444,9 +481,11 @@ Feature: Credit cards
     When I make a POST request to /cards with the body:
     """
         {
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016
+          "cards": [{
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016
+          }]
         }
       """
 
@@ -613,4 +652,3 @@ Feature: Credit cards
       """
        { "meta": { } }
       """
-
