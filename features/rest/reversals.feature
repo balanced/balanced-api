@@ -13,7 +13,9 @@ Feature: Reversal
     When I POST to /credits/:credit_id/reversals with the JSON API body:
     """
     {
-      "amount": 100
+      "reversals": [{
+        "amount": 100
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -66,7 +68,9 @@ Feature: Reversal
     When I PUT to /reversals/:reversal_id with the JSON API body:
     """
     {
-      "description": "merchant did not ship item, taking my money back"
+      "reversals": [{
+        "description": "merchant did not ship item, taking my money back"
+      }]
     }
     """
     Then I should get a 200 OK status code

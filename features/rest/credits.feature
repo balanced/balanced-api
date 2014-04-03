@@ -10,7 +10,9 @@ Feature: Credits
     When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "amount": 1234
+      "credits": [{
+        "amount": 1234
+      }]
     }
     """
     Then I should get a 201 Created status code
