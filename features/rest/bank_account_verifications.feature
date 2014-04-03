@@ -25,8 +25,10 @@ Feature: Bank account verifications
     When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
     """
     {
-      "amount_1": 1,
-      "amount_2": 1
+      "bank_account_verifications": [{
+        "amount_1": 1,
+        "amount_2": 1
+      }]
     }
     """
     Then I should get a 200 OK status code
@@ -43,8 +45,10 @@ Feature: Bank account verifications
     When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
     """
     {
-      "amount_1": 2,
-      "amount_2": 2
+      "bank_account_verifications": [{
+        "amount_1": 2,
+        "amount_2": 2
+      }]
     }
     """
     Then I should get a 409 Conflict status code

@@ -3,7 +3,7 @@ require 'erb'
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   $logger.debug("Making request to #{url}")
   $logger.debug("hydrated: #{@client.hydrater(url)}")
-  @client.verb(verb, @client.hydrater(url), env)
+  @client.send(verb.downcase, @client.hydrater(url), env)
   @order_id = @client['orders']['id'] rescue nil
   @client.add_hydrate(:order_id, @order_id) if @order_id
   @customer_source = @client['customers']['links']['source'] rescue nil
@@ -15,7 +15,7 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   $logger.debug("hydrated: #{@client.hydrater(url)}")
   body = @client.hydrater body
   $logger.debug("body: #{body}")
-  @client.verb(verb, @client.hydrater(url), env, body)
+  @client.send(verb.downcase, @client.hydrater(url), body, env)
   @customer_id = @client['customers']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
   @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
@@ -57,6 +57,7 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body = @client.hydrater(body)
   href = @client.get_link(keys)
   #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
+  #require 'debugger'; debugger
   body = @client.send(verb.downcase, @client.get_link(keys), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
