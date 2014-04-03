@@ -21,8 +21,9 @@ module Balanced
       options = {
         headers: {
           'Accept' => @accept_header,
+          'Content-Type' => "application/json", # github: https://github.com/balanced/balanced-api/issues/458
         },
-        body: body,
+        body: JSON.dump(body),
         basic_auth: {
           username: @api_secret,
           password: '',
@@ -56,8 +57,9 @@ module Balanced
       options = {
         headers: {
           'Accept' => @accept_header,
+          'Content-Type' => "application/json", # github: https://github.com/balanced/balanced-api/issues/458
         },
-        body: body,
+        body: JSON.dump(body),
         basic_auth: {
           username: @api_secret,
           password: '',
@@ -91,18 +93,18 @@ module Balanced
     end
 
     def get(endpoint, body=nil, env={})
-      verb 'GET', endpoint, env
+      _verb 'GET', endpoint, env
     end
 
     def delete(endpoint, body=nil, env={})
-      verb 'DELETE', endpoint
+      _verb 'DELETE', endpoint
     end
 
     def add_response(response)
       @responses << response
     end
 
-    def verb(verb, url, env={}, body=nil)
+    def _verb(verb, url, env={}, body=nil)
       options = {
         headers: {
           'Accept' => @accept_header,
@@ -115,7 +117,7 @@ module Balanced
         }
       }
 
-      options[:body] = body if body
+      #options[:body] = body if body
 
       url = expand_url(url, env)
 
@@ -123,6 +125,10 @@ module Balanced
       @responses << response
       $extracer.log_request(verb, url, body, last_body) if last_code < 400
       response
+    end
+
+    def verb(verb, url, env={}, body=nil)
+      send(verb.downcase, url, body, env)
     end
 
     def last_code

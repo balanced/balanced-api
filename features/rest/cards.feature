@@ -53,9 +53,11 @@ Feature: Tokenize a credit card
     When I PUT to /cards/:card_id giving the card_id, with the JSON API body:
       """
       {
-        "meta": {
-          "something": "random"
-        }
+        "cards": [{
+          "meta": {
+            "something": "random"
+          }
+        }]
       }
       """
     Then I should get a 200 OK status code
@@ -66,7 +68,9 @@ Feature: Tokenize a credit card
     When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
       """
       {
-        "amount": "50"
+        "debits": [{
+          "amount": "50"
+        }]
       }
       """
     Then I should get a 201 Created status code
