@@ -62,39 +62,6 @@
             "type": "string",
             "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
         },
-        "fee": {
-            "description": "The fee Balanced charged for this transaction. It is denominated in USD integer cents.",
-            "type": "integer",
-            "minimum": 1
-        },
-        "fee_details": {
-            "description": "The breakdown of the fee paid for this transaction.",
-            "type": "array",
-            "items": {
-                "description": "Details of the fees paid. There may be zero to two: our usual fee, and a forex fee if the transaction was not in USD.",
-                "type": "object",
-                "properties": {
-                    "amount": {
-                        "type": "integer",
-                        "minimum": "1",
-                    }
-                    "currency": {
-                        "type": "string",
-                        "enum": [
-                          "USD"
-                        ]
-                    }
-                    "type": {
-                        "type": "string"
-                        "enum": [
-                          "processing",
-                          "forex"
-                        ]
-                    }
-		}
-            },
-            "minItems": 0
-        },
         "meta": {
             "$ref": "meta.json"
         },
@@ -154,6 +121,6 @@
         "failure_reason_code",
         "transaction_number",
         "meta",
-        "links",
+        "links"
     ]
 }

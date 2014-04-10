@@ -5,9 +5,6 @@ Feature: Forex
   This provides a better experience for customers who have accounts denominated
   in other currencies, and reduces chargeback rates for those customers as well.
 
-  The fee is reflected in the response back from the debit. See the schema for
-  debits for more details.
-
   Scenario: Debit a card in €
     Given I have tokenized a card
     When I make a POST request to the link "cards.debits" with the body:
@@ -39,4 +36,3 @@ Feature: Forex
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
-
