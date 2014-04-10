@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "(MP|TEST-MP)[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "in_escrow": {
+            "type": "integer"
+        },
+        "unsettled_fees": {
+            "type": "integer",
+            "description": "The total amount of fees collected by the marketplace that have yet to be settled to their bank account by Balanced."
+        },
+        "domain_url": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "support_email_address": {
+            "type": "string",
+            "format": "email"
+        },
+        "support_phone_number": {
+            "type": "string"
+        },
+        "production": {
+            "type": "boolean"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "owner_customer": {
+                    "type": "string",
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "owner_customer"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "in_escrow",
+        "unsettled_fees",
+        "domain_url",
+        "name",
+        "support_email_address",
+        "support_phone_number",
+        "production",
+        "meta",
+        "links"
+    ]
+}

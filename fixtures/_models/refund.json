@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "RF[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "description": "The amount in cents for this refund",
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "description": {
+            "description": "Free-text description of the refund for the dashboard.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "RF[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "debit": {
+                    "description": "The debit that is being refunded",
+                    "type": "string",
+                    "pattern": "WD[a-zA-Z0-9]{16,32}"
+                },
+                "order": {
+                    "description": "The order this refund is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
+                },
+                "dispute": {
+                    "description": "The dispute your customer has filed with their bank associated with this refund",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "debit",
+                "order",
+                "dispute"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "description",
+        "status",
+        "meta",
+        "links"
+    ]
+}

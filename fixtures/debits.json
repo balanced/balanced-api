@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "debits.refunds": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/debits/{debits.id}/refunds"
+                },
+                "debits.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{debits.customer}"
+                },
+                "debits.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/orders/{debits.order}"
+                },
+                "debits.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{debits.source}"
+                },
+                "debits.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/debits/{debits.id}/events"
+                },
+                "debits.dispute": {
+                    "type": "stirng",
+                    "format": "uri",
+                    "pattern": "/disputes/{debits.dispute}"
+                }
+            },
+            "required": [
+                "debits.refunds",
+                "debits.customer",
+                "debits.order",
+                "debits.source",
+                "debits.events",
+                "debits.dispute"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "debits": {
+            "items": {
+                "$ref": "_models/debit.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "require": [
+        "debits"
+    ]
+}

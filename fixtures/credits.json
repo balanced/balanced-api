@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "credits.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/credits/{credits.id}/reversals"
+                },
+                "credits.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{credits.customer}"
+                },
+                "credits.order": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/orders/{credits.order}"
+                },
+                "credits.destination": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{credits.destination}"
+                },
+                "credits.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/credits/{credits.id}/events"
+                }
+            },
+            "required": [
+                "credits.reversals",
+                "credits.customer",
+                "credits.order",
+                "credits.destination",
+                "credits.events"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "credits": {
+            "items": {
+                "$ref": "_models/credit.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "credits"
+    ]
+}

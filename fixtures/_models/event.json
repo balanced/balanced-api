@@ -1,0 +1,112 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "EV[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "type": {
+            "type": "string"
+        },
+        "entity": {
+            "anyOf": [
+                {
+                    "bank_accounts": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../bank_accounts.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "bank_account_verifications": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../bank_account_verifications.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "card_holds": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../card_holds.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "credits": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../credits.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "customers": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../customers.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "debits": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../debits.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "refunds": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../refunds.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                },
+                {
+                    "reversals": {
+                        "type": "array",
+                        "item": {
+                            "$ref": "../reversals.json"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    }
+                }
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "occurred_at",
+        "type",
+        "entity"
+    ]
+}

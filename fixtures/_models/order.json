@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "OR[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "amount": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "amount_escrowed": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "description": {
+            "description": "Free-text description of the order for the dashboard.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "delivery_address": {
+            "$ref": "address.json"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "merchant": {
+                    "type": "string",
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "merchant"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "currency",
+        "amount",
+        "amount_escrowed",
+        "description",
+        "delivery_address",
+        "meta",
+        "links"
+    ],
+    "additionalProperties": false
+}

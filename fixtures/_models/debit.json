@@ -1,0 +1,125 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "WD[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "description": " `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this debit was created.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "amount": {
+            "description": "The amount of the debit in cents.",
+            "type": "integer",
+            "minimum": 1
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "appears_on_statement_as": {
+            "$ref": "appears_on_statement_as.json"
+        },
+        "description": {
+            "description": "Free-text description of the debit for the dashboard.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "failure_reason_code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "failure_reason": {
+            "description": "A human readable error message with the reason for the failure",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "transaction_number": {
+            "description": "An identifier for this transaction.",
+            "type": "string",
+            "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "description": "The funding instrument debited",
+                    "type": "string",
+                    "pattern": "(CC|BA|NT)[a-zA-Z0-9]{16,32}"
+                },
+                "dispute": {
+                    "description": "The dispute your customer has filed with their bank associated with this debit",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
+                },
+                "customer": {
+                    "description": "The customer for which the funding instrument is associated",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                },
+                "order": {
+                    "description": "The order this debit is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "source",
+                "dispute",
+                "customer",
+                "order"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "amount",
+        "currency",
+        "appears_on_statement_as",
+        "description",
+        "status",
+        "failure_reason_code",
+        "transaction_number",
+        "meta",
+        "links"
+    ]
+}

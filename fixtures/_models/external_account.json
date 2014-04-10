@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "NT[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this bank account was tokenized.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "provider": {
+            "description": "The service provding the external account",
+            "type": "string",
+            "enum": [
+                "test",
+                "coinbase"
+            ]
+        },
+        "can_debit": {
+            "description": "If the external account can be debited",
+            "type": "boolean"
+        },
+        "can_credit": {
+            "description": "If the external account can be credited",
+            "type": "boolean"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "description": "Customer this external_account is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "customer"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "provider",
+        "meta",
+        "links"
+    ]
+}

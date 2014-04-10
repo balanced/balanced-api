@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "BZ[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "attempts": {
+            "description": "Number of attempts that have been made to verify the bank account.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+        },
+        "attempts_remaining": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+        },
+        "deposit_status": {
+            "$ref": "status.json"
+        },
+        "verification_status": {
+            "$ref": "status.json"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "bank_account": {
+                    "description": "The bank account this verification is associated with",
+                    "type": "string",
+                    "pattern": "BA[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "bank_account"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "attempts",
+        "attempts_remaining",
+        "deposit_status",
+        "verification_status",
+        "meta",
+        "links"
+    ]
+}

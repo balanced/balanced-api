@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "BA[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this bank account was tokenized.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "name": {
+            "description": " Name of the account holder.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "account_number": {
+            "description": "Masked account number.",
+            "type": "string",
+            "pattern": "x*[0-9]{4}"
+        },
+        "routing_number": {
+            "description": "Routing number format. Specified in FedACH database defined by the `US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_.",
+            "type": "string",
+            "pattern": "[0-9]{9}"
+        },
+        "account_type": {
+            "description": "``checking`` or ``savings``.",
+            "type": "string",
+            "enum": [
+                "checking",
+                "savings"
+            ]
+        },
+        "bank_name": {
+            "description": "The name of the bank.",
+            "type": "string"
+        },
+        "address": {
+            "$ref": "address.json"
+        },
+        "fingerprint": {
+            "description": "Uniquely identifies the bank account (``account_number`` and ``routing_number``).",
+            "type": "string"
+        },
+        "can_debit": {
+            "description": "Flag indicating whether this funding instrument can be debited (true) or not (false).",
+            "type": "boolean"
+        },
+        "can_credit": {
+            "description": "Flag indicating whether this funding instrument can be credited (true) or not (false).",
+            "type": "boolean"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "description": "Customer this bank_account is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                },
+                "bank_account_verification": {
+                    "description": "Most recent verification for this bank account.",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "BZ[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "customer",
+                "bank_account_verification"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "name",
+        "account_number",
+        "routing_number",
+        "account_type",
+        "bank_name",
+        "address",
+        "fingerprint",
+        "can_debit",
+        "can_credit",
+        "meta",
+        "links"
+    ]
+}
