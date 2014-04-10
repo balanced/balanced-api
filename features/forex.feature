@@ -5,7 +5,7 @@ Feature: Forex
   This provides a better experience for customers who have accounts denominated
   in other currencies, and reduces chargeback rates for those customers as well.
 
-  Scenario: Debit a card in â¬
+  Scenario: Debit a card in €
     Given I have tokenized a card
     When I make a POST request to the link "cards.debits" with the body:
       """
@@ -19,7 +19,7 @@ Feature: Forex
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
-  Scenario: Debiting a card directly in â¬
+  Scenario: Debiting a card directly in €
     When I POST to /debits with the body:
       """
       {
