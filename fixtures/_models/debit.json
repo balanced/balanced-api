@@ -27,7 +27,8 @@
         "currency": {
             "type": "string",
             "enum": [
-                "USD"
+                "USD",
+                "EUR"
             ]
         },
         "appears_on_statement_as": {
