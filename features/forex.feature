@@ -18,6 +18,12 @@ Feature: Forex
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+      {
+        "currency": "EUR"
+      }
+      """
 
   Scenario: Debiting a card directly in €
     When I POST to /debits with the body:
@@ -36,3 +42,9 @@ Feature: Forex
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+      {
+        "currency": "EUR"
+      }
+      """
