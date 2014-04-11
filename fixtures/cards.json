@@ -20,6 +20,11 @@
                     "format": "uri",
                     "pattern": "/cards/{cards.id}/disputes"
                 },
+                "cards.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards/{cards.id}/credits"
+                },
                 "cards.customer": {
                     "type": "string",
                     "format": "uri",
