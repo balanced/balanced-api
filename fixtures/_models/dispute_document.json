@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "DD[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "url": {
+            "description": "The url where the file may be accessed",
+            "type": "string",
+            "format": "uri"
+        },
+        "file_type": {
+            "type": "string",
+            "enum": [
+                "pdf",
+                "doc",
+                "jpg"
+            ]
+        },
+        "file_name": {
+            "description": "Original name of the uploaded file",
+            "type": "string"
+        },
+        "meta": {
+            "$ref": "meta.json"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "dispute": {
+                    "description": "The dispute your customer has filed with their bank associated with this debit",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "dispute"
+            ]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "url",
+        "file_type",
+        "file_name",
+        "meta",
+        "links"
+    ]
+}
