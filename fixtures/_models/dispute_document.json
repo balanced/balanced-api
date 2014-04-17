@@ -23,17 +23,22 @@
             "type": "string",
             "format": "uri"
         },
-        "file_type": {
+        "mime_type": {
             "type": "string",
             "enum": [
-                "pdf",
-                "doc",
-                "jpg"
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "image/jpeg"
             ]
         },
         "file_name": {
-            "description": "Original name of the uploaded file",
+            "description": "Name of the document",
             "type": "string"
+        },
+        "file_size": {
+            "description": "Size on disk of the document",
+            "type": "integer"
         },
         "meta": {
             "$ref": "meta.json"
@@ -42,7 +47,7 @@
             "type": "object",
             "properties": {
                 "dispute": {
-                    "description": "The dispute your customer has filed with their bank associated with this debit",
+                    "description": "The dispute the customer has filed with their bank associated with this debit",
                     "type": [
                         "null",
                         "string"
@@ -63,8 +68,9 @@
         "created_at",
         "updated_at",
         "url",
-        "file_type",
+        "mime_type",
         "file_name",
+        "file_size",
         "meta",
         "links"
     ]
