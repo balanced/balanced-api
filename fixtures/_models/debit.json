@@ -19,31 +19,21 @@
             "type": "string",
             "format": "date-time"
         },
+        "currency": {
+	    "$ref": "_models/debit.json"
+        },
         "amount": {
             "description": "The amount of the debit in cents.",
             "type": "integer",
             "minimum": 1
         },
-        "currency": {
-            "type": "string",
-            "enum": [
-                "USD",
-                "EUR",
-                "GBP"
-            ]
-        },
-        "amount_in_order_currency": {
-            "description": "The amount of the debit in cents, denominated in the order_currency.",
+        "amount_in_captured_currency": {
+            "description": "The amount of the debit in cents, denominated in the captured_currency.",
             "type": "integer",
             "minimum": 1
         },
-        "order_currency": {
-            "type": "string",
-            "enum": [
-                "USD",
-                "EUR",
-                "GBP"
-            ]
+        "captured_currency": {
+	    "$ref": "_models/debit.json"
         },
         "appears_on_statement_as": {
             "$ref": "appears_on_statement_as.json"
