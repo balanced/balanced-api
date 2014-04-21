@@ -20,7 +20,7 @@
             "format": "date-time"
         },
         "currency": {
-	    "$ref": "_models/debit.json"
+	    "$ref": "_models/currency.json"
         },
         "amount": {
             "description": "The amount of the debit in cents.",
@@ -33,7 +33,7 @@
             "minimum": 1
         },
         "captured_currency": {
-	    "$ref": "_models/debit.json"
+	    "$ref": "_models/currency.json"
         },
         "appears_on_statement_as": {
             "$ref": "appears_on_statement_as.json"
