@@ -15,6 +15,10 @@ Given(/^I have tokenized a card$/) do
   @client.add_hydrate(:card_id, @card_id)
 end
 
+Then(/^I should see the original card in the list$/) do
+  assert_equal @card_id, @client['cards']['id'], "card not found"
+end
+
 Given(/^I have tokenized a customer card$/) do
   @client.post('/cards',
     {
