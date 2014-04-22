@@ -12,24 +12,7 @@ Feature: API Keys
 
     When I POST to /api_keys without my secret key
     Then I should get a 201 Created status code
-    And the response has this schema:
-      """
-      {
-        "api_keys": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 1,
-          "properties": {
-            "href": { "type": "string" },
-            "id": { "type": "string" },
-            "secret": { "type": "string" },
-            "links": { "type": "object" },
-            "meta": { "type": "object" }
-          }
-        },
-        "required": ["api_keys"]
-      }
-      """
+    And the response is valid according to the "api_keys" schema
 
   Scenario: Create a new api key for a marketplace
     To obtain a key, one must be created using the existing secret key
@@ -37,24 +20,7 @@ Feature: API Keys
 
     When I POST to /api_keys
     Then I should get a 201 Created status code
-    And the response has this schema:
-      """
-      {
-        "api_keys": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 1,
-          "properties": {
-            "href": { "type": "string" },
-            "id": { "type": "string" },
-            "secret": { "type": "string" },
-            "links": { "type": "object" },
-            "meta": { "type": "object" }
-          }
-        },
-        "required": ["api_keys"]
-      }
-      """
+    And the response is valid according to the "api_keys" schema
 
   Scenario: Retrieve information about an existing API key
     Right now, there's not a whole lot of extra information, but we support it
@@ -63,24 +29,7 @@ Feature: API Keys
     Given I have created an API key
     When I GET to /api_keys/:api_key giving the key
     Then I should get a 200 OK status code
-    And the response has this schema:
-      """
-      {
-        "api_keys": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 1,
-          "properties": {
-            "href": { "type": "string" },
-            "id": { "type": "string" },
-            "secret": { "type": "string" },
-            "links": { "type": "object" },
-            "meta": { "type": "object" }
-          }
-        },
-        "required": ["api_keys"]
-      }
-      """
+    And the response is valid according to the "api_keys" schema
 
   Scenario: List all API keys
     Customers can make as many keys as they'd like. Being able to see all of
@@ -89,39 +38,7 @@ Feature: API Keys
     Given I have created more than one API keys
     When I GET to /api_keys
     Then I should get a 200 OK status code
-    And the response has this schema:
-      """
-      {
-        "api_keys": {
-          "type": "array",
-          "minItems": 1,
-          "maxItems": 1,
-          "properties": {
-            "href": { "type": "string" },
-            "id": { "type": "string" },
-            "secret": { "type": "string" },
-            "links": { "type": "object" },
-            "meta": { "type": "object" }
-          }
-        },
-        "properties": {
-          "meta": {
-            "type": "object",
-            "properties": {
-              "first": { "type": "string" },
-              "href": { "type": "string" },
-              "last": { "type": "string" },
-              "limit": { "type": "integer" },
-              "next": { "type": ["string", "null"] },
-              "offset": { "type": "integer" },
-              "previous": { "type": ["string", "null"] },
-              "total": { "type": "integer" }
-            }
-          }
-        },
-        "required": ["api_keys"]
-      }
-      """
+    And the response is valid according to the "api_keys" schema
 
   Scenario: Remove an API key
     Sometimes, a customer just doesn't want an API key any more. Deleting that
