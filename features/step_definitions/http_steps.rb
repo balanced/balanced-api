@@ -4,6 +4,7 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   $logger.debug("Making request to #{url}")
   $logger.debug("hydrated: #{@client.hydrater(url)}")
   @client.send(verb.downcase, @client.hydrater(url), env)
+  @card_id = @client['cards']['id'] rescue nil
   @order_id = @client['orders']['id'] rescue nil
   @client.add_hydrate(:order_id, @order_id) if @order_id
   @customer_source = @client['customers']['links']['source'] rescue nil
@@ -16,6 +17,7 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   body = @client.hydrater body
   $logger.debug("body: #{body}")
   @client.send(verb.downcase, @client.hydrater(url), body, env)
+  @card_id = @client['cards']['id'] rescue nil
   @customer_id = @client['customers']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
   @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil

@@ -652,3 +652,19 @@ Feature: Credit cards
       """
        { "meta": { } }
       """
+
+  @focus
+  Scenario: Associating a card to a marketplace with GET
+    Given I make a POST request to /cards with the body:
+      """
+      {
+        "expiration_month": 12,
+        "cvv": 123,
+        "number": 5105105105105100,
+        "expiration_year": 2020
+      }
+      """
+    When I make a GET request to the href "href"
+    And I make a GET request to /cards
+
+    Then I should see the original card in the list
