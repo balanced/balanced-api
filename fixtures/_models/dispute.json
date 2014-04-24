@@ -46,6 +46,10 @@
             "type": "string",
             "format": "date-time"
         },
+        "documentation_submitted_at": {
+            "type": "string",
+            "format": "date-time"
+        },
         "meta": {
             "$ref": "meta.json"
         },
