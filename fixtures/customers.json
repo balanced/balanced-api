@@ -30,6 +30,11 @@
                     "format": "uri",
                     "pattern": "/customers/{customers.id}/debits"
                 },
+                "customers.disputes": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{customers.id}/disputes"
+                },
                 "customers.refunds": {
                     "type": "string",
                     "format": "uri",
@@ -62,6 +67,7 @@
                 "customers.bank_accounts",
                 "customers.credits",
                 "customers.debits",
+                "customers.disputes",
                 "customers.refunds",
                 "customers.reversals",
                 "customers.orders",
