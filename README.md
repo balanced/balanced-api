@@ -1,6 +1,6 @@
 ## Balanced API Specification
 
-[![Build Status](https://travis-ci.org/balanced/balanced-api.png?branch=revision1)](https://travis-ci.org/balanced/balanced-api)
+[![Build Status](https://travis-ci.org/balanced/balanced-api.png?branch=master)](https://travis-ci.org/balanced/balanced-api)
 
 This repository contains an executable specification of the Balanced API. The
 goal of this repository is two-fold. First, to ensure that the API is working
