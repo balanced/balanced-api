@@ -239,6 +239,11 @@
         "fingerprint",
         "brand",
         "is_verified",
+        "can_debit",
+        "can_credit",
+        "type",
+        "category",
+        "bank_name",
         "meta",
         "links"
     ]
