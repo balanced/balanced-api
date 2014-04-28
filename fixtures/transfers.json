@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "transfers.customer": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{transfers.customer}"
+                },
+                "transfers.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{transfers.source}"
+                },
+                "transfers.destination": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{transfers.destination}"
+                }
+            },
+            "required": [
+                "transfers.customer",
+                "transfers.source",
+                "transfers.destination"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "transfers": {
+            "items": {
+                "$ref": "_models/transfers.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "transfers"
+    ]
+}
