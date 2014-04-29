@@ -192,8 +192,12 @@
             ]
         },
         "category": {
-            "description": "The card category--such as prepaid, platinum, etc.",
-            "type": "string"
+            "description": "The card category",
+            "type": "string",
+            "enum": [
+              "prepaid",
+              "other"
+            ]
         },
         "bank_name": {
             "description": "The name of the bank.",
