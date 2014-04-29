@@ -75,3 +75,35 @@ Feature: Credits
       }
     }
     """
+
+  Scenario: Push money to a card
+    Given I have sufficient funds in my marketplace
+    When I POST to /credits with the JSON API body:
+    """
+    {
+      "credits": [{
+        "destination": {
+          "number": "4342561111111118",
+          "expiration_month": "12",
+          "expiration_year": 2016
+        },
+        "amount": 1234
+      }]
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+  Scenario: Push money to an existing debit card
+    Given I have sufficient funds in my marketplace
+    And I have a tokenized debit card
+    When I POST to /cards/:card_id/credits with the JSON API body:
+    """
+    {
+      "credits": [{
+        "amount": 1234
+      }]
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema

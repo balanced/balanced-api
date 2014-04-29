@@ -29,6 +29,17 @@ Feature: Tokenize a credit card
     When I GET "cards.href" from the previous response
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+      {
+        "cards": [{
+          "can_credit": false,
+          "can_debit": true
+          "bank_name": "JPMORGAN CHASE BANK, N.A."
+        }]
+      }
+      """
+
 
   Scenario: Retrieve a card
     Given I have tokenized a card
@@ -62,6 +73,31 @@ Feature: Tokenize a credit card
       """
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
+
+  Scenario: Tokenize a debit card
+    When I POST to /cards with the JSON API body:
+      """
+      {
+        "cards": [{
+          "number": "4342561111111118",
+          "expiration_month": "05",
+          "expiration_year": "2015"
+        }]
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+      {
+        "cards": [{
+          "can_credit": true,
+          "type": "debit",
+          "category": "classic",
+          "bank_name": "WELLS FARGO BANK, N.A."
+        }]
+      }
+      """
 
   Scenario: Debit a card
     Given I have tokenized a card
