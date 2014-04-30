@@ -32,11 +32,9 @@ Feature: Tokenize a credit card
     And the fields on this card match:
       """
       {
-        "cards": [{
-          "can_credit": false,
-          "can_debit": true
-          "bank_name": "JPMORGAN CHASE BANK, N.A."
-        }]
+        "can_credit": false,
+        "can_debit": true,
+        "bank_name": "JPMORGAN CHASE BANK, N.A."
       }
       """
 
