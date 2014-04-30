@@ -653,7 +653,6 @@ Feature: Credit cards
        { "meta": { } }
       """
 
-  @focus
   Scenario: Associating a card to a marketplace with GET
     Given I make a POST request to /cards with the body:
       """
