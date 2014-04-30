@@ -145,7 +145,7 @@ Then(/^the response is valid according to the "(.*?)" schema$/) do |filename|
 end
 
 Then(/^I should get a (.+) status code$/) do |code|
-  message = @client.last_body["errors"][0]["description"] rescue ""
+  message = @client.last_body["description"] rescue ""
   assert_equal code.to_i, @client.last_code, message
 end
 
