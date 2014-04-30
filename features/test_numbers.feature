@@ -3,8 +3,9 @@ Feature: Test numbers
   numbers. These test numbers allow you to reproduce specific kinds of success
   or failures to test your system.
 
-  Scenario: Credit success
-    The 4111111111111111 code gives you a successful card that can be charged.
+  Scenario: Successful VISA charge.
+    The 4111111111111111 code gives you a successful VISA card that can be
+    charged.
 
     Given I've tokenized the card "4111111111111111" with the CVV "123"
     When I debit the card
