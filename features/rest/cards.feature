@@ -88,12 +88,10 @@ Feature: Tokenize a credit card
     And the fields on this card match:
       """
       {
-        "cards": [{
-          "can_credit": true,
-          "type": "debit",
-          "category": "classic",
-          "bank_name": "WELLS FARGO BANK, N.A."
-        }]
+        "can_credit": true,
+        "type": "debit",
+        "category": "classic",
+        "bank_name": "WELLS FARGO BANK, N.A."
       }
       """
 
