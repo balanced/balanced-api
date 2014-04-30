@@ -15,6 +15,11 @@
                     "format": "uri",
                     "pattern": "/cards/{cards.id}/debits"
                 },
+                "cards.disputes": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/cards/{cards.id}/disputes"
+                },
                 "cards.customer": {
                     "type": "string",
                     "format": "uri",
@@ -24,6 +29,7 @@
             "required": [
                 "cards.customer",
                 "cards.debits",
+                "cards.disputes",
                 "cards.card_holds"
             ]
         },
