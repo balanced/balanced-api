@@ -1,7 +1,10 @@
-Feature: Test numbers
+Feature: Test information
   We provide our users with a number of test credit card and bank account
   numbers. These test numbers allow you to reproduce specific kinds of success
   or failures to test your system.
+
+  We also provide test data for underwriting, identity verification, and AVS
+  information.
 
 
   Scenario: Successful VISA charge.
