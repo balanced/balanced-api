@@ -78,7 +78,6 @@ Feature: Test information
         }
       """
 
-  @focus
   Scenario: A disputed debit.
     The 6500000000000002 number gives you a Discover card which causes
     any debits to be disputed.
