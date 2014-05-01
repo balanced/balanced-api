@@ -35,3 +35,12 @@ end
 And(/^the debit has a link to a dispute$/) do
   assert_equal "", @client["debits"]["links"]["dispute"]
 end
+
+When(/^I try to tokenize the bank account "(.*?)" with the routing number "(.*?)"$/) do |account_number, routing_number|
+  @client.post('/bank_accounts', {
+                 name: "Henry Ford",
+                 routing_number: routing_number,
+                 account_number: account_number,
+                 account_type: "checking",
+               })
+end

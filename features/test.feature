@@ -87,3 +87,16 @@ Feature: Test information
     Then I should get a 201 Created status code
     Then the response is valid according to the "debits" schema
     And the debit has a link to a dispute
+
+  @focus
+  Scenario: Invalid bank account routing number
+    When I try to tokenize the bank account "8887776665555" with the routing number "100000007"
+    Then I should get a 400 Created status code
+    Then the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+        {
+            "category_code": "invalid-routing-number"
+        }
+      """
+   
