@@ -37,10 +37,14 @@ Feature: Test information
     is what you would expect if you try to create a hold on a card with
     insufficient funds.
 
-    Given I've tokenized the card "444444444444448" with the CVV "123"
+    Given I've tokenized the card "4444444444444448" with the CVV "123"
     When I debit the card
-    Then I should get a 201 Created status code
-    Then the response is valid according to the "debits" schema
+    Then I should get a 402 Created status code
+    Then the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+        { "category_code": "card-declined" }
+      """
 
   Scenario: Cancelled card
     The 4222222222222220 number gives you a VISA card which cannot be tokenized
@@ -88,6 +92,7 @@ Feature: Test information
     Then the response is valid according to the "debits" schema
     And the debit has a link to a dispute
 
+  @focus
   Scenario: Invalid bank account routing number
     We provide two different invalid routing numbers.
 
