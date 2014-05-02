@@ -6,6 +6,8 @@ Feature: Test information
   We also provide test data for underwriting, identity verification, and AVS
   information.
 
+  Note: all credit cards must include a future expiration date and month. This
+  is calculated automatically inside the test.
 
   Scenario: Successful VISA charge.
     The 4111111111111111 code gives you a VISA card that can be charged.

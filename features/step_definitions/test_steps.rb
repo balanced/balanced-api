@@ -18,11 +18,13 @@ puts @client.last_body
 end
 
 When(/^I try to tokenize the card "(.*?)" with the CVV "(.*?)"$/) do |number, cvv|
+  require 'date'
+
   @client.post('/cards',
     {
       number: number,
-        expiration_month: 12,
-        expiration_year: 2016,
+        expiration_month: (Date.today.month + 1) % 12,
+        expiration_year: Date.today.year + 1,
         cvv: cvv,
         address: {
           line1: "965 Mission St",
