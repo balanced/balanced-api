@@ -19,6 +19,9 @@ GEM
     multi_json (1.8.2)
     multi_test (0.0.2)
     multi_xml (0.5.5)
+    parallel (1.0.0)
+    parallel_tests (0.16.10)
+      parallel
     rake (10.1.0)
     uri_template (0.6.0)
 
@@ -29,5 +32,6 @@ DEPENDENCIES
   cucumber
   httparty
   json-schema
+  parallel_tests
   rake
   uri_template
