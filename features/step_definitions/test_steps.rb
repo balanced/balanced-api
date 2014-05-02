@@ -35,7 +35,15 @@ When(/^I try to tokenize the card "(.*?)" with the CVV "(.*?)"$/) do |number, cv
 end
 
 And(/^the debit has a link to a dispute$/) do
-  assert_equal "", @client["debits"]["links"]["dispute"]
+  @dispute_id = nil
+  count = 60
+  while @dispute_id.nil? and count > 0
+    count -= 1
+    @client.get("/debits/#{@disputed_debit_id}")
+    @dispute_id = @client['debits']['links']['dispute']
+    sleep 3
+  end
+  raise 'Unable to get a dispute in 3 minutes' if count == 0
 end
 
 When(/^I try to tokenize the bank account "(.*?)" with the routing number "(.*?)"$/) do |account_number, routing_number|
