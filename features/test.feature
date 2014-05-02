@@ -94,7 +94,6 @@ Feature: Test information
     Then the response is valid according to the "debits" schema
     And the debit has a link to a dispute
 
-  @focus
   Scenario: Invalid bank account routing number
     We provide two different invalid routing numbers.
 
