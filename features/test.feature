@@ -26,9 +26,9 @@ Feature: Test information
     Then the response is valid according to the "debits" schema
 
   Scenario: Successful AMEX charge.
-    The 3411111111111111 code gives you an AMEX card that can be charged.
+    The 341111111111111 code gives you an AMEX card that can be charged.
 
-    Given I've tokenized the card "3411111111111111" with the CVV "1234"
+    Given I've tokenized the card "341111111111111" with the CVV "1234"
     When I debit the card
     Then I should get a 201 Created status code
     Then the response is valid according to the "debits" schema
