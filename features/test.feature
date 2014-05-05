@@ -133,6 +133,9 @@ Feature: Test information
         }
       """
 
+  Scenario: Bank accounts with pending debits, part two
+    We provide two different accounts which turn all debits 'pending.'
+
     Given I've tokenized the bank account "9900000001" with the routing number "321174851"
     And I should get a 201 OK status code
     And I verify that bank account
@@ -162,6 +165,9 @@ Feature: Test information
         }
       """
 
+  Scenario: Bank accounts with succeeding debits, part two
+    We provide two different accounts which turn all debits 'succeeded.'
+
     Given I've tokenized the bank account "9900000003" with the routing number "321174851"
     And I should get a 201 OK status code
     And I verify that bank account
@@ -190,6 +196,9 @@ Feature: Test information
             "status": "failed"
         }
       """
+
+  Scenario: Bank accounts with failing debits, part two
+    We provide two different accounts which turn all debits 'succeeded.'
 
     Given I've tokenized the bank account "9900000005" with the routing number "321174851"
     And I should get a 201 OK status code
