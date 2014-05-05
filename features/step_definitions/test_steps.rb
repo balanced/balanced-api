@@ -52,3 +52,26 @@ When(/^I try to tokenize the bank account "(.*?)" with the routing number "(.*?)
                  account_type: "checking",
                })
 end
+
+When(/^I've tokenized the bank account "(.*?)" with the routing number "(.*?)"$/) do |account_number, routing_number|
+  step %Q{I try to tokenize the bank account "#{account_number}" with the routing number "#{routing_number}"}
+
+  @bank_account_id = @client['bank_accounts']['id']
+  @client.add_hydrate(:bank_account_id, @bank_account_id)
+end
+
+When(/^I verify that bank account$/) do
+  @client.post("/bank_accounts/#{@bank_account_id}/verifications", {})
+  @client.put(@client['bank_account_verifications']['href'], {
+                amount_1: 1,
+                amount_2: 1
+              })
+end
+
+When(/^I debit that bank account$/) do
+  @client.post("/bank_accounts/#{@bank_account_id}/debits", {
+                 'amount' => 1234
+               })
+  @debit_id = @client['debits']['id']
+  @client.add_hydrate :debit_id, @debit_id
+end

@@ -98,7 +98,7 @@ Feature: Test information
     We provide two different invalid routing numbers.
 
     When I try to tokenize the bank account "8887776665555" with the routing number "100000007"
-    Then I should get a 400 Created status code
+    Then I should get a 400 Bad Request status code
     Then the response is valid according to the "errors" schema
     And the fields on this error match:
       """
@@ -108,7 +108,7 @@ Feature: Test information
       """
    
     When I try to tokenize the bank account "8887776665555" with the routing number "111111118"
-    Then I should get a 400 Created status code
+    Then I should get a 400 Bad Request status code
     Then the response is valid according to the "errors" schema
     And the fields on this error match:
       """
@@ -117,4 +117,31 @@ Feature: Test information
         }
       """
    
+  Scenario: Bank accounts with pending debits
+    We provide two different accounts which turn all debits 'pending.'
 
+    Given I've tokenized the bank account "9900000000" with the routing number "021000021"
+    And I should get a 201 OK status code
+    And I verify that bank account
+    When I debit that bank account
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+        {
+            "status": "pending"
+        }
+      """
+
+    Given I've tokenized the bank account "9900000001" with the routing number "321174851"
+    And I should get a 201 OK status code
+    And I verify that bank account
+    When I debit that bank account
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+        {
+            "status": "pending"
+        }
+      """
