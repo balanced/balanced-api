@@ -145,3 +145,32 @@ Feature: Test information
             "status": "pending"
         }
       """
+
+  Scenario: Bank accounts with succeeding debits
+    We provide two different accounts which turn all debits 'succeeded.'
+
+    Given I've tokenized the bank account "9900000002" with the routing number "021000021"
+    And I should get a 201 OK status code
+    And I verify that bank account
+    When I debit that bank account
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+        {
+            "status": "succeeded"
+        }
+      """
+
+    Given I've tokenized the bank account "9900000003" with the routing number "321174851"
+    And I should get a 201 OK status code
+    And I verify that bank account
+    When I debit that bank account
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+      """
+        {
+            "status": "succeeded"
+        }
+      """
