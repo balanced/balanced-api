@@ -1,7 +1,6 @@
 Given(/^I've tokenized the card "(.*?)" with the CVV "(.*?)"$/) do |number, cvv|
   step %Q{I try to tokenize the card "#{number}" with the CVV "#{cvv}"}
 
-  puts @client.last_body
   @card_id = @client['cards']['id']
   @client.add_hydrate(:card_id, @card_id)
 end
@@ -14,7 +13,6 @@ When(/^I debit the card$/) do
       }]
     }
   )
-puts @client.last_body
 end
 
 When(/^I try to tokenize the card "(.*?)" with the CVV "(.*?)"$/) do |number, cvv|
