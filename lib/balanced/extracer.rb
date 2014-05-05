@@ -24,7 +24,7 @@ module Balanced
       end
       req = {
         method: method,
-        endpoing: endpoint,
+        endpoint: endpoint,
         request: (request or {}),
         response: (response or {}),
       }
