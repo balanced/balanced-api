@@ -175,3 +175,31 @@ Feature: Credits
         "status": "failed"
       }
       """
+
+  Scenario: Fail to push money to a card, part two
+    We provide a card number, "4210101111111113", which has exceeded
+    its total amount of allowable credits in this period. Visa OCT, as
+    an example, has a $2,500/transaction limit.
+
+    Given I have sufficient funds in my marketplace
+    When I POST to /credits with the JSON API body:
+      """
+      {
+        "credits": [{
+          "destination": {
+            "number": "4210101111111113",
+              "expiration_month": "12",
+              "expiration_year": 2016
+          },
+            "amount": 1234
+        }]
+      }
+      """
+    Then I should get a 409 Conflict status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+      {
+        "status": "failed"
+      }
+      """
