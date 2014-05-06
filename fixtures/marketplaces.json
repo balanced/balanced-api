@@ -64,7 +64,7 @@
                     "description": "Orders in which the customer is either a buyer or merchant",
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/orders",
+                    "pattern": "/orders"
                 },
                 "marketplaces.disputes": {
                     "type": "string",
