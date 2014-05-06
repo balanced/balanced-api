@@ -172,7 +172,7 @@ Feature: Credits
     And the fields on this error match:
       """
       {
-        "status": "failed"
+        "status": "cannot-credit"
       }
       """
 
@@ -200,6 +200,6 @@ Feature: Credits
     And the fields on this error match:
       """
       {
-        "status": "failed"
+        "status": "excessive-amount"
       }
       """
