@@ -65,8 +65,12 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/orders",
-                    "TODO": "THIS IS MISSING"
-                }
+                },
+                "marketplaces.disputes": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/disputes"
+                },
             },
             "required": [
                 "marketplaces.cards",
@@ -78,7 +82,9 @@
                 "marketplaces.customers",
                 "marketplaces.events",
                 "marketplaces.callbacks",
-                "marketplaces.card_holds"
+                "marketplaces.card_holds",
+                "marketplaces.orders",
+                "marketplaces.disputes"
             ]
         },
         "meta": {
