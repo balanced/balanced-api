@@ -70,7 +70,7 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/disputes"
-                },
+                }
             },
             "required": [
                 "marketplaces.cards",
