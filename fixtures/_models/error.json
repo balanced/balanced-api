@@ -76,7 +76,6 @@
                 "order-kyc",
                 "method-not-allowed",
                 "duplicate-webhook-url",
-                "cannot-credit",
                 "excessive-amount"
             ]
         },
@@ -143,7 +142,6 @@
                         "Order escrow balanced is insufficient to issue this refund.",
                         "Order requires merchant be underwritten.",
                         "Webhook URL already exists.",
-                        "Cannot credit this card. Make sure it's a debit card, not a credit card.",
                         "Amount exceeded. Check your limits."
                     ]
                 },

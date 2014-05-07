@@ -172,7 +172,7 @@ Feature: Credits
     And the fields on this error match:
       """
       {
-        "status": "cannot-credit"
+        "category_code": "funding-destination-not-creditable"
       }
       """
 
@@ -200,6 +200,6 @@ Feature: Credits
     And the fields on this error match:
       """
       {
-        "status": "excessive-amount"
+        "category_code": "excessive-amount"
       }
       """
