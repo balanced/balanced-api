@@ -187,8 +187,7 @@
             "type": "string",
             "enum": [
               "debit",
-              "credit",
-              "charge card"
+              "credit"
             ]
         },
         "category": {
