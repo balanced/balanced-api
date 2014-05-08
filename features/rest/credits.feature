@@ -99,6 +99,7 @@ Feature: Credits
         "status": "succeeded"
       }
       """
+    And the credit was successfully created
 
   Scenario: Push money to an existing debit card
     Given I have sufficient funds in my marketplace
@@ -119,6 +120,7 @@ Feature: Credits
         "status": "pending"
       }
       """
+    And the credit was successfully created
 
   Scenario: Fail to push money to a card
     We provide a card number, "4210101111111112", which has a `can_credit` of
@@ -147,6 +149,7 @@ Feature: Credits
         "status": "failed"
       }
       """
+    But the credit was successfully created
 
   Scenario: Fail to push money to a card
     We provide a card number, "4210101111111112", which has a `can_credit` of
@@ -175,6 +178,7 @@ Feature: Credits
         "category_code": "funding-destination-not-creditable"
       }
       """
+    But the credit was successfully created
 
   Scenario: Fail to push money to a card, part two
     We provide a card number, "4210101111111113", which has exceeded
@@ -188,8 +192,8 @@ Feature: Credits
         "credits": [{
           "destination": {
             "number": "4210101111111113",
-              "expiration_month": "12",
-              "expiration_year": 2016
+            "expiration_month": "12",
+            "expiration_year": 2016
           },
             "amount": 1234
         }]
@@ -203,3 +207,4 @@ Feature: Credits
         "category_code": "excessive-amount"
       }
       """
+    But the credit was successfully created

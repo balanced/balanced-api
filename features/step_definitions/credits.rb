@@ -12,3 +12,9 @@ end
 Given(/^I have more than two credits$/) do
   2.times { step 'I have a bank account with a credit' }
 end
+
+Then(/^the credit was successfully created$/) do
+  href = @client.get(@client["debits"]["href"])
+  step "When I GET to #{href}"
+  step "I should get a 200 OK status code"
+end
