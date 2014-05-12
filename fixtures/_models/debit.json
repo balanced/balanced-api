@@ -27,12 +27,12 @@
             "type": "integer",
             "minimum": 1
         },
-        "amount_in_captured_currency": {
-            "description": "The amount of the debit in cents, denominated in the captured_currency.",
+        "amount_in_escrow_currency": {
+            "description": "The amount of the debit in cents, denominated in the escrow_currency.",
             "type": "integer",
             "minimum": 1
         },
-        "captured_currency": {
+        "escrow_currency": {
 	    "$ref": "_models/currency.json"
         },
         "appears_on_statement_as": {
