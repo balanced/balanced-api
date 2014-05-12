@@ -3,6 +3,7 @@
     "type": "object",
     "properties": {
         "status": {
+            "description": "HTTP status",
             "type": "string"
         },
         "category_code": {
