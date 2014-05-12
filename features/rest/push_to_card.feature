@@ -104,8 +104,8 @@ Feature: Push to card
       }
       """
 
-  Scenario: Fail to push money to a card, part two
-    We provide a card number, "4210101111111113", which has exceeded
+  Scenario: Pushing money to a card cannot exceed $2,500
+    We provide a card number, "4210101111111112", which has exceeded
     its total amount of allowable credits in this period. Visa OCT, as
     an example, has a $2,500/transaction limit.
 
@@ -119,7 +119,7 @@ Feature: Push to card
             "expiration_month": "12",
             "expiration_year": 2016
           },
-            "amount": 1234
+            "amount": 250001
         }]
       }
       """
