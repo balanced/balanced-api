@@ -91,6 +91,7 @@ Feature: Push to card
     And the fields on this error match:
       """
       {
+        "category_type": "banking",
         "category_code": "funding-destination-not-creditable"
       }
       """
@@ -127,7 +128,14 @@ Feature: Push to card
     And the fields on this error match:
       """
       {
-        "category_code": "excessive-amount"
+        "category_code": "amount-exceeds-limit"
       }
       """
     But the credit was successfully created
+    And the fields on this credit match:
+      """
+      {
+        "status": "failed",
+        "failure_reason_code": "amount-exceeds-limit"
+      }
+      """
