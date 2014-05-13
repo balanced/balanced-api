@@ -2,13 +2,13 @@ Given(/^I have tokenized a card$/) do
   @client.post('/cards',
     {
       number: "4111 1111 1111 1111",
-        expiration_month: 12,
-        expiration_year: 2016,
-        cvv: "123",
-        address: {
-          line1: "965 Mission St",
-          postal_code: "94103"
-        }
+      expiration_month: 12,
+      expiration_year: 2016,
+      cvv: "123",
+      address: {
+        line1: "965 Mission St",
+        postal_code: "94103"
+      }
     }
   )
   @card_id = @client['cards']['id']
