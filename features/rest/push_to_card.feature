@@ -22,6 +22,7 @@ Feature: Push to card
         "bank_name": "WELLS FARGO BANK, N.A."
       }
       """
+
   Scenario: Push money to a card
     Given I have sufficient funds in my marketplace
     When I POST to /credits with the JSON API body:
@@ -130,5 +131,30 @@ Feature: Push to card
       {
         "status": "failed",
         "failure_reason_code": "amount-exceeds-limit"
+      }
+      """
+
+  Scenario: Push money to a card requires cardholder name
+    Given I have sufficient funds in my marketplace
+    When I POST to /credits with the JSON API body:
+      """
+      {
+        "credits": [{
+          "destination": {
+            "number": "4342561111111118",
+            "expiration_month": "12",
+            "expiration_year": 2016
+          },
+            "amount": 1234
+        }]
+      }
+      """
+    Then I should get a 400 Bad Request status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
+      """
+      {
+        "category_type": "request",
+        "category_code": "request"
       }
       """
