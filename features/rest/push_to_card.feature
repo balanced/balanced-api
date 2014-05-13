@@ -4,6 +4,7 @@ Feature: Push to card
       """
       {
         "cards": [{
+          "name": "Johannes Bach",
           "number": "4342561111111118",
           "expiration_month": "05",
           "expiration_year": "2015"
@@ -28,9 +29,10 @@ Feature: Push to card
       {
         "credits": [{
           "destination": {
+            "name": "Johannes Bach",
             "number": "4342561111111118",
-              "expiration_month": "12",
-              "expiration_year": 2016
+            "expiration_month": "12",
+            "expiration_year": 2016
           },
             "amount": 1234
         }]
@@ -78,9 +80,10 @@ Feature: Push to card
       {
         "credits": [{
           "destination": {
+            "Georg Telemann",
             "number": "4210101111111112",
-              "expiration_month": "12",
-              "expiration_year": 2016
+            "expiration_month": "12",
+            "expiration_year": 2016
           },
             "amount": 1234
         }]
@@ -115,7 +118,7 @@ Feature: Push to card
       {
         "credits": [{
           "destination": {
-            "number": "4210101111111113",
+            "number": "4210101111111112",
             "expiration_month": "12",
             "expiration_year": 2016
           },
