@@ -49,7 +49,7 @@ Feature: Push to card
   Scenario: Push money to an existing debit card
     Given I have sufficient funds in my marketplace
     And I have a tokenized debit card
-    When I POST to /cards/:card_id/credits with the JSON API body:
+    When I POST to /cards/:debit_card_id/credits with the JSON API body:
       """
       {
         "credits": [{
