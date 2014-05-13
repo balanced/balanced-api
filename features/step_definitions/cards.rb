@@ -22,6 +22,7 @@ end
 Given(/^I have a tokenized debit card$/) do
   @client.post('/cards',
     {
+      name: "Johannes Bach",
       number: "4342561111111118",
       expiration_month: "05",
       expiration_year: "2015"
