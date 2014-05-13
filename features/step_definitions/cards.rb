@@ -89,7 +89,7 @@ end
 Given(/^I have sufficient funds in my marketplace$/) do
   step 'I have tokenized a card'
   @client.post("/cards/#{@card_id}/debits", {
-                 amount: 50000
+                 amount: 5000000
                })
 end
 
