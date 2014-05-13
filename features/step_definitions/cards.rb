@@ -19,6 +19,18 @@ Then(/^I should see the original card in the list$/) do
   assert_equal @card_id, @client['cards']['id'], "card not found"
 end
 
+Given(/^I have a tokenized debit card$/) do
+  @client.post('/cards',
+    {
+      number: "4342561111111118",
+      expiration_month: "05",
+      expiration_year: "2015"
+    }
+  )
+  @debit_card_id = @client['cards']['id']
+  @client.add_hydrate(:debit_card_id, @debit_card_id)
+end
+
 Given(/^I have tokenized a customer card$/) do
   @client.post('/cards',
     {
