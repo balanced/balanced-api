@@ -71,7 +71,7 @@ Feature: Push to card
     And the credit was successfully created
 
   Scenario: Fail to push money to a card
-    We provide a card number, "4210101111111112", which has a `can_credit` of
+    We provide a card number, "4111111111111111", which has a `can_credit` of
     false. This scenario happens most often with credit cards, which you cannot
     push money to.
 
@@ -82,7 +82,7 @@ Feature: Push to card
         "amount": 1234,
         "destination": {
           "name": "Georg Telemann",
-          "number": "4210101111111112",
+          "number": "4111111111111111",
           "expiration_month": "12",
           "expiration_year": "2016"
         }
