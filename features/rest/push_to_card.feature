@@ -65,7 +65,7 @@ Feature: Push to card
     And the fields on this credit match:
       """
       {
-        "status": "pending"
+        "status": "succeeded"
       }
       """
     And the credit was successfully created
