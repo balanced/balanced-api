@@ -47,7 +47,6 @@ Feature: Push to card
         "status": "succeeded"
       }
       """
-    And the credit was successfully created
 
   Scenario: Push money to an existing debit card
     Given I have sufficient funds in my marketplace
