@@ -79,15 +79,13 @@ Feature: Push to card
     When I POST to /credits with the JSON API body:
       """
       {
-        "credits": [{
-          "destination": {
-            "Georg Telemann",
-            "number": "4210101111111112",
-            "expiration_month": "12",
-            "expiration_year": 2016
-          },
-            "amount": 1234
-        }]
+        "amount": 1234,
+        "destination": {
+          "name": "Georg Telemann",
+          "number": "4210101111111112",
+          "expiration_month": "12",
+          "expiration_year": "2016"
+        }
       }
       """
     Then I should get a 409 Conflict status code
