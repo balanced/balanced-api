@@ -92,7 +92,7 @@ Feature: Push to card
     And the fields on this error match:
       """
       {
-        "category_type": "banking",
+        "category_type": "logical",
         "category_code": "funding-destination-not-creditable"
       }
       """
