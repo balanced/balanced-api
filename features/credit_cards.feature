@@ -665,5 +665,4 @@ Feature: Credit cards
       """
     When I make a GET request to the href "href"
     And I make a GET request to /cards
-
     Then I should see the original card in the list
