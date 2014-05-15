@@ -174,6 +174,34 @@
         "is_verified": {
             "type": "boolean"
         },
+        "can_debit": {
+            "description": "Flag indicating whether this funding instrument can be debited (true) or not (false).",
+            "type": "boolean"
+        },
+        "can_credit": {
+            "description": "Flag indicating whether this funding instrument can be credited (true) or not (false).",
+            "type": "boolean"
+        },
+        "type": {
+            "description": "The card type",
+            "type": "string",
+            "enum": [
+              "debit",
+              "credit"
+            ]
+        },
+        "category": {
+            "description": "The card category",
+            "type": "string",
+            "enum": [
+              "prepaid",
+              "other"
+            ]
+        },
+        "bank_name": {
+            "description": "The name of the bank.",
+            "type": "string"
+        },
         "meta": {
             "$ref": "meta.json"
         },
@@ -214,6 +242,11 @@
         "fingerprint",
         "brand",
         "is_verified",
+        "can_debit",
+        "can_credit",
+        "type",
+        "category",
+        "bank_name",
         "meta",
         "links"
     ]

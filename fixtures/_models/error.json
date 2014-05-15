@@ -3,6 +3,7 @@
     "type": "object",
     "properties": {
         "status": {
+            "description": "HTTP status",
             "type": "string"
         },
         "category_code": {
@@ -75,7 +76,8 @@
                 "request",
                 "order-kyc",
                 "method-not-allowed",
-                "duplicate-webhook-url"
+                "duplicate-webhook-url",
+                "excessive-amount"
             ]
         },
         "description": {
@@ -97,20 +99,20 @@
                         "Marketplace escrow balance is insufficient to issue this credit.",
                         "Marketplace escrow balance is insufficient to issue this refund.",
                         "Marketplace has already been created.",
-                        "No buyer or merchant info was provided. Either \"merchant/merchant_uri\" or\n\"card/card_uri\" fields must be present.",
+                        "No buyer or merchant info was provided. Either \"merchant/merchant_uri\" or\"card/card_uri\" fields must be present.",
                         "Refund amount cannot be greater than the amount of the original debit.",
                         "Reverse amount cannot be greater than the amount of the original credit.",
                         "State of debit to refund must be ``succeeded``.",
                         "The account has no valid funding destinations.",
                         "The account has no valid funding sources.",
                         "The account is already a merchant.",
-                        "The bank account is already associated with an account -- it cannot be\nassociated.",
+                        "The bank account is already associated with an account -- it cannot beassociated.",
                         "The bank account is not associated with the given account.",
-                        "The bank account was tokenized on a different marketplace than the one\nused for this request.",
-                        "The card could not be validated -- either the card number or security code\nmay be wrong.",
-                        "The card is already associated with an account -- it cannot be associated\nagain.",
+                        "The bank account was tokenized on a different marketplace than the oneused for this request.",
+                        "The card could not be validated -- either the card number or security codemay be wrong.",
+                        "The card is already associated with an account -- it cannot be associatedagain.",
                         "The card is not associated with the given account.",
-                        "The card was tokenized on a different marketplace than the one used for\nthis request.",
+                        "The card was tokenized on a different marketplace than the one used forthis request.",
                         "The given funding destination cannot have a credit created against it.",
                         "The given funding destination cannot reverse.",
                         "The given funding destination is already associated with an account.",
@@ -118,17 +120,17 @@
                         "The given funding source cannot be refunded.",
                         "The given funding source cannot have a debit created against it.",
                         "The given funding source cannot have a hold created against it.",
-                        "The given funding source cannot have an authorization created against\nit. Authorizations are only valid for card-type funding sources.",
+                        "The given funding source cannot have an authorization created againstit. Authorizations are only valid for card-type funding sources.",
                         "The given funding source is already associated with an account.",
                         "The given funding source is not associated with an account.",
-                        "The merchant information was created on a different marketplace than the\none used for this request.",
+                        "The merchant information was created on a different marketplace than theone used for this request.",
                         "The processor did not accept the transaction.",
                         "The processor did not accept this hold.",
                         "The routing number provided for the bank account was invalid.",
                         "This address could not be verified.",
-                        "This bank account has already been marked as invalid/deactivated. It cannot\nbe used again.",
+                        "This bank account has already been marked as invalid/deactivated. It cannotbe used again.",
                         "This bank account number is not alpha numeric (ascii). It can not be used.",
-                        "This card has already been marked as invalid/deactivated. It cannot be used\nagain.",
+                        "This card has already been marked as invalid/deactivated. It cannot be usedagain.",
                         "This card was declined by the processor.",
                         "This hold has already been captured or voided, and cannot be captured.",
                         "This hold has already been captured or voided, and cannot be voided.",
@@ -140,7 +142,8 @@
                         "Order escrow balanced is insufficient to issue this credit.",
                         "Order escrow balanced is insufficient to issue this refund.",
                         "Order requires merchant be underwritten.",
-                        "Webhook URL already exists."
+                        "Webhook URL already exists.",
+                        "Amount exceeds limit. Try breaking up transactions."
                     ]
                 },
                 {
