@@ -14,7 +14,7 @@ Given(/^I have more than two credits$/) do
 end
 
 Then(/^the credit was successfully created$/) do
-  href = @client.get(@client["credits"]["href"])
-  step "When I GET to #{href}"
+  href = @client["credits"]["href"]
+  step "I GET to #{href}"
   step "I should get a 200 OK status code"
 end
