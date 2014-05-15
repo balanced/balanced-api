@@ -18,7 +18,7 @@ Feature: Push to card
       {
         "can_credit": true,
         "type": "debit",
-        "category": "classic",
+        "category": "other",
         "bank_name": "WELLS FARGO BANK, N.A."
       }
       """
