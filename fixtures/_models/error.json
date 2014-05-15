@@ -77,7 +77,7 @@
                 "order-kyc",
                 "method-not-allowed",
                 "duplicate-webhook-url",
-                "excessive-amount"
+                "amount-exceeds-limit"
             ]
         },
         "description": {
