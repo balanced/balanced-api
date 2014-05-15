@@ -2,13 +2,13 @@ Given(/^I have tokenized a card$/) do
   @client.post('/cards',
     {
       number: "4111 1111 1111 1111",
-        expiration_month: 12,
-        expiration_year: 2016,
-        cvv: "123",
-        address: {
-          line1: "965 Mission St",
-          postal_code: "94103"
-        }
+      expiration_month: 12,
+      expiration_year: 2016,
+      cvv: "123",
+      address: {
+        line1: "965 Mission St",
+        postal_code: "94103"
+      }
     }
   )
   @card_id = @client['cards']['id']
@@ -17,6 +17,19 @@ end
 
 Then(/^I should see the original card in the list$/) do
   assert_equal @card_id, @client['cards']['id'], "card not found"
+end
+
+Given(/^I have a tokenized debit card$/) do
+  @client.post('/cards',
+    {
+      name: "Johannes Bach",
+      number: "4342561111111118",
+      expiration_month: "05",
+      expiration_year: "2015"
+    }
+  )
+  @debit_card_id = @client['cards']['id']
+  @client.add_hydrate(:debit_card_id, @debit_card_id)
 end
 
 Given(/^I have tokenized a customer card$/) do
@@ -76,7 +89,7 @@ end
 Given(/^I have sufficient funds in my marketplace$/) do
   step 'I have tokenized a card'
   @client.post("/cards/#{@card_id}/debits", {
-                 amount: 50000
+                 amount: 500000
                })
 end
 

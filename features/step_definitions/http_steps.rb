@@ -159,7 +159,7 @@ def checker(from, of, nesting)
   assert_not_nil from, nesting
 
   from.each_pair do |key, val|
-    if val.is_a? String or val.is_a? Integer
+    if val.is_a?(String) || val.is_a?(Integer) || val.is_a?(TrueClass) || val.is_a?(FalseClass)
       assert_equal val, of[key], "#{nesting}>#{key}"
     elsif val.nil?
       assert_nil of[key]
