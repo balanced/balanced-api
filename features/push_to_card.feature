@@ -157,3 +157,24 @@ Feature: Push to card
         "category_code": "request"
       }
       """
+
+  Scenario: Reverse a succeeded credit to a debit card
+    Given I have sufficient funds in my marketplace
+    And I have tokenized a debit card
+    And I POST to "cards.credits" with the body:
+      """
+      {
+        "credits": [{
+          "amount": 1234
+        }]
+      }
+      """
+    When I make a POST request to the link "credits.reversals"
+    Then I should get a 201 Created status code
+    And the response is valid according to the "reversals" schema
+    And the fields on this credit match:
+      """
+      {
+        "status": "succeeded"
+      }
+      """
