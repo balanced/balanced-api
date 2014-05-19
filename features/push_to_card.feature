@@ -67,7 +67,6 @@ Feature: Push to card
         "status": "succeeded"
       }
       """
-    And the credit was successfully created
 
   Scenario: Fail to push money to a card
     We provide a card number, "4111111111111111", which has a `can_credit` of
