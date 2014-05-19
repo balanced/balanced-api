@@ -68,6 +68,30 @@ Feature: Push to card
       }
       """
 
+  Scenario: Push money to a special debit card number and get status `pending`
+    The debit card number "4210101111111112" is a special card number
+
+    Given I have sufficient funds in my marketplace
+    When I POST to /cards with the JSON API body:
+      """
+      {
+        "cards": [{
+          "name": "George Handel",
+          "number": "4210101111111112",
+          "expiration_month": "05",
+          "expiration_year": "2017"
+        }]
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
+      """
+      {
+        "status": "pending"
+      }
+      """
+
   Scenario: Fail to push money to a card
     We provide a card number, "4111111111111111", which has a `can_credit` of
     false. This scenario happens most often with credit cards, which you cannot
