@@ -97,13 +97,14 @@ Given(/^I have unstored a card$/) do
   step "I have tokenized a card"
   @card_id = @client.last_body["cards"][0]["id"]
   @card_url = @client.last_body["cards"][0]["href"]
+  @unstored_card_id = @card_id
   step "I make a DELETE request to /cards/:card_id"
 end
 
 Then(/^I should not see that card in the results$/) do
  card_ids = @client.last_body["cards"].collect{|card| card["id"]}
  card_ids.each {|x|
-   assert x != @card_id
+   assert x != @unstored_card_id, "Card '#{@unstored_card_id}' was in the results"
  }
 end
 
