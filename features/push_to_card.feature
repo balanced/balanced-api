@@ -92,7 +92,7 @@ Feature: Push to card
       }
       """
 
-  Scenario: Fail to push money to a card
+  Scenario: Fail to push money to a credit card
     We provide a card number, "4111111111111111", which has a `can_credit` of
     false. This scenario happens most often with credit cards, which you cannot
     push money to.
