@@ -113,7 +113,9 @@ Feature: Push to card
     When I POST to /cards/:debit_card_id/credits with the JSON API body:
       """
       {
-        "amount": 250001
+        "credits": [{
+          "amount": 250001
+        }]
       }
       """
     Then I should get a 409 Conflict status code
