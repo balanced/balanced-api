@@ -28,8 +28,8 @@ Given(/^I have a tokenized debit card$/) do
       expiration_year: "2015"
     }
   )
-  @debit_card_id = @client['cards']['id']
-  @client.add_hydrate(:debit_card_id, @debit_card_id)
+  @debit_card_href = @client['cards']['href']
+  @client.add_hydrate(:debit_card_href, @debit_card_href)
 end
 
 Given(/^I have tokenized a customer card$/) do
