@@ -14,11 +14,17 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/disputes/{disputes.id}/events"
+                },
+                "disputes.dispute_documents": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/disputes/{disputes.id}/dispute_documents"
                 }
             },
             "required": [
                 "disputes.transaction",
-                "disputes.events"
+                "disputes.events",
+                "disputes.dispute_documents"
             ]
         },
         "meta": {

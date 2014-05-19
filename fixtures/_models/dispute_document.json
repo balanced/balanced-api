@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "DT[a-zA-Z0-9]{16,32}"
+            "pattern": "DD[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -18,37 +18,27 @@
             "type": "string",
             "format": "date-time"
         },
-        "amount": {
-            "type": "integer"
+        "url": {
+            "description": "The url where the file may be accessed",
+            "type": "string",
+            "format": "uri"
         },
-        "currency": {
+        "mime_type": {
             "type": "string",
             "enum": [
-                "USD"
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "image/jpeg"
             ]
         },
-        "reason": {
+        "file_name": {
+            "description": "Name of the document",
             "type": "string"
         },
-        "status": {
-            "type": "string",
-            "enum": [
-                "pending",
-                "won",
-                "lost"
-            ]
-        },
-        "initiated_at": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "respond_by": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "documentation_submitted_at": {
-            "type": "string",
-            "format": "date-time"
+        "file_size": {
+            "description": "Size on disk of the document",
+            "type": "integer"
         },
         "meta": {
             "$ref": "meta.json"
@@ -56,14 +46,18 @@
         "links": {
             "type": "object",
             "properties": {
-                "transaction": {
-                    "type": "string",
-                    "pattern": "(WD|RF)[a-zA-Z0-9]{16,32}"
+                "dispute": {
+                    "description": "The dispute the customer has filed with their bank associated with this debit",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "DT[a-zA-Z0-9]{16,32}"
                 }
             },
             "additionalProperties": false,
             "required": [
-                "transaction"
+                "dispute"
             ]
         }
     },
@@ -73,12 +67,10 @@
         "href",
         "created_at",
         "updated_at",
-        "amount",
-        "currency",
-        "reason",
-        "status",
-        "initiated_at",
-        "respond_by",
+        "url",
+        "mime_type",
+        "file_name",
+        "file_size",
         "meta",
         "links"
     ]
