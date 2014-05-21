@@ -19,6 +19,7 @@ $ git clone https://github.com/balanced/balanced-api.git
 $ cd balanced-api
 $ bundle
 $ bin/rake cucumber
+$ bin/rake parallel:features[4] # in parallel, four threads
 ```
 
 This requires Ruby. We run the changes with Ruby 2.0, but other versions will
