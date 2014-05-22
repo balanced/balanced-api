@@ -28,7 +28,7 @@ Feature: Basic checkout flow
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-    Then I POST to /cards with the JSON API body:
+    Then I POST to /cards with the body:
       """
         {
           "cards": [{
@@ -62,7 +62,7 @@ Feature: Basic checkout flow
         }
       """
 
-    When I PATCH to /cards/:card_id with the JSON API body:
+    When I PATCH to /cards/:card_id with the body:
       """
         [{
           "op": "replace",
@@ -130,7 +130,7 @@ Feature: Basic checkout flow
         }
       """
 
-   When I PUT to /orders/:order_id with the JSON API body:
+   When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{
@@ -216,7 +216,7 @@ Feature: Basic checkout flow
         }
       """
 
-    When I PUT to /orders/:order_id with the JSON API body:
+    When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{
@@ -242,7 +242,7 @@ Feature: Basic checkout flow
       """
 
   Scenario: New buyer makes a purchase
-    When I POST to /cards with the JSON API body:
+    When I POST to /cards with the body:
       """
         {
           "cards": [{
@@ -350,7 +350,7 @@ Feature: Basic checkout flow
       """
 
 
-    When I PUT to /orders/:order_id with the JSON API body:
+    When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{

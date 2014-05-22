@@ -98,7 +98,7 @@ Feature: Bank accounts
 
   Scenario: Update a bank account
     Given I have tokenized a bank account
-    When I PUT to /bank_accounts/:bank_account_id with the JSON API body:
+    When I PUT to /bank_accounts/:bank_account_id with the body:
     """
     {
       "meta": {
@@ -112,7 +112,7 @@ Feature: Bank accounts
   Scenario: Credit a bank account
     Given I have sufficient funds in my marketplace
     And I have tokenized a bank account
-    When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
+    When I POST to /bank_accounts/:bank_account_id/credits with the body:
     """
     {
       "credits": [{
@@ -125,7 +125,7 @@ Feature: Bank accounts
 
   Scenario: Debit a bank account
     Given I have a verified bank account
-    When I POST to /bank_accounts/:bank_account_id/debits with the JSON API body:
+    When I POST to /bank_accounts/:bank_account_id/debits with the body:
     """
     {
       "debits": [{
@@ -137,7 +137,7 @@ Feature: Bank accounts
     And the response is valid according to the "debits" schema
 
   Scenario: Infer bank names
-    When I POST to /bank_accounts with the JSON API body:
+    When I POST to /bank_accounts with the body:
     """
     {
       "bank_accounts": [{
@@ -155,7 +155,7 @@ Feature: Bank accounts
         {"bank_name": "BANK OF AMERICA, N.A."}
       """
 
-    When I POST to /bank_accounts with the JSON API body:
+    When I POST to /bank_accounts with the body:
     """
     {
       "bank_accounts": [{

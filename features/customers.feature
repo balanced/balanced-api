@@ -4,7 +4,7 @@ Feature: Customers
   All debit and credits can be tracked for a specific customer.
 
   Scenario: Creating a customer
-    When I POST to /customers with the JSON API body:
+    When I POST to /customers with the body:
       """
       {
         "customers": [{
@@ -25,7 +25,7 @@ Feature: Customers
       """
 
   Scenario: Creating a business customer
-    When I POST to /customers with the JSON API body:
+    When I POST to /customers with the body:
     """
     {
       "business_name": "Lucky something",
@@ -84,7 +84,7 @@ Feature: Customers
   Scenario: Add a card to a customer
     Given I have tokenized a card
     And I have created a customer
-    When I PUT to /cards/:card_id with the JSON API body:
+    When I PUT to /cards/:card_id with the body:
     """
     {
       "cards": [{
@@ -108,7 +108,7 @@ Feature: Customers
   Scenario: Add a bank account to a customer
     Given I have tokenized a bank account
     And I have created a customer
-    When I PUT to /bank_accounts/:bank_account_id with the JSON API body:
+    When I PUT to /bank_accounts/:bank_account_id with the body:
     """
     {
       "bank_accounts": [{
@@ -130,7 +130,7 @@ Feature: Customers
     """
 
   Scenario: Creating a customer
-    When I POST to /customers with the JSON API body:
+    When I POST to /customers with the body:
       """
       {
         "customers": [{

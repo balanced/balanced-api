@@ -59,7 +59,7 @@ Feature: Credit cards
 
   Scenario: Update a card
     Given I have tokenized a card
-    When I PUT to /cards/:card_id giving the card_id, with the JSON API body:
+    When I PUT to /cards/:card_id giving the card_id, with the body:
       """
       {
         "cards": [{
@@ -76,7 +76,7 @@ Feature: Credit cards
 
   Scenario: Debit a card
     Given I have tokenized a card
-    When I POST to /cards/:card_id/debits giving the card_id, with the JSON API body:
+    When I POST to /cards/:card_id/debits giving the card_id, with the body:
       """
       {
         "debits": [{

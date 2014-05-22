@@ -10,7 +10,7 @@ Feature: Reversal
 
   Scenario: Creating a partial reversal
     Given I have a bank account with a credit
-    When I POST to /credits/:credit_id/reversals with the JSON API body:
+    When I POST to /credits/:credit_id/reversals with the body:
     """
     {
       "reversals": [{
@@ -29,7 +29,7 @@ Feature: Reversal
 
   Scenario: Creating a reversal with extra info
     Given I have a bank account with a credit
-    When I POST to /credits/:credit_id/reversals with the JSON API body:
+    When I POST to /credits/:credit_id/reversals with the body:
     """
     {
       "description": "useful description",
@@ -65,7 +65,7 @@ Feature: Reversal
 
   Scenario: Update a reversal
     Given I have a bank account with a reversal
-    When I PUT to /reversals/:reversal_id with the JSON API body:
+    When I PUT to /reversals/:reversal_id with the body:
     """
     {
       "reversals": [{
@@ -116,7 +116,7 @@ Feature: Reversal
 
   Scenario: Reverse a bank account credit successfully
 
-    When I POST to /credits with the JSON API body:
+    When I POST to /credits with the body:
       """
       {
         "credits": [{
@@ -143,7 +143,7 @@ Feature: Reversal
 
   Scenario: Reverse a bank account credit unsuccessfully
 
-    When I POST to /credits with the JSON API body:
+    When I POST to /credits with the body:
       """
       {
         "credits": [{

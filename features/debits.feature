@@ -5,7 +5,7 @@ Feature: Debit a card or bank account
 
   Scenario: Debiting a card
     Given I have tokenized a card
-    When I POST to /cards/:card_id/debits with the JSON API body:
+    When I POST to /cards/:card_id/debits with the body:
     """
     {
       "debits": [{
@@ -41,7 +41,7 @@ Feature: Debit a card or bank account
     then that customers default "funding source" will be used
     when preforming the debit.
     Given I have a customer with a card
-    When I POST to /customers/:customer_id/debits with the JSON API body:
+    When I POST to /customers/:customer_id/debits with the body:
     """
     {
       "debits": [{
@@ -77,7 +77,7 @@ Feature: Debit a card or bank account
 
   Scenario: Update a debit description
     Given I have debited a card
-    When I PUT to /debits/:debit_id with the JSON API body:
+    When I PUT to /debits/:debit_id with the body:
     """
     {
       "description": "something useful"
@@ -94,7 +94,7 @@ Feature: Debit a card or bank account
 
   Scenario: Update a debit meta
     Given I have debited a card
-    When I PUT to /debits/:debit_id with the JSON API body:
+    When I PUT to /debits/:debit_id with the body:
     """
     {
       "debits": [{

@@ -120,23 +120,6 @@ When(/^I GET "(.*?)" from the previous response$/) do |keys|
   @client.get(@client.inject keys)
 end
 
-When(/^I POST to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = @client.post(@client.hydrater(url), @client.hydrater(body))
-  @credit_id = @client['credits']['id'] rescue nil
-  @card_id = @client['cards']['id'] rescue nil
-  @client.add_hydrate(:card_id, @card_id) if @card_id
-  body
-end
-
-When(/^I PUT to (\/\S*) with the JSON API body:$/) do |url, body|
-  @client.put(@client.hydrater(url), @client.hydrater(body))
-end
-
-When(/^I PATCH to (\/\S*) with the JSON API body:$/) do |url, body|
-  body = @client.hydrater(body)
-  @client.patch(@client.hydrater(url), body)
-end
-
 require 'json-schema'
 Then(/^the response has this schema:$/) do |schema|
   @client.validate(schema)

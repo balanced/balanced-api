@@ -7,7 +7,7 @@ Feature: Credits
   Scenario: Credit a bank account
     Given I have sufficient funds in my marketplace
     And I have tokenized a bank account
-    When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
+    When I POST to /bank_accounts/:bank_account_id/credits with the body:
       """
       {
         "credits": [{
@@ -94,7 +94,7 @@ Feature: Credits
 
   Scenario: Credit a customer
     Given I have a customer with a tokenized bank account
-    When  I POST to /customers/:customer_id/credits with the JSON API body:
+    When  I POST to /customers/:customer_id/credits with the body:
     """
       {
         "credits": [{
@@ -108,7 +108,7 @@ Feature: Credits
 
   Scenario: Crediting without a funding source leads to failure
     Given I have created a customer
-    When I POST to /customers/:customer_id/credits with the JSON API body:
+    When I POST to /customers/:customer_id/credits with the body:
     """
       {
         "credits": [{

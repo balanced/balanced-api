@@ -37,7 +37,7 @@ Feature: External accounts
 
   Scenario: Debit an external account
     Given I have an external account
-    When I POST to /external_accounts/:external_account_id/debits with the JSON API body:
+    When I POST to /external_accounts/:external_account_id/debits with the body:
     """
     {
       "amount": 1234

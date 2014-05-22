@@ -115,7 +115,7 @@ Feature: Orders
   Scenario: Checking escrow of order after creating a credit
     Given I have an order with a debit
     And I have tokenized a bank account and associated with the merchant
-    And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
+    And I POST to /bank_accounts/:bank_account_id/credits with the body:
     """
     {
       "credits": [{
@@ -157,7 +157,7 @@ Feature: Orders
         "amount_escrowed": 1234
       }
     """
-    And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
+    And I POST to /bank_accounts/:bank_account_id/credits with the body:
     """
     {
       "credits": [{
@@ -335,7 +335,7 @@ Feature: Orders
     Then I should get a 201 Created status code
     And the response is valid according to the "orders" schema
 
-    Then I PUT to /orders/:order_id with the JSON API body:
+    Then I PUT to /orders/:order_id with the body:
     """
     {
       "description": "Bob's service"

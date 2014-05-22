@@ -10,7 +10,7 @@ Feature: Refunds
 
   Scenario: Creating a partial refund
     Given I have debited a card
-    When I POST to /debits/:debit_id/refunds with the JSON API body:
+    When I POST to /debits/:debit_id/refunds with the body:
     """
     {
       "refunds": [{
@@ -53,7 +53,7 @@ Feature: Refunds
 
   Scenario: Update a refund description
     Given I have created a refund for a debit
-    When I PUT to /refunds/:refund_id with the JSON API body:
+    When I PUT to /refunds/:refund_id with the body:
     """
     {
       "refunds": [{
@@ -72,7 +72,7 @@ Feature: Refunds
 
   Scenario: Update a refund meta
     Given I have created a refund for a debit
-    When I PUT to /refunds/:refund_id with the JSON API body:
+    When I PUT to /refunds/:refund_id with the body:
     """
     {
       "meta": {
