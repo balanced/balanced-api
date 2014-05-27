@@ -32,7 +32,7 @@ API can do. These scenarios also have some descriptive text as well. Scenarios
 are made up of 'steps,' which start with "Given," "When," "Then," "And," and a
 few others. These steps are actually executed by Cucumber: they run actual code.
 
-That code is determined by the `step\_definitions` files, which are in that
+That code is determined by the `step_definitions` files, which are in that
 directory. They map these feature lines to actual Ruby code. For example,
 
 ```
