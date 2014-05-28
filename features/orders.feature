@@ -10,8 +10,6 @@ Feature: Orders
   Scenario: Basic order flow
     Given I have a customer with a tokenized bank account
     When I make a POST request to /customers/:customer_id/orders
-    Then I should get a 201 Created status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
       {
@@ -30,8 +28,6 @@ Feature: Orders
       }
       """
 
-    Then I should get a 201 Created status code
-    And the response is valid according to the "debits" schema
     And the fields on this debit match:
       """
       {
@@ -44,8 +40,6 @@ Feature: Orders
     When I fetch the order
     And I make a GET request to /orders/:order_id
 
-    Then I should get a 200 OK status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
       {
@@ -64,9 +58,6 @@ Feature: Orders
         }]
       }
       """
-
-    Then I should get a 201 Created status code
-    And the response is valid according to the "credits" schema
     And the fields on this credit match:
       """
       {
@@ -149,8 +140,6 @@ Feature: Orders
       }
     """
     When I make a GET request to /orders/:order_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
     """
       {
@@ -214,7 +203,6 @@ Feature: Orders
       }
     """
     When I make a GET request to /orders/:order_id
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
     """
       {
@@ -223,8 +211,6 @@ Feature: Orders
     """
 
     When I make a POST request to the link "credits.reversals"
-    Then I should get a 201 Created status code
-    And the response is valid according to the "reversals" schema
 
     When I make a GET request to /orders/:order_id
     Then I should get a 200 OK status code
@@ -277,8 +263,6 @@ Feature: Orders
     }
     """
 
-    Then I should get a 201 Created status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
     """
       {
@@ -297,8 +281,6 @@ Feature: Orders
       }
     """
 
-    Then I should get a 201 Created status code
-    And the response is valid according to the "debits" schema
     And the fields on this debit match:
     """
       {
@@ -331,9 +313,6 @@ Feature: Orders
   Scenario: Update an order description
     Given I have created a customer
     When I make a POST request to /customers/:customer_id/orders
-
-    Then I should get a 201 Created status code
-    And the response is valid according to the "orders" schema
 
     Then I PUT to /orders/:order_id with the body:
     """
