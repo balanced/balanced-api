@@ -176,8 +176,6 @@ Feature: Customers
         }]
       }
     """
-    Then I should get a 201 Created status code
-    And the response is valid according to the "customers" schema
     And the fields on this customer match:
     """
     {

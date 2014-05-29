@@ -10,9 +10,6 @@ Feature: External accounts
       "token": "123123123123"
     }
     """
-    Then I should get a 201 Created status code
-    And the response is valid according to the "external_account_tokens" schema
-
     When I GET "external_accounts.href" from the previous response
     Then I should get a 200 OK status code
     And the response is valid according to the "external_accounts" schema

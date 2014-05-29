@@ -15,9 +15,6 @@ Feature: Bank accounts
       "account_type": "checking"
     }
     """
-    Then I should get a 201 Created status code
-    And the response is valid according to the "bank_account_tokens" schema
-
     When I GET "bank_accounts.href" from the previous response
     Then I should get a 200 OK status code
     And the response is valid according to the "bank_accounts" schema

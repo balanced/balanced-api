@@ -23,8 +23,6 @@ Feature: Credit cards
         }
       }
       """
-    Then I should get a 201 Created status code
-    And the response is valid according to the "card_tokens" schema
 
     When I GET "cards.href" from the previous response
     Then I should get a 200 OK status code
@@ -72,8 +70,6 @@ Feature: Credit cards
     Then I should get a 200 OK status code
     And the response is valid according to the "cards" schema
 
-
-
   Scenario: Debit a card
     Given I have tokenized a card
     When I POST to /cards/:card_id/debits giving the card_id, with the body:
@@ -98,7 +94,6 @@ Feature: Credit cards
           "value": ":customer_id"
         }]
       """
-    Then I should get a 200 OK status code
     And I make a GET request to /cards/:card_id
     Then the response is valid according to the "cards" schema
     And the fields on this card match:

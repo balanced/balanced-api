@@ -40,6 +40,7 @@ Feature: Debit a card or bank account
     If the debit is done directly on the customer resource
     then that customers default "funding source" will be used
     when preforming the debit.
+
     Given I have a customer with a card
     When I POST to /customers/:customer_id/debits with the body:
     """
