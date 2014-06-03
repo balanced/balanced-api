@@ -81,13 +81,13 @@ Feature: Credits
     When I make a DELETE request to the href "href"
 
     When I make a POST request to /cards/:card_id/credits
-    Then I should get a 404 status code
+    Then I should get a 400 status code
 
     And the response is valid according to the "errors" schema
     And the fields on this error match:
     """
       {
-       "category_code": "not-found"
+       "category_code": "request"
       }
     """
 

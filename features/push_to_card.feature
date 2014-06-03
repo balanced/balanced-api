@@ -96,14 +96,6 @@ Feature: Push to card
         "category_code": "funding-destination-not-creditable"
       }
       """
-    But the credit was successfully created
-    And the fields on this credit match:
-      """
-      {
-        "status": "failed",
-        "failure_reason_code": "funding-destination-not-creditable"
-      }
-      """
 
   Scenario: Pushing money to a card cannot exceed $2,500
     Given I have a tokenized debit card
@@ -122,7 +114,6 @@ Feature: Push to card
         "category_code": "amount-exceeds-limit"
       }
       """
-    But the credit was successfully created
     And the fields on this credit match:
       """
       {

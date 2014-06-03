@@ -21,6 +21,7 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   @customer_id = @client['customers']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
   @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
+  @client.add_hydrate(:card_id, @card_id) if @card_id
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
