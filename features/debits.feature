@@ -131,6 +131,18 @@ Feature: Debit a card or bank account
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
 
+  Scenario: Debit a card
+    Given I have tokenized a card
+    When I make a POST request to /debits with the body:
+      """
+      {
+        "amount": 2000,
+        "source": ":card_href"
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+
   Scenario: Debit a customer card
     Given I have tokenized a customer card
     When I make a POST request to the link "cards.debits" with the body:

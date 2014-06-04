@@ -11,6 +11,10 @@ Given(/^I have tokenized a card$/) do
       }
     }
   )
+
+  @card_href = @client['cards']['href']
+  @client.add_hydrate(:card_href, @card_href)
+
   @card_id = @client['cards']['id']
   @client.add_hydrate(:card_id, @card_id)
 end
