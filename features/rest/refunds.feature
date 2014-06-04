@@ -13,7 +13,13 @@ Feature: Refunds
     When I POST to /debits/:debit_id/refunds with the JSON API body:
     """
     {
-      "amount": 100
+      "refunds": [{
+        "amount": 100,
+        "description": "The customer was unhappy",
+        "meta": {
+          "reason": "not shipped"
+        }
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -45,13 +51,42 @@ Feature: Refunds
     Then I should get a 200 OK status code
     And the response is valid according to the "refunds" schema
 
-  Scenario: Update a refund
+  Scenario: Update a refund description
     Given I have created a refund for a debit
     When I PUT to /refunds/:refund_id with the JSON API body:
+    """
+    {
+      "refunds": [{
+        "description": "The customer cancel the order"
+      }]
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "refunds" schema
+    And the fields on this refund match:
     """
     {
       "description": "The customer cancel the order"
     }
     """
+
+  Scenario: Update a refund meta
+    Given I have created a refund for a debit
+    When I PUT to /refunds/:refund_id with the JSON API body:
+    """
+    {
+      "meta": {
+        "something": "random"
+      }
+    }
+    """
     Then I should get a 200 OK status code
     And the response is valid according to the "refunds" schema
+    And the fields on this refund match:
+    """
+    {
+      "meta": {
+        "something": "random"
+      }
+    }
+    """

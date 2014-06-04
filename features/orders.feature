@@ -23,8 +23,10 @@ Feature: Orders
     And I make a POST request to the link "customers.debits" with the body:
       """
       {
-        "amount": 10000,
-        "order": ":order_id"
+        "debits": [{
+          "amount": 10000,
+          "order": ":order_id"
+        }]
       }
       """
 
@@ -38,7 +40,7 @@ Feature: Orders
         }
       }
       """
-      
+
     When I fetch the order
     And I make a GET request to /orders/:order_id
 
@@ -56,8 +58,10 @@ Feature: Orders
     And I make a POST request to the link "customers.credits" with the body:
       """
       {
-        "amount": 10000,
-        "order": ":order_id"
+        "credits": [{
+          "amount": 10000,
+          "order": ":order_id"
+        }]
       }
       """
 
@@ -91,8 +95,10 @@ Feature: Orders
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": ":order_id",
-        "amount": 1234
+        "debits": [{
+          "order": ":order_id",
+          "amount": 1234
+        }]
       }
     """
 
@@ -112,8 +118,10 @@ Feature: Orders
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-       "order": ":order_id",
-       "amount": 12345
+      "credits": [{
+        "order": ":order_id",
+        "amount": 12345
+      }]
     }
     """
     When I make a GET request to /orders/:order_id
@@ -134,8 +142,10 @@ Feature: Orders
     And I make a POST request to the link "cards.debits" with the body:
     """
       {
-      "order": ":order_id",
-      "amount": 1234
+        "debits": [{
+          "order": ":order_id",
+          "amount": 1234
+        }]
       }
     """
     When I make a GET request to /orders/:order_id
@@ -150,8 +160,10 @@ Feature: Orders
     And I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "order": ":order_id",
-      "amount": 2000
+      "credits": [{
+        "order": ":order_id",
+        "amount": 2000
+      }]
     }
     """
     Then I should get a 409 status code
@@ -184,17 +196,21 @@ Feature: Orders
     And I make a POST request to /customers/:merchant_id/bank_accounts with the body:
     """
     {
-      "name": "Michael Jordan",
-      "account_number": "9900000002",
-      "routing_number": "021000021",
-      "account_type": "checking"
+      "bank_accounts": [{
+        "name": "Michael Jordan",
+        "account_number": "9900000002",
+        "routing_number": "021000021",
+        "account_type": "checking"
+      }]
     }
     """
     And I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
-        "order": ":order_id",
-        "amount": 12345
+        "credits": [{
+          "order": ":order_id",
+          "amount": 12345
+        }]
       }
     """
     When I make a GET request to /orders/:order_id
@@ -226,16 +242,20 @@ Feature: Orders
     When I make a POST request to the link "cards.debits" with the body:
     """
       {
-        "order": ":order_id",
-        "amount": 1234
+        "debits": [{
+          "order": ":order_id",
+          "amount": 1234
+        }]
       }
     """
     And I have tokenized a bank account and associated with the merchant
     Then I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {
-        "order": ":order_id",
-        "amount": 1234
+        "credits": [{
+          "order": ":order_id",
+          "amount": 1234
+        }]
       }
     """
 
@@ -270,8 +290,10 @@ Feature: Orders
     Then I make a POST request to the link "customers.debits" with the body:
     """
       {
-        "amount": 10000,
-        "order": ":order_id"
+        "debits": [{
+          "amount": 10000,
+          "order": ":order_id"
+        }]
       }
     """
 
@@ -291,8 +313,10 @@ Feature: Orders
     And I make a POST request to the link "customers.credits" with the body:
     """
       {
-        "amount": 10000,
-        "order": ":order_id"
+        "credits": [{
+          "amount": 10000,
+          "order": ":order_id"
+        }]
       }
     """
     Then I should get a 201 Created status code
@@ -302,4 +326,24 @@ Feature: Orders
       {
         "description": "Beats by Dr. Dre"
       }
+    """
+
+  Scenario: Update an order description
+    Given I have created a customer
+    When I make a POST request to /customers/:customer_id/orders
+
+    Then I should get a 201 Created status code
+    And the response is valid according to the "orders" schema
+
+    Then I PUT to /orders/:order_id with the JSON API body:
+    """
+    {
+      "description": "Bob's service"
+    }
+    """
+    Then the fields on this order match:
+    """
+    {
+      "description": "Bob's service"
+    }
     """

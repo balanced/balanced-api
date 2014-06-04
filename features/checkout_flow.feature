@@ -1,4 +1,6 @@
-Feature: Credit cards
+Feature: Basic checkout flow
+  A simple scenarios depicting how one would could use orders to manage
+  and track the flow of funds.
 
   Scenario: Canceling an order
     Given I have an order with a debit
@@ -29,18 +31,20 @@ Feature: Credit cards
     Then I POST to /cards with the JSON API body:
       """
         {
-          "name": "Darius the Great",
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "cvv": "123",
-          "address": {
-            "line1": "965 Mission St",
-            "line2": "Suite 425",
-            "city": "San Francisco",
-            "state": "CA",
-            "postal_code": "94103"
-          }
+          "cards": [{
+            "name": "Darius the Great",
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "123",
+            "address": {
+              "line1": "965 Mission St",
+              "line2": "Suite 425",
+              "city": "San Francisco",
+              "state": "CA",
+              "postal_code": "94103"
+            }
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -58,37 +62,39 @@ Feature: Credit cards
         }
       """
 
-    When I PATCH to /customers/:customer_id with the JSON API body:
+    When I PATCH to /cards/:card_id with the JSON API body:
       """
         [{
           "op": "replace",
-          "path": "/customers/0/links/source",
-          "value": ":card_id"
+          "path": "/cards/0/links/customer",
+          "value": ":customer_id"
         }]
       """
     Then I should get a 200 OK status code
-    And the response is valid according to the "customers" schema
-    And the fields on this customer match:
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
       """
           {
-            "links": { "source": ":card_id" }
+            "links": { "customer": ":customer_id" }
           }
       """
 
     When I make a POST request to the link "customers.orders" with the body:
       """
         {
-          "description": "Catherine Malandrino Black Top",
-          "delivery_address": {
-            "line1": "965 Mission St",
-            "line2": "Suite 425",
-            "city": "San Francisco",
-            "state": "CA",
-            "postal_code": "94103"
-          },
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
-          }
+          "orders": [{
+            "description": "Catherine Malandrino Black Top",
+            "delivery_address": {
+              "line1": "965 Mission St",
+              "line2": "Suite 425",
+              "city": "San Francisco",
+              "state": "CA",
+              "postal_code": "94103"
+            },
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
+            }
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -103,9 +109,11 @@ Feature: Credit cards
     When I make a POST request to /customers/:customer_id/debits with the body:
       """
         {
-          "amount": 10000,
-          "order": ":order_id",
-          "appears_on_statement_as": "Vaunte-Alice Ryan"
+          "debits": [{
+            "amount": 10000,
+            "order": ":order_id",
+            "appears_on_statement_as": "Vaunte-Alice Ryan"
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -125,11 +133,13 @@ Feature: Credit cards
    When I PUT to /orders/:order_id with the JSON API body:
       """
         {
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
-            "courier": "usps",
-            "tracking_number": "9405510899359008595488"
-           }
+          "orders": [{
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+              "courier": "usps",
+              "tracking_number": "9405510899359008595488"
+             }
+          }]
         }
       """
     Then I should get a 200 OK status code
@@ -158,17 +168,19 @@ Feature: Credit cards
     When I make a POST request to /customers/:customer_id/orders with the body:
       """
         {
-          "description": "Catherine Malandrino Black Top",
-          "delivery _address": {
-            "line1": "965 Mission St",
-            "line2": "Suite 425",
-            "city": "San Francisco",
-            "state": "CA",
-            "postal_code": "94103"
-          },
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
-          }
+          "orders": [{
+            "description": "Catherine Malandrino Black Top",
+            "delivery _address": {
+              "line1": "965 Mission St",
+              "line2": "Suite 425",
+              "city": "San Francisco",
+              "state": "CA",
+              "postal_code": "94103"
+            },
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
+            }
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -183,9 +195,11 @@ Feature: Credit cards
     When I make a POST request to the link "customers.debits" with the body:
       """
         {
-          "amount": 10000,
-          "order": ":order_id",
-          "appears_on_statement_as": "Vaunte-Alice Ryan"
+          "debits": [{
+            "amount": 10000,
+            "order": ":order_id",
+            "appears_on_statement_as": "Vaunte-Alice Ryan"
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -205,11 +219,13 @@ Feature: Credit cards
     When I PUT to /orders/:order_id with the JSON API body:
       """
         {
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
-            "courier": "usps",
-            "tracking_number": "9405510899359008595488"
-          }
+          "orders": [{
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+              "courier": "usps",
+              "tracking_number": "9405510899359008595488"
+            }
+          }]
         }
       """
     Then I should get a 200 OK status code
@@ -229,18 +245,20 @@ Feature: Credit cards
     When I POST to /cards with the JSON API body:
       """
         {
-          "name": "Darius the Great",
-          "number": "4111111111111111",
-          "expiration_month": 12,
-          "expiration_year": 2016,
-          "cvv": "123",
-          "address": {
-            "line1": "965 Mission St",
-            "line2": "Suite 425",
-            "city": "San Francisco",
-            "state": "CA",
-            "postal_code": "94103"
-          }
+          "cards": [{
+            "name": "Darius the Great",
+            "number": "4111111111111111",
+            "expiration_month": 12,
+            "expiration_year": 2016,
+            "cvv": "123",
+            "address": {
+              "line1": "965 Mission St",
+              "line2": "Suite 425",
+              "city": "San Francisco",
+              "state": "CA",
+              "postal_code": "94103"
+            }
+          }]
         }
      """
     Then I should get a 201 CREATED status code
@@ -257,12 +275,14 @@ Feature: Credit cards
     When I make a POST request to /customers with the body:
       """
         {
-          "name": "Darius the Great",
-          "email": "darius.great@gmail.com",
-          "source": ":card_id",
-          "meta": {
-            "ip_address": "174.240.15.249"
-          }
+          "customers": [{
+            "name": "Darius the Great",
+            "email": "darius.great@gmail.com",
+            "source": ":card_id",
+            "meta": {
+              "ip_address": "174.240.15.249"
+            }
+          }]
         }
       """
 
@@ -281,17 +301,19 @@ Feature: Credit cards
     When I make a POST request to /customers/:customer_id/orders with the body:
       """
         {
-          "description": "Catherine Malandrino Black Top",
-          "delivery_address": {
-            "line1": "965 Mission St",
-            "line2": "Suite 425",
-            "city": "San Francisco",
-            "state": "CA",
-            "postal_code": "94103"
-          },
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
-          }
+          "orders": [{
+            "description": "Catherine Malandrino Black Top",
+            "delivery_address": {
+              "line1": "965 Mission St",
+              "line2": "Suite 425",
+              "city": "San Francisco",
+              "state": "CA",
+              "postal_code": "94103"
+            },
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42"
+            }
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -306,9 +328,11 @@ Feature: Credit cards
     When I make a POST request to the link "customers.debits" with the body:
       """
         {
-          "amount": 10000,
-          "order": ":order_id",
-          "appears_on_statement_as": "Vaunte-Alice Ryan"
+          "debits": [{
+            "amount": 10000,
+            "order": ":order_id",
+            "appears_on_statement_as": "Vaunte-Alice Ryan"
+          }]
         }
       """
     Then I should get a 201 CREATED status code
@@ -329,11 +353,13 @@ Feature: Credit cards
     When I PUT to /orders/:order_id with the JSON API body:
       """
         {
-          "meta": {
-            "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
-            "courier": "usps",
-            "tracking_number": "9405510899359008595488"
-          }
+          "orders": [{
+            "meta": {
+              "listing": "https://www.vaunte.com/items/catherine-malandrino-black-top-42",
+              "courier": "usps",
+              "tracking_number": "9405510899359008595488"
+            }
+          }]
         }
       """
 

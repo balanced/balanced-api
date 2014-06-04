@@ -15,7 +15,9 @@ Feature: Refunds
     When I make a POST request to the link "debits.refunds" with the body:
       """
       {
-        "amount": 200000000
+        "refunds": [{
+          "amount": 200000000
+        }]
       }
       """
     Then I should get a 400 status code

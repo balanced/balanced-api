@@ -4,13 +4,14 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "(MP|TEST-MP)[a-zA-Z0-9]{16,32}"
+            "pattern": "NT[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
             "format": "uri"
         },
         "created_at": {
+            "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this bank account was tokenized.",
             "type": "string",
             "format": "date-time"
         },
@@ -18,27 +19,20 @@
             "type": "string",
             "format": "date-time"
         },
-        "in_escrow": {
-            "type": "integer"
-        },
-        "unsettled_fees": {
-            "type": "integer",
-            "description": "The total amount of fees collected by the marketplace that have yet to be settled to their bank account by Balanced."
-        },
-        "domain_url": {
-            "type": "string"
-        },
-        "name": {
-            "type": "string"
-        },
-        "support_email_address": {
+        "provider": {
+            "description": "The service provding the external account",
             "type": "string",
-            "format": "email"
+            "enum": [
+                "test",
+                "coinbase"
+            ]
         },
-        "support_phone_number": {
-            "type": "string"
+        "can_debit": {
+            "description": "If the external account can be debited",
+            "type": "boolean"
         },
-        "production": {
+        "can_credit": {
+            "description": "If the external account can be credited",
             "type": "boolean"
         },
         "meta": {
@@ -47,13 +41,17 @@
         "links": {
             "type": "object",
             "properties": {
-                "owner_customer": {
-                    "type": "string",
+                "customer": {
+                    "description": "Customer this external_account is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
                     "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
-                "owner_customer"
+                "customer"
             ],
             "additionalProperties": false
         }
@@ -64,13 +62,7 @@
         "href",
         "created_at",
         "updated_at",
-        "in_escrow",
-        "unsettled_fees",
-        "domain_url",
-        "name",
-        "support_email_address",
-        "support_phone_number",
-        "production",
+        "provider",
         "meta",
         "links"
     ]

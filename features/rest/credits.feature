@@ -10,7 +10,9 @@ Feature: Credits
     When I POST to /bank_accounts/:bank_account_id/credits with the JSON API body:
     """
     {
-      "amount": 1234
+      "credits": [{
+        "amount": 1234
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -32,6 +34,44 @@ Feature: Credits
     {
       "links": {
         "destination": ":bank_account_id"
+      }
+    }
+    """
+
+  Scenario: Updating a credit description
+    Given I have a bank account with a credit
+    When I PUT to /credits/:credit_id with the body:
+    """
+    {
+      "description": "A new credit description"
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
+    """
+    {
+      "description": "A new credit description"
+    }
+    """
+
+  Scenario: Updating a credit meta
+    Given I have a bank account with a credit
+    When I PUT to /credits/:credit_id with the body:
+    """
+    {
+      "meta": {
+        "something": "random"
+      }
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "credits" schema
+    And the fields on this credit match:
+    """
+    {
+      "meta": {
+        "something": "random"
       }
     }
     """

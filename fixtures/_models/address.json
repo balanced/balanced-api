@@ -1,43 +1,45 @@
 {
-    "$schema": "http://json-schema.org/draft-03/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A single-level dictionary of string-type key/value pairs representing the address of the person or business.",
     "type": "object",
     "properties": {
         "line1": {
+            "description": "Street address of the person or business.",
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "line2": {
+            "description": "Second line of the address for the person or business.",
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "city": {
+            "description": "City of the person or business.",
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "state": {
+            "description": "State of the person or business.",
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "postal_code": {
+            "description": "Postal code/zip code of the person or business.",
             "type": [
                 "string",
                 "null"
-            ],
-            "required": true
+            ]
         },
         "country_code": {
+            "description": "Two character country code.",
             "anyOf": [
                 {
                     "type": "null"
@@ -46,9 +48,16 @@
                     "type": "string",
                     "pattern": "[A-Z]{2}"
                 }
-            ],
-            "required": true
+            ]
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "required": [
+        "line1",
+        "line2",
+        "city",
+        "state",
+        "postal_code",
+        "country_code"
+    ]
 }

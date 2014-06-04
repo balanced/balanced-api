@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "string",
+    "pattern": "(BAL\\*)?[a-zA-Z0-9 \\.\\-]{1,18}",
+    "description": "Text that will appear on the buyer's statement.\n\nCharacters that can be used are limited to:\n\n- ASCII letters (``a-z`` and ``A-Z``)\n- Digits (``0-9``)\n- Special characters (``.<>(){}[]+&!$;-%_?:#@~=\\'\" ^`|``)\n\nCard Debits - Max length 22 characters, truncated to 18 characters with the \"BAL*\" prefix.\n\nBank account debits - Max length 14 characters (no truncation).\n\nCredits - Max length 14 characters (no truncation).\n\nAll Visa, Master Card, Discover, American Express debits will have a prefix of \"BAL*\" e.g. \"BAL*marketplace.com\". ACH debits and credits do not have a prefix. American Express pending transactions will be shown as \"BALANCED INC\". AMEX pending transactions are hidden by default in the American Express web portal. Once the debit is settled it will convert to \"BAL*<appears_on_statement_as>\"."
+}

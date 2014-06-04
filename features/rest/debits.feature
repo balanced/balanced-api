@@ -8,7 +8,9 @@ Feature: Debit a card or bank account
     When I POST to /cards/:card_id/debits with the JSON API body:
     """
     {
-      "amount": 20000
+      "debits": [{
+        "amount": 20000
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -42,7 +44,13 @@ Feature: Debit a card or bank account
     When I POST to /customers/:customer_id/debits with the JSON API body:
     """
     {
-      "amount": 2000
+      "debits": [{
+        "amount": 2000,
+        "meta": {
+          "product_id": "123123123"
+        },
+        "description": "Bob is giving me some $$$"
+      }]
     }
     """
     Then I should get a 201 Created status code
@@ -53,7 +61,11 @@ Feature: Debit a card or bank account
       "amount": 2000,
       "links": {
         "customer": ":customer_id"
-      }
+      },
+      "meta": {
+        "product_id": "123123123"
+      },
+      "description": "Bob is giving me some $$$"
     }
     """
 
@@ -63,14 +75,33 @@ Feature: Debit a card or bank account
     Then I should get a 200 OK status code
     And the response is valid according to the "debits" schema
 
-  Scenario: Update a debit
+  Scenario: Update a debit description
     Given I have debited a card
     When I PUT to /debits/:debit_id with the JSON API body:
     """
     {
-      "meta": {
-        "order.status": "shipped"
-      }
+      "description": "something useful"
+    }
+    """
+    Then I should get a 200 OK status code
+    And the response is valid according to the "debits" schema
+    And the fields on this debit match:
+    """
+    {
+      "description": "something useful"
+    }
+    """
+
+  Scenario: Update a debit meta
+    Given I have debited a card
+    When I PUT to /debits/:debit_id with the JSON API body:
+    """
+    {
+      "debits": [{
+        "meta": {
+          "order.status": "shipped"
+        }
+      }]
     }
     """
     Then I should get a 200 OK status code

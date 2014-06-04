@@ -36,7 +36,14 @@
                     "pattern": "/customers/{orders.merchant}"
                 }
             },
-            "required": ["orders.debits", "orders.refunds", "orders.credits", "orders.reversals", "orders.buyers", "orders.merchant"]
+            "required": [
+                "orders.debits",
+                "orders.refunds",
+                "orders.credits",
+                "orders.reversals",
+                "orders.buyers",
+                "orders.merchant"
+            ]
         },
         "meta": {
             "type": "object"
@@ -50,5 +57,7 @@
             "uniqueItems": true
         }
     },
-    "required": ["orders"]
+    "required": [
+        "orders"
+    ]
 }

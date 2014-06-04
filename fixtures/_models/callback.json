@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "CB[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "url": {
+            "description": "The url the callbacks will be made to",
+            "type": "string",
+            "format": "uri"
+        },
+        "method": {
+            "description": "HTTP method used for the callback, one of ``post``, ``put`` or ``get``",
+            "type": "string",
+            "enum": [
+                "post",
+                "put",
+                "get"
+            ]
+        },
+        "revision": {
+            "description": "The version of the api the call back requests will match",
+            "type": "string",
+            "pattern": "1.[01]"
+        },
+        "links": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "url",
+        "method",
+        "revision",
+        "links"
+    ],
+    "additionalProperties": false
+}
