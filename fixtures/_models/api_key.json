@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "AK[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "secret": {
+            "type": "string",
+            "pattern": "ak-(test|prod)-[a-zA-Z0-9]{16,32}"
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "meta",
+        "links"
+    ],
+    "additionalProperties": false
+}

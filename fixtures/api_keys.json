@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        },
+        "meta": {
+            "type": "object"
+        },
+        "api_keys": {
+            "items": {
+                "$ref": "_models/api_key.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "api_keys"
+    ]
+}

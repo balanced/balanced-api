@@ -212,3 +212,16 @@ Feature: Debit a card or bank account
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "debits" schema
+
+  Scenario: Debit unassociated card
+    Given I have tokenized a card
+    When I POST to /cards/:card_id/debits with the body:
+    """
+    {
+      "debits": [{
+        "amount": 5000
+      }]
+    }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
