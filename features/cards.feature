@@ -580,7 +580,7 @@ Feature: Credit cards
      """
 
   @failing
-  Scenario: CVV matches for a previously-tokenized card
+  Scenario: CVV re-verification matches
     When I PUT to /cards/:card_id giving the card_id, with the body:
       """
         {
@@ -600,7 +600,7 @@ Feature: Credit cards
     """
 
   @failing
-  Scenario: CVV does not match for a previously-tokenized card
+  Scenario: CVV re-verification does not match
     When I PUT to /cards/:card_id giving the card_id, with the body:
       """
         {
@@ -618,8 +618,9 @@ Feature: Credit cards
          "cvv_match": "no"
         }
       """
+
   @failing
-  Scenario: CVV is unsupported for a previously-tokenized card
+  Scenario: CVV re-verification is unsupported
     When I PUT to /cards/:card_id giving the card_id, with the body:
       """
         {
