@@ -36,7 +36,6 @@ Feature: Credit cards
       }
       """
 
-
   Scenario: Retrieve a card
     Given I have tokenized a card
     When I GET to /cards/:card_id giving the card_id
@@ -196,7 +195,7 @@ Feature: Credit cards
         }
      """
 
- Scenario: AVS street matches
+  Scenario: AVS street matches
     When I make a POST request to /cards with the body:
       """
         {
@@ -264,6 +263,118 @@ Feature: Credit cards
       """
         {
           "avs_street_match": null
+        }
+      """
+
+  @failing
+  Scenario: AVS postal code re-verification matches
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "address": {
+              "postal_code": "94301"
+            }
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+         "avs_postal_match": "yes"
+        }
+      """
+
+  @failing
+  Scenario: AVS postal code re-verification does not match
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "address": {
+              "postal_code": "90210"
+            }
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+         "avs_postal_match": "no"
+        }
+      """
+
+  @failing
+  Scenario: AVS postal code re-verification is unsupported
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "address": {
+              "postal_code": "90211"
+            }
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+         "avs_postal_match": "unsupported"
+        }
+      """
+
+  @failing
+  Scenario: AVS street re-verification matches
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "address": {
+              "line1": "965 Mission St",
+              "postal_code": "94103"
+            }
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+          "avs_street_match": "yes"
+        }
+      """
+
+  @failing
+  Scenario: AVS street re-verification does not match
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+      {
+        "cards": [{
+          "address": {
+            "line1": "21 Jump St",
+            "postal_code": "90210"
+          }
+        }]
+      }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+          "avs_street_match": "no"
         }
       """
 
