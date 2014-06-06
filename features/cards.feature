@@ -36,7 +36,6 @@ Feature: Credit cards
       }
       """
 
-
   Scenario: Retrieve a card
     Given I have tokenized a card
     When I GET to /cards/:card_id giving the card_id
@@ -579,6 +578,65 @@ Feature: Credit cards
          "cvv_match": null
         }
      """
+
+  @failing
+  Scenario: CVV matches for a previously-tokenized card
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "cvv": "123"
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+    """
+        {
+         "cvv_match": "yes"
+        }
+    """
+
+  @failing
+  Scenario: CVV does not match for a previously-tokenized card
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "cvv": "200"
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+      """
+        {
+         "cvv_match": "no"
+        }
+      """
+  @failing
+  Scenario: CVV is unsupported for a previously-tokenized card
+    When I PUT to /cards/:card_id giving the card_id, with the body:
+      """
+        {
+          "cards": [{
+            "cvv": "901"
+          }]
+        }
+      """
+
+    Then I should get a 200 OK status code
+    And the response is valid according to the "cards" schema
+    And the fields on this card match:
+    """
+        {
+         "cvv_match": "unsupported"
+        }
+    """
 
   Scenario: Adding card metadata
     Given I have tokenized a card
