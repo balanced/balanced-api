@@ -1,3 +1,4 @@
+@focus
 Feature: Push to card
   Scenario: Tokenize a debit card
     When I POST to /cards with the body:
@@ -68,20 +69,24 @@ Feature: Push to card
       }
       """
 
+  @failing
   Scenario: Push money to a special debit card number and get status `pending`
     The debit card number "4210101111111112" is a special card number
 
     Given I have sufficient funds in my marketplace
-    When I POST to /cards with the JSON API body:
+    When I POST to /credits with the body:
       """
-      {
-        "cards": [{
+    {
+      "credits": [{
+        "destination": {
           "name": "George Handel",
           "number": "4210101111111112",
           "expiration_month": "05",
           "expiration_year": "2017"
-        }]
-      }
+        },
+        "amount": 1234
+      }]
+    }
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "credits" schema
@@ -125,7 +130,7 @@ Feature: Push to card
   Scenario: Pushing money to a card cannot exceed $2,500
     Given I have sufficient funds in my marketplace
     And I have a tokenized debit card
-    When I POST to "cards.credits" with the JSON API body:
+    When I POST to /cards/:debit_card_id/credits with the body:
       """
       {
         "credits": [{
@@ -176,8 +181,8 @@ Feature: Push to card
 
   Scenario: Reverse a succeeded credit to a debit card
     Given I have sufficient funds in my marketplace
-    And I have tokenized a debit card
-    And I POST to "cards.credits" with the body:
+    Given I have a tokenized debit card
+    And I POST to /cards/:debit_card_id/credits with the body:
       """
       {
         "credits": [{
@@ -187,39 +192,42 @@ Feature: Push to card
       """
     When I make a POST request to the link "credits.reversals"
     Then I should get a 409 Conflict status code
-    And the response is valid according to the "reversals" schema
-    And the fields on this reversal match:
+    And the fields on this error match:
       """
       {
         "category_code": "cannot-reverse-credits-to-cards"
       }
       """
 
+@failing
 Scenario: Reverse a pending credit to a debit card
   The debit card number "4210101111111112" is a special card number
 
   Given I have sufficient funds in my marketplace
-  When I POST to /cards with the JSON API body:
+  When I POST to /credits with the body:
     """
     {
-      "cards": [{
-        "name": "George Handel",
-        "number": "4210101111111112",
-        "expiration_month": "05",
-        "expiration_year": "2017"
+      "credits": [{
+        "destination": {
+          "name": "George Handel",
+          "number": "4210101111111112",
+          "expiration_month": "05",
+          "expiration_year": "2017"
+        },
+        "amount": 1234
       }]
     }
     """
+  And the response is valid according to the "credits" schema
   And the fields on this credit match:
     """
     {
       "status": "pending"
     }
     """
-  And I POST to "credits.reversals"
+  And I POST to /credits/:id/reversals
   Then I should get a 409 Conflict status code
-  And the response is valid according to the "reversals" schema
-  And the fields on this reversal match:
+  And the fields on this error match:
     """
     {
       "category_code": "cannot-reverse-credits-to-cards"
