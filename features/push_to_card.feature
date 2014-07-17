@@ -1,3 +1,4 @@
+@focus
 Feature: Push to card
   Scenario: Tokenize a debit card
     When I POST to /cards with the body:
@@ -224,7 +225,7 @@ Scenario: Reverse a pending credit to a debit card
       "status": "pending"
     }
     """
-  And I POST to /credits/:id/reversals
+  And I POST to /credits/:credit_id/reversals
   Then I should get a 409 Conflict status code
   And the fields on this error match:
     """
