@@ -186,12 +186,12 @@ Feature: Push to card
       }
       """
     When I make a POST request to the link "credits.reversals"
-    Then I should get a 201 Created status code
+    Then I should get a 409 Conflict status code
     And the response is valid according to the "reversals" schema
     And the fields on this reversal match:
       """
       {
-        "status": "succeeded"
+        "category_code": "cannot-reverse-credits-to-cards"
       }
       """
 
@@ -217,11 +217,11 @@ Scenario: Reverse a pending credit to a debit card
     }
     """
   And I POST to "credits.reversals"
-  Then I should get a 201 Created status code
+  Then I should get a 409 Conflict status code
   And the response is valid according to the "reversals" schema
   And the fields on this reversal match:
     """
     {
-      "status": "succeeded"
+      "category_code": "cannot-reverse-credits-to-cards"
     }
     """
