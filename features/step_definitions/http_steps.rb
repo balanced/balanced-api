@@ -25,7 +25,8 @@ end
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   if url.match(/(:.*?)\//)
     token = url.match(/:(.*?)\//)[1]
-    if not eval("@#{token}")
+    # if the url isn't hydrated, pull the entity id from the last response
+    if url == @client.hydrater(url)
       begin
         url = url.sub(":#{token}", tree_search(@client.last_body, token))
       rescue
