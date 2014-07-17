@@ -29,7 +29,6 @@ When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
       begin
         url = url.sub(":#{token}", tree_search(@client.last_body, token))
       rescue
-        require 'pry'; binding.pry
         raise "Cannot infer #{token} in url"
       end
     end
