@@ -11,6 +11,10 @@ Given(/^I have tokenized a card$/) do
       }
     }
   )
+
+  @card_href = @client['cards']['href']
+  @client.add_hydrate(:card_href, @card_href)
+
   @card_id = @client['cards']['id']
   @client.add_hydrate(:card_id, @card_id)
 end
@@ -60,10 +64,12 @@ Given(/^I have tokenized more than one card$/) do
   2.times { step "I have tokenized a card" }
 end
 
+# TODO: replace this with hydrator
 When(/^I GET to \/cards\/:card_id giving the card_id$/) do
   @client.get("/cards/#{@card_id}")
 end
 
+# TODO: replace this with hydrator
 When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
   options = {
     headers: {
@@ -78,11 +84,13 @@ When(/^I DELETE to \/cards\/:card_id giving the card_id$/) do
   @client.add_response(response)
 end
 
-When(/^I PUT to \/cards\/:card_id giving the card_id, with the JSON API body:$/) do |body|
+# TODO: replace this with hydrator
+When(/^I PUT to \/cards\/:card_id giving the card_id, with the body:$/) do |body|
   @client.put("/cards/#{@card_id}", body)
 end
 
-When(/^I POST to \/cards\/:card_id\/debits giving the card_id, with the JSON API body:$/) do |body|
+# TODO: replace this with hydrator
+When(/^I POST to \/cards\/:card_id\/debits giving the card_id, with the body:$/) do |body|
   @client.post("/cards/#{@card_id}/debits", body)
 end
 
@@ -97,13 +105,14 @@ Given(/^I have unstored a card$/) do
   step "I have tokenized a card"
   @card_id = @client.last_body["cards"][0]["id"]
   @card_url = @client.last_body["cards"][0]["href"]
+  @unstored_card_id = @card_id
   step "I make a DELETE request to /cards/:card_id"
 end
 
 Then(/^I should not see that card in the results$/) do
  card_ids = @client.last_body["cards"].collect{|card| card["id"]}
  card_ids.each {|x|
-   assert x != @card_id
+   assert x != @unstored_card_id, "Card '#{@unstored_card_id}' was in the results"
  }
 end
 

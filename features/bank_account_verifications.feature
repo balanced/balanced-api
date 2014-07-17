@@ -22,7 +22,7 @@ Feature: Bank account verifications
 
   Scenario: Confirm a verification
     Given I have a bank account with a verification
-    When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
+    When I PUT to /verifications/:bank_account_verification_id with the body:
     """
     {
       "bank_account_verifications": [{
@@ -42,7 +42,7 @@ Feature: Bank account verifications
 
   Scenario: Fail to confirm a verification
     Given I have a bank account with a verification
-    When I PUT to /verifications/:bank_account_verification_id with the JSON API body:
+    When I PUT to /verifications/:bank_account_verification_id with the body:
     """
     {
       "bank_account_verifications": [{

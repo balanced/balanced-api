@@ -1,7 +1,7 @@
 Feature: Callbacks
 
   Scenario: Create a callback
-    When I POST to /callbacks with the JSON API body:
+    When I POST to /callbacks with the body:
       """
       {
         "callbacks": [{
@@ -19,13 +19,13 @@ Feature: Callbacks
     And the response is valid according to the "callbacks" schema
 
   Scenario: You can't create two callbacks
-    When I POST to /callbacks with the JSON API body:
+    When I POST to /callbacks with the body:
       """
       {
         "url":"http://www.example.com/callback"
       }
       """
-    When I POST to /callbacks with the JSON API body:
+    When I POST to /callbacks with the body:
       """
       {
         "url":"http://www.example.com/callback"
@@ -39,7 +39,7 @@ Feature: Callbacks
       """
 
   Scenario: Create a callback using GET method
-    When I POST to /callbacks with the JSON API body:
+    When I POST to /callbacks with the body:
     """
     {
       "url": "http://www.example.com/callback",

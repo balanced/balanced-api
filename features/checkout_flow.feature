@@ -5,8 +5,6 @@ Feature: Basic checkout flow
   Scenario: Canceling an order
     Given I have an order with a debit
     When I POST to /debits/:debit_id/refunds
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "refunds" schema
 
     Then I make a GET request to /orders/:order_id
     And the response is valid according to the "orders" schema
@@ -20,15 +18,8 @@ Feature: Basic checkout flow
 
   Scenario: Existing buyer makes a purchase with a new card
     Given I have created a customer
-    When I make a GET request to /customers/:customer_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "customers" schema
 
-    Then I make a GET request to the link "customers.source"
-    Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
-
-    Then I POST to /cards with the JSON API body:
+    Then I POST to /cards with the body:
       """
         {
           "cards": [{
@@ -47,8 +38,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "cards" schema
 
     When I make a GET request to /cards/:card_id
     Then I should get a 200 OK status code
@@ -62,7 +51,7 @@ Feature: Basic checkout flow
         }
       """
 
-    When I PATCH to /cards/:card_id with the JSON API body:
+    When I PATCH to /cards/:card_id with the body:
       """
         [{
           "op": "replace",
@@ -70,8 +59,6 @@ Feature: Basic checkout flow
           "value": ":customer_id"
         }]
       """
-    Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
     And the fields on this card match:
       """
           {
@@ -97,8 +84,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
         {
@@ -116,8 +101,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "debits" schema
     And the fields on this debit match:
       """
         {
@@ -130,7 +113,7 @@ Feature: Basic checkout flow
         }
       """
 
-   When I PUT to /orders/:order_id with the JSON API body:
+   When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{
@@ -142,8 +125,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 200 OK status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
         {
@@ -157,13 +138,6 @@ Feature: Basic checkout flow
 
   Scenario: Existing buyer makes a purchase with an existing card
     Given I have created a customer
-    When I make a GET request to /customers/:customer_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "customers" schema
-
-    Then I make a GET request to the link "customers.source"
-    Then I should get a 200 OK status code
-    And the response is valid according to the "cards" schema
 
     When I make a POST request to /customers/:customer_id/orders with the body:
       """
@@ -183,8 +157,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
         {
@@ -202,8 +174,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "debits" schema
     And the fields on this debit match:
       """
         {
@@ -216,7 +186,7 @@ Feature: Basic checkout flow
         }
       """
 
-    When I PUT to /orders/:order_id with the JSON API body:
+    When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{
@@ -242,7 +212,7 @@ Feature: Basic checkout flow
       """
 
   Scenario: New buyer makes a purchase
-    When I POST to /cards with the JSON API body:
+    When I POST to /cards with the body:
       """
         {
           "cards": [{
@@ -261,8 +231,6 @@ Feature: Basic checkout flow
           }]
         }
      """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "cards" schema
     And the fields on this card match:
       """
         {
@@ -286,8 +254,6 @@ Feature: Basic checkout flow
         }
       """
 
-    Then I should get a 201 OK status code
-    And the response is valid according to the "customers" schema
     And the fields on this customer match:
       """
         {
@@ -316,8 +282,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "orders" schema
     And the fields on this order match:
       """
         {
@@ -335,8 +299,6 @@ Feature: Basic checkout flow
           }]
         }
       """
-    Then I should get a 201 CREATED status code
-    And the response is valid according to the "debits" schema
     And the fields on this debit match:
       """
         {
@@ -350,7 +312,7 @@ Feature: Basic checkout flow
       """
 
 
-    When I PUT to /orders/:order_id with the JSON API body:
+    When I PUT to /orders/:order_id with the body:
       """
         {
           "orders": [{
