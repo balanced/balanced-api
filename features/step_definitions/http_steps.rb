@@ -25,7 +25,7 @@ end
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
   if url.match(/(:.*?)\//)
     token = url.match(/:(.*?)\//)[1]
-    if defined? token
+    if not eval("@#{token}")
       begin
         url = url.sub(":#{token}", tree_search(@client.last_body, token))
       rescue

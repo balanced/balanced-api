@@ -1,4 +1,3 @@
-@focus
 Feature: Push to card
   Scenario: Tokenize a debit card
     When I POST to /cards with the body:
