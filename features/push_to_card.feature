@@ -1,4 +1,3 @@
-@focus
 Feature: Push to card
   Scenario: Tokenize a debit card
     When I POST to /cards with the body:
@@ -69,7 +68,6 @@ Feature: Push to card
       }
       """
 
-  @failing
   Scenario: Push money to a special debit card number and get status `pending`
     The debit card number "4210101111111112" is a special card number
 
@@ -199,7 +197,6 @@ Feature: Push to card
       }
       """
 
-@failing
 Scenario: Reverse a pending credit to a debit card
   The debit card number "4210101111111112" is a special card number
 

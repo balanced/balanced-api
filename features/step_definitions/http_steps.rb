@@ -1,39 +1,6 @@
 require 'erb'
 
-def tree_search (tree, desired_key)
-  tree.each { |key, value|
-    if key == desired_key
-      return value
-    end
-    if value.class == Hash
-      tree_search(value, desired_key)
-    end
-    if value.class == Array
-      value.each { |element|
-        if element.class == Hash
-          maybe = tree_search(element, desired_key)
-          if maybe
-            return maybe
-          end
-        end
-      }
-    end
-  }
-  nil
-end
-
 When(/^I (\w+) to (\/\S*?)$/) do |verb, url|
-  # if url.match(/(:.*?)\//)
-  #   token = url.match(/:(.*?)\//)[1]
-  #   # if the url isn't hydrated, pull the entity id from the last response
-  #   if url == @client.hydrater(url)
-  #     begin
-  #       url = url.sub(":#{token}", tree_search(@client.last_body, token))
-  #     rescue
-  #       raise "Cannot infer #{token} in url"
-  #     end
-  #   end
-  # end
   $logger.debug("Making request to #{url}")
   $logger.debug("hydrated: #{@client.hydrater(url)}")
   @client.send(verb.downcase, @client.hydrater(url), env)
