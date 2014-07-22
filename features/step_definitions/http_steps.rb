@@ -19,9 +19,11 @@ When(/^I (\w+) to (\/\S*?) with the body:$/) do |verb, url, body|
   @client.send(verb.downcase, @client.hydrater(url), body, env)
   @card_id = @client['cards']['id'] rescue nil
   @customer_id = @client['customers']['id'] rescue nil
+  @credit_id = @client['credits']['id'] rescue nil
   @client.add_hydrate(:customer_id, @customer_id) if @customer_id
   @client.add_hydrate(:order_id, @client['orders']['id']) rescue nil
   @client.add_hydrate(:card_id, @card_id) if @card_id
+  @client.add_hydrate(:credit_id, @credit_id) if @credit_id
 end
 
 When(/^I make a (\w+) request to (\/\S*?)$/) do |verb, url|
