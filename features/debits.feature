@@ -162,7 +162,7 @@ Feature: Debit a card or bank account
     And the response is valid according to the "debits" schema
     And the fields on these debits match:
       """
-      { "status": "succeeded" }
+      { "status": "pending" }
       """
 
   Scenario: Debits to unverified bank accounts fail
