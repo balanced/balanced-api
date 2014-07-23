@@ -27,7 +27,7 @@
             "additionalProperties": false
         },
 	"permissions": {
-            "type": "object",
+            "type": "object"
 	}
     },
     "required": [
