@@ -35,7 +35,8 @@
         "href",
         "created_at",
         "meta",
-        "links"
+        "links",
+        "permissions"
     ],
     "additionalProperties": false
 }
