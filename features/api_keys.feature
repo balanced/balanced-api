@@ -63,10 +63,16 @@ Feature: API Keys
     """
     {
 	"api_keys": [{
-          "permissions": {
-	    "/customers": "rw",
-	    "/debits": "r"
-	  }
+          "permissions": [
+	    {
+	      "path": "/customers",
+	      "permissions": ["read", "write"]
+            },
+	    {
+	      "path": "/debits",
+	      "permissions": ["read"]
+	    }
+	  ]
 	}]
     }
     """
