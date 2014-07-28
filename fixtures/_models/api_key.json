@@ -26,7 +26,7 @@
             "properties": {},
             "additionalProperties": false
         },
-	"permissions": {
+	"scopes": {
             "type": "object"
 	}
     },
@@ -36,7 +36,7 @@
         "created_at",
         "meta",
         "links",
-        "permissions"
+        "scopes"
     ],
     "additionalProperties": false
 }

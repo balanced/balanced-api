@@ -63,7 +63,7 @@ Feature: API Keys
     """
     {
 	"api_keys": [{
-          "permissions": [
+          "scopes": [
 	    {
 	      "path": "/customers",
 	      "permissions": ["read", "write"]
