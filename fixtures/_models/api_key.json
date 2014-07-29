@@ -32,7 +32,7 @@
                 "type": "object",
 		"properties": {
 		    "path": {
-		        "description": "A relative path that if matches the path of a request made with this API key will apply the related permissions to the call. Paths can have '*' wildcards but otherwise must match exactly.",
+		        "description": "A relative path that, if matching the path of a request made with this API key, will apply the related permissions to the call. Paths can have '*' wildcards but otherwise must match exactly.",
 		        "type": "string",
 			"pattern": "/(([A-z0-9\\-*])?/?)+"
 		    },
