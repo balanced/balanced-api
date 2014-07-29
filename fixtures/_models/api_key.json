@@ -27,7 +27,27 @@
             "additionalProperties": false
         },
 	"scopes": {
-            "type": "object"
+	    "type": "array",
+	    "items": {
+                "type": "object",
+		"properties": {
+		    "path": {
+		        "description": "A relative path that if matches the path of a request made with this API key will apply the related permissions to the call. Paths can have '*' wildcards but otherwise must match exactly.",
+		        "type": "string",
+			"pattern": "/(([A-z0-9\\-*])?/?)+"
+		    },
+		    "permissions": {
+		        "description": "A list of permissions this path is granted. 'read' maps to POST, PUT, DELETE, and PATCH HTTP verbs, 'write' to GET",
+		        "type": "array",
+			"items": {
+			    "enum": ["read", "write"]
+			},
+			"uniqueItems": true
+		    }
+		},
+		"requiredProperties": ["path", "permissions"],
+		"additionalProperties": false
+	    }
 	}
     },
     "required": [
