@@ -41,3 +41,7 @@ end
 Given(/^I have created more than one API keys$/) do
   2.times { step "I have created an API key" }
 end
+
+Then(/^the response should contain "([^"]*)"$/ do |expected_response|
+  @response.body.should include(expected_response)
+end

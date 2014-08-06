@@ -83,3 +83,4 @@ Feature: API Keys
     And the response is valid according to the "customers" schema
     When I POST to /debits
     Then I should get a 401 Unauthorized status code
+    Then the response should contain "Not permitted to perform create on debits with this API key"
