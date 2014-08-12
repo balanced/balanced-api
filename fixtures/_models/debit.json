@@ -80,6 +80,14 @@
                     ],
                     "pattern": "DT[a-zA-Z0-9]{16,32}"
                 },
+                "hold": {
+                    "description": "The card authorization this debit is associated with",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "HL[a-zA-Z0-9]{16,32}"
+                },
                 "customer": {
                     "description": "The customer for which the funding instrument is associated",
                     "type": [
