@@ -80,7 +80,7 @@
                     ],
                     "pattern": "DT[a-zA-Z0-9]{16,32}"
                 },
-                "hold": {
+                "card_hold": {
                     "description": "The card authorization this debit is associated with",
                     "type": [
                         "null",
