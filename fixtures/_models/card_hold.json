@@ -32,7 +32,7 @@
         "transaction_number": {
             "description": "An identifier for this transaction.",
             "type": "string",
-            "pattern": "HL[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            "pattern": "HL[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
         },
         "amount": {
             "description": "Amount in cents for this card_hold",
