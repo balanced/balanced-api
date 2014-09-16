@@ -54,7 +54,7 @@
         },
         "transaction_number": {
             "type": "string",
-            "pattern": "RV[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            "pattern": "RV[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
         },
         "meta": {
             "$ref": "meta.json"

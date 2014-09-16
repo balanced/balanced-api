@@ -59,7 +59,7 @@
         "transaction_number": {
             "description": "An identifier for this transaction.",
             "type": "string",
-            "pattern": "W[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            "pattern": "W[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
         },
         "meta": {
             "$ref": "meta.json"
