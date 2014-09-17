@@ -14,13 +14,16 @@ Feature: Card Holds
     """
     {
       "amount": 1234,
-      "description": "something for the dashboard"
+      "description": "something for the dashboard",
+      "meta": {
+        "something": "random"
+      }
     }
     """
     Then I should get a 201 Created status code
     And the response is valid according to the "card_holds" schema
 
-  Scenario: Captureing a hold
+  Scenario: Capturing a hold
     Given I have created a hold
     When I make a POST request to /card_holds/:card_hold_id/debits
     Then I should get a 201 Created status code
