@@ -40,3 +40,19 @@ Given(/^I have a merchant with an order with the body:$/) do |body|
   @client.post("/customers/#{@merchant_id}/orders", @client.hydrater(body))
   @client.add_hydrate :order_id, @client['id']
 end
+
+Given(/^I have a hold associated to an order/) do
+  step 'I have created a customer'
+  @client.post('/customers', {})
+  @merchant_id = @client['id']
+  @client.add_hydrate :merchant_id, @client['id']
+  @client.post("/customers/#{@client['id']}/orders", {})
+  @order_id = @client['id']
+  @client.add_hydrate :order_id, @order_id
+  @client.add_hydrate :card_id, @card_id
+  @client.post("/cards/#{@card_id}/card_holds", {
+      amount: 1234,
+      order: @order_id
+  })
+  @client.add_hydrate :card_hold_id, @client['id']
+end

@@ -103,6 +103,24 @@ Feature: Orders
       }
     """
 
+  Scenario: Checking orders can have associated holds
+    Given I have a hold associated to an order
+
+    When I make a POST request to /card_holds/:card_hold_id/debits
+    Then I should get a 201 Created status code
+    And the response is valid according to the "debits" schema
+
+    When I make a GET request to /orders/:order_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "orders" schema
+    And the fields on this order match:
+    """
+      {
+        "amount": 1234,
+        "amount_escrowed": 1234
+      }
+    """
+
   Scenario: Checking escrow of order after creating a credit
     Given I have an order with a debit
     And I have tokenized a bank account and associated with the merchant

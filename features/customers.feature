@@ -68,7 +68,21 @@ Feature: Customers
       """
       {
         "customers": [{
-          "email": "asdf@balancedpayments.com"
+          "email": "asdf@balancedpayments.com",
+          "address": {
+            "line1": "123 Fake street",
+            "line2": "Suite 345",
+            "city": "San Francisco",
+            "state": "California",
+            "postal_code": "94000",
+            "country_code": "US"
+          },
+          "business_name": "Lucky something",
+          "ein": "999999999",
+          "meta": {
+              "fb_account": "48120"
+          },
+          "phone": "1231231234"
         }]
       }
       """
@@ -77,7 +91,21 @@ Feature: Customers
     And the fields on this customer match:
       """
       {
-        "email": "asdf@balancedpayments.com"
+        "email": "asdf@balancedpayments.com",
+          "address": {
+            "line1": "123 Fake street",
+            "line2": "Suite 345",
+            "city": "San Francisco",
+            "state": "California",
+            "postal_code": "94000",
+            "country_code": "US"
+          },
+          "business_name": "Lucky something",
+          "ein": "999999999",
+          "meta": {
+              "fb_account": "48120"
+          },
+          "phone": "1231231234"
       }
       """
 
