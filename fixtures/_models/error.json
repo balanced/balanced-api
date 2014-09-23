@@ -163,7 +163,7 @@
             ]
         },
         "extras": {
-            "description": "Any extra information associated with this exception, including URI of failed transaction resource",
+            "description": "A collection of keys and values used to provide additional contextual information regarding this error",
             "type": "object"
         },
         "status_code": {
