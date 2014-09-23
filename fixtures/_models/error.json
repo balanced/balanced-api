@@ -155,8 +155,17 @@
                 }
             ]
         },
-        "additional": {},
-        "extras": {},
+        "additional": {
+            "description": "Any additional information that may describe how to resolve the issue",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "extras": {
+            "description": "A collection of keys and values used to provide additional contextual information regarding this error",
+            "type": "object"
+        },
         "status_code": {
             "type": "integer",
             "enum": [
