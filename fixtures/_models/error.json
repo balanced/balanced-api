@@ -155,8 +155,17 @@
                 }
             ]
         },
-        "additional": {},
-        "extras": {},
+        "additional": {
+            "description": "Any additional information that may describe how to resolve the issue",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "extras": {
+            "description": "Any extra information associated with this exception, including URI of failed transaction resource",
+            "type": "object"
+        },
         "status_code": {
             "type": "integer",
             "enum": [
