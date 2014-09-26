@@ -86,6 +86,14 @@
                         "string"
                     ],
                     "pattern": "WD[a-zA-Z0-9]{16,32}"
+                },
+                "order": {
+                    "description": "The associated order for this hold.",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "OR[a-zA-Z0-9]{16,32}"
                 }
             },
             "requird": [
