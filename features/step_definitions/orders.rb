@@ -56,3 +56,11 @@ Given(/^I have a hold associated to an order/) do
   })
   @client.add_hydrate :card_hold_id, @client['id']
 end
+
+
+Given(/^I have more than two orders with debits$/) do
+  3.times do |i|
+    step 'I have an order with a debit'
+    instance_variable_set("@order_id_#{i + 1}", @order_id)
+  end
+end

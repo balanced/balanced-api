@@ -124,3 +124,28 @@ Feature: Credits
        "category_code": "no-funding-destination"
       }
     """
+
+  Scenario: Bulk credit a bank account
+    Given I have more than two orders with debits
+    When I have tokenized a bank account and associated with the merchant
+    When I POST to /bank_accounts/:bank_account_id/bulk_credits with the body:
+      """
+      {
+        "credits": [
+          {
+            "amount": 1234,
+            "order": ":order_id_1"
+          },
+          {
+            "amount": 1234,
+            "order": ":order_id_2"
+          },
+          {
+            "amount": 1234,
+            "order": ":order_id_3"
+          }
+        ]
+      }
+      """
+    Then I should get a 201 Created status code
+    And there should be no response body
