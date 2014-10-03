@@ -126,26 +126,38 @@ Feature: Credits
     """
 
   Scenario: Bulk credit a bank account
-    Given I have more than two orders with debits
-    When I have tokenized a bank account and associated with the merchant
+    Given I have a merchant with 5 orders with debits
     When I POST to /bank_accounts/:bank_account_id/bulk_credits with the body:
       """
       {
         "credits": [
           {
             "amount": 1234,
-            "order": ":order_id_1"
+            "order": ":order_id_1",
+            "appears_on_statement_as": "Payout group A"
           },
           {
             "amount": 1234,
-            "order": ":order_id_2"
+            "order": ":order_id_2",
+            "appears_on_statement_as": "Payout group A"
           },
           {
             "amount": 1234,
-            "order": ":order_id_3"
+            "order": ":order_id_3",
+            "appears_on_statement_as": "Payout group B"
+          },
+          {
+            "amount": 1234,
+            "order": ":order_id_4",
+            "appears_on_statement_as": "Payout group B"
+          },
+          {
+            "amount": 1234,
+            "order": ":order_id_5",
+            "appears_on_statement_as": "Payout group C"
           }
         ]
       }
       """
-    Then I should get a 201 Created status code
+    Then I should get a 202 Accepted status code
     And there should be no response body
