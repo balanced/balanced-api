@@ -56,3 +56,23 @@ Given(/^I have a hold associated to an order/) do
   })
   @client.add_hydrate :card_hold_id, @client['id']
 end
+
+
+Given(/^I have a merchant with (\d) orders with debits$/) do |num|
+  step 'I have created a customer'
+  @client.post('/customers', {})
+  @merchant_id = @client['id']
+  @client.add_hydrate :merchant_id, @merchant_id
+  step 'I have tokenized a bank account and associated with the merchant'
+  num.to_i.times do |i|
+    @client.post("/customers/#{@merchant_id}/orders", {})
+    order_id = @client['id']
+    @client.add_hydrate :order_id, order_id
+    @client.post("/cards/#{@card_id}/debits", {
+                   amount: 12345,
+                   order: order_id
+                 })
+    @client.add_hydrate :debit_id, @merchant_id
+    instance_variable_set("@order_id_#{i + 1}", order_id)
+  end
+end
