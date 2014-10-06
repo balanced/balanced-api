@@ -19,11 +19,6 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/accounts/{accounts.id}/debits"
-                },
-                "accounts.transfers": {
-                    "type": "string",
-                    "format": "uri",
-                    "pattern": "/accounts/{accounts.id}/transfers"
                 }
             },
             "additionalProperties": false,
