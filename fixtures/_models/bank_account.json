@@ -84,6 +84,14 @@
                         "string"
                     ],
                     "pattern": "BZ[a-zA-Z0-9]{16,32}"
+                },
+                "sweep_account": {
+                    "description": "A funding instrument representing a sweep account used for bulk credits",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "(AT)[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
