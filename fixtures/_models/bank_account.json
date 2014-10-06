@@ -48,9 +48,6 @@
             "description": "The name of the bank.",
             "type": "string"
         },
-        "address": {
-            "$ref": "address.json"
-        },
         "fingerprint": {
             "description": "Uniquely identifies the bank account (``account_number`` and ``routing_number``).",
             "type": "string"
@@ -104,7 +101,6 @@
         "routing_number",
         "account_type",
         "bank_name",
-        "address",
         "fingerprint",
         "can_debit",
         "can_credit",
