@@ -124,3 +124,50 @@ Feature: Credits
        "category_code": "no-funding-destination"
       }
     """
+
+
+  Scenario: Bulk credit to sweep account
+    Given I have a merchant with 2 orders with debits
+    When I POST to /bank_accounts/:bank_account_id/sweep_account with the body:
+    """
+      {
+        "credits": [{
+          "amount": 1234,
+          "order": "/orders/:order_id_1",
+          "appears_on_statement_as": "Payout group A"
+        }]
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+    When I make a GET request to /bank_accounts/:bank_account_id/sweep_account
+    Then I should get a 200 OK status code
+    And the fields on this error match:
+    """
+      {
+       "balance": 1234
+      }
+    """
+
+    When I POST to /bank_accounts/:bank_account_id/sweep_account with the body:
+    """
+      {
+        "credits": [{
+          "amount": 1234,
+          "order": "/orders/:order_id_2",
+          "appears_on_statement_as": "Payout group B"
+        }]
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+    When I make a GET request to /bank_accounts/:bank_account_id/sweep_account
+    Then I should get a 200 OK status code
+    And the fields on this error match:
+    """
+      {
+       "balance": 2468
+      }
+    """
