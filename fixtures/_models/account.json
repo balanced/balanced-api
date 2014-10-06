@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "The redeemable balance of a customer is represented as a financial instrument just like a Card or Bank Account.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "(AT)[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "balance": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "currency": {
+            "type": "string",
+            "enum": [
+                "USD"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "type": "string",
+                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "customer"
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "balance",
+        "currency",
+        "meta",
+        "links"
+    ]
+}
