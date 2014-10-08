@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "amount": {
+            "description": "The amount of the adjustment.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "created_at": {
+            "description": " `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this debit was created.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "description": {
+            "description": "Free-text description of the debit for the dashboard.",
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "amount",
+        "description",
+        "created_at"
+    ],
+    "additionalProperties": false
+}

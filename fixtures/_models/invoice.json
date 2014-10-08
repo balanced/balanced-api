@@ -1,0 +1,327 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "IV[a-zA-Z0-9]{16,32}"
+        },
+        "href": {
+            "type": "string",
+            "format": "uri"
+        },
+        "created_at": {
+            "description": " `ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this debit was created.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "settle_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "period_start": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "period_end": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "adjustments": {
+            "items": {
+                "$ref": "_models/adjustment.json"
+            },
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true
+        },
+        "adjustments_count": {
+            "description": "The number of adjustments during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "adjustment_total_fee": {
+            "description": "The amount of adjustment fees in cents incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_credit_fee": {
+            "description": "The amount of fees in cents incurred for credits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_credits_count": {
+            "description": "The number of bank account credits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_credits_total_amount": {
+            "description": "The total amount of all credits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_credits_total_fee": {
+            "description": "The total amount of all bank account credit fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_debit_variable_fee_cap": {
+            "description": "The fixed fee cap for bank account debits.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_debit_variable_fee_percentage": {
+            "description": "The fee percentage rate for bank account debits.",
+            "type": "float",
+            "minimum": 0.00
+        },
+        "bank_account_debits_count": {
+            "description": "The number of bank account debits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_debits_total_amount": {
+            "description": "The total amount of all debits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "bank_account_debits_total_fee": {
+            "description": "The total amount of all debit fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_credit_fixed_fee": {
+            "description": "The fixed fee amount for credits to cards.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_credits_count": {
+            "description": "The number of credits to cards during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_credits_total_amount": {
+            "description": "The total amount of all credits to cards during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_credits_total_fee": {
+            "description": "The total amount of all credits to cards fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_debit_fixed_fee": {
+            "description": "The fixed fee amount for card debits.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_debit_variable_fee_percentage": {
+            "description": "The fee percentage rate for bank account debits.",
+            "type": "float",
+            "minimum": 0.00
+        },
+        "card_debits_count": {
+            "description": "The total number of card debits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_debits_total_amount": {
+            "description": "The total amount of all card debits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_debits_total_fee": {
+            "description": "The total amount of all card debit fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_hold_fee": {
+            "description": "The fixed fee amount for card holds.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_holds_count": {
+            "description": "The total number of card holds during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_holds_total_amount": {
+            "description": "The total amount of all card holds during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "card_holds_total_fee": {
+            "description": "The total amount of all card hold fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "dispute_fixed_fee": {
+            "description": "The fixed fee amount for disputes.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "disputes_count": {
+            "description": "The total number of disputes during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "disputes_total_amount": {
+            "description": "The total amount of all disputes during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "disputes_total_fee": {
+            "description": "The total amount of all dispute fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "failed_credit_fee": {
+            "description": "The fixed fee amount for failed credits.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "failed_credits_count": {
+            "description": "The total number of failed credits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "failed_credits_total_amount": {
+            "description": "The total amount of all failed credits during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "failed_credits_total_fee": {
+            "description": "The total amount of all failed credit fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "refund_fee": {
+            "description": "The fixed fee amount for refunds.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "refunds_count": {
+            "description": "The total number of refunds during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "refunds_total_amount": {
+            "description": "The total amount of all refunds during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "refunds_total_fee": {
+            "description": "The total amount of all refund fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "reversals_count": {
+            "description": "The total number of reversals during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "reversals_total_amount": {
+            "description": "The total amount of all reversals during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "reversals_total_fee": {
+            "description": "The total amount of all reversal fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "sequence_number": {
+            "description": "The sequential number of the invoice.",
+            "type": "integer",
+            "minimum":1
+        },
+        "status": {
+            "$ref": "status.json"
+        },
+        "total_fee": {
+            "description": "The total amount of all fees incurred during the invoice period.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "dispute",
+                "fee"
+            ]
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "description": "The bank account debited.",
+                    "type": "string",
+                    "pattern": "(BA)[a-zA-Z0-9]{16,32}"
+                }
+            },
+            "required": [
+                "source"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "href",
+        "created_at",
+        "updated_at",
+        "settle_at",
+        "period_start",
+        "period_end",
+        "adjustments",
+        "adjustments_count",
+        "adjustment_total_fee",
+        "bank_account_credit_fee",
+        "bank_account_credits_count",
+        "bank_account_credits_total_amount",
+        "bank_account_credits_total_fee",
+        "bank_account_debit_variable_fee_cap",
+        "bank_account_debit_variable_fee_percentage",
+        "bank_account_debits_count",
+        "bank_account_debits_total_amount",
+        "bank_account_debits_total_fee",
+        "card_credit_fixed_fee",
+        "card_credits_count",
+        "card_credits_total_amount",
+        "card_credits_total_fee",
+        "card_debit_fixed_fee",
+        "card_debit_variable_fee_percentage",
+        "card_debits_count",
+        "card_debits_total_amount",
+        "card_debits_total_fee",
+        "card_hold_fee",
+        "card_holds_count",
+        "card_holds_total_amount",
+        "card_holds_total_fee",
+        "dispute_fixed_fee",
+        "disputes_count",
+        "disputes_total_amount",
+        "disputes_total_fee",
+        "failed_credit_fee",
+        "failed_credits_count",
+        "failed_credits_total_amount",
+        "failed_credits_total_fee",
+        "refund_fee",
+        "refunds_count",
+        "refunds_total_amount",
+        "refunds_total_fee",
+        "reversals_count",
+        "reversals_total_amount",
+        "reversals_total_fee",
+        "sequence_number",
+        "status",
+        "total_fee",
+        "type",
+        "links"
+    ]
+}
