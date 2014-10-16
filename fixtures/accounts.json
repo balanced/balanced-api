@@ -19,13 +19,19 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/accounts/{accounts.id}/debits"
+                },
+                "accounts.settlements": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts/{accounts.id}/settlements"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "accounts.customer",
                 "accounts.credits",
-                "accounts.debits"
+                "accounts.debits",
+                "accounts.settlements"
             ]
         },
         "meta": {

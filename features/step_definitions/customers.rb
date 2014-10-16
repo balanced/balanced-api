@@ -11,6 +11,7 @@ Given(/^I have created a customer$/) do
   )
   @customer_id = @client['id']
   @client.add_hydrate :customer_id, @customer_id
+  @client.add_hydrate :customer_deposit_account_id, @client['accounts']['deposit']
 
   @customer_url = @client['customers']['href']
 

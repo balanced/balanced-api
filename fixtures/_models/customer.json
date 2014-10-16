@@ -98,6 +98,14 @@
         "links": {
             "type": "object",
             "properties": {
+                "accounts": [
+                    {
+                        "deposit_account": {
+                            "type": "string",
+                            "pattern": "(AT)[a-zA-Z0-9]{16,32}"
+                        }
+                    }
+                ],
                 "source": {
                     "type": [
                         "null",
@@ -114,6 +122,7 @@
                 }
             },
             "required": [
+                "accounts",
                 "source",
                 "destination"
             ],

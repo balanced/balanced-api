@@ -5,7 +5,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "(AT)[a-zA-Z0-9]{16,32}"
+            "pattern": "AT[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -37,7 +37,7 @@
             "properties": {
                 "customer": {
                     "type": "string",
-                    "pattern": "(CU|AC)[a-zA-Z0-9]{16,32}"
+                    "pattern": "CU[a-zA-Z0-9]{16,32}"
                 }
             },
             "additionalProperties": false,

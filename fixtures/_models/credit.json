@@ -76,7 +76,7 @@
                 "destination": {
                     "description": "The funding destination for this credit",
                     "type": "string",
-                    "pattern": "(CC|BA)[a-zA-Z0-9]{16,32}"
+                    "pattern": "(CC|BA|AT)[a-zA-Z0-9]{16,32}"
                 },
                 "order": {
                     "description": "The order this credit is associated with",

@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        ""
+        "links": {
+            "type": "object",
+            "properties": {
+                "settlements.destination": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{settlements.destination}",
+                    "required": true
+                },
+                "settlements.account": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts/{settlements.account}",
+                    "required": true
+                }
+            },
+            "required": [
+                "settlements.destination",
+                "settlements.account"
+            ]
+        },
+        "meta": {
+            "$ref": "_models/meta.json"
+        },
+        "settlements": {
+            "items": {
+                "$ref": "_models/settlement.json"
+            },
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "required": true
+        }
+    },
+    "required": [
+        "links",
+        "settlements"
+    ]
+}

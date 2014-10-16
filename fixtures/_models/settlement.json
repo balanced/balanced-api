@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "RV[a-zA-Z0-9]{16,32}"
+            "pattern": "(ST)[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -19,9 +19,8 @@
             "format": "date-time"
         },
         "amount": {
-            "description": "The amount in cents of this reversal",
             "type": "integer",
-            "minimum": 1
+            "minimum": 0
         },
         "currency": {
             "type": "string",
@@ -29,8 +28,10 @@
                 "USD"
             ]
         },
+        "appears_on_statement_as": {
+            "type": "string"
+        },
         "description": {
-            "description": "Free-text description of the reversal for the dashboard.",
             "type": [
                 "string",
                 "null"
@@ -46,15 +47,10 @@
             ]
         },
         "failure_reason": {
-            "description": "A human readable error message with the reason for the failure",
             "type": [
                 "string",
                 "null"
             ]
-        },
-        "transaction_number": {
-            "type": "string",
-            "pattern": "RV[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
         },
         "meta": {
             "$ref": "meta.json"
@@ -62,25 +58,19 @@
         "links": {
             "type": "object",
             "properties": {
-                "credit": {
-                    "description": "The credit this reversal is associated with",
+                "destination": {
                     "type": "string",
-                    "pattern": "CR[a-zA-Z0-9]{16,32}"
+                    "pattern": "BA[a-zA-Z0-9]{16,32}"
                 },
-                "order": {
-                    "description": "The order this credit is associated with",
-                    "type": [
-                        "null",
-                        "string"
-                    ],
-                    "pattern": "OR[a-zA-Z0-9]{16,32}"
+                "account": {
+                    "type": "string",
+                    "pattern": "AT[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
-                "credit",
-                "order"
+                "destination",
+                "account"
             ],
-            "additionalProperties": false
         }
     },
     "additionalProperties": false,
@@ -91,10 +81,12 @@
         "updated_at",
         "amount",
         "currency",
+        "appears_on_statement_as",
         "description",
         "status",
         "failure_reason_code",
         "failure_reason",
+        "transaction_number",
         "meta",
         "links"
     ]

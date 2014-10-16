@@ -25,6 +25,11 @@
                     "format": "uri",
                     "pattern": "/resources/{credits.destination}"
                 },
+                "credits.account": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts/{credits.account}"
+                },
                 "credits.events": {
                     "type": "string",
                     "format": "uri",
@@ -36,6 +41,7 @@
                 "credits.customer",
                 "credits.order",
                 "credits.destination",
+                "credits.account",
                 "credits.events"
             ]
         },
