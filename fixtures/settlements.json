@@ -6,6 +6,16 @@
         "links": {
             "type": "object",
             "properties": {
+                "settlements.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{settlements.id}/credits"
+                },
+                "settlements.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{settlements.id}/reversals"
+                },
                 "settlements.destination": {
                     "type": "string",
                     "format": "uri",
@@ -20,6 +30,8 @@
                 }
             },
             "required": [
+                "settlements.credits",
+                "settlements.reversals",
                 "settlements.destination",
                 "settlements.account"
             ]
