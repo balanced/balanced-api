@@ -29,6 +29,13 @@
                 "USD"
             ]
         },
+        "type": {
+            "type": "string",
+            "enum": [
+                "deposit",
+                "operating"
+            ]
+        },
         "meta": {
             "type": "object"
         },
