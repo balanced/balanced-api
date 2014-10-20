@@ -20,6 +20,16 @@
                     "format": "uri",
                     "pattern": "/accounts/{accounts.id}/debits"
                 },
+                "accounts.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts/{accounts.id}/reversals"
+                },
+                "accounts.refunds": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts/{accounts.id}/refunds"
+                },
                 "accounts.settlements": {
                     "type": "string",
                     "format": "uri",
@@ -31,6 +41,8 @@
                 "accounts.customer",
                 "accounts.credits",
                 "accounts.debits",
+                "accounts.reversals",
+                "accounts.refunds",
                 "accounts.settlements"
             ]
         },
