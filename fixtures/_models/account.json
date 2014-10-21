@@ -29,6 +29,13 @@
                 "USD"
             ]
         },
+        "can_debit": {
+            "description": "Flag indicating whether this account can be debited (true) or not (false).",
+            "type": "boolean"
+        },
+        "can_credit": {
+            "description": "Flag indicating whether this account instrument can be credited (true) or not (false).",
+            "type": "boolean"
         },
         "meta": {
             "type": "object"
@@ -54,6 +61,8 @@
         "updated_at",
         "balance",
         "currency",
+        "can_credit",
+        "can_debit",
         "meta",
         "links"
     ]
