@@ -97,7 +97,7 @@ Feature: Settlements
         }]
       }
     """
-    Then I should get a 409 status code
+    Then I should get a 400 status code
     And the response is valid according to the "errors" schema
     And the fields on this error match:
     """
