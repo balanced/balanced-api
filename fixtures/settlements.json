@@ -22,10 +22,10 @@
                     "pattern": "/resources/{settlements.destination}",
                     "required": true
                 },
-                "settlements.account": {
+                "settlements.source": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/accounts/{settlements.account}",
+                    "pattern": "/accounts/{settlements.source}",
                     "required": true
                 }
             },
@@ -33,7 +33,7 @@
                 "settlements.credits",
                 "settlements.reversals",
                 "settlements.destination",
-                "settlements.account"
+                "settlements.source"
             ]
         },
         "meta": {

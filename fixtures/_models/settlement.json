@@ -62,14 +62,14 @@
                     "type": "string",
                     "pattern": "BA[a-zA-Z0-9]{16,32}"
                 },
-                "account": {
+                "source": {
                     "type": "string",
                     "pattern": "AT[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
                 "destination",
-                "account"
+                "source"
             ],
         }
     },

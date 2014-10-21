@@ -17,11 +17,6 @@
                     "pattern": "/orders/{reversals.order}",
                     "required": true
                 },
-                "reversals.account": {
-                    "type": "string",
-                    "format": "uri",
-                    "pattern": "/settlements/{reversals.account}"
-                },
                 "reversals.events": {
                     "type": "string",
                     "format": "uri",
@@ -32,7 +27,7 @@
             "required": [
                 "reversals.credit",
                 "reversals.order",
-                "reversals.account",
+                "reversals.source",
                 "reversals.events"
             ]
         },
