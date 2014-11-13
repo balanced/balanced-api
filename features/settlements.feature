@@ -1,4 +1,3 @@
-@focus
 Feature: Settlements
   Settlement is the action of moving money out of an Account to a
   bank account.
@@ -6,7 +5,7 @@ Feature: Settlements
   Scenario: Create a settlement
     Given I have an Account with sufficient funds
     And I have tokenized a bank account
-    When I POST to /accounts/:customer_deposit_account_id/settlements with the body:
+    When I POST to /accounts/:customer_sweep_account_id/settlements with the body:
       """
       {
         "settlements": [{
@@ -106,3 +105,20 @@ Feature: Settlements
       }
     """
 
+  Scenario: Settlement fails
+    Given I have an Account with sufficient funds
+    And I have tokenized a failing bank account associated with the merchant
+    When I POST to /settlements with the body:
+    """
+      {
+        "settlements": [{
+          "description": "Will this settlement work? Certainly not!"
+        }]
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "settlements" schema
+    And the fields on this error match:
+    """
+      { "status": "failed" }
+    """

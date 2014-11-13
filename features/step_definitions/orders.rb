@@ -21,8 +21,7 @@ Given(/^I have an order with a debit$/) do
   @client.add_hydrate :debit_id, @client['id']
 end
 
-
-When(/^I have tokenized a bank account and associated with the merchant$/) do
+Given(/^I have tokenized a bank account associated with the merchant$/) do
   step 'I have tokenized a bank account'
   @client.put("/bank_accounts/#{@bank_account_id}", {
                 links: {
@@ -31,12 +30,20 @@ When(/^I have tokenized a bank account and associated with the merchant$/) do
               })
 end
 
+Given(/^I have tokenized a failing bank account associated with the merchant$/) do
+  step 'I have tokenized a failing bank account'
+  @client.put("/bank_accounts/#{@bank_account_id}", {
+                links: {
+                  customer: @merchant_id
+                }
+              })
+end
 
 Given(/^I have a merchant with an order with the body:$/) do |body|
   step 'I have created a customer'
   @merchant_id = @customer_id
   @client.add_hydrate :merchant_id, @merchant_id
-  step 'I have tokenized a bank account and associated with the merchant'
+  step 'I have tokenized a bank account associated with the merchant'
   @client.post("/customers/#{@merchant_id}/orders", @client.hydrater(body))
   @client.add_hydrate :order_id, @client['id']
 end
@@ -63,16 +70,16 @@ Given(/^I have a merchant with (\d) orders with debits$/) do |num|
   @client.post('/customers', {})
   @merchant_id = @client['id']
   @client.add_hydrate :merchant_id, @merchant_id
-  step 'I have tokenized a bank account and associated with the merchant'
+  step 'I have tokenized a bank account associated with the merchant'
   num.to_i.times do |i|
     @client.post("/customers/#{@merchant_id}/orders", {})
     order_id = @client['id']
     @client.add_hydrate :order_id, order_id
     @client.post("/cards/#{@card_id}/debits", {
-                   amount: 12345,
+                   amount: 10000,
                    order: order_id
                  })
-    @client.add_hydrate :debit_id, @merchant_id
+    @client.add_hydrate :debit_id, @client['id']
     instance_variable_set("@order_id_#{i + 1}", order_id)
   end
 end

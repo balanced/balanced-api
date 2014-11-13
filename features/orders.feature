@@ -123,7 +123,7 @@ Feature: Orders
 
   Scenario: Checking escrow of order after creating a credit
     Given I have an order with a debit
-    And I have tokenized a bank account and associated with the merchant
+    And I have tokenized a bank account associated with the merchant
     And I POST to /bank_accounts/:bank_account_id/credits with the body:
     """
     {
@@ -146,7 +146,7 @@ Feature: Orders
 
   Scenario: Orders cannot be credited more than escrow balance
     Given I have created an order
-    And I have tokenized a bank account and associated with the merchant
+    And I have tokenized a bank account associated with the merchant
     And I have tokenized a customer card
     And I make a POST request to the link "cards.debits" with the body:
     """
@@ -252,7 +252,7 @@ Feature: Orders
         }]
       }
     """
-    And I have tokenized a bank account and associated with the merchant
+    And I have tokenized a bank account associated with the merchant
     Then I make a POST request to the link "bank_accounts.credits" with the body:
     """
       {

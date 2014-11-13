@@ -4,7 +4,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "(ST)[a-zA-Z0-9]{16,32}"
+            "pattern": "ST[a-zA-Z0-9]{16,32}"
         },
         "href": {
             "type": "string",
@@ -70,7 +70,7 @@
             "required": [
                 "destination",
                 "source"
-            ],
+            ]
         }
     },
     "additionalProperties": false,

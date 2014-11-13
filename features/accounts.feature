@@ -23,7 +23,7 @@ Feature: Accounts
 
   Scenario: Credit a customer deposit account
     Given I have an order with a debit
-    When I POST to /accounts/:customer_deposit_account_id/credits
+    When I POST to /accounts/:customer_sweep_account_id/credits
     """
     {
       "credits": [{
