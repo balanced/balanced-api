@@ -1,5 +1,5 @@
 Feature: Accounts
-  Accounts are a way to have a store of some kind of value.
+  Accounts are funding instruments which are able to store a balance internally with the Balanced system.
 
   Scenario: List accounts
     Given I have created a customer
