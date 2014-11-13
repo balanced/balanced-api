@@ -105,6 +105,25 @@ Feature: Settlements
       }
     """
 
+  Scenario: Creating a settlement for an Account with insufficient funds fails
+    Given I have created a customer
+    When I POST to /accounts/:customer_sweep_account_id/settlements with the body:
+    """
+      {
+        "settlements": [{
+          "destination": "/bank_accounts/:bank_account_id"
+        }]
+      }
+    """
+    Then I should get a 409 status code
+    And the response is valid according to the "errors" schema
+    And the fields on this error match:
+    """
+      {
+       "category_code": "account-nothing-to-settle"
+      }
+    """
+
   Scenario: Settlement fails
     Given I have an Account with sufficient funds
     And I have tokenized a failing bank account associated with the merchant
