@@ -10,15 +10,16 @@ Given(/^I have created a customer$/) do
     }
   )
   @customer_id = @client['id']
+  @customer_url = @client['href']
+  @accounts =  @client.get("#{@customer_url}/accounts")['accounts']
   @client.add_hydrate :customer_id, @customer_id
-  # get the sweep account
-  @client['accounts'].each do |acct|
-    if acct['type'] == 'sweep'
-      @client.add_hydrate :customer_sweep_account_id, acct['id']
+  # get the payable account
+  @accounts.each do |acct|
+    if acct['type'] == 'payable'
+      @client.add_hydrate :customer_payable_account_id, acct['id']
       break
     end
   end
-  @customer_url = @client['customers']['href']
 
   # tokenize a card for them
   @client.post('/cards',
@@ -51,7 +52,6 @@ Given(/^I have created a customer$/) do
       value: @card_id
     }]
   )
-
   ## TODO: fix hax
   # Right now, we rely on last_body in places becuase the client is mutable
   # this is bad and we should stop it.

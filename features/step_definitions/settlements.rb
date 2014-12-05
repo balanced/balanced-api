@@ -1,7 +1,7 @@
 Given(/^I have a bank account with a settlement$/) do
   step 'I have an order with a debit'
   step 'I have created a customer'
-  @client.post("/accounts/#{@customer_sweep_account_id}/credits", {
+  @client.post("/accounts/#{@customer_payable_account_id}/credits", {
                  amount: 1234,
                  order: :order_id
                })

@@ -126,9 +126,9 @@ Feature: Credits
     """
 
 
-  Scenario: Bulk credit to a customer sweep account
+  Scenario: Bulk credit to a customer payable account
     Given I have a merchant with 2 orders with debits
-    When I POST to /accounts/:customer_sweep_account_id/credits with the body:
+    When I POST to /accounts/:customer_payable_account_id/credits with the body:
     """
       {
         "credits": [{
@@ -141,16 +141,16 @@ Feature: Credits
     Then I should get a 201 Created status code
     And the response is valid according to the "credits" schema
 
-    When I make a GET request to /accounts/:customer_sweep_account_id
+    When I make a GET request to /accounts/:customer_payable_account_id
     Then I should get a 200 OK status code
-    And the fields on this error match:
+    And the fields on this account match:
     """
       {
        "balance": 1000
       }
     """
 
-    When I POST to /accounts/:customer_sweep_account_id/credits with the body:
+    When I POST to /accounts/:customer_payable_account_id/credits with the body:
     """
       {
         "credits": [{
@@ -163,9 +163,9 @@ Feature: Credits
     Then I should get a 201 Created status code
     And the response is valid according to the "credits" schema
 
-    When I make a GET request to /accounts/:customer_sweep_account_id/credits
+    When I make a GET request to /accounts/:customer_payable_account_id
     Then I should get a 200 OK status code
-    And the fields on this error match:
+    And the fields on this account match:
     """
       {
        "balance": 2000

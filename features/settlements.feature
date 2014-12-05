@@ -5,7 +5,7 @@ Feature: Settlements
   Scenario: Create a settlement
     Given I have an Account with sufficient funds
     And I have tokenized a bank account
-    When I POST to /accounts/:customer_sweep_account_id/settlements with the body:
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
       """
       {
         "settlements": [{
@@ -107,7 +107,7 @@ Feature: Settlements
 
   Scenario: Creating a settlement for an Account with insufficient funds fails
     Given I have created a customer
-    When I POST to /accounts/:customer_sweep_account_id/settlements with the body:
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
     """
       {
         "settlements": [{
