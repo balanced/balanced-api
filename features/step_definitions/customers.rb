@@ -17,6 +17,7 @@ Given(/^I have created a customer$/) do
   @accounts.each do |acct|
     if acct['type'] == 'payable'
       @client.add_hydrate :customer_payable_account_id, acct['id']
+      @customer_payable_account_id = acct['id']
       break
     end
   end
