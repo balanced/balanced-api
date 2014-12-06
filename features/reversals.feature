@@ -179,12 +179,13 @@ Feature: Reversal
 
   Scenario: Reverse an Account credit after settlement
     Given I have an Account with sufficient funds
-    When I make a POST request to the link "accounts.settlements" with the body:
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
+
       """
       {
         "settlements": [{
             "description": "Batch A",
-            "destination": /bank_accounts/:bank_account_id
+            "funding_instrument": /bank_accounts/:bank_account_id
         }]
       }
       """
@@ -209,7 +210,7 @@ Feature: Reversal
      }
      """
 
-    When I make a POST request to the link "accounts.settlements"
+    When POST to /accounts/:customer_payable_account_id/settlements
     Then I should get a 201 Created status code
     And the response is valid according to the "settlements" schema
 
