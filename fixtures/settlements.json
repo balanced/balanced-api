@@ -24,7 +24,13 @@
                 "settlements.source": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/accounts/{settlements.source}",
+                    "pattern": "/resources/{settlements.source}",
+                    "required": true
+                },
+                "settlements.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/events/{settlements.id}/events",
                     "required": true
                 }
             },

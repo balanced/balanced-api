@@ -27,7 +27,6 @@
             "required": [
                 "reversals.credit",
                 "reversals.order",
-                "reversals.source",
                 "reversals.events"
             ]
         },

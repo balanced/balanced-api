@@ -8,10 +8,9 @@ end
 
 Given(/^I have an order with a debit$/) do
   step 'I have created a customer'
-  @client.post('/customers', {})
-  @merchant_id = @client['id']
+  @merchant_id = @customer_id
   @client.add_hydrate :merchant_id, @client['id']
-  @client.post("/customers/#{@client['id']}/orders", {})
+  @client.post("/customers/#{@merchant_id}/orders", {})
   @order_id = @client['id']
   @client.add_hydrate :order_id, @order_id
   @client.post("/cards/#{@card_id}/debits", {
