@@ -9,7 +9,7 @@ Feature: Settlements
       """
       {
         "settlements": [{
-          "destination": "/bank_accounts/:bank_account_id",
+          "funding_instrument": "/bank_accounts/:bank_account_id",
           "appears_on_statement_as": "Settlement Oct",
           "description": "Settlement for payouts from October"
         }]
@@ -84,11 +84,13 @@ Feature: Settlements
         "meta": {
           "reference_number": "546512"
         }
+
       }
       """
 
   Scenario: Creating a settlement without a funding destination leads to failure
-    When I POST to /settlements with the body:
+    Given I have a customer with a tokenized bank account
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
     """
       {
         "settlements": [{
@@ -106,12 +108,12 @@ Feature: Settlements
     """
 
   Scenario: Creating a settlement for an Account with insufficient funds fails
-    Given I have created a customer
+    Given I have a customer with a tokenized bank account
     When I POST to /accounts/:customer_payable_account_id/settlements with the body:
     """
       {
         "settlements": [{
-          "destination": "/bank_accounts/:bank_account_id"
+          "funding_instrument": "/bank_accounts/:bank_account_id"
         }]
       }
     """
@@ -127,11 +129,12 @@ Feature: Settlements
   Scenario: Settlement fails
     Given I have an Account with sufficient funds
     And I have tokenized a failing bank account associated with the merchant
-    When I POST to /settlements with the body:
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
     """
       {
         "settlements": [{
-          "description": "Will this settlement work? Certainly not!"
+        "funding_instrument": "/bank_accounts/:bank_account_id",
+        "description": "Will this settlement work? Certainly not!"
         }]
       }
     """

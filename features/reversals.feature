@@ -180,12 +180,10 @@ Feature: Reversal
   Scenario: Reverse an Account credit after settlement
     Given I have an Account with sufficient funds
     When I POST to /accounts/:customer_payable_account_id/settlements with the body:
-
       """
       {
         "settlements": [{
-            "description": "Batch A",
-            "funding_instrument": /bank_accounts/:bank_account_id
+          "funding_instrument": "/bank_accounts/:bank_account_id"
         }]
       }
       """

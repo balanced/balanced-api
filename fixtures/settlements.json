@@ -30,7 +30,7 @@
                 "settlements.events": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "/events/{settlements.id}/events",
+                    "pattern": "/settlements/{settlements.id}/events",
                     "required": true
                 }
             },

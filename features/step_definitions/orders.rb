@@ -66,8 +66,7 @@ end
 
 Given(/^I have a merchant with (\d) orders with debits$/) do |num|
   step 'I have created a customer'
-  @client.post('/customers', {})
-  @merchant_id = @client['id']
+  @merchant_id = @customer_id
   @client.add_hydrate :merchant_id, @merchant_id
   step 'I have tokenized a bank account associated with the merchant'
   num.to_i.times do |i|
