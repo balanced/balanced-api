@@ -162,7 +162,7 @@ Feature: Reversal
 
   Scenario: Reverse an Account credit before settlement
     Given I have an Account with sufficient funds
-    When I POST to /credits/:credit_2_id/reversals with the body:
+    When I POST to /credits/:credit_id_2/reversals with the body:
       """
       {
         "reversals": [{
