@@ -103,7 +103,7 @@ Feature: Settlements
     And the fields on this error match:
     """
       {
-       "category_code": "no-funding-destination"
+       "category_code": "request"
       }
     """
 

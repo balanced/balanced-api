@@ -121,7 +121,7 @@ Feature: Credits
     And the fields on this error match:
     """
       {
-       "category_code": "request"
+       "category_code": "no-funding-destination"
       }
     """
 
