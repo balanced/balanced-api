@@ -21,9 +21,9 @@ Feature: Accounts
       }
       """
 
-  Scenario: Credit a customer deposit account
+  Scenario: Credit a customer payable account
     Given I have an order with a debit
-    When I POST to /accounts/:customer_payable_account_id/credits
+    When I POST to /accounts/:customer_payable_account_id/credits with the body:
     """
     {
       "credits": [{
