@@ -72,7 +72,7 @@ Given(/^I have a merchant with (\d) orders with debits$/) do |num|
   num.to_i.times do |i|
     @client.post("/customers/#{@merchant_id}/orders", {})
     order_id = @client['id']
-    @client.add_hydrate :order_id, order_id
+    @client.add_hydrate ":order_id_#{i + 1}", order_id
     @client.post("/cards/#{@card_id}/debits", {
                    amount: 10000,
                    order: order_id
