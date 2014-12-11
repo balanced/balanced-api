@@ -189,11 +189,11 @@ Feature: Reversal
       """
     Then I should get a 201 Created status code
     And the response is valid according to the "settlements" schema
-    And the fields on this settlements match:
+    And the fields on this settlement match:
       """
       {
         "amount": 30000,
-        "status": "succeeded"
+        "status": "pending"
       }
       """
 
@@ -204,7 +204,7 @@ Feature: Reversal
      """
      {
        "amount": 10000,
-       "status": "pending"
+       "status": "succeeded"
      }
      """
 

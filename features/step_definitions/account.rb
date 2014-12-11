@@ -7,7 +7,6 @@ Given(/^I have an Account with sufficient funds$/) do
                    order: order_href
                  })
     @client.add_hydrate "credit_id_#{i}".to_sym, response['credits'][0]['id']
-
   end
 end
 

@@ -55,6 +55,10 @@
         "meta": {
             "$ref": "meta.json"
         },
+        "transaction_number": {
+            "type": "string",
+            "pattern": "SC[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
+        },
         "links": {
             "type": "object",
             "properties": {

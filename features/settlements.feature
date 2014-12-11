@@ -19,7 +19,7 @@ Feature: Settlements
     And the fields on this settlement match:
       """
       {
-        "amount": "10000",
+        "amount": 30000,
         "appears_on_statement_as": "BAL*Settlement Oct",
         "description": "Settlement for payouts from October",
         "links": {
@@ -139,7 +139,7 @@ Feature: Settlements
     """
     Then I should get a 201 Created status code
     And the response is valid according to the "settlements" schema
-    And the fields on this error match:
+    And the fields on this settlement match:
     """
       { "status": "failed" }
     """
