@@ -12,7 +12,7 @@ Feature: Accounts
     When I GET to /customers/:customer_id/accounts
     Then I should get a 200 OK status code
     And the response is valid according to the "accounts" schema
-    And the fields on these credits match:
+    And the fields on these accounts match:
       """
       {
         "links": {
