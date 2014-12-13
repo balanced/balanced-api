@@ -94,7 +94,7 @@ Feature: Accounts
     """
       {
         "links": {
-          "credit": ":credit_id_1"
+          "credit": ":credit_id"
         }
       }
     """
