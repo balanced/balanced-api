@@ -232,3 +232,17 @@ Feature: Customers
       "merchant_status": "underwritten"
     }
     """
+
+  Scenario: Retrieving accounts for a customer
+    Given I have a bank account with a settlement
+    When I GET to /customers/:customer_id/accounts
+    Then I should get a 200 OK status code
+    And the response is valid according to the "accounts" schema
+    And the fields on these accounts match:
+    """
+      {
+        "links": {
+          "customer": ":customer_id"
+        }
+      }
+    """

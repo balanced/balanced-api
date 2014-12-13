@@ -143,3 +143,63 @@ Feature: Settlements
     """
       { "status": "failed" }
     """
+
+  Scenario: Retrieving credits for a settlement
+    Given I have a bank account with a settlement
+    When I GET to /settlements/:settlement_id/credits
+    Then I should get a 200 OK status code
+    And the response is valid according to the "credits" schema
+    And the fields on these credits match:
+    """
+      {
+        "links": {
+          "destination": ":customer_payable_account_id"
+        }
+      }
+    """
+
+  Scenario: Retrieving reversals for a settlement
+    Given I have a bank account with a settlement
+    Then I POST to /credits/:credit_id/reversals
+    Then I should get a 201 Created status code
+    And the response is valid according to the "reversals" schema
+    Then I settle the account
+    When I GET to /settlements/:settlement_id/reversals
+    Then I should get a 200 OK status codek
+    And the response is valid according to the "reversals" schema
+    And the fields on these reversals match:
+    """
+      "links": {
+        "credit": ":credit_id"
+      }
+    """
+
+Scenario: Retrieving events for a settlement
+  Given I have a bank account with a settlement
+  When I GET to /settlements/:settlement_id/events
+  Then I should get a 200 OK status code
+  And the response is valid according to the "events" schema
+  And the fields on these events match:
+  """
+      { "href": ":settlement_id" }
+  """
+
+  Scenario: Retrieving source for a settlement
+    Given I have a bank account with a settlement
+    When I GET to /resources/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "accounts" schema
+    And the fields on this account match:
+    """
+      {"id": ":customer_payable_account_id"}
+    """
+
+  Scenario: Retrieving destination for a settlement
+    Given I have a bank account with a settlement
+    When I GET to /resources/:bank_account_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "bank_accounts" schema
+    And the fields on this bank_account match:
+    """
+      {"id": ":bank_account_id"}
+    """

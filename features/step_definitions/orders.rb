@@ -77,7 +77,7 @@ Given(/^I have a merchant with (\d) orders with debits$/) do |num|
                    amount: 10000,
                    order: order_id
                  })
-    @client.add_hydrate :debit_id, @client['id']
+    @client.add_hydrate ":debit_id_#{i + 1}", @client['id']
     instance_variable_set("@order_id_#{i + 1}", order_id)
   end
 end
