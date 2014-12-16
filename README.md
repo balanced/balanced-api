@@ -51,3 +51,24 @@ support](https://github.com/balanced/balanced-api/issues/204).
 We try to do as much 'internal' discussion in these issues as well, it's not
 just for public feedback. If you want to know what we're thinking, just search
 for a relevant issue!
+
+
+### Edit field descriptions for scenarios 
+
+Field descriptions are from balanced.rev1.json, which are generated from 
+balanced-api. The "forms" used in balanced-docs are assembled from parameters 
+supplied in the scenarios in balanced-api. Those scenarios should be 
+updated to include the fields missing the specific scenario section and a 
+newly generated balanced.rev1.json be committed into the docs. To generate 
+balanced.rev1.json in balanced-api run:
+
+```bash
+bundle exec rake features:all
+```
+DO NOT run
+
+```bash
+bundle exec rake parallel:features
+```
+
+doing so causes the file to overwrite itself.
