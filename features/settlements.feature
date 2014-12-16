@@ -181,7 +181,15 @@ Scenario: Retrieving events for a settlement
   And the response is valid according to the "events" schema
   And the fields on these events match:
   """
-      { "href": ":settlement_id" }
+    {
+      "entity": {
+        "settlements": {
+          "links": {
+            "source": ":customer_payable_account_id"
+          }
+        }
+      }
+    }
   """
 
   Scenario: Retrieving source for a settlement

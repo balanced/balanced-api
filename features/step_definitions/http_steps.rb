@@ -148,6 +148,8 @@ def checker(from, of, nesting)
       assert_equal val, of[key], "#{nesting}>#{key}"
     elsif val.nil?
       assert_nil of[key]
+    elsif of.is_a?(Array)
+      checker val, of[0][key], "#{nesting}>#{key}"
     else
       checker val, of[key], "#{nesting}>#{key}"
     end
