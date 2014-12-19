@@ -285,7 +285,7 @@ Scenario: Retrieving events for a settlement
     """
       {
         "amount": 12345,
-        "appears_on_statement_as": "BAL*Settlement Oct",
+        "appears_on_statement_as": "BAL*example.com",
         "description": "Settlement for payouts from October",
         "links": {
           "destination": ":bank_account_id"

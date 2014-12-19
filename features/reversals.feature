@@ -193,7 +193,7 @@ Feature: Reversal
       """
       {
         "amount": 30000,
-        "status": "pending"
+        "status": "succeeded"
       }
       """
 
