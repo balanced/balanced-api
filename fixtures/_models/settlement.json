@@ -57,18 +57,18 @@
         },
         "transaction_number": {
             "type": "string",
-            "pattern": "SC[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
+            "pattern": "(SC|SD)[0-9A-Z]{3}-[0-9A-Z]{3}-[0-9A-Z]{4}"
         },
         "links": {
             "type": "object",
             "properties": {
                 "destination": {
                     "type": "string",
-                    "pattern": "BA[a-zA-Z0-9]{16,32}"
+                    "pattern": "(BA|AT)[a-zA-Z0-9]{16,32}"
                 },
                 "source": {
                     "type": "string",
-                    "pattern": "AT[a-zA-Z0-9]{16,32}"
+                    "pattern": "(BA|AT)[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [

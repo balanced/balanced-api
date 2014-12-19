@@ -211,3 +211,113 @@ Scenario: Retrieving events for a settlement
     """
       {"id": ":bank_account_id"}
     """
+
+  Scenario: Create settlement with negative account balance from bank account
+    Given I have a bank account with a settlement
+    When I GET to /settlements/:settlement_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "settlements" schema
+    And the fields on this settlement match:
+    """
+      {
+        "amount": 12345,
+        "appears_on_statement_as": "BAL*example.com"
+      }
+    """
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": 0
+      }
+    """
+    And I POST to /credits/:credit_id/reversals
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "reversals" schema
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": -12345
+      }
+    """
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
+    """
+      {
+        "settlements": [{
+          "funding_instrument": "/bank_accounts/:bank_account_id",
+          "appears_on_statement_as": "Settlement Oct",
+          "description": "Settlement for payouts from October"
+        }]
+      }
+      """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "settlements" schema
+    And the fields on this settlement match:
+    """
+      {
+        "amount": 12345,
+        "appears_on_statement_as": "BAL*Settlement Oct",
+        "description": "Settlement for payouts from October",
+        "links": {
+          "destination": ":customer_payable_account_id"
+        }
+      }
+    """
+
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": 0
+      }
+    """
+
+  Scenario: Settle an account with negative balance from another order
+    Given I have a bank account with a settlement
+    When I GET to /settlements/:settlement_id
+    Then I should get a 200 OK status code
+    And the response is valid according to the "settlements" schema
+    And the fields on this settlement match:
+    """
+      {
+        "amount": 12345,
+        "appears_on_statement_as": "BAL*Settlement Oct",
+        "description": "Settlement for payouts from October",
+        "links": {
+          "destination": ":bank_account_id"
+        }
+      }
+    """
+
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": 0
+      }
+    """
+    And I POST to /credits/:credit_id/reversals
+    Then I should get a 201 CREATED status code
+    And the response is valid according to the "reversals" schema
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": -12345
+      }
+    """
+    And I have a bank account with a settlement
+    And I GET to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+        "balance": 0
+      }
+    """
