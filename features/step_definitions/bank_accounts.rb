@@ -1,8 +1,8 @@
 Given(/^I have tokenized a bank account$/) do
   @client.post('/bank_accounts', {
                  name: "Henry Ford",
-                 routing_number: "321174851",
-                 account_number: "9900000001",
+                 routing_number: "021000021",
+                 account_number: "9900000002",
                  account_type: "checking",
                })
   @bank_account_id = @client['bank_accounts']['id']
