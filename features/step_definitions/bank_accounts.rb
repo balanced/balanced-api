@@ -1,8 +1,8 @@
 Given(/^I have tokenized a bank account$/) do
   @client.post('/bank_accounts', {
-                 name: "Hhenry Ford",
-                 routing_number: "321174851",
-                 account_number: "9900000001",
+                 name: "Henry Ford",
+                 routing_number: "021000021",
+                 account_number: "9900000002",
                  account_type: "checking",
                })
   @bank_account_id = @client['bank_accounts']['id']
@@ -10,11 +10,21 @@ Given(/^I have tokenized a bank account$/) do
   @client.add_hydrate(:bank_accounts_id, @bank_account_id)
 end
 
+Given(/^I have tokenized a failing bank account$/) do
+  @client.post('/bank_accounts', {
+                 name: "Henry Ford",
+                 routing_number: "021000021",
+                 account_number: "9900000004",
+                 account_type: "checking",
+               })
+  @bank_account_id = @client['bank_accounts']['id']
+  @client.add_hydrate(:bank_account_id, @bank_account_id)
+  @client.add_hydrate(:bank_accounts_id, @bank_account_id)
+end
 
 Given(/^I have tokenized more than one bank account$/) do
   2.times { step 'I have tokenized a bank account' }
 end
-
 
 Given(/^I have a verified bank account$/) do
   step 'I have tokenized a bank account'

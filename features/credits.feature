@@ -124,3 +124,50 @@ Feature: Credits
        "category_code": "no-funding-destination"
       }
     """
+
+
+  Scenario: Bulk credit to a customer payable account
+    Given I have a merchant with 2 orders with debits
+    When I POST to /accounts/:customer_payable_account_id/credits with the body:
+    """
+      {
+        "credits": [{
+          "amount": 1000,
+          "order": "/orders/:order_id_1",
+          "appears_on_statement_as": "Payout group A"
+        }]
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+    When I make a GET request to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+       "balance": 1000
+      }
+    """
+
+    When I POST to /accounts/:customer_payable_account_id/credits with the body:
+    """
+      {
+        "credits": [{
+          "amount": 1000,
+          "order": "/orders/:order_id_2",
+          "appears_on_statement_as": "Payout group B"
+        }]
+      }
+    """
+    Then I should get a 201 Created status code
+    And the response is valid according to the "credits" schema
+
+    When I make a GET request to /accounts/:customer_payable_account_id
+    Then I should get a 200 OK status code
+    And the fields on this account match:
+    """
+      {
+       "balance": 2000
+      }
+    """

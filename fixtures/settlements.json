@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "settlements.credits": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{settlements.id}/credits"
+                },
+                "settlements.reversals": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{settlements.id}/reversals"
+                },
+                "settlements.destination": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{settlements.destination}",
+                    "required": true
+                },
+                "settlements.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{settlements.source}",
+                    "required": true
+                },
+                "settlements.events": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{settlements.id}/events",
+                    "required": true
+                }
+            },
+            "required": [
+                "settlements.credits",
+                "settlements.reversals",
+                "settlements.destination",
+                "settlements.source"
+            ]
+        },
+        "meta": {
+            "$ref": "_models/meta.json"
+        },
+        "settlements": {
+            "items": {
+                "$ref": "_models/settlement.json"
+            },
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "required": true
+        }
+    },
+    "required": [
+        "links",
+        "settlements"
+    ]
+}

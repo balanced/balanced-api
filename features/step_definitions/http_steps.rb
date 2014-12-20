@@ -62,7 +62,6 @@ When(/^I make a (\w+) request to the link "(.*?)" with the body:$/) do |verb, ke
   body = @client.hydrater(body)
   href = @client.get_link(keys)
   #$logger.debug("Requesting hydrated: #{@client.hydrater(@client.last_body["links"][keys])}")
-  #require 'debugger'; debugger
   body = @client.send(verb.downcase, @client.get_link(keys), JSON.parse(body), env)
   @credit_id = @client['credits']['id'] rescue nil
   @cards_id = @client['cards']['id'] rescue nil
@@ -149,6 +148,8 @@ def checker(from, of, nesting)
       assert_equal val, of[key], "#{nesting}>#{key}"
     elsif val.nil?
       assert_nil of[key]
+    elsif of.is_a?(Array)
+      checker val, of[0][key], "#{nesting}>#{key}"
     else
       checker val, of[key], "#{nesting}>#{key}"
     end

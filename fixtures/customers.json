@@ -51,6 +51,11 @@
                     "format": "uri",
                     "pattern": "/customers/{customers.id}/orders"
                 },
+                "customers.accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/customers/{customers.id}/accounts"
+                },
                 "customers.source": {
                     "type": "string",
                     "format": "uri",
@@ -71,6 +76,7 @@
                 "customers.refunds",
                 "customers.reversals",
                 "customers.orders",
+                "customers.accounts",
                 "customers.source",
                 "customers.destination"
             ]

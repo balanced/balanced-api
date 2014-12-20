@@ -7,7 +7,8 @@ Given(/^I have tokenized a card$/) do
       cvv: "123",
       address: {
         line1: "965 Mission St",
-        postal_code: "94103"
+        postal_code: "94103",
+        city: "Balo Alto",
       }
     }
   )
