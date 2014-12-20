@@ -165,7 +165,7 @@ Feature: Settlements
     And the response is valid according to the "reversals" schema
     Then I settle the account
     When I GET to /settlements/:settlement_id/reversals
-    Then I should get a 200 OK status codek
+    Then I should get a 200 OK status code
     And the response is valid according to the "reversals" schema
     And the fields on these reversals match:
     """
@@ -286,7 +286,6 @@ Scenario: Retrieving events for a settlement
       {
         "amount": 12345,
         "appears_on_statement_as": "BAL*example.com",
-        "description": "Settlement for payouts from October",
         "links": {
           "destination": ":bank_account_id"
         }

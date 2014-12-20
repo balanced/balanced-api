@@ -8,8 +8,8 @@ Given(/^I have a bank account with a settlement$/) do
   @credit_id = @client['credits']['id']
   @client.add_hydrate :credit_id, @credit_id
   @client.post("/accounts/#{@customer_payable_account_id}/settlements", {
-              funding_instrument: :"/bank_accounts/#{@bank_account_id}"
-               })
+      funding_instrument: :"/bank_accounts/#{@bank_account_id}"
+  })
   @settlement_id = @client['settlements']['id']
   @client.add_hydrate :settlement_id, @settlement_id
 end

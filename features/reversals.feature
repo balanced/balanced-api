@@ -208,21 +208,20 @@ Feature: Reversal
      }
      """
 
-    When POST to /accounts/:customer_payable_account_id/settlements
+    When I POST to /accounts/:customer_payable_account_id/settlements with the body:
+      """
+      {
+        "settlements": [{
+          "funding_instrument": "/bank_accounts/:bank_account_id"
+        }]
+      }
+      """
     Then I should get a 201 Created status code
     And the response is valid according to the "settlements" schema
-
-    When I GET to /reversals/:reversal_id
-    Then I should get a 200 OK status code
-    And the response is valid according to the "reversals" schema
-    And the fields on this credit match:
-      """
-      { "status": "succeeded" }
-      """
 
     When I make a GET request to the link "reversals.order"
     Then I should get a 200 OK status code
     And the fields on this order match:
      """
-     { "amount_escrowed": 1000 }
+     { "amount_escrowed": 10000 }
      """
