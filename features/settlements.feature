@@ -1,3 +1,4 @@
+@focus
 Feature: Settlements
   Settlement is the action of moving money out of an Account to a
   bank account.
@@ -169,8 +170,10 @@ Feature: Settlements
     And the response is valid according to the "reversals" schema
     And the fields on these reversals match:
     """
-      "links": {
-        "credit": ":credit_id"
+      {
+        "links": {
+          "credit": ":credit_id"
+        }
       }
     """
 
