@@ -70,6 +70,16 @@
                     "type": "string",
                     "format": "uri",
                     "pattern": "/disputes"
+                },
+                "marketplaces.accounts": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/accounts"
+                },
+                "marketplaces.settlements": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements"
                 }
             },
             "required": [
@@ -84,7 +94,9 @@
                 "marketplaces.callbacks",
                 "marketplaces.card_holds",
                 "marketplaces.orders",
-                "marketplaces.disputes"
+                "marketplaces.disputes",
+                "marketplaces.accounts",
+                "marketplaces.settlements"
             ]
         },
         "meta": {
