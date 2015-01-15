@@ -25,6 +25,11 @@
                     "format": "uri",
                     "pattern": "/resources/{credits.destination}"
                 },
+                "credits.settlement": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{credits.settlement}"
+                },
                 "credits.events": {
                     "type": "string",
                     "format": "uri",
@@ -36,6 +41,7 @@
                 "credits.customer",
                 "credits.order",
                 "credits.destination",
+                "credits.settlement",
                 "credits.events"
             ]
         },
