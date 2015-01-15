@@ -85,12 +85,21 @@
                         "string"
                     ],
                     "pattern": "OR[a-zA-Z0-9]{16,32}"
+                },
+                "settlement": {
+                    "description": "The active settlement for this credit",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "ST[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [
                 "customer",
                 "destination",
-                "order"
+                "order",
+                "settlement"
             ],
             "additionalProperties": false
         }

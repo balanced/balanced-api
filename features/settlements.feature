@@ -1,4 +1,3 @@
-@focus
 Feature: Settlements
   Settlement is the action of moving money out of an Account to a
   bank account.
