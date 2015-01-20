@@ -74,6 +74,14 @@
                         "string"
                     ],
                     "pattern": "OR[a-zA-Z0-9]{16,32}"
+                },
+                "settlement": {
+                    "description": "The active settlement for this reversal",
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "pattern": "ST[a-zA-Z0-9]{16,32}"
                 }
             },
             "required": [

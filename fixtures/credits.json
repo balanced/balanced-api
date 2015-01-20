@@ -10,6 +10,11 @@
                     "format": "uri",
                     "pattern": "/credits/{credits.id}/reversals"
                 },
+                "credits.settlements": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/credits/{credits.id}/settlements"
+                },
                 "credits.customer": {
                     "type": "string",
                     "format": "uri",
@@ -38,6 +43,7 @@
             },
             "required": [
                 "credits.reversals",
+                "credits.settlements",
                 "credits.customer",
                 "credits.order",
                 "credits.destination",
