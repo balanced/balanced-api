@@ -5,6 +5,11 @@
         "links": {
             "type": "object",
             "properties": {
+                "reversals.settlements": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/reversals/{reversals.id}/settlements"
+                },
                 "reversals.credit": {
                     "type": "string",
                     "format": "uri",
@@ -17,6 +22,11 @@
                     "pattern": "/orders/{reversals.order}",
                     "required": true
                 },
+                "reversals.settlement": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/settlements/{reversals.settlement}"
+                },
                 "reversals.events": {
                     "type": "string",
                     "format": "uri",
@@ -25,8 +35,10 @@
                 }
             },
             "required": [
+                "reversals.settlements",
                 "reversals.credit",
                 "reversals.order",
+                "reversals.settlement",
                 "reversals.events"
             ]
         },
