@@ -19,16 +19,21 @@
             "type": "string",
             "format": "date-time"
         },
+        "currency": {
+	    "$ref": "_models/currency.json"
+        },
         "amount": {
             "description": "The amount of the debit in cents.",
             "type": "integer",
             "minimum": 1
         },
-        "currency": {
-            "type": "string",
-            "enum": [
-                "USD"
-            ]
+        "amount_in_escrow_currency": {
+            "description": "The amount of the debit in cents, denominated in the escrow_currency.",
+            "type": "integer",
+            "minimum": 1
+        },
+        "escrow_currency": {
+	    "$ref": "_models/currency.json"
         },
         "appears_on_statement_as": {
             "$ref": "appears_on_statement_as.json"
