@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "invoices": {
+            "items": {
+                "$ref": "_models/invoice.json"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "invoices.source": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/resources/{invoices.source}"
+                }
+            },
+            "required": [
+                "invoices.source"
+            ]
+        },
+        "meta": {
+            "type": "object"
+        }
+    },
+    "require": [
+        "invoices"
+    ]
+}
