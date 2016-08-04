@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "object",
+            "properties": {
+                "evidence.dispute": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "/evidence/{evidence.id}/dispute",
+                    "required": true
+                }
+            },
+            "required": false
+        },
+        "meta": {
+            "type": "object",
+            "required": false
+        },
+        "evidence": {
+            "items": {
+                "$ref": "_models/evidence.json"
+            },
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "required": true
+        }
+    }
+}

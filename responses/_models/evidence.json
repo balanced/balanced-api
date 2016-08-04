@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "required": true,
+            "pattern": "ED[a-zA-Z0-9]{16,32}"
+        },
+        "filename": {
+            "type": "string",
+            "required": true
+        },
+        "href": {
+            "type": "string",
+            "format": "uri",
+            "required": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "meta": {
+            "type": "object",
+            "required": true
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "dispute": {
+                    "type": "string",
+                    "pattern": "DT[a-zA-Z0-9]{16,32}",
+                    "required": true
+                }
+            },
+            "required": true,
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

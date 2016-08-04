@@ -1,0 +1,13 @@
+scenarios:
+  - name: represent_already_represented_dispute
+    request:
+      method: POST
+      href:  "/disputes/{dispute,disputes.id}/represent"
+      schema:
+        "$ref": "requests/dispute.json"
+      body: {}
+    response:
+      status_code: 409
+      schema:
+        "$ref": "responses/errors.json"
+      assertRegex: { "description": ".*has already been represented" }
