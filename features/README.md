@@ -4,7 +4,7 @@ Here's where the rubber hits the road.
 
 ### Background
 
-We use [Cucumber](http://cukes.info/) for features. What that means is that the
+We use [Cucumber](http://cucumber.io/) for features. What that means is that the
 descriptions are in psuedo-English, which then gets mapped to code.
 
 You can check out the specifications by looking at any of the files that end
